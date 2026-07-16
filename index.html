@@ -987,8 +987,15 @@ function wizTog(i,multi){
   else{ sel=[i]; }
   W.answers[s.key]=sel;
   if(document.getElementById('wtext')) W.answers.reasonText=document.getElementById('wtext').value;
-  wizRender();
-  if(!multi&&s.type==='single'){ setTimeout(wizNext,280); }
+  if(multi){
+    // Update selection in place: toggling only the clicked option's class avoids
+    // rebuilding the panel, which was re-triggering the fadeUp animation (the "jerk").
+    document.querySelectorAll('#wsteps .chip, #wsteps .opt').forEach((b,idx)=>b.classList.toggle('on',sel.includes(idx)));
+    wizValid();
+  }else{
+    wizRender();
+    if(s.type==='single'){ setTimeout(wizNext,280); }
+  }
 }
 function wizValid(){
   const s=WSTEPS[W.step]; const btn=document.getElementById('wnext'); let ok=true;
