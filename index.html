@@ -178,7 +178,7 @@ body.dark .snav.on{background:var(--t700)}
 .jhero .b1{width:150px;height:150px;right:-30px;top:-40px}
 .jhero .b2{width:110px;height:110px;right:60px;bottom:-50px}
 .jhero .jk{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.8;margin-bottom:6px;position:relative}
-.jhero .jn{font-family:var(--serif);font-size:30px;font-weight:500;position:relative;line-height:1.1}
+.jhero .jn{font-family:var(--serif);font-size:25px;font-weight:500;position:relative;line-height:1.1}
 .jhero .js{font-size:13.5px;opacity:.9;margin-top:4px;position:relative}
 .jbar{height:8px;border-radius:99px;background:rgba(255,255,255,.2);overflow:hidden;margin-top:16px;position:relative}
 .jbar i{display:block;height:100%;background:var(--t500);border-radius:99px;transition:width .8s cubic-bezier(.4,0,.2,1)}
@@ -361,6 +361,20 @@ body.dark .alertbox{border-color:#5a2a20}
 .login-foot{text-align:center;color:var(--soft);font-size:12px;margin-top:16px}
 .back-site{display:block;text-align:center;margin-top:14px;font-size:13px;color:var(--soft);cursor:pointer}
 .back-site:hover{color:var(--hd2)}
+.login-card{position:relative}
+.demo-corner{position:absolute;top:18px;right:18px;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--t500);background:var(--t50);border:1px solid var(--t100);border-radius:99px;padding:6px 12px;cursor:pointer;transition:all .15s}
+.demo-corner:hover{background:var(--t100)}
+.lfield{margin-bottom:14px}
+.lfield label{display:block;font-size:12.5px;font-weight:600;color:var(--hd3);margin-bottom:6px}
+.lfield input{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--hd);font-size:14.5px;font-family:inherit;transition:border-color .15s}
+.lfield input:focus{outline:none;border-color:var(--t500)}
+.login-btn{width:100%;margin-top:6px;padding:13px;border-radius:12px;background:var(--coral);color:#fff;font-weight:600;font-size:15px;cursor:pointer;transition:background .15s}
+.login-btn:hover{background:var(--coral-deep)}
+.login-forgot{display:block;text-align:center;margin-top:14px;font-size:13px;color:var(--soft);cursor:pointer}
+.login-forgot:hover{color:var(--hd2)}
+#loginDemo{display:none;margin-top:22px;padding-top:22px;border-top:1px solid var(--line)}
+#loginDemo.show{display:block}
+#loginDemo .demo-lead{font-size:13px;color:var(--soft);margin-bottom:14px}
 
 .topbar{position:sticky;top:0;z-index:50;background:var(--t900);color:#F5EFE4;display:flex;align-items:center;gap:16px;padding:0 26px;height:58px}
 .topbar .logo{color:#F5EFE4;font-size:17px;margin:0}
@@ -502,9 +516,9 @@ a{color:inherit;text-decoration:none}
 .istage{position:absolute;text-align:center;padding:0 24px;opacity:0;transform:translateY(14px);transition:opacity .9s ease,transform .9s ease}
 .istage.show{opacity:1;transform:none}
 .istage.out{opacity:0;transform:translateY(-12px)}
-.istage .ilogo{display:flex;flex-direction:column;align-items:center;gap:26px}
+.istage .ilogo{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:18px}
 .istage .ilogo .logo-mark{width:auto;height:auto;background:none}
-.istage .ilogo .logo-mark svg{width:74px;height:74px}
+.istage .ilogo .logo-mark svg{width:58px;height:58px}
 .istage .iname{font-family:var(--serif);font-size:clamp(44px,7vw,72px);color:#F5EFE4;letter-spacing:.01em}
 .istage .iphrase{font-family:var(--serif);font-weight:500;font-size:clamp(20px,4.9vw,62px);color:#F5EFE4;line-height:1.08;letter-spacing:-.01em;white-space:nowrap}
 #intro .ibg{position:absolute;inset:0;background:
@@ -523,7 +537,7 @@ body.title-wait #heroTitle{opacity:0}
 /* ============ LANDING ============ */
 #site{background:var(--bg)}
 .nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:26px;padding:0 5vw;height:64px;background:var(--navbg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:19px;color:var(--hd2);margin-right:auto}
+.logo{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:19px;color:var(--hd2);margin-right:auto}
 .logo-mark{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .logo-mark svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
 .nav a.nl{font-size:14px;color:var(--soft);font-weight:500;white-space:nowrap}
@@ -544,7 +558,7 @@ body.title-wait #heroTitle{opacity:0}
   var(--t900);color:#F5EFE4;padding:110px 5vw 130px;overflow:hidden}
 .hero-inner{max-width:1080px;margin:0 auto}
 .kicker{font-size:12.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#8FC1BB;margin-bottom:22px}
-.hero h1{font-size:clamp(20px,4.9vw,62px);line-height:1.08;letter-spacing:-.01em;white-space:nowrap}
+.hero h1{font-size:clamp(40px,6.6vw,80px);line-height:1.05;letter-spacing:-.015em;max-width:15em}
 .hero p{font-size:18px;max-width:34em;margin-top:22px;opacity:.85;line-height:1.65}
 .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .hero .micro{display:flex;align-items:center;flex-wrap:wrap;gap:8px 22px;font-size:13.5px;opacity:.8;margin-top:22px}
@@ -718,8 +732,7 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
     <a class="nl" href="#faq">FAQ</a>
     <a class="nl" href="#/conteudo">Content</a>
     <a class="nl" href="#/equipe">Care team</a>
-    <a class="btn btn-line" onclick="go('login')" style="cursor:pointer">Log in</a>
-    <a class="btn btn-coral" onclick="go('wizard')" style="cursor:pointer">Start your journey</a>
+    <a class="btn btn-line" id="navLogin" onclick="go('login')" style="cursor:pointer">Log in</a>
   </nav>
 
   <div class="subpage active" id="home">
@@ -731,7 +744,6 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
       <p>We care for your mind by caring for your body. Psychiatrists and dietitians work as one team to restore your quality of life through metabolic science.</p>
       <div class="hero-cta">
         <a class="btn btn-coral" onclick="go('wizard')" style="cursor:pointer;font-size:15.5px;padding:14px 26px">Start your journey <span class="ic" data-icon="arrow-right"></span></a>
-        <a class="btn" href="#about" style="color:#F5EFE4;border:1.5px solid rgba(245,239,228,.3)">Learn more</a>
       </div>
       <div class="micro">
         <span><span class="ic" data-icon="clock"></span>Takes 2 minutes</span>
@@ -1033,22 +1045,31 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
 <!-- ================= LOGIN ================= -->
 <div class="screen" id="login">
   <div class="login-card">
+    <button class="demo-corner" onclick="toggleLoginDemo()"><span class="ic" data-icon="sparkles"></span>Demo views</button>
     <div class="logo"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>Metabolicamente</div>
     <h1>Welcome back</h1>
     <div class="login-sub">Caring for your mind by caring for your metabolism.</div>
-    <div class="role-note">One account, one login. Your dashboard adapts to your role on the care team. <b>Demo:</b> choose a view below.</div>
-    <button class="role-btn" onclick="go('doctor')">
-      <div class="av" style="background:var(--t700)">EA</div>
-      <div><b>Dr. Elena Alves</b><span>Psychiatrist · clinical dashboard</span></div>
-    </button>
-    <button class="role-btn" onclick="go('nutri')">
-      <div class="av" style="background:var(--t500)">MR</div>
-      <div><b>Marina Rocha, RD</b><span>Dietitian · nutrition dashboard</span></div>
-    </button>
-    <button class="role-btn" onclick="go('patient')">
-      <div class="av" style="background:var(--coral)">SM</div>
-      <div><b>Sarah Mitchell</b><span>Patient · my health</span></div>
-    </button>
+    <div id="loginForm">
+      <div class="lfield"><label>Email</label><input type="email" placeholder="you@email.com" autocomplete="username"></div>
+      <div class="lfield"><label>Password</label><input type="password" placeholder="••••••••" autocomplete="current-password"></div>
+      <button class="login-btn" onclick="go('patient')">Log in</button>
+      <span class="login-forgot" onclick="return false">Forgot your password?</span>
+    </div>
+    <div id="loginDemo">
+      <div class="demo-lead">Prototype demo — pick a view to explore:</div>
+      <button class="role-btn" onclick="go('doctor')">
+        <div class="av" style="background:var(--t700)">EA</div>
+        <div><b>Dr. Elena Alves</b><span>Psychiatrist · clinical dashboard</span></div>
+      </button>
+      <button class="role-btn" onclick="go('nutri')">
+        <div class="av" style="background:var(--t500)">MR</div>
+        <div><b>Marina Rocha, RD</b><span>Dietitian · nutrition dashboard</span></div>
+      </button>
+      <button class="role-btn" onclick="go('patient')">
+        <div class="av" style="background:var(--coral)">SM</div>
+        <div><b>Sarah Mitchell</b><span>Patient · my health</span></div>
+      </button>
+    </div>
     <div class="login-foot">Demo prototype · fictional data only</div>
     <span class="back-site" onclick="go('site')">← Back to site</span>
   </div>
@@ -1129,6 +1150,9 @@ function go(id){
   if(id==='patient'||id==='doctor'||id==='nutri') renderDash(id);
   if(id==='wizard') wizRender();
   renderIcons();
+}
+function toggleLoginDemo(){
+  const d=document.getElementById('loginDemo'); if(d) d.classList.toggle('show');
 }
 let toastTimer;
 function toast(msg){
@@ -1881,7 +1905,7 @@ function setTheme(dark){
 function injectTheme(){
   const mk=()=>{ const b=document.createElement('button'); b.className='themetog'; b.title='Light / dark';
     b.onclick=()=>setTheme(!document.body.classList.contains('dark')); return b; };
-  const nav=document.querySelector('.nav'); if(nav&&!nav.querySelector('.themetog')) nav.appendChild(mk());
+  const nav=document.querySelector('.nav'); if(nav&&!nav.querySelector('.themetog')){ const b=mk(); const nl=nav.querySelector('#navLogin'); if(nl) nav.insertBefore(b,nl); else nav.appendChild(b); }
   document.querySelectorAll('.topbar').forEach(tb=>{ if(!tb.querySelector('.themetog')){ const sl=tb.querySelector('.switch-label'); const b=mk(); if(sl) tb.insertBefore(b,sl); else tb.appendChild(b); } });
   const wt=document.querySelector('.wiz-top'); if(wt&&!wt.querySelector('.themetog')){ const b=mk(); b.style.position='absolute'; b.style.right='92px'; wt.appendChild(b); }
   let saved=null; try{saved=localStorage.getItem('mbtheme')}catch(e){}
@@ -2326,7 +2350,7 @@ routeFromHash();
     b.onclick=function(e){ e.preventDefault(); setLang(cur==='en'?'pt':'en'); };
     return b; }
   function inject(){
-    const nav=document.querySelector('.nav'); if(nav&&!nav.querySelector('.langtog')) nav.appendChild(makeTog());
+    const nav=document.querySelector('.nav'); if(nav&&!nav.querySelector('.langtog')){ const t=makeTog(); const nl=nav.querySelector('#navLogin'); if(nl) nav.insertBefore(t,nl); else nav.appendChild(t); }
     document.querySelectorAll('.topbar').forEach(tb=>{ if(!tb.querySelector('.langtog')){ const t=makeTog(); const sl=tb.querySelector('.switch-label'); if(sl) tb.insertBefore(t,sl); else tb.appendChild(t); } });
     const wt=document.querySelector('.wiz-top'); if(wt&&!wt.querySelector('.langtog')){ const t=makeTog(); t.style.position='absolute'; t.style.left='22px'; t.style.marginLeft='0'; wt.appendChild(t); }
   }
