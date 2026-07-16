@@ -6,7 +6,7 @@
 <title>Metabolicamente · Metabolic Psychiatry</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%230C333F'/><path d='M18.6 7.9A8 8 0 1 0 20 12.4' fill='none' stroke='%23F5EFE4' stroke-width='2' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Mulish:wght@400;500;600&family=Baloo+2:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Mulish:wght@400;500;600&family=Caveat:wght@400;700&family=Baloo+2:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --t950:#092832; --t900:#0C333F; --t800:#114B5F; --t700:#1A5F76; --t500:#2A9D8F;
@@ -596,8 +596,7 @@ body.dark .pyr-svg{color:#EDE6D8}
 .pyr-svg .bandg:hover{transform:translateY(-5px)}
 .pyr-svg .ring{opacity:0;transition:opacity 1.4s ease .8s}
 .pyr-card.in .ring{opacity:1}
-.pyr-svg text{font-family:'Baloo 2',var(--sans);fill:#fff;font-weight:700;font-size:20px;text-anchor:middle;pointer-events:none;letter-spacing:.01em}
-.pyr-svg text .sub{font-weight:500;font-size:13px;opacity:.95;letter-spacing:.02em}
+.pyr-svg text{pointer-events:none}
 
 /* how it works */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:54px}
@@ -765,13 +764,12 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
       <p class="lead">An approach that understands mental health as a result of brain metabolism, integrating the biology of energy, nutrition, and daily rhythms into the treatment of psychiatric conditions.</p>
       <div class="pyr-row">
         <div class="pyr-card reveal">
-          <div class="pyr-title">Conventional approach</div>
+          <div class="pyr-title">Conventional</div>
           <div class="pyr-sub">Lifestyle is an afterthought</div>
           <svg class="pyr-svg" id="pyr1"></svg>
         </div>
         <div class="pyr-card hl reveal">
-          <span class="ours">Our approach</span>
-          <div class="pyr-title">Metabolic approach</div>
+          <div class="pyr-title">Our approach</div>
           <div class="pyr-sub">Biology is the foundation</div>
           <svg class="pyr-svg" id="pyr2"></svg>
         </div>
@@ -1226,6 +1224,7 @@ function pyramid(el,bands){
     if(br){const bx=x2+(x2>x1?12:-12),by=y2+14;t.appendChild(rc.line(x2,y2,bx,by,{roughness:2.4,bowing:2,stroke:col,strokeWidth:Math.max(1.2,w-0.8)}));}
   }
   function ground(t,rc,x1,x2,y,col){ t.appendChild(rc.line(x1,y,x2,y,{roughness:2.2,bowing:1,stroke:col,strokeWidth:2.4})); }
+  function tx(t,x,y,s,col){ const e=document.createElementNS(NS,'text'); e.setAttribute('x',x); e.setAttribute('y',y); e.setAttribute('text-anchor','middle'); e.setAttribute('font-family',"'Caveat',cursive"); e.setAttribute('font-size',17); e.setAttribute('font-weight',700); e.setAttribute('fill',col); e.textContent=s; t.appendChild(e); }
   function sprout(id,strong){
     const svg=document.getElementById(id); if(!svg||!window.rough) return;
     svg.setAttribute('viewBox','0 48 360 252'); svg.innerHTML='';
@@ -1237,10 +1236,12 @@ function pyramid(el,bands){
       leaf(g,rc,cx,120,-2.5,52,teal5,cc); leaf(g,rc,cx,108,-0.6,50,teal5,cc); leaf(g,rc,cx,132,-2.1,44,green,cc);
       g.appendChild(rc.circle(cx,80,20,{roughness:1.6,stroke:coral,fill:coral,fillStyle:'solid'}));
       for(let i=0;i<6;i++){const a=(i-2.5)/6; root(g,rc,cx,gy,cx+a*250,gy+78+Math.abs(a)*30+(i%2?12:0),2.4,coral,i%2===0);}
+      tx(g,cx,66,'thriving','currentColor'); tx(g,cx,gy+112,'deep & nourished roots','#C9573C');
     } else {
       stem(g,rc,cx,gy,cx-14,118,cx-16,2.4,gray);
       leaf(g,rc,cx-12,132,2.4,34,'none',gray); leaf(g,rc,cx-13,124,3.4,30,'none',gray);
       for(let i=0;i<3;i++){const a=(i-1)/3; root(g,rc,cx,gy,cx+a*90,gy+34+(i%2?6:0),1.5,gray);}
+      tx(g,cx-6,104,'fragile',gray); tx(g,cx,gy+58,'shallow roots',gray);
     }
   }
   window.__drawSprouts=function(){ sprout('pyr1',false); sprout('pyr2',true); };
@@ -2046,6 +2047,8 @@ routeFromHash();
     "An approach that understands mental health as a result of brain metabolism, integrating the biology of energy, nutrition, and daily rhythms into the treatment of psychiatric conditions.":"Uma abordagem que entende a saúde mental como resultado do metabolismo cerebral, integrando a biologia da energia, a nutrição e os ritmos diários ao tratamento das condições psiquiátricas.",
     "Conventional approach":"Abordagem convencional","Lifestyle is an afterthought":"O estilo de vida fica em segundo plano",
     "Metabolic approach":"Abordagem metabólica","Biology is the foundation":"A biologia é a base",
+    "Conventional":"Convencional","Our approach":"Nossa abordagem",
+    "fragile":"frágil","shallow roots":"raízes rasas","thriving":"florescendo","deep & nourished roots":"raízes profundas e nutridas",
     "Lifestyle":"Estilo de vida","Therapy":"Terapia","Medication":"Medicação","Metabolic foundation":"Base metabólica",
     "sleep · diet · exercise":"sono · dieta · exercício","when needed":"quando necessário",
     "nutrition · circadian rhythms · movement":"nutrição · ritmos circadianos · movimento",
