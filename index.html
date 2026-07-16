@@ -219,10 +219,10 @@ body.dark .snav.on{background:var(--t700)}
 .dbtn-solid{background:var(--t800);color:#F5EFE4}
 .dbtn-line{border:1px solid var(--line);color:var(--hd2);background:var(--card)}
 .dbtn-line:hover{border-color:var(--t500)}
-.dcard.meal2{padding:16px 20px}
+.dcard.meal2{padding:12px 20px 14px}
 .dcard.meal2+.dcard.meal2{margin-top:12px}
-.meal2 .mt{display:flex;align-items:center;gap:11px;margin-bottom:8px}
-.meal2 .mt .mic{width:36px;height:36px;border-radius:50%;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:16px}
+.meal2 .mt{display:flex;align-items:center;gap:11px;margin-bottom:6px}
+.meal2 .mt .mic{width:34px;height:34px;border-radius:50%;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:15px}
 .meal2 .mt b{font-size:15px;color:var(--hd)}
 .meal2 ul{list-style:none;padding-left:47px}
 .meal2 li{font-size:13.5px;color:var(--ink);padding:3px 0;display:flex;gap:9px;align-items:baseline}
@@ -280,9 +280,9 @@ body.dark .alertbox{border-color:#5a2a20}
 @media(max-width:820px){.evogrid{grid-template-columns:1fr}}
 .chcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}
 .chcard .cch{display:flex;align-items:center;gap:12px;margin-bottom:14px}
-.chcard .cci{color:var(--t500);display:flex;align-items:center;font-size:24px;flex-shrink:0}
-.chcard .cch b{font-size:14px;color:var(--hd);display:block}
-.chcard .cch span{font-size:11.5px;color:var(--soft)}
+.chcard .cci{width:38px;height:38px;border-radius:11px;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.chcard .cch b{font-size:14px;color:var(--hd);display:block;line-height:1.2;margin-bottom:1px}
+.chcard .cch span{font-size:11.5px;color:var(--soft);display:block;line-height:1.25}
 .chcard svg{display:block;width:100%}
 .chleg{display:flex;gap:14px;justify-content:center;margin-top:8px}
 .chleg span{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--soft)}
@@ -1779,28 +1779,40 @@ function miniChart(id,cfg){
   let g='';
   cfg.yticks.forEach(t=>{ const gy=Y(t); g+='<line x1="'+pl+'" y1="'+gy+'" x2="'+(w-pr)+'" y2="'+gy+'" stroke="var(--line)" stroke-dasharray="3 3"/>'; g+='<text x="'+(pl-6)+'" y="'+(gy+3)+'" text-anchor="end" font-size="9.5" fill="var(--soft)" font-family="Inter,sans-serif">'+t+'</text>'; });
   cfg.x.forEach((lb,i)=>{ g+='<text x="'+X(i)+'" y="'+(h-6)+'" text-anchor="middle" font-size="9.5" fill="var(--soft)" font-family="Inter,sans-serif">'+lb+'</text>'; });
+  const smooth=(P)=>{ // Catmull-Rom -> cubic bezier, smooth like Recharts monotone
+    if(P.length<2) return '';
+    let d='M'+P[0][0]+','+P[0][1];
+    for(let i=0;i<P.length-1;i++){
+      const p0=P[i-1]||P[i],p1=P[i],p2=P[i+1],p3=P[i+2]||p2;
+      const c1x=p1[0]+(p2[0]-p0[0])/6, c1y=p1[1]+(p2[1]-p0[1])/6;
+      const c2x=p2[0]-(p3[0]-p1[0])/6, c2y=p2[1]-(p3[1]-p1[1])/6;
+      d+=' C'+c1x+','+c1y+' '+c2x+','+c2y+' '+p2[0]+','+p2[1];
+    }
+    return d;
+  };
   cfg.series.forEach((s,si)=>{
-    const pts=s.vals.map((v,i)=>X(i)+','+Y(v)).join(' ');
+    const P=s.vals.map((v,i)=>[X(i),Y(v)]);
+    const dPath=s.dash?('M'+P.map(p=>p[0]+','+p[1]).join(' L')):smooth(P);
     if(s.area){
       const gid=id+'-a'+si, base=Y(cfg.ymin);
-      g='<defs><linearGradient id="'+gid+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+s.color+'" stop-opacity="0.35"/><stop offset="1" stop-color="'+s.color+'" stop-opacity="0"/></linearGradient></defs>'+g;
-      g+='<polygon points="'+X(0)+','+base+' '+pts+' '+X(s.vals.length-1)+','+base+'" fill="url(#'+gid+')"/>';
+      g='<defs><linearGradient id="'+gid+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+s.color+'" stop-opacity="0.4"/><stop offset="1" stop-color="'+s.color+'" stop-opacity="0"/></linearGradient></defs>'+g;
+      g+='<path d="'+smooth(P)+' L'+X(s.vals.length-1)+','+base+' L'+X(0)+','+base+' Z" fill="url(#'+gid+')"/>';
     }
-    g+='<polyline fill="none" stroke="'+s.color+'" stroke-width="'+(s.w||2.5)+'" '+(s.dash?'stroke-dasharray="5 5"':'')+' stroke-linecap="round" stroke-linejoin="round" points="'+pts+'"/>';
-    if(s.dots) s.vals.forEach((v,i)=>{ g+='<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="3.4" fill="var(--card)" stroke="'+s.color+'" stroke-width="2"/>'; });
+    g+='<path d="'+dPath+'" fill="none" stroke="'+s.color+'" stroke-width="'+(s.w||3)+'" '+(s.dash?'stroke-dasharray="6 6"':'')+' stroke-linecap="round" stroke-linejoin="round"/>';
+    if(s.dots) s.vals.forEach((v,i)=>{ g+='<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="5" fill="var(--card)" stroke="'+s.color+'" stroke-width="3"/>'; });
   });
   svg.innerHTML=g;
 }
 function drawEvo(role){
   if(role!=='patient'||!document.getElementById('ev-well')) return;
   miniChart('ev-well',{ymin:0,ymax:10,yticks:[0,3,6,10],x:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-    series:[{vals:[5,4,6,5,7,8,7],color:'#2A9D8F',area:true},{vals:[6,5,6,7,7,8,8],color:'#E76F51',area:true}]});
+    series:[{vals:[5,4,6,5,7,8,7],color:'#2A9D8F',area:true,w:3},{vals:[6,5,6,7,7,8,8],color:'#E76F51',area:true,w:3}]});
   miniChart('ev-weight',{ymin:78,ymax:95,yticks:[78,83,88,95],x:['Oct','Nov','Dec','Jan','Feb','Mar'],
-    series:[{vals:[80,80,80,80,80,80],color:'#2A9D8F',dash:true,w:2},{vals:[92,90,88,86,84,82],color:'#114B5F',w:3,dots:true}]});
+    series:[{vals:[80,80,80,80,80,80],color:'#2A9D8F',dash:true,w:2.5},{vals:[92,90,88,86,84,82],color:'#114B5F',w:3.5,dots:true}]});
   miniChart('ev-gluc',{ymin:0,ymax:140,yticks:[0,35,70,105,140],x:['S1','S3','S5','S7','S9'],
-    series:[{vals:[124,118,112,105,98],color:'#E76F51',area:true}]});
+    series:[{vals:[124,118,112,105,98],color:'#E76F51',area:true,w:3}]});
   miniChart('ev-hba',{ymin:5,ymax:6.5,yticks:[5,5.4,5.8,6.5],x:['S1','S3','S5','S7','S9'],
-    series:[{vals:[6.2,6.0,5.8,5.6,5.4],color:'#2A9D8F',w:3,dots:true}]});
+    series:[{vals:[6.2,6.0,5.8,5.6,5.4],color:'#2A9D8F',w:3.5,dots:true}]});
 }
 
 /* ============ ROUTER (subpages) ============ */
