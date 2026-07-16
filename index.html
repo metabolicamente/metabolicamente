@@ -160,13 +160,16 @@ body.dark .snav.on{background:var(--t700)}
 .dwrap{max-width:860px;margin:0 auto}
 @media(max-width:900px){.dside{display:none}.dmain{padding:22px 18px 96px}.duser{display:none}}
 .dsec{animation:fadeUp .35s ease}
-.dhead{margin-bottom:22px}
+.dhead{margin-bottom:22px;display:flex;align-items:center;gap:14px}
+.dhead .hic{width:44px;height:44px;border-radius:14px;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0}
 .dhead h1{font-size:26px;color:var(--hd);letter-spacing:-.01em}
 .dhead p{color:var(--soft);font-size:14px;margin-top:3px}
 .dcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow)}
 .dcard+.dcard{margin-top:16px}
-.dh2{font-size:16px;color:var(--hd);display:flex;align-items:center;gap:8px;margin:26px 0 14px}
-.dh2 .ic{color:var(--t500);font-size:17px}
+.dh2{font-size:16px;color:var(--hd);display:flex;align-items:center;gap:11px;margin:26px 0 14px}
+.dh2 .hbadge{width:34px;height:34px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.dh2 .hbadge.teal{background:var(--t50);color:var(--hd3)}
+.dh2 .hbadge.coral{background:var(--coral-bg);color:var(--coral-deep)}
 /* hero progress */
 .jhero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--t800),var(--t900));color:#F5EFE4;border-radius:20px;padding:24px 26px;margin-bottom:18px}
 .jhero .blob{position:absolute;border-radius:50%;background:rgba(255,255,255,.05)}
@@ -215,11 +218,13 @@ body.dark .snav.on{background:var(--t700)}
 .dbtn-solid{background:var(--t800);color:#F5EFE4}
 .dbtn-line{border:1px solid var(--line);color:var(--hd2);background:var(--card)}
 .dbtn-line:hover{border-color:var(--t500)}
-.meal2 .mt{display:flex;align-items:center;gap:11px;margin-bottom:10px}
-.meal2 .mt .mic{width:38px;height:38px;border-radius:50%;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:16px}
+.dcard.meal2{padding:16px 20px}
+.dcard.meal2+.dcard.meal2{margin-top:12px}
+.meal2 .mt{display:flex;align-items:center;gap:11px;margin-bottom:8px}
+.meal2 .mt .mic{width:36px;height:36px;border-radius:50%;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:16px}
 .meal2 .mt b{font-size:15px;color:var(--hd)}
-.meal2 ul{list-style:none;padding-left:50px}
-.meal2 li{font-size:13.5px;color:var(--ink);padding:4px 0;display:flex;gap:9px;align-items:baseline}
+.meal2 ul{list-style:none;padding-left:47px}
+.meal2 li{font-size:13.5px;color:var(--ink);padding:3px 0;display:flex;gap:9px;align-items:baseline}
 .meal2 li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--t500);flex-shrink:0}
 .exgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .excell{padding:14px;border-radius:12px;background:var(--bg-dim)}
@@ -267,6 +272,55 @@ body.dark .alertbox{border-color:#5a2a20}
 .evorow{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
 .evoleg{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft)}
 .evoleg .ed{width:10px;height:10px;border-radius:50%}
+/* bigger join button on teleconsulta */
+.dbtn.dbtn-lg{font-size:14px;padding:12px 22px;border-radius:12px}
+/* evolution 4-chart grid */
+.evogrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:820px){.evogrid{grid-template-columns:1fr}}
+.chcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 20px;box-shadow:var(--shadow)}
+.chcard .cch{display:flex;align-items:center;gap:11px;margin-bottom:14px}
+.chcard .cci{width:36px;height:36px;border-radius:11px;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.chcard .cch b{font-size:14px;color:var(--hd);display:block}
+.chcard .cch span{font-size:11.5px;color:var(--soft)}
+.chcard svg{display:block;width:100%}
+.chleg{display:flex;gap:14px;justify-content:center;margin-top:8px}
+.chleg span{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--soft)}
+.chleg .d{width:9px;height:9px;border-radius:50%}
+/* check-in steps */
+.ciprog{margin-bottom:20px}
+.ciprog .cit{display:flex;justify-content:space-between;font-size:12px;color:var(--soft);margin-bottom:7px}
+.ciprog .cibar{height:6px;border-radius:99px;background:var(--bg-dim);overflow:hidden}
+.ciprog .cibar i{display:block;height:100%;background:var(--t500);border-radius:99px;transition:width .4s ease}
+.ciq{animation:fadeUp .3s ease}
+.ciq .cik{display:flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);font-weight:700;margin-bottom:12px}
+.ciq .cik .ic{color:var(--t500)}
+.ciq h2{font-size:19px;color:var(--hd);margin-bottom:18px;letter-spacing:-.01em}
+.ciscale{display:grid;grid-template-columns:repeat(10,1fr);gap:7px}
+@media(max-width:560px){.ciscale{grid-template-columns:repeat(5,1fr)}}
+.ciscale button{aspect-ratio:1;border-radius:12px;border:1.5px solid var(--line);background:var(--card);font-weight:600;font-size:14px;color:var(--ink);transition:all .15s}
+.ciscale button:hover{border-color:var(--t500)}
+.ciscale button.on{background:var(--t800);border-color:var(--t800);color:#F5EFE4;transform:scale(1.05)}
+.cinav{display:flex;justify-content:space-between;margin-top:20px}
+.cidone{text-align:center;padding:20px 0}
+.cidone .cic{width:66px;height:66px;border-radius:50%;background:var(--ok-bg);color:var(--ok);display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto 18px}
+/* profile */
+.pfhead{display:flex;align-items:center;gap:18px;margin-bottom:22px}
+.pfav{position:relative;flex-shrink:0}
+.pfav .pfc{width:78px;height:78px;border-radius:50%;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:700}
+.pfav .pfcam{position:absolute;bottom:-2px;right:-2px;width:28px;height:28px;border-radius:50%;background:var(--t800);color:#F5EFE4;display:flex;align-items:center;justify-content:center;font-size:13px;border:2px solid var(--card)}
+.pfhead .pfn b{font-size:16px;color:var(--hd);display:block}
+.pfhead .pfn span{font-size:13px;color:var(--soft)}
+.pfgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.pfgrid{grid-template-columns:1fr}}
+.pffield label{display:flex;align-items:center;gap:6px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--soft);font-weight:600;margin-bottom:7px}
+.pffield label .ic{font-size:13px}
+.pftog{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-radius:12px;background:var(--bg-dim);margin-bottom:10px}
+.pftog .pl b{font-size:14px;color:var(--hd);display:block}
+.pftog .pl span{font-size:12px;color:var(--soft)}
+.sw{width:44px;height:25px;border-radius:99px;background:var(--line);position:relative;flex-shrink:0;cursor:pointer;transition:background .2s}
+.sw.on{background:var(--t500)}
+.sw::after{content:'';position:absolute;top:3px;left:3px;width:19px;height:19px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.sw.on::after{transform:translateX(19px)}
 .dfab{position:fixed;bottom:88px;right:20px;z-index:35;width:56px;height:56px;border-radius:50%;background:var(--coral);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(231,111,81,.4);transition:transform .2s}
 .dfab:hover{transform:scale(1.08)}
 .dfab .ic{font-size:22px}
@@ -1031,6 +1085,15 @@ const ICONS={
  'stethoscope':'<path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/>',
  'user-circle':'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.7a6 6 0 0 1 10 0"/>',
  'chart':'<path d="M3 3v18h18"/><path d="M7 15l3-4 3 2 4-6"/>',
+ 'target':'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/>',
+ 'trending-down':'<polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/>',
+ 'phone':'<path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/>',
+ 'map-pin':'<path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>',
+ 'lock':'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+ 'mail':'<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
+ 'save':'<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/>',
+ 'smile':'<circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>',
+ 'moon-star':'<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
  'droplet':'<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7Z"/>',
  'message':'<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
  'shield':'<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/>'
@@ -1481,6 +1544,7 @@ function renderDash(role){
     '</div>'+
     '<nav class="dtabs">'+tabs+'</nav>'+
     '<button class="dfab" onclick="toast(\'Demo: the AI assistant would open here\')" aria-label="AI assistant">'+dIcon('sparkles')+'</button>';
+  renderIcons(el);
   dashSection(role);
 }
 function dashBell(role,e){
@@ -1501,10 +1565,10 @@ function dashSection(role){
   else html=nSection(D);
   w.innerHTML=html;
   renderIcons(w);
-  if(window.__applyLang){ try{__applyLang()}catch(e){} }
   drawEvo(role);
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
 }
-function head(t,s){ return '<div class="dhead"><h1>'+t+'</h1><p>'+s+'</p></div>'; }
+function head(t,s,icon){ return '<div class="dhead">'+(icon?'<div class="hic">'+dIcon(icon)+'</div>':'')+'<div><h1>'+t+'</h1><p>'+s+'</p></div></div>'; }
 
 function pSection(D){
   const s=D.sec, fn=D.name.split(' ')[0];
@@ -1512,60 +1576,110 @@ function pSection(D){
     const done=D.missions.filter(m=>m[1]).length, tot=D.missions.length, pct=Math.round(done/tot*100);
     let ms='';
     D.missions.forEach((m,i)=>{ ms+='<button class="mission'+(m[1]?' done':'')+'" onclick="dashMission(\'patient\','+i+')"><span class="mk">'+dIcon('check')+'</span><span>'+m[0]+'</span></button>'; });
-    return '<div class="dsec">'+head('Hello, '+fn+' 👋','Your metabolic tracking space')+
+    const chH=(icon,t,s)=>'<div class="cch"><div class="cci">'+dIcon(icon)+'</div><div><b>'+t+'</b><span>'+s+'</span></div></div>';
+    const chL=(c1,l1,c2,l2)=>'<div class="chleg"><span><span class="d" style="background:'+c1+'"></span>'+l1+'</span>'+(l2?'<span><span class="d" style="background:'+c2+'"></span>'+l2+'</span>':'')+'</div>';
+    const evo='<div class="evogrid">'+
+      '<div class="chcard">'+chH('activity','Well-being — last 7 days','Energy, mood and sleep quality')+'<svg id="ev-well" height="168"></svg>'+chL('var(--t500)','Energy','var(--coral)','Mood')+'</div>'+
+      '<div class="chcard">'+chH('trending-down','Weight — last 6 months','Progress toward the clinical goal')+'<svg id="ev-weight" height="168"></svg>'+chL('var(--t800)','Weight','var(--t500)','Goal')+'</div>'+
+      '<div class="chcard">'+chH('heart','Fasting glucose','Improving trend during treatment')+'<svg id="ev-gluc" height="168"></svg>'+'</div>'+
+      '<div class="chcard">'+chH('smile','HbA1c (glycated hemoglobin)','Long-term glycemic control indicator')+'<svg id="ev-hba" height="168"></svg>'+'</div>'+
+      '</div>';
+    return '<div class="dsec">'+head('Hello, '+fn+' 👋','Your metabolic tracking space','smile')+
       '<div class="jhero"><span class="blob b1"></span><span class="blob b2"></span>'+
         '<div class="jk">Your journey today</div><div class="jn">'+done+' of '+tot+' missions</div>'+
         '<div class="js">'+(done===tot?'Day complete! Excellent.':'Keep going, you\'re doing well.')+'</div>'+
         '<div class="jbar"><i style="width:'+pct+'%"></i></div></div>'+
       '<div class="dcard tele"><div class="tic">'+dIcon('calendar')+'</div><div class="tinfo"><b>Next teleconsultation</b><span>Dr. Rafael Mendes · Mar 18, 2026 at 10:00</span></div>'+
-        '<button class="dbtn dbtn-solid" onclick="toast(\'Demo: the video session would open here\')">'+dIcon('video')+'Join</button></div>'+
-      '<div class="dh2">'+dIcon('sparkles')+'Today\'s missions</div><div class="dcard" style="padding:8px">'+ms+'</div>'+
-      '<div class="dh2">'+dIcon('activity')+'Your progress</div><div class="dcard">'+
-        '<div class="evorow"><span class="evoleg"><span class="ed" style="background:var(--t500)"></span>Ketones</span><span class="evoleg"><span class="ed" style="background:var(--coral)"></span>Mood</span></div>'+
-        '<svg id="evo-patient" width="100%" height="180"></svg></div></div>';
+        '<button class="dbtn dbtn-solid dbtn-lg" onclick="toast(\'Demo: the video session would open here\')">'+dIcon('video')+'Join</button></div>'+
+      '<div class="dh2"><div class="hbadge teal">'+dIcon('target')+'</div>Today\'s missions</div><div class="dcard" style="padding:8px">'+ms+'</div>'+
+      '<div class="dh2"><div class="hbadge coral">'+dIcon('chart')+'</div>Your progress</div>'+evo+'</div>';
   }
-  if(s==='checkin') return '<div class="dsec">'+head('Daily check-in','How are you today?')+
-    '<div class="dcard"><p style="color:var(--soft);font-size:14px;line-height:1.7">Log your mood, sleep, and energy so your care team can follow your progress between sessions.</p>'+
-    '<button class="dbtn dbtn-solid" style="margin-top:16px" onclick="toast(\'Demo: the daily check-in form would open here\')">Start check-in</button></div></div>';
+  if(s==='checkin') return renderCheckin(D);
   if(s==='plano'){
     let m='';
     MEALS.forEach(meal=>{ let items=''; meal[2].forEach(it=>items+='<li>'+it+'</li>');
       m+='<div class="dcard meal2"><div class="mt"><div class="mic">'+dIcon(meal[0])+'</div><b>'+meal[1]+'</b></div><ul>'+items+'</ul></div>'; });
-    return '<div class="dsec">'+head('Meal plan','Suggested menu for today')+m+'</div>';
+    return '<div class="dsec">'+head('Meal plan','Suggested menu for today','utensils')+m+'</div>';
   }
   if(s==='exames'){
     let g='';
     PEXAMS.forEach(e=>{ g+='<div class="excell"><div class="exl">'+e[0]+'</div><div class="exv">'+e[1]+'</div><div class="exs '+e[3]+'">'+e[2]+'</div></div>'; });
-    return '<div class="dsec">'+head('My exams','Last collection: Mar 5, 2026')+'<div class="dcard"><div class="exgrid">'+g+'</div></div></div>';
+    return '<div class="dsec">'+head('My exams','Last collection: Mar 5, 2026','clipboard')+'<div class="dcard"><div class="exgrid">'+g+'</div></div></div>';
   }
   if(s==='agenda'){
     let r='';
     PAGENDA.forEach(a=>{ r+='<div class="drow"><div class="ddate"><div class="dd">'+a[0]+'</div><div class="dt">'+a[1]+'</div></div>'+
       '<div class="dinfo"><b>'+a[2]+'</b><span>'+a[3]+'</span></div>'+(a[4]?'<button class="dbtn dbtn-line" onclick="toast(\'Demo: the video session would open here\')">'+dIcon('video')+'Enter</button>':'')+'</div>'; });
-    return '<div class="dsec">'+head('My schedule','Upcoming appointments')+'<div class="dcard">'+r+'</div></div>';
+    return '<div class="dsec">'+head('My schedule','Upcoming appointments','calendar')+'<div class="dcard">'+r+'</div></div>';
   }
   if(s==='equipe'){
     let t='';
     PTEAM.forEach(m=>{ t+='<div class="tmem"><div class="tav">'+m[0]+'</div><b>'+m[1]+'</b><div class="tr">'+m[2]+'</div>'+
       '<div class="tacts"><button class="dbtn dbtn-line" style="flex:1;justify-content:center" onclick="toast(\'Demo: chat would open here\')">'+dIcon('message')+'Chat</button>'+
       (m[3]?'<button class="dbtn dbtn-solid" style="flex:1;justify-content:center" onclick="toast(\'Demo: the video session would open here\')">'+dIcon('video')+'Video</button>':'')+'</div></div>'; });
-    return '<div class="dsec">'+head('My team','The professionals caring for you')+'<div class="tgrid">'+t+'</div></div>';
+    return '<div class="dsec">'+head('My team','The professionals caring for you','users')+'<div class="tgrid">'+t+'</div></div>';
   }
-  return perfil(D);
+  return perfil(D,'patient');
 }
-function perfil(D){
-  return '<div class="dsec">'+head('Profile','Your information')+'<div class="dcard">'+
-    '<label class="fl">Name</label><input type="text" value="'+esc(D.name)+'">'+
-    '<label class="fl">Email</label><input type="email" value="'+D.name.split(' ')[0].toLowerCase()+'@example.com">'+
-    '<button class="dbtn dbtn-solid" style="margin-top:18px" onclick="toast(\'Demo: your profile would be saved\')">Save changes</button></div></div>';
+/* ---- check-in (multi-step) ---- */
+const CISTEPS=[
+  ['queixa','What is your main concern today?','Describe how you feel...',0],
+  ['energia','How is your energy?','',1],
+  ['sono','How is your sleep?','',1],
+  ['humor','How would you describe your mood?','Sad, anxious, motivated...',0],
+  ['alimentar','How was your eating this week?','A summary of what you ate...',0]
+];
+function ciState(D){ if(!D.ci) D.ci={step:0,ans:{},done:false}; return D.ci; }
+function renderCheckin(D){
+  const ci=ciState(D);
+  if(ci.done) return '<div class="dsec">'+head('Weekly check-in','Answer in a few steps for your care team','clipboard')+
+    '<div class="dcard cidone"><div class="cic">'+dIcon('check')+'</div>'+
+    '<h2 style="font-size:20px;color:var(--hd);margin-bottom:8px">Check-in recorded</h2>'+
+    '<p style="color:var(--soft);font-size:14px;max-width:24em;margin:0 auto 20px">Your team will receive this information for your next appointment.</p>'+
+    '<button class="dbtn dbtn-line" onclick="ciReset(\'patient\')">New check-in</button></div></div>';
+  const st=CISTEPS[ci.step], scale=st[3]===1, val=ci.ans[st[0]];
+  const pct=Math.round((ci.step+1)/CISTEPS.length*100);
+  let field;
+  if(scale){ let b=''; for(let n=1;n<=10;n++) b+='<button class="'+(val===n?'on':'')+'" onclick="ciScale(\'patient\','+n+')">'+n+'</button>'; field='<div class="ciscale">'+b+'</div>'; }
+  else field='<textarea id="ci-text" placeholder="'+st[2]+'" oninput="ciText(\'patient\',this.value)">'+(val||'')+'</textarea>';
+  const canAdv=scale?(val!==undefined):(typeof val==='string'&&val.trim().length>3);
+  return '<div class="dsec">'+head('Weekly check-in','Answer in a few steps for your care team','clipboard')+
+    '<div class="ciprog"><div class="cit"><span>Step '+(ci.step+1)+' of '+CISTEPS.length+'</span><span>'+pct+'%</span></div><div class="cibar"><i style="width:'+pct+'%"></i></div></div>'+
+    '<div class="dcard ciq"><div class="cik">'+dIcon('sparkles')+'Question</div><h2>'+st[1]+'</h2>'+field+'</div>'+
+    '<div class="cinav"><button class="dbtn dbtn-line" '+(ci.step===0?'style="visibility:hidden"':'')+' onclick="ciBack(\'patient\')">'+dIcon('chevron-left')+'Back</button>'+
+    '<button class="dbtn dbtn-solid" id="ci-next" '+(canAdv?'':'disabled style="opacity:.4;pointer-events:none"')+' onclick="ciNext(\'patient\')">'+(ci.step===CISTEPS.length-1?'Finish':'Next')+dIcon('arrow-right')+'</button></div></div>';
 }
+function ciText(role,v){ const ci=ciState(DASH[role]); ci.ans[CISTEPS[ci.step][0]]=v; const btn=document.getElementById('ci-next'); if(btn){ const ok=v.trim().length>3; btn.disabled=!ok; btn.style.opacity=ok?'':'.4'; btn.style.pointerEvents=ok?'':'none'; } }
+function ciScale(role,n){ const ci=ciState(DASH[role]); ci.ans[CISTEPS[ci.step][0]]=n; dashSection(role); }
+function ciNext(role){ const ci=ciState(DASH[role]); if(ci.step<CISTEPS.length-1) ci.step++; else ci.done=true; dashSection(role); }
+function ciBack(role){ const ci=ciState(DASH[role]); if(ci.step>0) ci.step--; dashSection(role); }
+function ciReset(role){ DASH[role].ci={step:0,ans:{},done:false}; dashSection(role); }
+/* ---- profile (full) ---- */
+function pfState(D){ if(!D.pf) D.pf={name:D.name,email:'usuario@metabolicamente.com',phone:'',city:'',notifEmail:true,notifPush:true}; return D.pf; }
+function perfil(D,role){
+  const pf=pfState(D);
+  const init=D.name.split(' ').slice(0,2).map(x=>x[0]).join('').toUpperCase();
+  const field=(icon,label,id,val,ph)=>'<div class="pffield"><label>'+dIcon(icon)+label+'</label><input type="text" id="pf-'+id+'" value="'+esc(val)+'" placeholder="'+(ph||'')+'"></div>';
+  const tog=(k,label,desc)=>'<div class="pftog"><div class="pl"><b>'+label+'</b><span>'+desc+'</span></div><div class="sw'+(pf[k]?' on':'')+'" onclick="pfTog(\''+role+'\',\''+k+'\',this)"></div></div>';
+  return '<div class="dsec">'+head('My profile','Your information and preferences','user-circle')+
+    '<div class="dcard"><div class="pfhead"><div class="pfav"><div class="pfc">'+init+'</div><div class="pfcam">'+dIcon('camera')+'</div></div>'+
+      '<div class="pfn"><b>'+esc(pf.name)+'</b><span>'+esc(pf.email)+'</span></div></div>'+
+      '<div class="pfgrid">'+field('user','Name','name',pf.name)+field('mail','Email','email',pf.email)+field('phone','Phone','phone',pf.phone,'(11) 99999-9999')+field('map-pin','City','city',pf.city,'São Paulo, SP')+'</div></div>'+
+    '<div class="dcard"><div class="dh2" style="margin:0 0 12px"><div class="hbadge teal">'+dIcon('bell')+'</div>Notifications</div>'+
+      tog('notifEmail','Email notifications','Appointment reminders and updates')+tog('notifPush','Browser notifications','Real-time alerts')+'</div>'+
+    '<div class="dcard"><div class="dh2" style="margin:0 0 8px"><div class="hbadge teal">'+dIcon('lock')+'</div>Security</div>'+
+      '<p style="color:var(--soft);font-size:13px;margin-bottom:14px">Keep your account safe by changing your password periodically.</p>'+
+      '<button class="dbtn dbtn-line" onclick="toast(\'Demo: the change-password flow would open here\')">Change password</button></div>'+
+    '<div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="dbtn dbtn-solid" onclick="toast(\'Demo: your profile would be saved\')">'+dIcon('save')+'Save changes</button></div></div>';
+}
+function pfTog(role,k,el){ const pf=pfState(DASH[role]); pf[k]=!pf[k]; el.classList.toggle('on',pf[k]); }
 function dSection(D){
   const s=D.sec, ln=firstName(D.name);
   if(s==='inicio'){
     let ap='';
     DAGENDA.filter(a=>a[4]).forEach(a=>{ ap+='<div class="drow"><div class="ddate"><div class="dd">'+a[1]+'</div></div><div class="dinfo"><b>'+a[2]+'</b><span>'+a[3]+'</span></div>'+
       '<button class="dbtn dbtn-solid" onclick="toast(\'Demo: the video session would open here\')">'+dIcon('video')+'Start</button></div>'; });
-    return '<div class="dsec">'+head('Welcome, Dr. '+ln,'Weekly summary')+
+    return '<div class="dsec">'+head('Welcome, Dr. '+ln,'Weekly summary','home')+
       '<div class="statrow">'+
         '<div class="stat2"><div class="si teal">'+dIcon('users')+'</div><div class="sv">3</div><div class="sl">Active patients</div></div>'+
         '<div class="stat2"><div class="si coral">'+dIcon('calendar')+'</div><div class="sv">2</div><div class="sl">Appointments today</div></div>'+
@@ -1594,7 +1708,7 @@ function dSection(D){
     D.patients.forEach((p,i)=>{ list+='<button class="pcard" onclick="dashSelPatient(\'doctor\','+i+')"><div class="pav">'+p.init+'</div>'+
       '<div class="pmain"><b>'+p.name+'</b><span>'+p.sub+'</span><div><span class="ptag mut">'+dIcon('zap')+'Energy: '+p.energy+'/10</span><span class="ptag '+(p.risk==='moderate'?'warn':'ok')+'">'+dIcon('alert')+'Risk: '+p.risk+'</span></div></div>'+
       '<span class="pchev">'+dIcon('chevron-right')+'</span></button>'; });
-    return '<div class="dsec">'+head('My patients','Triage and follow-up overview')+
+    return '<div class="dsec">'+head('My patients','Triage and follow-up overview','users')+
       '<div class="dsearch">'+dIcon('search')+'<input type="text" placeholder="Search patient..." oninput="dashPFilter(\'doctor\',this.value)"></div>'+
       '<div id="plist-doctor" style="display:grid;gap:12px">'+list+'</div></div>';
   }
@@ -1602,16 +1716,16 @@ function dSection(D){
     let r='';
     DAGENDA.forEach(a=>{ r+='<div class="drow"><div class="ddate"><div class="dd">'+a[0]+'</div><div class="dt">'+a[1]+'</div></div><div class="dinfo"><b>'+a[2]+'</b><span>'+a[3]+'</span></div>'+
       (a[4]?'<button class="dbtn dbtn-solid" onclick="toast(\'Demo: the video session would open here\')">'+dIcon('video')+'Start</button>':'')+'</div>'; });
-    return '<div class="dsec">'+head('Schedule','Your upcoming appointments')+'<div class="dcard">'+r+'</div></div>';
+    return '<div class="dsec">'+head('Schedule','Your upcoming appointments','calendar')+'<div class="dcard">'+r+'</div></div>';
   }
-  if(s==='prontuarios') return '<div class="dsec">'+head('Records','Clinical notes and history')+
+  if(s==='prontuarios') return '<div class="dsec">'+head('Records','Clinical notes and history','clipboard')+
     '<div class="dcard"><p style="color:var(--soft);font-size:14px;line-height:1.7">Select a patient to view and add clinical notes, past sessions, and shared documents.</p>'+
     '<button class="dbtn dbtn-solid" style="margin-top:16px" onclick="dashNav(\'doctor\',\'pacientes\')">Go to patients</button></div></div>';
-  return perfil(D);
+  return perfil(D,'doctor');
 }
 function nSection(D){
   const s=D.sec, ln=firstName(D.name);
-  if(s==='inicio') return '<div class="dsec">'+head('Hello, Dra. '+ln,'Nutrition tracking overview')+
+  if(s==='inicio') return '<div class="dsec">'+head('Hello, Dra. '+ln,'Nutrition tracking overview','home')+
     '<div class="statrow">'+
       '<div class="stat2"><div class="si teal">'+dIcon('users')+'</div><div class="sv">3</div><div class="sl">Active patients</div></div>'+
       '<div class="stat2"><div class="si teal">'+dIcon('utensils')+'</div><div class="sv">8</div><div class="sl">Menus delivered</div></div>'+
@@ -1631,40 +1745,57 @@ function nSection(D){
     D.patients.forEach((p,i)=>{ list+='<button class="pcard" onclick="dashSelPatient(\'nutri\','+i+')"><div class="pav">'+p.init+'</div>'+
       '<div class="pmain"><b>'+p.name+'</b><span>'+p.sub+'</span><div><span class="ptag '+(p.adhc==='ok'?'ok':'warn')+'">'+p.adh+'</span></div></div>'+
       '<span class="pchev">'+dIcon('chevron-right')+'</span></button>'; });
-    return '<div class="dsec">'+head('My patients','Nutrition follow-up')+
+    return '<div class="dsec">'+head('My patients','Nutrition follow-up','users')+
       '<div class="dsearch">'+dIcon('search')+'<input type="text" placeholder="Search patient..." oninput="dashPFilter(\'nutri\',this.value)"></div>'+
       '<div id="plist-nutri" style="display:grid;gap:12px">'+list+'</div></div>';
   }
-  if(s==='cardapios') return '<div class="dsec">'+head('Menus','Templates and delivered plans')+
+  if(s==='cardapios') return '<div class="dsec">'+head('Menus','Templates and delivered plans','utensils')+
     '<div class="dcard"><p style="color:var(--soft);font-size:14px;line-height:1.7">Build reusable menu templates or generate a personalized plan for a patient with AI.</p>'+
     '<button class="dbtn dbtn-solid" style="margin-top:16px" onclick="toast(\'Demo: the AI menu generator would open here\')">'+dIcon('sparkles')+'New menu</button></div></div>';
   if(s==='agenda'){
     let r='';
     DAGENDA.slice(0,3).forEach(a=>{ r+='<div class="drow"><div class="ddate"><div class="dd">'+a[0]+'</div><div class="dt">'+a[1]+'</div></div><div class="dinfo"><b>'+a[2]+'</b><span>Nutrition</span></div></div>'; });
-    return '<div class="dsec">'+head('Schedule','Your upcoming sessions')+'<div class="dcard">'+r+'</div></div>';
+    return '<div class="dsec">'+head('Schedule','Your upcoming sessions','calendar')+'<div class="dcard">'+r+'</div></div>';
   }
-  return perfil(D);
+  return perfil(D,'nutri');
 }
 function dashSelPatient(role,i){ DASH[role].selPatient=i; dashSection(role); window.scrollTo(0,0); }
 function dashPFilter(role,q){
   q=(q||'').toLowerCase();
   document.querySelectorAll('#plist-'+role+' .pcard').forEach(c=>{ c.style.display=c.textContent.toLowerCase().indexOf(q)>-1?'':'none'; });
 }
-function drawEvo(role){
-  const svg=document.getElementById('evo-'+role); if(!svg) return;
-  const w=svg.clientWidth||520,h=180,p=22;
+function miniChart(id,cfg){
+  const svg=document.getElementById(id); if(!svg) return;
+  const w=svg.clientWidth||360,h=168,pl=32,pr=10,ptop=10,pb=22;
   svg.setAttribute('viewBox','0 0 '+w+' '+h);
-  const ket=D.smKET, mood=D.smPHQ.map(v=>27-v);
-  let inner='';
-  for(let i=0;i<=2;i++){const gy=p+i*(h-2*p)/2; inner+='<line x1="'+p+'" y1="'+gy+'" x2="'+(w-p)+'" y2="'+gy+'" stroke="var(--line)"/>';}
-  const plot=(data,color,dash)=>{
-    const mn=Math.min.apply(null,data),mx=Math.max.apply(null,data);
-    const x=i=>p+i*(w-2*p)/(data.length-1), y=v=>h-p-((v-mn)/(mx-mn||1))*(h-2*p);
-    inner+='<polyline fill="none" stroke="'+color+'" stroke-width="2.5" '+(dash?'stroke-dasharray="5 4"':'')+' stroke-linecap="round" points="'+data.map((v,i)=>x(i)+','+y(v)).join(' ')+'"/>';
-    inner+='<circle cx="'+x(data.length-1)+'" cy="'+y(data[data.length-1])+'" r="4" fill="'+color+'"/>';
-  };
-  plot(ket,'#2A9D8F',false); plot(mood,'#E76F51',true);
-  svg.innerHTML=inner;
+  const yr=cfg.ymax-cfg.ymin;
+  const X=i=>pl+i*(w-pl-pr)/(cfg.x.length-1);
+  const Y=v=>ptop+(cfg.ymax-v)/(yr||1)*(h-ptop-pb);
+  let g='';
+  cfg.yticks.forEach(t=>{ const gy=Y(t); g+='<line x1="'+pl+'" y1="'+gy+'" x2="'+(w-pr)+'" y2="'+gy+'" stroke="var(--line)" stroke-dasharray="3 3"/>'; g+='<text x="'+(pl-6)+'" y="'+(gy+3)+'" text-anchor="end" font-size="9.5" fill="var(--soft)" font-family="Inter,sans-serif">'+t+'</text>'; });
+  cfg.x.forEach((lb,i)=>{ g+='<text x="'+X(i)+'" y="'+(h-6)+'" text-anchor="middle" font-size="9.5" fill="var(--soft)" font-family="Inter,sans-serif">'+lb+'</text>'; });
+  cfg.series.forEach((s,si)=>{
+    const pts=s.vals.map((v,i)=>X(i)+','+Y(v)).join(' ');
+    if(s.area){
+      const gid=id+'-a'+si, base=Y(cfg.ymin);
+      g='<defs><linearGradient id="'+gid+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+s.color+'" stop-opacity="0.35"/><stop offset="1" stop-color="'+s.color+'" stop-opacity="0"/></linearGradient></defs>'+g;
+      g+='<polygon points="'+X(0)+','+base+' '+pts+' '+X(s.vals.length-1)+','+base+'" fill="url(#'+gid+')"/>';
+    }
+    g+='<polyline fill="none" stroke="'+s.color+'" stroke-width="'+(s.w||2.5)+'" '+(s.dash?'stroke-dasharray="5 5"':'')+' stroke-linecap="round" stroke-linejoin="round" points="'+pts+'"/>';
+    if(s.dots) s.vals.forEach((v,i)=>{ g+='<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="3.4" fill="var(--card)" stroke="'+s.color+'" stroke-width="2"/>'; });
+  });
+  svg.innerHTML=g;
+}
+function drawEvo(role){
+  if(role!=='patient'||!document.getElementById('ev-well')) return;
+  miniChart('ev-well',{ymin:0,ymax:10,yticks:[0,3,6,10],x:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+    series:[{vals:[5,4,6,5,7,8,7],color:'#2A9D8F',area:true},{vals:[6,5,6,7,7,8,8],color:'#E76F51',area:true}]});
+  miniChart('ev-weight',{ymin:78,ymax:95,yticks:[78,83,88,95],x:['Oct','Nov','Dec','Jan','Feb','Mar'],
+    series:[{vals:[80,80,80,80,80,80],color:'#2A9D8F',dash:true,w:2},{vals:[92,90,88,86,84,82],color:'#114B5F',w:3,dots:true}]});
+  miniChart('ev-gluc',{ymin:0,ymax:140,yticks:[0,35,70,105,140],x:['S1','S3','S5','S7','S9'],
+    series:[{vals:[124,118,112,105,98],color:'#E76F51',area:true}]});
+  miniChart('ev-hba',{ymin:5,ymax:6.5,yticks:[5,5.4,5.8,6.5],x:['S1','S3','S5','S7','S9'],
+    series:[{vals:[6.2,6.0,5.8,5.6,5.4],color:'#2A9D8F',w:3,dots:true}]});
 }
 
 /* ============ ROUTER (subpages) ============ */
@@ -2072,7 +2203,19 @@ routeFromHash();
     "Menu & adherence":"Cardápio e adesão","Generate a personalized menu based on this patient's triage, labs, and preferences.":"Gere um cardápio personalizado com base na triagem, exames e preferências deste paciente.","Generate menu":"Gerar cardápio",
     "Templates and delivered plans":"Modelos e planos entregues","Build reusable menu templates or generate a personalized plan for a patient with AI.":"Crie modelos de cardápio reutilizáveis ou gere um plano personalizado para um paciente com IA.","New menu":"Novo cardápio","Your upcoming sessions":"Suas próximas sessões","Nutrition":"Nutrição",
     // demo toasts (dashboard)
-    "Demo: the AI assistant would open here":"Demonstração: o assistente de IA abriria aqui","Demo: the video session would open here":"Demonstração: a consulta por vídeo abriria aqui","Demo: chat would open here":"Demonstração: o chat abriria aqui","Demo: the daily check-in form would open here":"Demonstração: o formulário de check-in diário abriria aqui","Demo: your profile would be saved":"Demonstração: seu perfil seria salvo","Demo: the AI menu generator would open here":"Demonstração: o gerador de cardápio com IA abriria aqui"
+    "Demo: the AI assistant would open here":"Demonstração: o assistente de IA abriria aqui","Demo: the video session would open here":"Demonstração: a consulta por vídeo abriria aqui","Demo: chat would open here":"Demonstração: o chat abriria aqui","Demo: your profile would be saved":"Demonstração: seu perfil seria salvo","Demo: the AI menu generator would open here":"Demonstração: o gerador de cardápio com IA abriria aqui","Demo: the change-password flow would open here":"Demonstração: o fluxo de alteração de senha abriria aqui",
+    // check-in flow
+    "Weekly check-in":"Check-in semanal","Answer in a few steps for your care team":"Responda em poucos passos para sua equipe acompanhar","Check-in recorded":"Check-in registrado","Your team will receive this information for your next appointment.":"Sua equipe receberá essas informações para o próximo atendimento.","New check-in":"Fazer novo check-in","Question":"Pergunta","Next":"Próximo","Finish":"Finalizar",
+    "What is your main concern today?":"Qual é sua principal queixa hoje?","How is your energy?":"Como está sua energia?","How is your sleep?":"Como está seu sono?","How would you describe your mood?":"Como descreveria seu humor?","How was your eating this week?":"Como foi sua alimentação esta semana?",
+    "Describe how you feel...":"Descreva como você se sente...","Sad, anxious, motivated...":"Triste, ansioso, motivado...","A summary of what you ate...":"Resumo do que comeu...",
+    // profile (full)
+    "My profile":"Meu perfil","Your information and preferences":"Suas informações e preferências","Phone":"Telefone","City":"Cidade",
+    "Email notifications":"Notificações por e-mail","Appointment reminders and updates":"Lembretes de consulta e atualizações","Browser notifications":"Notificações no navegador","Real-time alerts":"Alertas em tempo real",
+    "Security":"Segurança","Keep your account safe by changing your password periodically.":"Mantenha sua conta protegida alterando a senha periodicamente.","Change password":"Alterar senha","Save changes":"Salvar alterações",
+    // evolution charts
+    "Well-being — last 7 days":"Bem-estar — últimos 7 dias","Energy, mood and sleep quality":"Energia, humor e qualidade do sono","Weight — last 6 months":"Peso — últimos 6 meses","Progress toward the clinical goal":"Evolução até a meta clínica","Improving trend during treatment":"Tendência de melhora ao longo do tratamento","HbA1c (glycated hemoglobin)":"HbA1c (hemoglobina glicada)","Long-term glycemic control indicator":"Indicador de controle glicêmico de longo prazo",
+    "Energy":"Energia","Weight":"Peso","Goal":"Meta",
+    "Mon":"Seg","Tue":"Ter","Wed":"Qua","Thu":"Qui","Fri":"Sex","Sat":"Sáb","Sun":"Dom","Oct":"Out","Dec":"Dez","Feb":"Fev"
   };
   const RULES=[
     {re:/^(\d+) of 7$/, pt:m=>m[1]+" de 7"},
@@ -2083,7 +2226,8 @@ routeFromHash();
     {re:/^Hello, Dra\. (.+)$/, pt:m=>"Olá, Dra. "+m[1]},
     {re:/^(\d+) of (\d+) missions$/, pt:m=>m[1]+" de "+m[2]+" missões"},
     {re:/^Energy: (\d+)\/10$/, pt:m=>"Energia: "+m[1]+"/10"},
-    {re:/^Risk: (\w+)$/, pt:m=>"Risco: "+({low:"baixo",moderate:"moderado"}[m[1]]||m[1])}
+    {re:/^Risk: (\w+)$/, pt:m=>"Risco: "+({low:"baixo",moderate:"moderado"}[m[1]]||m[1])},
+    {re:/^Step (\d+) of (\d+)$/, pt:m=>"Passo "+m[1]+" de "+m[2]}
   ];
   let cur='en';
   function translate(str){
