@@ -17,7 +17,105 @@
   --c-teal:#2A9D8F; --c-coral:#E76F51; --c-blue:#5B7DB1; --c-gold:#D9A420;
   --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,'Segoe UI',sans-serif;
   --r:14px; --shadow:0 1px 2px rgba(12,51,63,.04),0 6px 24px rgba(12,51,63,.06);
+  --hd:#0C333F; --hd2:#114B5F; --hd3:#1A5F76; --navbg:rgba(250,246,240,.88);
 }
+/* ============ DARK MODE ============ */
+body.dark{
+  --bg:#0A1E26; --bg-dim:#0E2831; --card:#112F3B; --ink:#E9E3D7; --soft:#9DB2B6; --line:#1C4150;
+  --t50:#0F2C37; --t100:#1A4351;
+  --ok-bg:#0E3120; --watch-bg:#33250B; --alert-bg:#391811; --coral-bg:#382019;
+  --hd:#EAE4D8; --hd2:#D3E2E0; --hd3:#8FC1BB; --navbg:rgba(10,30,38,.86);
+  --shadow:0 1px 2px rgba(0,0,0,.2),0 6px 24px rgba(0,0,0,.25);
+}
+body.dark .cta-panel{background:linear-gradient(180deg,#112F3B,#0E2831);border-color:#1C4150;box-shadow:0 3px 6px rgba(0,0,0,.2),0 22px 60px rgba(0,0,0,.3)}
+body.dark .pyr-card{background:linear-gradient(180deg,#112F3B,#0E2831)}
+.themetog{border:1px solid var(--line);background:transparent;color:var(--soft);border-radius:99px;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .15s}
+.themetog:hover{color:var(--hd2);border-color:var(--hd3)}
+.themetog svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.topbar .themetog,.wiz-top .themetog{border-color:rgba(255,255,255,.25);color:#F5EFE4}
+
+/* ============ SUBPAGES / ROUTER ============ */
+.subpage{display:none}
+.subpage.active{display:block}
+canvas.glow{position:absolute;inset:0;width:100%;height:100%}
+.hero .hero-inner{position:relative;z-index:2}
+.phero{position:relative;background:
+  radial-gradient(900px 500px at 80% -10%, #1A5F76 0%, transparent 55%),
+  radial-gradient(700px 500px at 5% 110%, #0F3E4E 0%, transparent 55%),
+  var(--t900);color:#F5EFE4;padding:92px 5vw 108px;overflow:hidden;text-align:center}
+.phero .ph-in{position:relative;z-index:2;max-width:860px;margin:0 auto}
+.phero h1{font-size:clamp(36px,5.4vw,58px);letter-spacing:-.01em;line-height:1.08}
+.phero .plead{font-size:17px;opacity:.85;max-width:36em;margin:18px auto 0;line-height:1.65}
+.phero .pwave{position:absolute;bottom:-2px;left:0;right:0;z-index:1}
+
+/* ============ EQUIPE ============ */
+.team-row{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center;margin-bottom:84px}
+.team-row:last-child{margin-bottom:0}
+.team-row.rev .team-photo{order:2}
+@media(max-width:820px){.team-row{grid-template-columns:1fr;gap:24px}.team-row.rev .team-photo{order:0}}
+.team-photo{position:relative}
+.tp-ph{aspect-ratio:4/5;border-radius:18px;background:var(--t50);border:1px solid var(--t100);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px}
+.tp-ph .tpi{font-family:var(--serif);font-size:64px;color:var(--hd3);font-weight:500}
+.tp-ph .tpn{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.team-info .crm{font-size:11.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--soft);margin-bottom:8px}
+.team-info h2{font-size:clamp(26px,3vw,36px);color:var(--hd);letter-spacing:-.01em;margin-bottom:4px}
+.team-info .trole{color:var(--t500);font-weight:600;font-size:15.5px;margin-bottom:16px}
+.team-info p{color:var(--soft);font-size:15px;line-height:1.75}
+.team-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.team-tags span{font-size:12px;font-weight:600;color:var(--hd3);background:var(--t50);border:1px solid var(--t100);border-radius:99px;padding:5px 12px}
+.team-note{text-align:center;color:var(--soft);font-size:12.5px;margin-top:44px}
+
+/* ============ CONTEUDO ============ */
+.csearch{position:relative;max-width:440px;margin:26px auto 0;z-index:2}
+.csearch input[type=text]{width:100%;background:var(--card);border:1.5px solid transparent;border-radius:14px;padding:14px 16px 14px 44px;font-family:var(--sans);font-size:14.5px;color:var(--ink);outline:none}
+.csearch input[type=text]:focus{border-color:var(--t500)}
+.csearch .ic{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--soft);font-size:15px}
+.cfilters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px;position:relative;z-index:2}
+.cfilters button{font-size:12.5px;font-weight:600;padding:6px 14px;border-radius:99px;border:1px solid rgba(245,239,228,.3);color:#F5EFE4;opacity:.8}
+.cfilters button.on{background:var(--t500);border-color:var(--t500);opacity:1}
+.sech{display:flex;align-items:center;gap:12px;margin-bottom:30px}
+.sech .sic{width:40px;height:40px;border-radius:12px;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:19px}
+.sech h2{margin:0}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:960px){.vgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.vgrid{grid-template-columns:1fr}}
+.vcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);transition:transform .25s ease,box-shadow .25s ease}
+.vcard:hover{transform:translateY(-4px);box-shadow:0 4px 8px rgba(12,51,63,.05),0 20px 48px rgba(12,51,63,.12)}
+.vthumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--bg-dim)}
+.vthumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.vcard:hover .vthumb img{transform:scale(1.05)}
+.vplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(12,51,63,0);transition:background .25s}
+.vplay i{width:48px;height:48px;border-radius:50%;background:var(--coral);color:#fff;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:17px;opacity:0;transform:scale(.85);transition:all .25s;padding-left:4px}
+.vcard:hover .vplay{background:rgba(12,51,63,.25)}
+.vcard:hover .vplay i{opacity:1;transform:scale(1)}
+.vbody{padding:16px 18px 18px}
+.vchan{font-size:11.5px;font-weight:600;color:var(--t500);margin-bottom:6px}
+.vbody h3{font-family:var(--sans);font-size:14.5px;font-weight:700;color:var(--hd);line-height:1.4;margin-bottom:7px}
+.vdesc{font-size:12.5px;color:var(--soft);line-height:1.6}
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+@media(max-width:820px){.agrid{grid-template-columns:1fr}}
+.acard{display:flex;gap:18px;padding:20px;border-radius:16px;border:1px solid rgba(245,239,228,.14);background:rgba(245,239,228,.04);transition:all .25s}
+.acard:hover{background:rgba(245,239,228,.08);transform:translateY(-2px)}
+.acard .aic{flex-shrink:0;width:78px;height:78px;border-radius:12px;background:linear-gradient(135deg,rgba(42,157,143,.3),rgba(231,111,81,.18));display:flex;align-items:center;justify-content:center;color:rgba(245,239,228,.55);font-size:24px}
+.acard .asrc{font-size:11.5px;font-weight:600;color:rgba(245,239,228,.55);margin-bottom:5px}
+.acard h3{font-family:var(--sans);font-size:15px;font-weight:700;color:#F5EFE4;line-height:1.4;margin-bottom:6px}
+.acard p{font-size:12.5px;color:rgba(245,239,228,.55);line-height:1.6}
+.acard .aread{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#8FC1BB;margin-top:10px}
+.noresults{text-align:center;color:var(--soft);padding:36px 0;display:none}
+
+/* ============ MODAL ============ */
+.modal{position:fixed;inset:0;z-index:120;display:none;align-items:center;justify-content:center;padding:18px}
+.modal.open{display:flex}
+.modal .mbg{position:absolute;inset:0;background:rgba(9,40,50,.5);backdrop-filter:blur(4px)}
+.mcard{position:relative;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:30px 32px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.mclose{position:absolute;top:16px;right:16px;color:var(--soft);font-size:18px}
+.mclose:hover{color:var(--hd)}
+.mcard h3{font-size:24px;color:var(--hd);margin-bottom:4px}
+.mcard .msub{font-size:13.5px;color:var(--soft);margin-bottom:20px}
+.mcard select{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:13px 16px;outline:none;appearance:none}
+.mcard select:focus{border-color:var(--t500)}
+.mreq{font-size:11.5px;color:var(--soft);margin-top:14px}
+.msuccess{text-align:center;padding:16px 0}
 
 /* ============ APP (shared) ============ */
 #login{display:none;align-items:center;justify-content:center;background:
@@ -26,17 +124,17 @@
 #login.active{display:flex}
 .login-card{background:var(--card);border-radius:22px;padding:42px 42px 34px;max-width:430px;width:92%;box-shadow:0 30px 80px rgba(0,0,0,.35)}
 .login-card .logo{margin-bottom:24px;font-size:20px}
-.login-card h1{font-size:25px;color:var(--t900);margin-bottom:8px}
+.login-card h1{font-size:25px;color:var(--hd);margin-bottom:8px}
 .login-sub{color:var(--soft);font-size:14px;margin-bottom:24px}
-.role-note{background:var(--t50);border:1px solid var(--t100);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--t700);margin-bottom:20px}
-.role-btn{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:14px 16px;border:1.5px solid var(--line);border-radius:14px;margin-bottom:12px;background:#fff;transition:all .15s}
+.role-note{background:var(--t50);border:1px solid var(--t100);border-radius:10px;padding:10px 14px;font-size:13px;color:var(--hd3);margin-bottom:20px}
+.role-btn{display:flex;align-items:center;gap:14px;width:100%;text-align:left;padding:14px 16px;border:1.5px solid var(--line);border-radius:14px;margin-bottom:12px;background:var(--card);transition:all .15s}
 .role-btn:hover{border-color:var(--t500);background:var(--t50)}
 .av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:600;color:#fff;font-size:15px;flex-shrink:0}
 .role-btn b{display:block;font-size:15px}
 .role-btn span{font-size:13px;color:var(--soft)}
 .login-foot{text-align:center;color:var(--soft);font-size:12px;margin-top:16px}
 .back-site{display:block;text-align:center;margin-top:14px;font-size:13px;color:var(--soft);cursor:pointer}
-.back-site:hover{color:var(--t800)}
+.back-site:hover{color:var(--hd2)}
 
 .topbar{position:sticky;top:0;z-index:50;background:var(--t900);color:#F5EFE4;display:flex;align-items:center;gap:16px;padding:0 26px;height:58px}
 .topbar .logo{color:#F5EFE4;font-size:17px;margin:0}
@@ -49,7 +147,7 @@
 .switch-btn:hover{background:rgba(255,255,255,.1)}
 .wrap{max-width:1180px;margin:0 auto;padding:34px 26px 80px}
 .pagehead{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:26px}
-.pagehead h1{font-size:29px;color:var(--t900);letter-spacing:-.01em}
+.pagehead h1{font-size:29px;color:var(--hd);letter-spacing:-.01em}
 .pagehead .date{color:var(--soft);font-size:14px}
 .grid{display:grid;gap:22px}
 .g2{grid-template-columns:1fr 1fr}
@@ -57,7 +155,7 @@
 .g13{grid-template-columns:1fr 2.1fr}
 @media(max-width:900px){.g2,.g31,.g13{grid-template-columns:1fr}}
 .card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:22px 24px}
-.card h2{font-size:16.5px;color:var(--t900);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.card h2{font-size:16.5px;color:var(--hd);margin-bottom:16px;display:flex;align-items:center;gap:8px}
 .card h2 .hint{font-family:var(--sans);font-weight:400;font-size:12px;color:var(--soft);margin-left:auto;text-align:right}
 .mt{margin-top:22px}
 .pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:99px}
@@ -69,13 +167,13 @@
 .pill.neutral::before{display:none}
 .appt{display:flex;gap:14px;padding:13px 0;border-bottom:1px solid var(--line);align-items:center}
 .appt:last-child{border-bottom:none}
-.appt-time{font-weight:600;font-size:14px;width:64px;color:var(--t800);flex-shrink:0}
+.appt-time{font-weight:600;font-size:14px;width:64px;color:var(--hd2);flex-shrink:0}
 .appt-bar{width:4px;align-self:stretch;border-radius:4px;flex-shrink:0}
 .appt-info{flex:1;min-width:0}
 .appt-info b{font-size:14.5px}
 .appt-info span{display:block;font-size:12.5px;color:var(--soft)}
 .appt-type{font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:99px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
-.t-initial{background:var(--t50);color:var(--t700)}
+.t-initial{background:var(--t50);color:var(--hd3)}
 .t-follow{background:var(--bg-dim);color:var(--soft)}
 .t-video{background:#E9EEF6;color:#3B5A8F}
 table{width:100%;border-collapse:collapse}
@@ -91,15 +189,15 @@ tr:last-child td{border-bottom:none}
 .mini-label{font-size:11px;color:var(--soft)}
 .why{font-size:12px;color:var(--soft);max-width:210px}
 .legend{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:10px}
-.legend button{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--soft);padding:4px 11px;border-radius:99px;border:1px solid var(--line);background:#fff}
-.legend button.on{background:var(--t50);border-color:var(--t100);color:var(--t800)}
+.legend button{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--soft);padding:4px 11px;border-radius:99px;border:1px solid var(--line);background:var(--card)}
+.legend button.on{background:var(--t50);border-color:var(--t100);color:var(--hd2)}
 .legend .dot{width:9px;height:9px;border-radius:50%}
 .axis-note{font-size:11.5px;color:var(--soft);margin-top:8px}
 .lab{padding:14px 0;border-bottom:1px solid var(--line)}
 .lab:last-child{border-bottom:none}
 .lab-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;gap:8px}
 .lab-top b{font-size:14px}
-.lab-val{font-size:15px;font-weight:700;color:var(--t800)}
+.lab-val{font-size:15px;font-weight:700;color:var(--hd2)}
 .lab-val small{font-weight:400;color:var(--soft)}
 .lab-meaning{font-size:12.5px;color:var(--soft);margin-top:7px;line-height:1.55}
 .lab-meaning.good{color:var(--ok)}
@@ -115,9 +213,9 @@ tr:last-child td{border-bottom:none}
 .ai-tag{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:rgba(255,255,255,.13);padding:5px 11px;border-radius:99px;margin-bottom:14px}
 .ai-card p{font-size:14.5px;line-height:1.7;opacity:.95}
 .ai-card .srcs{margin-top:12px;font-size:12px;opacity:.65}
-.ai-card .cta{margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:#F5EFE4;color:var(--t800);font-weight:600;font-size:13px;padding:8px 14px;border-radius:9px;cursor:pointer}
+.ai-card .cta{margin-top:16px;display:inline-flex;align-items:center;gap:7px;background:#F5EFE4;color:var(--hd2);font-weight:600;font-size:13px;padding:8px 14px;border-radius:9px;cursor:pointer}
 .big-metric{text-align:center;padding:6px 0 2px}
-.big-metric .num{font-family:var(--serif);font-size:54px;color:var(--t800);line-height:1}
+.big-metric .num{font-family:var(--serif);font-size:54px;color:var(--hd2);line-height:1}
 .big-metric .unit{font-size:13.5px;color:var(--soft)}
 .big-metric .lbl{margin-top:8px}
 .ring-row{display:flex;justify-content:space-around;margin-top:16px}
@@ -127,33 +225,33 @@ tr:last-child td{border-bottom:none}
 .appt-card:last-child{margin-bottom:0}
 .appt-card .av{width:44px;height:44px}
 .appt-card b{font-size:14.5px}
-.appt-card .when{font-size:13px;color:var(--t700);font-weight:600;margin:2px 0 7px}
+.appt-card .when{font-size:13px;color:var(--hd3);font-weight:600;margin:2px 0 7px}
 .prep{font-size:12.5px;color:var(--soft)}
 .prep li{margin-left:16px;margin-top:3px}
 .appt-actions{margin-top:10px;display:flex;gap:8px}
 .btn-sm{font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:8px;display:inline-flex;align-items:center;gap:6px}
 .btn-primary{background:var(--t800);color:#F5EFE4}
-.btn-ghost{border:1px solid var(--t100);color:var(--t700);background:#fff}
+.btn-ghost{border:1px solid var(--t100);color:var(--hd3);background:var(--card)}
 .streak{display:flex;align-items:center;gap:12px;background:var(--watch-bg);border:1px solid #EEDDC2;border-radius:12px;padding:13px 16px;font-size:13.5px}
 .streak .ic{color:var(--watch);font-size:19px;flex-shrink:0}
 .streak b{color:var(--watch)}
 .logbar{display:flex;gap:10px;margin-top:14px}
-.logbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;padding:15px 8px;border:1.5px dashed var(--line);border-radius:12px;color:var(--soft);font-size:12.5px;background:#fff}
-.logbar button:hover{border-color:var(--t500);color:var(--t700);background:var(--t50)}
+.logbar button{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;padding:15px 8px;border:1.5px dashed var(--line);border-radius:12px;color:var(--soft);font-size:12.5px;background:var(--card)}
+.logbar button:hover{border-color:var(--t500);color:var(--hd3);background:var(--t50)}
 .logbar .ic{font-size:20px}
 .meal{display:flex;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:13px;align-items:center}
 .meal:last-child{border-bottom:none}
-.meal .m-ic{width:36px;height:36px;border-radius:10px;background:var(--bg-dim);color:var(--t700);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.meal .m-ic{width:36px;height:36px;border-radius:10px;background:var(--bg-dim);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
 .meal b{display:block;font-size:13.5px}
 .meal span{color:var(--soft);font-size:12px}
 .meal .tag{margin-left:auto}
 .footer-note{text-align:center;color:var(--soft);font-size:12px;margin-top:36px}
-.back{color:var(--t700);font-weight:600;font-size:13.5px;margin-bottom:14px;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
+.back{color:var(--hd3);font-weight:600;font-size:13.5px;margin-bottom:14px;display:inline-flex;align-items:center;gap:6px;cursor:pointer}
 .back:hover{text-decoration:underline}
 .due{display:flex;align-items:flex-start;gap:10px;background:var(--watch-bg);border:1px solid #EEDDC2;border-radius:10px;padding:11px 14px;font-size:13px;margin-top:16px;line-height:1.5}
 .due .ic{color:var(--watch);font-size:17px;flex-shrink:0;margin-top:1px}
 .due.coop{background:var(--t50);border-color:var(--t100)}
-.due.coop .ic{color:var(--t700)}
+.due.coop .ic{color:var(--hd3)}
 .spark{display:block}
 .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);background:var(--t950);color:#F5EFE4;padding:12px 20px;border-radius:12px;font-size:13.5px;box-shadow:0 10px 30px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:opacity .25s;z-index:99}
 .toast.show{opacity:1}
@@ -194,22 +292,22 @@ body.title-wait #heroTitle{opacity:0}
 
 /* ============ LANDING ============ */
 #site{background:var(--bg)}
-.nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:26px;padding:0 5vw;height:64px;background:rgba(250,246,240,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:19px;color:var(--t800);margin-right:auto}
+.nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:26px;padding:0 5vw;height:64px;background:var(--navbg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:19px;color:var(--hd2);margin-right:auto}
 .logo-mark{width:34px;height:34px;border-radius:10px;background:var(--t800);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .logo-mark svg{width:20px;height:20px;stroke:#F5EFE4;fill:none;stroke-width:2;stroke-linecap:round}
 .nav a.nl{font-size:14px;color:var(--soft);font-weight:500;white-space:nowrap}
-.nav a.nl:hover{color:var(--t800)}
+.nav a.nl:hover{color:var(--hd2)}
 @media(max-width:980px){.nav .nl{display:none}.nav{gap:12px}}
 .btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:14.5px;padding:11px 20px;border-radius:99px;transition:all .18s;white-space:nowrap}
 .btn-solid{background:var(--t800);color:#F5EFE4}
 .btn-solid:hover{background:var(--t900)}
 .btn-coral{background:var(--coral);color:#fff}
 .btn-coral:hover{background:var(--coral-deep)}
-.btn-cream{background:#F5EFE4;color:var(--t900)}
+.btn-cream{background:#F5EFE4;color:#0C333F}
 .btn-cream:hover{background:#fff;transform:translateY(-1px)}
-.btn-line{border:1.5px solid var(--line);color:var(--t800);background:var(--card)}
-.btn-line:hover{border-color:var(--t800)}
+.btn-line{border:1.5px solid var(--line);color:var(--hd2);background:var(--card)}
+.btn-line:hover{border-color:var(--hd2)}
 .hero{position:relative;background:
   radial-gradient(900px 500px at 80% -10%, #1A5F76 0%, transparent 55%),
   radial-gradient(700px 500px at 5% 110%, #0F3E4E 0%, transparent 55%),
@@ -225,7 +323,7 @@ body.title-wait #heroTitle{opacity:0}
 .hero-wave{position:absolute;bottom:-2px;left:0;right:0}
 .sec{padding:90px 5vw}
 .sec-inner{max-width:1080px;margin:0 auto}
-.sec h2{font-size:clamp(28px,3.4vw,40px);color:var(--t900);line-height:1.15;letter-spacing:-.01em}
+.sec h2{font-size:clamp(28px,3.4vw,40px);color:var(--hd);line-height:1.15;letter-spacing:-.01em}
 .sec .lead{font-size:16.5px;color:var(--soft);max-width:38em;margin-top:14px;line-height:1.7}
 .center{text-align:center}
 .center .lead{margin-left:auto;margin-right:auto}
@@ -241,8 +339,8 @@ body.title-wait #heroTitle{opacity:0}
 .pyr-card.hl{border-color:rgba(42,157,143,.4);box-shadow:0 2px 4px rgba(12,51,63,.04),0 18px 52px rgba(42,157,143,.13)}
 .ours{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--t500);color:#fff;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 16px;border-radius:99px;box-shadow:0 6px 16px rgba(42,157,143,.35);white-space:nowrap}
 .pyr-title{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);text-align:center;margin-bottom:10px}
-.pyr-card.hl .pyr-title{color:var(--t700)}
-.pyr-sub{font-family:var(--serif);font-size:19px;color:var(--t900);text-align:center;margin-bottom:26px;line-height:1.3}
+.pyr-card.hl .pyr-title{color:var(--hd3)}
+.pyr-sub{font-family:var(--serif);font-size:19px;color:var(--hd);text-align:center;margin-bottom:26px;line-height:1.3}
 .pyr-svg{width:100%;max-width:360px;margin:0 auto;display:block;overflow:visible}
 .pyr-svg .bandg{opacity:0;transform:translateY(34px) scale(.94);transition:opacity .6s ease,transform 1s cubic-bezier(.3,1.45,.45,1);transform-box:fill-box;transform-origin:center bottom}
 .pyr-card.in .bandg{opacity:1;transform:none}
@@ -258,8 +356,8 @@ body.title-wait #heroTitle{opacity:0}
 @media(max-width:560px){.steps{grid-template-columns:1fr}}
 .step{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 22px;box-shadow:var(--shadow);position:relative;text-align:center}
 .step-num{font-family:var(--serif);font-size:15px;color:var(--coral-deep);font-weight:600;margin-bottom:10px}
-.step-ic{width:48px;height:48px;border-radius:14px;background:var(--t50);color:var(--t700);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 18px}
-.step b{display:block;font-family:var(--serif);font-size:18px;color:var(--t900);margin-bottom:8px;font-weight:500}
+.step-ic{width:48px;height:48px;border-radius:14px;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 18px}
+.step b{display:block;font-family:var(--serif);font-size:18px;color:var(--hd);margin-bottom:8px;font-weight:500}
 .step p{font-size:13.5px;color:var(--soft);line-height:1.6}
 
 /* brain section */
@@ -267,8 +365,8 @@ body.title-wait #heroTitle{opacity:0}
 @media(max-width:860px){.split{grid-template-columns:1fr;gap:34px}}
 .split .facts{display:flex;flex-direction:column;gap:18px}
 .fact{display:flex;gap:14px;align-items:flex-start}
-.fact-ic{width:38px;height:38px;border-radius:11px;background:var(--t50);color:var(--t700);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;margin-top:2px}
-.fact b{font-size:15px;color:var(--t900)}
+.fact-ic{width:38px;height:38px;border-radius:11px;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;margin-top:2px}
+.fact b{font-size:15px;color:var(--hd)}
 .fact p{font-size:13.5px;color:var(--soft);margin-top:3px;line-height:1.6}
 
 /* results */
@@ -290,7 +388,7 @@ body.title-wait #heroTitle{opacity:0}
 /* faq */
 .faq{max-width:760px;margin:50px auto 0}
 .qa{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
-.qa button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:14px;text-align:left;padding:18px 22px;font-size:15px;font-weight:600;color:var(--t900)}
+.qa button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:14px;text-align:left;padding:18px 22px;font-size:15px;font-weight:600;color:var(--hd)}
 .qa .chev{transition:transform .25s;color:var(--soft);flex-shrink:0}
 .qa.open .chev{transform:rotate(180deg)}
 .qa .a{max-height:0;overflow:hidden;transition:max-height .3s ease}
@@ -329,17 +427,17 @@ body.title-wait #heroTitle{opacity:0}
 .wstep{display:none;animation:fadeUp .4s ease}
 .wstep.active{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-.wstep h1{font-size:clamp(26px,4vw,34px);color:var(--t900);margin-bottom:10px;letter-spacing:-.01em}
+.wstep h1{font-size:clamp(26px,4vw,34px);color:var(--hd);margin-bottom:10px;letter-spacing:-.01em}
 .wstep .sub{color:var(--soft);font-size:15px;margin-bottom:30px}
 .chips{display:flex;flex-wrap:wrap;gap:10px}
 .chip{border:1.5px solid var(--line);background:var(--card);border-radius:99px;padding:10px 18px;font-size:14px;font-weight:500;color:var(--ink);display:inline-flex;align-items:center;gap:8px;transition:all .15s}
 .chip:hover{border-color:var(--t500)}
-.chip.on{background:var(--t800);border-color:var(--t800);color:#F5EFE4}
+.chip.on{background:var(--t800);border-color:var(--hd2);color:#F5EFE4}
 .opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--card);border-radius:14px;padding:16px 18px;margin-bottom:12px;font-size:15px;font-weight:500;transition:all .15s}
 .opt:hover{border-color:var(--t500)}
-.opt.on{border-color:var(--t800);background:var(--t50)}
+.opt.on{border-color:var(--hd2);background:var(--t50)}
 .opt .radio{width:20px;height:20px;border-radius:50%;border:2px solid var(--line);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .15s}
-.opt.on .radio{border-color:var(--t800);background:var(--t800)}
+.opt.on .radio{border-color:var(--hd2);background:var(--t800)}
 .opt.on .radio::after{content:'';width:7px;height:7px;border-radius:50%;background:#fff}
 .opt.multi .radio{border-radius:6px}
 .opt.multi.on .radio::after{border-radius:1px}
@@ -347,10 +445,10 @@ body.title-wait #heroTitle{opacity:0}
 textarea,input[type=text],input[type=email]{width:100%;font-family:var(--sans);font-size:15px;color:var(--ink);background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:15px 16px;outline:none;transition:border .15s;resize:vertical}
 textarea:focus,input:focus{border-color:var(--t500)}
 textarea{min-height:110px}
-label.fl{display:block;font-size:13px;font-weight:600;color:var(--t900);margin:18px 0 8px}
+label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18px 0 8px}
 .wiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:40px}
 .wiz-back{color:var(--soft);font-weight:600;display:inline-flex;align-items:center;gap:8px;font-size:14.5px}
-.wiz-back:hover{color:var(--t800)}
+.wiz-back:hover{color:var(--hd2)}
 .btn:disabled{opacity:.4;cursor:not-allowed}
 .optional{font-size:12px;color:var(--soft);font-weight:400}
 .done-wrap{text-align:center;padding-top:20px}
@@ -359,7 +457,7 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--t900);margin:1
 .nx{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
 .nx:last-child{border-bottom:none}
 .nx-n{font-family:var(--serif);color:var(--coral-deep);font-weight:600;flex-shrink:0}
-.nx b{font-size:14.5px;color:var(--t900)}
+.nx b{font-size:14.5px;color:var(--hd)}
 .nx p{font-size:13px;color:var(--soft);margin-top:2px}
 </style>
 </head>
@@ -388,11 +486,15 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--t900);margin:1
     <a class="nl" href="#how">How it works</a>
     <a class="nl" href="#results">Results</a>
     <a class="nl" href="#faq">FAQ</a>
+    <a class="nl" href="#/conteudo">Content</a>
+    <a class="nl" href="#/equipe">Care team</a>
     <a class="btn btn-line" onclick="go('login')" style="cursor:pointer">Log in</a>
     <a class="btn btn-coral" onclick="go('wizard')" style="cursor:pointer">Start your journey</a>
   </nav>
 
+  <div class="subpage active" id="home">
   <header class="hero" id="top">
+    <canvas class="glow"></canvas>
     <div class="hero-inner">
       <div class="kicker">Metabolic Psychiatry</div>
       <h1 id="heroTitle">A new approach to mental health.</h1>
@@ -500,6 +602,181 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--t900);margin:1
       </div>
     </div>
   </section>
+  </div><!-- /home -->
+
+  <!-- ============ PAGE: CARE TEAM ============ -->
+  <div class="subpage" id="pg-equipe">
+    <section class="phero">
+      <canvas class="glow"></canvas>
+      <div class="ph-in">
+        <div class="kicker">Excellence in metabolic psychiatry</div>
+        <h1>Care team</h1>
+        <p class="plead">Professionals united by one mission: transforming mental health through the metabolic approach.</p>
+      </div>
+      <svg class="pwave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="display:block;width:100%;height:70px"><path d="M0 70 L0 40 Q360 0 720 35 T1440 30 L1440 70 Z" fill="var(--bg)"/></svg>
+    </section>
+    <section class="sec">
+      <div class="sec-inner">
+        <div class="team-row reveal">
+          <div class="team-photo"><div class="tp-ph"><span class="tpi">RM</span><span class="tpn">Photo placeholder</span></div></div>
+          <div class="team-info">
+            <div class="crm">CRM/SP 142.587</div>
+            <h2>Dr. Ricardo Mendes</h2>
+            <div class="trole">Psychiatrist — Clinical Director</div>
+            <p>Trained at the USP School of Medicine, with a psychiatry residency at Hospital das Clínicas. Specialization in Metabolic Psychiatry at Harvard Medical School. Over 18 years of clinical experience integrating nutritional, metabolic, and pharmacological interventions in the treatment of serious mental illness.</p>
+            <div class="team-tags"><span>Metabolic Psychiatry</span><span>Mood Disorders</span><span>Therapeutic Ketogenic Diet</span></div>
+          </div>
+        </div>
+        <div class="team-row rev reveal">
+          <div class="team-photo"><div class="tp-ph"><span class="tpi">CF</span><span class="tpn">Photo placeholder</span></div></div>
+          <div class="team-info">
+            <div class="crm">CRM/SP 158.203</div>
+            <h2>Dra. Camila Ferreira</h2>
+            <div class="trole">Psychiatrist — Neurometabolism</div>
+            <p>Graduated from UNIFESP with a fellowship in Neuropsychiatry and Brain Metabolism. Active researcher with international publications on the link between mitochondrial dysfunction and psychiatric illness. Focuses on schizophrenia, bipolar disorder, and treatment-resistant depression.</p>
+            <div class="team-tags"><span>Neurometabolism</span><span>Treatment-Resistant Depression</span><span>Clinical Research</span></div>
+          </div>
+        </div>
+        <div class="team-row reveal">
+          <div class="team-photo"><div class="tp-ph"><span class="tpi">LT</span><span class="tpn">Photo placeholder</span></div></div>
+          <div class="team-info">
+            <div class="crm">CRM/RJ 098.412</div>
+            <h2>Dr. Lucas Tavares</h2>
+            <div class="trole">Nutrition Physician — Functional Nutrition</div>
+            <p>Physician trained at UERJ with a postgraduate degree in Functional Clinical Nutrition. Specialist in personalized nutrition protocols for mental health, including therapeutic diets, evidence-based supplementation, and insulin-resistance management.</p>
+            <div class="team-tags"><span>Functional Nutrition</span><span>Evidence-Based Supplementation</span><span>Metabolic Health</span></div>
+          </div>
+        </div>
+        <div class="team-row rev reveal">
+          <div class="team-photo"><div class="tp-ph"><span class="tpi">BL</span><span class="tpn">Photo placeholder</span></div></div>
+          <div class="team-info">
+            <div class="crm">CRP 05/67.891</div>
+            <h2>Dra. Beatriz Linhares</h2>
+            <div class="trole">Clinical Psychologist — CBT &amp; Behavior Change</div>
+            <p>Clinical psychologist with a master's in Health Psychology from PUC-Rio. Specialist in Cognitive Behavioral Therapy focused on adherence to lifestyle change. Works hand in hand with the medical team to keep metabolic interventions sustainable and patient-centered.</p>
+            <div class="team-tags"><span>Lifestyle Change</span><span>Psychoeducation</span></div>
+          </div>
+        </div>
+        <div class="team-note">Illustrative team for the prototype — final clinicians TBD.</div>
+      </div>
+    </section>
+    <section class="sec" style="padding-top:20px">
+      <div class="sec-inner center reveal">
+        <div class="kicker" style="color:var(--t500)">Opportunities</div>
+        <h2>Join our team</h2>
+        <p class="lead" style="margin-left:auto;margin-right:auto">We're looking for professionals who share our integrative vision and want to help redefine mental health care.</p>
+        <a class="btn btn-coral" style="cursor:pointer;margin-top:28px" onclick="teamModal(true)">I want to work with you</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- ============ PAGE: CONTENT ============ -->
+  <div class="subpage" id="pg-conteudo">
+    <section class="phero">
+      <canvas class="glow"></canvas>
+      <div class="ph-in">
+        <div class="kicker">Knowledge library</div>
+        <h1>Content</h1>
+        <p class="plead">Videos, articles, and podcasts on metabolic psychiatry and evidence-based mental health.</p>
+        <div class="csearch"><span class="ic" data-icon="search"></span><input type="text" id="csearch" placeholder="Search videos, articles, or podcasts..." oninput="cFilter()"></div>
+        <div class="cfilters" id="cfilters">
+          <button class="on" data-chan="" onclick="cChan(this)">All</button>
+          <button data-chan="Roundabout Productions" onclick="cChan(this)">Roundabout Productions</button>
+          <button data-chan="Modo Primal Podcast" onclick="cChan(this)">Modo Primal Podcast</button>
+          <button data-chan="Antonio Kraychete" onclick="cChan(this)">Antonio Kraychete</button>
+          <button data-chan="Lutz Podcast" onclick="cChan(this)">Lutz Podcast</button>
+        </div>
+      </div>
+      <svg class="pwave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="display:block;width:100%;height:70px"><path d="M0 70 L0 40 Q360 0 720 35 T1440 30 L1440 70 Z" fill="var(--bg)"/></svg>
+    </section>
+    <section class="sec" style="padding-bottom:70px">
+      <div class="sec-inner">
+        <div class="sech reveal"><div class="sic"><span class="ic" data-icon="video"></span></div><h2>Videos &amp; podcasts</h2></div>
+        <div class="vgrid" id="vgrid">
+          <a class="vcard reveal" data-chan="Roundabout Productions" href="https://www.youtube.com/watch?v=dI0CztCzjbc" target="_blank" rel="noopener">
+            <div class="vthumb"><img src="https://img.youtube.com/vi/dI0CztCzjbc/hqdefault.jpg" alt="" loading="lazy"><div class="vplay"><i>▶</i></div></div>
+            <div class="vbody"><p class="vchan">Roundabout Productions · Dr. Régis Chachamovich</p><h3>A Dieta Cetogênica é Mais Eficaz que Antidepressivos?</h3><p class="vdesc">Why rising antidepressant use isn't improving mental health, and the ketogenic diet as an effective therapeutic intervention.</p></div>
+          </a>
+          <a class="vcard reveal" data-chan="Modo Primal Podcast" href="https://www.youtube.com/watch?v=sWiJ679ZWFE" target="_blank" rel="noopener">
+            <div class="vthumb"><img src="https://img.youtube.com/vi/sWiJ679ZWFE/hqdefault.jpg" alt="" loading="lazy"><div class="vplay"><i>▶</i></div></div>
+            <div class="vbody"><p class="vchan">Modo Primal Podcast · Dr. Régis Chachamovich</p><h3>Alimente seu Cérebro: Como a Dieta Pode Ser a Chave para Saúde Mental</h3><p class="vdesc">A conversation on ancestral eating, metabolic health, and how nutrition directly shapes brain function and mental health.</p></div>
+          </a>
+          <a class="vcard reveal" data-chan="Antonio Kraychete" href="https://www.youtube.com/watch?v=LcFeODsiXI4" target="_blank" rel="noopener">
+            <div class="vthumb"><img src="https://img.youtube.com/vi/LcFeODsiXI4/hqdefault.jpg" alt="" loading="lazy"><div class="vplay"><i>▶</i></div></div>
+            <div class="vbody"><p class="vchan">Antonio Kraychete · Dr. Régis Chachamovich</p><h3>Esse Método Cura a Depressão?</h3><p class="vdesc">An interview on metabolic approaches to treating depression, exploring alternatives beyond traditional medication.</p></div>
+          </a>
+          <a class="vcard reveal" data-chan="Lutz Podcast" href="https://www.youtube.com/watch?v=927R9WQL9ps" target="_blank" rel="noopener">
+            <div class="vthumb"><img src="https://img.youtube.com/vi/927R9WQL9ps/hqdefault.jpg" alt="" loading="lazy"><div class="vplay"><i>▶</i></div></div>
+            <div class="vbody"><p class="vchan">Lutz Podcast · Dr. Régis Chachamovich</p><h3>Como o Metabolismo Pode Salvar Sua Saúde Mental</h3><p class="vdesc">A pioneer of metabolic psychiatry in Brazil unpacks the link between metabolic disease, the ketogenic diet, and mental illness.</p></div>
+          </a>
+          <a class="vcard reveal" data-chan="Roundabout Productions" href="https://www.youtube.com/watch?v=q5IBHaYKKJc" target="_blank" rel="noopener">
+            <div class="vthumb"><img src="https://img.youtube.com/vi/q5IBHaYKKJc/hqdefault.jpg" alt="" loading="lazy"><div class="vplay"><i>▶</i></div></div>
+            <div class="vbody"><p class="vchan">Roundabout Productions · Dr. Juan Pablo Roig</p><h3>Somos Viciados em Carboidratos?</h3><p class="vdesc">Food compulsion, carbohydrate addiction, and the role of inflammation, dopamine, and insulin resistance in mental health.</p></div>
+          </a>
+          <a class="vcard reveal" data-chan="Modo Primal Podcast" href="https://www.youtube.com/watch?v=IpLo1B4fhF0" target="_blank" rel="noopener">
+            <div class="vthumb"><img src="https://img.youtube.com/vi/IpLo1B4fhF0/hqdefault.jpg" alt="" loading="lazy"><div class="vplay"><i>▶</i></div></div>
+            <div class="vbody"><p class="vchan">Modo Primal Podcast · Dr. Juan Pablo Roig</p><h3>Médico Curou o Fígado e a Depressão com Dieta Carnívora</h3><p class="vdesc">Ancestral nutrition, metabolic health, and metabolic psychiatry — with a personal story and clinical practice insights.</p></div>
+          </a>
+        </div>
+        <div class="noresults" id="vnores">No results for your search.</div>
+      </div>
+    </section>
+    <svg class="strip-wave" viewBox="0 0 1440 72" preserveAspectRatio="none"><path d="M0 72 L0 34 Q360 0 720 32 T1440 26 L1440 72 Z" fill="var(--t900)"/></svg>
+    <section class="sec dark-strip">
+      <div class="dark-sec">
+        <div class="sech reveal"><div class="sic" style="background:rgba(245,239,228,.1);color:#F5EFE4"><span class="ic" data-icon="clipboard"></span></div><h2 style="color:#F5EFE4">Opinion articles</h2></div>
+        <div class="agrid" id="agrid">
+          <a class="acard reveal" href="https://www.proactivepsychiatry.com/post/metabolic-psychiatry-where-mental-health-meets-metabolic-health" target="_blank" rel="noopener">
+            <div class="aic"><span class="ic" data-icon="clipboard"></span></div>
+            <div><p class="asrc">Proactive Psychiatry</p><h3>Metabolic Psychiatry: Where Mental Health Meets Metabolic Health</h3><p>For a long time psychiatry was stuck in the chemical-imbalance model. What if mental illness is more than a neurotransmitter problem?</p><span class="aread">Read article <span class="ic" data-icon="arrow-right"></span></span></div>
+          </a>
+          <a class="acard reveal" href="https://cardinalclinic.co.uk/blog/metabolic-psychiatry-integrating-bioenergetics-into-mental-health-care/" target="_blank" rel="noopener">
+            <div class="aic"><span class="ic" data-icon="clipboard"></span></div>
+            <div><p class="asrc">Cardinal Clinic</p><h3>Metabolic Psychiatry: Integrating Bioenergetics into Mental Health Care</h3><p>For decades the dominant model in mental health focused on the synapse. Researchers are now investigating the role of cellular bioenergetics.</p><span class="aread">Read article <span class="ic" data-icon="arrow-right"></span></span></div>
+          </a>
+          <a class="acard reveal" href="https://www.linkedin.com/pulse/rise-metabolic-psychiatry-game-changer-mental-health-greenland-u33le" target="_blank" rel="noopener">
+            <div class="aic"><span class="ic" data-icon="clipboard"></span></div>
+            <div><p class="asrc">LinkedIn — Greenland</p><h3>The Rise of Metabolic Psychiatry: A Game Changer in Mental Health?</h3><p>An analysis of how metabolic psychiatry is transforming the mental-health field with metabolism-based approaches.</p><span class="aread">Read article <span class="ic" data-icon="arrow-right"></span></span></div>
+          </a>
+          <a class="acard reveal" href="https://scienmag.com/metabolic-psychiatry-defining-priorities-for-emerging-field/" target="_blank" rel="noopener">
+            <div class="aic"><span class="ic" data-icon="clipboard"></span></div>
+            <div><p class="asrc">SciEnMag</p><h3>Metabolic Psychiatry: Defining Priorities for an Emerging Field</h3><p>Researchers define priorities for the emerging field of metabolic psychiatry, including clinical trials and biomarkers.</p><span class="aread">Read article <span class="ic" data-icon="arrow-right"></span></span></div>
+          </a>
+        </div>
+        <div class="noresults" id="anores" style="color:rgba(245,239,228,.5)">No results for your search.</div>
+      </div>
+    </section>
+    <svg class="strip-wave bottom" viewBox="0 0 1440 72" preserveAspectRatio="none"><path d="M0 0 L0 30 Q360 66 720 34 T1440 40 L1440 0 Z" fill="var(--t900)"/></svg>
+  </div>
+
+  <!-- ============ TEAM APPLICATION MODAL ============ -->
+  <div class="modal" id="teamModal">
+    <div class="mbg" onclick="teamModal(false)"></div>
+    <div class="mcard">
+      <button class="mclose" onclick="teamModal(false)"><span class="ic" data-icon="x"></span></button>
+      <div id="tmForm">
+        <h3>Application</h3>
+        <div class="msub">Fill in your details and we'll get in touch.</div>
+        <label class="fl">Full name</label><input type="text" id="tmName" placeholder="First and last name">
+        <label class="fl">Email</label><input type="email" id="tmEmail" placeholder="you@example.com">
+        <label class="fl">Academic background</label><input type="text" id="tmEdu" placeholder="e.g. Medicine — USP, 2015">
+        <label class="fl">Specialty</label>
+        <select id="tmSpec"><option value="">Select</option><option>Psychiatry</option><option>Nutrition medicine</option><option>Psychology</option><option>Neurology</option><option>Endocrinology</option><option>Other</option></select>
+        <label class="fl">Availability</label>
+        <select id="tmAvail"><option value="">Select</option><option>Full-time</option><option>Part-time</option><option>Shifts</option><option>To be discussed</option></select>
+        <label class="fl">Additional information <span class="optional">(optional)</span></label>
+        <textarea id="tmInfo" placeholder="Tell us about your motivation and experience."></textarea>
+        <button class="btn btn-solid" style="width:100%;justify-content:center;margin-top:20px" onclick="teamSubmit()">Send application</button>
+        <div class="mreq">Name, email, background, and specialty are required.</div>
+      </div>
+      <div id="tmDone" style="display:none" class="msuccess">
+        <div class="done-ic"><span class="ic" data-icon="check"></span></div>
+        <h3 id="tmThanks">Thank you.</h3>
+        <p style="color:var(--soft);font-size:14px;line-height:1.7;max-width:24em;margin:10px auto 22px">We received your application. Our team will review your profile and reach out soon.</p>
+        <button class="btn btn-line" onclick="teamModal(false)">Close</button>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer">
     <span>© 2026 Metabolicamente · Psychiatry with an emphasis on nutrition</span>
@@ -827,6 +1104,8 @@ const ICONS={
  'apple':'<path d="M12 20.94c1.5 0 2.75 1.06 4 1.06 3 0 6-8 6-12.22A4.91 4.91 0 0 0 17 5c-2.22 0-4 1.44-5 2-1-.56-2.78-2-5-2a4.9 4.9 0 0 0-5 4.78C2 14 5 22 8 22c1.25 0 2.5-1.06 4-1.06Z"/><path d="M10 2c1 .5 2 2 2 5"/>',
  'egg':'<path d="M12 22c4.42 0 8-3.58 8-8 0-5-4-12-8-12S4 9 4 14c0 4.42 3.58 8 8 8Z"/>',
  'moon':'<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
+ 'sun':'<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>',
+ 'search':'<circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>',
  'droplet':'<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7Z"/>',
  'message':'<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
  'shield':'<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/>'
@@ -1125,7 +1404,7 @@ function labBar(l){
       ${harm}
       <div style="position:absolute;left:${pv}%;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;background:${inGoal?'var(--t700)':'var(--watch)'};border:3px solid #fff;box-shadow:0 1px 4px rgba(0,0,0,.25)"></div>
     </div>
-    <div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--soft);margin-top:4px"><span>${l.lo}</span><span style="color:var(--t700);font-weight:600">your goal: ${l.goal[0]}–${l.goal[1]}</span><span>${l.hi}</span></div>
+    <div style="display:flex;justify-content:space-between;font-size:10.5px;color:var(--soft);margin-top:4px"><span>${l.lo}</span><span style="color:var(--hd3);font-weight:600">your goal: ${l.goal[0]}–${l.goal[1]}</span><span>${l.hi}</span></div>
     <div class="lab-meaning ${l.tone}">${l.meaning}</div>
   </div>`;
 }
@@ -1185,6 +1464,7 @@ function introMorph(){
 }
 function introPlay(){
   const el=document.getElementById('intro'); if(!el) return;
+  if(location.hash.indexOf('#/')===0){ introSkip(); return; }
   const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(reduce){ introSkip(); return; }
   document.body.classList.add('intro-lock');
@@ -1217,6 +1497,129 @@ window.addEventListener('resize',()=>{
   if(document.getElementById('detail').classList.contains('active')) drawBig();
   if(document.getElementById('patient').classList.contains('active')) drawPatient();
 });
+
+/* ============ ROUTER (subpages) ============ */
+const PAGES={'equipe':'pg-equipe','conteudo':'pg-conteudo'};
+function showSub(id,scroll){
+  document.querySelectorAll('#site .subpage').forEach(s=>s.classList.toggle('active',s.id===id));
+  if(scroll!==false) window.scrollTo(0,0);
+  startGlows();
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
+  renderIcons();
+}
+function routeFromHash(){
+  const h=location.hash||'';
+  if(h.indexOf('#/')===0){
+    const pg=PAGES[h.slice(2)];
+    if(pg){ if(!document.getElementById('site').classList.contains('active')) go('site'); showSub(pg); return; }
+    showSub('home'); return;
+  }
+  const wasHome=document.getElementById('home').classList.contains('active');
+  showSub('home', h.length>1?false:true);
+  if(h.length>1){ const el=document.getElementById(h.slice(1)); if(el) el.scrollIntoView({behavior:wasHome?'smooth':'auto'}); }
+}
+window.addEventListener('hashchange',routeFromHash);
+
+/* ============ THEME (light / dark) ============ */
+function setTheme(dark){
+  document.body.classList.toggle('dark',dark);
+  try{localStorage.setItem('mbtheme',dark?'dark':'light')}catch(e){}
+  document.querySelectorAll('.themetog').forEach(b=>{ b.innerHTML='<svg viewBox="0 0 24 24">'+ICONS[dark?'sun':'moon']+'</svg>'; });
+}
+function injectTheme(){
+  const mk=()=>{ const b=document.createElement('button'); b.className='themetog'; b.title='Light / dark';
+    b.onclick=()=>setTheme(!document.body.classList.contains('dark')); return b; };
+  const nav=document.querySelector('.nav'); if(nav&&!nav.querySelector('.themetog')) nav.appendChild(mk());
+  document.querySelectorAll('.topbar').forEach(tb=>{ if(!tb.querySelector('.themetog')){ const sl=tb.querySelector('.switch-label'); const b=mk(); if(sl) tb.insertBefore(b,sl); else tb.appendChild(b); } });
+  const wt=document.querySelector('.wiz-top'); if(wt&&!wt.querySelector('.themetog')){ const b=mk(); b.style.position='absolute'; b.style.right='92px'; wt.appendChild(b); }
+  let saved=null; try{saved=localStorage.getItem('mbtheme')}catch(e){}
+  setTheme(saved==='dark');
+}
+
+/* ============ GLOW (drifting light blobs) ============ */
+function runGlow(c){
+  const ctx=c.getContext('2d'); if(!ctx) return;
+  const reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let w=0,h=0,raf;
+  const resize=()=>{ const p=c.parentElement; if(!p) return; const d=window.devicePixelRatio||1;
+    w=p.clientWidth; h=p.clientHeight; c.width=w*d; c.height=h*d; ctx.setTransform(d,0,0,d,0,0); };
+  c.__resize=resize;
+  const BLOBS=[
+    {x:.25,y:.35,r:.42,c:'26,95,118',  s:.00030,p:0,o:.50},
+    {x:.72,y:.55,r:.38,c:'42,157,143', s:.00024,p:2,o:.42},
+    {x:.50,y:.85,r:.32,c:'15,62,78',   s:.00034,p:4,o:.50},
+    {x:.15,y:.75,r:.26,c:'42,157,143', s:.00020,p:1,o:.30},
+    {x:.85,y:.25,r:.30,c:'231,111,81', s:.00026,p:3,o:.14}
+  ];
+  const paint=(t)=>{
+    ctx.clearRect(0,0,w,h);
+    for(const b of BLOBS){
+      const bx=(b.x+Math.sin(t*b.s+b.p)*.08)*w, by=(b.y+Math.cos(t*b.s*.7+b.p)*.06)*h, br=b.r*Math.min(w,h);
+      if(br<=0) continue;
+      const g=ctx.createRadialGradient(bx,by,0,bx,by,br);
+      g.addColorStop(0,'rgba('+b.c+','+b.o+')'); g.addColorStop(.5,'rgba('+b.c+','+(b.o*.3)+')'); g.addColorStop(1,'rgba('+b.c+',0)');
+      ctx.fillStyle=g; ctx.fillRect(0,0,w,h);
+    }
+  };
+  const loop=(t)=>{
+    if(!c.isConnected){ return; }
+    if(c.offsetParent!==null&&!document.hidden){ if(w===0) resize(); paint(t); }
+    raf=requestAnimationFrame(loop);
+  };
+  window.addEventListener('resize',resize);
+  resize();
+  if(reduce){ paint(0); } else { raf=requestAnimationFrame(loop); }
+}
+function startGlows(){
+  document.querySelectorAll('canvas.glow').forEach(c=>{
+    if(!c.__glow){ c.__glow=1; runGlow(c); } else if(c.__resize){ c.__resize(); }
+  });
+}
+
+/* ============ CONTEUDO: search + filters ============ */
+let cCh='';
+function cChan(btn){
+  cCh=btn.dataset.chan||'';
+  document.querySelectorAll('#cfilters button').forEach(b=>b.classList.toggle('on',b===btn));
+  cFilter();
+}
+function cFilter(){
+  const q=(document.getElementById('csearch').value||'').toLowerCase();
+  let vn=0,an=0;
+  document.querySelectorAll('#vgrid .vcard').forEach(v=>{
+    const ok=(!cCh||v.dataset.chan===cCh)&&(!q||v.textContent.toLowerCase().indexOf(q)>-1);
+    v.style.display=ok?'':'none'; if(ok)vn++;
+  });
+  document.querySelectorAll('#agrid .acard').forEach(a=>{
+    const ok=!q||a.textContent.toLowerCase().indexOf(q)>-1;
+    a.style.display=ok?'':'none'; if(ok)an++;
+  });
+  document.getElementById('vnores').style.display=vn?'none':'block';
+  document.getElementById('anores').style.display=an?'none':'block';
+}
+
+/* ============ EQUIPE: application modal ============ */
+function teamModal(open){
+  const m=document.getElementById('teamModal');
+  m.classList.toggle('open',open);
+  if(open){ document.getElementById('tmForm').style.display=''; document.getElementById('tmDone').style.display='none'; renderIcons(m); }
+}
+function teamSubmit(){
+  const n=document.getElementById('tmName').value.trim(),
+        e=document.getElementById('tmEmail').value.trim(),
+        ed=document.getElementById('tmEdu').value.trim(),
+        sp=document.getElementById('tmSpec').value;
+  if(n.length<2||!/.+@.+\..+/.test(e)||!ed||!sp){ toast('Please fill in the required fields.'); return; }
+  document.getElementById('tmThanks').textContent='Thank you, '+(n.split(' ')[0]||'')+'.';
+  document.getElementById('tmForm').style.display='none';
+  document.getElementById('tmDone').style.display='block';
+  if(window.__applyLang){ try{__applyLang()}catch(err){} }
+  renderIcons();
+}
+
+injectTheme();
+startGlows();
+routeFromHash();
 
 /* ============ LANGUAGE TOGGLE (EN / PT-BR) ============ */
 (function(){
@@ -1414,7 +1817,53 @@ window.addEventListener('resize',()=>{
     "Tell us a little about what you're experiencing...":"Conte um pouco sobre o que você está sentindo...",
     "First and last name":"Nome e sobrenome",
     // dates
-    "Jul 3":"3 jul","Jun 28":"28 jun","Jun 30":"30 jun","Jul 15":"15 jul","Sep 2":"2 set","May 6":"6 mai","May 20":"20 mai","Jun 12":"12 jun","Apr 14":"14 abr","Jul 11":"11 jul"
+    "Jul 3":"3 jul","Jun 28":"28 jun","Jun 30":"30 jun","Jul 15":"15 jul","Sep 2":"2 set","May 6":"6 mai","May 20":"20 mai","Jun 12":"12 jun","Apr 14":"14 abr","Jul 11":"11 jul",
+    // nav (pages)
+    "Content":"Conteúdo","Care team":"Corpo clínico",
+    // equipe page
+    "Excellence in metabolic psychiatry":"Excelência em psiquiatria metabólica",
+    "Professionals united by one mission: transforming mental health through the metabolic approach.":"Profissionais unidos pela missão de transformar a saúde mental através da abordagem metabólica.",
+    "Photo placeholder":"Foto ilustrativa",
+    "Psychiatrist — Clinical Director":"Psiquiatra — Diretor Clínico",
+    "Psychiatrist — Neurometabolism":"Psiquiatra — Neurometabolismo",
+    "Nutrition Physician — Functional Nutrition":"Nutrólogo — Nutrição Funcional",
+    "Clinical Psychologist — CBT & Behavior Change":"Psicóloga Clínica — TCC e Mudança Comportamental",
+    "Trained at the USP School of Medicine, with a psychiatry residency at Hospital das Clínicas. Specialization in Metabolic Psychiatry at Harvard Medical School. Over 18 years of clinical experience integrating nutritional, metabolic, and pharmacological interventions in the treatment of serious mental illness.":"Formado pela Faculdade de Medicina da USP, com residência em Psiquiatria no Hospital das Clínicas. Especialização em Psiquiatria Metabólica pela Harvard Medical School. Mais de 18 anos de experiência clínica integrando intervenções nutricionais, metabólicas e farmacológicas no tratamento de transtornos mentais graves.",
+    "Graduated from UNIFESP with a fellowship in Neuropsychiatry and Brain Metabolism. Active researcher with international publications on the link between mitochondrial dysfunction and psychiatric illness. Focuses on schizophrenia, bipolar disorder, and treatment-resistant depression.":"Graduada pela UNIFESP com fellowship em Neuropsiquiatria e Metabolismo Cerebral. Pesquisadora ativa com publicações em periódicos internacionais sobre a relação entre disfunção mitocondrial e doenças psiquiátricas. Atua com foco em esquizofrenia, transtorno bipolar e depressão resistente ao tratamento.",
+    "Physician trained at UERJ with a postgraduate degree in Functional Clinical Nutrition. Specialist in personalized nutrition protocols for mental health, including therapeutic diets, evidence-based supplementation, and insulin-resistance management.":"Médico nutrólogo com formação pela UERJ e pós-graduação em Nutrição Clínica Funcional. Especialista em protocolos nutricionais personalizados para a saúde mental, incluindo dietas terapêuticas, suplementação baseada em evidências e manejo de resistência à insulina.",
+    "Clinical psychologist with a master's in Health Psychology from PUC-Rio. Specialist in Cognitive Behavioral Therapy focused on adherence to lifestyle change. Works hand in hand with the medical team to keep metabolic interventions sustainable and patient-centered.":"Psicóloga clínica com mestrado em Psicologia da Saúde pela PUC-Rio. Especialista em Terapia Cognitivo-Comportamental com foco em adesão a mudanças de estilo de vida. Trabalha de forma integrada com a equipe médica para garantir que as intervenções metabólicas sejam sustentáveis e centradas no paciente.",
+    "Metabolic Psychiatry":"Psiquiatria Metabólica","Mood Disorders":"Transtornos de Humor","Therapeutic Ketogenic Diet":"Dieta Cetogênica Terapêutica",
+    "Neurometabolism":"Neurometabolismo","Treatment-Resistant Depression":"Depressão Resistente ao Tratamento","Clinical Research":"Pesquisa Clínica",
+    "Functional Nutrition":"Nutrição Funcional","Evidence-Based Supplementation":"Suplementação Baseada em Evidências","Metabolic Health":"Saúde Metabólica",
+    "Lifestyle Change":"Mudança de Estilo de Vida","Psychoeducation":"Psicoeducação",
+    "Illustrative team for the prototype — final clinicians TBD.":"Equipe ilustrativa para o protótipo — profissionais finais a definir.",
+    "Opportunities":"Oportunidades","Join our team":"Faça parte da nossa equipe",
+    "We're looking for professionals who share our integrative vision and want to help redefine mental health care.":"Buscamos profissionais que compartilham da nossa visão integrativa e desejam ajudar a redefinir o cuidado em saúde mental.",
+    "I want to work with you":"Quero trabalhar com vocês",
+    "Application":"Candidatura","Fill in your details and we'll get in touch.":"Preencha seus dados e entraremos em contato.",
+    "Full name":"Nome completo","Academic background":"Formação acadêmica","e.g. Medicine — USP, 2015":"Ex: Medicina — USP, 2015",
+    "Specialty":"Especialidade","Select":"Selecione","Psychiatry":"Psiquiatria","Nutrition medicine":"Nutrologia","Psychology":"Psicologia","Neurology":"Neurologia","Endocrinology":"Endocrinologia","Other":"Outra",
+    "Availability":"Disponibilidade","Full-time":"Integral","Part-time":"Parcial","Shifts":"Por turnos","To be discussed":"A negociar",
+    "Additional information":"Informações adicionais","Tell us about your motivation and experience.":"Conte-nos sobre sua motivação e experiência.",
+    "Send application":"Enviar candidatura","Name, email, background, and specialty are required.":"Nome, e-mail, formação e especialidade são obrigatórios.",
+    "We received your application. Our team will review your profile and reach out soon.":"Recebemos sua candidatura. Nossa equipe analisará seu perfil e entrará em contato em breve.",
+    "Close":"Fechar","Please fill in the required fields.":"Preencha os campos obrigatórios.",
+    // conteudo page
+    "Knowledge library":"Biblioteca de conhecimento",
+    "Videos, articles, and podcasts on metabolic psychiatry and evidence-based mental health.":"Vídeos, artigos e podcasts sobre psiquiatria metabólica e saúde mental baseada em evidências.",
+    "Search videos, articles, or podcasts...":"Buscar vídeos, artigos ou podcasts...",
+    "All":"Todos","Videos & podcasts":"Vídeos e podcasts","Opinion articles":"Artigos de opinião","Read article":"Ler artigo",
+    "No results for your search.":"Nenhum resultado para sua busca.",
+    "Why rising antidepressant use isn't improving mental health, and the ketogenic diet as an effective therapeutic intervention.":"Por que o uso crescente de antidepressivos não está melhorando a saúde mental, e a dieta cetogênica como intervenção terapêutica eficaz.",
+    "A conversation on ancestral eating, metabolic health, and how nutrition directly shapes brain function and mental health.":"Conversa sobre alimentação ancestral, saúde metabólica e como a nutrição impacta diretamente o funcionamento cerebral e a saúde mental.",
+    "An interview on metabolic approaches to treating depression, exploring alternatives beyond traditional medication.":"Entrevista sobre abordagens metabólicas para o tratamento da depressão, explorando alternativas além da medicação tradicional.",
+    "A pioneer of metabolic psychiatry in Brazil unpacks the link between metabolic disease, the ketogenic diet, and mental illness.":"Pioneiro em psiquiatria metabólica no Brasil, revela a relação entre doenças metabólicas, dieta cetogênica e transtornos mentais.",
+    "Food compulsion, carbohydrate addiction, and the role of inflammation, dopamine, and insulin resistance in mental health.":"Compulsão alimentar, vício em carboidratos e o papel da inflamação, dopamina e resistência à insulina na saúde mental.",
+    "Ancestral nutrition, metabolic health, and metabolic psychiatry — with a personal story and clinical practice insights.":"Alimentação ancestral, saúde metabólica e psiquiatria metabólica — com relato de experiência pessoal e prática clínica.",
+    "For a long time psychiatry was stuck in the chemical-imbalance model. What if mental illness is more than a neurotransmitter problem?":"Por muito tempo, a psiquiatria ficou presa no modelo de desequilíbrio químico. E se as doenças mentais forem mais do que um problema de neurotransmissores?",
+    "For decades the dominant model in mental health focused on the synapse. Researchers are now investigating the role of cellular bioenergetics.":"Por décadas, o modelo dominante em saúde mental focou na sinapse. Agora, pesquisadores estão investigando o papel da bioenergética celular.",
+    "An analysis of how metabolic psychiatry is transforming the mental-health field with metabolism-based approaches.":"Uma análise sobre como a psiquiatria metabólica está transformando o campo da saúde mental com abordagens baseadas em metabolismo.",
+    "Researchers define priorities for the emerging field of metabolic psychiatry, including clinical trials and biomarkers.":"Pesquisadores definem as prioridades para o campo emergente da psiquiatria metabólica, incluindo ensaios clínicos e biomarcadores."
   };
   const RULES=[
     {re:/^(\d+) of 7$/, pt:m=>m[1]+" de 7"},
