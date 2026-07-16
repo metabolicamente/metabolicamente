@@ -123,8 +123,8 @@ canvas.glow{position:absolute;inset:0;width:100%;height:100%}
 .dash{min-height:100vh;display:flex;flex-direction:column;background:var(--bg)}
 .dtop{position:sticky;top:0;z-index:40;background:var(--t900);color:#F5EFE4;height:56px;display:flex;align-items:center;gap:14px;padding:0 20px}
 .dtop .logo{color:#F5EFE4;font-size:16px;margin:0}
-.dtop .logo-mark{width:28px;height:28px;background:rgba(255,255,255,.12)}
-.dtop .logo-mark svg{width:16px;height:16px}
+.dtop .logo-mark{width:auto;height:auto;background:none}
+.dtop .logo-mark svg{width:24px;height:24px}
 .dtop .dsp{flex:1}
 .dbell{position:relative;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#F5EFE4}
 .dbell:hover{background:rgba(255,255,255,.1)}
@@ -288,6 +288,14 @@ body.dark .alertbox{border-color:#5a2a20}
 .chleg{display:flex;gap:14px;justify-content:center;margin-top:8px}
 .chleg span{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;color:var(--soft)}
 .chleg .d{width:9px;height:9px;border-radius:50%}
+.chcard svg{cursor:crosshair}
+.chartTip{position:fixed;z-index:130;pointer-events:none;background:var(--card);border:1px solid var(--line);border-radius:11px;box-shadow:0 8px 26px rgba(12,51,63,.18);padding:9px 12px;opacity:0;transition:opacity .1s;transform:translateY(-100%);min-width:112px}
+.chartTip.show{opacity:1}
+.chartTip .tt{font-weight:700;color:var(--hd);margin-bottom:5px;font-size:11.5px;font-family:var(--display)}
+.chartTip .tr{display:flex;align-items:center;gap:7px;font-size:12px;padding:1.5px 0}
+.chartTip .tr .d{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.chartTip .tr span{color:var(--soft)}
+.chartTip .tr b{color:var(--hd);margin-left:auto;font-weight:700;padding-left:14px}
 /* check-in steps */
 .ciprog{margin-bottom:20px}
 .ciprog .cit{display:flex;justify-content:space-between;font-size:12px;color:var(--soft);margin-bottom:7px}
@@ -356,8 +364,8 @@ body.dark .alertbox{border-color:#5a2a20}
 
 .topbar{position:sticky;top:0;z-index:50;background:var(--t900);color:#F5EFE4;display:flex;align-items:center;gap:16px;padding:0 26px;height:58px}
 .topbar .logo{color:#F5EFE4;font-size:17px;margin:0}
-.topbar .logo-mark{width:30px;height:30px;background:rgba(255,255,255,.12)}
-.topbar .logo-mark svg{width:17px;height:17px}
+.topbar .logo-mark{width:auto;height:auto;background:none}
+.topbar .logo-mark svg{width:24px;height:24px}
 .top-role{font-size:13px;opacity:.85;padding:3px 10px;border:1px solid rgba(255,255,255,.25);border-radius:99px}
 .top-spacer{flex:1}
 .switch-label{font-size:12px;opacity:.6}
@@ -495,8 +503,8 @@ a{color:inherit;text-decoration:none}
 .istage.show{opacity:1;transform:none}
 .istage.out{opacity:0;transform:translateY(-12px)}
 .istage .ilogo{display:flex;flex-direction:column;align-items:center;gap:26px}
-.istage .ilogo .logo-mark{width:92px;height:92px;border-radius:26px;background:rgba(255,255,255,.1)}
-.istage .ilogo .logo-mark svg{width:52px;height:52px}
+.istage .ilogo .logo-mark{width:auto;height:auto;background:none}
+.istage .ilogo .logo-mark svg{width:74px;height:74px}
 .istage .iname{font-family:var(--serif);font-size:clamp(44px,7vw,72px);color:#F5EFE4;letter-spacing:.01em}
 .istage .iphrase{font-family:var(--serif);font-weight:500;font-size:clamp(20px,4.9vw,62px);color:#F5EFE4;line-height:1.08;letter-spacing:-.01em;white-space:nowrap}
 #intro .ibg{position:absolute;inset:0;background:
@@ -516,8 +524,8 @@ body.title-wait #heroTitle{opacity:0}
 #site{background:var(--bg)}
 .nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:26px;padding:0 5vw;height:64px;background:var(--navbg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:19px;color:var(--hd2);margin-right:auto}
-.logo-mark{width:34px;height:34px;border-radius:10px;background:var(--t800);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.logo-mark svg{width:20px;height:20px;stroke:#F5EFE4;fill:none;stroke-width:2;stroke-linecap:round}
+.logo-mark{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-mark svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
 .nav a.nl{font-size:14px;color:var(--soft);font-weight:500;white-space:nowrap}
 .nav a.nl:hover{color:var(--hd2)}
 @media(max-width:980px){.nav .nl{display:none}.nav{gap:12px}}
@@ -639,7 +647,7 @@ body.title-wait #heroTitle{opacity:0}
 #wizard.active{display:flex}
 .wiz-top{background:var(--t900);color:#F5EFE4;height:60px;display:flex;align-items:center;justify-content:center;position:relative}
 .wiz-top .logo{color:#F5EFE4;font-size:17px;margin:0}
-.wiz-top .logo-mark{background:rgba(255,255,255,.12)}
+.wiz-top .logo-mark{background:none}
 .wiz-exit{position:absolute;right:22px;font-size:13px;opacity:.7;display:flex;align-items:center;gap:6px}
 .wiz-exit:hover{opacity:1}
 .wiz-body{flex:1;max-width:660px;width:100%;margin:0 auto;padding:44px 24px 60px}
@@ -1052,6 +1060,7 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
 <div class="screen" id="nutri"><div class="dash" id="dash-nutri"></div></div>
 
 <div class="toast" id="toast"></div>
+<div class="chartTip" id="chartTip"></div>
 
 <script>
 /* ============ ICONS (inline SVG, lucide-style) ============ */
@@ -1802,18 +1811,43 @@ function miniChart(id,cfg){
     g+='<path d="'+dPath+'" fill="none" stroke="'+s.color+'" stroke-width="'+(s.w||3)+'" '+(s.dash?'stroke-dasharray="6 6"':'')+' stroke-linecap="round" stroke-linejoin="round"/>';
     if(s.dots) s.vals.forEach((v,i)=>{ g+='<circle cx="'+X(i)+'" cy="'+Y(v)+'" r="5" fill="var(--card)" stroke="'+s.color+'" stroke-width="3"/>'; });
   });
+  g+='<g class="chover"></g>';
   svg.innerHTML=g;
+  // ---- hover interaction ----
+  svg.__m={w:w,pl:pl,pr:pr,ptop:ptop,pb:pb,h:h,X:X,Y:Y,cfg:cfg};
+  svg.onmousemove=function(e){
+    const m=svg.__m, r=svg.getBoundingClientRect();
+    const vx=(e.clientX-r.left)*(m.w/r.width);
+    const step=(m.w-m.pl-m.pr)/(m.cfg.x.length-1);
+    let i=Math.round((vx-m.pl)/step); i=Math.max(0,Math.min(m.cfg.x.length-1,i));
+    const ov=svg.querySelector('.chover'); if(!ov) return;
+    let oh='<line x1="'+m.X(i)+'" y1="'+m.ptop+'" x2="'+m.X(i)+'" y2="'+(m.h-m.pb)+'" stroke="var(--soft)" stroke-opacity=".35" stroke-width="1"/>';
+    m.cfg.series.forEach(s=>{ oh+='<circle cx="'+m.X(i)+'" cy="'+m.Y(s.vals[i])+'" r="4.5" fill="var(--card)" stroke="'+s.color+'" stroke-width="2.5"/>'; });
+    ov.innerHTML=oh;
+    const tr=window.__tr||(x=>x);
+    const tip=document.getElementById('chartTip');
+    let html='<div class="tt">'+tr(m.cfg.x[i])+'</div>';
+    m.cfg.series.forEach(s=>{ html+='<div class="tr"><span class="d" style="background:'+s.color+'"></span><span>'+(s.name?tr(s.name):'')+'</span><b>'+s.vals[i]+'</b></div>'; });
+    tip.innerHTML=html; tip.classList.add('show');
+    let lx=e.clientX+16, ty=e.clientY-8;
+    if(lx+140>window.innerWidth) lx=e.clientX-140;
+    tip.style.left=lx+'px'; tip.style.top=ty+'px';
+  };
+  svg.onmouseleave=function(){
+    const ov=svg.querySelector('.chover'); if(ov) ov.innerHTML='';
+    const tip=document.getElementById('chartTip'); if(tip) tip.classList.remove('show');
+  };
 }
 function drawEvo(role){
   if(role!=='patient'||!document.getElementById('ev-well')) return;
   miniChart('ev-well',{ymin:0,ymax:10,yticks:[0,3,6,10],x:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-    series:[{vals:[5,4,6,5,7,8,7],color:'#2A9D8F',area:true,w:3},{vals:[6,5,6,7,7,8,8],color:'#E76F51',area:true,w:3}]});
+    series:[{name:'Energy',vals:[5,4,6,5,7,8,7],color:'#2A9D8F',area:true,w:3},{name:'Mood',vals:[6,5,6,7,7,8,8],color:'#E76F51',area:true,w:3}]});
   miniChart('ev-weight',{ymin:78,ymax:95,yticks:[78,83,88,95],x:['Oct','Nov','Dec','Jan','Feb','Mar'],
-    series:[{vals:[80,80,80,80,80,80],color:'#2A9D8F',dash:true,w:2.5},{vals:[92,90,88,86,84,82],color:'#114B5F',w:3.5,dots:true}]});
+    series:[{name:'Goal',vals:[80,80,80,80,80,80],color:'#2A9D8F',dash:true,w:2.5},{name:'Weight',vals:[92,90,88,86,84,82],color:'#114B5F',w:3.5,dots:true}]});
   miniChart('ev-gluc',{ymin:0,ymax:140,yticks:[0,35,70,105,140],x:['S1','S3','S5','S7','S9'],
-    series:[{vals:[124,118,112,105,98],color:'#E76F51',area:true,w:3}]});
+    series:[{name:'Glucose',vals:[124,118,112,105,98],color:'#E76F51',area:true,w:3}]});
   miniChart('ev-hba',{ymin:5,ymax:6.5,yticks:[5,5.4,5.8,6.5],x:['S1','S3','S5','S7','S9'],
-    series:[{vals:[6.2,6.0,5.8,5.6,5.4],color:'#2A9D8F',w:3.5,dots:true}]});
+    series:[{name:'HbA1c',vals:[6.2,6.0,5.8,5.6,5.4],color:'#2A9D8F',w:3.5,dots:true}]});
 }
 
 /* ============ ROUTER (subpages) ============ */
@@ -2232,7 +2266,7 @@ routeFromHash();
     "Security":"Segurança","Keep your account safe by changing your password periodically.":"Mantenha sua conta protegida alterando a senha periodicamente.","Change password":"Alterar senha","Save changes":"Salvar alterações",
     // evolution charts
     "Well-being — last 7 days":"Bem-estar — últimos 7 dias","Energy, mood and sleep quality":"Energia, humor e qualidade do sono","Weight — last 6 months":"Peso — últimos 6 meses","Progress toward the clinical goal":"Evolução até a meta clínica","Improving trend during treatment":"Tendência de melhora ao longo do tratamento","HbA1c (glycated hemoglobin)":"HbA1c (hemoglobina glicada)","Long-term glycemic control indicator":"Indicador de controle glicêmico de longo prazo",
-    "Energy":"Energia","Weight":"Peso","Goal":"Meta",
+    "Energy":"Energia","Weight":"Peso","Goal":"Meta","Glucose":"Glicemia",
     "Mon":"Seg","Tue":"Ter","Wed":"Qua","Thu":"Qui","Fri":"Sex","Sat":"Sáb","Sun":"Dom","Oct":"Out","Dec":"Dez","Feb":"Fev"
   };
   const RULES=[
@@ -2273,6 +2307,7 @@ routeFromHash();
   }
   function apply(){ walk(document.body); }
   window.__applyLang=apply;
+  window.__tr=function(str){ return (cur==='pt'&&EN2PT[str]!==undefined)?EN2PT[str]:str; };
   // re-apply after any dynamic render
   ['go','wizRender','wizValid','wizDone','drawBig','drawPatient'].forEach(fn=>{
     const orig=window[fn]; if(typeof orig==='function'){ window[fn]=function(){ const r=orig.apply(this,arguments); try{apply();}catch(e){} return r; }; }
