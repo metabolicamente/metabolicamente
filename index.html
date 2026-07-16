@@ -6,7 +6,7 @@
 <title>Metabolicamente · Metabolic Psychiatry</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><rect width='24' height='24' rx='6' fill='%230C333F'/><path d='M18.6 7.9A8 8 0 1 0 20 12.4' fill='none' stroke='%23F5EFE4' stroke-width='2' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Baloo+2:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Mulish:wght@400;500;600&family=Baloo+2:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --t950:#092832; --t900:#0C333F; --t800:#114B5F; --t700:#1A5F76; --t500:#2A9D8F;
@@ -18,6 +18,7 @@
   --c-teal:#2A9D8F; --c-coral:#E76F51; --c-blue:#5B7DB1; --c-gold:#D9A420;
   --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,'Segoe UI',sans-serif;
   --display:'Montserrat','Inter',-apple-system,sans-serif;
+  --calm:'Mulish','Inter',-apple-system,sans-serif;
   --r:14px; --shadow:0 1px 2px rgba(12,51,63,.04),0 6px 24px rgba(12,51,63,.06);
   --hd:#0C333F; --hd2:#114B5F; --hd3:#1A5F76; --navbg:rgba(250,246,240,.88);
 }
@@ -558,8 +559,8 @@ body.title-wait #heroTitle{opacity:0}
   var(--t900);color:#F5EFE4;padding:110px 5vw 130px;overflow:hidden}
 .hero-inner{max-width:1080px;margin:0 auto}
 .kicker{font-size:12.5px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:#8FC1BB;margin-bottom:22px}
-.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(38px,6.1vw,72px);line-height:1.06;letter-spacing:-.022em;max-width:15em}
-.hero p{font-size:18px;max-width:34em;margin-top:22px;opacity:.85;line-height:1.65}
+.hero h1{font-family:var(--display);font-weight:700;font-size:clamp(40px,6.4vw,76px);line-height:1.04;letter-spacing:-.022em;max-width:9em}
+.hero p{font-family:var(--calm);font-size:18px;max-width:27em;margin-top:24px;opacity:.82;line-height:1.7;font-weight:400}
 .hero-cta{margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .hero .micro{display:flex;align-items:center;flex-wrap:wrap;gap:8px 22px;font-size:13.5px;opacity:.8;margin-top:22px}
 .hero .micro span{display:inline-flex;align-items:center;gap:8px}
@@ -568,7 +569,7 @@ body.title-wait #heroTitle{opacity:0}
 .sec{padding:90px 5vw}
 .sec-inner{max-width:1080px;margin:0 auto}
 .sec h2{font-size:clamp(28px,3.4vw,40px);color:var(--hd);line-height:1.15;letter-spacing:-.01em}
-.sec .lead{font-size:16.5px;color:var(--soft);max-width:38em;margin-top:14px;line-height:1.7}
+.sec .lead{font-family:var(--calm);font-size:16.5px;color:var(--soft);max-width:38em;margin-top:14px;line-height:1.7}
 .center{text-align:center}
 .center .lead{margin-left:auto;margin-right:auto}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
@@ -741,9 +742,9 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
     <div class="hero-inner">
       <div class="kicker">Metabolic Psychiatry</div>
       <h1 id="heroTitle">A new approach to mental health.</h1>
-      <p>We care for your mind by caring for your body. Psychiatrists and dietitians work as one team to restore your quality of life through metabolic science.</p>
+      <p>We care for your mind and body to restore your quality of life through metabolic science.</p>
       <div class="hero-cta">
-        <a class="btn btn-coral" onclick="go('wizard')" style="cursor:pointer;font-size:15.5px;padding:14px 26px">Start your journey <span class="ic" data-icon="arrow-right"></span></a>
+        <a class="btn btn-cream" onclick="go('wizard')" style="cursor:pointer;font-size:15.5px;padding:14px 26px">Start your journey <span class="ic" data-icon="arrow-right"></span></a>
       </div>
       <div class="micro">
         <span><span class="ic" data-icon="clock"></span>Takes 2 minutes</span>
@@ -2005,7 +2006,7 @@ routeFromHash();
     "Log in":"Entrar","Start your journey":"Comece sua jornada","Learn more":"Saiba mais",
     "Metabolic Psychiatry":"Psiquiatria Metabólica",
     "A new approach to mental health.":"Uma nova abordagem para a saúde mental.",
-    "We care for your mind by caring for your body. Psychiatrists and dietitians work as one team to restore your quality of life through metabolic science.":"Cuidamos da sua mente cuidando do seu corpo. Psiquiatras e nutricionistas trabalham como um só time para restaurar sua qualidade de vida por meio da ciência metabólica.",
+    "We care for your mind and body to restore your quality of life through metabolic science.":"Cuidamos da sua mente e corpo para restaurar sua qualidade de vida através da ciência metabólica.",
     "Takes 2 minutes":"Leva 2 minutos","No commitment":"Sem compromisso","Your answers stay private":"Suas respostas são privadas",
     // about
     "What is metabolic psychiatry?":"O que é psiquiatria metabólica?",
