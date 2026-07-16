@@ -1214,6 +1214,260 @@ window.addEventListener('resize',()=>{
   if(document.getElementById('detail').classList.contains('active')) drawBig();
   if(document.getElementById('patient').classList.contains('active')) drawPatient();
 });
+
+/* ============ LANGUAGE TOGGLE (EN / PT-BR) ============ */
+(function(){
+  const EN2PT={
+    // nav + hero
+    "About":"Sobre","How it works":"Como funciona","Results":"Resultados","FAQ":"Dúvidas",
+    "Log in":"Entrar","Start your journey":"Comece sua jornada","Learn more":"Saiba mais",
+    "Metabolic Psychiatry":"Psiquiatria Metabólica",
+    "A new approach to mental health.":"Uma nova abordagem para a saúde mental.",
+    "We care for your mind by caring for your body. Psychiatrists and dietitians work as one team to restore your quality of life through metabolic science.":"Cuidamos da sua mente cuidando do seu corpo. Psiquiatras e nutricionistas trabalham como um só time para restaurar sua qualidade de vida por meio da ciência metabólica.",
+    "Takes 2 minutes":"Leva 2 minutos","No commitment":"Sem compromisso","Your answers stay private":"Suas respostas são privadas",
+    // about
+    "What is metabolic psychiatry?":"O que é psiquiatria metabólica?",
+    "An approach that understands mental health as a result of brain metabolism, integrating the biology of energy, nutrition, and daily rhythms into the treatment of psychiatric conditions.":"Uma abordagem que entende a saúde mental como resultado do metabolismo cerebral, integrando a biologia da energia, a nutrição e os ritmos diários ao tratamento das condições psiquiátricas.",
+    "Conventional approach":"Abordagem convencional","Lifestyle is an afterthought":"O estilo de vida fica em segundo plano",
+    "Metabolic approach":"Abordagem metabólica","Biology is the foundation":"A biologia é a base",
+    "Lifestyle":"Estilo de vida","Therapy":"Terapia","Medication":"Medicação","Metabolic foundation":"Base metabólica",
+    "sleep · diet · exercise":"sono · dieta · exercício","when needed":"quando necessário",
+    "nutrition · circadian rhythms · movement":"nutrição · ritmos circadianos · movimento",
+    // brain
+    "The brain is a metabolic organ.":"O cérebro é um órgão metabólico.",
+    "It weighs about 2% of your body, yet consumes roughly 20% of your energy. When that energy system falters, your mind feels it first.":"Ele representa cerca de 2% do seu corpo, mas consome aproximadamente 20% da sua energia. Quando esse sistema de energia falha, sua mente sente primeiro.",
+    "Energy production":"Produção de energia",
+    "Your brain depends on efficient energy production in every one of its cells, every second.":"Seu cérebro depende da produção eficiente de energia em cada uma de suas células, a cada segundo.",
+    "Nutrient supply":"Aporte de nutrientes",
+    "Neurotransmitters are built from what you eat. Nutrition is not a detail. It is raw material.":"Os neurotransmissores são feitos a partir do que você come. A nutrição não é um detalhe. É matéria-prima.",
+    "Metabolic balance":"Equilíbrio metabólico",
+    "Insulin resistance, inflammation, and mitochondrial dysfunction can directly impact mood, focus, and stability.":"Resistência à insulina, inflamação e disfunção mitocondrial podem afetar diretamente o humor, o foco e a estabilidade.",
+    // how it works
+    "Four steps to transform your mental health, with a real care team beside you.":"Quatro passos para transformar sua saúde mental, com uma equipe de cuidado de verdade ao seu lado.",
+    "Initial assessment":"Avaliação inicial",
+    "A short questionnaire about your symptoms, history, and health goals. Two minutes, no commitment.":"Um questionário rápido sobre seus sintomas, histórico e objetivos de saúde. Dois minutos, sem compromisso.",
+    "Care team match":"Equipe de cuidado ideal",
+    "Our team identifies the right psychiatrist and dietitian for your specific case.":"Nossa equipe identifica o psiquiatra e o nutricionista certos para o seu caso.",
+    "First session":"Primeira consulta",
+    "A real conversation: align expectations, go deeper into your story, and plan together.":"Uma conversa de verdade: alinhar expectativas, aprofundar sua história e planejar juntos.",
+    "Ongoing care":"Cuidado contínuo",
+    "A personalized metabolic care plan, built and followed by your psychiatrist and dietitian as one team.":"Um plano de cuidado metabólico personalizado, criado e acompanhado pelo seu psiquiatra e nutricionista como um só time.",
+    // results
+    "Real results, backed by science.":"Resultados reais, com respaldo científico.",
+    "In a 4-month Stanford Medicine pilot trial, patients with serious mental illness followed a supervised ketogenic protocol alongside their medication.":"Em um estudo piloto de 4 meses da Stanford Medicine, pacientes com transtornos mentais graves seguiram um protocolo cetogênico supervisionado junto com sua medicação.",
+    "of participants with metabolic syndrome saw it fully resolve":"dos participantes com síndrome metabólica tiveram resolução completa",
+    "showed clinically meaningful psychiatric improvement":"apresentaram melhora psiquiátrica clinicamente significativa",
+    "average improvement in illness severity (CGI)":"de melhora média na gravidade da doença (CGI)",
+    "average body-weight loss, without stopping medication":"de perda média de peso corporal, sem interromper a medicação",
+    "Sethi et al., Psychiatry Research, 2024 · 21 participants · results from a single-arm pilot study; individual outcomes vary.":"Sethi et al., Psychiatry Research, 2024 · 21 participantes · resultados de um estudo piloto de braço único; os resultados individuais variam.",
+    // faq
+    "Common questions":"Perguntas frequentes",
+    "The questions we hear most about the metabolic approach.":"As perguntas que mais ouvimos sobre a abordagem metabólica.",
+    "What role does the ketogenic diet play in mental health?":"Qual é o papel da dieta cetogênica na saúde mental?",
+    "Ketogenic therapy has been studied in psychiatry for its potential to improve brain energy metabolism, reduce neuroinflammation, and stabilize neurotransmitter function. Recent clinical trials show promising results in conditions like bipolar disorder and schizophrenia.":"A terapia cetogênica tem sido estudada na psiquiatria pelo potencial de melhorar o metabolismo energético do cérebro, reduzir a neuroinflamação e estabilizar a função dos neurotransmissores. Estudos clínicos recentes mostram resultados promissores em condições como transtorno bipolar e esquizofrenia.",
+    "Do I need to stop my current medication?":"Preciso parar minha medicação atual?",
+    "No. Our approach is complementary: you keep your current treatment, and any adjustment happens gradually, only when appropriate, and always under your psychiatrist's supervision.":"Não. Nossa abordagem é complementar: você mantém seu tratamento atual, e qualquer ajuste acontece de forma gradual, apenas quando apropriado e sempre sob a supervisão do seu psiquiatra.",
+    "What is brain inflammation?":"O que é inflamação cerebral?",
+    "A chronic inflammatory process in the central nervous system that can affect neurotransmitter function and brain-cell health. Poor diet, sedentary habits, chronic stress, and metabolic disorders can all contribute, and worsen psychiatric symptoms.":"Um processo inflamatório crônico no sistema nervoso central que pode afetar a função dos neurotransmissores e a saúde das células cerebrais. Má alimentação, sedentarismo, estresse crônico e distúrbios metabólicos podem contribuir e agravar os sintomas psiquiátricos.",
+    "How long until I see results?":"Em quanto tempo vejo resultados?",
+    "Most people notice the first signs of improvement between 4 and 8 weeks, depending on their clinical picture and how closely they follow the care plan. Better sleep, energy, and mental clarity usually come first.":"A maioria das pessoas nota os primeiros sinais de melhora entre 4 e 8 semanas, dependendo do quadro clínico e de quanto seguem o plano de cuidado. Melhora no sono, na energia e na clareza mental costuma vir primeiro.",
+    "How is this different from conventional psychiatry?":"Como isso é diferente da psiquiatria convencional?",
+    "Conventional psychiatry focuses mainly on managing symptoms with medication. The metabolic approach also investigates and treats the underlying biology (nutrition, energy metabolism, inflammation, and daily rhythms) alongside standard care, with a psychiatrist and a dietitian working as one team.":"A psiquiatria convencional foca principalmente no controle dos sintomas com medicação. A abordagem metabólica também investiga e trata a biologia por trás (nutrição, metabolismo energético, inflamação e ritmos diários) junto ao cuidado convencional, com um psiquiatra e um nutricionista trabalhando como um só time.",
+    "An approach that investigates and treats the biological causes underlying mental-health conditions, such as mitochondrial dysfunction, insulin resistance, and chronic inflammation, by integrating nutrition, movement, and circadian rhythms into psychiatric treatment.":"Uma abordagem que investiga e trata as causas biológicas por trás das condições de saúde mental, como disfunção mitocondrial, resistência à insulina e inflamação crônica, integrando nutrição, movimento e ritmos circadianos ao tratamento psiquiátrico.",
+    // footer cta + footer
+    "A psychiatrist and a dietitian, on your side from day one.":"Um psiquiatra e um nutricionista ao seu lado desde o primeiro dia.",
+    "Ready to take the next step?":"Pronto para dar o próximo passo?",
+    "Start with a two-minute assessment. We'll take it from there, together.":"Comece com uma avaliação de dois minutos. A partir daí, seguimos juntos.",
+    "Private & secure":"Privado e seguro",
+    "© 2026 Metabolicamente · Psychiatry with an emphasis on nutrition":"© 2026 Metabolicamente · Psiquiatria com ênfase em nutrição",
+    "Demo prototype · all data fictional · not medical advice":"Protótipo demonstrativo · todos os dados são fictícios · não é aconselhamento médico",
+    // wizard chrome
+    "Exit":"Sair","Back":"Voltar","Continue":"Continuar","See what happens next":"Veja o que acontece agora","Done":"Concluído",
+    // wizard steps
+    "What brings you here?":"O que traz você aqui?",
+    "Choose everything that applies. This helps us understand where to start.":"Escolha tudo o que se aplica. Isso nos ajuda a entender por onde começar.",
+    "Low mood":"Humor baixo","Anxiety":"Ansiedade","Sleep problems":"Problemas de sono","Low energy or fatigue":"Baixa energia ou fadiga","Focus and memory":"Foco e memória","Weight or metabolic health":"Peso ou saúde metabólica","Something else":"Outra coisa",
+    "Anything you'd like to add?":"Quer acrescentar algo?","(optional)":"(opcional)",
+    "How long has this been going on?":"Há quanto tempo isso vem acontecendo?","There are no wrong answers here.":"Aqui não existem respostas erradas.",
+    "Less than 6 months":"Menos de 6 meses","6 months to 2 years":"De 6 meses a 2 anos","More than 2 years":"Mais de 2 anos",
+    "Are you currently receiving care?":"Você já faz algum acompanhamento?","Select everything that applies.":"Selecione tudo o que se aplica.",
+    "I see a psychiatrist":"Faço acompanhamento com psiquiatra","I see a therapist":"Faço terapia","I take psychiatric medication":"Tomo medicação psiquiátrica","None of these":"Nenhuma dessas",
+    "Your metabolic picture":"Seu quadro metabólico","Have you experienced any of these? Select all that apply.":"Você já passou por algum destes? Selecione todos que se aplicam.",
+    "Weight changes":"Mudanças de peso","gain or loss without a clear reason":"ganho ou perda sem motivo claro",
+    "Prediabetes or insulin resistance":"Pré-diabetes ou resistência à insulina","or a family history of it":"ou histórico familiar disso",
+    "Digestive issues":"Problemas digestivos","bloating, discomfort, irregularity":"inchaço, desconforto, irregularidade",
+    "Not sure":"Não tenho certeza","that's okay, we'll figure it out together":"tudo bem, vamos descobrir juntos",
+    "How is your sleep, most nights?":"Como é o seu sono, na maioria das noites?","Sleep is one of the strongest signals of metabolic health.":"O sono é um dos sinais mais fortes da saúde metabólica.",
+    "I sleep well and wake rested":"Durmo bem e acordo descansado","I sleep, but wake up tired":"Durmo, mas acordo cansado","I struggle to fall or stay asleep":"Tenho dificuldade para dormir ou manter o sono","It varies a lot":"Varia muito",
+    "What matters most to you?":"O que é mais importante para você?","Select up to three. Your care plan starts from your goals.":"Selecione até três. Seu plano de cuidado começa pelos seus objetivos.",
+    "Feel emotionally stable":"Sentir estabilidade emocional","Have more energy":"Ter mais energia","Understand the root causes":"Entender as causas de raiz","Review my medication with a doctor":"Revisar minha medicação com um médico","safely, never on your own":"com segurança, nunca por conta própria","Improve my physical health":"Melhorar minha saúde física",
+    "Almost there":"Quase lá","Tell us how to reach you. We'll match you with the right care team and get back within one business day.":"Conte como falar com você. Vamos encontrar a equipe de cuidado ideal e retornar em até um dia útil.",
+    "Your name":"Seu nome","Email":"E-mail","How would you prefer your first session?":"Como você prefere sua primeira consulta?",
+    "Video":"Vídeo","In person":"Presencial",
+    "Your answers are private, encrypted, and only shared with the care team you choose. You can access, export, or delete your data at any time.":"Suas respostas são privadas, criptografadas e compartilhadas apenas com a equipe de cuidado que você escolher. Você pode acessar, exportar ou excluir seus dados a qualquer momento.",
+    // wizard done
+    "Your assessment is with our clinical team. Here's what happens next:":"Sua avaliação está com nossa equipe clínica. Veja o que acontece agora:",
+    "We review your answers":"Nós revisamos suas respostas","A clinician, not an algorithm, reads every assessment.":"Um profissional de saúde, não um algoritmo, lê cada avaliação.",
+    "You get your care team match":"Você recebe sua equipe de cuidado","Within one business day, by email: the psychiatrist and dietitian right for your case.":"Em até um dia útil, por e-mail: o psiquiatra e o nutricionista certos para o seu caso.",
+    "You book your first session":"Você agenda sua primeira consulta",
+    "By video, at a time that works for you. No commitment until then.":"Por vídeo, no horário que for melhor para você. Sem compromisso até lá.",
+    "In person, at a time that works for you. No commitment until then.":"Presencial, no horário que for melhor para você. Sem compromisso até lá.",
+    "Book my first session":"Agendar minha primeira consulta","Back to site":"Voltar ao site","← Back to site":"← Voltar ao site",
+    // login
+    "Welcome back":"Bem-vindo de volta","Caring for your mind by caring for your metabolism.":"Cuidando da sua mente cuidando do seu metabolismo.",
+    "One account, one login. Your dashboard adapts to your role on the care team.":"Uma conta, um login. Seu painel se adapta ao seu papel na equipe de cuidado.",
+    "Demo:":"Demonstração:","choose a view below.":"escolha uma visão abaixo.",
+    "Psychiatrist · clinical dashboard":"Psiquiatra · painel clínico","Dietitian · nutrition dashboard":"Nutricionista · painel de nutrição","Patient · my health":"Paciente · minha saúde",
+    "Demo prototype · fictional data only":"Protótipo demonstrativo · apenas dados fictícios",
+    // topbars / roles / switch
+    "Dr. Elena Alves · Psychiatrist":"Dr. Elena Alves · Psiquiatra","Marina Rocha, RD · Dietitian":"Marina Rocha, Nutri · Nutricionista",
+    "Demo · switch view:":"Demonstração · trocar visão:","Doctor":"Médico","Dietitian":"Nutricionista","Patient":"Paciente","Sign out":"Sair",
+    "← Back to dashboard":"← Voltar ao painel","My patients":"Meus pacientes",
+    // doctor dashboard
+    "Good morning, Dr. Alves":"Bom dia, Dra. Alves","Friday, July 11 · 4 sessions today":"Sexta-feira, 11 de julho · 4 consultas hoje",
+    "Today's schedule":"Agenda de hoje","color = session type":"cor = tipo de consulta",
+    "Follow-up · video":"Retorno · vídeo","Follow-up · medication review":"Retorno · revisão de medicação","Follow-up":"Retorno","Initial psychiatric evaluation":"Avaliação psiquiátrica inicial","Initial":"Inicial","Urgent follow-up · flagged this week":"Retorno urgente · sinalizado esta semana",
+    "In-person visit due:":"Consulta presencial pendente:",
+    "James Carter, last in-person visit 168 days ago (limit 180 days for long-term care).":"James Carter, última consulta presencial há 168 dias (limite de 180 dias para cuidado de longo prazo).",
+    "status = 30-day trend · click a row":"status = tendência de 30 dias · clique em uma linha",
+    "Patient":"Paciente","Why":"Por quê","Ketones":"Cetonas","Last session":"Última consulta",
+    "On track":"No caminho","Watch":"Atenção","Needs attention":"Requer atenção","New":"Novo",
+    "Bipolar II · keto wk 9":"Bipolar II · ceto sem 9","MDD · keto wk 4":"TDM · ceto sem 4","GAD + MDD · keto wk 12":"TAG + TDM · ceto sem 12","New patient · intake today":"Novo paciente · admissão hoje",
+    "PHQ-9 down 5 in 30d; ketones in target 26/30 days":"PHQ-9 caiu 5 em 30d; cetonas na meta 26/30 dias",
+    "Ketones below target 8 of last 10 days; adherence dropping":"Cetonas abaixo da meta em 8 dos últimos 10 dias; adesão caindo",
+    "PHQ-9 up 6 in 14d; missed last check-in":"PHQ-9 subiu 6 em 14d; faltou ao último check-in",
+    "Initial evaluation at 11:30; intake forms completed":"Avaliação inicial às 11:30; formulários de admissão concluídos",
+    // patient detail
+    "34 · Bipolar II · Ketogenic protocol week 9 · Care team: Dr. Alves + Marina Rocha, RD":"34 · Bipolar II · Protocolo cetogênico semana 9 · Equipe: Dra. Alves + Marina Rocha, Nutri",
+    "Progress over time":"Progresso ao longo do tempo","toggle measures · last 90 days":"alternar medidas · últimos 90 dias",
+    "Each measure on its own scale. Time runs oldest → newest.":"Cada medida em sua própria escala. O tempo vai do mais antigo → mais recente.",
+    "PHQ-9 (mood)":"PHQ-9 (humor)","Sleep (h)":"Sono (h)",
+    "Keto start":"Início ceto","Med adjusted":"Medicação ajustada","Stable ketosis":"Cetose estável",
+    "Care timeline":"Linha do tempo do cuidado",
+    "Ketogenic protocol started":"Protocolo cetogênico iniciado","3:1 ratio, supervised by Marina":"proporção 3:1, supervisionado por Marina",
+    "Lamotrigine reduced":"Lamotrigina reduzida","Stable ketosis reached":"Cetose estável atingida","Above 1.0 mmol/L for 14 days":"Acima de 1,0 mmol/L por 14 dias",
+    "Follow-up session":"Consulta de retorno","Mood stable, sleep improved":"Humor estável, sono melhorou",
+    "Next steps":"Próximos passos","Video session 9:00":"Consulta por vídeo 9:00","Pre-session PHQ-9 completed":"PHQ-9 pré-consulta concluído",
+    "In-person visit due":"Consulta presencial pendente","62 days remaining (180-day rule)":"62 dias restantes (regra de 180 dias)",
+    "Recent labs":"Exames recentes","value shown against her personalized goal range":"valor mostrado em relação à faixa-alvo personalizada dela",
+    // labs
+    "Beta-hydroxybutyrate (ketones)":"Beta-hidroxibutirato (cetonas)","HbA1c (3-month blood sugar)":"HbA1c (glicemia de 3 meses)","Fasting glucose":"Glicose em jejum","LDL cholesterol":"Colesterol LDL","Vitamin D":"Vitamina D","TSH (thyroid)":"TSH (tireoide)",
+    "Right where you and your care team want it: your therapeutic range.":"Exatamente onde você e sua equipe querem: sua faixa terapêutica.",
+    "In your goal range. Down from 5.7 in April.":"Dentro da sua meta. Caiu de 5,7 em abril.",
+    "In your goal range and steady.":"Dentro da meta e estável.",
+    "Slightly above your goal. Many doctors are not concerned until 160; worth discussing at your next session, not urgent.":"Um pouco acima da meta. Muitos médicos só se preocupam a partir de 160; vale conversar na próxima consulta, não é urgente.",
+    "In your goal range since starting the supplement.":"Dentro da meta desde o início do suplemento.",
+    "Normal thyroid function.":"Função da tireoide normal.","concern level":"nível de preocupação",
+    // nutritionist
+    "Good morning, Marina":"Bom dia, Marina","Friday, July 11 · 3 sessions today":"Sexta-feira, 11 de julho · 3 consultas hoje",
+    "Nutrition follow-up · after Dr. Alves":"Retorno nutricional · após a Dra. Alves","Adherence support · meal planning":"Apoio à adesão · plano alimentar","Initial nutrition assessment":"Avaliação nutricional inicial",
+    "nutrition-focused flags · click a row":"sinais de nutrição · clique em uma linha",
+    "Ketones (14d)":"Cetonas (14d)","Logging":"Registros","Next session":"Próxima consulta",
+    "Keto 3:1 · wk 9":"Ceto 3:1 · sem 9","Keto 2:1 · wk 4":"Ceto 2:1 · sem 4","Keto 3:1 · wk 12":"Ceto 3:1 · sem 12",
+    "26/30 days in ketosis; logging streak 21 days":"26/30 dias em cetose; sequência de registros de 21 dias",
+    "Carb creep on weekends; ketones below 0.5 for 8 of 10 days":"Excesso de carboidratos nos fins de semana; cetonas abaixo de 0,5 em 8 de 10 dias",
+    "Nutrition fine; mood flag raised by Dr. Alves; coordinate care":"Nutrição ok; alerta de humor levantado pela Dra. Alves; coordenar cuidado",
+    "21-day streak":"sequência de 21 dias","3 missed days":"3 dias sem registro","Consistent":"Consistente",
+    "Care coordination:":"Coordenação de cuidado:",
+    "Dr. Alves flagged Maria Lopez (mood declining). Her nutrition adherence is good; session notes shared with you.":"A Dra. Alves sinalizou Maria Lopez (humor em queda). A adesão nutricional dela está boa; as anotações da consulta foram compartilhadas com você.",
+    // patient dashboard
+    "Good morning, Sarah":"Bom dia, Sarah","Friday, July 11 · week 9 of your program":"Sexta-feira, 11 de julho · semana 9 do seu programa",
+    "AI summary · from your last 30 days":"Resumo de IA · dos seus últimos 30 dias",
+    "You're doing well. Your mood scores improved again this month (PHQ-9 down from 11 to 6), and you kept ketones in your goal range 26 of 30 days, your most consistent month yet. Sleep is averaging 7h20. One thing to watch: ketones dipped on the last two weekends. That might be worth mentioning to Marina today.":"Você está indo bem. Suas pontuações de humor melhoraram de novo neste mês (PHQ-9 caiu de 11 para 6), e você manteve as cetonas na sua meta em 26 de 30 dias, seu mês mais consistente até agora. O sono está em média de 7h20. Um ponto de atenção: as cetonas caíram nos dois últimos fins de semana. Pode valer a pena comentar com a Marina hoje.",
+    "Based on: 30 mood check-ins · 28 ketone readings · sleep data · June labs. AI-generated, not medical advice.":"Com base em: 30 check-ins de humor · 28 medições de cetonas · dados de sono · exames de junho. Gerado por IA, não é aconselhamento médico.",
+    "Discuss with my care team":"Conversar com minha equipe de cuidado",
+    "Today":"Hoje","mmol/L ketones this morning":"mmol/L de cetonas nesta manhã","In your goal range (1.0–3.0)":"Dentro da sua meta (1,0–3,0)",
+    "last check-in":"último check-in","sleep":"sono","last night":"ontem à noite","day logging":"registro diário","streak":"sequência",
+    "Your appointments":"Suas consultas",
+    "Session with Dr. Elena Alves":"Consulta com a Dra. Elena Alves","Psychiatrist":"Psiquiatra",
+    "Today · 9:00 AM · Video":"Hoje · 09:00 · Vídeo",
+    "Your mood check-in is done":"Seu check-in de humor está pronto","Note: ask about weekend ketone dips":"Nota: perguntar sobre as quedas de cetona no fim de semana",
+    "Join session":"Entrar na consulta","Reschedule":"Reagendar",
+    "Session with Marina Rocha":"Consulta com Marina Rocha","Today · 9:45 AM · Video":"Hoje · 09:45 · Vídeo",
+    "Log this morning's breakfast":"Registrar o café da manhã de hoje","Photos of weekend meals help":"Fotos das refeições do fim de semana ajudam",
+    "Your month at a glance":"Seu mês em resumo","mood + ketones together":"humor + cetonas juntos",
+    "Mood (higher = better). Watch how they move together.":"Humor (mais alto = melhor). Veja como eles se movem juntos.","4 weeks ago":"há 4 semanas","today":"hoje",
+    "21-day logging streak.":"Sequência de 21 dias de registros.",
+    "Missed a day? No problem: streaks have a 1-day grace so one busy day never resets your progress.":"Perdeu um dia? Sem problema: a sequência tem 1 dia de tolerância, então um dia corrido nunca zera seu progresso.",
+    "Your results":"Seus resultados","shown against YOUR goal range, not the lab default":"mostrados em relação à SUA meta, não ao padrão do laboratório",
+    "Food log":"Registro alimentar","under 10 seconds to log":"menos de 10 segundos para registrar",
+    "Photo":"Foto","Voice":"Voz","Type":"Digitar",
+    "Eggs, spinach & feta":"Ovos, espinafre e feta","Breakfast · 8:02 AM · logged by photo":"Café da manhã · 08:02 · registrado por foto","Keto":"Ceto",
+    "Chicken avocado bowl":"Bowl de frango com abacate","Lunch yesterday · 1:15 PM":"Almoço ontem · 13:15",
+    "Berries & cream":"Frutas vermelhas com creme","Dessert yesterday · 9:40 PM":"Sobremesa ontem · 21:40","Check portion":"Ver porção",
+    "Metabolicamente · demo prototype · all data fictional · your data is private and yours. Export or delete it anytime":"Metabolicamente · protótipo demonstrativo · todos os dados são fictícios · seus dados são privados e seus. Exporte ou exclua quando quiser",
+    "Today 9:45":"Hoje 9:45","Today 11:00":"Hoje 11:00",
+    // toasts
+    "Demo: only Sarah's chart is wired up. Click her row":"Demonstração: apenas o gráfico da Sarah está funcional. Clique na linha dela",
+    "Demo: only Sarah's chart is wired up":"Demonstração: apenas o gráfico da Sarah está funcional",
+    "Demo: this would open a message to your care team":"Demonstração: isto abriria uma mensagem para sua equipe de cuidado",
+    "Demo: video session would open here":"Demonstração: a consulta por vídeo abriria aqui",
+    "Demo: reschedule flow":"Demonstração: fluxo de reagendamento",
+    "Demo: camera would open. Snap your plate,, AI does the rest":"Demonstração: a câmera abriria. Fotografe seu prato,, a IA faz o resto",
+    "Demo: hold to speak: grilled salmon with avocado salad":"Demonstração: segure para falar: salmão grelhado com salada de abacate",
+    "Demo: quick text entry":"Demonstração: entrada rápida de texto",
+    "Demo: booking flow would open here":"Demonstração: o fluxo de agendamento abriria aqui",
+    // placeholders
+    "Tell us a little about what you're experiencing...":"Conte um pouco sobre o que você está sentindo...",
+    "First and last name":"Nome e sobrenome",
+    // dates
+    "Jul 3":"3 jul","Jun 28":"28 jun","Jun 30":"30 jun","Jul 15":"15 jul","Sep 2":"2 set","May 6":"6 mai","May 20":"20 mai","Jun 12":"12 jun","Apr 14":"14 abr","Jul 11":"11 jul"
+  };
+  const RULES=[
+    {re:/^(\d+) of 7$/, pt:m=>m[1]+" de 7"},
+    {re:/^Thank you, (.+)\.$/, pt:m=>"Obrigado, "+m[1]+"."},
+    {re:/^your goal: (.+)$/, pt:m=>"sua meta: "+m[1]}
+  ];
+  let cur='en';
+  function translate(str){
+    const k=str.trim(); if(!k) return null;
+    if(EN2PT[k]!==undefined) return str.replace(k,EN2PT[k]);
+    for(const r of RULES){ const m=k.match(r.re); if(m) return str.replace(k,r.pt(m)); }
+    return null;
+  }
+  function walk(node){
+    if(node.nodeType===3){
+      if(cur==='pt'){
+        if(node.__i18n===undefined){ const rep=translate(node.nodeValue); if(rep!==null){ node.__i18n=node.nodeValue; node.nodeValue=rep; } }
+      }else{
+        if(node.__i18n!==undefined){ node.nodeValue=node.__i18n; node.__i18n=undefined; }
+      }
+      return;
+    }
+    if(node.nodeType===1){
+      if(node.hasAttribute&&node.hasAttribute('placeholder')){
+        if(cur==='pt'){ if(node.__i18nPh===undefined){ const p=node.getAttribute('placeholder'), t=EN2PT[p.trim()]; if(t!==undefined){ node.__i18nPh=p; node.setAttribute('placeholder',t);} } }
+        else{ if(node.__i18nPh!==undefined){ node.setAttribute('placeholder',node.__i18nPh); node.__i18nPh=undefined; } }
+      }
+      for(let c=node.firstChild;c;c=c.nextSibling) walk(c);
+    }
+  }
+  function apply(){ walk(document.body); }
+  window.__applyLang=apply;
+  // re-apply after any dynamic render
+  ['go','wizRender','wizValid','wizDone','drawBig','drawPatient'].forEach(fn=>{
+    const orig=window[fn]; if(typeof orig==='function'){ window[fn]=function(){ const r=orig.apply(this,arguments); try{apply();}catch(e){} return r; }; }
+  });
+  // translate toast messages
+  const _toast=window.toast;
+  if(typeof _toast==='function'){ window.toast=function(m){ return _toast.call(this, (cur==='pt'&&EN2PT[m]!==undefined)?EN2PT[m]:m); }; }
+  function setLang(l){
+    cur=l; document.documentElement.lang = (l==='pt'?'pt-BR':'en');
+    apply();
+    document.querySelectorAll('.langtog').forEach(b=>b.textContent = (l==='pt'?'EN':'PT'));
+  }
+  window.__setLang=setLang;
+  function makeTog(){ const b=document.createElement('button'); b.className='langtog'; b.textContent='PT'; b.title='English / Português (BR)';
+    b.style.cssText='border:1px solid currentColor;background:transparent;color:inherit;border-radius:99px;padding:4px 11px;font-size:12px;font-weight:700;letter-spacing:.03em;margin-left:10px;cursor:pointer;opacity:.85;flex-shrink:0';
+    b.onclick=function(e){ e.preventDefault(); setLang(cur==='en'?'pt':'en'); };
+    return b; }
+  function inject(){
+    const nav=document.querySelector('.nav'); if(nav&&!nav.querySelector('.langtog')) nav.appendChild(makeTog());
+    document.querySelectorAll('.topbar').forEach(tb=>{ if(!tb.querySelector('.langtog')){ const t=makeTog(); const sl=tb.querySelector('.switch-label'); if(sl) tb.insertBefore(t,sl); else tb.appendChild(t); } });
+    const wt=document.querySelector('.wiz-top'); if(wt&&!wt.querySelector('.langtog')){ const t=makeTog(); t.style.position='absolute'; t.style.left='22px'; t.style.marginLeft='0'; wt.appendChild(t); }
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',inject); else inject();
+})();
 </script>
 </body>
 </html>
