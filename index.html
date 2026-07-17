@@ -1224,25 +1224,30 @@ function pyramid(el,bands){
     if(br){const bx=x2+(x2>x1?12:-12),by=y2+14;t.appendChild(rc.line(x2,y2,bx,by,{roughness:2.4,bowing:2,stroke:col,strokeWidth:Math.max(1.2,w-0.8)}));}
   }
   function ground(t,rc,x1,x2,y,col){ t.appendChild(rc.line(x1,y,x2,y,{roughness:2.2,bowing:1,stroke:col,strokeWidth:2.4})); }
-  function tx(t,x,y,s,col){ const e=document.createElementNS(NS,'text'); e.setAttribute('x',x); e.setAttribute('y',y); e.setAttribute('text-anchor','middle'); e.setAttribute('font-family',"'Caveat',cursive"); e.setAttribute('font-size',17); e.setAttribute('font-weight',700); e.setAttribute('fill',col); e.textContent=s; t.appendChild(e); }
+  function tx(t,x,y,s,col,size){ const e=document.createElementNS(NS,'text'); e.setAttribute('x',x); e.setAttribute('y',y); e.setAttribute('text-anchor','middle'); e.setAttribute('font-family',"'Caveat',cursive"); e.setAttribute('font-size',size||16); e.setAttribute('font-weight',700); e.setAttribute('fill',col); e.textContent=s; t.appendChild(e); }
   function sprout(id,strong){
     const svg=document.getElementById(id); if(!svg||!window.rough) return;
-    svg.setAttribute('viewBox','0 48 360 252'); svg.innerHTML='';
+    svg.setAttribute('viewBox','0 10 360 330'); svg.innerHTML='';
     const g=document.createElementNS(NS,'g'); g.setAttribute('class','growg'); svg.appendChild(g);
-    const rc=rough.svg(svg), cx=180, gy=182, cc='currentColor';
-    ground(g,rc,44,316,gy,cc);
-    if(strong){
-      stem(g,rc,cx,gy,cx,84,cx+4,3,cc);
-      leaf(g,rc,cx,120,-2.5,52,teal5,cc); leaf(g,rc,cx,108,-0.6,50,teal5,cc); leaf(g,rc,cx,132,-2.1,44,green,cc);
-      g.appendChild(rc.circle(cx,80,20,{roughness:1.6,stroke:coral,fill:coral,fillStyle:'solid'}));
-      for(let i=0;i<6;i++){const a=(i-2.5)/6; root(g,rc,cx,gy,cx+a*250,gy+78+Math.abs(a)*30+(i%2?12:0),2.4,coral,i%2===0);}
-      tx(g,cx,66,'thriving','currentColor'); tx(g,cx,gy+112,'deep & nourished roots','#C9573C');
-    } else {
-      stem(g,rc,cx,gy,cx-14,118,cx-16,2.4,gray);
-      leaf(g,rc,cx-12,132,2.4,34,'none',gray); leaf(g,rc,cx-13,124,3.4,30,'none',gray);
-      for(let i=0;i<3;i++){const a=(i-1)/3; root(g,rc,cx,gy,cx+a*90,gy+34+(i%2?6:0),1.5,gray);}
-      tx(g,cx-6,104,'fragile',gray); tx(g,cx,gy+58,'shallow roots',gray);
+    const rc=rough.svg(svg), cx=180, gy=176, cc='currentColor';
+    const soil=strong?coral:gray;
+    g.appendChild(rc.line(40,gy,320,gy,{roughness:2.4,stroke:cc,strokeWidth:2.4}));
+    const topY=strong?58:92;
+    g.appendChild(rc.line(cx,gy,cx,topY,{roughness:2.2,bowing:strong?1:3,stroke:cc,strokeWidth:2.6}));
+    const lf=(dir,ly)=>{ g.appendChild(rc.path(`M ${cx} ${ly} q ${dir*34} -14 ${dir*46} 10 q ${-dir*14} 10 ${-dir*46} -10 z`,{roughness:2,stroke:cc,strokeWidth:2,fill:strong?teal5:'none',fillStyle:'hachure',fillWeight:1.4,hachureGap:6})); };
+    if(strong){ lf(1,topY+26); lf(-1,topY+46); lf(1,topY+66);
+      g.appendChild(rc.circle(cx,topY-4,20,{roughness:1.8,stroke:coral,fill:coral,fillStyle:'solid'}));
+    } else { lf(-1,topY+18); lf(1,topY+34); }
+    const rootN=strong?7:3;
+    for(let i=0;i<rootN;i++){
+      const spread=strong?150:70;
+      const ex=cx+(i-(rootN-1)/2)*(spread/rootN)*2 + (i%2?8:-8);
+      const ey=gy+ (strong? 70+(i%3)*14 : 34+(i%2)*8);
+      g.appendChild(rc.line(cx,gy,ex,ey,{roughness:2.6,bowing:3,stroke:soil,strokeWidth:strong?2.4:1.6}));
+      if(strong && i%2===0) g.appendChild(rc.line(ex,ey,ex+(i%4?12:-12),ey+16,{roughness:2.6,bowing:3,stroke:soil,strokeWidth:1.8}));
     }
+    tx(g,cx,topY-16, strong?'thriving':'fragile', strong?cc:gray, 16);
+    tx(g,cx,gy+(strong?150:66), strong?'metabolic foundation':'metabolism ignored', strong?'#C9573C':gray, strong?17:15);
   }
   window.__drawSprouts=function(){ sprout('pyr1',false); sprout('pyr2',true); };
   __drawSprouts();
@@ -2049,6 +2054,7 @@ routeFromHash();
     "Metabolic approach":"Abordagem metabólica","Biology is the foundation":"A biologia é a base",
     "Conventional":"Convencional","Our approach":"Nossa abordagem",
     "fragile":"frágil","shallow roots":"raízes rasas","thriving":"florescendo","deep & nourished roots":"raízes profundas e nutridas",
+    "metabolism ignored":"metabolismo ignorado","metabolic foundation":"base metabólica",
     "Lifestyle":"Estilo de vida","Therapy":"Terapia","Medication":"Medicação","Metabolic foundation":"Base metabólica",
     "sleep · diet · exercise":"sono · dieta · exercício","when needed":"quando necessário",
     "nutrition · circadian rhythms · movement":"nutrição · ritmos circadianos · movimento",
