@@ -1563,8 +1563,8 @@ function introPlay(){
   t(()=>s1.classList.add('show'), 250);            // logo fades in
   t(()=>s1.classList.add('out'), 2650);            // logo drifts out
   t(()=>s2.classList.add('show'), 3350);           // phrase fades in
-  t(()=>s2.classList.add('out'), 5600);            // phrase fades up
-  t(()=>introSkip(), 5900);                        // intro fades out to reveal the homepage
+  t(()=>s2.classList.add('out'), 5500);            // phrase fully fades out first
+  t(()=>introSkip(), 6800);                        // then, after it's gone, dissolve to the homepage
 }
 
 /* ============ INIT ============ */
