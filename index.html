@@ -529,7 +529,7 @@ a{color:inherit;text-decoration:none}
 .istage .ilogo .logo-mark{width:auto;height:auto;background:none}
 .istage .ilogo .logo-mark svg{width:58px;height:58px}
 .istage .iname{font-family:var(--serif);font-size:clamp(44px,7vw,72px);color:#F5EFE4;letter-spacing:.01em}
-.istage .iphrase{font-family:var(--serif);font-weight:500;font-size:clamp(20px,4.9vw,62px);color:#F5EFE4;line-height:1.08;letter-spacing:-.01em;white-space:nowrap}
+.istage .iphrase{font-family:var(--display);font-weight:700;font-size:clamp(28px,5vw,60px);color:#F5EFE4;line-height:1.12;letter-spacing:-.02em}
 #intro .ibg{position:absolute;inset:0;background:
   radial-gradient(900px 500px at 80% -10%, #1A5F76 0%, transparent 55%),
   radial-gradient(700px 500px at 5% 110%, #0F3E4E 0%, transparent 55%),
@@ -738,7 +738,7 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
     </div>
   </div>
   <div class="istage" id="ist2">
-    <div class="iphrase" id="iphrase">A new approach to mental health.</div>
+    <div class="iphrase" id="iphrase">You deserve to feel well.</div>
   </div>
   <div class="iskip">click anywhere to skip</div>
 </div>
@@ -1561,7 +1561,8 @@ function introPlay(){
   t(()=>s1.classList.add('show'), 250);            // logo fades in
   t(()=>s1.classList.add('out'), 2650);            // logo drifts out
   t(()=>s2.classList.add('show'), 3350);           // phrase fades in
-  t(()=>introMorph(), 5900);                       // phrase glides into the hero
+  t(()=>s2.classList.add('out'), 5600);            // phrase fades up
+  t(()=>introSkip(), 5900);                        // intro fades out to reveal the homepage
 }
 
 /* ============ INIT ============ */
@@ -2078,6 +2079,7 @@ routeFromHash();
     "Log in":"Entrar","Start your journey":"Comece sua jornada","Learn more":"Saiba mais",
     "Metabolic Psychiatry":"Psiquiatria Metabólica",
     "A new approach to mental health.":"Uma nova abordagem para a saúde mental.",
+    "You deserve to feel well.":"Você merece se sentir bem.",
     "We care for your mind and body to restore your quality of life through metabolic science.":"Cuidamos da sua mente e corpo para restaurar sua qualidade de vida através da ciência metabólica.",
     "Takes 2 minutes":"Leva 2 minutos","No commitment":"Sem compromisso","Your answers stay private":"Suas respostas são privadas",
     // about
