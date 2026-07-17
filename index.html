@@ -21,6 +21,7 @@
   --calm:'Mulish','Inter',-apple-system,sans-serif;
   --r:14px; --shadow:0 1px 2px rgba(12,51,63,.04),0 6px 24px rgba(12,51,63,.06);
   --hd:#0C333F; --hd2:#114B5F; --hd3:#1A5F76; --navbg:rgba(250,246,240,.88);
+  --tintband:#E9F1EF;
 }
 /* ============ DARK MODE ============ */
 body.dark{
@@ -29,6 +30,7 @@ body.dark{
   --ok-bg:#0E3120; --watch-bg:#33250B; --alert-bg:#391811; --coral-bg:#382019;
   --hd:#EAE4D8; --hd2:#D3E2E0; --hd3:#8FC1BB; --navbg:rgba(10,30,38,.86);
   --shadow:0 1px 2px rgba(0,0,0,.2),0 6px 24px rgba(0,0,0,.25);
+  --tintband:#0E2831;
 }
 body.dark .cta-panel{background:linear-gradient(180deg,#112F3B,#0E2831);border-color:#1C4150;box-shadow:0 3px 6px rgba(0,0,0,.2),0 22px 60px rgba(0,0,0,.3)}
 body.dark .pyr-card{background:linear-gradient(180deg,#112F3B,#0E2831)}
@@ -585,7 +587,10 @@ body.title-wait #heroTitle{opacity:0}
 .center .lead{margin-left:auto;margin-right:auto}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
-.sec-divider{width:100%;height:34px;margin:26px 0 12px;background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='16' viewBox='0 0 40 16'><path d='M0 8 Q10 0 20 8 T40 8' fill='none' stroke='%23114B5F' stroke-width='2.4' stroke-linecap='round'/></svg>");background-repeat:repeat-x;background-position:center;background-size:56px 28px}
+.wave-band{display:block;width:100%;height:64px;margin-bottom:-1px}
+.wave-band.up{margin-bottom:0;margin-top:-1px}
+.wave-band path{fill:var(--tintband)}
+.tintband{background:var(--tintband)}
 
 /* pyramids */
 .pyr-row{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:54px}
@@ -623,13 +628,15 @@ body.dark .pyr-svg{color:#EDE6D8}
 .step-ic{width:48px;height:48px;border-radius:14px;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 18px}
 .step b{display:block;font-family:var(--serif);font-size:18px;color:var(--hd);margin-bottom:8px;font-weight:500}
 .step p{font-size:13.5px;color:var(--soft);line-height:1.6}
+.steps .step:not(:last-child)::after{content:"";position:absolute;top:77px;right:-22px;width:22px;border-top:2px dashed var(--line)}
+@media(max-width:960px){.steps .step::after{display:none}}
 
 /* brain section */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
 @media(max-width:860px){.split{grid-template-columns:1fr;gap:34px}}
 .split .facts{display:flex;flex-direction:column;gap:18px}
 .fact{display:flex;gap:14px;align-items:flex-start}
-.fact-ic{width:38px;height:38px;border-radius:11px;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0;margin-top:2px}
+.fact-ic{width:40px;height:40px;border-radius:11px;background:var(--card);color:var(--t500);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;margin-top:2px;box-shadow:0 1px 2px rgba(12,51,63,.05),0 4px 12px rgba(12,51,63,.06)}
 .fact b{font-size:15px;color:var(--hd)}
 .fact p{font-size:13.5px;color:var(--soft);margin-top:3px;line-height:1.6}
 
@@ -639,7 +646,7 @@ body.dark .pyr-svg{color:#EDE6D8}
 .dark-sec .hl{color:#FF8C5A;font-weight:700}
 .strip-wave{display:block;width:100%;height:72px;margin-bottom:-1px}
 .strip-wave.bottom{margin-bottom:0;margin-top:-1px}
-.dark-sec h2{color:#F5EFE4}
+.dark-sec h2{color:#F5EFE4;font-size:clamp(34px,4.6vw,54px)}
 .dark-sec .lead{color:#F5EFE4;opacity:.82;max-width:34em;margin:14px auto 0}
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:54px}
 @media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr);gap:40px 20px}}
@@ -664,6 +671,11 @@ body.dark .pyr-svg{color:#EDE6D8}
 
 /* footer cta */
 .foot-cta{text-align:center;padding:80px 5vw 70px}
+.simple-cta{max-width:640px;margin:0 auto;text-align:center}
+.simple-cta h2{font-family:var(--serif);font-size:clamp(28px,3.6vw,44px);color:var(--hd);line-height:1.15;margin-bottom:30px}
+.simple-cta .btn{font-size:16px}
+.simple-cta-trust{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:22px;font-size:13px;color:var(--soft)}
+.simple-cta-trust .ic{color:var(--t500)}
 .cta-line{max-width:none;white-space:nowrap}
 @media(max-width:680px){.cta-line{white-space:normal;max-width:30em}}
 .cta-panel{position:relative;overflow:hidden;max-width:880px;margin:0 auto;background:
@@ -797,9 +809,9 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
     </div>
   </section>
 
-  <div class="sec-divider reveal" aria-hidden="true"></div>
+  <svg class="wave-band" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0 64 L0 38 Q360 2 720 32 T1440 28 L1440 64 Z"/></svg>
 
-  <section class="sec" style="padding-top:30px">
+  <section class="sec tintband" style="padding-top:34px">
     <div class="sec-inner split">
       <div class="reveal">
         <h2>The brain is a metabolic organ.</h2>
@@ -812,6 +824,8 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
       </div>
     </div>
   </section>
+
+  <svg class="wave-band up" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L0 26 Q360 62 720 32 T1440 36 L1440 0 Z"/></svg>
 
   <section class="sec" id="how">
     <div class="sec-inner center reveal">
@@ -832,10 +846,10 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
       <h2>Real results, backed by science.</h2>
       <p class="lead">In a 4-month pilot trial at <span class="hl">Stanford</span>, patients with serious mental illness followed a supervised ketogenic protocol alongside their medication.</p>
       <div class="stats">
-        <div class="stat"><div class="sicon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="n"><span class="cnt" data-to="100">0</span><small>%</small></div><p>of participants with metabolic syndrome saw it fully resolve</p></div>
-        <div class="stat"><div class="sicon"><svg viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg></div><div class="n"><span class="cnt" data-to="79">0</span><small>%</small></div><p>showed clinically meaningful psychiatric improvement</p></div>
-        <div class="stat"><div class="sicon"><svg viewBox="0 0 24 24"><path d="M9.9 15.5a2 2 0 0 0-1.4-1.4L2.4 12.5a.5.5 0 0 1 0-1L8.5 9.9A2 2 0 0 0 9.9 8.5l1.6-6.1a.5.5 0 0 1 1 0l1.6 6.1a2 2 0 0 0 1.4 1.4l6.1 1.6a.5.5 0 0 1 0 1l-6.1 1.6a2 2 0 0 0-1.4 1.4l-1.6 6.1a.5.5 0 0 1-1 0Z"/></svg></div><div class="n"><span class="cnt" data-to="31">0</span><small>%</small></div><p>average improvement in illness severity (CGI)</p></div>
-        <div class="stat"><div class="sicon"><svg viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div><div class="n"><span class="cnt" data-to="10">0</span><small>%</small></div><p>average body-weight loss, without stopping medication</p></div>
+        <div class="stat"><div class="sicon"><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div><div class="n"><span class="cnt" data-to="100">0</span><small>%</small></div><p>reversal of metabolic syndrome</p></div>
+        <div class="stat"><div class="sicon"><svg viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg></div><div class="n"><span class="cnt" data-to="79">0</span><small>%</small></div><p>mental health improvement (CGI)</p></div>
+        <div class="stat"><div class="sicon"><svg viewBox="0 0 24 24"><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z"/><path d="m8.5 8.5 7 7"/></svg></div><div class="n"><span class="cnt" data-to="30">0</span><small>%</small></div><p>decrease in medications</p></div>
+        <div class="stat"><div class="sicon"><svg viewBox="0 0 24 24"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div><div class="n"><span class="cnt" data-to="10">0</span><small>%</small></div><p>average weight loss</p></div>
       </div>
       <div class="src">Sethi et al., Psychiatry Research, 2024 · 21 participants · results from a single-arm pilot study; individual outcomes vary.</div>
     </div>
@@ -851,20 +865,10 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
   </section>
 
   <section class="foot-cta">
-    <div class="cta-panel reveal">
-      <div class="cta-avatars">
-        <div class="av" style="background:var(--t700)">EA</div>
-        <div class="av" style="background:var(--t500)">MR</div>
-      </div>
-      <div class="cta-carecopy">A psychiatrist and a dietitian, on your side from day one.</div>
-      <h2 class="serif" style="font-size:clamp(28px,3.8vw,44px);color:#F5EFE4">Ready to take the next step?</h2>
-      <p class="lead cta-line" style="margin:14px auto 32px;color:rgba(245,239,228,.75)">Start with a two-minute assessment. We'll take it from there, together.</p>
-      <a class="btn btn-cream" onclick="go('wizard')" style="cursor:pointer;font-size:16px;padding:16px 32px">Start your journey <span class="ic" data-icon="arrow-right"></span></a>
-      <div class="cta-trust">
-        <span><span class="ic" data-icon="clock"></span>Takes 2 minutes</span>
-        <span><span class="ic" data-icon="heart"></span>No commitment</span>
-        <span><span class="ic" data-icon="shield"></span>Private &amp; secure</span>
-      </div>
+    <div class="simple-cta reveal">
+      <h2>Ready to take the next step?</h2>
+      <a class="btn btn-coral" onclick="go('wizard')" style="cursor:pointer;font-size:16px;padding:16px 34px">Start your journey <span class="ic" data-icon="arrow-right"></span></a>
+      <div class="simple-cta-trust"><span class="ic" data-icon="clock"></span>Takes 2 minutes · No commitment · Private &amp; secure</div>
     </div>
   </section>
   </div><!-- /home -->
@@ -2077,7 +2081,7 @@ routeFromHash();
 (function(){
   const EN2PT={
     // nav + hero
-    "About":"Sobre","How it works":"Como funciona","Results":"Resultados","FAQ":"Dúvidas",
+    "About":"Sobre","How it works":"Como Funciona","Results":"Resultados","FAQ":"Dúvidas",
     "Log in":"Entrar","Start your journey":"Comece sua jornada","Learn more":"Saiba mais",
     "Metabolic Psychiatry":"Psiquiatria Metabólica",
     "A new approach to mental health.":"Uma nova abordagem para a saúde mental.",
@@ -2106,23 +2110,23 @@ routeFromHash();
     "Metabolic balance":"Equilíbrio metabólico",
     "Insulin resistance, inflammation, and mitochondrial dysfunction can directly impact mood, focus, and stability.":"Resistência à insulina, inflamação e disfunção mitocondrial podem afetar diretamente o humor, o foco e a estabilidade.",
     // how it works
-    "Four steps to transform your mental health, with a real care team beside you.":"Quatro passos para transformar sua saúde mental, com uma equipe de cuidado de verdade ao seu lado.",
-    "Initial assessment":"Avaliação inicial",
-    "A short questionnaire about your symptoms, history, and health goals. Two minutes, no commitment.":"Um questionário rápido sobre seus sintomas, histórico e objetivos de saúde. Dois minutos, sem compromisso.",
-    "Care team match":"Equipe de cuidado ideal",
-    "Our team identifies the right psychiatrist and dietitian for your specific case.":"Nossa equipe identifica o psiquiatra e o nutricionista certos para o seu caso.",
-    "First session":"Primeira consulta",
-    "A real conversation: align expectations, go deeper into your story, and plan together.":"Uma conversa de verdade: alinhar expectativas, aprofundar sua história e planejar juntos.",
-    "Ongoing care":"Cuidado contínuo",
-    "A personalized metabolic care plan, built and followed by your psychiatrist and dietitian as one team.":"Um plano de cuidado metabólico personalizado, criado e acompanhado pelo seu psiquiatra e nutricionista como um só time.",
+    "Four steps to transform your mental health, with a real care team beside you.":"Quatro passos para transformar sua saúde mental.",
+    "Initial assessment":"Avaliação Inicial",
+    "A short questionnaire about your symptoms, history, and health goals. Two minutes, no commitment.":"Questionário rápido sobre seus sintomas, histórico e objetivos de saúde.",
+    "Care team match":"Encaminhamento",
+    "Our team identifies the right psychiatrist and dietitian for your specific case.":"Nossa equipe identifica o profissional ideal para o seu caso clínico.",
+    "First session":"Conversa Inicial",
+    "A real conversation: align expectations, go deeper into your story, and plan together.":"Sessão para alinhamento das expectativas e aprofundamento do caso.",
+    "Ongoing care":"Acompanhamento",
+    "A personalized metabolic care plan, built and followed by your psychiatrist and dietitian as one team.":"Plano de intervenção metabólica traçado pela equipe de nutricionistas e psiquiatras.",
     // results
     "Real results, backed by science.":"Resultados reais, com respaldo científico.",
     "In a 4-month pilot trial at":"Em um estudo piloto de 4 meses na",
     ", patients with serious mental illness followed a supervised ketogenic protocol alongside their medication.":", pacientes com transtornos mentais graves seguiram um protocolo cetogênico supervisionado junto com sua medicação.",
-    "of participants with metabolic syndrome saw it fully resolve":"dos participantes com síndrome metabólica tiveram resolução completa",
-    "showed clinically meaningful psychiatric improvement":"apresentaram melhora psiquiátrica clinicamente significativa",
-    "average improvement in illness severity (CGI)":"de melhora média na gravidade da doença (CGI)",
-    "average body-weight loss, without stopping medication":"de perda média de peso corporal, sem interromper a medicação",
+    "reversal of metabolic syndrome":"reversão da síndrome metabólica",
+    "mental health improvement (CGI)":"melhora na saúde mental (CGI)",
+    "decrease in medications":"redução de medicamentos",
+    "average weight loss":"perda média de peso",
     "Sethi et al., Psychiatry Research, 2024 · 21 participants · results from a single-arm pilot study; individual outcomes vary.":"Sethi et al., Psychiatry Research, 2024 · 21 participantes · resultados de um estudo piloto de braço único; os resultados individuais variam.",
     // faq
     "Common questions":"Perguntas frequentes",
