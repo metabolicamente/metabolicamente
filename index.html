@@ -628,8 +628,20 @@ body.dark .pyr-svg{color:#EDE6D8}
 .step-ic{width:48px;height:48px;border-radius:14px;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:22px;margin:0 auto 18px}
 .step b{display:block;font-family:var(--serif);font-size:18px;color:var(--hd);margin-bottom:8px;font-weight:500}
 .step p{font-size:13.5px;color:var(--soft);line-height:1.6}
-.steps .step:not(:last-child)::after{content:"";position:absolute;top:77px;right:-34px;width:34px;border-top:2px dashed var(--line)}
+.steps .step:not(:last-child)::after{content:"";position:absolute;top:77px;right:-34px;width:34px;border-top:2px dashed var(--line);transform:scaleX(0);transform-origin:left;transition:transform .45s ease}
 @media(max-width:960px){.steps .step::after{display:none}}
+/* sequential reveal: card, then connector grows, then next card */
+.steps .step{opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease}
+.steps.in .step{opacity:1;transform:none}
+.steps.in .step:nth-child(1){transition-delay:.1s}
+.steps.in .step:nth-child(2){transition-delay:.7s}
+.steps.in .step:nth-child(3){transition-delay:1.3s}
+.steps.in .step:nth-child(4){transition-delay:1.9s}
+.steps.in .step::after{transform:scaleX(1)}
+.steps.in .step:nth-child(1)::after{transition-delay:.45s}
+.steps.in .step:nth-child(2)::after{transition-delay:1.05s}
+.steps.in .step:nth-child(3)::after{transition-delay:1.65s}
+@media(prefers-reduced-motion:reduce){.steps .step{opacity:1;transform:none;transition:none}.steps .step::after{transform:scaleX(1);transition:none}}
 
 /* brain section */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
@@ -660,13 +672,24 @@ body.dark .pyr-svg{color:#EDE6D8}
 .dark-sec .src a{text-decoration:underline}
 
 /* faq */
-.faq{max-width:760px;margin:50px auto 0}
-.qa{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
-.qa button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:14px;text-align:left;padding:18px 22px;font-size:15px;font-weight:600;color:var(--hd)}
+.faq{max-width:780px;margin:44px auto 0}
+.qa{border-bottom:1px solid var(--line)}
+.qa:first-child{border-top:1px solid var(--line)}
+.qa button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;text-align:left;padding:22px 6px;font-size:16.5px;font-weight:600;color:var(--hd);transition:color .15s}
+.qa button:hover{color:var(--t500)}
 .qa .chev{transition:transform .25s;color:var(--soft);flex-shrink:0}
 .qa.open .chev{transform:rotate(180deg)}
 .qa .a{max-height:0;overflow:hidden;transition:max-height .3s ease}
-.qa .a p{padding:0 22px 20px;font-size:14px;color:var(--soft);line-height:1.7}
+.qa .a p{padding:0 6px 22px;font-size:14.5px;color:var(--soft);line-height:1.7}
+.videoseg{padding:84px 5vw}
+.videoseg .vsub{font-family:var(--serif);font-size:clamp(28px,3.6vw,44px);color:var(--hd);margin-bottom:34px;line-height:1.15}
+.video-ph{position:relative;max-width:880px;margin:0 auto;aspect-ratio:16/9;border-radius:22px;overflow:hidden;cursor:pointer;background:radial-gradient(120% 120% at 50% 28%, #1A5F76 0%, #0C333F 72%);box-shadow:0 24px 64px rgba(12,51,63,.2);display:flex;align-items:center;justify-content:center}
+.video-ph::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 45%, rgba(143,193,187,.14), transparent 70%)}
+.vplay{position:relative;z-index:1;width:86px;height:86px;border-radius:50%;background:rgba(245,239,228,.96);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(0,0,0,.28);transition:transform .2s ease}
+.video-ph:hover .vplay{transform:scale(1.07)}
+.vplay svg{width:34px;height:34px;fill:#0C333F;margin-left:5px}
+.vcap{position:absolute;z-index:1;bottom:20px;left:0;right:0;text-align:center;color:rgba(245,239,228,.75);font-size:13px}
+@media(max-width:600px){.vplay{width:64px;height:64px}.vplay svg{width:25px;height:25px}}
 .qa.open .a{max-height:260px}
 
 /* footer cta */
@@ -836,10 +859,10 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
       <h2>How it works</h2>
       <p class="lead">Four steps to transform your mental health.</p>
       <div class="steps">
-        <div class="step reveal"><div class="step-num">01</div><div class="step-ic"><span class="ic" data-icon="clipboard"></span></div><b>Initial assessment</b><p>A quick questionnaire about your symptoms, history, and health goals.</p></div>
-        <div class="step reveal"><div class="step-num">02</div><div class="step-ic"><span class="ic" data-icon="users"></span></div><b>Referral</b><p>Our team identifies the ideal professional for your clinical case.</p></div>
-        <div class="step reveal"><div class="step-num">03</div><div class="step-ic"><span class="ic" data-icon="video"></span></div><b>First conversation</b><p>A session to align expectations and explore your case in depth.</p></div>
-        <div class="step reveal"><div class="step-num">04</div><div class="step-ic"><span class="ic" data-icon="heart"></span></div><b>Follow-up</b><p>A metabolic care plan mapped out by the team of dietitians and psychiatrists.</p></div>
+        <div class="step"><div class="step-num">01</div><div class="step-ic"><span class="ic" data-icon="clipboard"></span></div><b>Initial assessment</b><p>A quick questionnaire about your symptoms, history, and health goals.</p></div>
+        <div class="step"><div class="step-num">02</div><div class="step-ic"><span class="ic" data-icon="users"></span></div><b>Referral</b><p>Our team identifies the ideal professional for your clinical case.</p></div>
+        <div class="step"><div class="step-num">03</div><div class="step-ic"><span class="ic" data-icon="video"></span></div><b>First conversation</b><p>A session to align expectations and explore your case in depth.</p></div>
+        <div class="step"><div class="step-num">04</div><div class="step-ic"><span class="ic" data-icon="heart"></span></div><b>Follow-up</b><p>A metabolic care plan mapped out by the team of dietitians and psychiatrists.</p></div>
       </div>
     </div>
   </section>
@@ -860,9 +883,19 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
   </section>
   <svg class="strip-wave bottom" viewBox="0 0 1440 72" preserveAspectRatio="none"><path d="M0 0 L0 30 Q360 66 720 34 T1440 40 L1440 0 Z" fill="var(--t900)"/></svg>
 
+  <section class="sec videoseg">
+    <div class="sec-inner center reveal">
+      <div class="vsub">You deserve to feel well.</div>
+      <div class="video-ph" role="button" tabindex="0" aria-label="Play video">
+        <span class="vplay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="vcap">A message from our care team — coming soon</span>
+      </div>
+    </div>
+  </section>
+
   <section class="sec" id="faq">
     <div class="sec-inner center reveal">
-      <h2>Common questions</h2>
+      <h2>Frequently asked questions</h2>
       <p class="lead">The questions we hear most about the metabolic approach.</p>
     </div>
     <div class="faq" id="faqlist"></div>
@@ -1302,6 +1335,7 @@ if(typeof IntersectionObserver!=='undefined'){
     if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}
   }),{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  document.querySelectorAll('.steps').forEach(el=>obs.observe(el));
   const cObs=new IntersectionObserver(es=>es.forEach(e=>{
     if(!e.isIntersecting)return; cObs.unobserve(e.target);
     const to=+e.target.dataset.to, t0=performance.now();
@@ -1312,6 +1346,7 @@ if(typeof IntersectionObserver!=='undefined'){
   document.querySelectorAll('.cnt').forEach(el=>cObs.observe(el));
 }else{
   document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
+  document.querySelectorAll('.steps').forEach(el=>el.classList.add('in'));
   document.querySelectorAll('.cnt').forEach(el=>el.textContent=el.dataset.to);
 }
 
@@ -2131,7 +2166,8 @@ routeFromHash();
     "average weight loss":"perda média de peso",
     "Sethi et al., Psychiatry Research, 2024 · 21 participants · results from a single-arm pilot study; individual outcomes vary.":"Sethi et al., Psychiatry Research, 2024 · 21 participantes · resultados de um estudo piloto de braço único; os resultados individuais variam.",
     // faq
-    "Common questions":"Perguntas frequentes",
+    "Frequently asked questions":"Perguntas frequentes",
+    "A message from our care team — coming soon":"Uma mensagem da nossa equipe — em breve",
     "The questions we hear most about the metabolic approach.":"As perguntas que mais ouvimos sobre a abordagem metabólica.",
     "What role does the ketogenic diet play in mental health?":"Qual é o papel da dieta cetogênica na saúde mental?",
     "Ketogenic therapy has been studied in psychiatry for its potential to improve brain energy metabolism, reduce neuroinflammation, and stabilize neurotransmitter function. Recent clinical trials show promising results in conditions like bipolar disorder and schizophrenia.":"A terapia cetogênica tem sido estudada na psiquiatria pelo potencial de melhorar o metabolismo energético do cérebro, reduzir a neuroinflamação e estabilizar a função dos neurotransmissores. Estudos clínicos recentes mostram resultados promissores em condições como transtorno bipolar e esquizofrenia.",
