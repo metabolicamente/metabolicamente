@@ -547,7 +547,7 @@ body.title-wait #heroTitle{opacity:0}
 
 /* ============ LANDING ============ */
 #site{background:var(--bg)}
-.nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:26px;padding:0 5vw;height:64px;background:var(--navbg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:26px;padding:0 20px;height:64px;background:var(--navbg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .logo{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:19px;color:var(--hd2);margin-right:auto}
 .logo-mark{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .logo-mark svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
@@ -682,7 +682,7 @@ body.dark .pyr-svg{color:#EDE6D8}
 .qa .a{max-height:0;overflow:hidden;transition:max-height .3s ease}
 .qa .a p{padding:0 6px 22px;font-size:15px;color:var(--soft);line-height:1.7}
 .videoseg{padding:84px 5vw}
-.videoseg .vsub{font-family:var(--display);font-weight:700;letter-spacing:-.02em;font-size:clamp(28px,3.6vw,44px);color:var(--hd);margin-bottom:34px;line-height:1.15}
+.videoseg .vsub{font-family:var(--display);font-weight:600;letter-spacing:-.02em;font-size:clamp(28px,3.6vw,44px);color:var(--hd);margin-bottom:34px;line-height:1.15}
 .video-ph{position:relative;max-width:880px;margin:0 auto;aspect-ratio:16/9;border-radius:22px;overflow:hidden;cursor:pointer;background:radial-gradient(120% 120% at 50% 28%, #1A5F76 0%, #0C333F 72%);box-shadow:0 24px 64px rgba(12,51,63,.2);display:flex;align-items:center;justify-content:center}
 .video-ph::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 45%, rgba(143,193,187,.14), transparent 70%)}
 .vplay{position:relative;z-index:1;width:86px;height:86px;border-radius:50%;background:rgba(245,239,228,.96);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 28px rgba(0,0,0,.28);transition:transform .2s ease}
@@ -795,6 +795,7 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
     <a class="nl" href="#/conteudo">Content</a>
     <a class="nl" href="#/equipe">Care team</a>
     <a class="btn btn-line" id="navLogin" onclick="go('login')" style="cursor:pointer">Log in</a>
+    <a class="btn btn-coral" onclick="go('wizard')" style="cursor:pointer;margin-left:-12px">Get started</a>
   </nav>
 
   <div class="subpage active" id="home">
