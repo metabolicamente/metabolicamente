@@ -225,7 +225,7 @@ body.dark .snav.on{background:var(--t700)}
 .dbtn-line:hover{border-color:var(--t500)}
 .dcard.meal2{padding:12px 20px 14px}
 .dcard.meal2+.dcard.meal2{margin-top:12px}
-.meal2 .mt{display:flex;align-items:center;gap:11px;margin-bottom:6px}
+.meal2 .mt{display:flex;align-items:center;gap:11px;margin-top:0;margin-bottom:6px}
 .meal2 .mt .mic{width:34px;height:34px;border-radius:50%;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:15px}
 .meal2 .mt b{font-size:15px;color:var(--hd)}
 .meal2 ul{list-style:none;padding-left:47px}
@@ -334,6 +334,10 @@ body.dark .alertbox{border-color:#5a2a20}
 @media(max-width:560px){.pfgrid{grid-template-columns:1fr}}
 .pffield label{display:flex;align-items:center;gap:6px;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--soft);font-weight:600;margin-bottom:7px}
 .pffield label .ic{font-size:13px}
+.pfval{font-size:15px;color:var(--hd);font-weight:500;padding:5px 0}
+.pfval.empty{color:var(--soft);font-weight:400}
+.pfhead .pfedit{margin-left:auto;flex-shrink:0}
+.pfactions{display:flex;justify-content:flex-end;gap:10px;margin-top:22px}
 .pftog{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px 16px;border-radius:12px;background:var(--bg-dim);margin-bottom:10px}
 .pftog .pl b{font-size:14px;color:var(--hd);display:block}
 .pftog .pl span{font-size:12px;color:var(--soft)}
@@ -2029,49 +2033,67 @@ const CISTEPS=[
   ['alimentar','How was your eating this week?','A summary of what you ate...',0]
 ];
 function ciState(D){ if(!D.ci) D.ci={step:0,ans:{},done:false}; return D.ci; }
-function renderCheckin(D){
-  const ci=ciState(D);
-  if(ci.done) return '<div class="dsec">'+head('Weekly check-in','Answer in a few steps for your care team','clipboard')+
-    '<div class="dcard cidone"><div class="cic">'+dIcon('check')+'</div>'+
+function ciInner(role){
+  const ci=ciState(DASH[role]);
+  if(ci.done) return '<div class="dcard cidone"><div class="cic">'+dIcon('check')+'</div>'+
     '<h2 style="font-size:20px;color:var(--hd);margin-bottom:8px">Check-in recorded</h2>'+
     '<p style="color:var(--soft);font-size:14px;max-width:24em;margin:0 auto 20px">Your team will receive this information for your next appointment.</p>'+
-    '<button class="dbtn dbtn-line" onclick="ciReset(\'patient\')">New check-in</button></div></div>';
+    '<button class="dbtn dbtn-line" onclick="ciReset(\''+role+'\')">New check-in</button></div>';
   const st=CISTEPS[ci.step], scale=st[3]===1, val=ci.ans[st[0]];
   const pct=Math.round((ci.step+1)/CISTEPS.length*100);
   let field;
-  if(scale){ let b=''; for(let n=1;n<=10;n++) b+='<button class="'+(val===n?'on':'')+'" onclick="ciScale(\'patient\','+n+')">'+n+'</button>'; field='<div class="ciscale">'+b+'</div>'; }
-  else field='<textarea id="ci-text" placeholder="'+st[2]+'" oninput="ciText(\'patient\',this.value)">'+(val||'')+'</textarea>';
+  if(scale){ let b=''; for(let n=1;n<=10;n++) b+='<button class="'+(val===n?'on':'')+'" onclick="ciScale(\''+role+'\','+n+')">'+n+'</button>'; field='<div class="ciscale">'+b+'</div>'; }
+  else field='<textarea id="ci-text" placeholder="'+st[2]+'" oninput="ciText(\''+role+'\',this.value)">'+(val||'')+'</textarea>';
   const canAdv=scale?(val!==undefined):(typeof val==='string'&&val.trim().length>3);
-  return '<div class="dsec">'+head('Weekly check-in','Answer in a few steps for your care team','clipboard')+
-    '<div class="ciprog"><div class="cit"><span>Step '+(ci.step+1)+' of '+CISTEPS.length+'</span><span>'+pct+'%</span></div><div class="cibar"><i style="width:'+pct+'%"></i></div></div>'+
+  return '<div class="ciprog"><div class="cit"><span>Step '+(ci.step+1)+' of '+CISTEPS.length+'</span><span>'+pct+'%</span></div><div class="cibar"><i style="width:'+pct+'%"></i></div></div>'+
     '<div class="dcard ciq"><div class="cik">'+dIcon('sparkles')+'Question</div><h2>'+st[1]+'</h2>'+field+'</div>'+
-    '<div class="cinav"><button class="dbtn dbtn-line" '+(ci.step===0?'style="visibility:hidden"':'')+' onclick="ciBack(\'patient\')">'+dIcon('chevron-left')+'Back</button>'+
-    '<button class="dbtn dbtn-solid" id="ci-next" '+(canAdv?'':'disabled style="opacity:.4;pointer-events:none"')+' onclick="ciNext(\'patient\')">'+(ci.step===CISTEPS.length-1?'Finish':'Next')+dIcon('arrow-right')+'</button></div></div>';
+    '<div class="cinav"><button class="dbtn dbtn-line" '+(ci.step===0?'style="visibility:hidden"':'')+' onclick="ciBack(\''+role+'\')">'+dIcon('chevron-left')+'Back</button>'+
+    '<button class="dbtn dbtn-solid" id="ci-next" '+(canAdv?'':'disabled style="opacity:.4;pointer-events:none"')+' onclick="ciNext(\''+role+'\')">'+(ci.step===CISTEPS.length-1?'Finish':'Next')+dIcon('arrow-right')+'</button></div>';
 }
+function renderCheckin(D){
+  const role=(D===DASH.doctor)?'doctor':(D===DASH.nutri?'nutri':'patient');
+  return '<div class="dsec">'+head('Weekly check-in','Answer in a few steps for your care team','clipboard')+
+    '<div id="ci-inner">'+ciInner(role)+'</div></div>';
+}
+// Update only the check-in body so the surrounding section (and its entrance
+// animation) is not rebuilt — prevents the "bounce" on every click.
+function ciUpdate(role){ const el=document.getElementById('ci-inner'); if(!el){ dashSection(role); return; } el.innerHTML=ciInner(role); renderIcons(el); if(window.__applyLang){ try{__applyLang()}catch(e){} } }
 function ciText(role,v){ const ci=ciState(DASH[role]); ci.ans[CISTEPS[ci.step][0]]=v; const btn=document.getElementById('ci-next'); if(btn){ const ok=v.trim().length>3; btn.disabled=!ok; btn.style.opacity=ok?'':'.4'; btn.style.pointerEvents=ok?'':'none'; } }
-function ciScale(role,n){ const ci=ciState(DASH[role]); ci.ans[CISTEPS[ci.step][0]]=n; dashSection(role); }
-function ciNext(role){ const ci=ciState(DASH[role]); if(ci.step<CISTEPS.length-1) ci.step++; else ci.done=true; dashSection(role); }
-function ciBack(role){ const ci=ciState(DASH[role]); if(ci.step>0) ci.step--; dashSection(role); }
-function ciReset(role){ DASH[role].ci={step:0,ans:{},done:false}; dashSection(role); }
+function ciScale(role,n){ const ci=ciState(DASH[role]); ci.ans[CISTEPS[ci.step][0]]=n;
+  // Highlight the picked number in place (no re-render, no bounce) and enable Next.
+  const sc=document.querySelector('#dwrap-'+role+' .ciscale'); if(sc){ sc.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('on',i+1===n)); }
+  const nx=document.getElementById('ci-next'); if(nx){ nx.disabled=false; nx.style.opacity=''; nx.style.pointerEvents=''; } }
+function ciNext(role){ const ci=ciState(DASH[role]); if(ci.step<CISTEPS.length-1) ci.step++; else ci.done=true; ciUpdate(role); }
+function ciBack(role){ const ci=ciState(DASH[role]); if(ci.step>0){ ci.step--; ciUpdate(role); } }
+function ciReset(role){ DASH[role].ci={step:0,ans:{},done:false}; ciUpdate(role); }
 /* ---- profile (full) ---- */
 function pfState(D){ if(!D.pf) D.pf={name:D.name,email:'usuario@metabolicamente.com',phone:'',city:'',notifEmail:true,notifPush:true}; return D.pf; }
 function perfil(D,role){
   const pf=pfState(D);
+  const editing=!!pf.editing;
   const init=D.name.split(' ').slice(0,2).map(x=>x[0]).join('').toUpperCase();
-  const field=(icon,label,id,val,ph)=>'<div class="pffield"><label>'+dIcon(icon)+label+'</label><input type="text" id="pf-'+id+'" value="'+esc(val)+'" placeholder="'+(ph||'')+'"></div>';
+  const readField=(icon,label,val,ph)=>'<div class="pffield"><label>'+dIcon(icon)+label+'</label><div class="pfval'+(val?'':' empty')+'">'+esc(val||ph||'—')+'</div></div>';
+  const editField=(icon,label,id,val,ph)=>'<div class="pffield"><label>'+dIcon(icon)+label+'</label><input type="text" id="pf-'+id+'" value="'+esc(val)+'" placeholder="'+(ph||'')+'"></div>';
+  const grid=editing
+    ? editField('user','Name','name',pf.name)+editField('mail','Email','email',pf.email)+editField('phone','Phone','phone',pf.phone,'(11) 99999-9999')+editField('map-pin','City','city',pf.city,'São Paulo, SP')
+    : readField('user','Name',pf.name)+readField('mail','Email',pf.email)+readField('phone','Phone',pf.phone,'Not provided')+readField('map-pin','City',pf.city,'Not provided');
   const tog=(k,label,desc)=>'<div class="pftog"><div class="pl"><b>'+label+'</b><span>'+desc+'</span></div><div class="sw'+(pf[k]?' on':'')+'" onclick="pfTog(\''+role+'\',\''+k+'\',this)"></div></div>';
   return '<div class="dsec">'+head('My profile','Your information and preferences','user-circle')+
-    '<div class="dcard"><div class="pfhead"><div class="pfav"><div class="pfc">'+init+'</div><div class="pfcam">'+dIcon('camera')+'</div></div>'+
-      '<div class="pfn"><b>'+esc(pf.name)+'</b><span>'+esc(pf.email)+'</span></div></div>'+
-      '<div class="pfgrid">'+field('user','Name','name',pf.name)+field('mail','Email','email',pf.email)+field('phone','Phone','phone',pf.phone,'(11) 99999-9999')+field('map-pin','City','city',pf.city,'São Paulo, SP')+'</div></div>'+
+    '<div class="dcard"><div class="pfhead"><div class="pfav"><div class="pfc">'+init+'</div>'+(editing?'<div class="pfcam">'+dIcon('camera')+'</div>':'')+'</div>'+
+      '<div class="pfn"><b>'+esc(pf.name)+'</b><span>'+esc(pf.email)+'</span></div>'+
+      (editing?'':'<button class="dbtn dbtn-line pfedit" onclick="pfEdit(\''+role+'\')">'+dIcon('edit')+'Edit</button>')+'</div>'+
+      '<div class="pfgrid">'+grid+'</div>'+
+      (editing?'<div class="pfactions"><button class="dbtn dbtn-line" onclick="pfCancel(\''+role+'\')">Cancel</button><button class="dbtn dbtn-solid" onclick="pfSave(\''+role+'\')">'+dIcon('save')+'Save changes</button></div>':'')+'</div>'+
     '<div class="dcard"><div class="dh2" style="margin:0 0 12px"><div class="hbadge teal">'+dIcon('bell')+'</div>Notifications</div>'+
       tog('notifEmail','Email notifications','Appointment reminders and updates')+tog('notifPush','Browser notifications','Real-time alerts')+'</div>'+
     '<div class="dcard"><div class="dh2" style="margin:0 0 8px"><div class="hbadge teal">'+dIcon('lock')+'</div>Security</div>'+
       '<p style="color:var(--soft);font-size:13px;margin-bottom:14px">Keep your account safe by changing your password periodically.</p>'+
-      '<button class="dbtn dbtn-line" onclick="toast(\'Demo: the change-password flow would open here\')">Change password</button></div>'+
-    '<div style="display:flex;justify-content:flex-end;margin-top:18px"><button class="dbtn dbtn-solid" onclick="toast(\'Demo: your profile would be saved\')">'+dIcon('save')+'Save changes</button></div></div>';
+      '<button class="dbtn dbtn-line" onclick="toast(\'Demo: the change-password flow would open here\')">Change password</button></div></div>';
 }
 function pfTog(role,k,el){ const pf=pfState(DASH[role]); pf[k]=!pf[k]; el.classList.toggle('on',pf[k]); }
+function pfEdit(role){ pfState(DASH[role]).editing=true; dashSection(role); }
+function pfCancel(role){ pfState(DASH[role]).editing=false; dashSection(role); }
+function pfSave(role){ const pf=pfState(DASH[role]); ['name','email','phone','city'].forEach(k=>{ const el=document.getElementById('pf-'+k); if(el) pf[k]=el.value; }); pf.editing=false; dashSection(role); toast('Demo: your profile would be saved'); }
 function dSection(D){
   const s=D.sec, ln=firstName(D.name);
   if(s==='inicio'){
@@ -2720,6 +2742,7 @@ routeFromHash();
     "Describe how you feel...":"Descreva como você se sente...","Sad, anxious, motivated...":"Triste, ansioso, motivado...","A summary of what you ate...":"Resumo do que comeu...",
     // profile (full)
     "My profile":"Meu perfil","Your information and preferences":"Suas informações e preferências","Phone":"Telefone","City":"Cidade",
+    "Edit":"Editar","Cancel":"Cancelar","Not provided":"Não informado",
     "Email notifications":"Notificações por e-mail","Appointment reminders and updates":"Lembretes de consulta e atualizações","Browser notifications":"Notificações no navegador","Real-time alerts":"Alertas em tempo real",
     "Security":"Segurança","Keep your account safe by changing your password periodically.":"Mantenha sua conta protegida alterando a senha periodicamente.","Change password":"Alterar senha","Save changes":"Salvar alterações",
     // evolution charts
