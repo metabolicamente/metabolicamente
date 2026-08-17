@@ -432,7 +432,7 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--t900);margin:1
     <a class="nl" onclick="go('pg-team')" style="cursor:pointer">Care team</a>
     <a class="nl" onclick="go('pg-faq')" style="cursor:pointer">FAQ</a>
     <a class="btn btn-line" onclick="go('login')" style="cursor:pointer">Log in</a>
-    <a class="btn btn-coral" onclick="go('wizard')" style="cursor:pointer">Start your journey</a>
+    <a class="btn btn-coral" onclick="go('wizard')" style="cursor:pointer;background:#D3D3D3;color:#0C333F;border-color:#D3D3D3">Start your journey</a>
   </nav>
 
   <header class="hero" id="top">
@@ -1239,7 +1239,7 @@ function pageNav(cur){
     <a class="logo" onclick="go('site')" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M4 19c0-8 5.5-8 8-3.5C14.5 11 20 11 20 19"/><path d="M12 15.5V8"/><circle cx="12" cy="5.5" r="1.8"/></svg></span>Metabolicamente</a>
     ${PAGELINKS.map(([k,l])=>`<a class="nl" onclick="go('pg-${k}')" style="cursor:pointer${k===cur?';color:var(--t800);font-weight:600':''}">${l}</a>`).join('')}
     <a class="btn btn-line" onclick="go('login')" style="cursor:pointer">Log in</a>
-    <a class="btn btn-coral" onclick="go('wizard')" style="cursor:pointer">Start your journey</a>
+    <a class="btn btn-coral" onclick="go('wizard')" style="cursor:pointer;background:#D3D3D3;color:#0C333F;border-color:#D3D3D3">Start your journey</a>
   </nav>`;
 }
 const pgCta=`<div class="pg-cta"><h3>Curious whether this is right for you?</h3><p>The two-minute assessment is the easiest way to find out.</p><a class="btn btn-coral" onclick="go('wizard')" style="cursor:pointer">Start your journey ${'<span class="ic" data-icon="arrow-right"></span>'}</a></div>`;
