@@ -162,7 +162,7 @@ body.dark .snav.on{background:var(--t700)}
 .snav.on .sbadge{background:rgba(255,255,255,.25)}
 .dside .sout{margin-top:auto;border-top:1px solid var(--line);padding-top:12px}
 .dmain{flex:1;min-width:0;padding:30px 32px 90px}
-.dwrap{max-width:860px;margin:0 auto}
+.dwrap{max-width:1160px;margin:0 auto}
 @media(max-width:900px){.dside{display:none}.dmain{padding:22px 18px 96px}.duser{display:none}}
 .dsec{animation:fadeUp .35s ease}
 .dhead{margin-bottom:22px;display:flex;align-items:center;gap:12px}
@@ -178,8 +178,8 @@ body.dark .snav.on{background:var(--t700)}
 /* hero progress */
 .jhero{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--t800),var(--t900));color:#F5EFE4;border-radius:20px;padding:24px 26px;margin-bottom:18px}
 .jhero .blob{position:absolute;border-radius:50%;background:rgba(255,255,255,.05)}
-.jhero .b1{width:150px;height:150px;right:-30px;top:-40px}
-.jhero .b2{width:110px;height:110px;right:60px;bottom:-50px}
+.jhero .b1{width:170px;height:170px;right:-45px;top:-55px}
+.jhero .b2{width:130px;height:130px;right:-35px;bottom:-55px}
 .jhero .jk{font-size:11px;letter-spacing:.12em;text-transform:uppercase;opacity:.8;margin-bottom:6px;position:relative}
 .jhero .jn{font-family:var(--serif);font-size:25px;font-weight:500;position:relative;line-height:1.1}
 .jhero .js{font-size:13.5px;opacity:.9;margin-top:4px;position:relative}
@@ -831,7 +831,7 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
 <div class="screen active" id="site">
   <nav class="nav">
     <a class="logo" onclick="goHome()" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>Metabolicamente</a>
-    <a class="nl" href="#about">About</a>
+    <a class="nl" href="#top">About</a>
     <a class="nl" href="#/tratamento">How it works</a>
     <a class="nl" href="#/conteudo">Content</a>
     <a class="nl" href="#/pesquisa">Research</a>
@@ -1969,7 +1969,19 @@ function dashSection(role){
   w.innerHTML=html;
   renderIcons(w);
   drawEvo(role);
+  animateBars(w);
   if(window.__applyLang){ try{__applyLang()}catch(e){} }
+}
+// Refill progress bars (missions hero + check-in) from 0 on render, so they
+// animate up to their value — adds a bit of life on load / step change.
+function animateBars(root){
+  (root||document).querySelectorAll('.jbar i, .cibar i').forEach(el=>{
+    const target=el.style.width; if(!target) return;
+    const trans=el.style.transition;
+    el.style.transition='none'; el.style.width='0%';
+    void el.offsetWidth; // force reflow so the 0% sticks without animating
+    el.style.transition=trans||''; requestAnimationFrame(()=>{ el.style.width=target; });
+  });
 }
 function head(t,s){ return '<div class="dhead"><div><h1>'+t+'</h1><p>'+s+'</p></div></div>'; }
 
@@ -2057,7 +2069,7 @@ function renderCheckin(D){
 }
 // Update only the check-in body so the surrounding section (and its entrance
 // animation) is not rebuilt — prevents the "bounce" on every click.
-function ciUpdate(role){ const el=document.getElementById('ci-inner'); if(!el){ dashSection(role); return; } el.innerHTML=ciInner(role); renderIcons(el); if(window.__applyLang){ try{__applyLang()}catch(e){} } }
+function ciUpdate(role){ const el=document.getElementById('ci-inner'); if(!el){ dashSection(role); return; } el.innerHTML=ciInner(role); renderIcons(el); animateBars(el); if(window.__applyLang){ try{__applyLang()}catch(e){} } }
 function ciText(role,v){ const ci=ciState(DASH[role]); ci.ans[CISTEPS[ci.step][0]]=v; const btn=document.getElementById('ci-next'); if(btn){ const ok=v.trim().length>3; btn.disabled=!ok; btn.style.opacity=ok?'':'.4'; btn.style.pointerEvents=ok?'':'none'; } }
 function ciScale(role,n){ const ci=ciState(DASH[role]); ci.ans[CISTEPS[ci.step][0]]=n;
   // Highlight the picked number in place (no re-render, no bounce) and enable Next.
