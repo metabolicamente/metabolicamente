@@ -719,6 +719,29 @@ body.dark .pyr-svg{color:#EDE6D8}
 .tj-list li{display:flex;align-items:flex-start;gap:11px;font-size:13.5px;color:var(--ink);line-height:1.5}
 .tj-list li .ic{color:var(--t500);font-size:15px;flex-shrink:0;margin-top:1px}
 @media(max-width:560px){.tj-step{grid-template-columns:44px 1fr;gap:16px}.tj-node{width:44px;height:44px;font-size:15px}.tj-card{padding:20px 20px}}
+/* research (Pesquisa) page */
+.rp-wrap{max-width:880px;margin:0 auto}
+.rp-h2{font-family:var(--display);font-size:clamp(22px,3vw,30px);color:var(--hd);letter-spacing:-.01em;text-align:center}
+.rp-grid{display:flex;flex-direction:column;gap:18px;margin-top:36px}
+.rp-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px;box-shadow:var(--shadow)}
+.rp-meta{font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--t500);font-weight:700;margin-bottom:11px}
+.rp-card h3{font-family:var(--display);font-size:18px;color:var(--hd);line-height:1.35;letter-spacing:-.01em;margin-bottom:9px}
+.rp-authors{font-size:12.5px;color:var(--soft);margin-bottom:13px;line-height:1.55}
+.rp-card>p{color:var(--soft);font-size:14px;line-height:1.72}
+.rp-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:15px}
+.rp-tags span{font-size:11px;font-weight:600;color:var(--hd3);background:var(--t50);border-radius:99px;padding:5px 11px}
+.rp-access{display:inline-flex;align-items:center;gap:7px;margin-top:17px;font-size:13.5px;font-weight:600;color:var(--t700)}
+.rp-access:hover{color:var(--t900)}
+.rp-access .ic{font-size:14px}
+.rp-people{display:flex;flex-direction:column;gap:18px;margin-top:36px}
+.rp-person{display:grid;grid-template-columns:64px 1fr;gap:22px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px;box-shadow:var(--shadow)}
+.rp-av{width:64px;height:64px;border-radius:50%;background:var(--t900);color:#F5EFE4;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:20px;flex-shrink:0}
+.rp-person h3{font-family:var(--display);font-size:19px;color:var(--hd);margin-bottom:3px}
+.rp-role{font-size:12.5px;color:var(--t500);font-weight:600;margin-bottom:2px}
+.rp-inst{font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--soft);margin-bottom:13px}
+.rp-person>div>p{font-size:13.5px;color:var(--soft);line-height:1.72}
+.rp-person .rp-access{margin-top:14px}
+@media(max-width:560px){.rp-person{grid-template-columns:1fr;gap:14px}.rp-card,.rp-person{padding:20px 20px}}
 .cta-line{max-width:none;white-space:nowrap}
 @media(max-width:680px){.cta-line{white-space:normal;max-width:30em}}
 .cta-panel{position:relative;overflow:hidden;max-width:880px;margin:0 auto;background:
@@ -809,6 +832,7 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
     <a class="nl" href="#results">Results</a>
     <a class="nl" href="#faq">FAQ</a>
     <a class="nl" href="#/conteudo">Content</a>
+    <a class="nl" href="#/pesquisa">Research</a>
     <a class="nl" href="#/equipe">Care team</a>
     <a class="btn btn-line" id="navLogin" onclick="go('login')" style="cursor:pointer">Log in</a>
     <a class="btn btn-solid" onclick="go('wizard')" style="cursor:pointer;margin-left:-12px">Get started</a>
@@ -1157,6 +1181,136 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
         <a class="btn btn-getstarted" onclick="go('wizard')" style="cursor:pointer">Start your journey <span class="ic" data-icon="arrow-right"></span></a>
       </div>
     </section>
+  </div>
+
+  <!-- ============ PAGE: RESEARCH (PESQUISA) ============ -->
+  <div class="subpage" id="pg-research">
+    <section class="phero">
+      <canvas class="glow"></canvas>
+      <div class="ph-in">
+        <div class="kicker">Scientific basis</div>
+        <h1>Scientific research</h1>
+        <p class="plead">Peer-reviewed articles, clinical trials, and the evidence behind metabolic psychiatry.</p>
+      </div>
+      <svg class="pwave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="display:block;width:100%;height:70px"><path d="M0 70 L0 40 Q360 0 720 35 T1440 30 L1440 70 Z" fill="var(--bg)"/></svg>
+    </section>
+    <section class="sec">
+      <div class="rp-wrap">
+        <h2 class="rp-h2 reveal">Scientific articles</h2>
+        <div class="rp-grid">
+          <div class="rp-card">
+            <div class="rp-meta">Psychiatry Research · 2024</div>
+            <h3>Ketogenic Diet Intervention on Metabolic and Psychiatric Health in Bipolar and Schizophrenia: A Pilot Trial</h3>
+            <div class="rp-authors">Shebani Sethi, Diane Wakeham, Terence Ketter, Farnaz Hooshmand, Julia Bjornstad, Blair Richards, Eric Westman, Ronald M. Krauss, Laura Saslow</div>
+            <p>This Stanford Medicine pilot study investigated the effects of a ketogenic diet in patients with bipolar disorder and schizophrenia who were already on medication. Over 4 months, 100% of participants showed significant improvement in psychiatric symptoms. Notably, 43% achieved full clinical remission and 64% were discharged on a reduced medication load. Beyond the psychiatric gains, participants showed substantial metabolic benefits, including reductions in weight, waist circumference, and insulin resistance.</p>
+            <div class="rp-tags"><span>Ketogenic Diet</span><span>Schizophrenia</span><span>Bipolar</span><span>Stanford</span></div>
+            <a class="rp-access" href="https://www.sciencedirect.com/science/article/pii/S0165178124001513" target="_blank" rel="noopener">Access <span class="ic" data-icon="arrow-right"></span></a>
+          </div>
+          <div class="rp-card">
+            <div class="rp-meta">Frontiers in Nutrition · 2024</div>
+            <h3>The Effects of Ketogenic Metabolic Therapy on Mental Health and Metabolic Outcomes in Schizophrenia and Bipolar Disorder</h3>
+            <div class="rp-authors">Calogero Longhitano, Sabine Finlay, Isabella Peachey, Jaymee-Leigh Swift, Flavia Fayet-Moore, Toby Bartle, Gideon Vos, Donna Rudd, Omer Shareef, Shaileigh Gordon, Shebani Sethi, Christopher Palmer, Iain Campbell</div>
+            <p>This paper describes the protocol of a randomized controlled trial investigating the effects of ketogenic metabolic therapy on mental health and metabolic outcomes in patients with schizophrenia and bipolar disorder. The study uses a modified ketogenic diet as its main intervention, with multidisciplinary follow-up.</p>
+            <div class="rp-tags"><span>RCT</span><span>Protocol</span><span>Schizophrenia</span><span>Bipolar</span></div>
+            <a class="rp-access" href="https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2024.1444483/full" target="_blank" rel="noopener">Access <span class="ic" data-icon="arrow-right"></span></a>
+          </div>
+          <div class="rp-card">
+            <div class="rp-meta">Frontiers in Psychiatry · 2025</div>
+            <h3>Metabolic, Inflammatory, and Neurological Improvements After a Ketogenic Diet in Treatment-Resistant Schizophrenia</h3>
+            <div class="rp-authors">Frontiers in Psychiatry — Contributing Authors</div>
+            <p>A case report of a patient with treatment-resistant schizophrenia and metabolic syndrome who showed significant metabolic, inflammatory, and neurological improvements after adopting a supervised ketogenic diet. The case illustrates the potential of the metabolic approach even in cases considered refractory.</p>
+            <div class="rp-tags"><span>Case Report</span><span>Refractory Schizophrenia</span><span>Inflammation</span></div>
+            <a class="rp-access" href="https://www.frontiersin.org/journals/psychiatry/articles/10.3389/fpsyt.2025.1710785/full" target="_blank" rel="noopener">Access <span class="ic" data-icon="arrow-right"></span></a>
+          </div>
+          <div class="rp-card">
+            <div class="rp-meta">Frontiers in Nutrition · 2025</div>
+            <h3>Ketogenic Metabolic Therapy in the Remission of Chronic Major Depressive Disorder: A Retrospective Case Study</h3>
+            <div class="rp-authors">Frontiers in Nutrition — Contributing Authors</div>
+            <p>A retrospective study documenting the remission of chronic major depression through ketogenic metabolic therapy. The patient, who had not responded to multiple antidepressants over years, achieved full symptom remission after a structured dietary intervention.</p>
+            <div class="rp-tags"><span>Depression</span><span>Remission</span><span>Case Study</span></div>
+            <a class="rp-access" href="https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2025.1549782/full" target="_blank" rel="noopener">Access <span class="ic" data-icon="arrow-right"></span></a>
+          </div>
+          <div class="rp-card">
+            <div class="rp-meta">International Journal of Molecular Sciences · 2024</div>
+            <h3>Metabolic Insights into Neuropsychiatric Illnesses and Ketogenic Therapies: A Transcriptomic View</h3>
+            <div class="rp-authors">MDPI — International Journal of Molecular Sciences</div>
+            <p>A comprehensive review examining the molecular mechanisms by which ketogenic therapies may affect neuropsychiatric diseases. The article analyzes transcriptomic data revealing how ketosis modifies gene expression in metabolic, inflammatory, and neurotransmission pathways in the brain.</p>
+            <div class="rp-tags"><span>Review</span><span>Transcriptomics</span><span>Molecular Mechanisms</span></div>
+            <a class="rp-access" href="https://www.mdpi.com/1422-0067/25/15/8266" target="_blank" rel="noopener">Access <span class="ic" data-icon="arrow-right"></span></a>
+          </div>
+          <div class="rp-card">
+            <div class="rp-meta">2020–2024</div>
+            <h3>Ketogenic Diet for Bipolar and Schizophrenia — Stanford Pilot Trial</h3>
+            <div class="rp-authors">Stanford University School of Medicine</div>
+            <p>A pilot study led by Dr. Shebani Sethi evaluating the effects of 4 months of a ketogenic diet in 21 patients with schizophrenia and bipolar disorder. Results showed 100% clinical improvement, 43% full remission, and 64% medication reduction.</p>
+            <a class="rp-access" href="https://med.stanford.edu/news/all-news/2024/04/keto-diet-mental-illness.html" target="_blank" rel="noopener">Access <span class="ic" data-icon="arrow-right"></span></a>
+          </div>
+          <div class="rp-card">
+            <div class="rp-meta">2024–present</div>
+            <h3>RCT: Ketogenic Metabolic Therapy in Schizophrenia and Bipolar Disorder</h3>
+            <div class="rp-authors">James Cook University, Australia</div>
+            <p>The first formal randomized controlled trial evaluating ketogenic metabolic therapy in patients with schizophrenia and bipolar disorder. A direct comparison between a ketogenic diet and a standard diet over 16 weeks, assessing psychiatric symptoms, metabolic markers, and inflammatory biomarkers.</p>
+            <a class="rp-access" href="https://www.frontiersin.org/journals/nutrition/articles/10.3389/fnut.2024.1444483/full" target="_blank" rel="noopener">Access <span class="ic" data-icon="arrow-right"></span></a>
+          </div>
+          <div class="rp-card">
+            <div class="rp-meta">2022–present</div>
+            <h3>Metabolic Mind — Global Metabolic Psychiatry Research Network</h3>
+            <div class="rp-authors">Metabolic Mind (Baszucki Group)</div>
+            <p>A global initiative funding and coordinating research into metabolic approaches to mental health. The network connects researchers from institutions such as Stanford, Harvard, and Oxford to accelerate clinical trials and translate findings into applicable protocols.</p>
+            <a class="rp-access" href="https://www.metabolicmind.org/" target="_blank" rel="noopener">Access <span class="ic" data-icon="arrow-right"></span></a>
+          </div>
+          <div class="rp-card">
+            <div class="rp-meta">2023–present</div>
+            <h3>Brain Energy — Research on Brain Metabolism and Mental Illness</h3>
+            <div class="rp-authors">Harvard Medical School / Dr. Christopher Palmer</div>
+            <p>A research program led by Dr. Christopher Palmer (Harvard) investigating the 'brain energy' theory — the idea that mental disorders are fundamentally metabolic disorders of the brain. It includes observational and interventional studies focused on diet, exercise, and mitochondrial optimization.</p>
+            <a class="rp-access" href="https://www.chrispalmermd.com/brain-energy/" target="_blank" rel="noopener">Access <span class="ic" data-icon="arrow-right"></span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <svg class="strip-wave" viewBox="0 0 1440 72" preserveAspectRatio="none"><path d="M0 72 L0 34 Q360 0 720 32 T1440 26 L1440 72 Z" fill="var(--t900)"/></svg>
+    <section class="sec dark-strip">
+      <div class="sec-inner center reveal" style="max-width:880px">
+        <div class="kicker" style="margin-bottom:14px">Global references</div>
+        <h2 style="color:#F5EFE4">Reference professionals</h2>
+      </div>
+      <div class="rp-wrap" style="margin-top:8px">
+        <div class="rp-people">
+          <div class="rp-person">
+            <div class="rp-av">GE</div>
+            <div>
+              <h3>Georgia Ede</h3>
+              <div class="rp-role">M.D. — Nutritional Psychiatrist</div>
+              <div class="rp-inst">Harvard Medical School</div>
+              <p>A Harvard-trained psychiatrist and nutrition specialist, Dr. Georgia Ede is a pioneer in studying how specific diets affect brain chemistry. Author of 'Change Your Diet, Change Your Mind,' she researches the impact of ultra-processed foods, refined carbohydrates, and nutritional deficiencies on mental disorders. Her work helps ground clinical protocols for dietary intervention in psychiatry.</p>
+              <a class="rp-access" href="https://www.diagnosisdiet.com/" target="_blank" rel="noopener">Learn more <span class="ic" data-icon="arrow-right"></span></a>
+            </div>
+          </div>
+          <div class="rp-person">
+            <div class="rp-av">CP</div>
+            <div>
+              <h3>Chris Palmer</h3>
+              <div class="rp-role">M.D. — Psychiatrist, Researcher</div>
+              <div class="rp-inst">Harvard Medical School</div>
+              <p>Author of the best-seller 'Brain Energy,' Dr. Chris Palmer is a professor of psychiatry at Harvard and one of the leading advocates of the metabolic theory of mental illness. He proposes that psychiatric disorders are fundamentally disorders of brain metabolism, with the mitochondria at the center of the pathology. His work connects decades of research in neuroscience, metabolism, and psychiatry.</p>
+              <a class="rp-access" href="https://www.chrispalmermd.com/" target="_blank" rel="noopener">Learn more <span class="ic" data-icon="arrow-right"></span></a>
+            </div>
+          </div>
+          <div class="rp-person">
+            <div class="rp-av">SS</div>
+            <div>
+              <h3>Shebani Sethi</h3>
+              <div class="rp-role">M.D. — Metabolic Psychiatrist</div>
+              <div class="rp-inst">Stanford University School of Medicine</div>
+              <p>Founder and director of the world's first academic Metabolic Psychiatry program, at Stanford Medicine. Dr. Sethi led the pilot study that showed a ketogenic diet can produce remission in patients with schizophrenia and bipolar disorder. Her work is defining the clinical and research standards for the entire field.</p>
+              <a class="rp-access" href="https://med.stanford.edu/metabolicpsychiatry.html" target="_blank" rel="noopener">Learn more <span class="ic" data-icon="arrow-right"></span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <svg class="strip-wave bottom" viewBox="0 0 1440 72" preserveAspectRatio="none"><path d="M0 0 L0 30 Q360 66 720 34 T1440 40 L1440 0 Z" fill="var(--t900)"/></svg>
   </div>
 
   <!-- ============ TEAM APPLICATION MODAL ============ -->
@@ -2098,7 +2252,7 @@ function revealCharts(){
 }
 
 /* ============ ROUTER (subpages) ============ */
-const PAGES={'equipe':'pg-equipe','conteudo':'pg-conteudo','tratamento':'pg-tratamento'};
+const PAGES={'equipe':'pg-equipe','conteudo':'pg-conteudo','tratamento':'pg-tratamento','pesquisa':'pg-research'};
 function showSub(id,scroll){
   document.querySelectorAll('#site .subpage').forEach(s=>s.classList.toggle('active',s.id===id));
   if(scroll!==false) window.scrollTo(0,0);
@@ -2284,6 +2438,32 @@ routeFromHash();
     "Guided weekly check-ins":"Check-ins semanais guiados",
     "Ready to start your journey?":"Pronto para começar a sua jornada?",
     "Take a free initial assessment and find out whether the metabolic approach is right for you.":"Faça uma avaliação inicial gratuita e descubra se a abordagem metabólica é indicada para você.",
+    // pesquisa (Research) page
+    "Research":"Pesquisa","Access":"Acessar",
+    "Scientific basis":"Base científica","Scientific research":"Pesquisa científica",
+    "Peer-reviewed articles, clinical trials, and the evidence behind metabolic psychiatry.":"Artigos revisados por pares, ensaios clínicos e evidências que fundamentam a psiquiatria metabólica.",
+    "Scientific articles":"Artigos Científicos","Global references":"Referências Globais","Reference professionals":"Profissionais de Referência",
+    "This Stanford Medicine pilot study investigated the effects of a ketogenic diet in patients with bipolar disorder and schizophrenia who were already on medication. Over 4 months, 100% of participants showed significant improvement in psychiatric symptoms. Notably, 43% achieved full clinical remission and 64% were discharged on a reduced medication load. Beyond the psychiatric gains, participants showed substantial metabolic benefits, including reductions in weight, waist circumference, and insulin resistance.":"Este estudo piloto conduzido pela Stanford Medicine investigou os efeitos de uma dieta cetogênica em pacientes com transtorno bipolar e esquizofrenia que já tomavam medicação. Em 4 meses, 100% dos participantes apresentaram melhora significativa nos sintomas psiquiátricos. Notavelmente, 43% atingiram remissão clínica completa e 64% receberam alta com carga medicamentosa reduzida. Além das melhoras psiquiátricas, os participantes demonstraram benefícios metabólicos substanciais, incluindo redução de peso, circunferência abdominal e resistência insulínica.",
+    "This paper describes the protocol of a randomized controlled trial investigating the effects of ketogenic metabolic therapy on mental health and metabolic outcomes in patients with schizophrenia and bipolar disorder. The study uses a modified ketogenic diet as its main intervention, with multidisciplinary follow-up.":"Este artigo descreve o protocolo de um ensaio clínico randomizado controlado que investiga os efeitos da terapia metabólica cetogênica na saúde mental e nos desfechos metabólicos em pacientes com esquizofrenia e transtorno bipolar. O estudo utiliza uma dieta cetogênica modificada como intervenção principal, com acompanhamento multidisciplinar.",
+    "A case report of a patient with treatment-resistant schizophrenia and metabolic syndrome who showed significant metabolic, inflammatory, and neurological improvements after adopting a supervised ketogenic diet. The case illustrates the potential of the metabolic approach even in cases considered refractory.":"Relato de caso de uma paciente com esquizofrenia resistente ao tratamento e síndrome metabólica que apresentou melhorias metabólicas, inflamatórias e neurológicas significativas após adoção de uma dieta cetogênica supervisionada. O caso ilustra o potencial da abordagem metabólica mesmo em casos considerados refratários.",
+    "A retrospective study documenting the remission of chronic major depression through ketogenic metabolic therapy. The patient, who had not responded to multiple antidepressants over years, achieved full symptom remission after a structured dietary intervention.":"Estudo retrospectivo documentando a remissão de um quadro de depressão maior crônica através de terapia metabólica cetogênica. O paciente, que não havia respondido a múltiplos antidepressivos ao longo de anos, atingiu remissão completa dos sintomas após intervenção dietética estruturada.",
+    "A comprehensive review examining the molecular mechanisms by which ketogenic therapies may affect neuropsychiatric diseases. The article analyzes transcriptomic data revealing how ketosis modifies gene expression in metabolic, inflammatory, and neurotransmission pathways in the brain.":"Revisão abrangente que examina os mecanismos moleculares pelos quais terapias cetogênicas podem impactar doenças neuropsiquiátricas. O artigo analisa dados transcriptômicos que revelam como a cetose modifica a expressão gênica em vias metabólicas, inflamatórias e de neurotransmissão no cérebro.",
+    "A pilot study led by Dr. Shebani Sethi evaluating the effects of 4 months of a ketogenic diet in 21 patients with schizophrenia and bipolar disorder. Results showed 100% clinical improvement, 43% full remission, and 64% medication reduction.":"Estudo piloto conduzido pela Dra. Shebani Sethi que avaliou os efeitos de 4 meses de dieta cetogênica em 21 pacientes com esquizofrenia e transtorno bipolar. Resultados mostraram 100% de melhora clínica, 43% de remissão completa e 64% de redução medicamentosa.",
+    "The first formal randomized controlled trial evaluating ketogenic metabolic therapy in patients with schizophrenia and bipolar disorder. A direct comparison between a ketogenic diet and a standard diet over 16 weeks, assessing psychiatric symptoms, metabolic markers, and inflammatory biomarkers.":"Primeiro ensaio clínico randomizado controlado formal avaliando terapia metabólica cetogênica em pacientes com esquizofrenia e bipolar. Comparação direta entre dieta cetogênica e dieta padrão por 16 semanas, com avaliação de sintomas psiquiátricos, marcadores metabólicos e biomarcadores inflamatórios.",
+    "A global initiative funding and coordinating research into metabolic approaches to mental health. The network connects researchers from institutions such as Stanford, Harvard, and Oxford to accelerate clinical trials and translate findings into applicable protocols.":"Iniciativa global que financia e coordena pesquisas sobre abordagens metabólicas para saúde mental. A rede conecta pesquisadores de instituições como Stanford, Harvard e Oxford para acelerar ensaios clínicos e traduzir descobertas em protocolos aplicáveis.",
+    "A research program led by Dr. Christopher Palmer (Harvard) investigating the 'brain energy' theory — the idea that mental disorders are fundamentally metabolic disorders of the brain. It includes observational and interventional studies focused on diet, exercise, and mitochondrial optimization.":"Programa de pesquisa liderado pelo Dr. Christopher Palmer (Harvard) que investiga a teoria da 'energia cerebral' — a ideia de que transtornos mentais são fundamentalmente distúrbios metabólicos do cérebro. Inclui estudos observacionais e intervencionais com foco em dieta, exercício e otimização mitocondrial.",
+    "Frontiers in Psychiatry — Contributing Authors":"Frontiers in Psychiatry — Autores Colaboradores",
+    "Frontiers in Nutrition — Contributing Authors":"Frontiers in Nutrition — Autores Colaboradores",
+    "2024–present":"2024–presente","2022–present":"2022–presente","2023–present":"2023–presente",
+    "James Cook University, Australia":"James Cook University, Austrália",
+    "Ketogenic Diet":"Dieta Cetogênica","Schizophrenia":"Esquizofrenia","Protocol":"Protocolo",
+    "Case Report":"Relato de Caso","Refractory Schizophrenia":"Esquizofrenia Refratária","Inflammation":"Inflamação",
+    "Depression":"Depressão","Remission":"Remissão","Case Study":"Estudo de Caso",
+    "Review":"Revisão","Transcriptomics":"Transcriptômica","Molecular Mechanisms":"Mecanismos Moleculares",
+    "M.D. — Nutritional Psychiatrist":"M.D. — Psiquiatra Nutricional","M.D. — Psychiatrist, Researcher":"M.D. — Psiquiatra, Pesquisador","M.D. — Metabolic Psychiatrist":"M.D. — Psiquiatra Metabólica",
+    "A Harvard-trained psychiatrist and nutrition specialist, Dr. Georgia Ede is a pioneer in studying how specific diets affect brain chemistry. Author of 'Change Your Diet, Change Your Mind,' she researches the impact of ultra-processed foods, refined carbohydrates, and nutritional deficiencies on mental disorders. Her work helps ground clinical protocols for dietary intervention in psychiatry.":"Psiquiatra e especialista em nutrição da Harvard, Dra. Georgia Ede é pioneira no estudo de como dietas específicas afetam a química cerebral. Autora de 'Change Your Diet, Change Your Mind', ela pesquisa o impacto de alimentos ultraprocessados, carboidratos refinados e deficiências nutricionais nos transtornos mentais. Seu trabalho ajuda a fundamentar protocolos clínicos de intervenção dietética em psiquiatria.",
+    "Author of the best-seller 'Brain Energy,' Dr. Chris Palmer is a professor of psychiatry at Harvard and one of the leading advocates of the metabolic theory of mental illness. He proposes that psychiatric disorders are fundamentally disorders of brain metabolism, with the mitochondria at the center of the pathology. His work connects decades of research in neuroscience, metabolism, and psychiatry.":"Autor do best-seller 'Brain Energy', o Dr. Chris Palmer é professor de psiquiatria em Harvard e um dos principais defensores da teoria metabólica das doenças mentais. Ele propõe que transtornos psiquiátricos são fundamentalmente distúrbios do metabolismo cerebral, com a mitocôndria no centro da patologia. Seu trabalho conecta décadas de pesquisa em neurociência, metabolismo e psiquiatria.",
+    "Founder and director of the world's first academic Metabolic Psychiatry program, at Stanford Medicine. Dr. Sethi led the pilot study that showed a ketogenic diet can produce remission in patients with schizophrenia and bipolar disorder. Her work is defining the clinical and research standards for the entire field.":"Fundadora e diretora do primeiro programa acadêmico de Psiquiatria Metabólica do mundo, na Stanford Medicine. A Dra. Sethi conduziu o estudo piloto que demonstrou que a dieta cetogênica pode produzir remissão em pacientes com esquizofrenia e transtorno bipolar. Seu trabalho está definindo os padrões clínicos e de pesquisa para todo o campo.",
     "A quick questionnaire about your symptoms, history, and health goals.":"Questionário rápido sobre seus sintomas, histórico e objetivos de saúde.",
     "Referral":"Encaminhamento",
     "Our team identifies the ideal professional for your clinical case.":"Nossa equipe identifica o profissional ideal para o seu caso clínico.",
