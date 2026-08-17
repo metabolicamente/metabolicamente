@@ -703,6 +703,22 @@ body.dark .pyr-svg{color:#EDE6D8}
 .simple-cta .btn{font-size:16px}
 .simple-cta-trust{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:22px;font-size:13px;color:var(--soft)}
 .simple-cta-trust .ic{color:var(--t500)}
+/* treatment journey (How it works page) */
+.tj-wrap{max-width:760px;margin:0 auto}
+.tj-step{position:relative;display:grid;grid-template-columns:52px 1fr;gap:24px;padding-bottom:40px}
+.tj-step:last-child{padding-bottom:0}
+.tj-rail{display:flex;flex-direction:column;align-items:center}
+.tj-node{width:52px;height:52px;border-radius:50%;background:var(--t900);color:#F5EFE4;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:17px;flex-shrink:0}
+.tj-line{flex:1;width:2px;background:var(--line);margin-top:8px}
+.tj-step:last-child .tj-line{display:none}
+.tj-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 26px;box-shadow:var(--shadow);margin-top:2px}
+.tj-ic{width:44px;height:44px;border-radius:12px;background:var(--t50);color:var(--hd3);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:16px}
+.tj-card h3{font-family:var(--display);font-size:20px;color:var(--hd);letter-spacing:-.01em;margin-bottom:9px}
+.tj-card>p{color:var(--soft);font-size:14.5px;line-height:1.7}
+.tj-list{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.tj-list li{display:flex;align-items:flex-start;gap:11px;font-size:13.5px;color:var(--ink);line-height:1.5}
+.tj-list li .ic{color:var(--t500);font-size:15px;flex-shrink:0;margin-top:1px}
+@media(max-width:560px){.tj-step{grid-template-columns:44px 1fr;gap:16px}.tj-node{width:44px;height:44px;font-size:15px}.tj-card{padding:20px 20px}}
 .cta-line{max-width:none;white-space:nowrap}
 @media(max-width:680px){.cta-line{white-space:normal;max-width:30em}}
 .cta-panel{position:relative;overflow:hidden;max-width:880px;margin:0 auto;background:
@@ -789,7 +805,7 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
   <nav class="nav">
     <a class="logo" onclick="goHome()" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>Metabolicamente</a>
     <a class="nl" href="#about">About</a>
-    <a class="nl" href="#how">How it works</a>
+    <a class="nl" href="#/tratamento">How it works</a>
     <a class="nl" href="#results">Results</a>
     <a class="nl" href="#faq">FAQ</a>
     <a class="nl" href="#/conteudo">Content</a>
@@ -1052,6 +1068,95 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
       </div>
     </section>
     <svg class="strip-wave bottom" viewBox="0 0 1440 72" preserveAspectRatio="none"><path d="M0 0 L0 30 Q360 66 720 34 T1440 40 L1440 0 Z" fill="var(--t900)"/></svg>
+  </div>
+
+  <!-- ============ PAGE: HOW IT WORKS (TREATMENT JOURNEY) ============ -->
+  <div class="subpage" id="pg-tratamento">
+    <section class="phero">
+      <canvas class="glow"></canvas>
+      <div class="ph-in">
+        <div class="kicker">How it works</div>
+        <h1>The treatment journey</h1>
+        <p class="plead">A clinical process structured in five stages — from your first assessment to the ongoing care of your metabolic and mental health.</p>
+      </div>
+      <svg class="pwave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="display:block;width:100%;height:70px"><path d="M0 70 L0 40 Q360 0 720 35 T1440 30 L1440 70 Z" fill="var(--bg)"/></svg>
+    </section>
+    <section class="sec">
+      <div class="tj-wrap reveal">
+        <div class="tj-step">
+          <div class="tj-rail"><div class="tj-node">01</div><div class="tj-line"></div></div>
+          <div class="tj-card">
+            <div class="tj-ic"><span class="ic" data-icon="clipboard"></span></div>
+            <h3>Initial assessment</h3>
+            <p>You complete a detailed screening covering clinical history, symptoms, eating habits, and lifestyle. Your first appointment happens within 5 days.</p>
+            <ul class="tj-list">
+              <li><span class="ic" data-icon="check"></span>10-minute online screening</li>
+              <li><span class="ic" data-icon="check"></span>Full history-taking with a psychiatrist</li>
+              <li><span class="ic" data-icon="check"></span>Definition of clinical goals</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tj-step">
+          <div class="tj-rail"><div class="tj-node">02</div><div class="tj-line"></div></div>
+          <div class="tj-card">
+            <div class="tj-ic"><span class="ic" data-icon="activity"></span></div>
+            <h3>Metabolic investigation</h3>
+            <p>We order specific lab tests to map the inflammatory, glycemic, hormonal, and nutritional markers relevant to mental health.</p>
+            <ul class="tj-list">
+              <li><span class="ic" data-icon="check"></span>Complete metabolic panel</li>
+              <li><span class="ic" data-icon="check"></span>Vitamins, minerals, and omega-3</li>
+              <li><span class="ic" data-icon="check"></span>Inflammatory markers (CRP, homocysteine)</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tj-step">
+          <div class="tj-rail"><div class="tj-node">03</div><div class="tj-line"></div></div>
+          <div class="tj-card">
+            <div class="tj-ic"><span class="ic" data-icon="target"></span></div>
+            <h3>Personalized therapeutic plan</h3>
+            <p>We combine metabolic, nutritional, and — when indicated — pharmacological interventions to treat the root of the imbalance, not just the symptoms.</p>
+            <ul class="tj-list">
+              <li><span class="ic" data-icon="check"></span>Individualized protocol</li>
+              <li><span class="ic" data-icon="check"></span>Meal plan guided by your dietitian</li>
+              <li><span class="ic" data-icon="check"></span>Medication management</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tj-step">
+          <div class="tj-rail"><div class="tj-node">04</div><div class="tj-line"></div></div>
+          <div class="tj-card">
+            <div class="tj-ic"><span class="ic" data-icon="utensils"></span></div>
+            <h3>Ongoing clinical nutrition</h3>
+            <p>Your functional dietitian follows you weekly, adjusting the plan based on labs, symptoms, and adherence. Everything lives in your patient dashboard.</p>
+            <ul class="tj-list">
+              <li><span class="ic" data-icon="check"></span>Meal plans updated every two weeks</li>
+              <li><span class="ic" data-icon="check"></span>Direct chat with your dietitian</li>
+              <li><span class="ic" data-icon="check"></span>Recipes and shopping lists</li>
+            </ul>
+          </div>
+        </div>
+        <div class="tj-step">
+          <div class="tj-rail"><div class="tj-node">05</div><div class="tj-line"></div></div>
+          <div class="tj-card">
+            <div class="tj-ic"><span class="ic" data-icon="chart"></span></div>
+            <h3>Monitoring and progress</h3>
+            <p>Every 30–60 days we re-evaluate labs and subjective metrics (mood, energy, sleep). You track your progress visually in the dashboard.</p>
+            <ul class="tj-list">
+              <li><span class="ic" data-icon="check"></span>Progress dashboard</li>
+              <li><span class="ic" data-icon="check"></span>Comparative lab reports</li>
+              <li><span class="ic" data-icon="check"></span>Guided weekly check-ins</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="foot-cta" style="margin-top:0;padding-top:0">
+      <div class="simple-cta reveal">
+        <h2>Ready to start your journey?</h2>
+        <p class="lead" style="margin:0 auto 28px">Take a free initial assessment and find out whether the metabolic approach is right for you.</p>
+        <a class="btn btn-getstarted" onclick="go('wizard')" style="cursor:pointer">Start your journey <span class="ic" data-icon="arrow-right"></span></a>
+      </div>
+    </section>
   </div>
 
   <!-- ============ TEAM APPLICATION MODAL ============ -->
@@ -1993,7 +2098,7 @@ function revealCharts(){
 }
 
 /* ============ ROUTER (subpages) ============ */
-const PAGES={'equipe':'pg-equipe','conteudo':'pg-conteudo'};
+const PAGES={'equipe':'pg-equipe','conteudo':'pg-conteudo','tratamento':'pg-tratamento'};
 function showSub(id,scroll){
   document.querySelectorAll('#site .subpage').forEach(s=>s.classList.toggle('active',s.id===id));
   if(scroll!==false) window.scrollTo(0,0);
@@ -2150,6 +2255,35 @@ routeFromHash();
     // how it works
     "Four steps to transform your mental health.":"Quatro passos para transformar sua saúde mental.",
     "Initial assessment":"Avaliação Inicial",
+    // tratamento (How it works) page
+    "The treatment journey":"A jornada do tratamento",
+    "A clinical process structured in five stages — from your first assessment to the ongoing care of your metabolic and mental health.":"Um processo clínico estruturado em cinco etapas — da primeira avaliação ao acompanhamento contínuo da sua saúde metabólica e mental.",
+    "You complete a detailed screening covering clinical history, symptoms, eating habits, and lifestyle. Your first appointment happens within 5 days.":"Você preenche uma triagem detalhada sobre histórico clínico, sintomas, hábitos alimentares e estilo de vida. A primeira consulta acontece em até 5 dias.",
+    "10-minute online screening":"Triagem on-line de 10 min",
+    "Full history-taking with a psychiatrist":"Anamnese completa com psiquiatra",
+    "Definition of clinical goals":"Definição de objetivos clínicos",
+    "Metabolic investigation":"Investigação metabólica",
+    "We order specific lab tests to map the inflammatory, glycemic, hormonal, and nutritional markers relevant to mental health.":"Solicitamos exames laboratoriais específicos para mapear marcadores inflamatórios, glicêmicos, hormonais e nutricionais relevantes para a saúde mental.",
+    "Complete metabolic panel":"Painel metabólico completo",
+    "Vitamins, minerals, and omega-3":"Vitaminas, minerais e ômega-3",
+    "Inflammatory markers (CRP, homocysteine)":"Marcadores inflamatórios (PCR, homocisteína)",
+    "Personalized therapeutic plan":"Plano terapêutico personalizado",
+    "We combine metabolic, nutritional, and — when indicated — pharmacological interventions to treat the root of the imbalance, not just the symptoms.":"Combinamos intervenções metabólicas, nutricionais e, quando indicado, ajustes farmacológicos para tratar a raiz do desequilíbrio — não apenas os sintomas.",
+    "Individualized protocol":"Protocolo individualizado",
+    "Meal plan guided by your dietitian":"Cardápio guiado pela nutricionista",
+    "Medication management":"Acompanhamento medicamentoso",
+    "Ongoing clinical nutrition":"Nutrição clínica contínua",
+    "Your functional dietitian follows you weekly, adjusting the plan based on labs, symptoms, and adherence. Everything lives in your patient dashboard.":"A nutricionista funcional acompanha você semanalmente, ajustando o plano conforme exames, sintomas e adesão. Tudo no painel do paciente.",
+    "Meal plans updated every two weeks":"Cardápios atualizados quinzenalmente",
+    "Direct chat with your dietitian":"Chat direto com a nutricionista",
+    "Recipes and shopping lists":"Receitas e listas de compra",
+    "Monitoring and progress":"Acompanhamento e evolução",
+    "Every 30–60 days we re-evaluate labs and subjective metrics (mood, energy, sleep). You track your progress visually in the dashboard.":"A cada 30–60 dias, reavaliamos exames e métricas subjetivas (humor, energia, sono). Você acompanha o progresso visualmente no painel.",
+    "Progress dashboard":"Dashboard de evolução",
+    "Comparative lab reports":"Relatórios de exames comparativos",
+    "Guided weekly check-ins":"Check-ins semanais guiados",
+    "Ready to start your journey?":"Pronto para começar a sua jornada?",
+    "Take a free initial assessment and find out whether the metabolic approach is right for you.":"Faça uma avaliação inicial gratuita e descubra se a abordagem metabólica é indicada para você.",
     "A quick questionnaire about your symptoms, history, and health goals.":"Questionário rápido sobre seus sintomas, histórico e objetivos de saúde.",
     "Referral":"Encaminhamento",
     "Our team identifies the ideal professional for your clinical case.":"Nossa equipe identifica o profissional ideal para o seu caso clínico.",
