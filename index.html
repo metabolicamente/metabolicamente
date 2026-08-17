@@ -829,8 +829,6 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
     <a class="logo" onclick="goHome()" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>Metabolicamente</a>
     <a class="nl" href="#about">About</a>
     <a class="nl" href="#/tratamento">How it works</a>
-    <a class="nl" href="#results">Results</a>
-    <a class="nl" href="#faq">FAQ</a>
     <a class="nl" href="#/conteudo">Content</a>
     <a class="nl" href="#/pesquisa">Research</a>
     <a class="nl" href="#/equipe">Care team</a>
@@ -1660,15 +1658,11 @@ function wizTog(i,multi){
   else{ sel=[i]; }
   W.answers[s.key]=sel;
   if(document.getElementById('wtext')) W.answers.reasonText=document.getElementById('wtext').value;
-  if(multi){
-    // Update selection in place: toggling only the clicked option's class avoids
-    // rebuilding the panel, which was re-triggering the fadeUp animation (the "jerk").
-    document.querySelectorAll('#wsteps .chip, #wsteps .opt').forEach((b,idx)=>b.classList.toggle('on',sel.includes(idx)));
-    wizValid();
-  }else{
-    wizRender();
-    if(s.type==='single'){ setTimeout(wizNext,280); }
-  }
+  // Update selection in place (no full re-render) so the panel doesn't replay its
+  // entrance animation (the "jerk"). Single-select no longer auto-advances — the
+  // user taps Continue like every other step.
+  document.querySelectorAll('#wsteps .chip, #wsteps .opt').forEach((b,idx)=>b.classList.toggle('on',sel.includes(idx)));
+  wizValid();
 }
 function wizValid(){
   const s=WSTEPS[W.step]; const btn=document.getElementById('wnext'); let ok=true;
