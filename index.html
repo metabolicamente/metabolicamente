@@ -196,7 +196,8 @@ body.dark .snav.on{background:var(--t700)}
 .mission:hover{background:var(--t50)}
 .mission .mk{width:22px;height:22px;border-radius:50%;border:2px solid var(--line);flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;transition:all .15s}
 .mission.done .mk{background:var(--t500);border-color:var(--t500)}
-.mission .mk .ic{font-size:13px;opacity:0}
+.mission .mk .ic{font-size:13px;opacity:0;transition:opacity .15s}
+.mission span{transition:color .15s}
 .mission.done .mk .ic{opacity:1}
 .mission span{font-size:14px;color:var(--ink)}
 .mission.done span{text-decoration:line-through;color:var(--soft)}
@@ -1957,7 +1958,20 @@ function dashBell(role,e){
   if(!open){ d.classList.add('open'); setTimeout(()=>{ document.addEventListener('click',function h(){ d.classList.remove('open'); document.removeEventListener('click',h); }); },0); }
 }
 function dashNav(role,id){ DASH[role].sec=id; DASH[role].selPatient=null; renderDash(role); window.scrollTo(0,0); }
-function dashMission(role,i){ const m=DASH[role].missions[i]; m[1]=m[1]?0:1; dashSection(role); }
+function dashMission(role,i){
+  const D=DASH[role], m=D.missions[i]; m[1]=m[1]?0:1;
+  const w=document.getElementById('dwrap-'+role);
+  // In-place update (no full re-render) so the checklist + progress bar animate smoothly instead of jerking.
+  if(!w){ dashSection(role); return; }
+  const btns=w.querySelectorAll('.mission');
+  if(!btns[i]){ dashSection(role); return; }
+  btns[i].classList.toggle('done', !!m[1]);
+  const done=D.missions.filter(x=>x[1]).length, tot=D.missions.length, pct=Math.round(done/tot*100);
+  const jn=w.querySelector('.jhero .jn'); if(jn) jn.textContent=done+' of '+tot+' missions';
+  const js=w.querySelector('.jhero .js'); if(js) js.textContent=(done===tot?'Day complete! Excellent.':'Keep going, you\'re doing well.');
+  const bar=w.querySelector('.jhero .jbar i'); if(bar) bar.style.width=pct+'%';
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
+}
 
 function firstName(n){ const p=n.split(' '); return p[p.length-1]; }
 function dashSection(role){
