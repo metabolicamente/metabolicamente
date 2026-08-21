@@ -816,6 +816,131 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
 .nx-n{font-family:var(--serif);color:var(--coral-deep);font-weight:600;flex-shrink:0}
 .nx b{font-size:14.5px;color:var(--hd)}
 .nx p{font-size:13px;color:var(--soft);margin-top:2px}
+/* ================= CONTENT: modo app (inspirado no Hallow) =================
+   Esta pagina rompe de proposito com o grid creme do resto do site: vira uma
+   superficie escura full-bleed. As variaveis abaixo ficam no <body>, entao nav,
+   rodape e todos os componentes existentes se adaptam sozinhos.            */
+body.appmode{
+  --bg:#071A21; --bg-dim:#0B242D; --card:#0E2A34; --ink:#EDE7DB; --soft:#93A9AE;
+  --line:#173A47; --t50:#0F2C37; --t100:#1A4351;
+  --hd:#F2ECE0; --hd2:#DAE7E5; --hd3:#8FC1BB; --navbg:rgba(7,26,33,.88);
+  --shadow:0 2px 4px rgba(0,0,0,.3),0 14px 44px rgba(0,0,0,.4);
+  --tintband:#0B242D;
+}
+body.appmode .nav{border-bottom-color:#12313D}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+#pg-conteudo{--gut:clamp(18px,3.4vw,48px);padding-top:6px}
+
+/* --- cabecalhos de secao --- */
+.hl-sec{padding:26px 0 6px}
+.hl-sec.hl-first{padding-top:30px}
+.hl-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;padding:0 var(--gut);margin-bottom:16px}
+.hl-head h2{font-family:var(--display);font-size:clamp(19px,1.8vw,24px);font-weight:700;
+  letter-spacing:-.01em;color:var(--hd);margin:0}
+.hl-head span{font-size:13.5px;color:var(--soft)}
+
+/* --- trilhos horizontais (o proximo card sempre espia na borda) --- */
+.rail{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x proximity;
+  padding:4px var(--gut) 26px;margin:0;scroll-padding-left:var(--gut);
+  scrollbar-width:none;-ms-overflow-style:none}
+.rail::-webkit-scrollbar{display:none}
+.rail>*{scroll-snap-align:start;flex:0 0 auto}
+
+/* --- UP NEXT: card gigante, quase da largura da tela --- */
+.upcard{position:relative;width:min(calc(100vw - var(--gut) * 2 - 58px),1400px);
+  height:clamp(310px,32vw,430px);border-radius:22px;overflow:hidden;
+  background:linear-gradient(115deg,var(--g1),var(--g2));display:flex;align-items:center;
+  transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.upcard:hover{transform:translateY(-4px)}
+.upart{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.upart svg{position:absolute;inset:0;width:100%;height:100%}
+.upbody{position:relative;z-index:2;padding:clamp(28px,3.4vw,52px);max-width:60%}
+.upkick{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(245,239,228,.72);margin-bottom:14px}
+.upcard h3{font-family:var(--serif);font-size:clamp(26px,3.6vw,48px);line-height:1.06;
+  letter-spacing:-.015em;color:#F7F2E7;margin:0 0 14px}
+.upsub{font-size:clamp(14px,1.15vw,16.5px);line-height:1.55;color:rgba(245,239,228,.84);
+  margin:0 0 26px;max-width:24em}
+.upplay{cursor:default;padding:13px 24px;font-size:15px}
+.upplay i{font-style:normal;font-size:11px}
+@media(max-width:760px){
+  .upcard{width:calc(100vw - var(--gut) * 2 - 34px);height:auto;min-height:300px}
+  .upbody{max-width:100%}
+}
+
+/* --- painel de citacao (o bloco do versiculo, no Hallow) --- */
+.quotepanel{margin:8px var(--gut) 2px;background:var(--bg-dim);border:1px solid var(--line);
+  border-radius:22px;padding:clamp(38px,4.6vw,72px) clamp(24px,5vw,80px);text-align:center}
+.qp-mark{font-size:26px;color:var(--t500)}
+.qp-src{font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--soft);margin:14px 0 18px}
+.qp-text{font-family:var(--serif);font-size:clamp(20px,2.7vw,34px);line-height:1.36;
+  letter-spacing:-.01em;color:var(--hd);margin:0 auto;max-width:20em}
+
+/* --- cards de programa --- */
+.progcard{width:clamp(168px,17vw,238px);cursor:default}
+.pcover{position:relative;aspect-ratio:1/1;border-radius:16px;overflow:hidden;margin-bottom:12px;
+  background:linear-gradient(150deg,var(--g1),var(--g2));transition:transform .25s ease}
+.progcard:hover .pcover{transform:translateY(-4px)}
+.pcover svg.pcart{position:absolute;inset:0;width:100%;height:100%}
+.pcover .pcic{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-size:clamp(38px,4vw,54px);color:#fff;opacity:.92}
+.progcard h3{font-size:15px;font-weight:600;line-height:1.32;color:var(--hd);margin:0 0 4px;
+  min-height:2.64em;display:flex;align-items:flex-start}
+.pmeta{font-size:12.5px;color:var(--soft);margin:0}
+.progbar{height:4px;border-radius:99px;background:var(--line);margin-top:10px;overflow:hidden}
+.progbar span{display:block;height:100%;border-radius:99px;background:var(--t500)}
+
+/* ---------------- metade 2: DISCOVER ---------------- */
+.disc{padding:46px var(--gut) 20px;border-top:1px solid var(--line);margin-top:34px}
+.discsearch{position:relative;max-width:720px;margin:0 auto 34px}
+.discsearch input[type=text]{width:100%;background:rgba(245,239,228,.06);
+  border:1.5px solid var(--line);border-radius:99px;padding:16px 20px 16px 50px;
+  font-family:var(--sans);font-size:15px;color:var(--ink);outline:none;transition:all .2s}
+.discsearch input[type=text]::placeholder{color:var(--soft)}
+.discsearch input[type=text]:focus{border-color:var(--t500);background:rgba(245,239,228,.09)}
+.discsearch .ic{position:absolute;left:20px;top:50%;transform:translateY(-50%);
+  color:var(--soft);font-size:17px}
+
+.catgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:13px}
+.cattile{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;
+  background:linear-gradient(155deg,var(--g1),var(--g2));display:flex;align-items:flex-end;
+  padding:16px;cursor:default;transition:transform .22s ease,box-shadow .22s ease}
+.cattile:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(0,0,0,.4)}
+.cattile svg.catart{position:absolute;inset:0;width:100%;height:100%}
+.cattile .catic{position:absolute;right:12px;top:12px;font-size:clamp(30px,3vw,42px);
+  color:#fff;opacity:.34}
+.catlabel{position:relative;z-index:2;font-weight:700;font-size:clamp(13px,1.05vw,15px);
+  line-height:1.25;color:#fff;text-shadow:0 1px 10px rgba(0,0,0,.28)}
+@media(max-width:1080px){.catgrid{grid-template-columns:repeat(4,1fr)}}
+@media(max-width:680px){.catgrid{grid-template-columns:repeat(2,1fr);gap:11px}}
+
+/* --- biblioteca real, realinhada ao full-bleed da pagina --- */
+#pg-conteudo .sec{padding:56px var(--gut) 40px}
+#pg-conteudo .sec-inner,#pg-conteudo .dark-sec{max-width:none}
+#pg-conteudo .vgrid{grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:1080px){#pg-conteudo .vgrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){#pg-conteudo .vgrid{grid-template-columns:1fr}}
+#pg-conteudo .dark-strip{background:var(--bg-dim);padding-top:52px}
+#pg-conteudo .agrid{grid-template-columns:repeat(4,1fr)}
+@media(max-width:1080px){#pg-conteudo .agrid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){#pg-conteudo .agrid{grid-template-columns:1fr}}
+#pg-conteudo .acard{flex-direction:column}
+#pg-conteudo .libfilters{justify-content:flex-start}
+#pg-conteudo .strip-wave{display:none}
+
+/* --- filtros de canal da biblioteca --- */
+.libfilters{display:flex;flex-wrap:wrap;gap:8px;margin:-6px 0 26px}
+.libfilters button{font-size:12.5px;font-weight:600;padding:7px 15px;border-radius:99px;
+  border:1px solid var(--line);color:var(--soft);background:var(--card);transition:all .18s}
+.libfilters button:hover{border-color:var(--t500);color:var(--hd2)}
+.libfilters button.on{background:var(--t500);border-color:var(--t500);color:#062A26}
+
+/* --- cta final --- */
+.ccta{text-align:center}
+.ccta h2{font-family:var(--serif);font-size:clamp(26px,3.4vw,42px);letter-spacing:-.015em;margin:0 0 14px}
 </style>
 </head>
 <body>
@@ -839,11 +964,10 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
 <div class="screen active" id="site">
   <nav class="nav">
     <a class="logo" onclick="goHome()" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>Metabolicamente</a>
-    <a class="nl" href="#top">About</a>
-    <a class="nl" href="#/tratamento">How it works</a>
     <a class="nl" href="#/conteudo">Content</a>
-    <a class="nl" href="#/pesquisa">Research</a>
-    <a class="nl" href="#/equipe">Care team</a>
+    <a class="nl" href="#/tratamento">Why metabolism matters</a>
+    <a class="nl" href="#/equipe">About us</a>
+    <a class="nl" href="#/faq">FAQs</a>
     <a class="btn btn-line" id="navLogin" onclick="go('login')" style="cursor:pointer">Log in</a>
     <a class="btn btn-solid" onclick="go('wizard')" style="cursor:pointer;margin-left:-12px">Get started</a>
   </nav>
@@ -1027,26 +1151,223 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
 
   <!-- ============ PAGE: CONTENT ============ -->
   <div class="subpage" id="pg-conteudo">
-    <section class="phero">
-      <canvas class="glow"></canvas>
-      <div class="ph-in">
-        <div class="kicker">Knowledge library</div>
-        <h1>Content</h1>
-        <p class="plead">Videos, articles, and podcasts on metabolic psychiatry and evidence-based mental health.</p>
-        <div class="csearch"><span class="ic" data-icon="search"></span><input type="text" id="csearch" placeholder="Search videos, articles, or podcasts..." oninput="cFilter()"></div>
-        <div class="cfilters" id="cfilters">
+    <h1 class="sr-only">Content</h1>
+
+    <!-- ================= metade 1 — home (estilo hallow.com) ================= -->
+    <section class="hl-sec hl-first">
+      <div class="hl-head reveal"><h2>Up next</h2><span>Pick up where you left off.</span></div>
+      <div class="rail">
+        <article class="upcard" style="--g1:#2A9D8F;--g2:#12615A">
+          <div class="upart"><svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="962" cy="118" r="88" fill="#fff" opacity=".13"/><circle cx="962" cy="118" r="49" fill="#fff" opacity=".2"/><path d="M0 296 Q220 246 460 286 T1200 258 L1200 440 L0 440Z" fill="#fff" opacity=".1"/><path d="M0 350 Q250 298 500 340 T1200 320 L1200 440 L0 440Z" fill="#fff" opacity=".1"/><g fill="#fff" opacity=".42"><circle cx="784" cy="62" r="3.4"/><circle cx="1094" cy="196" r="2.8"/><circle cx="868" cy="238" r="2.4"/><circle cx="1138" cy="72" r="3"/><circle cx="716" cy="166" r="2.2"/></g></svg></div>
+          <div class="upbody">
+            <p class="upkick">Program · Day 3 of 7</p>
+            <h3>Metabolism &amp; mood: the basics</h3>
+            <p class="upsub">How your brain makes energy — and what happens when it runs short.</p>
+            <span class="btn btn-cream upplay"><i>▶</i> Play session</span>
+          </div>
+        </article>
+        <article class="upcard" style="--g1:#114B5F;--g2:#07222C">
+          <div class="upart"><svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="962" cy="118" r="88" fill="#fff" opacity=".13"/><circle cx="962" cy="118" r="49" fill="#fff" opacity=".2"/><path d="M0 296 Q220 246 460 286 T1200 258 L1200 440 L0 440Z" fill="#fff" opacity=".1"/><path d="M0 350 Q250 298 500 340 T1200 320 L1200 440 L0 440Z" fill="#fff" opacity=".1"/><g fill="#fff" opacity=".42"><circle cx="784" cy="62" r="3.4"/><circle cx="1094" cy="196" r="2.8"/><circle cx="868" cy="238" r="2.4"/><circle cx="1138" cy="72" r="3"/><circle cx="716" cy="166" r="2.2"/></g></svg></div>
+          <div class="upbody">
+            <p class="upkick">Program · Day 1 of 5</p>
+            <h3>Circadian reset</h3>
+            <p class="upsub">Light, timing, and the clock that runs inside every cell.</p>
+            <span class="btn btn-cream upplay"><i>▶</i> Play session</span>
+          </div>
+        </article>
+        <article class="upcard" style="--g1:#E76F51;--g2:#A83F22">
+          <div class="upart"><svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="962" cy="118" r="88" fill="#fff" opacity=".13"/><circle cx="962" cy="118" r="49" fill="#fff" opacity=".2"/><path d="M0 296 Q220 246 460 286 T1200 258 L1200 440 L0 440Z" fill="#fff" opacity=".1"/><path d="M0 350 Q250 298 500 340 T1200 320 L1200 440 L0 440Z" fill="#fff" opacity=".1"/><g fill="#fff" opacity=".42"><circle cx="784" cy="62" r="3.4"/><circle cx="1094" cy="196" r="2.8"/><circle cx="868" cy="238" r="2.4"/><circle cx="1138" cy="72" r="3"/><circle cx="716" cy="166" r="2.2"/></g></svg></div>
+          <div class="upbody">
+            <p class="upkick">Program · Day 2 of 10</p>
+            <h3>Rebuilding your plate</h3>
+            <p class="upsub">A practical week of meals built around stable blood sugar.</p>
+            <span class="btn btn-cream upplay"><i>▶</i> Play session</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="hl-sec">
+      <div class="quotepanel reveal">
+        <span class="qp-mark ic" data-icon="sparkles"></span>
+        <p class="qp-src">Insight of the day</p>
+        <p class="qp-text">The brain is two percent of your body weight and burns twenty percent of your energy. When that supply falters, the mind is the first place you feel it.</p>
+      </div>
+    </section>
+
+    <section class="hl-sec">
+      <div class="hl-head reveal"><h2>Start here</h2><span>The foundation, in short daily sessions.</span></div>
+      <div class="rail">
+          <article class="progcard">
+            <div class="pcover" style="--g1:#2A9D8F;--g2:#12615A"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="pcic ic" data-icon="zap"></span></div>
+            <h3>Metabolism &amp; mood: the basics</h3>
+            <p class="pmeta">7 days · 10 min/day</p>
+            <div class="progbar"><span style="width:43%"></span></div>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#114B5F;--g2:#07222C"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="pcic ic" data-icon="sparkles"></span></div>
+            <h3>What is metabolic psychiatry?</h3>
+            <p class="pmeta">5 days · 8 min/day</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#E76F51;--g2:#A83F22"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="pcic ic" data-icon="droplet"></span></div>
+            <h3>Sugar, insulin, and the brain</h3>
+            <p class="pmeta">6 days · 9 min/day</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#5B7DB1;--g2:#294567"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="pcic ic" data-icon="chart"></span></div>
+            <h3>Reading your own lab results</h3>
+            <p class="pmeta">4 days · 12 min/day</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#D9A420;--g2:#8E6704"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="pcic ic" data-icon="calendar"></span></div>
+            <h3>Your first week, step by step</h3>
+            <p class="pmeta">7 days · 6 min/day</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="pcic ic" data-icon="alert"></span></div>
+            <h3>Myths we need to retire</h3>
+            <p class="pmeta">3 days · 7 min/day</p>
+          </article>
+      </div>
+    </section>
+
+    <section class="hl-sec">
+      <div class="hl-head reveal"><h2>Nutrition in practice</h2><span>From the theory to what lands on the plate.</span></div>
+      <div class="rail">
+          <article class="progcard">
+            <div class="pcover" style="--g1:#7A5C8E;--g2:#3F2C4D"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="pcic ic" data-icon="leaf"></span></div>
+            <h3>Ketogenic therapy, day by day</h3>
+            <p class="pmeta">14 days · 12 min/day</p>
+            <div class="progbar"><span style="width:18%"></span></div>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#4FA8C7;--g2:#1D6076"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="pcic ic" data-icon="utensils"></span></div>
+            <h3>Rebuilding your plate</h3>
+            <p class="pmeta">10 days · 9 min/day</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#2A9D8F;--g2:#12615A"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="pcic ic" data-icon="egg"></span></div>
+            <h3>Protein, fat, and staying full</h3>
+            <p class="pmeta">5 days · 8 min/day</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#114B5F;--g2:#07222C"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="pcic ic" data-icon="coffee"></span></div>
+            <h3>Eating out without derailing</h3>
+            <p class="pmeta">3 days · 6 min/day</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#E76F51;--g2:#A83F22"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="pcic ic" data-icon="apple"></span></div>
+            <h3>Recipes for a stable week</h3>
+            <p class="pmeta">12 recipes</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#5B7DB1;--g2:#294567"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="pcic ic" data-icon="clock"></span></div>
+            <h3>Fasting: who it helps, who it hurts</h3>
+            <p class="pmeta">4 days · 10 min/day</p>
+          </article>
+      </div>
+    </section>
+
+    <section class="hl-sec">
+      <div class="hl-head reveal"><h2>Sleep, light &amp; rhythm</h2><span>The clock that sets everything else.</span></div>
+      <div class="rail">
+          <article class="progcard">
+            <div class="pcover" style="--g1:#D9A420;--g2:#8E6704"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="pcic ic" data-icon="moon"></span></div>
+            <h3>Circadian reset</h3>
+            <p class="pmeta">5 days · 10 min/day</p>
+            <div class="progbar"><span style="width:20%"></span></div>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="pcic ic" data-icon="moon-star"></span></div>
+            <h3>Wind-down for a racing mind</h3>
+            <p class="pmeta">7 sessions · 12 min</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#7A5C8E;--g2:#3F2C4D"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="pcic ic" data-icon="sun"></span></div>
+            <h3>Morning light protocol</h3>
+            <p class="pmeta">3 days · 5 min/day</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#4FA8C7;--g2:#1D6076"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="pcic ic" data-icon="activity"></span></div>
+            <h3>Sleep and blood sugar</h3>
+            <p class="pmeta">4 days · 9 min/day</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#2A9D8F;--g2:#12615A"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="pcic ic" data-icon="clock"></span></div>
+            <h3>Shift work survival guide</h3>
+            <p class="pmeta">6 days · 8 min/day</p>
+          </article>
+      </div>
+    </section>
+
+    <section class="hl-sec">
+      <div class="hl-head reveal"><h2>Understanding your condition</h2><span>The metabolic lens, applied to a diagnosis.</span></div>
+      <div class="rail">
+          <article class="progcard">
+            <div class="pcover" style="--g1:#114B5F;--g2:#07222C"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="pcic ic" data-icon="moon-star"></span></div>
+            <h3>Depression through a metabolic lens</h3>
+            <p class="pmeta">8 days · 11 min/day</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#E76F51;--g2:#A83F22"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="pcic ic" data-icon="trending-down"></span></div>
+            <h3>Bipolar disorder and brain energy</h3>
+            <p class="pmeta">10 days · 12 min/day</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#5B7DB1;--g2:#294567"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="pcic ic" data-icon="droplet"></span></div>
+            <h3>Anxiety, cortisol, and glucose</h3>
+            <p class="pmeta">6 days · 9 min/day</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#D9A420;--g2:#8E6704"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="pcic ic" data-icon="target"></span></div>
+            <h3>ADHD and the metabolic brain</h3>
+            <p class="pmeta">7 days · 10 min/day</p>
+          </article>
+          <article class="progcard">
+            <div class="pcover" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="pcart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="pcic ic" data-icon="shield"></span></div>
+            <h3>When medication and metabolism collide</h3>
+            <p class="pmeta">5 days · 13 min/day</p>
+          </article>
+      </div>
+    </section>
+
+    <!-- ================= metade 2 — discover (estilo hallow.com/discover) ================= -->
+    <section class="disc">
+      <div class="csearch discsearch"><span class="ic" data-icon="search"></span><input type="text" id="csearch" placeholder="Search for a category, program, or guide" oninput="cFilter()"></div>
+      <div class="catgrid" id="catgrid">
+          <a class="cattile" data-cat="Fundamentals" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="zap"></span><span class="catlabel">Fundamentals</span></a>
+          <a class="cattile" data-cat="Nutrition" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="utensils"></span><span class="catlabel">Nutrition</span></a>
+          <a class="cattile" data-cat="Sleep" style="--g1:#D9A420;--g2:#8E6704"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="moon"></span><span class="catlabel">Sleep</span></a>
+          <a class="cattile" data-cat="Movement" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="activity"></span><span class="catlabel">Movement</span></a>
+          <a class="cattile" data-cat="Ketogenic therapy" style="--g1:#7A5C8E;--g2:#3F2C4D"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="leaf"></span><span class="catlabel">Ketogenic therapy</span></a>
+          <a class="cattile" data-cat="Recipes" style="--g1:#4FA8C7;--g2:#1D6076"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="apple"></span><span class="catlabel">Recipes</span></a>
+          <a class="cattile" data-cat="Depression" style="--g1:#2A9D8F;--g2:#12615A"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="moon-star"></span><span class="catlabel">Depression</span></a>
+          <a class="cattile" data-cat="Anxiety" style="--g1:#114B5F;--g2:#07222C"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="droplet"></span><span class="catlabel">Anxiety</span></a>
+          <a class="cattile" data-cat="Bipolar disorder" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="trending-down"></span><span class="catlabel">Bipolar disorder</span></a>
+          <a class="cattile" data-cat="ADHD" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="target"></span><span class="catlabel">ADHD</span></a>
+          <a class="cattile" data-cat="Gut & brain" style="--g1:#D9A420;--g2:#8E6704"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="egg"></span><span class="catlabel">Gut &amp; brain</span></a>
+          <a class="cattile" data-cat="Stress & cortisol" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="flame"></span><span class="catlabel">Stress &amp; cortisol</span></a>
+          <a class="cattile" data-cat="The science" style="--g1:#7A5C8E;--g2:#3F2C4D"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="chart"></span><span class="catlabel">The science</span></a>
+          <a class="cattile" data-cat="Patient stories" style="--g1:#4FA8C7;--g2:#1D6076"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="users"></span><span class="catlabel">Patient stories</span></a>
+          <a class="cattile" data-cat="Podcasts" style="--g1:#2A9D8F;--g2:#12615A"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="mic"></span><span class="catlabel">Podcasts</span></a>
+          <a class="cattile" data-cat="Mindfulness" style="--g1:#114B5F;--g2:#07222C"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="smile"></span><span class="catlabel">Mindfulness</span></a>
+          <a class="cattile" data-cat="Getting started" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="sparkles"></span><span class="catlabel">Getting started</span></a>
+          <a class="cattile" data-cat="For clinicians" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="stethoscope"></span><span class="catlabel">For clinicians</span></a>
+      </div>
+      <div class="noresults" id="catnores">No categories match your search.</div>
+    </section>
+
+    <section class="sec" style="padding-bottom:70px">
+      <div class="sec-inner">
+        <div class="sech reveal"><div class="sic"><span class="ic" data-icon="video"></span></div><h2>Videos &amp; podcasts</h2></div>
+        <div class="libfilters" id="cfilters">
           <button class="on" data-chan="" onclick="cChan(this)">All</button>
           <button data-chan="Roundabout Productions" onclick="cChan(this)">Roundabout Productions</button>
           <button data-chan="Modo Primal Podcast" onclick="cChan(this)">Modo Primal Podcast</button>
           <button data-chan="Antonio Kraychete" onclick="cChan(this)">Antonio Kraychete</button>
           <button data-chan="Lutz Podcast" onclick="cChan(this)">Lutz Podcast</button>
         </div>
-      </div>
-      <svg class="pwave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="display:block;width:100%;height:70px"><path d="M0 70 L0 40 Q360 0 720 35 T1440 30 L1440 70 Z" fill="var(--bg)"/></svg>
-    </section>
-    <section class="sec" style="padding-bottom:70px">
-      <div class="sec-inner">
-        <div class="sech reveal"><div class="sic"><span class="ic" data-icon="video"></span></div><h2>Videos &amp; podcasts</h2></div>
         <div class="vgrid" id="vgrid">
           <a class="vcard reveal" data-chan="Roundabout Productions" href="https://www.youtube.com/watch?v=dI0CztCzjbc" target="_blank" rel="noopener">
             <div class="vthumb"><img src="https://img.youtube.com/vi/dI0CztCzjbc/hqdefault.jpg" alt="" loading="lazy"><div class="vplay"><i>▶</i></div></div>
@@ -1101,9 +1422,16 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
         <div class="noresults" id="anores" style="color:rgba(245,239,228,.5)">No results for your search.</div>
       </div>
     </section>
-    <svg class="strip-wave bottom" viewBox="0 0 1440 72" preserveAspectRatio="none"><path d="M0 0 L0 30 Q360 66 720 34 T1440 40 L1440 0 Z" fill="var(--t900)"/></svg>
-  </div>
 
+    <!-- ---------- cta final ---------- -->
+    <section class="sec dark-strip">
+      <div class="dark-sec ccta reveal">
+        <h2>Start your first program.</h2>
+        <p class="lead">Two minutes to tell us where you are. We build the path from there.</p>
+        <div style="margin-top:28px"><a class="btn btn-cream" onclick="go('wizard')" style="cursor:pointer">Get started <span class="ic" data-icon="arrow-right"></span></a></div>
+      </div>
+    </section>
+  </div>
   <!-- ============ PAGE: HOW IT WORKS (TREATMENT JOURNEY) ============ -->
   <div class="subpage" id="pg-tratamento">
     <section class="phero">
@@ -1323,6 +1651,24 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
     <svg class="strip-wave bottom" viewBox="0 0 1440 72" preserveAspectRatio="none"><path d="M0 0 L0 30 Q360 66 720 34 T1440 40 L1440 0 Z" fill="var(--t900)"/></svg>
   </div>
 
+  <!-- ============ PAGE: FAQs (stub) ============ -->
+  <div class="subpage" id="pg-faq">
+    <section class="phero">
+      <canvas class="glow"></canvas>
+      <div class="ph-in">
+        <div class="kicker">Questions</div>
+        <h1>FAQs</h1>
+        <p class="plead">Answers from our doctors to the questions people ask most. Coming soon.</p>
+      </div>
+      <svg class="pwave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="display:block;width:100%;height:70px"><path d="M0 70 L0 40 Q360 0 720 35 T1440 30 L1440 70 Z" fill="var(--bg)"/></svg>
+    </section>
+    <section class="sec">
+      <div class="sec-inner" style="text-align:center;color:var(--soft);padding:40px 0 10px">
+        <p>This page is a placeholder — the FAQ content has not been written yet.</p>
+      </div>
+    </section>
+  </div>
+
   <!-- ============ TEAM APPLICATION MODAL ============ -->
   <div class="modal" id="teamModal">
     <div class="mbg" onclick="teamModal(false)"></div>
@@ -1486,6 +1832,9 @@ function ic(name){return `<span class="ic"><svg viewBox="0 0 24 24">${ICONS[name
 function go(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
+  /* o "modo app" escuro vale so para a pagina Content dentro do site */
+  const cnt=document.getElementById('pg-conteudo');
+  document.body.classList.toggle('appmode',id==='site'&&!!cnt&&cnt.classList.contains('active'));
   window.scrollTo(0,0);
   document.body.classList.toggle('in-app', id==='patient'||id==='doctor'||id==='nutri');
   if(id==='patient'||id==='doctor'||id==='nutri') renderDash(id);
@@ -2306,9 +2655,11 @@ function revealCharts(){
 }
 
 /* ============ ROUTER (subpages) ============ */
-const PAGES={'equipe':'pg-equipe','conteudo':'pg-conteudo','tratamento':'pg-tratamento','pesquisa':'pg-research'};
+const PAGES={'equipe':'pg-equipe','conteudo':'pg-conteudo','tratamento':'pg-tratamento','pesquisa':'pg-research','faq':'pg-faq'};
 function showSub(id,scroll){
   document.querySelectorAll('#site .subpage').forEach(s=>s.classList.toggle('active',s.id===id));
+  /* a pagina Content roda em "modo app": superficie escura, full-bleed */
+  document.body.classList.toggle('appmode',id==='pg-conteudo');
   if(scroll!==false) window.scrollTo(0,0);
   startGlows();
   if(window.__applyLang){ try{__applyLang()}catch(e){} }
@@ -2391,8 +2742,10 @@ function cChan(btn){
   cFilter();
 }
 function cFilter(){
-  const q=(document.getElementById('csearch').value||'').toLowerCase();
-  let vn=0,an=0;
+  /* a busca pertence a metade "discover": filtra categorias, videos e artigos */
+  const el=document.getElementById('csearch'); if(!el) return;
+  const q=(el.value||'').toLowerCase();
+  let vn=0,an=0,cn=0;
   document.querySelectorAll('#vgrid .vcard').forEach(v=>{
     const ok=(!cCh||v.dataset.chan===cCh)&&(!q||v.textContent.toLowerCase().indexOf(q)>-1);
     v.style.display=ok?'':'none'; if(ok)vn++;
@@ -2401,8 +2754,13 @@ function cFilter(){
     const ok=!q||a.textContent.toLowerCase().indexOf(q)>-1;
     a.style.display=ok?'':'none'; if(ok)an++;
   });
+  document.querySelectorAll('#catgrid .cattile').forEach(t=>{
+    const ok=!q||(t.dataset.cat||'').toLowerCase().indexOf(q)>-1;
+    t.style.display=ok?'':'none'; if(ok)cn++;
+  });
   document.getElementById('vnores').style.display=vn?'none':'block';
   document.getElementById('anores').style.display=an?'none':'block';
+  const c=document.getElementById('catnores'); if(c) c.style.display=cn?'none':'block';
 }
 
 /* ============ EQUIPE: application modal ============ */
@@ -2431,6 +2789,52 @@ routeFromHash();
 /* ============ LANGUAGE TOGGLE (EN / PT-BR) ============ */
 (function(){
   const EN2PT={
+    // --- content page + nav (4 botoes) ---
+    "Search for a category, program, or guide":"Busque uma categoria, programa ou guia",
+    "The foundation, in short daily sessions.":"A base, em sessões diárias curtas.",
+    "Gut & brain":"Intestino e cérebro",
+    "Stress & cortisol":"Estresse e cortisol",
+    "Getting started":"Primeiros passos",
+    "For clinicians":"Para profissionais",
+    "Why metabolism matters":"Por que o metabolismo importa",
+    "About us":"Sobre nós",
+    "FAQs":"Dúvidas frequentes",
+    "Questions":"Perguntas",
+    "Answers from our doctors to the questions people ask most. Coming soon.":"Respostas dos nossos médicos às perguntas mais frequentes. Em breve.",
+    "This page is a placeholder — the FAQ content has not been written yet.":"Esta página é um espaço reservado — o conteúdo ainda não foi escrito.",
+    "Guided programs, videos, and articles that turn metabolic science into something you can practice day by day.":"Programas guiados, vídeos e artigos que transformam a ciência metabólica em algo que você pratica no dia a dia.",
+    "Up next":"Continue de onde parou",
+    "Pick up where you left off.":"Retome sua jornada.",
+    "Play session":"Iniciar sessão",
+    "Insight of the day":"Insight do dia",
+    "The brain is two percent of your body weight and burns twenty percent of your energy. When that supply falters, the mind is the first place you feel it.":"O cérebro é dois por cento do seu peso e consome vinte por cento da sua energia. Quando esse fornecimento falha, a mente é o primeiro lugar onde você sente.",
+    "Browse by category":"Navegue por categoria",
+    "Fourteen ways in.":"Quatorze portas de entrada.",
+    "No categories match your search.":"Nenhuma categoria corresponde à sua busca.",
+    "No programs match your search.":"Nenhum programa corresponde à sua busca.",
+    "Start here":"Comece por aqui",
+    "Five short programs that build the foundation.":"Cinco programas curtos que constroem a base.",
+    "Nutrition in practice":"Nutrição na prática",
+    "From the theory to what lands on the plate.":"Da teoria ao que chega no prato.",
+    "Sleep, light & rhythm":"Sono, luz e ritmo",
+    "The clock that sets everything else.":"O relógio que rege todo o resto.",
+    "Understanding your condition":"Entendendo sua condição",
+    "The metabolic lens, applied to a diagnosis.":"A lente metabólica aplicada a um diagnóstico.",
+    "Start your first program.":"Comece seu primeiro programa.",
+    "Two minutes to tell us where you are. We build the path from there.":"Dois minutos para nos dizer onde você está. O caminho a gente monta a partir daí.",
+    "Fundamentals":"Fundamentos",
+    "Nutrition":"Nutrição",
+    "Sleep":"Sono",
+    "Movement":"Movimento",
+    "Ketogenic therapy":"Terapia cetogênica",
+    "Recipes":"Receitas",
+    "Depression":"Depressão",
+    "Anxiety":"Ansiedade",
+    "Bipolar disorder":"Transtorno bipolar",
+    "The science":"A ciência",
+    "Patient stories":"Histórias de pacientes",
+    "Podcasts":"Podcasts",
+    "Mindfulness":"Atenção plena",
     // nav + hero
     "About":"Sobre","How it works":"Como Funciona","Results":"Resultados","FAQ":"Dúvidas",
     "Log in":"Entrar","Start your journey":"Comece sua jornada","Get started":"Começar","Learn more":"Saiba mais",
