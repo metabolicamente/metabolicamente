@@ -534,9 +534,9 @@ a{color:inherit;text-decoration:none}
 .screen.active{display:block}
 
 /* ============ INTRO ============ */
-#intro{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity 1s ease}
+#intro{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity .7s ease}
 #intro.gone{opacity:0;pointer-events:none}
-.istage{position:absolute;text-align:center;padding:0 24px;opacity:0;transform:translateY(14px);transition:opacity .9s ease,transform .9s ease}
+.istage{position:absolute;text-align:center;padding:0 24px;opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;z-index:2}
 .istage.show{opacity:1;transform:none}
 .istage.out{opacity:0;transform:translateY(-12px)}
 .istage .ilogo{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:18px}
@@ -548,8 +548,20 @@ a{color:inherit;text-decoration:none}
   radial-gradient(900px 500px at 80% -10%, #1A5F76 0%, transparent 55%),
   radial-gradient(700px 500px at 5% 110%, #0F3E4E 0%, transparent 55%),
   var(--t900);transition:opacity 1.1s ease}
+/* video backdrop, teal-graded. The .ibg gradient stays underneath as the
+   fallback for iOS Low Power Mode / blocked autoplay / slow connections. */
+#intro .ivid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+  filter:hue-rotate(158deg) saturate(.72) brightness(.86);
+  opacity:0;transition:opacity .9s ease;pointer-events:none}
+#intro .ivid.ready{opacity:1}
+#intro .igrade{position:absolute;inset:0;z-index:1;pointer-events:none;
+  transition:opacity .7s ease;background:
+  radial-gradient(120% 90% at 50% 45%, rgba(12,51,63,.26) 0%, rgba(8,32,40,.82) 100%),
+  linear-gradient(rgba(15,62,78,.48),rgba(15,62,78,.48))}
 #intro.morph{background:none;pointer-events:none}
 #intro.morph .ibg{opacity:0}
+#intro.morph .ivid{opacity:0}
+#intro.morph .igrade{opacity:0}
 #intro.morph .iskip{opacity:0}
 .iskip{position:absolute;bottom:28px;right:32px;font-size:12.5px;color:rgba(245,239,228,.55);letter-spacing:.04em;transition:opacity .4s}
 body.intro-lock{overflow:hidden}
@@ -948,6 +960,12 @@ body.appmode .nav{border-bottom-color:#12313D}
 <!-- ================= INTRO ================= -->
 <div id="intro" onclick="introSkip()">
   <div class="ibg"></div>
+  <video class="ivid" id="ivid" autoplay muted loop playsinline preload="auto"
+         poster="poster.jpg" aria-hidden="true" tabindex="-1">
+    <source src="falls.webm" type="video/webm">
+    <source src="falls.mp4" type="video/mp4">
+  </video>
+  <div class="igrade"></div>
   <div class="istage" id="ist1">
     <div class="ilogo">
       <span class="logo-mark"><svg viewBox="0 0 24 24" style="stroke:#F5EFE4;fill:none;stroke-width:2;stroke-linecap:round"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>
@@ -2213,6 +2231,17 @@ function introMorph(){
     el.remove();
   },1200));
 }
+/* Teal-graded video backdrop. If it can't play (iOS Low Power Mode, blocked
+   autoplay, slow link) it simply never fades in and the .ibg gradient shows. */
+function introVideo(){
+  const v=document.getElementById('ivid'); if(!v) return;
+  const reveal=()=>v.classList.add('ready');
+  if(v.readyState>=3) reveal();
+  v.addEventListener('canplaythrough',reveal,{once:true});
+  v.addEventListener('playing',reveal,{once:true});
+  const p=v.play();
+  if(p&&p.catch) p.catch(()=>{});          // stay silent; gradient is the fallback
+}
 function introPlay(){
   const el=document.getElementById('intro'); if(!el) return;
   if(location.hash.indexOf('#/')===0){ introSkip(); return; }
@@ -2221,11 +2250,12 @@ function introPlay(){
   document.body.classList.add('intro-lock');
   const s1=document.getElementById('ist1'), s2=document.getElementById('ist2');
   const t=(fn,ms)=>introTimers.push(setTimeout(fn,ms));
-  t(()=>s1.classList.add('show'), 250);            // logo fades in
-  t(()=>s1.classList.add('out'), 2650);            // logo drifts out
-  t(()=>s2.classList.add('show'), 3350);           // phrase fades in
-  t(()=>s2.classList.add('out'), 5500);            // phrase fully fades out first
-  t(()=>introSkip(), 6800);                        // then, after it's gone, dissolve to the homepage
+  introVideo();                                    // video backdrop fades in when ready
+  t(()=>s1.classList.add('show'), 150);            // logo fades in
+  t(()=>s1.classList.add('out'), 1800);            // logo drifts out
+  t(()=>s2.classList.add('show'), 2250);           // phrase crossfades in
+  t(()=>s2.classList.add('out'), 3900);            // phrase fades out
+  t(()=>introSkip(), 4600);                        // dissolve to the homepage
 }
 
 /* ============ INIT ============ */
