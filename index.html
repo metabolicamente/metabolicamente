@@ -539,7 +539,10 @@ a{color:inherit;text-decoration:none}
 .istage{position:absolute;text-align:center;padding:0 24px;opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;z-index:2}
 .istage.show{opacity:1;transform:none}
 .istage.out{opacity:0;transform:translateY(-12px)}
-.istage .ilogo{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:18px}
+.istage .ilogo{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:18px;
+  animation:ibreathe 2.8s cubic-bezier(.22,.61,.36,1) forwards;transform-origin:50% 50%;will-change:transform}
+@keyframes ibreathe{from{transform:scale(.965)}to{transform:scale(1.045)}}
+@media(prefers-reduced-motion:reduce){.istage .ilogo{animation:none}}
 .istage .ilogo .logo-mark{width:auto;height:auto;background:none}
 .istage .ilogo .logo-mark svg{width:58px;height:58px}
 .istage .iname{font-family:var(--serif);font-size:clamp(44px,7vw,72px);color:#F5EFE4;letter-spacing:.01em}
@@ -607,9 +610,9 @@ body.title-wait #heroTitle{opacity:0}
 .hero.hero-split{padding:0}
 .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.32fr 1fr;align-items:stretch;min-height:600px}
 .hero-split .hero-inner{max-width:none;align-self:center;padding:104px 3vw 124px 5vw}
-.hero-split .hero-inner h1{max-width:none;font-size:clamp(36px,5.1vw,80px)}
+.hero-split .hero-inner h1{max-width:none;font-size:clamp(34px,4.7vw,72px)}
 /* PT headline is ~15% wider than EN — shrink so it still breaks in two lines */
-:root[lang="pt-BR"] .hero-split .hero-inner h1{font-size:clamp(32px,4.4vw,70px)}
+:root[lang="pt-BR"] .hero-split .hero-inner h1{font-size:clamp(30px,4.1vw,62px)}
 .hero-split .hero-inner h1 .hl2{display:block}
 .hero-split .hero-inner p{max-width:22em;font-size:21px;margin-top:26px}
 .hero-media{position:relative;opacity:0;transition:opacity 1.1s ease;
@@ -617,7 +620,7 @@ body.title-wait #heroTitle{opacity:0}
   mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.30) 16%,rgba(0,0,0,.86) 38%,#000 54%)}
 body.intro-done .hero-media{opacity:1}
 .hero-vid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  cursor:pointer;background:radial-gradient(120% 120% at 58% 30%, #1A5F76 0%, #0C333F 74%)}
+  padding:0 0 78px 7%;cursor:pointer;background:radial-gradient(120% 120% at 58% 30%, #1A5F76 0%, #0C333F 74%)}
 .hero-vid::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 45%, rgba(143,193,187,.14), transparent 70%)}
 .hv-tri{position:relative;z-index:1;width:clamp(96px,11vw,150px);height:auto;overflow:visible;
   transition:transform .22s ease;filter:drop-shadow(0 6px 18px rgba(0,0,0,.22))}
@@ -1027,11 +1030,6 @@ body.appmode .nav{border-bottom-color:#12313D}
       <p>You deserve to feel well.</p>
       <div class="hero-cta">
         <a class="btn btn-cream" onclick="go('wizard')" style="cursor:pointer;font-size:15.5px;padding:14px 26px">Start your journey <span class="ic" data-icon="arrow-right"></span></a>
-      </div>
-      <div class="micro">
-        <span><span class="ic" data-icon="clock"></span>Takes 2 minutes</span>
-        <span><span class="ic" data-icon="heart"></span>No commitment</span>
-        <span><span class="ic" data-icon="shield"></span>Your answers stay private</span>
       </div>
     </div>
     <div class="hero-media">
