@@ -536,9 +536,11 @@ a{color:inherit;text-decoration:none}
 /* ============ INTRO ============ */
 #intro{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity .7s ease}
 #intro.gone{opacity:0;pointer-events:none}
-.istage{position:absolute;text-align:center;padding:0 24px;opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease;z-index:2}
+.istage{position:absolute;text-align:center;padding:0 24px;opacity:0;transform:translateY(24px);
+  transition:opacity .48s ease-out, transform .76s cubic-bezier(.16,.8,.28,1);z-index:2}
 .istage.show{opacity:1;transform:none}
-.istage.out{opacity:0;transform:translateY(-12px)}
+.istage.out{opacity:0;transform:translateY(-24px);
+  transition:opacity .42s ease-in, transform .56s cubic-bezier(.5,0,.75,0)}
 .istage .ilogo{display:flex;flex-direction:row;align-items:center;justify-content:center;gap:18px;
   animation:ibreathe 2.8s cubic-bezier(.22,.61,.36,1) forwards;transform-origin:50% 50%;will-change:transform}
 @keyframes ibreathe{from{transform:scale(.965)}to{transform:scale(1.045)}}
@@ -1029,11 +1031,11 @@ body.appmode .nav{border-bottom-color:#12313D}
       <h1 id="heroTitle">Feed your brain.<span class="hl2">Change your mind.</span></h1>
       <p>You deserve to feel well.</p>
       <div class="hero-cta">
-        <a class="btn btn-cream" onclick="go('wizard')" style="cursor:pointer;font-size:15.5px;padding:14px 26px">Start your journey <span class="ic" data-icon="arrow-right"></span></a>
+        <a class="btn btn-cream" onclick="heroVideo()" style="cursor:pointer;font-size:15.5px;padding:14px 26px"><span class="ic" data-icon="play"></span> See why</a>
       </div>
     </div>
     <div class="hero-media">
-      <div class="hero-vid" id="heroVid" role="button" tabindex="0" aria-label="Play video">
+      <div class="hero-vid" id="heroVid" role="button" tabindex="0" aria-label="See why" onclick="heroVideo()">
         <svg class="hv-tri" id="hvTri" viewBox="0 0 130 140" aria-hidden="true"></svg>
       </div>
     </div>
@@ -1813,6 +1815,7 @@ var rough=function(){"use strict";function t(t,e,s){if(t&&t.length){const[n,o]=e
 /* ============ ICONS (inline SVG, lucide-style) ============ */
 const ICONS={
  'arrow-right':'<line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>',
+ 'play':'<polygon points="7 4 20 12 7 20"/>',
  'chevron-left':'<polyline points="15 18 9 12 15 6"/>',
  'chevron-down':'<polyline points="6 9 12 15 18 9"/>',
  'check':'<polyline points="20 6 9 17 4 12"/>',
@@ -1889,6 +1892,9 @@ function toggleLoginDemo(){
   const d=document.getElementById('loginDemo'); if(d) d.classList.toggle('show');
 }
 let toastTimer;
+/* Hero video. TODO: replace with the real modal player once the film exists. */
+function heroVideo(){ toast('Video coming soon'); }
+
 function toast(msg){
   const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
   clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),2600);
@@ -2898,7 +2904,7 @@ routeFromHash();
     "Mindfulness":"Atenção plena",
     // nav + hero
     "About":"Sobre","How it works":"Como Funciona","Results":"Resultados","FAQ":"Dúvidas",
-    "Log in":"Entrar","Start your journey":"Comece sua jornada","Get started":"Começar","Learn more":"Saiba mais",
+    "Log in":"Entrar","Start your journey":"Comece sua jornada","See why":"Veja por quê","Video coming soon":"Vídeo em breve","Get started":"Começar","Learn more":"Saiba mais",
     "Metabolic Psychiatry":"Psiquiatria Metabólica",
     "Feed your brain.":"Alimente seu cérebro.",
     "Change your mind.":"Mude sua mente.",
