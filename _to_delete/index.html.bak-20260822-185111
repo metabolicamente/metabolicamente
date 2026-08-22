@@ -602,33 +602,7 @@ body.title-wait #heroTitle{opacity:0}
 .hero .micro{display:flex;align-items:center;flex-wrap:wrap;gap:8px 22px;font-size:13.5px;opacity:.8;margin-top:22px}
 .hero .micro span{display:inline-flex;align-items:center;gap:8px}
 .hero .micro .ic{color:#8FC1BB;font-size:16px}
-.hero-wave{position:absolute;bottom:-2px;left:0;right:0;z-index:6}
-/* --- split hero (variant B: full-bleed video half) --- */
-.hero.hero-split{padding:0}
-.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;min-height:600px}
-.hero-split .hero-inner{max-width:none;align-self:center;padding:104px 3vw 124px 5vw}
-.hero-split .hero-inner h1{max-width:none;font-size:clamp(32px,4vw,56px)}
-.hero-split .hero-inner h1 .hl2{display:block}
-.hero-split .hero-inner p{max-width:22em}
-.hero-media{position:relative;opacity:0;transition:opacity 1.1s ease;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.30) 16%,rgba(0,0,0,.86) 38%,#000 54%);
-  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.30) 16%,rgba(0,0,0,.86) 38%,#000 54%)}
-body.intro-done .hero-media{opacity:1}
-.hero-vid{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  cursor:pointer;background:radial-gradient(120% 120% at 58% 30%, #1A5F76 0%, #0C333F 74%)}
-.hero-vid::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 60% at 50% 45%, rgba(143,193,187,.14), transparent 70%)}
-.hero-vid .vplay{margin-bottom:18px}
-.hero-vid:hover .vplay{transform:scale(1.07)}
-.hv-lbl{position:relative;z-index:1;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#8FC1BB;margin-bottom:9px}
-.hv-txt{position:relative;z-index:1;font-family:var(--calm);font-size:15px;line-height:1.5;color:rgba(245,239,228,.72);max-width:22em;text-align:center;padding:0 22px}
-@media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr;min-height:0}
-  .hero-split .hero-inner{padding:96px 5vw 8px}
-  .hero-media{padding:0 5vw 96px;margin-top:38px;min-height:0;-webkit-mask-image:none;mask-image:none}
-  .hero-media::before{display:none}
-  .hero-vid{position:relative;inset:auto;aspect-ratio:16/10;border-radius:20px;overflow:hidden;
-    border:1px solid rgba(245,239,228,.16)}
-}
+.hero-wave{position:absolute;bottom:-2px;left:0;right:0}
 .sec{padding:90px 5vw}
 .sec-inner{max-width:1080px;margin:0 auto}
 .sec h2{font-size:clamp(28px,3.4vw,40px);color:var(--hd);line-height:1.15;letter-spacing:-.01em}
@@ -1017,13 +991,12 @@ body.appmode .nav{border-bottom-color:#12313D}
   </nav>
 
   <div class="subpage active" id="home">
-  <header class="hero hero-split" id="top">
+  <header class="hero" id="top">
     <canvas class="glow"></canvas>
-    <div class="hero-grid">
     <div class="hero-inner">
       <div class="kicker">Metabolic Psychiatry</div>
-      <h1 id="heroTitle">Feed your brain.<span class="hl2">Change your mind.</span></h1>
-      <p>You deserve to feel well.</p>
+      <h1 id="heroTitle">A new approach to mental health.</h1>
+      <p>We care for your mind and body to restore your quality of life through metabolic science.</p>
       <div class="hero-cta">
         <a class="btn btn-cream" onclick="go('wizard')" style="cursor:pointer;font-size:15.5px;padding:14px 26px">Start your journey <span class="ic" data-icon="arrow-right"></span></a>
       </div>
@@ -1032,14 +1005,6 @@ body.appmode .nav{border-bottom-color:#12313D}
         <span><span class="ic" data-icon="heart"></span>No commitment</span>
         <span><span class="ic" data-icon="shield"></span>Your answers stay private</span>
       </div>
-    </div>
-    <div class="hero-media">
-      <div class="hero-vid" id="heroVid" role="button" tabindex="0">
-        <div class="vplay"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-        <div class="hv-lbl">Placeholder</div>
-        <div class="hv-txt">Mission, vision and the science &mdash; video TBD</div>
-      </div>
-    </div>
     </div>
     <svg class="hero-wave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="display:block;width:100%;height:70px"><path d="M0 70 L0 40 Q360 0 720 35 T1440 30 L1440 70 Z" fill="#FAF6F0"/></svg>
   </header>
@@ -2904,10 +2869,7 @@ routeFromHash();
     "About":"Sobre","How it works":"Como Funciona","Results":"Resultados","FAQ":"Dúvidas",
     "Log in":"Entrar","Start your journey":"Comece sua jornada","Get started":"Começar","Learn more":"Saiba mais",
     "Metabolic Psychiatry":"Psiquiatria Metabólica",
-    "Feed your brain.":"Alimente seu cérebro.",
-    "Change your mind.":"Mude sua mente.",
-    "Mission, vision and the science — video TBD":"Missão, visão e a ciência — vídeo TBD",
-    "Placeholder":"Placeholder",
+    "A new approach to mental health.":"Uma nova abordagem para a saúde mental.",
     "You deserve to feel well.":"Você merece se sentir bem.",
     "We care for your mind and body to restore your quality of life through metabolic science.":"Cuidamos da sua mente e corpo para restaurar sua qualidade de vida através da ciência metabólica.",
     "Takes 2 minutes":"Leva 2 minutos","No commitment":"Sem compromisso","Your answers stay private":"Suas respostas são privadas",
