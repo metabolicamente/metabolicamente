@@ -884,14 +884,6 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
    Esta pagina rompe de proposito com o grid creme do resto do site: vira uma
    superficie escura full-bleed. As variaveis abaixo ficam no <body>, entao nav,
    rodape e todos os componentes existentes se adaptam sozinhos.            */
-body.appmode{
-  --bg:#071A21; --bg-dim:#0B242D; --card:#0E2A34; --ink:#EDE7DB; --soft:#93A9AE;
-  --line:#173A47; --t50:#0F2C37; --t100:#1A4351;
-  --hd:#F2ECE0; --hd2:#DAE7E5; --hd3:#8FC1BB; --navbg:rgba(7,26,33,.88);
-  --shadow:0 2px 4px rgba(0,0,0,.3),0 14px 44px rgba(0,0,0,.4);
-  --tintband:#0B242D;
-}
-body.appmode .nav{border-bottom-color:#12313D}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
@@ -960,11 +952,12 @@ body.appmode .nav{border-bottom-color:#12313D}
 /* ---------------- metade 2: DISCOVER ---------------- */
 .disc{padding:46px var(--gut) 20px;border-top:1px solid var(--line);margin-top:34px}
 .discsearch{position:relative;max-width:720px;margin:0 auto 34px}
-.discsearch input[type=text]{width:100%;background:rgba(245,239,228,.06);
+.discsearch input[type=text]{width:100%;background:var(--card);
   border:1.5px solid var(--line);border-radius:99px;padding:16px 20px 16px 50px;
-  font-family:var(--sans);font-size:15px;color:var(--ink);outline:none;transition:all .2s}
+  font-family:var(--sans);font-size:15px;color:var(--ink);outline:none;transition:all .2s;
+  box-shadow:var(--shadow)}
 .discsearch input[type=text]::placeholder{color:var(--soft)}
-.discsearch input[type=text]:focus{border-color:var(--t500);background:rgba(245,239,228,.09)}
+.discsearch input[type=text]:focus{border-color:var(--t500)}
 .discsearch .ic{position:absolute;left:20px;top:50%;transform:translateY(-50%);
   color:var(--soft);font-size:17px}
 
@@ -987,13 +980,12 @@ body.appmode .nav{border-bottom-color:#12313D}
 #pg-conteudo .vgrid{grid-template-columns:repeat(4,1fr);gap:18px}
 @media(max-width:1080px){#pg-conteudo .vgrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:680px){#pg-conteudo .vgrid{grid-template-columns:1fr}}
-#pg-conteudo .dark-strip{background:var(--bg-dim);padding-top:52px}
+#pg-conteudo .dark-strip{padding-top:52px}
 #pg-conteudo .agrid{grid-template-columns:repeat(4,1fr)}
 @media(max-width:1080px){#pg-conteudo .agrid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:680px){#pg-conteudo .agrid{grid-template-columns:1fr}}
 #pg-conteudo .acard{flex-direction:column}
 #pg-conteudo .libfilters{justify-content:flex-start}
-#pg-conteudo .strip-wave{display:none}
 
 /* --- filtros de canal da biblioteca --- */
 .libfilters{display:flex;flex-wrap:wrap;gap:8px;margin:-6px 0 26px}
@@ -1005,6 +997,108 @@ body.appmode .nav{border-bottom-color:#12313D}
 /* --- cta final --- */
 .ccta{text-align:center}
 .ccta h2{font-family:var(--serif);font-size:clamp(26px,3.4vw,42px);letter-spacing:-.015em;margin:0 0 14px}
+/* ---- plantas desenhadas a mao (folhas vs raizes) — resgatado do _archive ---- */
+.pyr-scene{display:flex;align-items:flex-start;justify-content:center;gap:14px;margin-top:10px}
+.pyr-side{flex:1;max-width:480px;display:flex;flex-direction:column;align-items:center}
+.pyr-side.ok .pyr-title{color:var(--t500)}
+.pyr-vs{align-self:center;font-family:'Caveat',cursive;font-size:27px;color:#bcae93;padding:0 6px;flex-shrink:0}
+body.dark .pyr-vs{color:#6f8a8f}
+@media(max-width:820px){.pyr-scene{flex-direction:column;align-items:center;gap:26px}.pyr-vs{padding:0}}
+.pyr-title{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--soft);text-align:center;margin-bottom:10px}
+.pyr-sub{font-family:var(--serif);font-size:19px;color:var(--hd);text-align:center;margin-bottom:20px;line-height:1.3}
+.pyr-svg{width:100%;max-width:430px;margin:0 auto;display:block;overflow:visible;color:#26383f}
+body.dark .pyr-svg{color:#EDE6D8}
+.pyr-svg .growg{opacity:0;transform:translateY(16px);transition:opacity .7s ease .1s,transform .95s cubic-bezier(.3,1.4,.45,1) .1s;transform-box:fill-box;transform-origin:center bottom}
+.pyr-scene.in .growg{opacity:1;transform:none}
+
+/* ================= WHY METABOLISM MATTERS =================
+   Mesma linguagem da Content: gutter full-bleed, cantos generosos,
+   tipografia grande. Fundo claro, seguindo o tema do site.        */
+#pg-tratamento{--gut:clamp(18px,3.4vw,48px)}
+
+.wm-head{padding:clamp(46px,6vw,86px) var(--gut) 10px;max-width:1180px}
+.wm-head h1{font-family:var(--serif);font-size:clamp(34px,5.2vw,68px);line-height:1.04;
+  letter-spacing:-.02em;color:var(--hd);margin:0 0 20px}
+.wm-lead{font-size:clamp(16.5px,1.5vw,21px);line-height:1.6;color:var(--soft);max-width:30em;margin:0}
+#pg-tratamento .kicker{color:var(--t500)}
+
+/* painel arredondado, o bloco base da pagina */
+.wm-panel{margin:0 var(--gut);background:var(--card);border:1px solid var(--line);
+  border-radius:26px;padding:clamp(28px,3.6vw,56px);box-shadow:var(--shadow)}
+.wm-panel.tint{background:var(--bg-dim);box-shadow:none}
+.wm-panel.split{display:grid;grid-template-columns:1.06fr .94fr;gap:clamp(24px,3.4vw,56px);align-items:start}
+.wm-panel.split .wm-note{margin-top:6px;max-width:none}
+@media(max-width:900px){.wm-panel.split{grid-template-columns:1fr;gap:8px}}
+.wm-def{font-family:var(--serif);font-size:clamp(19px,2.3vw,30px);line-height:1.38;
+  letter-spacing:-.01em;color:var(--hd);margin:0;max-width:24em}
+.wm-def b{color:var(--t500);font-weight:inherit}
+.wm-note{font-size:16px;line-height:1.72;color:var(--soft);margin:24px 0 0;max-width:58ch}
+.wm-panel.tint .wm-note{font-size:16.5px;max-width:62ch}
+
+/* --- o funil: tudo passa pelo metabolismo --- */
+.wm-flow{display:grid;grid-template-columns:1fr auto 1fr;gap:clamp(14px,2vw,30px);
+  align-items:center;margin:0 var(--gut)}
+.wm-col{background:var(--card);border:1px solid var(--line);border-radius:22px;
+  padding:26px 22px;box-shadow:var(--shadow)}
+.wm-col h3{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--soft);margin:0 0 16px;text-align:center}
+.wm-chips{display:flex;flex-wrap:wrap;gap:9px;justify-content:center}
+.wm-chip{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;
+  padding:9px 15px;border-radius:99px;background:var(--t50);color:var(--hd2);
+  border:1px solid var(--line)}
+.wm-chip .ic{font-size:14px;color:var(--t500)}
+.wm-col.out .wm-chip{background:var(--coral-bg);color:var(--coral-deep);border-color:transparent}
+body.dark .wm-col.out .wm-chip{color:#F0A88E}
+.wm-core{display:flex;flex-direction:row;align-items:center;gap:10px;padding:0 4px}
+.wm-core-pill{width:clamp(120px,13vw,168px);aspect-ratio:1/1;border-radius:50%;
+  background:linear-gradient(150deg,#2A9D8F,#12615A);color:#F5EFE4;display:flex;
+  flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  padding:10px;box-shadow:0 12px 34px rgba(42,157,143,.32)}
+.wm-core-pill .ic{font-size:26px;margin-bottom:6px}
+.wm-core-pill b{font-size:13.5px;line-height:1.25;font-weight:700}
+.wm-arrow{color:var(--line);font-size:22px;line-height:1}
+@media(max-width:900px){
+  .wm-flow{grid-template-columns:1fr;gap:14px}
+  .wm-core{flex-direction:column}
+  .wm-arrow{transform:rotate(90deg)}
+}
+
+/* --- estudo: pictograma de 21 pessoas --- */
+.wm-study{margin:0 var(--gut);background:var(--bg-dim);border:1px solid var(--line);
+  border-radius:26px;padding:clamp(28px,3.6vw,52px)}
+.wm-cohort{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:10px}
+.wm-cohort svg{width:clamp(20px,2.1vw,28px);height:auto;color:var(--t700);opacity:.85}
+.wm-cohort-cap{text-align:center;font-size:13.5px;color:var(--soft);margin:0 0 34px}
+.wm-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:860px){.wm-stats{grid-template-columns:1fr}}
+.wm-stat{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:24px 22px}
+.wm-dots{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;max-width:184px}
+.wm-dots i{width:12px;height:12px;border-radius:50%;background:var(--line);display:block;
+  opacity:.55;transition:background .45s ease,opacity .45s ease,transform .45s ease}
+.reveal.in .wm-dots i.on,.wm-stat.in .wm-dots i.on{background:var(--t500);opacity:1;transform:scale(1.12)}
+.wm-stat .big{font-family:var(--serif);font-size:clamp(30px,3.4vw,46px);line-height:1;
+  color:var(--hd);letter-spacing:-.02em}
+.wm-stat .frac{font-size:13px;font-weight:700;color:var(--t500);margin:8px 0 6px;
+  letter-spacing:.04em}
+.wm-stat p{font-size:14px;line-height:1.55;color:var(--soft);margin:0}
+.wm-caveat{font-size:12.5px;line-height:1.6;color:var(--soft);margin:26px 0 0;
+  text-align:center;max-width:46em;margin-left:auto;margin-right:auto;opacity:.9}
+
+/* --- fontes --- */
+.wm-src{margin:0 var(--gut);display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:860px){.wm-src{grid-template-columns:1fr}}
+.wm-srcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px}
+.wm-srcard .t{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--t500);margin-bottom:9px}
+.wm-srcard h4{font-family:var(--serif);font-size:17px;line-height:1.28;color:var(--hd);margin:0 0 6px}
+.wm-srcard p{font-size:13px;color:var(--soft);margin:0;line-height:1.5}
+
+/* a cena das plantas herda o CSS restaurado do Felipe, so re-espacada */
+#pg-tratamento .pyr-scene{margin:0 var(--gut)}
+/* a jornada existente passa a seguir o mesmo gutter das secoes novas */
+#pg-tratamento .sec{padding:6px var(--gut) 40px}
+#pg-tratamento .tj-wrap{max-width:900px;margin:0}
+#pg-tratamento .tj-card{border-radius:22px;padding:26px 30px}
 </style>
 </head>
 <body>
@@ -1435,17 +1529,210 @@ body.appmode .nav{border-bottom-color:#12313D}
         <div style="margin-top:28px"><a class="btn btn-cream" onclick="go('wizard')" style="cursor:pointer">Get started <span class="ic" data-icon="arrow-right"></span></a></div>
       </div>
     </section>
+    <svg class="strip-wave bottom" viewBox="0 0 1440 72" preserveAspectRatio="none"><path d="M0 0 L0 30 Q360 66 720 34 T1440 40 L1440 0 Z" fill="var(--t900)"/></svg>
   </div>
   <!-- ============ PAGE: HOW IT WORKS (TREATMENT JOURNEY) ============ -->
   <div class="subpage" id="pg-tratamento">
-    <section class="phero">
-      <canvas class="glow"></canvas>
-      <div class="ph-in">
-        <div class="kicker">How it works</div>
-        <h1>The treatment journey</h1>
-        <p class="plead">A clinical process structured in five stages — from your first assessment to the ongoing care of your metabolic and mental health.</p>
+    <!-- ---------- abertura ---------- -->
+    <section class="wm-head">
+      <div class="kicker">Metabolic psychiatry</div>
+      <h1>Why metabolism matters</h1>
+      <p class="wm-lead">Psychiatry has spent decades adjusting neurotransmitters. This page is about the layer underneath — how the brain makes and spends energy, and why that changes what treatment can look like.</p>
+    </section>
+
+    <!-- ---------- 1. o que e ---------- -->
+    <section class="hl-sec">
+      <div class="hl-head reveal"><h2>What is metabolic psychiatry?</h2></div>
+      <div class="wm-panel split reveal">
+        <p class="wm-def">An approach that treats mental health as a result of <b>brain metabolism</b> — integrating biological processes into the treatment of psychiatric disorders, instead of managing symptoms alone.</p>
+        <p class="wm-note">The brain is about two percent of your body weight and burns roughly twenty percent of your energy. It is the most metabolically expensive organ you have. When the cells that supply that energy stop working properly, the effects show up as mood, focus, sleep, and thought — the things psychiatry has always measured, arriving from a direction it rarely looks at.</p>
       </div>
-      <svg class="pwave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="display:block;width:100%;height:70px"><path d="M0 70 L0 40 Q360 0 720 35 T1440 30 L1440 70 Z" fill="var(--bg)"/></svg>
+    </section>
+
+    <!-- ---------- 2. por que importa ---------- -->
+    <section class="hl-sec">
+      <div class="hl-head reveal"><h2>Everything runs through metabolism</h2><span>The known causes of mental illness do not act independently.</span></div>
+      <div class="wm-flow reveal">
+        <div class="wm-col">
+          <h3>What shapes it</h3>
+          <div class="wm-chips">
+            <span class="wm-chip"><span class="ic" data-icon="moon"></span>Sleep</span>
+            <span class="wm-chip"><span class="ic" data-icon="utensils"></span>Food</span>
+            <span class="wm-chip"><span class="ic" data-icon="activity"></span>Movement</span>
+            <span class="wm-chip"><span class="ic" data-icon="flame"></span>Stress</span>
+            <span class="wm-chip"><span class="ic" data-icon="droplet"></span>Inflammation</span>
+            <span class="wm-chip"><span class="ic" data-icon="sun"></span>Light</span>
+            <span class="wm-chip"><span class="ic" data-icon="shield"></span>Medication</span>
+            <span class="wm-chip"><span class="ic" data-icon="zap"></span>Genetics</span>
+          </div>
+        </div>
+        <div class="wm-core">
+          <span class="wm-arrow ic" data-icon="chevron-right"></span>
+          <div class="wm-core-pill">
+            <span class="ic" data-icon="zap"></span>
+            <b>Brain<br>metabolism</b>
+          </div>
+          <span class="wm-arrow ic" data-icon="chevron-right"></span>
+        </div>
+        <div class="wm-col out">
+          <h3>What you feel</h3>
+          <div class="wm-chips">
+            <span class="wm-chip"><span class="ic" data-icon="droplet"></span>Anxiety</span>
+            <span class="wm-chip"><span class="ic" data-icon="moon-star"></span>Low mood</span>
+            <span class="wm-chip"><span class="ic" data-icon="sparkles"></span>Brain fog</span>
+            <span class="wm-chip"><span class="ic" data-icon="target"></span>Poor focus</span>
+            <span class="wm-chip"><span class="ic" data-icon="clock"></span>Insomnia</span>
+            <span class="wm-chip"><span class="ic" data-icon="flame"></span>Irritability</span>
+          </div>
+        </div>
+      </div>
+      <div class="wm-panel tint reveal" style="margin-top:20px">
+        <p class="wm-note" style="margin:0">Sleep, food, movement, stress, inflammation, light, trauma and medication are usually treated as separate risk factors. Chris Palmer's argument is that they are not separate at all: each one acts on metabolism, and metabolism is what determines whether a brain cell can do its job. That is what makes it a plausible common pathway rather than one more item on the list.</p>
+      </div>
+    </section>
+
+    <!-- ---------- 3. comparacao: as duas plantas ---------- -->
+    <section class="hl-sec">
+      <div class="hl-head reveal"><h2>Two ways to treat the same problem</h2><span>Same plant, different depth of intervention.</span></div>
+      <div class="pyr-scene reveal">
+        <div class="pyr-side">
+          <div class="pyr-title">Conventional</div>
+          <div class="pyr-sub">Treats the leaves</div>
+          <svg class="pyr-svg" id="pyr1"></svg>
+        </div>
+        <div class="pyr-vs">vs</div>
+        <div class="pyr-side ok">
+          <div class="pyr-title">Our approach</div>
+          <div class="pyr-sub">Treats the roots</div>
+          <svg class="pyr-svg" id="pyr2"></svg>
+        </div>
+      </div>
+      <div class="wm-panel tint reveal" style="margin-top:34px">
+        <p class="wm-note" style="margin:0">Neither side is wrong. Medication that relieves a symptom can be what makes the rest of the work possible, and nobody should stop treatment on their own. The difference is where you aim: at the leaf that wilted, or at the soil that stopped feeding it.</p>
+      </div>
+    </section>
+
+    <!-- ---------- 4. o estudo ---------- -->
+    <section class="hl-sec">
+      <div class="hl-head reveal"><h2>What happened in the Stanford pilot</h2><span>Four months, one clinic, twenty-one people.</span></div>
+      <div class="wm-study reveal">
+        <div class="wm-cohort">
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+          <svg viewBox="0 0 20 26" fill="currentColor" aria-hidden="true"><circle cx="10" cy="6" r="5"/><path d="M10 13c-5 0-8 3.2-8 7.4V26h16v-5.6c0-4.2-3-7.4-8-7.4Z"/></svg>
+        </div>
+        <p class="wm-cohort-cap">21 patients with bipolar disorder or schizophrenia, all with existing metabolic problems.</p>
+        <div class="wm-stats">
+          <div class="wm-stat reveal">
+            <div class="wm-dots">
+              <i class="on" style="transition-delay:0ms"></i>
+              <i class="on" style="transition-delay:38ms"></i>
+              <i class="on" style="transition-delay:76ms"></i>
+              <i class="on" style="transition-delay:114ms"></i>
+              <i class="on" style="transition-delay:152ms"></i>
+              <i class="on" style="transition-delay:190ms"></i>
+              <i class="on" style="transition-delay:228ms"></i>
+              <i class="on" style="transition-delay:266ms"></i>
+              <i class="on" style="transition-delay:304ms"></i>
+              <i class="on" style="transition-delay:342ms"></i>
+              <i class="on" style="transition-delay:380ms"></i>
+              <i class="on" style="transition-delay:418ms"></i>
+              <i class="on" style="transition-delay:456ms"></i>
+              <i class="on" style="transition-delay:494ms"></i>
+              <i class="on" style="transition-delay:532ms"></i>
+              <i class="on" style="transition-delay:570ms"></i>
+              <i class="on" style="transition-delay:608ms"></i>
+              <i class="on" style="transition-delay:646ms"></i>
+              <i class="on" style="transition-delay:684ms"></i>
+              <i class="on" style="transition-delay:722ms"></i>
+              <i class="on" style="transition-delay:760ms"></i>
+            </div>
+            <div class="big">100%</div>
+            <div class="frac">21 of 21</div>
+            <p>showed measurable clinical improvement over the four months.</p>
+          </div>
+          <div class="wm-stat reveal">
+            <div class="wm-dots">
+              <i class="on" style="transition-delay:0ms"></i>
+              <i class="on" style="transition-delay:38ms"></i>
+              <i class="on" style="transition-delay:76ms"></i>
+              <i class="on" style="transition-delay:114ms"></i>
+              <i class="on" style="transition-delay:152ms"></i>
+              <i class="on" style="transition-delay:190ms"></i>
+              <i class="on" style="transition-delay:228ms"></i>
+              <i class="on" style="transition-delay:266ms"></i>
+              <i class="on" style="transition-delay:304ms"></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
+            <div class="big">43%</div>
+            <div class="frac">9 of 21</div>
+            <p>reached full remission of their psychiatric symptoms.</p>
+          </div>
+          <div class="wm-stat reveal">
+            <div class="wm-dots">
+              <i class="on" style="transition-delay:0ms"></i>
+              <i class="on" style="transition-delay:38ms"></i>
+              <i class="on" style="transition-delay:76ms"></i>
+              <i class="on" style="transition-delay:114ms"></i>
+              <i class="on" style="transition-delay:152ms"></i>
+              <i class="on" style="transition-delay:190ms"></i>
+              <i class="on" style="transition-delay:228ms"></i>
+              <i class="on" style="transition-delay:266ms"></i>
+              <i class="on" style="transition-delay:304ms"></i>
+              <i class="on" style="transition-delay:342ms"></i>
+              <i class="on" style="transition-delay:380ms"></i>
+              <i class="on" style="transition-delay:418ms"></i>
+              <i class="on" style="transition-delay:456ms"></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+              <i></i>
+            </div>
+            <div class="big">64%</div>
+            <div class="frac">13 of 21</div>
+            <p>were able to reduce their psychiatric medication.</p>
+          </div>
+        </div>
+        <p class="wm-caveat">Sethi et al., Psychiatry Research, 2024. This was a single-arm pilot study — everyone received the intervention, so there was no control group to compare against. Twenty-one people is a small number, and individual outcomes vary. It is a strong signal and a reason to run larger trials, not proof.</p>
+      </div>
+    </section>
+
+    <!-- ---------- 5. o tratamento, passo a passo ---------- -->
+    <section class="hl-sec">
+      <div class="hl-head reveal"><h2>What the treatment actually looks like</h2><span>Five stages, from first assessment to ongoing care.</span></div>
     </section>
     <section class="sec">
       <div class="tj-wrap reveal">
@@ -1516,12 +1803,22 @@ body.appmode .nav{border-bottom-color:#12313D}
         </div>
       </div>
     </section>
-    <section class="foot-cta" style="margin-top:0;padding-top:0">
+    <!-- ---------- fontes ---------- -->
+    <section class="hl-sec">
+      <div class="hl-head reveal"><h2>Where this comes from</h2></div>
+      <div class="wm-src">
+        <div class="wm-srcard reveal"><div class="t">Book</div><h4>Brain Energy</h4><p>Chris Palmer, Harvard Medical School — the brain-energy theory that frames mental disorders as metabolic disorders of the brain.</p></div>
+        <div class="wm-srcard reveal"><div class="t">Book</div><h4>Change Your Diet, Change Your Mind</h4><p>Georgia Ede, MD — how what you eat reaches the brain, and how to build a diet around it.</p></div>
+        <div class="wm-srcard reveal"><div class="t">Trial</div><h4>Sethi et al., Psychiatry Research (2024)</h4><p>Stanford pilot: four months of ketogenic therapy in 21 patients with bipolar disorder or schizophrenia.</p></div>
+        <section class="foot-cta" style="margin-top:0;padding-top:0">
       <div class="simple-cta reveal">
         <h2>Ready to start your journey?</h2>
         <p class="lead" style="margin:0 auto 28px">Take a free initial assessment and find out whether the metabolic approach is right for you.</p>
         <a class="btn btn-getstarted" onclick="go('wizard')" style="cursor:pointer">Start your journey <span class="ic" data-icon="arrow-right"></span></a>
       </div>
+    </section>
+
+  </div>
     </section>
   </div>
 
@@ -1883,9 +2180,6 @@ function ic(name){return `<span class="ic"><svg viewBox="0 0 24 24">${ICONS[name
 function go(id){
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  /* o "modo app" escuro vale so para a pagina Content dentro do site */
-  const cnt=document.getElementById('pg-conteudo');
-  document.body.classList.toggle('appmode',id==='site'&&!!cnt&&cnt.classList.contains('active'));
   window.scrollTo(0,0);
   document.body.classList.toggle('in-app', id==='patient'||id==='doctor'||id==='nutri');
   if(id==='patient'||id==='doctor'||id==='nutri') renderDash(id);
@@ -2648,8 +2942,7 @@ function revealCharts(){
 const PAGES={'equipe':'pg-equipe','conteudo':'pg-conteudo','tratamento':'pg-tratamento','pesquisa':'pg-research','faq':'pg-faq'};
 function showSub(id,scroll){
   document.querySelectorAll('#site .subpage').forEach(s=>s.classList.toggle('active',s.id===id));
-  /* a pagina Content roda em "modo app": superficie escura, full-bleed */
-  document.body.classList.toggle('appmode',id==='pg-conteudo');
+  if(id==='pg-tratamento'&&window.__drawSprouts) setTimeout(window.__drawSprouts,0);
   if(scroll!==false) window.scrollTo(0,0);
   startGlows();
   if(window.__applyLang){ try{__applyLang()}catch(e){} }
@@ -2776,6 +3069,40 @@ injectTheme();
 startGlows();
 routeFromHash();
 
+/* ============ WHY METABOLISM MATTERS: plantas desenhadas a mao ============ */
+(function(){
+  const NS='http://www.w3.org/2000/svg';
+  const coral='#E76F51', teal5='#2A9D8F', gray='#9AA79C';
+  function tx(t,x,y,s,col,size){ const e=document.createElementNS(NS,'text'); e.setAttribute('x',x); e.setAttribute('y',y); e.setAttribute('text-anchor','middle'); e.setAttribute('font-family',"'Caveat',cursive"); e.setAttribute('font-size',size||16); e.setAttribute('font-weight',700); e.setAttribute('fill',col); e.textContent=s; t.appendChild(e); }
+  function sprout(id,strong){
+    const svg=document.getElementById(id); if(!svg||!window.rough) return;
+    svg.setAttribute('viewBox','0 10 360 330'); svg.innerHTML='';
+    const g=document.createElementNS(NS,'g'); g.setAttribute('class','growg'); svg.appendChild(g);
+    const rc=rough.svg(svg), cx=180, gy=176, cc='currentColor';
+    const soil=strong?coral:gray;
+    g.appendChild(rc.line(40,gy,320,gy,{roughness:2.4,stroke:cc,strokeWidth:2.4}));
+    const topY=strong?58:92;
+    g.appendChild(rc.line(cx,gy,cx,topY,{roughness:2.2,bowing:strong?1:3,stroke:cc,strokeWidth:2.6}));
+    const lf=(dir,ly)=>{ g.appendChild(rc.path(`M ${cx} ${ly} q ${dir*34} -14 ${dir*46} 10 q ${-dir*14} 10 ${-dir*46} -10 z`,{roughness:2,stroke:cc,strokeWidth:2,fill:strong?teal5:'none',fillStyle:'hachure',fillWeight:1.4,hachureGap:6})); };
+    if(strong){ lf(1,topY+26); lf(-1,topY+46); lf(1,topY+66);
+      g.appendChild(rc.circle(cx,topY-4,20,{roughness:1.8,stroke:coral,fill:coral,fillStyle:'solid'}));
+    } else { lf(-1,topY+18); lf(1,topY+34); }
+    const rootN=strong?7:3;
+    for(let i=0;i<rootN;i++){
+      const spread=strong?150:70;
+      const ex=cx+(i-(rootN-1)/2)*(spread/rootN)*2 + (i%2?8:-8);
+      const ey=gy+ (strong? 70+(i%3)*14 : 34+(i%2)*8);
+      g.appendChild(rc.line(cx,gy,ex,ey,{roughness:2.6,bowing:3,stroke:soil,strokeWidth:strong?2.4:1.6}));
+      if(strong && i%2===0) g.appendChild(rc.line(ex,ey,ex+(i%4?12:-12),ey+16,{roughness:2.6,bowing:3,stroke:soil,strokeWidth:1.8}));
+    }
+    tx(g,cx,topY-(strong?28:16), strong?'thriving':'fragile', strong?cc:gray, 16);
+    tx(g,cx,gy+(strong?150:66), strong?'metabolic foundation':'metabolism ignored', strong?'#C9573C':gray, strong?17:15);
+  }
+  window.__drawSprouts=function(){ sprout('pyr1',false); sprout('pyr2',true); };
+  if(document.readyState!=='loading') __drawSprouts();
+  else document.addEventListener('DOMContentLoaded',__drawSprouts);
+})();
+
 /* ============ LANGUAGE TOGGLE (EN / PT-BR) ============ */
 (function(){
   const EN2PT={
@@ -2790,6 +3117,49 @@ routeFromHash();
     "By continuing you agree to our Terms and Privacy Policy.":"Ao continuar, você concorda com nossos Termos e Política de Privacidade.",
     "TBD — one line of social proof or promise.":"TBD — uma linha de prova social ou promessa.",
     // --- content page + nav (4 botoes) ---
+    // --- why metabolism matters ---
+    "Why metabolism matters":"Por que o metabolismo importa",
+    "Metabolic psychiatry":"Psiquiatria metabólica",
+    "Psychiatry has spent decades adjusting neurotransmitters. This page is about the layer underneath — how the brain makes and spends energy, and why that changes what treatment can look like.":"A psiquiatria passou décadas ajustando neurotransmissores. Esta página é sobre a camada de baixo — como o cérebro produz e gasta energia, e por que isso muda o que o tratamento pode ser.",
+    "What is metabolic psychiatry?":"O que é psiquiatria metabólica?",
+    "Everything runs through metabolism":"Tudo passa pelo metabolismo",
+    "The known causes of mental illness do not act independently.":"As causas conhecidas do adoecimento mental não agem de forma independente.",
+    "What shapes it":"O que molda",
+    "What you feel":"O que você sente",
+    "Sleep":"Sono",
+    "Food":"Comida",
+    "Movement":"Movimento",
+    "Stress":"Estresse",
+    "Inflammation":"Inflamação",
+    "Light":"Luz",
+    "Medication":"Medicação",
+    "Genetics":"Genética",
+    "Anxiety":"Ansiedade",
+    "Low mood":"Humor baixo",
+    "Brain fog":"Névoa mental",
+    "Poor focus":"Falta de foco",
+    "Insomnia":"Insônia",
+    "Irritability":"Irritabilidade",
+    "Two ways to treat the same problem":"Dois jeitos de tratar o mesmo problema",
+    "Same plant, different depth of intervention.":"A mesma planta, profundidades diferentes de intervenção.",
+    "Conventional":"Convencional",
+    "Treats the leaves":"Trata as folhas",
+    "Our approach":"Nossa abordagem",
+    "Treats the roots":"Trata as raízes",
+    "What happened in the Stanford pilot":"O que aconteceu no piloto de Stanford",
+    "Four months, one clinic, twenty-one people.":"Quatro meses, uma clínica, vinte e uma pessoas.",
+    "21 patients with bipolar disorder or schizophrenia, all with existing metabolic problems.":"21 pacientes com transtorno bipolar ou esquizofrenia, todos com problemas metabólicos já instalados.",
+    "21 of 21":"21 de 21",
+    "9 of 21":"9 de 21",
+    "13 of 21":"13 de 21",
+    "showed measurable clinical improvement over the four months.":"tiveram melhora clínica mensurável ao longo dos quatro meses.",
+    "reached full remission of their psychiatric symptoms.":"alcançaram remissão completa dos sintomas psiquiátricos.",
+    "were able to reduce their psychiatric medication.":"conseguiram reduzir a medicação psiquiátrica.",
+    "What the treatment actually looks like":"Como o tratamento acontece na prática",
+    "Five stages, from first assessment to ongoing care.":"Cinco etapas, da primeira avaliação ao acompanhamento contínuo.",
+    "Where this comes from":"De onde isso vem",
+    "Book":"Livro",
+    "Trial":"Estudo",
     "Search for a category, program, or guide":"Busque uma categoria, programa ou guia",
     "The foundation, in short daily sessions.":"A base, em sessões diárias curtas.",
     "Gut & brain":"Intestino e cérebro",
