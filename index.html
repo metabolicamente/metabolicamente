@@ -962,6 +962,25 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
   clip:rect(0 0 0 0);white-space:nowrap;border:0}
 
 #pg-conteudo{--gut:clamp(18px,3.4vw,48px);padding-top:6px}
+#pg-equipe{--gut:clamp(18px,3.4vw,48px);padding-top:6px}
+#pg-faq{--gut:clamp(18px,3.4vw,48px);padding-top:6px}
+.upcard.fcard{height:auto;min-height:clamp(300px,28vw,372px)}
+.upcard.fcard .upsub{max-width:32em;margin-bottom:0}
+.faqsec{max-width:900px;margin:0 auto 34px}
+.faqsec > h3{font-family:var(--display);font-size:15px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--t500);margin:0 0 4px}
+.upcard.pcard{height:clamp(300px,29vw,392px)}
+.uptags{display:flex;flex-wrap:wrap;gap:8px}
+.uptags span{font-size:12.5px;font-weight:600;color:rgba(245,239,228,.9);
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.2);
+  border-radius:99px;padding:6px 13px}
+.tm-join{margin:0 var(--gut);border-radius:24px;background:linear-gradient(115deg,#114B5F,#07222C);
+  padding:clamp(28px,3.6vw,48px) clamp(24px,3vw,46px);display:grid;
+  grid-template-columns:1.5fr auto;gap:clamp(20px,3vw,44px);align-items:center}
+.tm-join h3{font-family:var(--serif);font-size:clamp(24px,2.7vw,34px);line-height:1.1;
+  color:#F7F2E7;margin:0 0 10px;font-weight:400}
+.tm-join p{font-size:15px;line-height:1.64;color:rgba(245,239,228,.82);margin:0;max-width:38em}
+@media(max-width:820px){.tm-join{grid-template-columns:1fr;gap:22px}}
 
 /* --- cabecalhos de secao --- */
 .hl-sec{padding:26px 0 6px}
@@ -1588,67 +1607,88 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
 
   <!-- ============ PAGE: CARE TEAM ============ -->
   <div class="subpage" id="pg-equipe">
-    <section class="phero">
-      <canvas class="glow"></canvas>
-      <div class="ph-in">
-        <div class="kicker">Excellence in metabolic psychiatry</div>
-        <h1>Care team</h1>
-        <p class="plead">Professionals united by one mission: transforming mental health through the metabolic approach.</p>
-      </div>
-      <svg class="pwave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="display:block;width:100%;height:70px"><path d="M0 70 L0 40 Q360 0 720 35 T1440 30 L1440 70 Z" fill="var(--bg)"/></svg>
-    </section>
-    <section class="sec">
-      <div class="sec-inner">
-        <div class="team-row reveal">
-          <div class="team-photo"><div class="tp-ph"><span class="tpi">RM</span><span class="tpn">Photo placeholder</span></div></div>
-          <div class="team-info">
-            <div class="crm">CRM/SP 142.587</div>
-            <h2>Dr. Ricardo Mendes</h2>
-            <div class="trole">Psychiatrist — Clinical Director</div>
-            <p>Trained at the USP School of Medicine, with a psychiatry residency at Hospital das Clínicas. Specialization in Metabolic Psychiatry at Harvard Medical School. Over 18 years of clinical experience integrating nutritional, metabolic, and pharmacological interventions in the treatment of serious mental illness.</p>
-            <div class="team-tags"><span>Metabolic Psychiatry</span><span>Mood Disorders</span><span>Therapeutic Ketogenic Diet</span></div>
+    <h1 class="sr-only">About us</h1>
+
+    <section class="hl-sec hl-first">
+      <div class="hl-head reveal"><h2>The care team</h2><span>Swipe through. Every patient is seen by more than one of them.</span></div>
+      <div class="rail">
+        <article class="upcard pcard" style="--g1:#2A9D8F;--g2:#12615A">
+          <div class="upart"><svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="978" cy="126" r="150" fill="#fff" opacity=".10"/><circle cx="978" cy="126" r="92" fill="#fff" opacity=".12"/><path d="M0 300 Q220 250 460 290 T1200 262 L1200 440 L0 440Z" fill="#fff" opacity=".09"/><path d="M0 352 Q250 300 500 342 T1200 322 L1200 440 L0 440Z" fill="#fff" opacity=".09"/><g fill="#fff" opacity=".36"><circle cx="792" cy="66" r="3.4"/><circle cx="1102" cy="200" r="2.8"/><circle cx="876" cy="242" r="2.4"/><circle cx="1146" cy="76" r="3"/><circle cx="724" cy="170" r="2.2"/></g><text x="978" y="300" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="290" font-weight="500" fill="#fff" opacity=".17">RM</text></svg></div>
+          <div class="upbody">
+            <p class="upkick">CRM/SP 142.587</p>
+            <h3>Dr. Ricardo Mendes</h3>
+            <p class="upsub">Psychiatrist and clinical director. Eighteen years putting nutrition, metabolism and medication in the same treatment plan.</p>
+            <div class="uptags"><span>Metabolic psychiatry</span><span>Mood disorders</span><span>Ketogenic therapy</span></div>
           </div>
-        </div>
-        <div class="team-row rev reveal">
-          <div class="team-photo"><div class="tp-ph"><span class="tpi">CF</span><span class="tpn">Photo placeholder</span></div></div>
-          <div class="team-info">
-            <div class="crm">CRM/SP 158.203</div>
-            <h2>Dra. Camila Ferreira</h2>
-            <div class="trole">Psychiatrist — Neurometabolism</div>
-            <p>Graduated from UNIFESP with a fellowship in Neuropsychiatry and Brain Metabolism. Active researcher with international publications on the link between mitochondrial dysfunction and psychiatric illness. Focuses on schizophrenia, bipolar disorder, and treatment-resistant depression.</p>
-            <div class="team-tags"><span>Neurometabolism</span><span>Treatment-Resistant Depression</span><span>Clinical Research</span></div>
+        </article>
+        <article class="upcard pcard" style="--g1:#114B5F;--g2:#07222C">
+          <div class="upart"><svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="978" cy="126" r="150" fill="#fff" opacity=".10"/><circle cx="978" cy="126" r="92" fill="#fff" opacity=".12"/><path d="M0 300 Q220 250 460 290 T1200 262 L1200 440 L0 440Z" fill="#fff" opacity=".09"/><path d="M0 352 Q250 300 500 342 T1200 322 L1200 440 L0 440Z" fill="#fff" opacity=".09"/><g fill="#fff" opacity=".36"><circle cx="792" cy="66" r="3.4"/><circle cx="1102" cy="200" r="2.8"/><circle cx="876" cy="242" r="2.4"/><circle cx="1146" cy="76" r="3"/><circle cx="724" cy="170" r="2.2"/></g><text x="978" y="300" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="290" font-weight="500" fill="#fff" opacity=".17">CF</text></svg></div>
+          <div class="upbody">
+            <p class="upkick">CRM/SP 158.203</p>
+            <h3>Dra. Camila Ferreira</h3>
+            <p class="upsub">Psychiatrist, neurometabolism. Researches the link between mitochondrial dysfunction and psychiatric illness.</p>
+            <div class="uptags"><span>Neurometabolism</span><span>Treatment-resistant depression</span><span>Clinical research</span></div>
           </div>
-        </div>
-        <div class="team-row reveal">
-          <div class="team-photo"><div class="tp-ph"><span class="tpi">LT</span><span class="tpn">Photo placeholder</span></div></div>
-          <div class="team-info">
-            <div class="crm">CRM/RJ 098.412</div>
-            <h2>Dr. Lucas Tavares</h2>
-            <div class="trole">Nutrition Physician — Functional Nutrition</div>
-            <p>Physician trained at UERJ with a postgraduate degree in Functional Clinical Nutrition. Specialist in personalized nutrition protocols for mental health, including therapeutic diets, evidence-based supplementation, and insulin-resistance management.</p>
-            <div class="team-tags"><span>Functional Nutrition</span><span>Evidence-Based Supplementation</span><span>Metabolic Health</span></div>
+        </article>
+        <article class="upcard pcard" style="--g1:#E76F51;--g2:#A83F22">
+          <div class="upart"><svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="978" cy="126" r="150" fill="#fff" opacity=".10"/><circle cx="978" cy="126" r="92" fill="#fff" opacity=".12"/><path d="M0 300 Q220 250 460 290 T1200 262 L1200 440 L0 440Z" fill="#fff" opacity=".09"/><path d="M0 352 Q250 300 500 342 T1200 322 L1200 440 L0 440Z" fill="#fff" opacity=".09"/><g fill="#fff" opacity=".36"><circle cx="792" cy="66" r="3.4"/><circle cx="1102" cy="200" r="2.8"/><circle cx="876" cy="242" r="2.4"/><circle cx="1146" cy="76" r="3"/><circle cx="724" cy="170" r="2.2"/></g><text x="978" y="300" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="290" font-weight="500" fill="#fff" opacity=".17">LT</text></svg></div>
+          <div class="upbody">
+            <p class="upkick">CRM/RJ 098.412</p>
+            <h3>Dr. Lucas Tavares</h3>
+            <p class="upsub">Nutrition physician. Builds the food side of every plan, from therapeutic diets to insulin resistance.</p>
+            <div class="uptags"><span>Functional nutrition</span><span>Supplementation</span><span>Metabolic health</span></div>
           </div>
-        </div>
-        <div class="team-row rev reveal">
-          <div class="team-photo"><div class="tp-ph"><span class="tpi">BL</span><span class="tpn">Photo placeholder</span></div></div>
-          <div class="team-info">
-            <div class="crm">CRP 05/67.891</div>
-            <h2>Dra. Beatriz Linhares</h2>
-            <div class="trole">Clinical Psychologist — CBT &amp; Behavior Change</div>
-            <p>Clinical psychologist with a master's in Health Psychology from PUC-Rio. Specialist in Cognitive Behavioral Therapy focused on adherence to lifestyle change. Works hand in hand with the medical team to keep metabolic interventions sustainable and patient-centered.</p>
-            <div class="team-tags"><span>Lifestyle Change</span><span>Psychoeducation</span></div>
+        </article>
+        <article class="upcard pcard" style="--g1:#5B7DB1;--g2:#294567">
+          <div class="upart"><svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="978" cy="126" r="150" fill="#fff" opacity=".10"/><circle cx="978" cy="126" r="92" fill="#fff" opacity=".12"/><path d="M0 300 Q220 250 460 290 T1200 262 L1200 440 L0 440Z" fill="#fff" opacity=".09"/><path d="M0 352 Q250 300 500 342 T1200 322 L1200 440 L0 440Z" fill="#fff" opacity=".09"/><g fill="#fff" opacity=".36"><circle cx="792" cy="66" r="3.4"/><circle cx="1102" cy="200" r="2.8"/><circle cx="876" cy="242" r="2.4"/><circle cx="1146" cy="76" r="3"/><circle cx="724" cy="170" r="2.2"/></g><text x="978" y="300" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="290" font-weight="500" fill="#fff" opacity=".17">BL</text></svg></div>
+          <div class="upbody">
+            <p class="upkick">CRP 05/67.891</p>
+            <h3>Dra. Beatriz Linhares</h3>
+            <p class="upsub">Clinical psychologist. Keeps the change sustainable when the plan meets real life.</p>
+            <div class="uptags"><span>Behaviour change</span><span>Psychoeducation</span></div>
           </div>
-        </div>
-        <div class="team-note">Illustrative team for the prototype — final clinicians TBD.</div>
+        </article>
       </div>
     </section>
-    <section class="sec" style="padding-top:20px">
-      <div class="sec-inner center reveal">
-        <div class="kicker" style="color:var(--t500)">Opportunities</div>
-        <h2>Join our team</h2>
-        <p class="lead" style="margin-left:auto;margin-right:auto">We're looking for professionals who share our integrative vision and want to help redefine mental health care.</p>
-        <a class="btn btn-coral" style="cursor:pointer;margin-top:28px" onclick="teamModal(true)">I want to work with you</a>
+
+    <section class="hl-sec">
+      <div class="quotepanel reveal">
+        <span class="qp-mark ic" data-icon="users"></span>
+        <p class="qp-src">How we work</p>
+        <p class="qp-text">A psychiatrist and a dietitian look at your case at the same time, not one after the other.</p>
       </div>
+    </section>
+
+    <section class="disc">
+      <div class="hl-head reveal" style="padding:0;margin-bottom:18px"><h2>What the team treats</h2><span>The conditions and the tools we work with.</span></div>
+      <div class="catgrid">
+          <span class="cattile" style="--g1:#2A9D8F;--g2:#12615A"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="zap"></span><span class="catlabel">Metabolic psychiatry</span></span>
+          <span class="cattile" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="moon-star"></span><span class="catlabel">Mood disorders</span></span>
+          <span class="cattile" style="--g1:#7A5C8E;--g2:#3F2C4D"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="droplet"></span><span class="catlabel">Treatment-resistant depression</span></span>
+          <span class="cattile" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="trending-down"></span><span class="catlabel">Bipolar disorder</span></span>
+          <span class="cattile" style="--g1:#114B5F;--g2:#07222C"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="activity"></span><span class="catlabel">Anxiety</span></span>
+          <span class="cattile" style="--g1:#D9A420;--g2:#8E6704"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="target"></span><span class="catlabel">ADHD</span></span>
+          <span class="cattile" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="leaf"></span><span class="catlabel">Ketogenic therapy</span></span>
+          <span class="cattile" style="--g1:#4FA8C7;--g2:#1D6076"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="utensils"></span><span class="catlabel">Functional nutrition</span></span>
+          <span class="cattile" style="--g1:#2A9D8F;--g2:#12615A"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="chart"></span><span class="catlabel">Insulin resistance</span></span>
+          <span class="cattile" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="moon"></span><span class="catlabel">Sleep and circadian rhythm</span></span>
+          <span class="cattile" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="smile"></span><span class="catlabel">Behaviour change</span></span>
+          <span class="cattile" style="--g1:#114B5F;--g2:#07222C"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="clipboard"></span><span class="catlabel">Clinical research</span></span>
+      </div>
+    </section>
+
+    <section class="hl-sec">
+      <div class="tm-join reveal">
+        <div class="tm-join-l">
+          <p class="upkick" style="color:rgba(245,239,228,.66)">Opportunities</p>
+          <h3>Join the team</h3>
+          <p>We are looking for psychiatrists, nutrition professionals and psychologists who want to work with metabolism at the centre of the plan.</p>
+        </div>
+        <div class="tm-join-r">
+          <a class="btn btn-cream" style="cursor:pointer" onclick="teamModal(true)">I want to work with you <span class="ic" data-icon="arrow-right"></span></a>
+        </div>
+      </div>
+      <p class="team-note" style="text-align:center;margin-top:22px">Illustrative team for the prototype. Final clinicians to be confirmed.</p>
     </section>
   </div>
 
@@ -2216,17 +2256,39 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
 
   <!-- ============ PAGE: FAQs (stub) ============ -->
   <div class="subpage" id="pg-faq">
-    <section class="phero">
-      <canvas class="glow"></canvas>
-      <div class="ph-in">
-        <div class="kicker">Questions</div>
-        <h1>FAQs</h1>
-        <p class="plead">The questions we hear most about the metabolic approach.</p>
+    <h1 class="sr-only">FAQs</h1>
+
+    <section class="hl-sec hl-first">
+      <div class="hl-head reveal"><h2>Start here</h2><span>The one we are asked before anything else.</span></div>
+      <div class="rail">
+        <article class="upcard fcard" style="--g1:#114B5F;--g2:#07222C">
+          <div class="upart"><svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="982" cy="128" r="152" fill="#fff" opacity=".10"/><circle cx="982" cy="128" r="94" fill="#fff" opacity=".12"/><path d="M0 300 Q220 250 460 290 T1200 262 L1200 440 L0 440Z" fill="#fff" opacity=".09"/><path d="M0 352 Q250 300 500 342 T1200 322 L1200 440 L0 440Z" fill="#fff" opacity=".09"/><g fill="#fff" opacity=".36"><circle cx="792" cy="66" r="3.4"/><circle cx="1104" cy="200" r="2.8"/><circle cx="876" cy="242" r="2.4"/><circle cx="1148" cy="76" r="3"/><circle cx="726" cy="170" r="2.2"/></g><text x="982" y="286" text-anchor="middle" font-family="Fraunces,Georgia,serif" font-size="300" font-weight="500" fill="#fff" opacity=".16">?</text></svg></div>
+          <div class="upbody">
+            <p class="upkick">The first question</p>
+            <h3>Do I have to stop my medication?</h3>
+            <p class="upsub">No, and never on your own. The metabolic approach is complementary to your psychiatric treatment, not a replacement for it. Any change of dose is your psychiatrist's decision, made gradually and only when it is clinically appropriate. Plenty of people improve and stay on medication.</p>
+          </div>
+        </article>
       </div>
-      <svg class="pwave" viewBox="0 0 1440 70" preserveAspectRatio="none" style="display:block;width:100%;height:70px"><path d="M0 70 L0 40 Q360 0 720 35 T1440 30 L1440 70 Z" fill="var(--bg)"/></svg>
     </section>
-    <section class="sec" id="faq" style="padding-top:26px">
-      <div class="faq" id="faqlist"></div>
+
+    <section class="disc">
+      <div class="csearch discsearch"><span class="ic" data-icon="search"></span><input type="text" id="faqsearch" placeholder="Search the questions" oninput="faqFilter()"></div>
+      <div id="faqSections"></div>
+      <div class="noresults" id="faqnores">No questions match your search.</div>
+    </section>
+
+    <section class="hl-sec">
+      <div class="tm-join reveal">
+        <div class="tm-join-l">
+          <p class="upkick" style="color:rgba(245,239,228,.66)">Still not sure</p>
+          <h3>Ask us directly.</h3>
+          <p>The two-minute assessment ends with a real conversation, and there is no cost to find out whether this makes sense for your case.</p>
+        </div>
+        <div class="tm-join-r">
+          <a class="btn btn-cream" style="cursor:pointer" onclick="go('wizard')">Take the assessment <span class="ic" data-icon="arrow-right"></span></a>
+        </div>
+      </div>
     </section>
   </div>
 
@@ -2613,17 +2675,56 @@ function toast(msg){
 
 
 /* ============ LANDING: FAQ ============ */
-const FAQ=[
- ['What is metabolic psychiatry?','An approach that investigates and treats the biological causes underlying mental-health conditions, such as mitochondrial dysfunction, insulin resistance, and chronic inflammation, by integrating nutrition, movement, and circadian rhythms into psychiatric treatment.'],
- ['What role does the ketogenic diet play in mental health?','Ketogenic therapy has been studied in psychiatry for its potential to improve brain energy metabolism, reduce neuroinflammation, and stabilize neurotransmitter function. Recent clinical trials show promising results in conditions like bipolar disorder and schizophrenia.'],
- ['Do I need to stop my current medication?','No. Our approach is complementary: you keep your current treatment, and any adjustment happens gradually, only when appropriate, and always under your psychiatrist\'s supervision.'],
- ['What is brain inflammation?','A chronic inflammatory process in the central nervous system that can affect neurotransmitter function and brain-cell health. Poor diet, sedentary habits, chronic stress, and metabolic disorders can all contribute, and worsen psychiatric symptoms.'],
- ['How long until I see results?','Most people notice the first signs of improvement between 4 and 8 weeks, depending on their clinical picture and how closely they follow the care plan. Better sleep, energy, and mental clarity usually come first.'],
- ['How is this different from conventional psychiatry?','Conventional psychiatry focuses mainly on managing symptoms with medication. The metabolic approach also investigates and treats the underlying biology (nutrition, energy metabolism, inflammation, and daily rhythms) alongside standard care, with a psychiatrist and a dietitian working as one team.']
+const FAQ_SECTIONS=[
+ ['Treatment and medication',[
+  ['Does this replace my psychiatrist?','No. It adds a layer to what you already do. The psychiatrist stays in charge of diagnosis and medication, and the metabolic work happens alongside that, not instead of it.'],
+  ['Can I keep my current therapist?','Yes, and we would rather you did. Continuity matters more than switching to someone inside the platform.'],
+  ['I take medication for blood pressure or diabetes. Is this safe?','It requires supervision, which is exactly why it is not a do-it-yourself plan. Cutting carbohydrate lowers blood sugar and blood pressure, so those doses often need to be adjusted along the way.']
+ ]],
+ ['The approach',[
+  ['What is metabolic psychiatry?','An approach that investigates and treats the biological causes underneath mental-health conditions, such as mitochondrial dysfunction, insulin resistance and chronic inflammation, by bringing nutrition, movement and daily rhythms into psychiatric treatment.'],
+  ['How is this different from conventional psychiatry?','Conventional psychiatry focuses mainly on managing symptoms with medication. The metabolic approach also investigates the biology underneath, alongside standard care, with a psychiatrist and a dietitian working as one team.'],
+  ['Is there evidence for this?','There is, and it is still emerging. The association between metabolic dysfunction and serious mental illness is well documented and runs in both directions. The intervention trials are newer and mostly small. We say emerging because that is what it is.'],
+  ['Does it work for everyone?','No. Some people improve a lot, some improve a little, and for some the cause of their symptoms is somewhere else entirely. The assessment exists to find out which case is yours before you invest months in it.']
+ ]],
+ ['Food and the diet',[
+  ['Do I have to do a ketogenic diet?','Not necessarily, and not at the start. The path begins wider, with real food and less carbohydrate. Ketosis comes later, and only if your labs and your symptoms ask for it.'],
+  ['Do I have to give up carbohydrate forever?','No. The goal is the least restrictive diet that keeps you well, and finding it means widening the plan back out once things are stable.'],
+  ['What is brain inflammation?','A chronic inflammatory process in the central nervous system that can affect neurotransmitter function and the health of brain cells. Poor diet, sedentary habits, chronic stress and metabolic disorders all contribute.'],
+  ['What if I am vegetarian?','It makes some of the work harder and none of it impossible. Several brain-essential nutrients are easier to get from animal foods, so the plan leans more on testing and on supplementation.']
+ ]],
+ ['How it works in practice',[
+  ['How long until I see results?','Most people notice the first signs between four and eight weeks. Sleep, energy and mental clarity usually move first. Mood and stability tend to take longer.'],
+  ['What happens in the first appointment?','A full history, a look at whatever labs you already have, and a decision about which extra tests are worth ordering. You leave with a first plan, not with a diet sheet.'],
+  ['Who follows me along the way?','A psychiatrist and a dietitian, on the same case at the same time, with check-ins scheduled rather than left to you to remember.'],
+  ['Is everything online?','Yes, including the follow-ups. Lab work is done wherever is convenient for you and the results come back into the same place.']
+ ]]
 ];
-document.getElementById('faqlist').innerHTML=FAQ.map((q,i)=>
- `<div class="qa" id="qa${i}"><button onclick="qaT(${i})">${q[0]}<span class="chev">${ic('chevron-down')}</span></button><div class="a"><p>${q[1]}</p></div></div>`).join('');
-function qaT(i){document.getElementById('qa'+i).classList.toggle('open');}
+function faqRender(q){
+  const term=(q||'').trim().toLowerCase();
+  let shown=0;
+  const html=FAQ_SECTIONS.map(function(sec,si){
+    const items=sec[1].filter(function(it){
+      return !term || (it[0]+' '+it[1]).toLowerCase().indexOf(term)>-1;
+    });
+    if(!items.length) return '';
+    shown+=items.length;
+    return '<div class="faqsec"><h3>'+sec[0]+'</h3><div class="faq" style="margin-top:10px">'+
+      items.map(function(it,k){
+        const id='qa'+si+'_'+k;
+        return '<div class="qa" id="'+id+'"><button onclick="qaT(\''+id+'\')">'+it[0]+
+               '<span class="chev">'+ic('chevron-down')+'</span></button><div class="a"><p>'+it[1]+'</p></div></div>';
+      }).join('')+'</div></div>';
+  }).join('');
+  const host=document.getElementById('faqSections'); if(!host) return;
+  host.innerHTML=html;
+  const nr=document.getElementById('faqnores'); if(nr) nr.style.display=shown?'none':'block';
+  renderIcons(host);
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
+}
+function faqFilter(){ const el=document.getElementById('faqsearch'); faqRender(el?el.value:''); }
+if(document.getElementById('faqSections')) faqRender('');
+function qaT(id){const e=document.getElementById(id); if(e) e.classList.toggle('open');}
 
 /* ============ HERO: hand-drawn play triangle ============ */
 (function(){
@@ -4239,6 +4340,87 @@ routeFromHash();
     "Psychiatry measures your neurotransmitter imbalance and treats the imbalance. But the question left out is the only one that matters:":"A psiquiatria mede o seu desequilíbrio de neurotransmissores e trata o desequilíbrio. Mas a pergunta que fica de fora é a única que importa:",
     "What caused the imbalance?":"O que causou o desequilíbrio?",
     "conventional psychiatry looks here":"a psiquiatria convencional olha aqui",
+    // pagina faq
+    "Start here":"Comece por aqui",
+    "The one we are asked before anything else.":"A que perguntam antes de qualquer outra.",
+    "The first question":"A primeira pergunta",
+    "Do I have to stop my medication?":"Preciso parar o meu remédio?",
+    "No, and never on your own. The metabolic approach is complementary to your psychiatric treatment, not a replacement for it. Any change of dose is your psychiatrist\"s decision, made gradually and only when it is clinically appropriate. Plenty of people improve and stay on medication.":"Não, e nunca por conta própria. A abordagem metabólica é complementar ao seu tratamento psiquiátrico, não um substituto dele. Qualquer mudança de dose é decisão do seu psiquiatra, feita de forma gradual e só quando for clinicamente apropriado. Muita gente melhora e segue medicada.",
+    "Search the questions":"Buscar nas perguntas",
+    "No questions match your search.":"Nenhuma pergunta corresponde à sua busca.",
+    "Treatment and medication":"Tratamento e medicação",
+    "Does this replace my psychiatrist?":"Isso substitui o meu psiquiatra?",
+    "No. It adds a layer to what you already do. The psychiatrist stays in charge of diagnosis and medication, and the metabolic work happens alongside that, not instead of it.":"Não. Acrescenta uma camada ao que você já faz. O psiquiatra segue responsável pelo diagnóstico e pela medicação, e o trabalho metabólico acontece ao lado disso, não no lugar.",
+    "Can I keep my current therapist?":"Posso continuar com a minha terapeuta?",
+    "Yes, and we would rather you did. Continuity matters more than switching to someone inside the platform.":"Pode, e a gente prefere que continue. Vínculo já construído vale mais do que trocar por alguém de dentro da plataforma.",
+    "I take medication for blood pressure or diabetes. Is this safe?":"Tomo remédio para pressão ou diabetes. É seguro?",
+    "It requires supervision, which is exactly why it is not a do-it-yourself plan. Cutting carbohydrate lowers blood sugar and blood pressure, so those doses often need to be adjusted along the way.":"Exige acompanhamento, e é exatamente por isso que não é um plano para fazer sozinho. Cortar carboidrato baixa glicemia e pressão, então essas doses costumam precisar de ajuste no caminho.",
+    "The approach":"A abordagem",
+    "What is metabolic psychiatry?":"O que é psiquiatria metabólica?",
+    "An approach that investigates and treats the biological causes underneath mental-health conditions, such as mitochondrial dysfunction, insulin resistance and chronic inflammation, by bringing nutrition, movement and daily rhythms into psychiatric treatment.":"Uma abordagem que investiga e trata as causas biológicas por trás das condições de saúde mental, como disfunção mitocondrial, resistência à insulina e inflamação crônica, trazendo nutrição, movimento e ritmos diários para dentro do tratamento psiquiátrico.",
+    "How is this different from conventional psychiatry?":"Como isso é diferente da psiquiatria convencional?",
+    "Conventional psychiatry focuses mainly on managing symptoms with medication. The metabolic approach also investigates the biology underneath, alongside standard care, with a psychiatrist and a dietitian working as one team.":"A psiquiatria convencional foca principalmente no controle dos sintomas com medicação. A abordagem metabólica também investiga a biologia por trás, junto ao cuidado convencional, com um psiquiatra e um nutricionista trabalhando como um time só.",
+    "Is there evidence for this?":"Existe evidência para isso?",
+    "There is, and it is still emerging. The association between metabolic dysfunction and serious mental illness is well documented and runs in both directions. The intervention trials are newer and mostly small. We say emerging because that is what it is.":"Existe, e ainda é emergente. A associação entre disfunção metabólica e transtorno mental grave é bem documentada e vai nos dois sentidos. Os ensaios de intervenção são mais recentes e quase todos pequenos. A gente diz emergente porque é isso que ela é.",
+    "Does it work for everyone?":"Funciona para todo mundo?",
+    "No. Some people improve a lot, some improve a little, and for some the cause of their symptoms is somewhere else entirely. The assessment exists to find out which case is yours before you invest months in it.":"Não. Tem gente que melhora muito, gente que melhora pouco, e gente cuja causa dos sintomas está em outro lugar. A avaliação existe para descobrir qual é o seu caso antes de você investir meses nisso.",
+    "Food and the diet":"Comida e dieta",
+    "Do I have to do a ketogenic diet?":"Preciso fazer dieta cetogênica?",
+    "Not necessarily, and not at the start. The path begins wider, with real food and less carbohydrate. Ketosis comes later, and only if your labs and your symptoms ask for it.":"Não necessariamente, e não de cara. O caminho começa mais largo, com comida de verdade e menos carboidrato. A cetose vem depois, e só se os exames e os sintomas pedirem.",
+    "Do I have to give up carbohydrate forever?":"Vou ter que abrir mão de carboidrato para sempre?",
+    "No. The goal is the least restrictive diet that keeps you well, and finding it means widening the plan back out once things are stable.":"Não. A meta é a dieta menos restritiva que te mantém bem, e achar essa dieta significa alargar o plano de novo quando as coisas estabilizarem.",
+    "What is brain inflammation?":"O que é inflamação cerebral?",
+    "A chronic inflammatory process in the central nervous system that can affect neurotransmitter function and the health of brain cells. Poor diet, sedentary habits, chronic stress and metabolic disorders all contribute.":"Um processo inflamatório crônico no sistema nervoso central que pode afetar a função dos neurotransmissores e a saúde das células cerebrais. Má alimentação, sedentarismo, estresse crônico e distúrbios metabólicos contribuem.",
+    "What if I am vegetarian?":"E se eu for vegetariano?",
+    "It makes some of the work harder and none of it impossible. Several brain-essential nutrients are easier to get from animal foods, so the plan leans more on testing and on supplementation.":"Torna parte do trabalho mais difícil e nenhuma parte impossível. Vários nutrientes essenciais ao cérebro são mais fáceis de obter em alimentos de origem animal, então o plano se apoia mais em exames e em suplementação.",
+    "How it works in practice":"Como funciona na prática",
+    "How long until I see results?":"Em quanto tempo vejo resultados?",
+    "Most people notice the first signs between four and eight weeks. Sleep, energy and mental clarity usually move first. Mood and stability tend to take longer.":"A maioria nota os primeiros sinais entre quatro e oito semanas. Sono, energia e clareza mental costumam se mover primeiro. Humor e estabilidade tendem a demorar mais.",
+    "What happens in the first appointment?":"O que acontece na primeira consulta?",
+    "A full history, a look at whatever labs you already have, and a decision about which extra tests are worth ordering. You leave with a first plan, not with a diet sheet.":"Uma anamnese completa, uma olhada nos exames que você já tem, e a decisão de quais exames extras valem a pena. Você sai com um primeiro plano, não com uma folha de dieta.",
+    "Who follows me along the way?":"Quem me acompanha no caminho?",
+    "A psychiatrist and a dietitian, on the same case at the same time, with check-ins scheduled rather than left to you to remember.":"Um psiquiatra e um nutricionista, no mesmo caso ao mesmo tempo, com retornos agendados em vez de deixados para você lembrar.",
+    "Is everything online?":"É tudo online?",
+    "Yes, including the follow-ups. Lab work is done wherever is convenient for you and the results come back into the same place.":"Sim, inclusive os retornos. Os exames você faz onde for conveniente e os resultados voltam para o mesmo lugar.",
+    "Still not sure":"Ainda em dúvida",
+    "Ask us directly.":"Pergunte direto para a gente.",
+    "The two-minute assessment ends with a real conversation, and there is no cost to find out whether this makes sense for your case.":"A avaliação de dois minutos termina numa conversa de verdade, e não custa nada descobrir se isso faz sentido para o seu caso.",
+    // pagina about us
+    "The care team":"O time de cuidado",
+    "Swipe through. Every patient is seen by more than one of them.":"Arraste para o lado. Todo paciente é visto por mais de um deles.",
+    "How we work":"Como a gente trabalha",
+    "A psychiatrist and a dietitian look at your case at the same time, not one after the other.":"Um psiquiatra e um nutricionista olham o seu caso ao mesmo tempo, não um depois do outro.",
+    "What the team treats":"O que o time trata",
+    "The conditions and the tools we work with.":"As condições e as ferramentas com que a gente trabalha.",
+    "Psychiatrist and clinical director":"Psiquiatra e diretor clínico",
+    "Eighteen years putting nutrition, metabolism and medication in the same treatment plan.":"Dezoito anos colocando nutrição, metabolismo e medicação no mesmo plano de tratamento.",
+    "Psychiatrist, neurometabolism":"Psiquiatra, neurometabolismo",
+    "Researches the link between mitochondrial dysfunction and psychiatric illness.":"Pesquisa a ligação entre disfunção mitocondrial e adoecimento psiquiátrico.",
+    "Nutrition physician":"Médico nutrólogo",
+    "Builds the food side of every plan, from therapeutic diets to insulin resistance.":"Monta o lado alimentar de cada plano, das dietas terapêuticas à resistência à insulina.",
+    "Clinical psychologist":"Psicóloga clínica",
+    "Keeps the change sustainable when the plan meets real life.":"Faz a mudança se sustentar quando o plano encontra a vida real.",
+    "Metabolic psychiatry":"Psiquiatria metabólica",
+    "Mood disorders":"Transtornos de humor",
+    "Ketogenic therapy":"Terapia cetogênica",
+    "Neurometabolism":"Neurometabolismo",
+    "Treatment-resistant depression":"Depressão resistente",
+    "Clinical research":"Pesquisa clínica",
+    "Functional nutrition":"Nutrição funcional",
+    "Supplementation":"Suplementação",
+    "Metabolic health":"Saúde metabólica",
+    "Behaviour change":"Mudança de comportamento",
+    "Psychoeducation":"Psicoeducação",
+    "Insulin resistance":"Resistência à insulina",
+    "Sleep and circadian rhythm":"Sono e ritmo circadiano",
+    "Anxiety":"Ansiedade",
+    "Bipolar disorder":"Transtorno bipolar",
+    "Join the team":"Faça parte do time",
+    "We are looking for psychiatrists, nutrition professionals and psychologists who want to work with metabolism at the centre of the plan.":"Procuramos psiquiatras, nutricionistas e psicólogos que queiram trabalhar com o metabolismo no centro do plano.",
+    "I want to work with you":"Quero trabalhar com vocês",
+    "Illustrative team for the prototype. Final clinicians to be confirmed.":"Time ilustrativo do protótipo. Profissionais finais a confirmar.",
+    "Opportunities":"Oportunidades",
+    "About us":"Sobre nós",
     // bloco 8
     "It is a path, not a leap.":"É um caminho, não um salto.",
     "You start wider: real food, less carbohydrate, a few weeks. If your labs and your symptoms ask for more, you tighten. If they do not, you stop there.":"Você começa mais largo: comida de verdade, menos carboidrato, algumas semanas. Se os exames e os sintomas pedirem mais, você aperta. Se não pedirem, para por ali.",
