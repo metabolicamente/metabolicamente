@@ -368,11 +368,29 @@ body.in-app .wabub{display:none}
 }
 
 /* ============ APP (shared) ============ */
-#login{display:none;align-items:center;justify-content:center;background:
-  radial-gradient(900px 550px at 75% -10%, #1A5F76 0%, transparent 55%),
-  radial-gradient(700px 500px at 5% 110%, #0F3E4E 0%, transparent 55%), var(--t900)}
-#login.active{display:flex}
-.login-card{background:var(--card);border-radius:22px;padding:42px 42px 34px;max-width:430px;width:92%;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+#login{display:none;background:var(--bg)}
+#login.active{display:block}
+.lg-split{position:relative;display:flex;min-height:100vh;min-height:100svh}
+.lg-form{flex:1 1 50%;display:flex;align-items:center;justify-content:center;padding:72px 5vw 56px}
+.lg-art{flex:1 1 50%;background:var(--bg-dim);border-left:1px solid var(--line);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:30px;padding:56px 4vw;overflow:hidden}
+.lg-art p{font-family:var(--quiet);font-weight:500;font-size:clamp(19px,2vw,27px);line-height:1.22;
+  letter-spacing:-.025em;color:var(--hd);max-width:15em;text-align:center;margin:0}
+.lg-art svg{display:block;width:100%;height:auto;max-width:520px}
+.login-card{background:transparent;border-radius:0;padding:0;max-width:390px;width:100%;box-shadow:none}
+#login .login-card{position:static}
+#login .login-card h1{font-family:var(--quiet);font-weight:500;font-size:clamp(30px,3.2vw,42px);
+  line-height:1.02;letter-spacing:-.035em;color:var(--hd);margin:26px 0 22px}
+#login .login-sub{display:none}
+#login .login-btn{background:var(--t800);border-radius:99px;padding:14px;margin-top:12px}
+#login .login-btn:hover{background:var(--t900)}
+#login .demo-corner{position:absolute;top:22px;right:22px;z-index:3}
+@media(max-width:860px){
+  .lg-art{display:none}
+  .lg-form{padding:64px 6vw 48px}
+  #login .login-sub{display:block;margin-top:-8px}
+  #login .login-card h1{margin-bottom:12px}
+}
 .login-card .logo{margin-bottom:24px;font-size:20px}
 .login-card h1{font-size:25px;color:var(--hd);margin-bottom:8px}
 .login-sub{color:var(--soft);font-size:14px;margin-bottom:24px}
@@ -638,16 +656,18 @@ body.intro-done .hero-media{opacity:1}
     border:1px solid rgba(245,239,228,.16)}
 }
 /* --- QUIET HERO (cream, gradient headline, food pile) --- */
-.hero.hero-quiet{background:var(--bg);color:var(--ink);padding:0;overflow:hidden}
+.hero.hero-quiet{background:var(--bg);color:var(--ink);padding:0;overflow:hidden;
+  display:flex;flex-direction:column;min-height:calc(100vh - 64px);min-height:calc(100svh - 64px)}
 .hero-quiet .hq-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.04fr .96fr;
-  align-items:center;gap:10px;max-width:1320px;margin:0 auto;padding:74px 5vw 0;min-height:540px}
+  align-items:center;gap:10px;max-width:1320px;margin:0 auto;padding:74px 5vw 0;min-height:540px;
+  flex:1;width:100%}
 .hero-quiet .hero-inner{max-width:none;padding:0}
 .hero-quiet .kicker{display:flex;align-items:center;gap:11px;color:var(--soft);margin-bottom:26px;font-size:12px;letter-spacing:.22em}
 .hero-quiet .kicker i{width:9px;height:9px;border-radius:50%;flex:none;
   background:linear-gradient(100deg,#E76F51,#E9A277,#79D0C4,#2A9D8F,#8FB8E2)}
 .hero-quiet h1{font-family:var(--quiet);font-weight:500;color:var(--hd);
   font-size:clamp(38px,5.2vw,66px);line-height:.99;letter-spacing:-.045em;max-width:none}
-.hero-quiet h1 .hl2{display:block}
+.hero-quiet h1 .hl2{display:block;padding-bottom:.18em;margin-bottom:-.18em}
 :root[lang="pt-BR"] .hero-quiet h1{font-size:clamp(34px,4.6vw,58px)}
 .hero-quiet p{font-family:var(--quiet);font-size:19px;line-height:1.5;color:var(--soft);
   max-width:23em;margin-top:30px;opacity:1;font-weight:400}
@@ -662,8 +682,13 @@ body.intro-done .hero-media{opacity:1}
 .hq-art{position:relative;opacity:0;transition:opacity 1.1s ease}
 body.intro-done .hq-art{opacity:1}
 .hq-art svg{display:block;width:100%;height:auto;max-width:720px;margin:0 0 0 auto}
-.hq-strip{max-width:1320px;margin:0 auto;padding:6px 5vw 34px;display:flex;flex-wrap:wrap;gap:10px 34px;
+.hq-strip{max-width:1320px;width:100%;margin:0 auto;padding:6px 5vw 12px;display:flex;flex-wrap:wrap;gap:10px 34px;
   font-family:var(--quiet);font-size:12.5px;color:var(--soft);opacity:.85;position:relative;z-index:2}
+/* scroll cue: gives the hero a floor so the sign-up starts below the fold */
+.hq-cue{display:flex;justify-content:center;padding:0 0 22px;position:relative;z-index:2}
+.hq-cue svg{width:22px;height:22px;stroke:var(--soft);fill:none;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round;animation:hqbob 2.6s ease-in-out infinite}
+@keyframes hqbob{0%,100%{transform:translateY(-3px);opacity:.32}50%{transform:translateY(3px);opacity:.72}}
 @media(prefers-reduced-motion:reduce){.flowtxt{animation:none}}
 .flowtxt{background:linear-gradient(100deg,#E76F51,#E9A277,#79D0C4,#2A9D8F,#8FB8E2,#E76F51);
   background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
@@ -689,7 +714,15 @@ body.intro-done .hq-art{opacity:1}
 .tintband{background:var(--tintband)}
 
 /* ============ SIGN-UP CARD (floats over the hero wave) ============ */
-.signup{padding:0 5vw 104px;margin-top:26px;position:relative;z-index:8}
+.signup{padding:96px 5vw 104px;margin-top:0;position:relative;z-index:8}
+/* the sign-up rises further and slower than the generic .reveal */
+.signup .sgcard.reveal{transform:translateY(46px);
+  transition:opacity .85s cubic-bezier(.22,.61,.36,1),transform .85s cubic-bezier(.22,.61,.36,1)}
+.signup .sgcard.reveal.in{transform:none}
+@media(prefers-reduced-motion:reduce){
+  .signup .sgcard.reveal{transition:none;transform:none}
+  .hq-cue svg{animation:none;opacity:.5}
+}
 .sgcard{max-width:540px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:22px;padding:38px 34px 26px;text-align:center;box-shadow:0 2px 4px rgba(12,51,63,.03),0 22px 60px rgba(12,51,63,.10)}
 .sgcard h2{font-family:var(--display);font-weight:800;font-size:34px;letter-spacing:-.02em;color:var(--hd);line-height:1.1}
 .sgcard .sgsub{font-family:var(--calm);font-size:16px;color:var(--soft);margin-top:12px;line-height:1.55}
@@ -707,7 +740,7 @@ body.dark .sgb-social:hover{background:#1C4B5C}
 .sglogin{font-size:14.5px;color:var(--soft)}
 .sglogin a{color:var(--hd2);font-weight:700;border-bottom:1.5px solid var(--t100);cursor:pointer}
 .sglegal{font-size:11.5px;color:var(--soft);opacity:.85;margin-top:24px;line-height:1.6}
-@media(max-width:560px){.signup{margin-top:18px;padding-bottom:72px}.sgcard{padding:30px 22px 22px}.sgcard h2{font-size:27px}}
+@media(max-width:560px){.signup{padding:64px 5vw 72px}.sgcard{padding:30px 22px 22px}.sgcard h2{font-size:27px}}
 
 /* how it works */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;margin-top:54px}
@@ -1395,6 +1428,7 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
     </div>
     </div>
     <div class="hq-strip"><span>Metabolic psychiatry</span><span>Care team, not a chatbot</span><span>Português · English</span></div>
+    <div class="hq-cue" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></div>
   </header>
 
   <!-- ============ SIGN-UP CARD ============ -->
@@ -2401,8 +2435,10 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
 </div>
 <!-- ================= LOGIN ================= -->
 <div class="screen" id="login">
+  <div class="lg-split">
+  <button class="demo-corner" onclick="toggleLoginDemo()"><span class="ic" data-icon="sparkles"></span>Demo views</button>
+  <div class="lg-form">
   <div class="login-card">
-    <button class="demo-corner" onclick="toggleLoginDemo()"><span class="ic" data-icon="sparkles"></span>Demo views</button>
     <a class="logo" onclick="goHome()" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>Metabolicamente</a>
     <h1>Welcome back</h1>
     <div class="login-sub">Caring for your mind by caring for your metabolism.</div>
@@ -2429,6 +2465,151 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
     </div>
     <div class="login-foot">Demo prototype · fictional data only</div>
     <span class="back-site" onclick="go('site')">← Back to site</span>
+  </div>
+  </div>
+  <aside class="lg-art">
+    <p>Caring for your mind by caring for your metabolism.</p>
+    <svg viewBox="0 126 560 326" aria-hidden="true">
+        <defs>
+          <g id="lg-fp-steak">
+            <path d="M-42-8c2-19 20-30 42-30 25 0 43 13 43 29 0 19-21 31-45 31S-44 9-42-8z" fill="#AE3A2F"/>
+            <path d="M-42-8c2-19 20-30 42-30 10 0 19 2 26 6-9 6-21 9-33 9-17 0-29 6-35 15z" fill="#C3503D"/>
+            <path d="M0-38c25 0 43 13 43 29 0 7-3 13-8 18-6-6-9-15-9-23 0-13-11-21-27-24z" fill="#F0DFC0"/>
+            <path d="M-22-6c9-7 17-9 27-7M-16 7c10-7 21-9 31-7M-25-18c6-4 13-6 19-6" stroke="#D98C7C" stroke-width="3.6" stroke-linecap="round" fill="none"/>
+          </g>
+          <g id="lg-fp-bacon">
+            <path d="M-40-12c13-11 26 6 39-5 12-10 25 6 39-5v15c-14 11-27-5-39 5-13 11-26-6-39 5z" fill="#B94A3D"/>
+            <path d="M-40-4c13-11 26 6 39-5 12-10 25 6 39-5v8c-14 11-27-5-39 5-13 11-26-6-39 5z" fill="#F0C6B4"/>
+            <path d="M-40 3c13-11 26 6 39-5 12-10 25 6 39-5v5c-14 11-27-5-39 5-13 11-26-6-39 5z" fill="#A33F34"/>
+          </g>
+          <g id="lg-fp-butter">
+            <path d="M-30 2l30-17 30 17-30 17z" fill="#F9DC77"/>
+            <path d="M-30 2v17l30 17V19z" fill="#EABB33"/>
+            <path d="M30 2v17L0 36V19z" fill="#D69E20"/>
+          </g>
+          <g id="lg-fp-cheese">
+            <path d="M-34 18h60l-8-30-44 22z" fill="#F0AE35"/>
+            <path d="M-34 18l6-8h58l-4 8z" fill="#F9CB68"/>
+            <path d="M18-12l8 30 4-8-7-25z" fill="#D9922A"/>
+            <circle cx="-6" cy="8" r="5" fill="#DB9A2C"/><circle cx="12" cy="2" r="3.5" fill="#DB9A2C"/>
+          </g>
+          <g id="lg-fp-drum">
+            <path d="M-14 2c-13-9-15-27-3-36 12-9 30-6 36 5 7 12 2 27-10 33l-9 5z" fill="#C98B4C"/>
+            <path d="M-13-4c-9-8-9-22 0-29 8-6 20-5 26 2-12 1-23 12-26 27z" fill="#DDA96F"/>
+            <path d="M6 8l10 18c4 7-2 14-9 13-8-1-12-9-7-16z" fill="#C98B4C"/>
+            <ellipse cx="10" cy="33" rx="9" ry="8" fill="#F7F0E1"/>
+            <ellipse cx="21" cy="38" rx="8" ry="7" fill="#F7F0E1"/>
+            <ellipse cx="15" cy="41" rx="8" ry="7" fill="#EFE4CE"/>
+          </g>
+          <g id="lg-fp-shrimp">
+            <path d="M18-20c14 4 22 17 20 30-3 15-17 24-32 22-14-2-24-13-24-26 0-8 6-12 11-9 5 3 3 9 0 13-3 5-1 12 6 14 9 3 18-3 20-12 2-8-2-16-10-19z" fill="#E9836B"/>
+            <path d="M12-8c5 3 7 9 5 14M4-2c5 3 7 9 5 14M-4 3c5 3 7 9 5 14" stroke="#F7CBBB" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+            <path d="M18-20l14-8-4 12z" fill="#D96F58"/>
+          </g>
+          <g id="lg-fp-sardine">
+            <path d="M-28 0c9-13 28-13 40-6l15-9-4 15 4 15-15-9c-12 7-31 7-40-6z" fill="#93ACC0"/>
+            <path d="M-28 0c9-13 28-13 40-6-7 5-25 9-40 6z" fill="#5F7F9A"/>
+            <circle cx="2" cy="-4" r="2.8" fill="#25333F"/>
+          </g>
+          <g id="lg-fp-mush">
+            <rect x="-8" y="-2" width="16" height="26" rx="7" fill="#F1E5D3"/>
+            <path d="M-25 2c0-17 11-27 25-27s25 10 25 27z" fill="#C89A6E"/>
+            <path d="M-25 2c0-17 11-27 25-27 4 0 8 1 12 3-11 4-19 12-21 24z" fill="#DCB58D"/>
+          </g>
+          <g id="lg-fp-olive"><ellipse rx="12" ry="15" fill="#432F53"/><ellipse cx="-3.5" cy="-4" rx="4" ry="5.5" fill="#654A78"/></g>
+          <g id="lg-fp-avo">
+            <ellipse rx="31" ry="38" fill="#3F7A4E"/><ellipse rx="24" ry="30" fill="#CFE4A2"/>
+            <circle r="12.5" fill="#B98049"/><circle cx="-4" cy="-4" r="4" fill="#CA9560"/>
+          </g>
+          <g id="lg-fp-egg">
+            <path d="M-36 6c-8-14 2-28 15-27 4-13 22-16 31-6 14-3 23 9 18 22 5 12-6 23-20 21-9 9-28 9-36-1-10 1-14-4-8-9z" fill="#FFFFFF" stroke="var(--egg-edge)" stroke-width="2.5"/>
+            <circle cx="3" cy="-3" r="13" fill="#EFB042"/><circle cx="-1" cy="-7" r="5" fill="#F7CB72"/>
+          </g>
+          <g id="lg-fp-salmon">
+            <path d="M-42 12C-32-8-10-22 14-22c16 0 27 6 32 15-8 17-28 29-50 29-14 0-30-4-38-10z" fill="#E8836A"/>
+            <path d="M-30 8c10-14 26-21 40-23M-24 19c10-14 26-21 40-23" stroke="#F8CDBC" stroke-width="5" stroke-linecap="round" fill="none"/>
+          </g>
+          <g id="lg-fp-leaf">
+            <path d="M0 24C-24 10-24-14 0-26 24-14 24 10 0 24z" fill="#5CAA6C"/>
+            <path d="M0 21V-21" stroke="#3E8450" stroke-width="3" stroke-linecap="round"/>
+          </g>
+        </defs>
+
+        <ellipse cx="284" cy="418" rx="228" ry="30" fill="var(--pile-shadow)"/>
+
+        <use href="#lg-fp-avo" transform="translate(150,278) scale(.62) rotate(-20)"/>
+        <use href="#lg-fp-mush" transform="translate(198,272) scale(.9)"/>
+        <use href="#lg-fp-leaf" transform="translate(300,260) scale(.78) rotate(10)"/>
+        <use href="#lg-fp-cheese" transform="translate(374,272) scale(.72)"/>
+        <use href="#lg-fp-egg" transform="translate(414,282) scale(.62)"/>
+        <use href="#lg-fp-bacon" transform="translate(336,274) scale(.62)"/>
+        <use href="#lg-fp-cheese" transform="translate(400,264) scale(.55)"/>
+        <use href="#lg-fp-leaf" transform="translate(246,272) scale(.55) rotate(18)"/>
+
+        <g class="hq-pig">
+          <ellipse cx="396" cy="254" rx="18" ry="11" fill="#E7CDA5"/>
+          <ellipse cx="316" cy="222" rx="97" ry="50" fill="#F2DEC0"/>
+          <path d="M330 174c50 6 84 24 84 48 0 14-12 26-33 32 3-32-16-62-51-80z" fill="#C08A4E"/>
+          <ellipse cx="166" cy="152" rx="21" ry="15" transform="rotate(-32 166 152)" fill="#E7CDA5"/>
+          <ellipse cx="258" cy="150" rx="21" ry="15" transform="rotate(32 258 150)" fill="#E7CDA5"/>
+          <ellipse cx="169" cy="155" rx="10.5" ry="7" transform="rotate(-32 169 155)" fill="#E79A8E"/>
+          <ellipse cx="255" cy="153" rx="10.5" ry="7" transform="rotate(32 255 153)" fill="#E79A8E"/>
+          <ellipse cx="212" cy="196" rx="61" ry="53" fill="#F7E7CB"/>
+          <path d="M212 143c21 0 40 11 50 28-17 4-32 13-42 27-8-19-19-36-33-47 7-5 16-8 25-8z" fill="#C08A4E"/>
+          <ellipse cx="176" cy="212" rx="13" ry="8" fill="rgba(231,111,81,.34)"/>
+          <ellipse cx="248" cy="212" rx="13" ry="8" fill="rgba(231,111,81,.34)"/>
+          <path d="M180 194q10-12 20 0M224 194q10-12 20 0" stroke="#33241C" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <path d="M212 206c5.5 0 8.5 2.6 8.5 5.6s-3.8 5.4-8.5 5.4-8.5-2.4-8.5-5.4 3-5.6 8.5-5.6z" fill="#D97A6B"/>
+          <path d="M212 217c0 5-4.5 8-8.5 8M212 217c0 5 4.5 8 8.5 8" stroke="#33241C" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+          <path d="M168 214h-26M168 221l-24 7M256 214h26M256 221l24 7" stroke="rgba(51,36,28,.28)" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+          <ellipse cx="188" cy="244" rx="18" ry="11" fill="#EFD9B8"/>
+          <ellipse cx="234" cy="247" rx="18" ry="11" fill="#EFD9B8"/>
+          <g transform="translate(212,244) rotate(-8) scale(.78)">
+            <path d="M0 24C-24 10-24-14 0-26 12-20 18-10 19-1c-9-2-16 1-16 7 0 5 5 8 12 8-3 5-8 8-15 10z" fill="#5CAA6C"/>
+            <path d="M0 21V-21" stroke="#3E8450" stroke-width="3.4" stroke-linecap="round"/>
+          </g>
+        </g>
+
+        <use href="#lg-fp-leaf" transform="translate(170,270) scale(.6) rotate(-28)"/>
+        <use href="#lg-fp-mush" transform="translate(410,274) scale(.62)"/>
+        <use href="#lg-fp-olive" transform="translate(252,266) scale(.9)"/>
+        <use href="#lg-fp-olive" transform="translate(352,262) scale(.8)"/>
+
+        <use href="#lg-fp-leaf" transform="translate(126,300) scale(.82) rotate(-32)"/>
+        <use href="#lg-fp-avo" transform="translate(186,300) scale(.8) rotate(-10)"/>
+        <use href="#lg-fp-steak" transform="translate(268,296) scale(.82)"/>
+        <use href="#lg-fp-butter" transform="translate(350,302) scale(.85)"/>
+        <use href="#lg-fp-egg" transform="translate(426,302) scale(.78)"/>
+        <use href="#lg-fp-leaf" transform="translate(472,304) scale(.76) rotate(36)"/>
+        <use href="#lg-fp-olive" transform="translate(316,318) scale(.9)"/>
+        <use href="#lg-fp-shrimp" transform="translate(230,322) scale(.8) rotate(-18)"/>
+
+        <use href="#lg-fp-cheese" transform="translate(90,342) scale(.88)"/>
+        <use href="#lg-fp-bacon" transform="translate(154,338) scale(.95)"/>
+        <use href="#lg-fp-egg" transform="translate(238,332) scale(.9)"/>
+        <use href="#lg-fp-avo" transform="translate(330,336) scale(.86) rotate(16)"/>
+        <use href="#lg-fp-salmon" transform="translate(420,338) scale(.9) rotate(-10)"/>
+        <use href="#lg-fp-leaf" transform="translate(490,344) scale(.86) rotate(32)"/>
+        <use href="#lg-fp-sardine" transform="translate(196,360) scale(.85) rotate(-10)"/>
+        <use href="#lg-fp-olive" transform="translate(288,356) scale(.95)"/>
+        <use href="#lg-fp-shrimp" transform="translate(380,356) scale(.85) rotate(14)"/>
+
+        <use href="#lg-fp-leaf" transform="translate(60,376) rotate(-44)"/>
+        <use href="#lg-fp-avo" transform="translate(110,374) rotate(-14)"/>
+        <use href="#lg-fp-steak" transform="translate(200,382) scale(1.15)"/>
+        <use href="#lg-fp-drum" transform="translate(300,372) scale(1.05)"/>
+        <use href="#lg-fp-egg" transform="translate(392,378)"/>
+        <use href="#lg-fp-cheese" transform="translate(464,382) scale(.95)"/>
+        <use href="#lg-fp-leaf" transform="translate(512,374) rotate(46)"/>
+        <use href="#lg-fp-butter" transform="translate(352,398) scale(.9)"/>
+        <use href="#lg-fp-sardine" transform="translate(148,404) scale(.9) rotate(8)"/>
+        <use href="#lg-fp-olive" transform="translate(250,408) scale(.95)"/>
+        <use href="#lg-fp-olive" transform="translate(430,404)"/>
+        <use href="#lg-fp-shrimp" transform="translate(322,412) scale(.85) rotate(6)"/>
+        <use href="#lg-fp-olive" transform="translate(88,402) scale(.8)"/>
+        <use href="#lg-fp-salmon" transform="translate(486,408) scale(.7) rotate(-26)"/>
+      </svg>
+  </aside>
   </div>
 </div>
 
