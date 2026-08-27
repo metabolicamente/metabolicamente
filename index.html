@@ -377,6 +377,25 @@ body.in-app .wabub{display:none}
 .lg-art p{font-family:var(--quiet);font-weight:500;font-size:clamp(19px,2vw,27px);line-height:1.22;
   letter-spacing:-.025em;color:var(--hd);max-width:15em;text-align:center;margin:0}
 .lg-art svg{display:block;width:100%;height:auto;max-width:520px}
+.login-kick{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--t500);margin:26px 0 8px}
+.lg-art.role{background:var(--bg);border-left:1px solid var(--line)}
+.lg-art.role p{color:var(--hd)}
+.lg-rolart{position:relative;width:100%;max-width:520px}
+.lg-rolart svg{display:block;width:100%;height:auto}
+.lg-glyph{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-size:clamp(70px,9vw,124px);color:rgba(245,239,228,.92);display:flex}
+.lg-glyph svg{width:1em;height:1em;stroke-width:1.5}
+.lg-foodart{width:100%;display:flex;justify-content:center}
+.lg-roles{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:22px;
+  padding-top:20px;border-top:1px solid var(--line)}
+.lg-rolab{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--soft);width:100%;margin-bottom:2px}
+.lg-roles button{font-size:12.5px;font-weight:600;padding:7px 13px;border-radius:99px;
+  border:1.5px solid var(--line);background:var(--card);color:var(--soft);cursor:pointer;transition:.15s}
+.lg-roles button:hover{border-color:var(--t500);color:var(--hd2)}
+.lg-roles button.on{background:var(--t800);border-color:var(--t800);color:#F5EFE4}
+@media(max-width:900px){.lg-roles{margin-top:18px}}
 .login-card{background:transparent;border-radius:0;padding:0;max-width:390px;width:100%;box-shadow:none}
 #login .login-card{position:static}
 #login .login-card h1{font-family:var(--quiet);font-weight:500;font-size:clamp(30px,3.2vw,42px);
@@ -963,6 +982,308 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
 
 #pg-conteudo{--gut:clamp(18px,3.4vw,48px);padding-top:6px}
 
+/* ---- bloco solo (card largo fora do trilho) ---- */
+.hl-solo{padding:4px var(--gut) 26px}
+
+/* ---- pagina de profissionais ---- */
+#pg-prof{--gut:clamp(18px,3.4vw,48px);padding-top:6px}
+.pf-hero{padding:clamp(34px,5vw,72px) var(--gut) clamp(10px,2vw,20px)}
+.pf-hero-in{max-width:1180px;margin:0 auto}
+.pf-hero h2{font-family:var(--serif);font-size:clamp(30px,4.2vw,54px);line-height:1.08;
+  color:var(--hd);margin:10px 0 16px;font-weight:400;max-width:17em}
+.pf-lead{font-size:clamp(15px,1.3vw,18px);line-height:1.62;color:var(--soft);max-width:40em;margin:0}
+.pf-fork{padding:clamp(18px,3vw,36px) var(--gut) clamp(20px,3vw,40px)}
+.pf-fork-in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.2vw,28px)}
+.pfcard{background:var(--card);border:1.5px solid var(--line);border-radius:24px;
+  padding:clamp(26px,3vw,40px);cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s;
+  display:flex;flex-direction:column}
+.pfcard:hover{transform:translateY(-4px);border-color:var(--t500);box-shadow:0 14px 40px rgba(9,40,50,.1)}
+.pfcard.hi{background:linear-gradient(150deg,var(--bg-dim),var(--card));border-color:var(--t500)}
+.pfic{width:52px;height:52px;border-radius:15px;background:var(--t500);color:#fff;display:flex;
+  align-items:center;justify-content:center;font-size:26px;margin-bottom:18px}
+.pfkick{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--t500);margin:0 0 8px}
+.pfcard h3{font-family:var(--serif);font-size:clamp(23px,2.5vw,32px);line-height:1.1;
+  color:var(--hd);margin:0 0 12px;font-weight:400}
+.pfcard > p{font-size:14.5px;line-height:1.62;color:var(--soft);margin:0 0 18px}
+.pflist{list-style:none;margin:0 0 24px;padding:0;display:flex;flex-direction:column;gap:9px}
+.pflist li{position:relative;padding-left:24px;font-size:13.5px;line-height:1.5;color:var(--hd2)}
+.pflist li::before{content:'';position:absolute;left:2px;top:6px;width:9px;height:5px;
+  border-left:2px solid var(--t500);border-bottom:2px solid var(--t500);transform:rotate(-45deg)}
+.pfbtn{align-self:flex-start;margin-top:auto;cursor:pointer}
+@media(max-width:820px){.pf-fork-in{grid-template-columns:1fr}}
+
+/* ---- faixa de certificacao ---- */
+/* ================= PACIENTE: shell de app + mosaico ================= */
+.apptop{height:var(--aph)}
+.appshell{--aph:68px;--apslot:clamp(80px,6.8vw,104px);--apicon:26px;--appill:46px}
+.apnav{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;
+  gap:clamp(4px,.55vw,8px)}
+.apic{position:relative;width:var(--apslot);height:46px;border-radius:99px;cursor:pointer;
+  color:rgba(245,239,228,.7);flex-shrink:0;transition:background .2s ease,color .2s ease}
+.apic:hover,.apic:focus-visible,.apic.on{color:#F5EFE4;outline:none}
+.apic::before{content:'';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  height:100%;width:var(--appill);border-radius:99px;background:transparent;z-index:0;
+  transition:width .26s cubic-bezier(.2,.8,.3,1),background .2s ease}
+.apic.on::before{background:rgba(245,239,228,.1)}
+.apic:hover::before,.apic:focus-visible::before{background:rgba(245,239,228,.1);width:100%}
+.apicon,.aplab{position:absolute;left:50%;top:50%;z-index:1;
+  transition:opacity .17s ease,transform .24s cubic-bezier(.2,.8,.3,1)}
+.apicon{transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center}
+.apic .ic{font-size:var(--apicon);display:flex}
+.apic .ic[data-icon="brain"]{font-size:calc(var(--apicon) * 1.16)}
+.apic .ic[data-icon="brain"] svg{stroke-width:1.7}
+.aplab{transform:translate(-50%,-42%) scale(.94);opacity:0;white-space:nowrap;
+  font-size:13.5px;font-weight:700;letter-spacing:.005em}
+.apic:hover .apicon,.apic:focus-visible .apicon{
+  opacity:0;transform:translate(-50%,-58%) scale(.86)}
+.apic:hover .aplab,.apic:focus-visible .aplab{
+  opacity:1;transform:translate(-50%,-50%) scale(1)}
+.apicon .badge{position:absolute;top:-3px;right:-5px;min-width:16px;height:16px;padding:0 4px;
+  border-radius:99px;background:var(--coral);color:#fff;font-size:10px;font-weight:700;
+  display:flex;align-items:center;justify-content:center}
+.apavc{width:calc(var(--apicon) + 4px);height:calc(var(--apicon) + 4px);border-radius:50%;
+  background:var(--t500);color:#06222B;font-size:12px;font-weight:700;letter-spacing:.03em;
+  display:flex;align-items:center;justify-content:center}
+.apburger{position:relative;width:42px;height:42px;border-radius:99px;display:flex;
+  align-items:center;justify-content:center;color:#F5EFE4;cursor:pointer;transition:background .15s}
+.apburger:hover{background:rgba(245,239,228,.12)}
+.apburger .ic{position:absolute;font-size:22px;transition:opacity .2s ease,transform .24s ease}
+.apburger .apx{opacity:0;transform:rotate(-90deg) scale(.8)}
+.apburger.open .apbar{opacity:0;transform:rotate(90deg) scale(.8)}
+.apburger.open .apx{opacity:1;transform:none}
+.apmenu{position:absolute;top:calc(var(--aph) - 6px);right:18px;min-width:214px;background:var(--card);
+  color:var(--ink);border:1px solid var(--line);border-radius:14px;
+  box-shadow:0 20px 50px rgba(0,0,0,.25);overflow:hidden;display:none;z-index:60;padding:6px}
+.apmenu.open{display:block}
+.apmenu button{display:flex;align-items:center;gap:11px;width:100%;text-align:left;
+  padding:11px 14px;border-radius:9px;font-size:14px;font-weight:600;color:var(--hd2);cursor:pointer}
+.apmenu button:hover{background:var(--bg-dim)}
+.apmenu button .ic{font-size:17px;color:var(--soft)}
+.appshell .dnotif{top:calc(var(--aph) - 6px);left:50%;right:auto;transform:translateX(-50%)}
+.apptop .logo-only{gap:0}
+.apptop .logo-mark svg{width:26px;height:26px}
+@media(max-width:900px){
+  .appshell{--aph:62px;--apslot:clamp(56px,9vw,80px);--apicon:24px;--appill:42px}
+  .apic{height:42px}
+  .aplab{font-size:12.5px}
+  .apburger{width:38px;height:38px}
+  .apburger .ic{font-size:20px}
+}
+@media(max-width:640px){
+  .appshell{--apslot:52px;--apicon:23px;--appill:40px}
+  .apic{height:40px}
+  .apic:hover .apicon{opacity:1;transform:translate(-50%,-50%) scale(1)}
+  .apic:hover .aplab{opacity:0}
+  .apic.on::after{content:'';position:absolute;bottom:4px;left:50%;transform:translateX(-50%);
+    width:5px;height:5px;border-radius:50%;background:var(--t500)}
+  .appshell .dnotif{width:min(320px,calc(100vw - 24px))}
+}
+
+.appshell .dbody.app{display:block}
+.appshell .dmain{padding:clamp(20px,3vw,40px) clamp(16px,3vw,44px) clamp(40px,5vw,70px)}
+.appshell .dwrap{max-width:1500px}
+.appshell .dfab{bottom:26px}
+.apptop .dsp{flex:1}
+.appback{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--soft);
+  cursor:pointer;margin-bottom:20px;padding:8px 16px 8px 12px;border-radius:99px;
+  border:1px solid var(--line);background:var(--card);transition:.15s}
+.appback:hover{color:var(--hd2);border-color:var(--t500);transform:translateX(-2px)}
+
+.bhead{margin-bottom:clamp(18px,2.4vw,30px)}
+.bhead h1{font-family:var(--display);font-weight:700;font-size:clamp(26px,3vw,40px);color:var(--hd);letter-spacing:-.01em}
+.bhead p{font-size:clamp(14px,1.1vw,15.5px);color:var(--soft);margin-top:6px}
+
+.bento{display:grid;grid-template-columns:repeat(4,1fr);
+  grid-auto-rows:minmax(clamp(158px,21vh,248px),auto);gap:clamp(12px,1.2vw,20px)}
+.btile{position:relative;cursor:pointer;text-align:left;padding:0;border:none;background:none;
+  animation:bfloat 7s ease-in-out infinite}
+.bskin{position:absolute;inset:0;display:block;overflow:hidden;isolation:isolate;
+  border-radius:clamp(18px,1.6vw,26px);color:#F5EFE4;
+  background:linear-gradient(150deg,var(--g1),var(--g2));
+  box-shadow:0 6px 20px rgba(9,40,50,.10);
+  transition:transform .34s cubic-bezier(.2,.8,.3,1),box-shadow .34s ease}
+.btile:hover .bskin,.btile:focus-visible .bskin{
+  transform:translateY(-10px) scale(1.015);box-shadow:0 24px 54px rgba(9,40,50,.24)}
+.btile:nth-child(2){animation-delay:-1.2s}
+.btile:nth-child(3){animation-delay:-2.4s}
+.btile:nth-child(4){animation-delay:-3.6s}
+.btile:nth-child(5){animation-delay:-.6s}
+.btile:nth-child(6){animation-delay:-4.8s}
+.btile:nth-child(7){animation-delay:-3s}
+@keyframes bfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.btile:hover,.btile:focus-visible{animation-play-state:paused;outline:none}
+.btile.xl{grid-column:span 2;grid-row:span 2}
+.btile.wide{grid-column:span 2}
+.btile.sm{grid-column:span 1}
+.btile.full{grid-column:span 4}
+.bart{position:absolute;inset:0;pointer-events:none;transition:transform .5s ease,opacity .3s ease}
+.bart svg{position:absolute;inset:0;width:100%;height:100%}
+.btile:hover .bart{transform:scale(1.06)}
+.bbody{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
+  padding:clamp(16px,1.5vw,26px)}
+.btop{display:flex;align-items:center;gap:9px;margin-bottom:auto}
+.bic{display:flex;align-items:center;font-size:17px;opacity:.9}
+.blabel{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.72}
+.bmain b{display:block;font-family:var(--serif);font-weight:400;line-height:1.14;
+  font-size:clamp(17px,1.5vw,22px);margin-bottom:6px}
+.btile.hero .bmain b{font-size:clamp(23px,2.6vw,36px)}
+.bsub{display:block;font-size:clamp(12px,.95vw,13.5px);line-height:1.45;color:rgba(245,239,228,.78)}
+.bbar{height:5px;border-radius:99px;background:rgba(245,239,228,.22);overflow:hidden;margin:10px 0 9px;
+  max-width:320px}
+.bbar i{display:block;height:100%;border-radius:99px;background:#F5EFE4;transition:width .4s ease}
+.bchip{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;
+  background:rgba(245,239,228,.16);border-radius:99px;padding:5px 12px;margin-top:12px}
+.bfoot{margin-top:10px}
+.bavs{display:flex;margin-bottom:8px}
+.bavs span{width:32px;height:32px;border-radius:50%;background:rgba(245,239,228,.2);
+  border:1.5px solid rgba(245,239,228,.35);display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;margin-right:-8px}
+.bmore{display:flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;
+  margin-top:12px;opacity:0;max-height:0;overflow:hidden;
+  transition:opacity .3s ease,max-height .3s ease,margin-top .3s ease}
+.btile:hover .bmore,.btile:focus-visible .bmore{opacity:.95;max-height:30px}
+@media(hover:none){.bmore{opacity:.85;max-height:30px}}
+@media(max-width:900px){
+  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:minmax(148px,auto)}
+  .btile.xl{grid-column:span 2;grid-row:span 2}
+  .btile.wide,.btile.full{grid-column:span 2}
+}
+@media(max-width:560px){
+  .bento{grid-template-columns:1fr}
+  .btile.xl,.btile.wide,.btile.sm,.btile.full{grid-column:span 1;grid-row:span 1}
+  .btile.xl{min-height:230px}
+}
+@media(prefers-reduced-motion:reduce){
+  .btile{animation:none}
+  .btile:hover .bskin{transform:translateY(-4px)}
+}
+
+/* ---- profissional: especialidade, captacao, negocio ---- */
+.specsw{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:-8px 0 20px}
+.specsw span{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--soft);margin-right:2px}
+.specsw button{font-size:13px;font-weight:600;padding:7px 15px;border-radius:99px;border:1.5px solid var(--line);
+  background:var(--card);color:var(--soft);cursor:pointer;transition:.15s}
+.specsw button:hover{border-color:var(--t500);color:var(--hd2)}
+.specsw button.on{background:var(--t800);border-color:var(--t800);color:#F5EFE4}
+.stat2 .sfoot{font-size:11.5px;color:var(--t500);margin-top:8px;font-weight:600}
+.dnote{font-size:13.5px;color:var(--soft);margin:-8px 0 14px}
+.procard{display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:space-between;
+  background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px;margin:14px 0 4px}
+.proleft{display:flex;align-items:center;gap:14px;min-width:0}
+.proav{width:52px;height:52px;border-radius:50%;background:var(--t800);color:#F5EFE4;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;letter-spacing:.04em}
+.proleft b{display:block;font-size:15.5px;color:var(--hd)}
+.proleft span{display:block;font-size:12.5px;color:var(--soft);margin-top:2px}
+.procerts{display:flex!important;align-items:center;gap:6px;color:var(--t500)!important;font-weight:600;margin-top:6px!important}
+.proright{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.protog{display:flex;align-items:center;gap:10px;font-size:13.5px;color:var(--hd2)}
+.leadlist{display:flex;flex-direction:column;gap:12px;margin-bottom:8px}
+.lead{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);
+  border-radius:16px;padding:16px 18px}
+.lead.newq{border-color:var(--t500);background:var(--t50)}
+.lav{width:44px;height:44px;border-radius:50%;background:var(--bg-dim);color:var(--hd2);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.linfo{flex:1;min-width:0}
+.linfo b{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--hd)}
+.linfo .lsub{display:block;font-size:12.5px;color:var(--soft);margin-top:2px}
+.linfo .lctx{display:flex;align-items:center;gap:6px;font-size:12.5px;color:var(--t500);font-weight:600;margin-top:7px}
+.linfo .lwant{display:block;font-size:13px;color:var(--hd2);margin-top:5px}
+.lact{flex-shrink:0}
+.alertbox.tool{border-left-color:var(--t500);background:var(--t50)}
+.alertbox.tool b{color:var(--hd)}
+@media(max-width:720px){.lead{flex-wrap:wrap}.lact{width:100%}.lact .dbtn{width:100%;justify-content:center}
+  .procard{flex-direction:column;align-items:flex-start}.proright{width:100%;justify-content:space-between}}
+.stbtns{display:flex;gap:10px;flex-wrap:wrap}
+
+/* ---- diploma ---- */
+.dipm{max-width:640px}
+.dip{border:1.5px solid var(--line);border-radius:18px;padding:clamp(26px,4vw,44px);text-align:center;
+  background:linear-gradient(160deg,var(--bg),var(--bg-dim));margin-bottom:22px}
+.dipmark{display:inline-flex;align-items:center;gap:8px;font-family:var(--serif);font-size:18px;
+  color:var(--hd);margin-bottom:22px}
+.dipmark svg{width:22px;height:22px}
+.dipkick{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--t500);margin:0 0 22px}
+.diplead{font-size:13px;color:var(--soft);margin:0 0 6px;font-style:italic}
+.dipname{font-family:var(--serif);font-size:clamp(24px,3.2vw,34px);color:var(--hd);margin:0 0 4px;font-weight:400}
+.dipreg{font-size:12.5px;color:var(--soft);margin:0 0 20px}
+.diptrack{font-family:var(--display);font-size:clamp(16px,1.8vw,20px);font-weight:700;color:var(--hd2);
+  margin:0 0 26px;max-width:22em;margin-left:auto;margin-right:auto;line-height:1.3}
+.dipfoot{display:flex;align-items:center;justify-content:space-between;gap:16px;
+  border-top:1px solid var(--line);padding-top:20px}
+.dipfoot > div{text-align:left}
+.dipfoot span{display:block;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.dipfoot b{font-size:14px;color:var(--hd2)}
+.dipseal{width:52px;height:52px;border-radius:50%;background:var(--c-gold);color:#3A2A00;
+  display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.dipfoot > div:last-child{text-align:right}
+
+.stbanner{display:flex;align-items:center;gap:16px;background:var(--bg-dim);border:1px solid var(--line);
+  border-radius:18px;padding:18px 22px;margin-bottom:8px}
+.stbanner > .ic{font-size:26px;color:var(--soft);flex-shrink:0}
+.stbanner.ok{background:linear-gradient(115deg,#114B5F,#07222C);border-color:transparent}
+.stbanner.ok > .ic{color:var(--c-gold)}
+.stbanner div{flex:1;min-width:0}
+.stbanner b{display:block;font-size:15px;color:var(--hd);margin-bottom:2px}
+.stbanner span{font-size:13.5px;color:var(--soft)}
+.stbanner.ok b{color:#F7F2E7}
+.stbanner.ok span{color:rgba(245,239,228,.76)}
+@media(max-width:640px){.stbanner{flex-direction:column;align-items:flex-start;gap:12px}}
+.plock.done{background:var(--c-gold);color:#3A2A00}
+.tridone-ic{width:52px;height:52px;border-radius:50%;background:var(--t500);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:18px}
+#triModal .lfield{margin-bottom:14px}
+.hl-solo .upcard{width:100%}
+
+/* ---- setas dos trilhos ---- */
+.railwrap{position:relative}
+.railnav{position:absolute;top:calc(50% - 34px);transform:translateY(-50%);z-index:4;
+  width:42px;height:42px;border-radius:50%;background:var(--card);border:1px solid var(--line);
+  box-shadow:0 4px 16px rgba(9,40,50,.14);display:flex;align-items:center;justify-content:center;
+  color:var(--hd2);font-size:20px;cursor:pointer;transition:opacity .2s,transform .15s}
+.railnav:hover{transform:translateY(-50%) scale(1.07)}
+.railnav.prev{left:calc(var(--gut) - 21px)}
+.railnav.next{right:calc(var(--gut) - 21px)}
+.railwrap.at-start .railnav.prev,.railwrap.at-end .railnav.next{opacity:0;pointer-events:none}
+@media(max-width:820px){.railnav{display:none}}
+
+/* ---- card de podcast ---- */
+.podcard{flex:0 0 auto;width:clamp(248px,25vw,320px);cursor:pointer;display:block}
+.podthumb{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;
+  background:var(--bg-dim);margin-bottom:12px;transition:transform .2s}
+.podcard:hover .podthumb{transform:translateY(-4px)}
+.podthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.podplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:48px;height:48px;
+  border-radius:50%;background:rgba(9,40,50,.62);backdrop-filter:blur(3px);display:flex;
+  align-items:center;justify-content:center;color:#fff;font-size:15px}
+.podplay i{font-style:normal;margin-left:2px}
+.podchan{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--t500);margin:0 0 6px}
+.podcard h3{font-size:15px;font-weight:600;line-height:1.34;color:var(--hd);margin:0 0 5px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.poddesc{font-size:12.5px;color:var(--soft);margin:0}
+
+/* ---- card de artigo ---- */
+.artcard{flex:0 0 auto;width:clamp(248px,25vw,320px);cursor:pointer;display:block}
+.artcover{position:relative;aspect-ratio:16/9;border-radius:16px;overflow:hidden;margin-bottom:12px;
+  background:linear-gradient(150deg,var(--g1),var(--g2));transition:transform .2s}
+.artcard:hover .artcover{transform:translateY(-4px)}
+.artq{position:absolute;left:14px;top:-14px;font-family:var(--serif);font-size:110px;
+  color:#fff;opacity:.16;line-height:1}
+.artcover .artic{position:absolute;right:16px;bottom:14px;font-size:26px;color:#fff;opacity:.72}
+.artsrc{font-size:11.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--t500);margin:0 0 6px}
+.artcard h3{font-size:15px;font-weight:600;line-height:1.34;color:var(--hd);margin:0 0 6px;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.artdesc{font-size:12.5px;line-height:1.5;color:var(--soft);margin:0 0 8px;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.artread{font-size:12.5px;font-weight:600;color:var(--t500);display:inline-flex;align-items:center;gap:5px}
+
+/* ---- filtros de canal ---- */
+#pg-conteudo .libfilters{padding:0 var(--gut);margin-bottom:16px}
+#pg-conteudo .cattile{cursor:pointer}
+#pg-conteudo .noresults{padding:0 var(--gut) 20px}
+
 /* ---- area de programas dentro do painel do paciente ---- */
 .dprog{--gut:0px}
 .dprog .hl-sec{padding:18px 0 2px}
@@ -999,6 +1320,23 @@ label.fl{display:block;font-size:13px;font-weight:600;color:var(--hd);margin:18p
 .sublist li::before{content:'';position:absolute;left:2px;top:6px;width:9px;height:5px;
   border-left:2px solid var(--t500);border-bottom:2px solid var(--t500);transform:rotate(-45deg)}
 .subact{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.plansm{max-width:760px}
+.plangrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:22px}
+.plancard{position:relative;border:1.5px solid var(--line);border-radius:18px;padding:22px 20px;background:var(--bg)}
+.plancard.hi{border-color:var(--t500);background:var(--bg-dim)}
+.plancard h4{font-family:var(--display);font-size:14px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--t500);margin:0 0 8px}
+.planprice{font-family:var(--display);font-weight:700;font-size:30px;color:var(--hd);margin:0 0 6px}
+.planprice i{font-style:normal;font-size:14px;font-weight:600;color:var(--soft)}
+.planlead{font-size:13.5px;line-height:1.5;color:var(--soft);margin:0 0 14px}
+.plancard .sublist li{color:var(--hd2);font-size:13.5px}
+.plancard .sublist li::before{border-color:var(--t500)}
+.plantag{position:absolute;top:14px;right:14px;font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--t500);background:var(--card);border:1px solid var(--line);
+  border-radius:99px;padding:4px 10px}
+.planbtn{margin-top:18px}
+.planbtn .btn{width:100%;justify-content:center}
+@media(max-width:640px){.plangrid{grid-template-columns:1fr}}
 .subprice{font-family:var(--display);font-weight:700;font-size:clamp(26px,2.6vw,34px);color:#F7F2E7}
 .subprice i{font-style:normal;font-size:14px;font-weight:600;color:rgba(245,239,228,.6)}
 .subfine{font-size:12.5px;color:rgba(245,239,228,.55)}
@@ -1569,7 +1907,7 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
     <a class="nl" href="#/tratamento">Metabolic Psychiatry</a>
     <a class="nl" href="#/equipe">About us</a>
     <a class="nl" href="#/faq">FAQs</a>
-    <a class="nl" id="navLogin" onclick="go('login')" style="cursor:pointer">Log in</a>
+    <a class="nl" id="navLogin" onclick="goLogin()" style="cursor:pointer">Log in</a>
     <a class="btn btn-solid" onclick="go('wizard')" style="cursor:pointer">Get started</a>
   </nav>
 
@@ -1836,7 +2174,7 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
           <p>We are looking for psychiatrists, nutrition professionals and psychologists who want to work with metabolism at the centre of the plan.</p>
         </div>
         <div class="tm-join-r">
-          <a class="btn btn-cream" style="cursor:pointer" onclick="teamModal(true)">I want to work with you <span class="ic" data-icon="arrow-right"></span></a>
+          <a class="btn btn-cream" style="cursor:pointer" onclick="location.hash='#/profissionais'">I want to work with you <span class="ic" data-icon="arrow-right"></span></a>
         </div>
       </div>
       <p class="team-note" style="text-align:center;margin-top:22px">Illustrative team for the prototype. Final clinicians to be confirmed.</p>
@@ -1849,22 +2187,51 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
   <div class="subpage" id="pg-conteudo">
     <h1 class="sr-only">Content</h1>
 
-    <!-- ================= biblioteca aberta (estilo hallow.com) ================= -->
+    <!-- ---------- 1. podcasts ---------- -->
     <section class="hl-sec hl-first">
-      <div class="hl-head reveal"><h2>Free library</h2><span>Podcasts, videos and articles on metabolic psychiatry. Open to everyone.</span></div>
-      <div class="rail">
-        <article class="upcard up-live" style="--g1:#114B5F;--g2:#07222C" onclick="go('login')">
+      <div class="hl-head reveal"><h2>Podcasts &amp; talks</h2><span>Conversations on metabolic psychiatry. Free, no account needed.</span></div>
+      <div class="libfilters" id="cfilters">
+        <button class="on" data-chan="" onclick="cChan(this)">All</button>
+        <button data-chan="Roundabout Productions" onclick="cChan(this)">Roundabout Productions</button>
+        <button data-chan="Modo Primal Podcast" onclick="cChan(this)">Modo Primal Podcast</button>
+        <button data-chan="Antonio Kraychete" onclick="cChan(this)">Antonio Kraychete</button>
+        <button data-chan="Lutz Podcast" onclick="cChan(this)">Lutz Podcast</button>
+      </div>
+      <div class="railwrap" id="wrap-podRail">
+        <button class="railnav prev" onclick="railScroll('podRail',-1)" aria-label="Previous"><span class="ic" data-icon="chevron-left"></span></button>
+        <div class="rail" id="podRail"></div>
+        <button class="railnav next" onclick="railScroll('podRail',1)" aria-label="Next"><span class="ic" data-icon="chevron-right"></span></button>
+      </div>
+      <div class="noresults" id="vnores">No results for your search.</div>
+    </section>
+
+    <!-- ---------- 2. conta ---------- -->
+    <section class="hl-sec">
+      <div class="hl-solo reveal">
+        <article class="upcard up-live" style="--g1:#114B5F;--g2:#07222C" onclick="goAccount()">
           <div class="upart"><svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="962" cy="118" r="88" fill="#fff" opacity=".13"/><circle cx="962" cy="118" r="49" fill="#fff" opacity=".2"/><path d="M0 296 Q220 246 460 286 T1200 258 L1200 440 L0 440Z" fill="#fff" opacity=".1"/><path d="M0 350 Q250 298 500 340 T1200 320 L1200 440 L0 440Z" fill="#fff" opacity=".1"/><g fill="#fff" opacity=".42"><circle cx="784" cy="62" r="3.4"/><circle cx="1094" cy="196" r="2.8"/><circle cx="868" cy="238" r="2.4"/><circle cx="1138" cy="72" r="3"/><circle cx="716" cy="166" r="2.2"/></g></svg></div>
           <div class="upbody">
             <p class="upkick">Inside the app</p>
-            <h3>The guided programs live in your account.</h3>
-            <p class="upsub">Short daily sessions that turn all of this into a routine, plus the option to bring a psychiatrist and a nutritionist along. Free to start.</p>
+            <h3>Create an account to access exclusive content!</h3>
+            <p class="upsub">Guided programs, short daily sessions and a library that keeps your progress. Free to start.</p>
             <span class="btn btn-cream upplay">Create your account <span class="ic" data-icon="arrow-right"></span></span>
           </div>
         </article>
       </div>
     </section>
 
+    <!-- ---------- 3. artigos ---------- -->
+    <section class="hl-sec">
+      <div class="hl-head reveal"><h2>Opinion articles</h2><span>What is being written about metabolic psychiatry.</span></div>
+      <div class="railwrap" id="wrap-artRail">
+        <button class="railnav prev" onclick="railScroll('artRail',-1)" aria-label="Previous"><span class="ic" data-icon="chevron-left"></span></button>
+        <div class="rail" id="artRail"></div>
+        <button class="railnav next" onclick="railScroll('artRail',1)" aria-label="Next"><span class="ic" data-icon="chevron-right"></span></button>
+      </div>
+      <div class="noresults" id="anores">No results for your search.</div>
+    </section>
+
+    <!-- ---------- 4. citacao ---------- -->
     <section class="hl-sec">
       <div class="quotepanel reveal">
         <span class="qp-mark ic" data-icon="sparkles"></span>
@@ -1873,106 +2240,47 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
       </div>
     </section>
 
+    <!-- ---------- 5. busca e categorias ---------- -->
     <section class="disc">
-      <div class="csearch discsearch"><span class="ic" data-icon="search"></span><input type="text" id="csearch" placeholder="Search for a topic, video, or article" oninput="cFilter()"></div>
+      <div class="csearch discsearch"><span class="ic" data-icon="search"></span><input type="text" id="csearch" placeholder="Search for a topic, episode, or article" oninput="cFilter()"></div>
       <div class="catgrid" id="catgrid">
-          <a class="cattile" data-cat="Fundamentals" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="zap"></span><span class="catlabel">Fundamentals</span></a>
-          <a class="cattile" data-cat="Nutrition" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="utensils"></span><span class="catlabel">Nutrition</span></a>
-          <a class="cattile" data-cat="Sleep" style="--g1:#D9A420;--g2:#8E6704"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="moon"></span><span class="catlabel">Sleep</span></a>
-          <a class="cattile" data-cat="Movement" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="activity"></span><span class="catlabel">Movement</span></a>
-          <a class="cattile" data-cat="Ketogenic therapy" style="--g1:#7A5C8E;--g2:#3F2C4D"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="leaf"></span><span class="catlabel">Ketogenic therapy</span></a>
-          <a class="cattile" data-cat="Recipes" style="--g1:#4FA8C7;--g2:#1D6076"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="apple"></span><span class="catlabel">Recipes</span></a>
-          <a class="cattile" data-cat="Depression" style="--g1:#2A9D8F;--g2:#12615A"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="moon-star"></span><span class="catlabel">Depression</span></a>
-          <a class="cattile" data-cat="Anxiety" style="--g1:#114B5F;--g2:#07222C"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="droplet"></span><span class="catlabel">Anxiety</span></a>
-          <a class="cattile" data-cat="Bipolar disorder" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="trending-down"></span><span class="catlabel">Bipolar disorder</span></a>
-          <a class="cattile" data-cat="ADHD" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="target"></span><span class="catlabel">ADHD</span></a>
-          <a class="cattile" data-cat="Gut & brain" style="--g1:#D9A420;--g2:#8E6704"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="egg"></span><span class="catlabel">Gut &amp; brain</span></a>
-          <a class="cattile" data-cat="Stress & cortisol" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="flame"></span><span class="catlabel">Stress &amp; cortisol</span></a>
-          <a class="cattile" data-cat="The science" style="--g1:#7A5C8E;--g2:#3F2C4D"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="chart"></span><span class="catlabel">The science</span></a>
-          <a class="cattile" data-cat="Patient stories" style="--g1:#4FA8C7;--g2:#1D6076"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="users"></span><span class="catlabel">Patient stories</span></a>
-          <a class="cattile" data-cat="Podcasts" style="--g1:#2A9D8F;--g2:#12615A"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="mic"></span><span class="catlabel">Podcasts</span></a>
-          <a class="cattile" data-cat="Mindfulness" style="--g1:#114B5F;--g2:#07222C"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="smile"></span><span class="catlabel">Mindfulness</span></a>
-          <a class="cattile" data-cat="Getting started" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="sparkles"></span><span class="catlabel">Getting started</span></a>
-          <a class="cattile" data-cat="For clinicians" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="stethoscope"></span><span class="catlabel">For clinicians</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Fundamentals" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="zap"></span><span class="catlabel">Fundamentals</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Nutrition" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="utensils"></span><span class="catlabel">Nutrition</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Sleep" style="--g1:#D9A420;--g2:#8E6704"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="moon"></span><span class="catlabel">Sleep</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Movement" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="activity"></span><span class="catlabel">Movement</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Ketogenic therapy" style="--g1:#7A5C8E;--g2:#3F2C4D"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="leaf"></span><span class="catlabel">Ketogenic therapy</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Recipes" style="--g1:#4FA8C7;--g2:#1D6076"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="apple"></span><span class="catlabel">Recipes</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Depression" style="--g1:#2A9D8F;--g2:#12615A"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="moon-star"></span><span class="catlabel">Depression</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Anxiety" style="--g1:#114B5F;--g2:#07222C"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="droplet"></span><span class="catlabel">Anxiety</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Bipolar disorder" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="trending-down"></span><span class="catlabel">Bipolar disorder</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="ADHD" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="target"></span><span class="catlabel">ADHD</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Gut & brain" style="--g1:#D9A420;--g2:#8E6704"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="egg"></span><span class="catlabel">Gut &amp; brain</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Stress & cortisol" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="flame"></span><span class="catlabel">Stress &amp; cortisol</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="The science" style="--g1:#7A5C8E;--g2:#3F2C4D"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="chart"></span><span class="catlabel">The science</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Patient stories" style="--g1:#4FA8C7;--g2:#1D6076"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="users"></span><span class="catlabel">Patient stories</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Podcasts" style="--g1:#2A9D8F;--g2:#12615A"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="mic"></span><span class="catlabel">Podcasts</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Mindfulness" style="--g1:#114B5F;--g2:#07222C"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="smile"></span><span class="catlabel">Mindfulness</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Getting started" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="sparkles"></span><span class="catlabel">Getting started</span></a>
+          <a class="cattile" onclick="location.hash='#/profissionais'" data-cat="For clinicians" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="stethoscope"></span><span class="catlabel">For clinicians</span></a>
       </div>
       <div class="noresults" id="catnores">No categories match your search.</div>
     </section>
 
-    <section class="sec" style="padding-bottom:70px">
-      <div class="sec-inner">
-        <div class="sech reveal"><div class="sic"><span class="ic" data-icon="video"></span></div><h2>Videos &amp; podcasts</h2></div>
-        <div class="libfilters" id="cfilters">
-          <button class="on" data-chan="" onclick="cChan(this)">All</button>
-          <button data-chan="Roundabout Productions" onclick="cChan(this)">Roundabout Productions</button>
-          <button data-chan="Modo Primal Podcast" onclick="cChan(this)">Modo Primal Podcast</button>
-          <button data-chan="Antonio Kraychete" onclick="cChan(this)">Antonio Kraychete</button>
-          <button data-chan="Lutz Podcast" onclick="cChan(this)">Lutz Podcast</button>
+    <!-- ---------- 6. cta final ---------- -->
+    <section class="hl-sec" style="padding-bottom:clamp(46px,6vw,86px)">
+      <div class="tm-join reveal">
+        <div class="tm-join-l">
+          <p class="upkick" style="color:rgba(245,239,228,.66)">Free account</p>
+          <h3>The rest of the library is one click away.</h3>
+          <p>Create your account to open the guided programs and keep your progress. It costs nothing to start.</p>
         </div>
-        <div class="vgrid" id="vgrid">
-          <a class="vcard reveal" data-chan="Roundabout Productions" href="https://www.youtube.com/watch?v=dI0CztCzjbc" target="_blank" rel="noopener">
-            <div class="vthumb"><img src="https://img.youtube.com/vi/dI0CztCzjbc/hqdefault.jpg" alt="" loading="lazy"><div class="vplay"><i>▶</i></div></div>
-            <div class="vbody"><p class="vchan">Roundabout Productions · Dr. Régis Chachamovich</p><h3>A Dieta Cetogênica é Mais Eficaz que Antidepressivos?</h3><p class="vdesc">Why rising antidepressant use isn't improving mental health, and the ketogenic diet as an effective therapeutic intervention.</p></div>
-          </a>
-          <a class="vcard reveal" data-chan="Modo Primal Podcast" href="https://www.youtube.com/watch?v=sWiJ679ZWFE" target="_blank" rel="noopener">
-            <div class="vthumb"><img src="https://img.youtube.com/vi/sWiJ679ZWFE/hqdefault.jpg" alt="" loading="lazy"><div class="vplay"><i>▶</i></div></div>
-            <div class="vbody"><p class="vchan">Modo Primal Podcast · Dr. Régis Chachamovich</p><h3>Alimente seu Cérebro: Como a Dieta Pode Ser a Chave para Saúde Mental</h3><p class="vdesc">A conversation on ancestral eating, metabolic health, and how nutrition directly shapes brain function and mental health.</p></div>
-          </a>
-          <a class="vcard reveal" data-chan="Antonio Kraychete" href="https://www.youtube.com/watch?v=LcFeODsiXI4" target="_blank" rel="noopener">
-            <div class="vthumb"><img src="https://img.youtube.com/vi/LcFeODsiXI4/hqdefault.jpg" alt="" loading="lazy"><div class="vplay"><i>▶</i></div></div>
-            <div class="vbody"><p class="vchan">Antonio Kraychete · Dr. Régis Chachamovich</p><h3>Esse Método Cura a Depressão?</h3><p class="vdesc">An interview on metabolic approaches to treating depression, exploring alternatives beyond traditional medication.</p></div>
-          </a>
-          <a class="vcard reveal" data-chan="Lutz Podcast" href="https://www.youtube.com/watch?v=927R9WQL9ps" target="_blank" rel="noopener">
-            <div class="vthumb"><img src="https://img.youtube.com/vi/927R9WQL9ps/hqdefault.jpg" alt="" loading="lazy"><div class="vplay"><i>▶</i></div></div>
-            <div class="vbody"><p class="vchan">Lutz Podcast · Dr. Régis Chachamovich</p><h3>Como o Metabolismo Pode Salvar Sua Saúde Mental</h3><p class="vdesc">A pioneer of metabolic psychiatry in Brazil unpacks the link between metabolic disease, the ketogenic diet, and mental illness.</p></div>
-          </a>
-          <a class="vcard reveal" data-chan="Roundabout Productions" href="https://www.youtube.com/watch?v=q5IBHaYKKJc" target="_blank" rel="noopener">
-            <div class="vthumb"><img src="https://img.youtube.com/vi/q5IBHaYKKJc/hqdefault.jpg" alt="" loading="lazy"><div class="vplay"><i>▶</i></div></div>
-            <div class="vbody"><p class="vchan">Roundabout Productions · Dr. Juan Pablo Roig</p><h3>Somos Viciados em Carboidratos?</h3><p class="vdesc">Food compulsion, carbohydrate addiction, and the role of inflammation, dopamine, and insulin resistance in mental health.</p></div>
-          </a>
-          <a class="vcard reveal" data-chan="Modo Primal Podcast" href="https://www.youtube.com/watch?v=IpLo1B4fhF0" target="_blank" rel="noopener">
-            <div class="vthumb"><img src="https://img.youtube.com/vi/IpLo1B4fhF0/hqdefault.jpg" alt="" loading="lazy"><div class="vplay"><i>▶</i></div></div>
-            <div class="vbody"><p class="vchan">Modo Primal Podcast · Dr. Juan Pablo Roig</p><h3>Médico Curou o Fígado e a Depressão com Dieta Carnívora</h3><p class="vdesc">Ancestral nutrition, metabolic health, and metabolic psychiatry — with a personal story and clinical practice insights.</p></div>
-          </a>
+        <div class="tm-join-r">
+          <a class="btn btn-cream" style="cursor:pointer" onclick="goAccount()">Create your account <span class="ic" data-icon="arrow-right"></span></a>
         </div>
-        <div class="noresults" id="vnores">No results for your search.</div>
       </div>
     </section>
-    <svg class="strip-wave" viewBox="0 0 1440 72" preserveAspectRatio="none"><path d="M0 72 L0 34 Q360 0 720 32 T1440 26 L1440 72 Z" fill="var(--t900)"/></svg>
-    <section class="sec dark-strip">
-      <div class="dark-sec">
-        <div class="sech reveal"><div class="sic" style="background:rgba(245,239,228,.1);color:#F5EFE4"><span class="ic" data-icon="clipboard"></span></div><h2 style="color:#F5EFE4">Opinion articles</h2></div>
-        <div class="agrid" id="agrid">
-          <a class="acard reveal" href="https://www.proactivepsychiatry.com/post/metabolic-psychiatry-where-mental-health-meets-metabolic-health" target="_blank" rel="noopener">
-            <div class="aic"><span class="ic" data-icon="clipboard"></span></div>
-            <div><p class="asrc">Proactive Psychiatry</p><h3>Metabolic Psychiatry: Where Mental Health Meets Metabolic Health</h3><p>For a long time psychiatry was stuck in the chemical-imbalance model. What if mental illness is more than a neurotransmitter problem?</p><span class="aread">Read article <span class="ic" data-icon="arrow-right"></span></span></div>
-          </a>
-          <a class="acard reveal" href="https://cardinalclinic.co.uk/blog/metabolic-psychiatry-integrating-bioenergetics-into-mental-health-care/" target="_blank" rel="noopener">
-            <div class="aic"><span class="ic" data-icon="clipboard"></span></div>
-            <div><p class="asrc">Cardinal Clinic</p><h3>Metabolic Psychiatry: Integrating Bioenergetics into Mental Health Care</h3><p>For decades the dominant model in mental health focused on the synapse. Researchers are now investigating the role of cellular bioenergetics.</p><span class="aread">Read article <span class="ic" data-icon="arrow-right"></span></span></div>
-          </a>
-          <a class="acard reveal" href="https://www.linkedin.com/pulse/rise-metabolic-psychiatry-game-changer-mental-health-greenland-u33le" target="_blank" rel="noopener">
-            <div class="aic"><span class="ic" data-icon="clipboard"></span></div>
-            <div><p class="asrc">LinkedIn — Greenland</p><h3>The Rise of Metabolic Psychiatry: A Game Changer in Mental Health?</h3><p>An analysis of how metabolic psychiatry is transforming the mental-health field with metabolism-based approaches.</p><span class="aread">Read article <span class="ic" data-icon="arrow-right"></span></span></div>
-          </a>
-          <a class="acard reveal" href="https://scienmag.com/metabolic-psychiatry-defining-priorities-for-emerging-field/" target="_blank" rel="noopener">
-            <div class="aic"><span class="ic" data-icon="clipboard"></span></div>
-            <div><p class="asrc">SciEnMag</p><h3>Metabolic Psychiatry: Defining Priorities for an Emerging Field</h3><p>Researchers define priorities for the emerging field of metabolic psychiatry, including clinical trials and biomarkers.</p><span class="aread">Read article <span class="ic" data-icon="arrow-right"></span></span></div>
-          </a>
-        </div>
-        <div class="noresults" id="anores" style="color:rgba(245,239,228,.5)">No results for your search.</div>
-      </div>
-    </section>
-
-    <!-- ---------- cta final ---------- -->
-    <section class="sec dark-strip">
-      <div class="dark-sec ccta reveal">
-        <h2>Start your first program.</h2>
-        <p class="lead">Create your account and the guided programs open up. Two minutes to tell us where you are, and we build the path from there.</p>
-        <div style="margin-top:28px"><a class="btn btn-cream" onclick="go('wizard')" style="cursor:pointer">Get started <span class="ic" data-icon="arrow-right"></span></a></div>
-      </div>
-    </section>
-    <svg class="strip-wave bottom" viewBox="0 0 1440 72" preserveAspectRatio="none"><path d="M0 0 L0 30 Q360 66 720 34 T1440 40 L1440 0 Z" fill="var(--t900)"/></svg>
   </div>
+
   <!-- ============ PAGE: HOW IT WORKS (TREATMENT JOURNEY) ============ -->
   <div class="subpage" id="pg-tratamento">
     <!-- ---------- BLOCO 1: abertura ---------- -->
@@ -2252,6 +2560,75 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
   </div>
 
   <!-- ============ PAGE: FAQs (stub) ============ -->
+  <!-- ============ PAGE: PROFISSIONAIS ============ -->
+  <div class="subpage" id="pg-prof">
+    <h1 class="sr-only">For professionals</h1>
+
+    <section class="pf-hero">
+      <div class="pf-hero-in reveal">
+        <p class="upkick" style="color:var(--t500)">For professionals</p>
+        <h2>Metabolic psychiatry needs more people who know how to practise it.</h2>
+        <p class="pf-lead">Patients are already looking for this treatment. What is missing is trained professionals to deliver it. Two ways in, depending on where you are today.</p>
+      </div>
+    </section>
+
+    <section class="pf-fork">
+      <div class="pf-fork-in">
+        <article class="pfcard reveal" onclick="triageOpen()">
+          <div class="pfic"><span class="ic" data-icon="stethoscope"></span></div>
+          <p class="pfkick">Already certified</p>
+          <h3>Start seeing patients.</h3>
+          <p>You already hold a credential in metabolic or nutritional psychiatry. Send it through screening and, once approved, patients from the platform start reaching you.</p>
+          <ul class="pflist">
+            <li>Screening of your credential and clinical background</li>
+            <li>Patients matched from the subscriber base</li>
+            <li>Scheduling, records and follow-up in one place</li>
+          </ul>
+          <span class="btn btn-solid pfbtn">Apply for screening <span class="ic" data-icon="arrow-right"></span></span>
+        </article>
+
+        <article class="pfcard hi reveal" onclick="goAccount('student')">
+          <div class="pfic"><span class="ic" data-icon="award"></span></div>
+          <p class="pfkick">Not yet</p>
+          <h3>Get certified first.</h3>
+          <p>A structured track built on the clinical literature, in short sessions you fit around your practice. Finish it and you can apply as a partner without further screening.</p>
+          <ul class="pflist">
+            <li>Three tracks, from fundamentals to clinical protocol</li>
+            <li>Certificate issued at the end of each track</li>
+            <li>Direct route to partnership when you finish</li>
+          </ul>
+          <span class="btn btn-solid pfbtn">See the tracks <span class="ic" data-icon="arrow-right"></span></span>
+        </article>
+      </div>
+    </section>
+
+    <section class="hl-sec">
+      <div class="hl-head reveal"><h2>The certification tracks</h2><span>Same engine our patients use, built for clinicians.</span></div>
+      <div class="rail" id="courseRail"></div>
+    </section>
+
+    <section class="hl-sec">
+      <div class="quotepanel reveal">
+        <span class="qp-mark ic" data-icon="sparkles"></span>
+        <p class="qp-src">Why this exists</p>
+        <p class="qp-text">Excellent clinicians are rarely taught to run a practice. The platform handles the patients, the schedule and the records, so the clinical work is the only thing left to do.</p>
+      </div>
+    </section>
+
+    <section class="hl-sec" style="padding-bottom:clamp(46px,6vw,86px)">
+      <div class="tm-join reveal">
+        <div class="tm-join-l">
+          <p class="upkick" style="color:rgba(245,239,228,.66)">Partnership</p>
+          <h3>Questions before you commit?</h3>
+          <p>Tell us your background and what you practise today. We answer every application, certified or not.</p>
+        </div>
+        <div class="tm-join-r">
+          <a class="btn btn-cream" style="cursor:pointer" onclick="triageOpen()">Talk to us <span class="ic" data-icon="arrow-right"></span></a>
+        </div>
+      </div>
+    </section>
+  </div>
+
   <div class="subpage" id="pg-faq">
     <h1 class="sr-only">FAQs</h1>
 
@@ -2331,9 +2708,9 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
         </div>
         <div class="ft-col">
           <a onclick="go('wizard')">Get started</a>
-          <a onclick="go('login')">Log in</a>
-          <!-- TBD: real destinations once the pages exist -->
-          <a class="ft-tbd">TBD — link</a>
+          <a onclick="goLogin()">Log in</a>
+          <a href="#/profissionais">For professionals</a>
+          <!-- TBD: real destination once the page exists -->
           <a class="ft-tbd">TBD — link</a>
         </div>
       </div>
@@ -2395,14 +2772,16 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
   <div class="lg-form">
   <div class="login-card">
     <a class="logo" onclick="goHome()" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>Metabolicamente</a>
-    <h1>Welcome back</h1>
-    <div class="login-sub">Caring for your mind by caring for your metabolism.</div>
+    <p class="login-kick" id="lgKick">Patient</p>
+    <h1 id="lgH1">Welcome back</h1>
+    <div class="login-sub" id="lgSub">Caring for your mind by caring for your metabolism.</div>
     <div id="loginForm">
       <div class="lfield"><label>Email</label><input type="email" placeholder="you@email.com" autocomplete="username"></div>
       <div class="lfield"><label>Password</label><input type="password" placeholder="••••••••" autocomplete="current-password"></div>
-      <button class="login-btn" onclick="go('patient')">Log in</button>
+      <button class="login-btn" id="lgBtn" onclick="go('patient')">Log in</button>
       <span class="login-forgot" onclick="return false">Forgot your password?</span>
     </div>
+    <div class="lg-roles" id="lgRoles"></div>
     <div id="loginDemo">
       <div class="demo-lead">Prototype demo — pick a view to explore:</div>
       <button class="role-btn" onclick="go('patient')">
@@ -2413,17 +2792,23 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
         <div class="av" style="background:var(--t500)"><svg viewBox="0 0 24 24"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></div>
         <b>Dietitian view</b>
       </button>
+      <button class="role-btn" onclick="goStudent()">
+        <div class="av" style="background:var(--c-gold)"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.9 7 22l5-3 5 3-1.2-8.1"/></svg></div>
+        <b>Professional in certification</b>
+      </button>
       <button class="role-btn" onclick="go('doctor')">
         <div class="av" style="background:var(--t700)"><svg viewBox="0 0 24 24"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg></div>
-        <b>Psychiatrist view</b>
+        <b>Therapist view</b>
       </button>
     </div>
     <div class="login-foot">Demo prototype · fictional data only</div>
     <span class="back-site" onclick="go('site')">← Back to site</span>
   </div>
   </div>
-  <aside class="lg-art">
-    <p>Caring for your mind by caring for your metabolism.</p>
+  <aside class="lg-art" id="lgArt">
+    <p id="lgTag">Caring for your mind by caring for your metabolism.</p>
+    <div class="lg-rolart" id="lgArtRole"></div>
+    <div class="lg-foodart" id="lgArtFood">
     <svg viewBox="0 126 560 326" aria-hidden="true">
         <defs>
           <g id="lg-fp-steak">
@@ -2564,6 +2949,7 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
         <use href="#lg-fp-olive" transform="translate(88,402) scale(.8)"/>
         <use href="#lg-fp-salmon" transform="translate(486,408) scale(.7) rotate(-26)"/>
       </svg>
+    </div>
   </aside>
   </div>
 </div>
@@ -2579,6 +2965,46 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
     <a class="btn btn-solid" style="cursor:pointer" onclick="askSend()">Send request</a>
   </div>
 </div></div>
+
+<div class="askm" id="plansModal"><div class="askm-in plansm">
+  <h3>Choose your plan</h3>
+  <p>Start free and stay free for as long as you want. The treatment plan opens everything and puts a care team behind it.</p>
+  <div class="plangrid" id="plangrid"></div>
+  <div class="askm-btns"><a class="btn btn-line" style="cursor:pointer" onclick="plansModal(false)">Close</a></div>
+</div></div>
+
+<div class="askm" id="dipModal"><div class="askm-in dipm">
+  <div id="dipBody"></div>
+  <div class="askm-btns">
+    <a class="btn btn-line" style="cursor:pointer" onclick="diplomaClose()">Close</a>
+    <a class="btn btn-solid" style="cursor:pointer" onclick="window.print()">Print or save as PDF</a>
+  </div>
+</div></div>
+
+<div class="askm" id="triModal"><div class="askm-in">
+  <div id="triForm">
+    <h3>Apply for screening</h3>
+    <p>Every application is read by a clinician. Tell us what you hold today and we come back with the next step.</p>
+    <div class="lfield"><label>Full name</label><input type="text" id="triName" placeholder="Dra. Marina Alves"></div>
+    <div class="lfield"><label>Professional registration</label><input type="text" id="triReg" placeholder="CRM / CRN / CRP"></div>
+    <div class="lfield"><label>Credential in metabolic or nutritional psychiatry</label><input type="text" id="triCred" placeholder="Course, institution and year"></div>
+    <div class="askm-btns">
+      <a class="btn btn-line" style="cursor:pointer" onclick="triageClose()">Cancel</a>
+      <a class="btn btn-solid" style="cursor:pointer" onclick="triageSend()">Send application</a>
+    </div>
+  </div>
+  <div id="triDone" style="display:none">
+    <div class="tridone-ic"><span class="ic" data-icon="check"></span></div>
+    <h3>Application received</h3>
+    <p>Screening takes up to five business days. If your credential is accepted, your partner dashboard opens and patients start being matched to you.</p>
+    <div class="askm-btns">
+      <a class="btn btn-line" style="cursor:pointer" onclick="triageClose()">Close</a>
+      <a class="btn btn-solid" style="cursor:pointer" onclick="triageClose();go('doctor')">Preview the partner dashboard</a>
+    </div>
+  </div>
+</div></div>
+
+<div class="screen" id="student"><div class="dash" id="dash-student"></div></div>
 
 <div class="screen" id="session"><div class="sess" id="sessWrap"></div></div>
 <div class="screen" id="patient"><div class="dash" id="dash-patient"></div></div>
@@ -2645,7 +3071,12 @@ const ICONS={
  'smile':'<circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>',
  'moon-star':'<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
  'droplet':'<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7Z"/>',
- 'message':'<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
+ 'message':'<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>', 'brain':'<path d="M12 6a4 4 0 0 0-7.4 1.4A3.4 3.4 0 0 0 4 13.6 3.8 3.8 0 0 0 9.8 18.6c.7.5 1.5.7 2.2.6"/><path d="M12 6a4 4 0 0 1 7.4 1.4A3.4 3.4 0 0 1 20 13.6a3.8 3.8 0 0 1-5.8 5c-.7.5-1.5.7-2.2.6"/><path d="M12 6v13.2"/>',
+ 'tv':'<rect x="2" y="7" width="20" height="14" rx="2.4"/><polyline points="7.5 3 12 7 16.5 3"/>',
+ 'menu':'<line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/>',
+ 'settings':'<circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5v.2a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1h.2a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z"/>',
+ 'award':'<circle cx="12" cy="8" r="6"/><path d="M8.2 13.9 7 22l5-3 5 3-1.2-8.1"/>',
+
  'shield':'<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/>'
 };
 function renderIcons(root){
@@ -3050,8 +3481,8 @@ const DASH={
     missions:[['Drink 2L of water',1],['30-min walk in the sun',1],['Log your mood before bed',0],['No ultra-processed food today',0]]
   },
   doctor:{
-    name:'Dr. Rafael Mendes', roleLabel:'Doctor', sec:'inicio', selPatient:null,
-    nav:[['inicio','Home','home'],['pacientes','Patients','users'],['agenda','Schedule','calendar'],['prontuarios','Records','clipboard'],['perfil','Profile','user-circle']],
+    name:'Dr. Rafael Mendes', roleLabel:'Therapist · Psychiatrist', specIdx:0, open:true, sec:'inicio', selPatient:null,
+    nav:[['inicio','Home','home'],['pratica','Practice','trending-down'],['pacientes','Patients','users'],['agenda','Schedule','calendar'],['prontuarios','Records','clipboard'],['formacao','Courses','award'],['perfil','Profile','user-circle']],
     notif:[['New message','João Silva sent a message in chat','10 min ago',1],['New triage','Carlos Mendes completed triage','1h ago',1],['Exam result','Maria Oliveira attached new labs','3h ago',1]],
     patients:[
       {init:'JS',name:'João Silva',sub:'34 yrs · Type 2 diabetes, anxiety',energy:4,risk:'low',t:['Trouble concentrating and persistent fatigue','6 months to 2 years','Type 2 diabetes, mild hypertension','Tried low-carb for 3 months','Tired but hopeful','Morning',1,0,1]},
@@ -3061,7 +3492,7 @@ const DASH={
   },
   nutri:{
     name:'Dra. Camila Torres', roleLabel:'Dietitian', sec:'inicio', selPatient:null,
-    nav:[['inicio','Home','home'],['pacientes','Patients','users'],['cardapios','Menus','utensils'],['agenda','Schedule','calendar'],['perfil','Profile','user-circle']],
+    nav:[['inicio','Home','home'],['pratica','Practice','trending-down'],['pacientes','Patients','users'],['cardapios','Menus','utensils'],['agenda','Schedule','calendar'],['formacao','Courses','award'],['perfil','Profile','user-circle']],
     notif:[['New patient','João Silva was assigned to you','20 min ago',1],['Menu accepted','Maria Oliveira followed the plan 6 days','2h ago',0]],
     patients:[
       {init:'JS',name:'João Silva',sub:'Keto 3:1 · week 9',adh:'On track',adhc:'ok'},
@@ -3070,6 +3501,19 @@ const DASH={
     ]
   }
 };
+DASH.student={
+  name:'Dra. Marina Alves', roleLabel:'In certification', sec:'inicio',
+  nav:[['inicio','Home','home'],['trilhas','Tracks','award'],['perfil','Profile','user-circle']],
+  notif:[['New track','Clinical protocol and patient management is open','1h ago',1],
+         ['Module released','Reading a metabolic panel psychiatrically','yesterday',0]]
+};
+const APNAV={
+  patient:[['inicio','Dashboard','brain'],['programas','Content','tv']],
+  doctor:[['inicio','Dashboard','brain'],['formacao','Courses','tv']],
+  nutri:[['inicio','Dashboard','brain'],['formacao','Courses','tv']],
+  student:[['inicio','Dashboard','brain'],['trilhas','Tracks','tv']]
+};
+let APROLE='patient';
 const MEALS=[
   ['coffee','Breakfast',['Scrambled eggs with avocado','Green tea','A serving of berries']],
   ['sun','Lunch',['Grilled salmon','Quinoa with vegetables','Green salad with olive oil']],
@@ -3085,6 +3529,7 @@ function dIcon(n){return '<span class="ic" data-icon="'+n+'"></span>';}
 
 function renderDash(role){
   const D=DASH[role], el=document.getElementById('dash-'+role);
+  const app=true; APROLE=role;
   const unread=D.notif.filter(n=>n[3]).length;
   let nav='';
   D.nav.forEach(s=>{ const on=s[0]===D.sec; const nq=(typeof rOpenFor==='function')?rOpenFor(role).length:0;
@@ -3096,33 +3541,80 @@ function renderDash(role){
   let notif='<div class="dnotif" id="dnotif-'+role+'"><div class="nh"><b>Notifications</b><span>'+(unread?unread+' unread':'All caught up')+'</span></div>';
   D.notif.forEach(n=>{ notif+='<div class="ni'+(n[3]?' unread':'')+'">'+(n[3]?'<span class="dot"></span>':'')+'<div><b>'+n[0]+'</b><p>'+n[1]+'</p><div class="tm">'+n[2]+'</div></div></div>'; });
   notif+='</div>';
+  el.classList.toggle('appshell',app);
+  const ini=esc(D.name).split(' ').slice(0,2).map(function(x){return x[0];}).join('').toUpperCase();
+  const apBtn=function(o){
+    return '<button class="apic'+(o.on?' on':'')+'" onclick="'+o.act+'" aria-label="'+o.lab+'">'+
+      '<span class="apicon">'+o.inner+'</span>'+
+      '<span class="aplab">'+o.lab+'</span></button>';
+  };
+  const an=APNAV[role]||APNAV.patient;
+  const apnav=
+    '<nav class="apnav">'+
+      apBtn({on:D.sec===an[0][0],act:"dashNav('"+role+"','"+an[0][0]+"')",lab:__tr(an[0][1]),inner:dIcon(an[0][2])})+
+      apBtn({on:D.sec===an[1][0],act:"dashNav('"+role+"','"+an[1][0]+"')",lab:__tr(an[1][1]),inner:dIcon(an[1][2])})+
+      apBtn({on:false,act:"dashBell('"+role+"',event)",lab:__tr('Notifications'),
+             inner:dIcon('bell')+(unread?'<span class="badge">'+unread+'</span>':'')})+
+      apBtn({on:D.sec==='perfil',act:"dashNav('"+role+"','perfil')",lab:__tr('Me'),
+             inner:'<span class="apavc">'+ini+'</span>'})+
+    '</nav>';
+  const apmenu=
+    '<button class="apburger" id="apBurger" onclick="appMenu(event)" aria-label="'+__tr('Menu')+'">'+
+      '<span class="ic apbar" data-icon="menu"></span><span class="ic apx" data-icon="x"></span></button>'+
+    '<div class="apmenu" id="apMenu">'+
+      '<button onclick="appMenuGo(\'perfil\')">'+dIcon('settings')+__tr('Settings')+'</button>'+
+      '<button onclick="appMenuOut()">'+dIcon('logout')+__tr('Log out')+'</button>'+
+    '</div>';
   el.innerHTML=
-    '<div class="dtop">'+
-      '<a class="logo" onclick="goHome()" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>Metabolicamente</a>'+
+    '<div class="dtop'+(app?' apptop':'')+'">'+
+      '<a class="logo'+(app?' logo-only':'')+'" onclick="dashNav(\''+role+'\',\'inicio\')" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>'+(app?'':'Metabolicamente')+'</a>'+
+      (app?apnav:'')+
       '<div class="dsp"></div>'+
-      '<button class="dbell" onclick="dashBell(\''+role+'\',event)">'+dIcon('bell')+(unread?'<span class="badge">'+unread+'</span>':'')+'</button>'+
-      '<div class="duser"><b>'+esc(D.name)+'</b><span>'+D.roleLabel+'</span></div>'+
-      '<button class="dout" onclick="go(\'login\')">'+dIcon('logout')+'<span>Sign out</span></button>'+
+      (app?apmenu
+         : '<button class="dbell" onclick="dashBell(\''+role+'\',event)">'+dIcon('bell')+(unread?'<span class="badge">'+unread+'</span>':'')+'</button>'+
+           '<div class="duser"><b>'+esc(D.name)+'</b><span>'+D.roleLabel+'</span></div>'+
+           '<button class="dout" onclick="go(\'login\')">'+dIcon('logout')+'<span>Sign out</span></button>')+
       notif+
     '</div>'+
-    '<div class="dbody">'+
-      '<aside class="dside"><div class="slabel">Panel</div>'+nav+
-        '<div class="sout"><button class="snav" onclick="go(\'login\')">'+dIcon('logout')+'<span>Sign out</span></button></div>'+
-      '</aside>'+
-      '<main class="dmain"><div class="dwrap" id="dwrap-'+role+'"></div></main>'+
-    '</div>'+
-    '<nav class="dtabs">'+tabs+'</nav>'+
+    (app
+      ? '<div class="dbody app"><main class="dmain"><div class="dwrap" id="dwrap-'+role+'">'+
+          '</div></main></div>'
+      : '<div class="dbody">'+
+          '<aside class="dside"><div class="slabel">Panel</div>'+nav+
+            '<div class="sout"><button class="snav" onclick="go(\'login\')">'+dIcon('logout')+'<span>Sign out</span></button></div>'+
+          '</aside>'+
+          '<main class="dmain"><div class="dwrap" id="dwrap-'+role+'"></div></main>'+
+        '</div>'+
+        '<nav class="dtabs">'+tabs+'</nav>')+
     '<button class="dfab" onclick="toast(\'Demo: the AI assistant would open here\')" aria-label="AI assistant">'+dIcon('sparkles')+'</button>';
   renderIcons(el);
   dashSection(role);
 }
+function apMenuSet(open){
+  const m=document.getElementById('apMenu'), b=document.getElementById('apBurger');
+  if(m) m.classList.toggle('open',open);
+  if(b) b.classList.toggle('open',open);
+}
+function appMenu(e){
+  if(e) e.stopPropagation();
+  const m=document.getElementById('apMenu'); if(!m) return;
+  const open=m.classList.contains('open');
+  document.querySelectorAll('.dnotif').forEach(function(x){ x.classList.remove('open'); });
+  apMenuSet(!open);
+  if(!open) setTimeout(function(){
+    document.addEventListener('click',function h(){ apMenuSet(false); document.removeEventListener('click',h); });
+  },0);
+}
+function appMenuGo(sec){ apMenuSet(false); dashNav('patient',sec); }
+function appMenuOut(){ apMenuSet(false); go('login'); }
 function dashBell(role,e){
   if(e) e.stopPropagation();
+  if(typeof apMenuSet==='function') apMenuSet(false);
   const d=document.getElementById('dnotif-'+role); const open=d.classList.contains('open');
   document.querySelectorAll('.dnotif').forEach(x=>x.classList.remove('open'));
   if(!open){ d.classList.add('open'); setTimeout(()=>{ document.addEventListener('click',function h(){ d.classList.remove('open'); document.removeEventListener('click',h); }); },0); }
 }
-function dashNav(role,id){ DASH[role].sec=id; DASH[role].selPatient=null; renderDash(role); window.scrollTo(0,0); }
+function dashNav(role,id){ DASH[role].sec=id; DASH[role].selPatient=null; PDETAIL=null; renderDash(role); window.scrollTo(0,0); }
 function dashMission(role,i){
   const D=DASH[role], m=D.missions[i]; m[1]=m[1]?0:1;
   const w=document.getElementById('dwrap-'+role);
@@ -3139,13 +3631,21 @@ function dashMission(role,i){
 }
 
 function firstName(n){ const p=n.split(' '); return p[p.length-1]; }
+function givenName(n){
+  const p=n.split(' ').filter(function(x){ return !/^(dr|dra|prof)\.?$/i.test(x); });
+  return p[0]||n;
+}
 function dashSection(role){
   const D=DASH[role], w=document.getElementById('dwrap-'+role); if(!w) return;
   let html='';
-  if(role==='patient') html=pSection(D);
+  const appBack=(D.sec!=='inicio')
+    ? '<button class="appback" onclick="dashNav(\''+role+'\',\'inicio\')"><span class="ic" data-icon="arrow-left"></span>'+__tr('Home')+'</button>' : '';
+  if(role==='student') html=sSection(D);
+  else if(role!=='patient'&&D.sec==='formacao') html=courseSection(role);
+  else if(role==='patient') html=pSection(D);
   else if(role==='doctor') html=dSection(D);
   else html=nSection(D);
-  w.innerHTML=html;
+  w.innerHTML=appBack+html;
   renderIcons(w);
   drawEvo(role);
   animateBars(w);
@@ -3166,28 +3666,7 @@ function head(t,s){ return '<div class="dhead"><div><h1>'+t+'</h1><p>'+s+'</p></
 
 function pSection(D){
   const s=D.sec, fn=D.name.split(' ')[0];
-  if(s==='inicio'){
-    const done=D.missions.filter(m=>m[1]).length, tot=D.missions.length, pct=Math.round(done/tot*100);
-    let ms='';
-    D.missions.forEach((m,i)=>{ ms+='<button class="mission'+(m[1]?' done':'')+'" onclick="dashMission(\'patient\','+i+')"><span class="mk">'+dIcon('check')+'</span><span>'+m[0]+'</span></button>'; });
-    const chH=(icon,t,s)=>'<div class="cch"><div class="cci">'+dIcon(icon)+'</div><div><b>'+t+'</b><span>'+s+'</span></div></div>';
-    const chL=(c1,l1,c2,l2)=>'<div class="chleg"><span><span class="d" style="background:'+c1+'"></span>'+l1+'</span>'+(l2?'<span><span class="d" style="background:'+c2+'"></span>'+l2+'</span>':'')+'</div>';
-    const evo='<div class="evogrid">'+
-      '<div class="chcard">'+chH('activity','Well-being — last 7 days','Energy, mood and sleep quality')+'<svg id="ev-well" height="168"></svg>'+chL('var(--t800)','Energy','var(--t500)','Mood')+'</div>'+
-      '<div class="chcard">'+chH('trending-down','Weight — last 6 months','Progress toward the clinical goal')+'<svg id="ev-weight" height="168"></svg>'+chL('var(--t800)','Weight','var(--t500)','Goal')+'</div>'+
-      '<div class="chcard">'+chH('heart','Fasting glucose','Improving trend during treatment')+'<svg id="ev-gluc" height="168"></svg>'+'</div>'+
-      '<div class="chcard">'+chH('moon','HbA1c (glycated hemoglobin)','Long-term glycemic control indicator')+'<svg id="ev-hba" height="168"></svg>'+'</div>'+
-      '</div>';
-    return '<div class="dsec">'+head('Hello, '+fn+' 👋','Your metabolic tracking space')+
-      '<div class="jhero"><span class="blob b1"></span><span class="blob b2"></span>'+
-        '<div class="jk">Your journey today</div><div class="jn">'+done+' of '+tot+' missions</div>'+
-        '<div class="js">'+(done===tot?'Day complete! Excellent.':'Keep going, you\'re doing well.')+'</div>'+
-        '<div class="jbar"><i style="width:'+pct+'%"></i></div></div>'+
-      '<div class="dcard tele"><div class="tic">'+dIcon('calendar')+'</div><div class="tinfo"><b>Next teleconsultation</b><span>Dr. Rafael Mendes · Mar 18, 2026 at 10:00</span></div>'+
-        '<button class="dbtn dbtn-solid dbtn-lg" onclick="toast(\'Demo: the video session would open here\')">'+dIcon('video')+'Join</button></div>'+
-      '<div class="dh2"><div class="hbadge teal">'+dIcon('sparkles')+'</div>Today\'s missions</div><div class="dcard" style="padding:8px">'+ms+'</div>'+
-      '<div class="dh2"><div class="hbadge coral">'+dIcon('activity')+'</div>Your progress</div>'+evo+'</div>';
-  }
+  if(s==='inicio') return pHome(D);
   if(s==='programas') return progSection();
   if(s==='checkin') return renderCheckin(D);
   if(s==='plano'){
@@ -3288,19 +3767,8 @@ function pfCancel(role){ pfState(DASH[role]).editing=false; dashSection(role); }
 function pfSave(role){ const pf=pfState(DASH[role]); ['name','email','phone','city'].forEach(k=>{ const el=document.getElementById('pf-'+k); if(el) pf[k]=el.value; }); pf.editing=false; dashSection(role); toast('Demo: your profile would be saved'); }
 function dSection(D){
   const s=D.sec, ln=firstName(D.name);
-  if(s==='inicio'){
-    let ap='';
-    DAGENDA.filter(a=>a[4]).forEach(a=>{ ap+='<div class="drow"><div class="ddate"><div class="dd">'+a[1]+'</div></div><div class="dinfo"><b>'+a[2]+'</b><span>'+a[3]+'</span></div>'+
-      '<button class="dbtn dbtn-solid" onclick="toast(\'Demo: the video session would open here\')">'+dIcon('video')+'Start</button></div>'; });
-    return '<div class="dsec">'+head('Welcome, Dr. '+ln,'Weekly summary','home')+reqInbox('doctor')+
-      '<div class="statrow">'+
-        '<div class="stat2"><div class="si teal">'+dIcon('users')+'</div><div class="sv">3</div><div class="sl">Active patients</div></div>'+
-        '<div class="stat2"><div class="si coral">'+dIcon('calendar')+'</div><div class="sv">2</div><div class="sl">Appointments today</div></div>'+
-        '<div class="stat2"><div class="si warn">'+dIcon('alert')+'</div><div class="sv">1</div><div class="sl">Patients at risk</div></div></div>'+
-      '<div class="dh2">'+dIcon('clock')+'Upcoming appointments</div><div class="dcard">'+ap+'</div>'+
-      '<div class="dh2">'+dIcon('alert')+'Clinical alerts</div>'+
-      '<div class="alertbox"><b>Carlos Mendes — moderate risk</b><p>Energy declining over the last 7 days. Consider scheduling a follow-up.</p></div></div>';
-  }
+  if(s==='inicio') return proBento('doctor');
+  if(s==='pratica') return proHome('doctor');
   if(s==='pacientes'){
     if(D.selPatient!=null){
       const p=D.patients[D.selPatient], t=p.t;
@@ -3338,12 +3806,8 @@ function dSection(D){
 }
 function nSection(D){
   const s=D.sec, ln=firstName(D.name);
-  if(s==='inicio') return '<div class="dsec">'+head('Hello, Dra. '+ln,'Nutrition tracking overview','home')+reqInbox('nutri')+
-    '<div class="statrow">'+
-      '<div class="stat2"><div class="si teal">'+dIcon('users')+'</div><div class="sv">3</div><div class="sl">Active patients</div></div>'+
-      '<div class="stat2"><div class="si teal">'+dIcon('utensils')+'</div><div class="sv">8</div><div class="sl">Menus delivered</div></div>'+
-      '<div class="stat2"><div class="si warn">'+dIcon('clipboard')+'</div><div class="sv">2</div><div class="sl">Pending exams</div></div></div>'+
-    '<div class="dcard tele" style="margin-top:8px"><div class="tic">'+dIcon('sparkles')+'</div><div class="tinfo"><b>AI assistant</b><span>Select a patient to generate nutritional analyses and suggestions with AI.</span></div></div></div>';
+  if(s==='inicio') return proBento('nutri');
+  if(s==='pratica') return proHome('nutri');
   if(s==='pacientes'){
     if(D.selPatient!=null){
       const p=D.patients[D.selPatient];
@@ -3669,7 +4133,7 @@ function pState(){
   PSTATE=d; return d;
 }
 function pSave(){ try{ localStorage.setItem(MB_KEY,JSON.stringify(PSTATE)); }catch(e){} }
-function pProg(id){ return PROGRAMS.find(function(x){return x.id===id;}); }
+function pProg(id){ return PROGRAMS.concat(typeof COURSES!=='undefined'?COURSES:[]).find(function(x){return x.id===id;}); }
 function pDone(id){ const st=pState(); return (st.done[id]||[]).length; }
 function pPct(id){ const p=pProg(id); return p?Math.round(pDone(id)/p.days.length*100):0; }
 function pNext(id){
@@ -3711,22 +4175,45 @@ function subPanel(){
       '<p class="subkick">'+__tr('Treatment plan')+'</p>'+
       '<h3>'+__tr('Your plan is active.')+'</h3>'+
       '<p class="subp">'+__tr('Every program is open, and the care team follows your progress inside the app.')+'</p></div>'+
-      '<div class="subact"><a class="btn btn-line btn-cream-line" style="cursor:pointer" onclick="subToggle(false)">'+__tr('Manage plan')+'</a></div></div>';
+      '<div class="subact"><a class="btn btn-line btn-cream-line" style="cursor:pointer" onclick="plansModal(true)">'+__tr('Manage plan')+'</a></div></div>';
   }
   return '<div class="subcard" id="subPanel"><div class="subtxt">'+
-    '<p class="subkick">'+__tr('Treatment plan')+'</p>'+
-    '<h3>'+__tr('Unlock the full path.')+'</h3>'+
-    '<p class="subp">'+__tr('Every program, plus a psychiatrist and a nutritionist reading your progress and answering inside the app.')+'</p>'+
-    '<ul class="sublist">'+
-      '<li>'+__tr('All guided programs, start to finish')+'</li>'+
-      '<li>'+__tr('Questions answered by the care team')+'</li>'+
-      '<li>'+__tr('A meal plan built around your labs')+'</li>'+
-    '</ul></div>'+
-    '<div class="subact"><span class="subprice">R$ 149<i>/'+__tr('month')+'</i></span>'+
-    '<a class="btn btn-cream" style="cursor:pointer" onclick="subToggle(true)">'+__tr('Subscribe')+'</a>'+
-    '<span class="subfine">'+__tr('Cancel anytime.')+'</span></div></div>';
+    '<p class="subkick">'+__tr('Free account')+'</p>'+
+    '<h3>'+__tr('There is more waiting behind the plans.')+'</h3>'+
+    '<p class="subp">'+__tr('The rest of the programs, a psychiatrist and a nutritionist reading your progress, and a meal plan built around your labs.')+'</p></div>'+
+    '<div class="subact"><a class="btn btn-cream" style="cursor:pointer" onclick="plansModal(true)">'+__tr('See the plans')+' <span class="ic" data-icon="arrow-right"></span></a>'+
+    '<span class="subfine">'+__tr('Your free content stays free.')+'</span></div></div>';
 }
-
+const PLANS=[
+ {id:'free',name:'Free',price:'R$ 0',per:'',lead:'What you have today.',
+  items:['The open library, podcasts and articles','One guided program, start to finish','Your progress saved as you go']},
+ {id:'care',name:'Treatment',price:'R$ 149',per:'/month',lead:'The full path, with people behind it.',
+  items:['Every guided program','Questions answered by the care team','A meal plan built around your labs','Teleconsultations with psychiatrist and nutritionist']}
+];
+function plansModal(open){
+  const m=document.getElementById('plansModal'); if(!m) return;
+  if(open){
+    const g=document.getElementById('plangrid'), sub=isSub();
+    g.innerHTML=PLANS.map(function(pl){
+      const cur=(pl.id==='care')===sub;
+      let btn='';
+      if(pl.id==='care'){
+        btn = sub ? '<a class="btn btn-line" style="cursor:pointer" onclick="subToggle(false);plansModal(false)">'+__tr('Cancel plan')+'</a>'
+                  : '<a class="btn btn-solid" style="cursor:pointer" onclick="subToggle(true);plansModal(false)">'+__tr('Subscribe')+'</a>';
+      }
+      return '<div class="plancard'+(pl.id==='care'?' hi':'')+(cur?' cur':'')+'">'+
+        (cur?'<span class="plantag">'+__tr('Current')+'</span>':'')+
+        '<h4>'+__tr(pl.name)+'</h4>'+
+        '<p class="planprice">'+pl.price+'<i>'+pl.per+'</i></p>'+
+        '<p class="planlead">'+__tr(pl.lead)+'</p>'+
+        '<ul class="sublist">'+pl.items.map(function(x){ return '<li>'+__tr(x)+'</li>'; }).join('')+'</ul>'+
+        (btn?'<div class="planbtn">'+btn+'</div>':'')+'</div>';
+    }).join('');
+    renderIcons(m);
+    if(window.__applyLang){ try{__applyLang()}catch(e){} }
+  }
+  m.classList.toggle('open',open);
+}
 /* --- cards --- */
 function upArt(){
   return '<svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
@@ -3747,8 +4234,8 @@ function upCard(p,live){
     '<p class="upkick">'+kick+'</p><h3>'+p.title+'</h3><p class="upsub">'+p.sub+'</p>'+
     '<span class="btn btn-cream upplay">'+(lock?'<span class="ic" data-icon="lock"></span> '+label:'<i>▶</i> '+label)+'</span></div></article>';
 }
-function progCard(p){
-  const pct=pPct(p.id), tot=p.days.length, lock=pLocked(p.id);
+function progCard(p,noLock){
+  const pct=pPct(p.id), tot=p.days.length, lock=!noLock&&pLocked(p.id);
   return '<article class="progcard'+(lock?' locked':'')+'" onclick="openProgram(\''+p.id+'\')">'+
     '<div class="pcover" style="--g1:'+p.g1+';--g2:'+p.g2+'"><span class="pcic ic" data-icon="'+p.icon+'"></span>'+
     (lock?'<span class="plock"><span class="ic" data-icon="lock"></span></span>':'')+'</div>'+
@@ -3757,8 +4244,14 @@ function progCard(p){
 }
 
 /* --- area de programas, dentro do painel do paciente --- */
-let PDETAIL=null;
+let PDETAIL=null, SESSFROM='patient';
+function curScreen(){ const sc=document.querySelector('.screen.active'); return sc?sc.id:'site'; }
 function openProgram(id){
+  const cur0=curScreen();
+  if(cur0==='doctor'||cur0==='nutri'){
+    CURP=id; PDETAIL=id; DASH[cur0].sec='formacao'; renderDash(cur0); window.scrollTo(0,0); return;
+  }
+  if(isCourse(id)){ CURP=id; PDETAIL=id; DASH.student.sec='trilhas'; goStudent(); window.scrollTo(0,0); return; }
   DASH.patient.sec='programas';
   if(pLocked(id)){
     PDETAIL=null; renderDash('patient');
@@ -3768,8 +4261,27 @@ function openProgram(id){
   }
   CURP=id; PDETAIL=id; renderDash('patient'); window.scrollTo(0,0);
 }
-function backToPrograms(){ PDETAIL=null; dashSection('patient'); window.scrollTo(0,0); }
+function progBack(){
+  PDETAIL=null;
+  const cur=curScreen();
+  if(cur==='student') renderStudent();
+  else if(cur==='doctor'||cur==='nutri') dashSection(cur);
+  else dashSection('patient');
+  window.scrollTo(0,0);
+}
+function backToPrograms(){ progBack(); }
+function backToTracks(){
+  PDETAIL=null;
+  const cur=curScreen();
+  if(cur==='student') renderStudent(); else dashSection(cur);
+  window.scrollTo(0,0);
+}
 function refreshPrograms(){ if(DASH.patient.sec==='programas'&&document.getElementById('dwrap-patient')) dashSection('patient'); }
+function refreshTracks(){
+  const cur=curScreen();
+  if(cur==='student') renderStudent();
+  else if((cur==='doctor'||cur==='nutri')&&DASH[cur].sec==='formacao') dashSection(cur);
+}
 function progSection(){
   if(PDETAIL) return progDetail(pProg(PDETAIL)||PROGRAMS[0]);
   const st=pState(), started=pStarted();
@@ -3787,67 +4299,577 @@ function progSection(){
       '<div class="rail">'+list.map(function(p){ return upCard(p,(st.done[p.id]||[]).length>0); }).join('')+'</div></section>'+
     '<section class="hl-sec"><div class="hl-head"><h2>'+__tr('All programs')+'</h2>'+
       '<span>'+__tr('The foundation, in short daily sessions.')+'</span></div>'+
-      '<div class="rail">'+PROGRAMS.map(progCard).join('')+'</div></section>'+
+      '<div class="rail">'+PROGRAMS.map(function(x){return progCard(x);}).join('')+'</div></section>'+
+    '<section class="hl-sec"><div class="hl-head"><h2>'+__tr('Podcasts & talks')+'</h2>'+
+      '<span>'+__tr('From the open library, always free.')+'</span></div>'+
+      '<div class="rail">'+PODCASTS.map(podCard).join('')+'</div></section>'+
     subPanel()+'</div>';
+}
+function courseSection(role){
+  if(PDETAIL&&pProg(PDETAIL)) return progDetail(pProg(PDETAIL));
+  const n=certCount();
+  return '<div class="dsec dprog">'+
+    head(__tr('Courses'),__tr('Certification tracks, and everything the patients are reading.'))+
+    '<div class="stbanner'+(n?' ok':'')+'"><span class="ic" data-icon="award"></span><div>'+
+      '<b>'+n+' '+__tr('of')+' '+COURSES.length+' '+__tr('tracks complete')+'</b>'+
+      '<span>'+__tr('Certificates you earn here appear on your public profile.')+'</span></div>'+
+      (n?'<a class="btn btn-line" style="cursor:pointer" onclick="diplomaOpen(\''+COURSES.filter(function(c){return courseDone(c.id);})[0].id+'\')">'+__tr('View certificate')+'</a>':'')+'</div>'+
+    '<section class="hl-sec hl-first"><div class="hl-head"><h2>'+__tr('Certification tracks')+'</h2>'+
+      '<span>'+__tr('Three tracks, from fundamentals to clinical protocol.')+'</span></div>'+
+      '<div class="rail">'+COURSES.map(courseCard).join('')+'</div></section>'+
+    '<section class="hl-sec"><div class="hl-head"><h2>'+__tr('What your patients see')+'</h2>'+
+      '<span>'+__tr('The same programs, from their side.')+'</span></div>'+
+      '<div class="rail">'+PROGRAMS.map(function(x){return progCard(x,true);}).join('')+'</div></section>'+
+    '</div>';
+}
+function certBox(p){
+  const done=courseDone(p.id);
+  if(done) return '<div class="askbox"><div class="askin sent"><div class="asktick"><span class="ic" data-icon="award"></span></div>'+
+    '<div><h3>'+__tr('Certificate issued')+'</h3><p>'+__tr('This track is complete. You can apply as a partner with it.')+'</p></div>'+
+    '<div class="askbtns"><a class="btn btn-solid" style="cursor:pointer" onclick="diplomaOpen(\''+p.id+'\')">'+__tr('View certificate')+'</a>'+
+    '<a class="btn btn-line" style="cursor:pointer" onclick="triageOpen()">'+__tr('Apply as a partner')+'</a></div></div></div>';
+  return '<div class="askbox"><div class="askin">'+
+    '<div><h3>'+__tr('Certificate at the end')+'</h3><p>'+
+    __tr('Finish every module and the certificate is issued to your profile, which opens the partner application without further screening.')+'</p></div>'+
+    '<div class="askbtns"><span class="btn btn-line">'+p.price+' · '+__tr('one-off')+'</span></div></div></div>';
+}
+function previewNote(){
+  return '<div class="askbox"><div class="askin"><div><h3>'+__tr('This is what your patient sees')+'</h3>'+
+    '<p>'+__tr('Open any session to read the material your patients are working through, so your plan and the app say the same thing.')+'</p></div></div></div>';
 }
 function progDetail(p){
   CURP=p.id;
+  const course=isCourse(p.id);
+  const proView=(!course&&(curScreen()==='doctor'||curScreen()==='nutri'));
+  const unit=course?__tr('Module'):__tr('Day');
   const st=pState(), done=st.done[p.id]||[], tot=p.days.length, pct=pPct(p.id), n=pNext(p.id);
-  const cont = done.length ? __tr('Continue') : __tr('Start free');
+  const cont = done.length ? __tr('Continue') : (course?__tr('Start track'):__tr('Start free'));
   let rows='';
   p.days.forEach(function(d,i){
     const ok=done.indexOf(i)>-1;
     rows+='<button class="dayrow'+(ok?' done':'')+'" onclick="openSession(\''+p.id+'\','+i+')">'+
       '<span class="dnum">'+(ok?'<span class="ic" data-icon="check"></span>':(i+1))+'</span>'+
-      '<span class="dinfo"><b>'+d.t+'</b><span>'+__tr('Day')+' '+(i+1)+' · 10 '+__tr('min')+'</span></span>'+
+      '<span class="dinfo"><b>'+d.t+'</b><span>'+unit+' '+(i+1)+' · 10 '+__tr('min')+'</span></span>'+
       '<span class="dgo ic" data-icon="chevron-right"></span></button>';
   });
   return '<div class="dsec dprog dprog-one">'+
-   '<span class="pg-back" onclick="backToPrograms()"><span class="ic" data-icon="arrow-left"></span>'+__tr('All programs')+'</span>'+
+   '<span class="pg-back" onclick="progBack()"><span class="ic" data-icon="arrow-left"></span>'+
+     (course?__tr('All tracks'):__tr('All programs'))+'</span>'+
    '<div class="pg-hero"><div class="pg-cover" style="--g1:'+p.g1+';--g2:'+p.g2+'">'+
      '<span class="ic" data-icon="'+p.icon+'"></span></div>'+
    '<div><h1>'+p.title+'</h1><p class="pg-sub">'+p.sub+'</p>'+
-   '<div class="pg-meta"><span>'+tot+' '+__tr('days')+' · 10 '+__tr('min/day')+'</span>'+
+   '<div class="pg-meta"><span>'+tot+' '+(course?__tr('modules'):__tr('days'))+' · 10 '+__tr('min/day')+'</span>'+
      '<div class="pg-bar"><i style="width:'+pct+'%"></i></div>'+
      '<span>'+done.length+' '+__tr('of')+' '+tot+'</span></div>'+
    '<a class="btn btn-solid" style="margin-top:20px;cursor:pointer" onclick="openSession(\''+p.id+'\','+n+')">'+
      cont+' <span class="ic" data-icon="arrow-right"></span></a></div></div>'+
-   '<div class="daylist">'+rows+'</div>'+askBox()+'</div>';
+   '<div class="daylist">'+rows+'</div>'+(course?certBox(p):(proView?previewNote():askBox()))+'</div>';
 }
 
 /* --- tela de sessao --- */
-function openSession(id,idx){ CURP=id; PDETAIL=id; CURD=idx; go('session'); renderSession(); }
+function openSession(id,idx){
+  CURP=id; PDETAIL=id; CURD=idx;
+  const cur=curScreen(); if(cur!=='session') SESSFROM=cur;
+  go('session'); renderSession();
+}
 function renderSession(){
   const w=document.getElementById('sessWrap'); if(!w) return;
   const p=pProg(CURP); if(!p) return;
+  const course=isCourse(p.id), unit=course?__tr('Module'):__tr('Day');
   const d=p.days[CURD], tot=p.days.length, done=(pState().done[p.id]||[]).indexOf(CURD)>-1;
   const isLast=CURD>=tot-1;
   w.innerHTML=
    '<div class="sess-top"><span class="sess-x" onclick="closeSession()"><span class="ic" data-icon="x"></span></span>'+
-   '<span class="sess-ttl">'+p.title+'<span>'+__tr('Day')+' '+(CURD+1)+' '+__tr('of')+' '+tot+'</span></span></div>'+
+   '<span class="sess-ttl">'+p.title+'<span>'+unit+' '+(CURD+1)+' '+__tr('of')+' '+tot+'</span></span></div>'+
    '<div class="sess-body"><div class="sess-in">'+
-     '<p class="sess-kick">'+__tr('Session')+' '+(CURD+1)+'</p>'+
+     '<p class="sess-kick">'+(course?__tr('Module'):__tr('Session'))+' '+(CURD+1)+'</p>'+
      '<h2>'+d.t+'</h2><p>'+d.b+'</p>'+
      '<div class="sess-btns">'+
        (done ? '<span class="btn btn-line"><span class="ic" data-icon="check"></span> '+__tr('Completed')+'</span>'
              : '<a class="btn sess-done" style="cursor:pointer" onclick="finishSession()">'+__tr('Mark as complete')+' <span class="ic" data-icon="check"></span></a>')+
-       (isLast ? '' : '<a class="btn btn-line" style="cursor:pointer" onclick="openSession(\''+p.id+'\','+(CURD+1)+')">'+__tr('Next session')+'</a>')+
+       (isLast ? '' : '<a class="btn btn-line" style="cursor:pointer" onclick="openSession(\''+p.id+'\','+(CURD+1)+')">'+
+             (course?__tr('Next module'):__tr('Next session'))+'</a>')+
      '</div></div></div>';
   renderIcons(w);
   if(window.__applyLang){ try{__applyLang()}catch(e){} }
 }
 function finishSession(){
   const p=pProg(CURP); if(!p) return;
+  const course=isCourse(p.id);
+  if(!course&&(SESSFROM==='doctor'||SESSFROM==='nutri')){ closeSession(); return; }
   pComplete(p.id,CURD);
-  if(CURD<p.days.length-1){ openSession(p.id,CURD+1); toast(__tr('Session complete.')); }
+  if(CURD<p.days.length-1){ openSession(p.id,CURD+1); toast(course?__tr('Module complete.'):__tr('Session complete.')); }
+  else if(course){ certAdd(p.id); closeSession(); toast(__tr('Track complete. Certificate issued.')); }
   else { closeSession(); toast(__tr('Program complete. Well done.')); }
 }
 function closeSession(){
-  DASH.patient.sec='programas'; PDETAIL=CURP;
-  go('patient'); renderDash('patient'); window.scrollTo(0,0);
+  PDETAIL=CURP;
+  if(SESSFROM==='doctor'||SESSFROM==='nutri'){ DASH[SESSFROM].sec='formacao'; go(SESSFROM); renderDash(SESSFROM); }
+  else if(SESSFROM==='student'||isCourse(CURP)){ DASH.student.sec='trilhas'; go('student'); renderDash('student'); }
+  else { DASH.patient.sec='programas'; go('patient'); renderDash('patient'); }
+  window.scrollTo(0,0);
 }
-const PAGES={'equipe':'pg-equipe','conteudo':'pg-conteudo','tratamento':'pg-tratamento','pesquisa':'pg-research','faq':'pg-faq'};
+
+/* ============ FORMACAO: cursos com certificado (mesmo motor dos programas) ============ */
+const COURSES=[
+ {id:'c-fund',g1:'#114B5F',g2:'#07222C',icon:'zap',cert:true,price:'R$ 890',
+  title:'Foundations of metabolic psychiatry',
+  sub:'The biology underneath the diagnoses you already treat.',
+  days:[
+   {t:'Why the synapse model runs out',b:'Where the neurotransmitter hypothesis came from, what it explains well, and the clinical picture it consistently fails to account for.'},
+   {t:'Brain bioenergetics',b:'Mitochondrial function as a determinant of neuronal excitability, plasticity and repair, and what happens to each when supply falls short.'},
+   {t:'Insulin resistance and the brain',b:'What crosses the blood brain barrier, what does not, and why a brain can sit in normoglycaemia and still fail to process fuel.'},
+   {t:'Chronic inflammation and oxidative stress',b:'From an adaptive response to a driver of structural change, and the markers worth tracking in practice.'},
+   {t:'Reading a metabolic panel psychiatrically',b:'Fasting insulin, HOMA-IR, triglyceride to HDL ratio, HbA1c and inflammatory markers, interpreted for a psychiatric presentation.'},
+   {t:'What the evidence supports today',b:'Where the literature is strong, where it is emerging, and how to talk about that honestly with a patient.'}
+  ]},
+ {id:'c-nutri',g1:'#2A9D8F',g2:'#12615A',icon:'utensils',cert:true,price:'R$ 1.190',
+  title:'Therapeutic nutrition in mental health',
+  sub:'From the metabolic rationale to what lands on the plate.',
+  days:[
+   {t:'The three criteria of a brain-healthy diet',b:'Nourish, protect and energise as a working rubric, and how to apply it to any dietary pattern a patient arrives with.'},
+   {t:'Building the first intervention',b:'Why the entry point is rarely ketogenic, and how to design a first step a patient can actually hold.'},
+   {t:'Ketogenic therapy: indications and limits',b:'Who it suits, who it does not, the ratios in clinical use and what the transition period demands.'},
+   {t:'Micronutrients that matter',b:'The deficiencies that show up repeatedly in psychiatric populations and how to correct them without over-supplementing.'},
+   {t:'Adherence as a clinical variable',b:'Why the best plan a patient abandons is worse than a modest one they keep, and how to design for that.'},
+   {t:'Working alongside a prescriber',b:'Carbohydrate reduction shifts dose requirements. What to watch, when to flag, and how the handover works.'}
+  ]},
+ {id:'c-clin',g1:'#E76F51',g2:'#A83F22',icon:'clipboard',cert:true,price:'R$ 1.490',
+  title:'Clinical protocol and patient management',
+  sub:'Running a metabolic case from intake to follow-up.',
+  days:[
+   {t:'Intake and baseline',b:'What to collect before anything changes, and the labs that make the first month interpretable.'},
+   {t:'Medication during metabolic change',b:'The classes most affected by carbohydrate reduction, the dose adjustments that come up, and the safety rules that never move.'},
+   {t:'The first eight weeks',b:'What improves early, what takes longer, and how to read a plateau without abandoning the intervention.'},
+   {t:'When it is not working',b:'Differentiating non-response from non-adherence, and the four things worth checking before changing course.'},
+   {t:'Co-managing with a nutrition professional',b:'Dividing the case so the patient hears one plan, not two.'},
+   {t:'Documentation and follow-up',b:'What to record, at what interval, and how it feeds the next decision.'}
+  ]}
+];
+const MB_CERT='mb_certs';
+function certState(){ try{ return JSON.parse(localStorage.getItem(MB_CERT)||'[]')||[]; }catch(e){ return []; } }
+function certAdd(id){ const c=certState(); if(c.indexOf(id)<0){ c.push(id); try{ localStorage.setItem(MB_CERT,JSON.stringify(c)); }catch(e){} } }
+function isCourse(id){ return COURSES.some(function(c){ return c.id===id; }); }
+function courseDone(id){ const c=COURSES.find(function(x){return x.id===id;}); return !!c && pDone(id)>=c.days.length; }
+function certCount(){ return COURSES.filter(function(c){ return courseDone(c.id); }).length; }
+
+function courseCard(c){
+  const pct=pPct(c.id), done=courseDone(c.id);
+  return '<article class="progcard" onclick="openProgram(\''+c.id+'\')">'+
+    '<div class="pcover" style="--g1:'+c.g1+';--g2:'+c.g2+'"><span class="pcic ic" data-icon="'+c.icon+'"></span>'+
+    (done?'<span class="plock done" onclick="event.stopPropagation();diplomaOpen(\''+c.id+'\')"><span class="ic" data-icon="award"></span></span>':'')+'</div>'+
+    '<h3>'+c.title+'</h3><p class="pmeta">'+c.days.length+' '+__tr('modules')+' · '+c.price+'</p>'+
+    (pct>0?'<div class="progbar"><span style="width:'+pct+'%"></span></div>':'')+'</article>';
+}
+function renderCourseRail(){
+  const r=document.getElementById('courseRail'); if(!r) return;
+  r.innerHTML=COURSES.map(courseCard).join('');
+  renderIcons(document.getElementById('pg-prof'));
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
+}
+
+/* --- triagem de quem ja e certificado --- */
+const MB_TRI='mb_triage';
+function triageOpen(){
+  const m=document.getElementById('triModal'); if(!m) return;
+  document.getElementById('triForm').style.display='';
+  document.getElementById('triDone').style.display='none';
+  m.classList.add('open'); renderIcons(m);
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
+}
+function triageClose(){ const m=document.getElementById('triModal'); if(m) m.classList.remove('open'); }
+function triageSend(){
+  const name=(document.getElementById('triName').value||'').trim();
+  const reg=(document.getElementById('triReg').value||'').trim();
+  const cred=(document.getElementById('triCred').value||'').trim();
+  if(name.length<3||reg.length<3||cred.length<4){ toast(__tr('Fill in your name, registration and credential.')); return; }
+  try{ localStorage.setItem(MB_TRI,JSON.stringify({name:name,reg:reg,cred:cred,at:rStamp(),status:'review'})); }catch(e){}
+  document.getElementById('triForm').style.display='none';
+  document.getElementById('triDone').style.display='';
+  renderIcons(document.getElementById('triModal'));
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
+}
+
+/* --- painel de quem esta se certificando --- */
+function goStudent(){ DASH.student.sec=DASH.student.sec||'inicio'; go('student'); renderDash('student'); }
+function renderStudent(){ if(document.getElementById('dash-student')) renderDash('student'); }
+function studentTracks(){
+  if(PDETAIL&&pProg(PDETAIL)) return progDetail(pProg(PDETAIL));
+  const st=pState(), started=COURSES.filter(function(c){ return (st.done[c.id]||[]).length>0; });
+  const n=certCount();
+  let list;
+  if(started.length){
+    list=started.concat(COURSES.filter(function(c){ return (st.done[c.id]||[]).length===0; }));
+  } else { list=COURSES.slice(); }
+  const banner = n>0
+    ? '<div class="stbanner ok"><span class="ic" data-icon="award"></span><div><b>'+n+' '+__tr('of')+' '+COURSES.length+' '+__tr('tracks complete')+'</b>'+
+      '<span>'+__tr('Finish them all, or apply as a partner with what you already hold.')+'</span></div>'+
+      '<div class="stbtns"><a class="btn btn-cream" style="cursor:pointer" onclick="diplomaOpen(\''+COURSES.filter(function(c){return courseDone(c.id);})[0].id+'\')">'+__tr('View certificate')+'</a>'+
+      '<a class="btn btn-cream-line" style="cursor:pointer" onclick="triageOpen()">'+__tr('Apply as a partner')+'</a></div></div>'
+    : '<div class="stbanner"><span class="ic" data-icon="award"></span><div><b>'+__tr('No track finished yet')+'</b>'+
+      '<span>'+__tr('Each track ends with a certificate that opens the partner application.')+'</span></div></div>';
+  return '<div class="dsec dprog">'+
+    head(__tr('Certification'),__tr('Short modules, built to fit around a practice.'))+
+    banner+
+    '<section class="hl-sec hl-first"><div class="hl-head"><h2>'+__tr('Your tracks')+'</h2>'+
+      '<span>'+__tr('Pick up where you left off.')+'</span></div>'+
+      '<div class="rail">'+list.map(function(c){ return upCourse(c); }).join('')+'</div></section>'+
+    '<section class="hl-sec"><div class="hl-head"><h2>'+__tr('All tracks')+'</h2>'+
+      '<span>'+__tr('Three tracks, from fundamentals to clinical protocol.')+'</span></div>'+
+      '<div class="rail">'+COURSES.map(courseCard).join('')+'</div></section>'+
+    '<div class="subcard" id="partnerCta"><div class="subtxt">'+
+      '<p class="subkick">'+__tr('Partnership')+'</p>'+
+      '<h3>'+__tr('Ready to start seeing patients?')+'</h3>'+
+      '<p class="subp">'+__tr('Partners receive patients from the subscriber base, with scheduling, records and follow-up handled by the platform.')+'</p></div>'+
+      '<div class="subact"><a class="btn btn-cream" style="cursor:pointer" onclick="triageOpen()">'+__tr('Apply as a partner')+' <span class="ic" data-icon="arrow-right"></span></a>'+
+      '<span class="subfine">'+__tr('Every application gets an answer.')+'</span></div></div>'+
+    '</div>';
+}
+function upCourse(c){
+  const n=pNext(c.id), tot=c.days.length, live=pDone(c.id)>0, done=courseDone(c.id);
+  const kick = done ? __tr('Certificate issued')
+             : (live ? (__tr('Module')+' '+(n+1)+' '+__tr('of')+' '+tot) : (tot+' '+__tr('modules')+' · '+c.price));
+  const label = done ? __tr('Review') : (live ? __tr('Continue') : __tr('Start track'));
+  return '<article class="upcard up-live" style="--g1:'+c.g1+';--g2:'+c.g2+'" onclick="openProgram(\''+c.id+'\')">'+
+    '<div class="upart">'+upArt()+'</div><div class="upbody">'+
+    '<p class="upkick">'+kick+'</p><h3>'+c.title+'</h3><p class="upsub">'+c.sub+'</p>'+
+    '<span class="btn btn-cream upplay"><i>▶</i> '+label+'</span></div></article>';
+}
+
+/* ============ PROFISSIONAL: especialidade, captacao e negocio ============ */
+const SPECS=[
+ {id:'psiq',label:'Psychiatrist',name:'Dr. Rafael Mendes',reg:'CRM 12.845 SP',
+  tool:'Prescription and dose adjustment',
+  toolNote:'Carbohydrate reduction shifts dose requirements. Review medication alongside the nutrition plan.'},
+ {id:'psico',label:'Psychologist',name:'Dra. Lúcia Tavares',reg:'CRP 06/98213',
+  tool:'Session notes and therapeutic plan',
+  toolNote:'Track what the patient reports between sessions and how it moves with the metabolic work.'},
+ {id:'coach',label:'Health coach',name:'Bruno Lima',reg:'Certified health coach',
+  tool:'Habit tracking and weekly check-ins',
+  toolNote:'Keep the daily routine on track between clinical appointments.'}
+];
+function spec(){ return SPECS[DASH.doctor.specIdx||0]; }
+function setSpec(i){
+  DASH.doctor.specIdx=i;
+  const sp=SPECS[i];
+  DASH.doctor.name=sp.name;
+  DASH.doctor.roleLabel='Therapist · '+sp.label;
+  if(DASH.doctor.pf){ DASH.doctor.pf.name=sp.name; }
+  renderDash('doctor');
+}
+function specSwitch(){
+  let b='';
+  SPECS.forEach(function(sp,i){
+    b+='<button class="'+((DASH.doctor.specIdx||0)===i?'on':'')+'" onclick="setSpec('+i+')">'+__tr(sp.label)+'</button>';
+  });
+  return '<div class="specsw"><span>'+__tr('Viewing as')+'</span>'+b+'</div>';
+}
+
+/* --- captacao: pacientes chegando da base de assinantes --- */
+const LEADS=[
+ {init:'AR',name:'Ana Ribeiro',sub:'31 yrs · Anxiety, insulin resistance',
+  ctx:'Finished "Metabolism and mood" · 12 day streak',want:'Looking for a first appointment',new:1},
+ {init:'PC',name:'Pedro Castro',sub:'44 yrs · Depression, prediabetes',
+  ctx:'On day 4 of "Sugar, insulin and the brain"',want:'Asked about medication and diet together',new:1},
+ {init:'LF',name:'Luana Freitas',sub:'27 yrs · Bipolar II, stable',
+  ctx:'Subscriber for 2 months · 3 programs finished',want:'Wants to switch to a metabolic approach',new:0}
+];
+const PRACTICE=[
+ ['Revenue this month','R$ 18.400','trending-down','teal','+22% vs last month'],
+ ['New patients','4','users','coral','from the subscriber base'],
+ ['Request to booking','62%','target','warn','of matched patients booked']
+];
+function acceptLead(i){
+  const l=LEADS[i]; if(!l) return;
+  l.new=0; l.taken=1;
+  dashSection('doctor');
+  toast(__tr('Patient accepted. They appear in your list.'));
+}
+function profileToggle(el){
+  const D=DASH.doctor; D.open=!D.open;
+  el.classList.toggle('on',D.open);
+  toast(D.open?__tr('You are visible to patients again.'):__tr('You are hidden from new patients.'));
+}
+function proHome(role){
+  const D=DASH[role], sp=(role==='doctor')?spec():null;
+  const ln=givenName(D.name);
+  const title=__tr('Hello')+', '+ln;
+  if(D.open===undefined) D.open=true;
+
+  let stats='';
+  PRACTICE.forEach(function(m){
+    stats+='<div class="stat2"><div class="si '+m[3]+'">'+dIcon(m[2])+'</div>'+
+      '<div class="sv">'+m[1]+'</div><div class="sl">'+__tr(m[0])+'</div>'+
+      '<div class="sfoot">'+__tr(m[4])+'</div></div>';
+  });
+
+  let leads='';
+  LEADS.forEach(function(l,i){
+    leads+='<div class="lead'+(l.new?' newq':'')+'">'+
+      '<div class="lav">'+l.init+'</div>'+
+      '<div class="linfo"><b>'+l.name+(l.new?'<span class="ibtag">'+__tr('New')+'</span>':'')+'</b>'+
+      '<span class="lsub">'+l.sub+'</span>'+
+      '<span class="lctx">'+dIcon('activity')+l.ctx+'</span>'+
+      '<span class="lwant">'+l.want+'</span></div>'+
+      '<div class="lact">'+(l.taken
+        ? '<span class="dbtn dbtn-line">'+dIcon('check')+__tr('Accepted')+'</span>'
+        : '<button class="dbtn dbtn-solid" onclick="acceptLead('+i+')">'+__tr('Accept patient')+'</button>')+'</div></div>';
+  });
+
+  const certs=certCount();
+  const profile='<div class="procard">'+
+    '<div class="proleft"><div class="proav">'+D.name.split(' ').slice(0,2).map(function(x){return x[0];}).join('').toUpperCase()+'</div>'+
+    '<div><b>'+esc(D.name)+'</b><span>'+(sp?__tr(sp.label)+' · '+sp.reg:__tr('Dietitian'))+'</span>'+
+    '<span class="procerts">'+dIcon('award')+certs+' '+__tr('of')+' '+COURSES.length+' '+__tr('platform certificates')+'</span></div></div>'+
+    '<div class="proright"><div class="protog"><span>'+__tr('Accepting new patients')+'</span>'+
+      '<div class="sw'+(D.open?' on':'')+'" onclick="profileToggle(this)"></div></div>'+
+      '<button class="dbtn dbtn-line" onclick="toast(\''+__tr('Demo: your public profile would open here')+'\')">'+
+      dIcon('user-circle')+__tr('View public profile')+'</button></div></div>';
+
+  let ap='';
+  DAGENDA.filter(function(a){return a[4];}).forEach(function(a){
+    ap+='<div class="drow"><div class="ddate"><div class="dd">'+a[1]+'</div></div>'+
+      '<div class="dinfo"><b>'+a[2]+'</b><span>'+a[3]+'</span></div>'+
+      '<button class="dbtn dbtn-solid" onclick="toast(\''+__tr('Demo: the video session would open here')+'\')">'+dIcon('video')+__tr('Start')+'</button></div>';
+  });
+
+  return '<div class="dsec">'+
+    head(title,__tr('Your practice this month'))+
+    ((role==='doctor')?specSwitch():'')+
+    '<div class="statrow">'+stats+'</div>'+
+    profile+
+    '<div class="dh2"><div class="hbadge teal">'+dIcon('users')+'</div>'+__tr('Patients waiting for you')+'</div>'+
+    '<p class="dnote">'+__tr('Matched from the subscriber base, with what they have already done in the app attached.')+'</p>'+
+    '<div class="leadlist">'+leads+'</div>'+
+    reqInbox(role)+
+    '<div class="dh2"><div class="hbadge coral">'+dIcon('clock')+'</div>'+__tr('Today in the clinic')+'</div>'+
+    '<div class="dcard">'+ap+'</div>'+
+    (sp?'<div class="alertbox tool"><b>'+__tr(sp.tool)+'</b><p>'+__tr(sp.toolNote)+'</p></div>':'')+
+    '<div class="alertbox"><b>Carlos Mendes · '+__tr('moderate risk')+'</b><p>'+__tr('Energy declining over the last 7 days. Consider scheduling a follow-up.')+'</p></div>'+
+    '</div>';
+}
+
+/* --- diploma --- */
+function diplomaOpen(id){
+  const c=pProg(id); if(!c) return;
+  const m=document.getElementById('dipModal'); if(!m) return;
+  const cur=curScreen();
+  const who=(cur==='doctor')?DASH.doctor.name:(cur==='nutri'?DASH.nutri.name:'Dra. Marina Alves');
+  const reg=(cur==='doctor')?spec().reg:(cur==='nutri'?'CRN 3-45821':'CRM / CRN / CRP');
+  document.getElementById('dipBody').innerHTML=
+    '<div class="dip">'+
+      '<div class="dipmark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg>Metabolicamente</div>'+
+      '<p class="dipkick">'+__tr('Certificate of completion')+'</p>'+
+      '<p class="diplead">'+__tr('This certifies that')+'</p>'+
+      '<h2 class="dipname">'+esc(who)+'</h2>'+
+      '<p class="dipreg">'+esc(reg)+'</p>'+
+      '<p class="diplead">'+__tr('has completed the certification track')+'</p>'+
+      '<h3 class="diptrack">'+c.title+'</h3>'+
+      '<div class="dipfoot"><div><span>'+__tr('Modules')+'</span><b>'+c.days.length+'</b></div>'+
+        '<div class="dipseal"><span class="ic" data-icon="award"></span></div>'+
+        '<div><span>'+__tr('Issued')+'</span><b>'+dipDate()+'</b></div></div>'+
+    '</div>';
+  m.classList.add('open'); renderIcons(m);
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
+}
+function dipDate(){
+  const d=new Date(), mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  return d.getDate()+' '+__tr(mo[d.getMonth()])+' '+d.getFullYear();
+}
+function diplomaClose(){ const m=document.getElementById('dipModal'); if(m) m.classList.remove('open'); }
+
+/* ============ PACIENTE: home em mosaico, sem barra lateral ============ */
+function bentoArt(kind){
+  const A={
+    prog:'<svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
+      '<circle cx="486" cy="88" r="72" fill="#fff" opacity=".13"/><circle cx="486" cy="88" r="40" fill="#fff" opacity=".2"/>'+
+      '<path d="M0 262 Q140 216 300 254 T600 228 L600 400 L0 400Z" fill="#fff" opacity=".1"/>'+
+      '<path d="M0 312 Q160 268 320 306 T600 288 L600 400 L0 400Z" fill="#fff" opacity=".1"/>'+
+      '<g fill="#fff" opacity=".4"><circle cx="92" cy="58" r="3"/><circle cx="392" cy="150" r="2.4"/>'+
+      '<circle cx="186" cy="112" r="2"/><circle cx="556" cy="196" r="2.6"/></g></svg>',
+    wave:'<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
+      '<path d="M0 196 Q100 160 200 190 T400 176 L400 300 L0 300Z" fill="#fff" opacity=".12"/>'+
+      '<circle cx="330" cy="66" r="52" fill="#fff" opacity=".12"/></svg>',
+    rings:'<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
+      '<g fill="none" stroke="#fff" stroke-width="16" opacity=".11"><circle cx="24" cy="292" r="80"/>'+
+      '<circle cx="24" cy="292" r="140"/><circle cx="24" cy="292" r="200"/></g></svg>',
+    dots:'<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
+      '<ellipse cx="320" cy="240" rx="120" ry="92" fill="#fff" opacity=".1"/>'+
+      '<g fill="#fff" opacity=".3"><circle cx="62" cy="52" r="4"/><circle cx="128" cy="96" r="3"/>'+
+      '<circle cx="44" cy="130" r="2.6"/><circle cx="186" cy="46" r="3.2"/></g></svg>'
+  };
+  return A[kind]||A.wave;
+}
+function bTile(o){
+  const act=o.act||("dashNav('"+(o.role||'patient')+"','"+o.go+"')");
+  return '<button class="btile '+o.size+(o.hero?' hero':'')+'" style="--g1:'+o.g1+';--g2:'+o.g2+'" '+
+    'onclick="'+act+'">'+
+    '<span class="bskin">'+
+    '<div class="bart">'+bentoArt(o.art)+'</div>'+
+    '<div class="bbody">'+
+      '<div class="btop"><span class="bic">'+dIcon(o.icon)+'</span><span class="blabel">'+o.label+'</span></div>'+
+      '<div class="bmain">'+o.main+'</div>'+
+      (o.foot?'<div class="bfoot">'+o.foot+'</div>':'')+
+      (o.more?'<div class="bmore">'+o.more+'<span class="ic" data-icon="arrow-right"></span></div>':'')+
+    '</div></span></button>';
+}
+function pHome(D){
+  const st=pState();
+  const started=pStarted();
+  const cur=pProg(st.last)||started[0]||PROGRAMS[0];
+  const tot=cur.days.length, dn=pDone(cur.id), pct=pPct(cur.id), nx=pNext(cur.id);
+  const progMain= dn
+    ? '<b>'+cur.title+'</b><div class="bbar"><i style="width:'+pct+'%"></i></div>'+
+      '<span class="bsub">'+__tr('Day')+' '+(nx+1)+' '+__tr('of')+' '+tot+' · '+cur.days[nx].t+'</span>'
+    : '<b>'+cur.title+'</b><span class="bsub">'+tot+' '+__tr('days')+' · 10 '+__tr('min/day')+'</span>';
+  const streak = st.streak>0 ? '<span class="bchip"><span class="ic" data-icon="flame"></span>'+st.streak+' '+__tr('day streak')+'</span>' : '';
+
+  const ap=PAGENDA[0];
+  const meal=MEALS[0];
+  const bad=PEXAMS.filter(function(e){return e[3]==='bad';}).length;
+  const doneM=D.missions.filter(function(m){return m[1];}).length, totM=D.missions.length;
+
+  const tiles=[
+   {go:'checkin',size:'xl',hero:1,art:'prog',icon:'clipboard',g1:'#114B5F',g2:'#07222C',
+    label:__tr('Daily check-in'),
+    main:'<b>'+__tr('How are you today?')+'</b><span class="bsub">'+
+      CISTEPS.length+' '+__tr('questions')+' · 2 '+__tr('min')+' · '+__tr('your team reads every one')+'</span>',
+    foot:streak,more:__tr('Log today')},
+   {go:'agenda',size:'wide',art:'wave',icon:'calendar',g1:'#2A9D8F',g2:'#12615A',
+    label:__tr('Schedule'),
+    main:'<b>'+ap[2]+'</b><span class="bsub">'+ap[3]+' · '+ap[0]+', '+ap[1]+'</span>',
+    more:PAGENDA.length+' '+__tr('appointments booked')},
+   {go:'programas',size:'sm',art:'rings',icon:'sparkles',g1:'#E76F51',g2:'#A83F22',
+    label:__tr('In progress'),main:progMain,
+    more:dn?__tr('Continue where you left off'):__tr('Start your first program')},
+   {go:'plano',size:'sm',art:'dots',icon:'utensils',g1:'#D9A420',g2:'#8E6704',
+    label:__tr('Meal plan'),
+    main:'<b>'+__tr(meal[1])+'</b><span class="bsub">'+meal[2][0]+'</span>',
+    more:__tr('See the full day')},
+   {go:'exames',size:'sm',art:'rings',icon:'heart',g1:'#5B7DB1',g2:'#294567',
+    label:__tr('Exams'),
+    main:'<b>'+PEXAMS.length+' '+__tr('markers')+'</b><span class="bsub">'+bad+' '+__tr('need attention')+'</span>',
+    more:__tr('Last collection Mar 5')},
+   {go:'equipe',size:'sm',art:'wave',icon:'users',g1:'#7A5C8E',g2:'#3F2C4D',
+    label:__tr('My team'),
+    main:'<div class="bavs">'+PTEAM.map(function(m){return '<span>'+m[0]+'</span>';}).join('')+'</div>'+
+      '<span class="bsub">'+PTEAM[0][1]+' · '+PTEAM[1][1]+'</span>',
+    more:__tr('Message your team')},
+   {go:'perfil',size:'wide',art:'dots',icon:'user-circle',g1:'#1A5F76',g2:'#0C333F',
+    label:__tr('Profile'),
+    main:'<b>'+esc(D.name)+'</b><span class="bsub">'+doneM+' '+__tr('of')+' '+totM+' '+__tr('missions done today')+'</span>',
+    more:__tr('Account and notifications')}
+  ];
+  return '<div class="dsec bento-wrap">'+
+    '<div class="bhead"><h1>'+__tr('Hello')+', '+givenName(D.name)+'</h1>'+
+      '<p>'+__tr('Everything in one place. Tap a card to open it.')+'</p></div>'+
+    '<div class="bento">'+tiles.map(bTile).join('')+'</div></div>';
+}
+function pBack(){ dashNav('patient','inicio'); }
+
+/* ============ MOSAICOS DOS OUTROS PAPEIS ============ */
+function proBento(role){
+  const D=DASH[role], sp=(role==='doctor')?spec():null;
+  const waiting=LEADS.filter(function(l){ return !l.taken; }).length;
+  const nq=(typeof rOpenFor==='function')?rOpenFor(role).length:0;
+  const ap=DAGENDA[0], certs=certCount();
+  const risky=D.patients.filter(function(p){ return p.risk==='moderate'||p.adhc==='warn'; }).length;
+  const t=[];
+  t.push({role:role,go:'pratica',size:'xl',hero:1,art:'prog',icon:'trending-down',g1:'#114B5F',g2:'#07222C',
+    label:__tr('Your practice'),
+    main:'<b>R$ 18.400</b><span class="bsub">'+__tr('Revenue this month')+' · +22% '+__tr('vs last month')+'</span>',
+    foot:waiting?'<span class="bchip"><span class="ic" data-icon="users"></span>'+waiting+' '+__tr('waiting for you')+'</span>':'',
+    more:__tr('Leads, conversion and public profile')});
+  t.push({role:role,go:'agenda',size:'wide',art:'wave',icon:'calendar',g1:'#2A9D8F',g2:'#12615A',
+    label:__tr('Schedule'),
+    main:'<b>'+ap[2]+'</b><span class="bsub">'+ap[3]+' · '+ap[0]+', '+ap[1]+'</span>',
+    more:DAGENDA.length+' '+__tr('appointments booked')});
+  t.push({role:role,go:'pacientes',size:'sm',art:'rings',icon:'users',g1:'#E76F51',g2:'#A83F22',
+    label:__tr('Patients'),
+    main:'<b>'+D.patients.length+' '+__tr('active')+'</b><span class="bsub">'+risky+' '+__tr('need attention')+'</span>',
+    more:__tr('Open the list')});
+  if(role==='doctor'){
+    t.push({role:role,go:'prontuarios',size:'sm',art:'dots',icon:'clipboard',g1:'#5B7DB1',g2:'#294567',
+      label:__tr('Records'),
+      main:'<b>'+D.patients.length+'</b><span class="bsub">'+__tr('open records')+'</span>',
+      more:__tr('Read and update')});
+    t.push({role:role,go:'pratica',size:'sm',art:'wave',icon:'message',g1:'#7A5C8E',g2:'#3F2C4D',
+      label:__tr('Requests'),
+      main:'<b>'+nq+'</b><span class="bsub">'+(nq?__tr('waiting for a reply'):__tr('all answered'))+'</span>',
+      more:__tr('Answer your patients')});
+  } else {
+    t.push({role:role,go:'cardapios',size:'sm',art:'dots',icon:'utensils',g1:'#D9A420',g2:'#8E6704',
+      label:__tr('Menus'),
+      main:'<b>'+MEALS.length+'</b><span class="bsub">'+__tr('meals planned')+'</span>',
+      more:__tr('Build and send a plan')});
+    t.push({role:role,go:'pratica',size:'sm',art:'wave',icon:'message',g1:'#7A5C8E',g2:'#3F2C4D',
+      label:__tr('Requests'),
+      main:'<b>'+nq+'</b><span class="bsub">'+(nq?__tr('waiting for a reply'):__tr('all answered'))+'</span>',
+      more:__tr('Answer your patients')});
+  }
+  t.push({role:role,go:'formacao',size:'sm',art:'rings',icon:'award',g1:'#1A5F76',g2:'#0C333F',
+    label:__tr('Courses'),
+    main:'<b>'+certs+' '+__tr('of')+' '+COURSES.length+'</b><span class="bsub">'+__tr('tracks complete')+'</span>',
+    more:__tr('Keep certifying')});
+  t.push({role:role,go:'perfil',size:'wide',art:'dots',icon:'user-circle',g1:'#114B5F',g2:'#07222C',
+    label:__tr('Profile'),
+    main:'<b>'+esc(D.name)+'</b><span class="bsub">'+(sp?__tr(sp.label)+' · '+sp.reg:__tr('Dietitian'))+'</span>',
+    more:__tr('Account and notifications')});
+  return '<div class="dsec bento-wrap">'+
+    '<div class="bhead"><h1>'+__tr('Hello')+', '+givenName(D.name)+'</h1>'+
+      '<p>'+__tr('Your practice in one place. Tap a card to open it.')+'</p></div>'+
+    '<div class="bento">'+t.map(bTile).join('')+'</div></div>';
+}
+
+function stuBento(D){
+  const n=certCount(), st=pState();
+  const started=COURSES.filter(function(c){ return (st.done[c.id]||[]).length>0; });
+  const cur=started[0]||COURSES[0];
+  const dn=pDone(cur.id), tot=cur.days.length, pct=pPct(cur.id), nx=pNext(cur.id);
+  const done=COURSES.filter(function(c){ return courseDone(c.id); });
+  const main = dn
+    ? '<b>'+cur.title+'</b><div class="bbar"><i style="width:'+pct+'%"></i></div>'+
+      '<span class="bsub">'+__tr('Module')+' '+(nx+1)+' '+__tr('of')+' '+tot+' · '+cur.days[nx].t+'</span>'
+    : '<b>'+cur.title+'</b><span class="bsub">'+tot+' '+__tr('modules')+' · '+cur.price+'</span>';
+  const t=[
+   {role:'student',go:'trilhas',size:'xl',hero:1,art:'prog',icon:'award',g1:'#D9A420',g2:'#8E6704',
+    label:__tr('Certification'),main:main,
+    foot:'<span class="bchip"><span class="ic" data-icon="award"></span>'+n+' '+__tr('of')+' '+COURSES.length+' '+__tr('tracks complete')+'</span>',
+    more:dn?__tr('Continue where you left off'):__tr('Start your first track')},
+   {role:'student',go:'trilhas',size:'wide',art:'wave',icon:'tv',g1:'#114B5F',g2:'#07222C',
+    label:__tr('All tracks'),
+    main:'<b>'+COURSES.length+' '+__tr('tracks')+'</b><span class="bsub">'+__tr('From fundamentals to clinical protocol.')+'</span>',
+    more:__tr('Browse the catalogue')},
+   {role:'student',size:'sm',art:'rings',icon:'award',g1:'#2A9D8F',g2:'#12615A',
+    label:__tr('Certificates'),
+    act:done.length?("diplomaOpen('"+done[0].id+"')"):"dashNav('student','trilhas')",
+    main:'<b>'+n+'</b><span class="bsub">'+(n?__tr('issued to your profile'):__tr('none issued yet'))+'</span>',
+    more:n?__tr('View certificate'):__tr('Finish a track to earn one')},
+   {role:'student',size:'sm',art:'dots',icon:'stethoscope',g1:'#E76F51',g2:'#A83F22',
+    label:__tr('Partnership'),act:'triageOpen()',
+    main:'<b>'+__tr('Already certified?')+'</b><span class="bsub">'+__tr('Send your credential through screening.')+'</span>',
+    more:__tr('Apply as a partner')},
+   {role:'student',go:'perfil',size:'full',art:'dots',icon:'user-circle',g1:'#1A5F76',g2:'#0C333F',
+    label:__tr('Profile'),
+    main:'<b>'+esc(D.name)+'</b><span class="bsub">'+__tr('In certification')+'</span>',
+    more:__tr('Account and notifications')}
+  ];
+  return '<div class="dsec bento-wrap">'+
+    '<div class="bhead"><h1>'+__tr('Hello')+', '+givenName(D.name)+'</h1>'+
+      '<p>'+__tr('Your certification in one place. Tap a card to open it.')+'</p></div>'+
+    '<div class="bento">'+t.map(bTile).join('')+'</div></div>';
+}
+function sSection(D){
+  const s=D.sec;
+  if(s==='perfil') return perfil(D,'student');
+  if(s==='trilhas') return studentTracks();
+  return stuBento(D);
+}
+
+const PAGES={'equipe':'pg-equipe','conteudo':'pg-conteudo','tratamento':'pg-tratamento','pesquisa':'pg-research','faq':'pg-faq','profissionais':'pg-prof'};
 function showSub(id,scroll){
+  if(id==='pg-conteudo'&&window.renderLibrary) setTimeout(renderLibrary,0);
+  if(id==='pg-prof'&&window.renderCourseRail) setTimeout(renderCourseRail,0);
   document.querySelectorAll('#site .subpage').forEach(s=>s.classList.toggle('active',s.id===id));
   if(id==='pg-tratamento'&&window.__drawSprouts){ setTimeout(window.__drawSprouts,0); if(window.__drawFoods) setTimeout(window.__drawFoods,0); if(window.__drawPlates) setTimeout(window.__drawPlates,0); if(window.__drawMitoFeed) setTimeout(window.__drawMitoFeed,0); if(window.__drawRoad) setTimeout(window.__drawRoad,0); if(window.__drawBrain) setTimeout(window.__drawBrain,0); }
   if(scroll!==false) window.scrollTo(0,0);
@@ -3924,7 +4946,65 @@ function startGlows(){
   });
 }
 
-/* ============ CONTEUDO: search + filters ============ */
+/* ============ CONTEUDO: biblioteca aberta ============ */
+const PODCASTS=[
+ {v:'dI0CztCzjbc',chan:'Roundabout Productions',guest:'Dr. Régis Chachamovich',t:'A Dieta Cetogênica é Mais Eficaz que Antidepressivos?',d:'Why rising antidepressant use is not improving mental health, and the ketogenic diet as a therapeutic intervention.'},
+ {v:'sWiJ679ZWFE',chan:'Modo Primal Podcast',guest:'Dr. Régis Chachamovich',t:'Alimente seu Cérebro: Como a Dieta Pode Ser a Chave para Saúde Mental',d:'Ancestral eating, metabolic health, and how nutrition shapes brain function.'},
+ {v:'LcFeODsiXI4',chan:'Antonio Kraychete',guest:'Dr. Régis Chachamovich',t:'Esse Método Cura a Depressão?',d:'Metabolic approaches to treating depression, beyond traditional medication.'},
+ {v:'927R9WQL9ps',chan:'Lutz Podcast',guest:'Dr. Régis Chachamovich',t:'Como o Metabolismo Pode Salvar Sua Saúde Mental',d:'A pioneer of metabolic psychiatry in Brazil on metabolic disease, ketogenic diet and mental illness.'},
+ {v:'q5IBHaYKKJc',chan:'Roundabout Productions',guest:'Dr. Juan Pablo Roig',t:'Somos Viciados em Carboidratos?',d:'Food compulsion, carbohydrate addiction, and the role of inflammation and insulin resistance.'},
+ {v:'IpLo1B4fhF0',chan:'Modo Primal Podcast',guest:'Dr. Juan Pablo Roig',t:'Médico Curou o Fígado e a Depressão com Dieta Carnívora',d:'Ancestral nutrition and metabolic psychiatry, with a personal story and clinical practice insights.'}
+];
+const ARTICLES=[
+ {u:'https://www.proactivepsychiatry.com/post/metabolic-psychiatry-where-mental-health-meets-metabolic-health',src:'Proactive Psychiatry',t:'Metabolic Psychiatry: Where Mental Health Meets Metabolic Health',d:'For a long time psychiatry was stuck in the chemical-imbalance model. What if mental illness is more than a neurotransmitter problem?',g1:'#114B5F',g2:'#07222C',icon:'clipboard'},
+ {u:'https://cardinalclinic.co.uk/blog/metabolic-psychiatry-integrating-bioenergetics-into-mental-health-care/',src:'Cardinal Clinic',t:'Integrating Bioenergetics into Mental Health Care',d:'For decades the dominant model focused on the synapse. Researchers are now investigating cellular bioenergetics.',g1:'#2A9D8F',g2:'#12615A',icon:'zap'},
+ {u:'https://www.linkedin.com/pulse/rise-metabolic-psychiatry-game-changer-mental-health-greenland-u33le',src:'LinkedIn · Greenland',t:'The Rise of Metabolic Psychiatry: A Game Changer in Mental Health?',d:'How metabolic psychiatry is transforming the mental-health field with metabolism-based approaches.',g1:'#5B7DB1',g2:'#294567',icon:'trending-down'},
+ {u:'https://scienmag.com/metabolic-psychiatry-defining-priorities-for-emerging-field/',src:'SciEnMag',t:'Metabolic Psychiatry: Defining Priorities for an Emerging Field',d:'Researchers define priorities for the emerging field, including clinical trials and biomarkers.',g1:'#7A5C8E;',g2:'#3F2C4D',icon:'chart'}
+];
+function podCard(p){
+  return '<a class="podcard" data-chan="'+p.chan+'" href="https://www.youtube.com/watch?v='+p.v+'" target="_blank" rel="noopener">'+
+    '<div class="podthumb"><img src="https://img.youtube.com/vi/'+p.v+'/hqdefault.jpg" alt="" loading="lazy">'+
+    '<span class="podplay"><i>▶</i></span></div>'+
+    '<p class="podchan">'+p.chan+'</p><h3>'+p.t+'</h3><p class="poddesc">'+p.guest+'</p></a>';
+}
+function artCard(a){
+  return '<a class="artcard" href="'+a.u+'" target="_blank" rel="noopener">'+
+    '<div class="artcover" style="--g1:'+a.g1+';--g2:'+a.g2+'"><span class="artq">&#8220;</span>'+
+    '<span class="artic ic" data-icon="'+a.icon+'"></span></div>'+
+    '<p class="artsrc">'+a.src+'</p><h3>'+a.t+'</h3><p class="artdesc">'+a.d+'</p>'+
+    '<span class="artread">'+__tr('Read article')+' <span class="ic" data-icon="arrow-right"></span></span></a>';
+}
+function renderLibrary(){
+  const pr=document.getElementById('podRail'); if(!pr) return;
+  pr.innerHTML=PODCASTS.map(podCard).join('');
+  const ar=document.getElementById('artRail'); if(ar) ar.innerHTML=ARTICLES.map(artCard).join('');
+  renderIcons(document.getElementById('pg-conteudo'));
+  cFilter();
+  railSync('podRail'); railSync('artRail');
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
+}
+
+/* --- setas dos trilhos --- */
+function railScroll(id,dir){
+  const r=document.getElementById(id); if(!r) return;
+  r.scrollBy({left:dir*Math.max(260,r.clientWidth*0.8),behavior:'smooth'});
+}
+function railSync(id){
+  const r=document.getElementById(id), w=document.getElementById('wrap-'+id);
+  if(!r||!w) return;
+  const max=r.scrollWidth-r.clientWidth-2;
+  w.classList.toggle('at-start', r.scrollLeft<=2);
+  w.classList.toggle('at-end', r.scrollLeft>=max || max<=0);
+}
+['podRail','artRail'].forEach(function(id){
+  document.addEventListener('DOMContentLoaded',function(){
+    const r=document.getElementById(id); if(!r) return;
+    r.addEventListener('scroll',function(){ railSync(id); },{passive:true});
+    window.addEventListener('resize',function(){ railSync(id); });
+  });
+});
+
+/* --- busca e filtros --- */
 let cCh='';
 function cChan(btn){
   cCh=btn.dataset.chan||'';
@@ -3932,15 +5012,14 @@ function cChan(btn){
   cFilter();
 }
 function cFilter(){
-  /* a busca pertence a metade "discover": filtra categorias, videos e artigos */
   const el=document.getElementById('csearch'); if(!el) return;
   const q=(el.value||'').toLowerCase();
   let vn=0,an=0,cn=0;
-  document.querySelectorAll('#vgrid .vcard').forEach(v=>{
+  document.querySelectorAll('#podRail .podcard').forEach(v=>{
     const ok=(!cCh||v.dataset.chan===cCh)&&(!q||v.textContent.toLowerCase().indexOf(q)>-1);
     v.style.display=ok?'':'none'; if(ok)vn++;
   });
-  document.querySelectorAll('#agrid .acard').forEach(a=>{
+  document.querySelectorAll('#artRail .artcard').forEach(a=>{
     const ok=!q||a.textContent.toLowerCase().indexOf(q)>-1;
     a.style.display=ok?'':'none'; if(ok)an++;
   });
@@ -3948,9 +5027,79 @@ function cFilter(){
     const ok=!q||(t.dataset.cat||'').toLowerCase().indexOf(q)>-1;
     t.style.display=ok?'':'none'; if(ok)cn++;
   });
-  document.getElementById('vnores').style.display=vn?'none':'block';
-  document.getElementById('anores').style.display=an?'none':'block';
+  const v=document.getElementById('vnores'); if(v) v.style.display=vn?'none':'block';
+  const a=document.getElementById('anores'); if(a) a.style.display=an?'none':'block';
   const c=document.getElementById('catnores'); if(c) c.style.display=cn?'none':'block';
+  railSync('podRail'); railSync('artRail');
+}
+
+/* --- criar conta: mesma tela de login, em modo cadastro --- */
+/* ============ LOGIN: uma tela por tipo de usuario ============ */
+const LOGINS={
+ patient:{ kick:'Patient', art:'food', icon:'user',
+   tag:'Caring for your mind by caring for your metabolism.',
+   login:{h1:'Welcome back', sub:'Caring for your mind by caring for your metabolism.',
+          btn:'Log in', go:"go('patient')"},
+   account:{h1:'Create your account', sub:'Free to start. Your progress is saved as you go.',
+          btn:'Create account', go:"DASH.patient.sec='programas';go('patient')"} },
+ doctor:{ kick:'Therapist', icon:'brain', g1:'#114B5F', g2:'#07222C',
+   tag:'Psychiatrists, psychologists and coaches, working on the biology underneath.',
+   login:{h1:'Welcome back', sub:'Your patients, your schedule and your practice in one place.',
+          btn:'Log in', go:"go('doctor')"},
+   account:{h1:'Join as a partner', sub:'Screening first. Once approved, patients start reaching you.',
+          btn:'Apply for screening', go:"go('site');location.hash='#/profissionais';setTimeout(triageOpen,300)"} },
+ nutri:{ kick:'Dietitian', icon:'leaf', g1:'#2A9D8F', g2:'#12615A',
+   tag:'Therapeutic nutrition, from the metabolic rationale to what lands on the plate.',
+   login:{h1:'Welcome back', sub:'The metabolic plan and the person following it, side by side.',
+          btn:'Log in', go:"go('nutri')"},
+   account:{h1:'Join as a partner', sub:'Screening first. Once approved, patients start reaching you.',
+          btn:'Apply for screening', go:"go('site');location.hash='#/profissionais';setTimeout(triageOpen,300)"} },
+ student:{ kick:'Certification', icon:'award', g1:'#D9A420', g2:'#8E6704',
+   tag:'Three tracks, a certificate at the end of each, and a direct route to partnership.',
+   login:{h1:'Welcome back', sub:'Pick up your certification track where you left off.',
+          btn:'Log in', go:"goStudent()"},
+   account:{h1:'Start your certification', sub:'Three tracks, from fundamentals to clinical protocol.',
+          btn:'Create account', go:"goStudent()"} }
+};
+const LGORDER=['patient','doctor','nutri','student'];
+let LGROLE='patient', LGMODE='login';
+function goLogin(role){ LGROLE=LOGINS[role]?role:'patient'; LGMODE='login'; go('login'); renderLogin(); }
+function goAccount(role){ LGROLE=LOGINS[role]?role:'patient'; LGMODE='account'; go('login'); renderLogin(); }
+function lgSwitch(role){ LGROLE=role; renderLogin(); }
+function lgRoleArt(r){
+  const c=LOGINS[r]; if(!c||!c.g1) return '';
+  return '<svg viewBox="0 0 520 420" aria-hidden="true">'+
+    '<defs><linearGradient id="lgg-'+r+'" x1="0" y1="0" x2="1" y2="1">'+
+      '<stop offset="0" stop-color="'+c.g1+'"/><stop offset="1" stop-color="'+c.g2+'"/></linearGradient></defs>'+
+    '<rect x="0" y="0" width="520" height="420" rx="34" fill="url(#lgg-'+r+')"/>'+
+    '<circle cx="408" cy="102" r="78" fill="#fff" opacity=".12"/>'+
+    '<circle cx="408" cy="102" r="43" fill="#fff" opacity=".17"/>'+
+    '<path d="M0 288 Q120 242 260 280 T520 254 L520 420 L0 420Z" fill="#fff" opacity=".1"/>'+
+    '<path d="M0 338 Q140 294 280 332 T520 314 L520 420 L0 420Z" fill="#fff" opacity=".1"/>'+
+    '<g fill="#fff" opacity=".4"><circle cx="86" cy="62" r="3.4"/><circle cx="330" cy="178" r="2.6"/>'+
+    '<circle cx="150" cy="118" r="2.2"/><circle cx="474" cy="212" r="3"/></g></svg>'+
+    '<span class="lg-glyph ic" data-icon="'+c.icon+'"></span>';
+}
+function renderLogin(){
+  const c=LOGINS[LGROLE], m=c[LGMODE]||c.login;
+  const set=function(id,txt){ const el=document.getElementById(id); if(el) el.textContent=txt; };
+  set('lgKick',__tr(c.kick)); set('lgH1',__tr(m.h1)); set('lgSub',__tr(m.sub)); set('lgTag',__tr(c.tag));
+  const btn=document.getElementById('lgBtn');
+  if(btn){ btn.textContent=__tr(m.btn); btn.setAttribute('onclick',m.go); }
+  const art=document.getElementById('lgArt');
+  if(art) art.classList.toggle('role',LGROLE!=='patient');
+  const food=document.getElementById('lgArtFood');
+  if(food) food.style.display=(LGROLE==='patient')?'':'none';
+  const ra=document.getElementById('lgArtRole');
+  if(ra){ ra.innerHTML=(LGROLE==='patient')?'':lgRoleArt(LGROLE); renderIcons(ra); }
+  const rw=document.getElementById('lgRoles');
+  if(rw){
+    rw.innerHTML='<span class="lg-rolab">'+__tr('Sign in as')+'</span>'+
+      LGORDER.map(function(r){
+        return '<button class="'+(r===LGROLE?'on':'')+'" onclick="lgSwitch(\''+r+'\')">'+__tr(LOGINS[r].kick)+'</button>';
+      }).join('');
+  }
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
 }
 
 /* ============ EQUIPE: application modal ============ */
@@ -5120,6 +6269,236 @@ routeFromHash();
     "Create your account":"Criar sua conta",
     "Search for a topic, video, or article":"Busque um tema, vídeo ou artigo",
     "Create your account and the guided programs open up. Two minutes to tell us where you are, and we build the path from there.":"Crie sua conta e os programas guiados se abrem. Dois minutos para contar onde você está, e montamos o caminho a partir daí.",
+    "Podcasts & talks":"Podcasts e entrevistas",
+    "Conversations on metabolic psychiatry. Free, no account needed.":"Conversas sobre psiquiatria metabólica. Abertas, sem precisar de conta.",
+    "Create an account to access exclusive content!":"Crie uma conta para acessar o conteúdo exclusivo!",
+    "Guided programs, short daily sessions and a library that keeps your progress. Free to start.":"Programas guiados, sessões diárias curtas e uma biblioteca que guarda o seu progresso. Começar é grátis.",
+    "What is being written about metabolic psychiatry.":"O que está sendo escrito sobre psiquiatria metabólica.",
+    "Search for a topic, episode, or article":"Busque um tema, episódio ou artigo",
+    "Free account":"Conta gratuita",
+    "The rest of the library is one click away.":"O resto da biblioteca está a um clique.",
+    "Create your account to open the guided programs and keep your progress. It costs nothing to start.":"Crie sua conta para abrir os programas guiados e guardar seu progresso. Começar não custa nada.",
+    "Create account":"Criar conta",
+    "Free to start. Your progress is saved as you go.":"Começar é grátis. Seu progresso fica salvo conforme você avança.",
+    "Caring for your mind by caring for your metabolism.":"Cuidando da sua mente cuidando do seu metabolismo.",
+    "Read article":"Ler artigo",
+    "Previous":"Anterior",
+    "Next":"Próximo",
+    "Choose your plan":"Escolha seu plano",
+    "Start free and stay free for as long as you want. The treatment plan opens everything and puts a care team behind it.":"Comece grátis e fique grátis pelo tempo que quiser. O plano de tratamento libera tudo e coloca uma equipe clínica atrás disso.",
+    "There is more waiting behind the plans.":"Tem mais coisa esperando nos planos.",
+    "The rest of the programs, a psychiatrist and a nutritionist reading your progress, and a meal plan built around your labs.":"O resto dos programas, um psiquiatra e uma nutricionista lendo seu progresso, e um plano alimentar montado a partir dos seus exames.",
+    "See the plans":"Ver os planos",
+    "Your free content stays free.":"Seu conteúdo gratuito continua gratuito.",
+    "From the open library, always free.":"Da biblioteca aberta, sempre grátis.",
+    "Free":"Gratuito",
+    "Treatment":"Tratamento",
+    "What you have today.":"O que você já tem hoje.",
+    "The full path, with people behind it.":"O caminho completo, com gente por trás.",
+    "The open library, podcasts and articles":"A biblioteca aberta, podcasts e artigos",
+    "One guided program, start to finish":"Um programa guiado, do começo ao fim",
+    "Your progress saved as you go":"Seu progresso salvo conforme você avança",
+    "Every guided program":"Todos os programas guiados",
+    "Teleconsultations with psychiatrist and nutritionist":"Teleconsultas com psiquiatra e nutricionista",
+    "Cancel plan":"Cancelar plano",
+    "Current":"Atual",
+    "For professionals":"Para profissionais",
+    "Metabolic psychiatry needs more people who know how to practise it.":"A psiquiatria metabólica precisa de mais gente que saiba praticá-la.",
+    "Patients are already looking for this treatment. What is missing is trained professionals to deliver it. Two ways in, depending on where you are today.":"Os pacientes já estão procurando esse tratamento. O que falta são profissionais treinados para entregá-lo. Duas portas, dependendo de onde você está hoje.",
+    "Already certified":"Já certificado",
+    "Start seeing patients.":"Comece a atender.",
+    "You already hold a credential in metabolic or nutritional psychiatry. Send it through screening and, once approved, patients from the platform start reaching you.":"Você já tem uma certificação em psiquiatria metabólica ou nutricional. Passe pela triagem e, uma vez aprovado, os pacientes da plataforma começam a chegar até você.",
+    "Screening of your credential and clinical background":"Triagem da sua certificação e da sua formação clínica",
+    "Patients matched from the subscriber base":"Pacientes encaminhados da base de assinantes",
+    "Scheduling, records and follow-up in one place":"Agenda, prontuário e acompanhamento num lugar só",
+    "Apply for screening":"Passar pela triagem",
+    "Not yet":"Ainda não",
+    "Get certified first.":"Certifique-se primeiro.",
+    "A structured track built on the clinical literature, in short sessions you fit around your practice. Finish it and you can apply as a partner without further screening.":"Uma trilha estruturada, construída sobre a literatura clínica, em sessões curtas que cabem na sua rotina. Ao terminar, você se candidata a parceiro sem passar por nova triagem.",
+    "Three tracks, from fundamentals to clinical protocol":"Três trilhas, dos fundamentos ao protocolo clínico",
+    "Certificate issued at the end of each track":"Certificado emitido ao fim de cada trilha",
+    "Direct route to partnership when you finish":"Caminho direto para a parceria quando terminar",
+    "See the tracks":"Ver as trilhas",
+    "The certification tracks":"As trilhas de certificação",
+    "Same engine our patients use, built for clinicians.":"O mesmo motor que os pacientes usam, feito para clínicos.",
+    "Why this exists":"Por que isso existe",
+    "Excellent clinicians are rarely taught to run a practice. The platform handles the patients, the schedule and the records, so the clinical work is the only thing left to do.":"Clínicos excelentes raramente aprendem a tocar um consultório. A plataforma cuida dos pacientes, da agenda e do prontuário, para que sobre só o trabalho clínico.",
+    "Partnership":"Parceria",
+    "Questions before you commit?":"Dúvidas antes de decidir?",
+    "Tell us your background and what you practise today. We answer every application, certified or not.":"Conte sua formação e o que você atende hoje. Respondemos toda candidatura, certificado ou não.",
+    "Talk to us":"Falar com a gente",
+    "Every application is read by a clinician. Tell us what you hold today and we come back with the next step.":"Toda candidatura é lida por um clínico. Conte o que você tem hoje e voltamos com o próximo passo.",
+    "Professional registration":"Registro profissional",
+    "Credential in metabolic or nutritional psychiatry":"Certificação em psiquiatria metabólica ou nutricional",
+    "Course, institution and year":"Curso, instituição e ano",
+    "Application received":"Candidatura recebida",
+    "Screening takes up to five business days. If your credential is accepted, your partner dashboard opens and patients start being matched to you.":"A triagem leva até cinco dias úteis. Se a sua certificação for aceita, seu painel de parceiro abre e os pacientes começam a ser encaminhados.",
+    "Preview the partner dashboard":"Ver o painel de parceiro",
+    "Fill in your name, registration and credential.":"Preencha nome, registro e certificação.",
+    "Certification":"Certificação",
+    "Short modules, built to fit around a practice.":"Módulos curtos, feitos para caber na rotina do consultório.",
+    "tracks complete":"trilhas concluídas",
+    "Finish them all, or apply as a partner with what you already hold.":"Termine todas, ou candidate-se a parceiro com o que já tem.",
+    "Apply as a partner":"Candidatar-se a parceiro",
+    "No track finished yet":"Nenhuma trilha concluída ainda",
+    "Each track ends with a certificate that opens the partner application.":"Cada trilha termina com um certificado que abre a candidatura a parceiro.",
+    "Your tracks":"Suas trilhas",
+    "All tracks":"Todas as trilhas",
+    "Three tracks, from fundamentals to clinical protocol.":"Três trilhas, dos fundamentos ao protocolo clínico.",
+    "Ready to start seeing patients?":"Pronto para começar a atender?",
+    "Partners receive patients from the subscriber base, with scheduling, records and follow-up handled by the platform.":"Parceiros recebem pacientes da base de assinantes, com agenda, prontuário e acompanhamento por conta da plataforma.",
+    "Every application gets an answer.":"Toda candidatura recebe resposta.",
+    "Courses":"Cursos",
+    "Certification tracks, and everything the patients are reading.":"Trilhas de certificação, e tudo o que os pacientes estão lendo.",
+    "Certificates you earn here appear on your public profile.":"Os certificados que você tira aqui aparecem no seu perfil público.",
+    "Certification tracks":"Trilhas de certificação",
+    "What your patients see":"O que seus pacientes veem",
+    "The same programs, from their side.":"Os mesmos programas, do lado deles.",
+    "Certificate issued":"Certificado emitido",
+    "This track is complete. You can apply as a partner with it.":"Esta trilha está concluída. Você pode se candidatar a parceiro com ela.",
+    "Certificate at the end":"Certificado no fim",
+    "Finish every module and the certificate is issued to your profile, which opens the partner application without further screening.":"Conclua todos os módulos e o certificado é emitido no seu perfil, o que abre a candidatura a parceiro sem nova triagem.",
+    "one-off":"pagamento único",
+    "modules":"módulos",
+    "Module":"Módulo",
+    "Next module":"Próximo módulo",
+    "Module complete.":"Módulo concluído.",
+    "Track complete. Certificate issued.":"Trilha concluída. Certificado emitido.",
+    "Start track":"Começar trilha",
+    "In certification":"Em certificação",
+    "Professional in certification":"Profissional em certificação",
+    "Therapist":"Terapeuta",
+    "Therapist view":"Visão do terapeuta",
+    "Psychologist":"Psicólogo",
+    "Health coach":"Coach de saúde",
+    "Viewing as":"Vendo como",
+    "Prescription and dose adjustment":"Prescrição e ajuste de dose",
+    "Carbohydrate reduction shifts dose requirements. Review medication alongside the nutrition plan.":"A redução de carboidrato muda a necessidade de dose. Revise a medicação junto com o plano alimentar.",
+    "Session notes and therapeutic plan":"Registro de sessão e plano terapêutico",
+    "Track what the patient reports between sessions and how it moves with the metabolic work.":"Acompanhe o que o paciente relata entre as sessões e como isso se move com o trabalho metabólico.",
+    "Habit tracking and weekly check-ins":"Acompanhamento de hábitos e check-ins semanais",
+    "Keep the daily routine on track between clinical appointments.":"Mantenha a rotina diária de pé entre as consultas clínicas.",
+    "Your practice this month":"Seu consultório neste mês",
+    "Revenue this month":"Faturamento no mês",
+    "New patients":"Novos pacientes",
+    "Request to booking":"Pedido até consulta",
+    "+22% vs last month":"+22% contra o mês passado",
+    "from the subscriber base":"vindos da base de assinantes",
+    "of matched patients booked":"dos pacientes encaminhados agendaram",
+    "Patients waiting for you":"Pacientes esperando por você",
+    "Matched from the subscriber base, with what they have already done in the app attached.":"Encaminhados da base de assinantes, com o que já fizeram no app anexado.",
+    "Accept patient":"Aceitar paciente",
+    "Accepted":"Aceito",
+    "Patient accepted. They appear in your list.":"Paciente aceito. Ele aparece na sua lista.",
+    "Accepting new patients":"Aceitando novos pacientes",
+    "You are visible to patients again.":"Você voltou a aparecer para os pacientes.",
+    "You are hidden from new patients.":"Você está oculto para novos pacientes.",
+    "View public profile":"Ver perfil público",
+    "Demo: your public profile would open here":"Demo: seu perfil público abriria aqui",
+    "platform certificates":"certificados da plataforma",
+    "Today in the clinic":"Hoje no consultório",
+    "moderate risk":"risco moderado",
+    "Energy declining over the last 7 days. Consider scheduling a follow-up.":"Energia caindo nos últimos 7 dias. Considere agendar um retorno.",
+    "Welcome":"Bem-vindo",
+    "Hello":"Olá",
+    "Demo: the video session would open here":"Demo: a sessão de vídeo abriria aqui",
+    "This is what your patient sees":"É isto que o seu paciente vê",
+    "Open any session to read the material your patients are working through, so your plan and the app say the same thing.":"Abra qualquer sessão para ler o material que seus pacientes estão percorrendo, para que o seu plano e o app digam a mesma coisa.",
+    "View certificate":"Ver certificado",
+    "Certificate of completion":"Certificado de conclusão",
+    "This certifies that":"Certificamos que",
+    "has completed the certification track":"concluiu a trilha de certificação",
+    "Modules":"Módulos",
+    "Issued":"Emitido em",
+    "Print or save as PDF":"Imprimir ou salvar em PDF",
+    "Jan":"jan",
+    "Feb":"fev",
+    "Mar":"mar",
+    "Apr":"abr",
+    "May":"mai",
+    "Jun":"jun",
+    "Jul":"jul",
+    "Aug":"ago",
+    "Sep":"set",
+    "Oct":"out",
+    "Nov":"nov",
+    "Dec":"dez",
+    "Everything in one place. Tap a card to open it.":"Tudo num lugar só. Toque num cartão para abrir.",
+    "Programs & content":"Programas e conteúdo",
+    "Continue where you left off":"Continue de onde parou",
+    "Start your first program":"Comece seu primeiro programa",
+    "appointments booked":"consultas agendadas",
+    "How are you today?":"Como você está hoje?",
+    "questions":"perguntas",
+    "Log today":"Registrar hoje",
+    "See the full day":"Ver o dia inteiro",
+    "Breakfast":"Café da manhã",
+    "Lunch":"Almoço",
+    "Dinner":"Jantar",
+    "Exams":"Exames",
+    "markers":"marcadores",
+    "need attention":"pedem atenção",
+    "Last collection Mar 5":"Última coleta em 5 de março",
+    "My team":"Minha equipe",
+    "Message your team":"Falar com a sua equipe",
+    "Profile":"Perfil",
+    "missions done today":"missões feitas hoje",
+    "Account and notifications":"Conta e notificações",
+    "Schedule":"Agenda",
+    "Check-in":"Check-in",
+    "Home":"Início",
+    "Tracking":"Acompanhamento",
+    "Notifications":"Notificações",
+    "Menu":"Menu",
+    "Settings":"Configurações",
+    "Log out":"Sair",
+    "In progress":"Em andamento",
+    "your team reads every one":"sua equipe lê todos",
+    "Dashboard":"Dashboard",
+    "Me":"Eu",
+    "Dietitian":"Nutricionista",
+    "Sign in as":"Entrar como",
+    "Psychiatrists, psychologists and coaches, working on the biology underneath.":"Psiquiatras, psicólogos e coaches, trabalhando na biologia que está por baixo.",
+    "Your patients, your schedule and your practice in one place.":"Seus pacientes, sua agenda e o seu consultório num lugar só.",
+    "Join as a partner":"Entrar como parceiro",
+    "Screening first. Once approved, patients start reaching you.":"Primeiro a triagem. Uma vez aprovado, os pacientes começam a chegar até você.",
+    "Therapeutic nutrition, from the metabolic rationale to what lands on the plate.":"Nutrição terapêutica, da lógica metabólica até o que chega no prato.",
+    "The metabolic plan and the person following it, side by side.":"O plano metabólico e a pessoa que o segue, lado a lado.",
+    "Three tracks, a certificate at the end of each, and a direct route to partnership.":"Três trilhas, um certificado ao fim de cada, e caminho direto para a parceria.",
+    "Pick up your certification track where you left off.":"Retome sua trilha de certificação de onde parou.",
+    "Start your certification":"Comece sua certificação",
+    "Practice":"Consultório",
+    "Your practice":"Seu consultório",
+    "vs last month":"contra o mês passado",
+    "waiting for you":"esperando por você",
+    "Leads, conversion and public profile":"Leads, conversão e perfil público",
+    "Patients":"Pacientes",
+    "active":"ativos",
+    "Open the list":"Abrir a lista",
+    "Records":"Prontuários",
+    "open records":"prontuários abertos",
+    "Read and update":"Ler e atualizar",
+    "Requests":"Pedidos",
+    "waiting for a reply":"esperando resposta",
+    "all answered":"tudo respondido",
+    "Answer your patients":"Responder seus pacientes",
+    "Menus":"Cardápios",
+    "meals planned":"refeições planejadas",
+    "Build and send a plan":"Montar e enviar um plano",
+    "Keep certifying":"Seguir se certificando",
+    "Your practice in one place. Tap a card to open it.":"Seu consultório num lugar só. Toque num cartão para abrir.",
+    "Your certification in one place. Tap a card to open it.":"Sua certificação num lugar só. Toque num cartão para abrir.",
+    "Tracks":"Trilhas",
+    "tracks":"trilhas",
+    "From fundamentals to clinical protocol.":"Dos fundamentos ao protocolo clínico.",
+    "Browse the catalogue":"Ver o catálogo",
+    "Certificates":"Certificados",
+    "issued to your profile":"emitidos no seu perfil",
+    "none issued yet":"nenhum emitido ainda",
+    "Finish a track to earn one":"Conclua uma trilha para ganhar um",
+    "Already certified?":"Já é certificado?",
+    "Send your credential through screening.":"Mande sua certificação para a triagem.",
+    "Start your first track":"Comece sua primeira trilha",
     "Up next":"Continue de onde parou",
     "Pick up where you left off.":"Retome sua jornada.",
     "Play session":"Iniciar sessão",
