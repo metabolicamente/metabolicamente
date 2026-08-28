@@ -6,7 +6,7 @@
 <title>Metabolicamente · Metabolic Psychiatry</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M18.6 7.9A8 8 0 1 0 20 12.4' fill='none' stroke='%230C333F' stroke-width='2.4' stroke-linecap='round'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Mulish:wght@400;500;600&family=Caveat:wght@400;700&family=Baloo+2:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Montserrat:wght@500;600;700;800&family=Mulish:wght@400;500;600&family=Caveat:wght@400;700&family=Baloo+2:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --t950:#092832; --t900:#0C333F; --t800:#114B5F; --t700:#1A5F76; --t500:#2A9D8F;
@@ -616,7 +616,7 @@ body.title-wait #heroTitle{opacity:0}
 /* ============ LANDING ============ */
 #site{background:var(--bg)}
 .nav{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:26px;padding:0 20px;height:64px;background:var(--navbg);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.logo{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:19px;color:var(--hd2);margin-right:auto}
+.logo{display:flex;align-items:center;gap:8px;font-family:var(--quiet);font-weight:500;letter-spacing:-.03em;font-size:19px;color:var(--hd2);margin-right:auto}
 .logo-mark{display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .logo-mark svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
 .nav a.nl{position:relative;font-size:14px;color:var(--soft);font-weight:500;white-space:nowrap}
@@ -701,8 +701,6 @@ body.intro-done .hero-media{opacity:1}
 .hq-art{position:relative;opacity:0;transition:opacity 1.1s ease}
 body.intro-done .hq-art{opacity:1}
 .hq-art svg{display:block;width:100%;height:auto;max-width:720px;margin:0 0 0 auto}
-.hq-strip{max-width:1320px;width:100%;margin:0 auto;padding:6px 5vw 12px;display:flex;flex-wrap:wrap;gap:10px 34px;
-  font-family:var(--quiet);font-size:12.5px;color:var(--soft);opacity:.85;position:relative;z-index:2}
 /* scroll cue: gives the hero a floor so the sign-up starts below the fold */
 .hq-cue{display:flex;justify-content:center;padding:0 0 22px;position:relative;z-index:2}
 .hq-cue svg{width:22px;height:22px;stroke:var(--soft);fill:none;stroke-width:1.6;
@@ -717,7 +715,6 @@ body.intro-done .hq-art{opacity:1}
   .hero-quiet .hq-grid{grid-template-columns:1fr;padding:56px 5vw 0;min-height:0;gap:26px}
   .hero-quiet p{max-width:none}
   .hq-art svg{margin:0 auto;max-width:560px}
-  .hq-strip{padding-top:14px}
 }
 .sec{padding:90px 5vw}
 .sec-inner{max-width:1080px;margin:0 auto}
@@ -1874,6 +1871,68 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
 #pg-tratamento .sec{padding:6px var(--gut) 40px}
 #pg-tratamento .tj-wrap{max-width:900px;margin:0}
 #pg-tratamento .tj-card{border-radius:22px;padding:26px 30px}
+/* ============ METABOLIC FOUNDATIONS (brain-tree roots) ============ */
+.roots{position:relative;overflow:hidden;background:#061A21;color:#EAF2F0;
+  padding:clamp(70px,8vw,120px) 5vw clamp(40px,5vw,70px)}
+.roots::before{content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(120% 70% at 50% 8%, rgba(52,150,140,.20), transparent 60%),
+    radial-gradient(90% 60% at 50% 100%, rgba(217,164,32,.13), transparent 65%),
+    radial-gradient(140% 100% at 50% 50%, transparent 40%, rgba(2,10,14,.75) 100%);}
+.rt-inner{position:relative;z-index:2;max-width:1180px;margin:0 auto}
+.rt-head{text-align:center;max-width:41em;margin:0 auto clamp(6px,2vw,18px)}
+.rt-kicker{display:inline-flex;align-items:center;gap:9px;font-size:12.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:#8FC1BB;font-weight:500;opacity:.9}
+.rt-kicker i{width:7px;height:7px;border-radius:50%;background:#D9A420;
+  box-shadow:0 0 12px 2px rgba(217,164,32,.75);animation:rtPulse 3.4s ease-in-out infinite}
+@keyframes rtPulse{0%,100%{opacity:.55;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+.rt-head h2{font-family:var(--quiet);font-weight:500;letter-spacing:-.035em;
+  font-size:clamp(30px,4.4vw,56px);line-height:1.03;margin:16px 0 0;color:#F3EEE4}
+.rt-head h2 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em;
+  background:linear-gradient(100deg,#E9C46A,#79D0C4,#8FB8E2,#E9C46A);
+  background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:rtFlow 11s linear infinite}
+@keyframes rtFlow{to{background-position:300% 0}}
+@keyframes rtFade{from{opacity:0}to{opacity:1}}
+.rt-head p{font-size:clamp(15px,1.5vw,18px);line-height:1.6;color:#A9C2C0;margin:20px auto 0;max-width:33em}
+
+/* stage */
+.rt-stage{position:relative;margin:clamp(-14px,-1.4vw,0px) auto 0;max-width:1120px}
+.rt-stage svg{display:block;width:100%;height:auto;overflow:visible}
+.rt-motes{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.rt-mote{position:absolute;border-radius:50%;background:#CFE9E4;opacity:0;
+  animation:rtDrift linear infinite}
+@keyframes rtDrift{
+  0%{opacity:0;transform:translate3d(0,0,0) scale(.6)}
+  12%{opacity:.55}
+  70%{opacity:.35}
+  100%{opacity:0;transform:translate3d(var(--dx),-260px,0) scale(1.1)}}
+
+/* svg pieces */
+.seg{fill:none;stroke-linecap:round;transition:stroke .45s ease,opacity .45s ease}
+.brainline{fill:none;stroke:rgba(143,193,187,.22);stroke-width:1.2;stroke-linecap:round}
+.rt-label{font-family:var(--quiet);font-size:15.5px;font-weight:500;fill:#D8E7E4;cursor:default;
+  paint-order:stroke;stroke:#08202A;stroke-width:6px;stroke-linejoin:round;transition:fill .3s ease}
+.rt-label-sub{font-family:var(--quiet);font-size:11.5px;font-weight:400;fill:#89A5A3;letter-spacing:.03em;
+  paint-order:stroke;stroke:#08202A;stroke-width:5px;stroke-linejoin:round;transition:fill .3s ease}
+.lbl:hover .rt-label{fill:#FFF4DC}
+.lbl:hover .rt-label-sub{fill:#B9AE8E}
+.lbl-dot{fill:#E9C46A;opacity:.9}
+.rt-foot{text-align:center;margin-top:clamp(18px,3vw,34px);position:relative;z-index:2}
+.rt-cta{display:inline-flex;align-items:center;gap:11px;font-size:15.5px;font-weight:500;
+  color:#F3EEE4;text-decoration:none;border-bottom:1.5px solid rgba(243,238,228,.45);
+  padding-bottom:4px;transition:border-color .2s,color .2s}
+.rt-cta:hover{border-color:#E9C46A;color:#FFF4DC}
+.rt-cta svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+
+@media(max-width:720px){
+  .rt-label{font-size:19px}
+  .rt-label-sub{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .rt-mote,.rt-kicker i,.rt-head h2 em{animation:none}
+}
+
 </style>
 </head>
 <body>
@@ -2066,7 +2125,6 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
       </svg>
     </div>
     </div>
-    <div class="hq-strip"><span>Metabolic psychiatry</span><span>Care team, not a chatbot</span><span>Português · English</span></div>
     <div class="hq-cue" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></div>
   </header>
 
@@ -2089,6 +2147,83 @@ body.dark .wm-col.out .wm-chip{color:#F0A88E}
         </button>
       </div>
       <p class="sglegal">By continuing you agree to our Terms and Privacy Policy.</p>
+    </div>
+  </section>
+
+
+  <!-- ============ METABOLIC FOUNDATIONS ============ -->
+  <section class="roots" id="rootsSec">
+    <div class="rt-inner">
+      <div class="rt-head">
+        <span class="rt-kicker"><i></i>Metabolic foundations</span>
+        <h2>Nothing grows above<br>what isn't fed <em>below.</em></h2>
+        <p>Mood, focus and resilience run on the same biology as the rest of your body. Feed the roots, and the mind follows.</p>
+      </div>
+
+      <div class="rt-stage" id="rtStage">
+        <div class="rt-motes" id="rtMotes"></div>
+        <svg id="rtSvg" viewBox="0 0 1000 970" role="img"
+             aria-label="A brain drawn as the canopy of a tree, with deep roots labelled nutrition, sleep, movement, light and rhythm, stress load and blood sugar">
+          <defs>
+            <linearGradient id="gCanopy" gradientUnits="userSpaceOnUse" x1="0" y1="470" x2="0" y2="80">
+              <stop offset="0%"   stop-color="#2A9D8F"/>
+              <stop offset="35%"  stop-color="#5FC4B6"/>
+              <stop offset="75%"  stop-color="#9FE0D5"/>
+              <stop offset="100%" stop-color="#DCF4EE"/>
+            </linearGradient>
+            <linearGradient id="gRoot" gradientUnits="userSpaceOnUse" x1="0" y1="560" x2="0" y2="960">
+              <stop offset="0%"   stop-color="#3FB3A3"/>
+              <stop offset="30%"  stop-color="#94B075"/>
+              <stop offset="65%"  stop-color="#D9A420"/>
+              <stop offset="100%" stop-color="#F0D79A"/>
+            </linearGradient>
+            <linearGradient id="gTrunkFill" gradientUnits="userSpaceOnUse" x1="0" y1="560" x2="0" y2="440">
+              <stop offset="0%"   stop-color="#C9B24C"/>
+              <stop offset="55%"  stop-color="#6FBFAE"/>
+              <stop offset="100%" stop-color="#3FB3A3"/>
+            </linearGradient>
+            <radialGradient id="gBrainFill">
+              <stop offset="0%"   stop-color="#5FC9BC" stop-opacity=".10"/>
+              <stop offset="100%" stop-color="#2A9D8F" stop-opacity=".02"/>
+            </radialGradient>
+            <radialGradient id="gAura">
+              <stop offset="0%"   stop-color="#5FC9BC" stop-opacity=".30"/>
+              <stop offset="55%"  stop-color="#2A9D8F" stop-opacity=".10"/>
+              <stop offset="100%" stop-color="#2A9D8F" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="gSoil">
+              <stop offset="0%"   stop-color="#E9C46A" stop-opacity=".26"/>
+              <stop offset="100%" stop-color="#E9C46A" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="fGlow" x="-60%" y="-60%" width="220%" height="220%">
+              <feGaussianBlur stdDeviation="6" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="fSoft" x="-40%" y="-40%" width="180%" height="180%">
+              <feGaussianBlur stdDeviation="2.4"/>
+            </filter>
+          </defs>
+
+          <ellipse id="aura" cx="510" cy="272" rx="370" ry="255" fill="url(#gAura)"/>
+          <ellipse cx="505" cy="600" rx="440" ry="76" fill="url(#gSoil)"/>
+          <path d="M 60 600 H 950" stroke="url(#gRoot)" stroke-width="1" opacity=".22" fill="none"/>
+
+          <g id="gBrainOutline"></g>
+          <g id="gRoots"></g>
+          <g id="gTrunk"></g>
+          <g id="gBranches"></g>
+          <g id="gGlowRoots" filter="url(#fSoft)" opacity=".5"></g>
+          <g id="gSparks"></g>
+          <g id="gLabels"></g>
+          <path id="probe" d="" fill="none" stroke="none"/>
+        </svg>
+      </div>
+
+      <div class="rt-foot">
+        <a class="rt-cta" href="#/tratamento">See how we work the roots
+          <svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -5868,6 +6003,24 @@ routeFromHash();
 /* ============ LANGUAGE TOGGLE (EN / PT-BR) ============ */
 (function(){
   const EN2PT={
+    "Metabolic foundations":"Fundamentos metabólicos",
+    "Nothing grows above":"Nada cresce acima",
+    "what isn't fed":"do que não é nutrido",
+    "below.":"abaixo.",
+    "Mood, focus and resilience run on the same biology as the rest of your body. Feed the roots, and the mind follows.":"Humor, foco e resiliência funcionam com a mesma biologia do resto do corpo. Cuide das raízes, e a mente acompanha.",
+    "Nutrition":"Nutrição",
+    "what it's built from":"a matéria-prima do cérebro",
+    "Sleep":"Sono",
+    "nightly repair":"o reparo de cada noite",
+    "Blood sugar":"Glicemia",
+    "steady fuel":"energia estável",
+    "Movement":"Movimento",
+    "stronger mitochondria":"mitocôndrias mais fortes",
+    "Light & rhythm":"Luz e ritmo",
+    "the body clock":"o relógio do corpo",
+    "Stress load":"Carga de estresse",
+    "cortisol in range":"cortisol sob controle",
+    "See how we work the roots":"Veja como trabalhamos as raízes",
     "Continue with email":"Continuar com e-mail",
     "Continue with Phone or Email":"Continuar com Telefone ou E-mail",
     "Join 100,000 people restoring their mental health, metabolically.":"Junte-se a 100.000 pessoas restaurando sua saúde mental, metabolicamente.",
@@ -6958,6 +7111,316 @@ routeFromHash();
     const wt=document.querySelector('.wiz-top'); if(wt&&!wt.querySelector('.langtog')){ const t=makeTog(); t.style.position='absolute'; t.style.left='22px'; t.style.marginLeft='0'; wt.appendChild(t); }
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',inject); else inject();
+})();
+</script>
+
+<script>
+/* ============ METABOLIC FOUNDATIONS — brain-tree with living roots ============ */
+
+(function(){
+  if(!document.getElementById('rtSvg')) return;
+  const SVG='http://www.w3.org/2000/svg';
+  const STATIC=/[?&]static/.test(location.search)||window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const svg=document.getElementById('rtSvg');
+  const gRoots=document.getElementById('gRoots'), gBr=document.getElementById('gBranches'),
+        gTr=document.getElementById('gTrunk'), gGlow=document.getElementById('gGlowRoots'),
+        gSpk=document.getElementById('gSparks'), gLab=document.getElementById('gLabels'),
+        gOut=document.getElementById('gBrainOutline');
+
+  /* ---------- seeded rng ---------- */
+  let _s=20260827;
+  const rnd=()=>{_s|=0;_s=_s+0x6D2B79F5|0;let t=Math.imul(_s^_s>>>15,1|_s);
+    t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296;};
+  const rr=(a,b)=>a+(b-a)*rnd();
+
+  /* ---------- brain silhouette (side view, facing left) ---------- */
+  const BRAIN='M 300 190 C 320 120 424 82 514 84 C 622 86 716 128 748 196 '+
+              'C 788 224 792 292 754 324 C 748 354 728 374 700 382 '+
+              'C 728 398 728 426 700 438 C 676 454 640 450 620 434 '+
+              'C 606 446 590 450 576 444 C 568 458 558 464 548 464 '+
+              'C 538 464 528 454 522 442 C 500 432 470 426 452 410 '+
+              'C 410 402 372 386 344 358 C 300 346 262 308 254 266 '+
+              'C 246 230 266 200 300 190 Z';
+  const probe=document.getElementById('probe');
+  probe.setAttribute('d',BRAIN);
+  const pt=svg.createSVGPoint();
+  const inside=(x,y)=>{pt.x=x;pt.y=y;return probe.isPointInFill(pt);};
+
+  // faint silhouette + sulci
+  const outline=document.createElementNS(SVG,'path');
+  outline.setAttribute('d',BRAIN);
+  outline.setAttribute('fill','url(#gBrainFill)');
+  outline.setAttribute('stroke','rgba(150,215,206,.15)');
+  outline.setAttribute('stroke-width','1.4');
+  gOut.appendChild(outline);
+  const sulci=[
+    'M 316 196 C 372 152 452 138 520 158 C 572 174 588 214 556 244 C 528 270 486 266 466 240',
+    'M 286 268 C 340 234 414 232 466 262 C 502 282 512 318 486 340',
+    'M 344 344 C 396 320 462 320 508 344 C 542 362 552 392 528 412',
+    'M 560 120 C 584 168 566 206 524 226',
+    'M 636 108 C 676 156 672 214 634 250 C 676 268 692 316 664 350',
+    'M 736 176 C 772 214 774 274 742 308',
+    'M 618 388 C 646 376 668 390 676 410',
+    'M 640 414 C 660 404 678 410 688 424'
+  ];
+  sulci.forEach(d=>{const p=document.createElementNS(SVG,'path');
+    p.setAttribute('d',d);p.setAttribute('class','brainline');gOut.appendChild(p);});
+
+  /* ---------- tree generation ---------- */
+  const segs=[];   // {d,w,depth,group,kind,parent,x0,y0,cx,cy,x1,y1,children:[]}
+  function seg(o){o.children=[];segs.push(o);if(o.parent!=null)segs[o.parent].children.push(segs.length-1);return segs.length-1;}
+  function curveD(x0,y0,cx,cy,x1,y1){return 'M '+x0.toFixed(1)+' '+y0.toFixed(1)+' Q '+cx.toFixed(1)+' '+cy.toFixed(1)+' '+x1.toFixed(1)+' '+y1.toFixed(1);}
+
+  function branch(x,y,ang,len,w,depth,cfg,group,parent){
+    if(depth>cfg.max||len<cfg.minLen||w<.3) return;
+    let x1,y1,ok=false,L=len,A=ang;
+    for(let tries=0;tries<8;tries++){
+      x1=x+Math.cos(A)*L; y1=y+Math.sin(A)*L;
+      if(!cfg.bound||cfg.bound(x1,y1)){ok=true;break;}
+      if(cfg.reflect){A=cfg.reflect(x1,y1,A,x,y);}
+      else{L*=0.66; if(L<cfg.minLen*0.6) break;}
+    }
+    if(!ok) return;
+    const bend=rr(-.42,.42)*(cfg.bend||1);
+    const mx=(x+x1)/2,my=(y+y1)/2, nx=-Math.sin(A),ny=Math.cos(A);
+    const cx=mx+nx*L*bend, cy=my+ny*L*bend;
+    const idx=seg({d:curveD(x,y,cx,cy,x1,y1),w:w,depth:depth,group:group,kind:cfg.kind,
+                   parent:parent,x0:x,y0:y,cx:cx,cy:cy,x1:x1,y1:y1});
+    const n = depth<1 ? 2 : (rnd()<cfg.trifork?3:2);
+    for(let i=0;i<n;i++){
+      const spread=cfg.spread*(1+(rnd()-.5)*.6);
+      const off=(n===1)?0:(-spread/2+spread*(i/(n-1)))+rr(-.12,.12);
+      branch(x1,y1,A+off+(cfg.drift?cfg.drift(A,depth):0),
+             L*rr(cfg.decay[0],cfg.decay[1]), w*rr(.66,.81), depth+1, cfg, group, idx);
+    }
+  }
+
+  const D=Math.PI/180;
+  const BASE={x:508,y:600};     // where trunk meets soil
+  const TOP ={x:546,y:458};     // brainstem exit
+
+  /* roots — 6 primary, one per foundation */
+  const FOUND=[
+    {a:163,label:'Nutrition',     sub:"what it's built from", side:'l',lx:142,ly:672,len:132},
+    {a:135,label:'Sleep',         sub:'nightly repair',       side:'l',lx:160,ly:790,len:158},
+    {a:105,label:'Blood sugar',   sub:'steady fuel',          side:'l',lx:236,ly:898,len:180},
+    {a: 75,label:'Movement',      sub:'stronger mitochondria',side:'r',lx:768,ly:898,len:180},
+    {a: 45,label:'Light & rhythm',sub:'the body clock',       side:'r',lx:848,ly:790,len:158},
+    {a: 17,label:'Stress load',   sub:'cortisol in range',    side:'r',lx:866,ly:672,len:132}
+  ];
+  const FLOOR=934;
+  const inSoil=(x,y)=>(y>BASE.y+3&&y<FLOOR&&x>60&&x<940);
+  const reflect=(x1,y1,A)=>{
+    if(y1<=BASE.y+3) return -A + (rnd()-.5)*.3;        // bounce off the soil line
+    if(y1>=FLOOR)    return -A + Math.PI*0 + (rnd()-.5)*.3;
+    return Math.PI - A + (rnd()-.5)*.3;                 // bounce off the side
+  };
+  FOUND.forEach((f,i)=>{
+    branch(BASE.x,BASE.y,f.a*D,f.len,7.6,0,
+      {max:6,minLen:10,spread:.70,decay:[.66,.80],trifork:.26,bend:1.05,kind:'root',
+       drift:(ang,depth)=>{const down=(Math.PI/2-ang);return down*0.22*(depth*0.4+.6);},
+       reflect:reflect, bound:inSoil},
+      i,null);
+  });
+
+  /* trunk */
+  const trunk=document.createElementNS(SVG,'path');
+  trunk.setAttribute('d',
+    'M 482 606 C 496 558 517 520 536 470 L 557 470 '+
+    'C 543 522 527 560 535 606 '+
+    'C 523 598 494 598 482 606 Z');
+  trunk.setAttribute('fill','url(#gTrunkFill)');
+  trunk.setAttribute('opacity','.92');
+  const trunkLine=document.createElementNS(SVG,'path');
+  trunkLine.setAttribute('d','M 512 600 C 522 556 534 520 546 470');
+  trunkLine.setAttribute('fill','none');
+  trunkLine.setAttribute('stroke','rgba(255,244,214,.30)');
+  trunkLine.setAttribute('stroke-width','1.1');
+  gTr.appendChild(trunkLine);
+  gTr.insertBefore(trunk,trunkLine);
+
+  /* canopy inside the brain */
+  const CAN={max:7,minLen:12,spread:.86,decay:[.68,.83],trifork:.30,bend:.85,kind:'canopy',
+             bound:(x,y)=>inside(x,y)};
+  branch(TOP.x-4,TOP.y-8,-104*D,86,6.6,0,CAN,6,null);
+  branch(TOP.x-2,TOP.y-46,-152*D,78,4.6,1,CAN,7,null);
+  branch(TOP.x+4,TOP.y-52,-58*D,74,4.4,1,CAN,8,null);
+  branch(TOP.x-30,TOP.y-96,-168*D,72,3.6,2,CAN,9,null);
+  branch(TOP.x+26,TOP.y-104,-24*D,70,3.4,2,CAN,10,null);
+  branch(TOP.x-70,TOP.y-150,-176*D,62,2.8,3,CAN,11,null);
+  branch(TOP.x+66,TOP.y-158,-8*D,60,2.8,3,CAN,12,null);
+  branch(TOP.x+40,TOP.y-30,-14*D,52,2.6,4,CAN,13,null);   // cerebellum
+  branch(TOP.x+62,TOP.y-46,10*D,46,2.2,4,CAN,14,null);
+  branch(TOP.x-58,TOP.y-58,-172*D,58,2.8,3,CAN,15,null);  // temporal lobe
+
+  /* ---------- render ---------- */
+  const els=[];
+  segs.forEach((s,i)=>{
+    const p=document.createElementNS(SVG,'path');
+    p.setAttribute('d',s.d);
+    p.setAttribute('class','seg');
+    p.setAttribute('stroke',s.kind==='root'?'url(#gRoot)':'url(#gCanopy)');
+    p.setAttribute('stroke-width',Math.max(.5,s.w).toFixed(2));
+    let op=(s.kind==='root'?0.94:0.86)-s.depth*0.04;
+    if(s.kind==='root'){
+      const dx=(s.x1-BASE.x)/356, dy=(s.y1-BASE.y)/344, r=Math.sqrt(dx*dx+dy*dy);
+      op*=Math.max(0.05,Math.min(1,1-(r-0.62)/0.48));
+    }
+    s.op=op;
+    p.setAttribute('opacity',op.toFixed(3));
+    (s.kind==='root'?gRoots:gBr).appendChild(p);
+    s.el=p; els.push(p);
+    if(s.kind==='root'&&s.depth<2){
+      const g=p.cloneNode(false);g.setAttribute('stroke-width',(s.w*2.1).toFixed(2));
+      g.setAttribute('opacity','.28');gGlow.appendChild(g);s.glow=g;
+    }
+  });
+
+  /* draw-in animation */
+  let maxDelay=0;
+  segs.forEach(s=>{
+    const L=s.el.getTotalLength()||1;
+    s.len=L;
+    s.el.style.strokeDasharray=L; s.el.style.strokeDashoffset=L;
+    const delay=(s.kind==='root'? s.depth*0.19 : 0.55+s.depth*0.17)+rnd()*0.13;
+    maxDelay=Math.max(maxDelay,delay);
+    s.el.style.transition='stroke-dashoffset '+(0.7+rnd()*0.5).toFixed(2)+'s cubic-bezier(.25,.8,.35,1) '+delay.toFixed(2)+'s, stroke .45s, opacity .45s';
+    if(s.glow){s.glow.style.strokeDasharray=L;s.glow.style.strokeDashoffset=L;
+      s.glow.style.transition=s.el.style.transition;}
+  });
+  trunk.style.opacity='0';
+  trunk.style.transition='opacity 1s ease .35s';
+
+  /* ---------- labels ---------- */
+  function mk(tag,at,txt){const e=document.createElementNS(SVG,tag);
+    for(const k in at)e.setAttribute(k,at[k]); if(txt!=null)e.textContent=txt; return e;}
+  FOUND.forEach((f,i)=>{
+    const left=f.side==='l', lx=f.lx, ly=f.ly, dx=left?lx+14:lx-14, dy=ly-5;
+    const g=mk('g',{'class':'lbl'}); g.dataset.group=i;
+    g.appendChild(mk('circle',{'class':'lbl-halo',cx:dx,cy:dy,r:9,fill:'#E9C46A',opacity:'.15'}));
+    g.appendChild(mk('circle',{'class':'lbl-dot',cx:dx,cy:dy,r:3.1}));
+    g.appendChild(mk('text',{'class':'rt-label',x:lx,y:ly,'text-anchor':left?'end':'start'},f.label));
+    g.appendChild(mk('text',{'class':'rt-label-sub',x:lx,y:ly+19,'text-anchor':left?'end':'start'},f.sub));
+    g.style.opacity='0';
+    g.dataset.delay=(1.7+i*0.12).toFixed(2);
+    gLab.appendChild(g);
+    g.addEventListener('mouseenter',()=>highlight(i,true));
+    g.addEventListener('mouseleave',()=>highlight(i,false));
+  });
+  function highlight(gi,on){
+    segs.forEach(s=>{
+      if(s.kind!=='root')return;
+      if(s.group===gi){s.el.setAttribute('stroke',on?'#FFE9A8':'url(#gRoot)');
+        s.el.style.opacity=on?1:s.op;}
+      else s.el.style.opacity=on?s.op*0.25:s.op;
+    });
+  }
+
+  /* ---------- nutrient sparks: root tip -> trunk -> brain ---------- */
+  const rootLeaves=segs.map((s,i)=>({s,i})).filter(o=>o.s.kind==='root'&&o.s.children.length===0&&o.s.depth>=3);
+  const canopyLeaves=segs.map((s,i)=>({s,i})).filter(o=>o.s.kind==='canopy'&&o.s.children.length===0&&o.s.depth>=3);
+  function chainUp(i){const c=[];let k=i;while(k!=null){c.push(segs[k]);k=segs[k].parent;}return c;}
+  function revQ(s){return 'Q '+s.cx.toFixed(1)+' '+s.cy.toFixed(1)+' '+s.x0.toFixed(1)+' '+s.y0.toFixed(1);}
+  function fwdQ(s){return 'Q '+s.cx.toFixed(1)+' '+s.cy.toFixed(1)+' '+s.x1.toFixed(1)+' '+s.y1.toFixed(1);}
+  function flowPath(){
+    if(!rootLeaves.length||!canopyLeaves.length)return null;
+    const rl=rootLeaves[(rnd()*rootLeaves.length)|0];
+    const cl=canopyLeaves[(rnd()*canopyLeaves.length)|0];
+    const up=chainUp(rl.i);                  // leaf -> primary root
+    const down=chainUp(cl.i).reverse();      // trunk -> canopy leaf
+    let d='M '+up[0].x1.toFixed(1)+' '+up[0].y1.toFixed(1);
+    up.forEach(s=>{d+=' '+revQ(s);});
+    d+=' L '+TOP.x+' '+TOP.y;
+    down.forEach(s=>{d+=' '+fwdQ(s);});
+    return d;
+  }
+  const SPARKS=11, sparks=[];
+  for(let i=0;i<SPARKS;i++){
+    const d=flowPath(); if(!d)break;
+    const hidden=document.createElementNS(SVG,'path');
+    hidden.setAttribute('d',d);hidden.setAttribute('fill','none');hidden.setAttribute('stroke','none');
+    gSpk.appendChild(hidden);
+    const dot=document.createElementNS(SVG,'circle');
+    dot.setAttribute('r',(2.0+rnd()*1.6).toFixed(2));
+    dot.setAttribute('fill','#FFF2CE');dot.setAttribute('filter','url(#fGlow)');
+    dot.setAttribute('opacity','0');
+    gSpk.appendChild(dot);
+    const tail=document.createElementNS(SVG,'path');
+    tail.setAttribute('fill','none');tail.setAttribute('stroke','#FFE3A0');
+    tail.setAttribute('stroke-width','1.6');tail.setAttribute('stroke-linecap','round');
+    tail.setAttribute('opacity','0');
+    gSpk.insertBefore(tail,dot);
+    sparks.push({path:hidden,dot:dot,tail:tail,len:hidden.getTotalLength(),
+                 t:rnd(),speed:rr(0.045,0.085),life:0});
+  }
+
+  let running=false,last=0;
+  function frame(ts){
+    if(!running)return;
+    const dt=Math.min(0.05,(ts-last)/1000||0.016); last=ts;
+    sparks.forEach(s=>{
+      s.t+=s.speed*dt;
+      if(s.t>=1){ s.t=0;
+        const d=flowPath(); if(d){s.path.setAttribute('d',d);s.len=s.path.getTotalLength();}
+        s.speed=rr(0.045,0.085);
+      }
+      const L=s.len, p=s.path.getPointAtLength(s.t*L);
+      const back=s.path.getPointAtLength(Math.max(0,(s.t-0.035)*L));
+      const mid=s.path.getPointAtLength(Math.max(0,(s.t-0.018)*L));
+      s.dot.setAttribute('cx',p.x);s.dot.setAttribute('cy',p.y);
+      const fade=Math.sin(Math.min(1,s.t)*Math.PI);
+      s.dot.setAttribute('opacity',(0.35+0.65*fade).toFixed(3));
+      s.tail.setAttribute('d','M '+back.x.toFixed(1)+' '+back.y.toFixed(1)+' Q '+mid.x.toFixed(1)+' '+mid.y.toFixed(1)+' '+p.x.toFixed(1)+' '+p.y.toFixed(1));
+      s.tail.setAttribute('opacity',(0.30*fade).toFixed(3));
+    });
+    requestAnimationFrame(frame);
+  }
+
+  /* ---------- motes ---------- */
+  const motes=document.getElementById('rtMotes');
+  for(let i=0;i<26;i++){
+    const m=document.createElement('span');
+    m.className='rt-mote';
+    const sz=(1+rnd()*2.6).toFixed(1);
+    m.style.width=sz+'px';m.style.height=sz+'px';
+    m.style.left=(rnd()*100).toFixed(1)+'%';
+    m.style.top=(52+rnd()*46).toFixed(1)+'%';
+    m.style.setProperty('--dx',((rnd()-.5)*90).toFixed(0)+'px');
+    m.style.animationDuration=(11+rnd()*14).toFixed(1)+'s';
+    m.style.animationDelay=(-rnd()*20).toFixed(1)+'s';
+    m.style.background=rnd()<.35?'#F4DFA6':'#CFE9E4';
+    motes.appendChild(m);
+  }
+
+  /* ---------- aura breathing ---------- */
+  const aura=document.getElementById('aura');
+  const an=document.createElementNS(SVG,'animate');
+  an.setAttribute('attributeName','opacity');an.setAttribute('values','.75;1;.75');
+  an.setAttribute('dur','7s');an.setAttribute('repeatCount','indefinite');
+  aura.appendChild(an);
+
+  /* ---------- reveal on scroll ---------- */
+  let played=false;
+  function play(){
+    if(played)return;played=true;
+    segs.forEach(s=>{s.el.style.strokeDashoffset=0;if(s.glow)s.glow.style.strokeDashoffset=0;});
+    trunk.style.opacity='.85';
+    [...gLab.children].forEach(g=>{g.style.animation='rtFade .9s ease '+g.dataset.delay+'s forwards';});
+    setTimeout(()=>{running=true;last=performance.now();requestAnimationFrame(frame);},900);
+    setTimeout(()=>{[...gLab.children].forEach(g=>g.style.opacity='1');
+      if(window.__applyLang)try{window.__applyLang()}catch(e){}},3600);
+  }
+  if(STATIC){
+    segs.forEach(s=>{s.el.style.transition='none';s.el.style.strokeDashoffset=0;
+      if(s.glow){s.glow.style.transition='none';s.glow.style.strokeDashoffset=0;}});
+    trunk.style.transition='none';trunk.style.opacity='.92';
+    [...gLab.children].forEach(g=>{g.style.opacity='1';});
+    played=true;
+  }else{
+    const io=new IntersectionObserver((e)=>{e.forEach(x=>{if(x.isIntersecting)play();})},{threshold:.15});
+    io.observe(document.getElementById('rtStage'));
+  }
+  if(window.__applyLang){try{window.__applyLang();}catch(e){}}
 })();
 </script>
 </body>
