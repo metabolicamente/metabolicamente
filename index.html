@@ -3422,10 +3422,10 @@ function renderDash(role){
              inner:'<span class="apavc">'+ini+'</span>'})+
     '</nav>';
   const apmenu=
-    '<button class="apburger" id="apBurger" onclick="appMenu(event)" aria-label="'+__tr('Menu')+'">'+
+    '<button class="apburger" id="apBurger-'+role+'" onclick="appMenu(\''+role+'\',event)" aria-label="'+__tr('Menu')+'">'+
       '<span class="ic apbar" data-icon="menu"></span><span class="ic apx" data-icon="x"></span></button>'+
-    '<div class="apmenu" id="apMenu">'+
-      '<button onclick="appMenuGo(\'perfil\')">'+dIcon('settings')+__tr('Settings')+'</button>'+
+    '<div class="apmenu" id="apMenu-'+role+'">'+
+      '<button onclick="appMenuGo(\''+role+'\',\'perfil\')">'+dIcon('settings')+__tr('Settings')+'</button>'+
       '<button onclick="appMenuOut()">'+dIcon('logout')+__tr('Log out')+'</button>'+
     '</div>';
   el.innerHTML=
@@ -3453,22 +3453,26 @@ function renderDash(role){
   renderIcons(el);
   dashSection(role);
 }
-function apMenuSet(open){
-  const m=document.getElementById('apMenu'), b=document.getElementById('apBurger');
-  if(m) m.classList.toggle('open',open);
-  if(b) b.classList.toggle('open',open);
+function apMenuSet(open,role){
+  if(!open){
+    document.querySelectorAll('.apmenu.open,.apburger.open').forEach(function(x){ x.classList.remove('open'); });
+    return;
+  }
+  const m=document.getElementById('apMenu-'+role), b=document.getElementById('apBurger-'+role);
+  if(m) m.classList.add('open');
+  if(b) b.classList.add('open');
 }
-function appMenu(e){
+function appMenu(role,e){
   if(e) e.stopPropagation();
-  const m=document.getElementById('apMenu'); if(!m) return;
+  const m=document.getElementById('apMenu-'+role); if(!m) return;
   const open=m.classList.contains('open');
   document.querySelectorAll('.dnotif').forEach(function(x){ x.classList.remove('open'); });
-  apMenuSet(!open);
+  apMenuSet(!open,role);
   if(!open) setTimeout(function(){
     document.addEventListener('click',function h(){ apMenuSet(false); document.removeEventListener('click',h); });
   },0);
 }
-function appMenuGo(sec){ apMenuSet(false); dashNav('patient',sec); }
+function appMenuGo(role,sec){ apMenuSet(false); dashNav(role,sec); }
 function appMenuOut(){ apMenuSet(false); go('login'); }
 function dashBell(role,e){
   if(e) e.stopPropagation();
