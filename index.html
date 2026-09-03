@@ -2338,6 +2338,15 @@ body.imm #pg-programa .pgin{padding-top:112px}
   font-size:clamp(24px,2.6vw,34px);letter-spacing:-.025em;margin:0 0 6px}
 #pg-programa .pgsec-s{margin:0}
 #pg-programa .pgprog{top:24px}
+
+/* ---- marca no lugar do icone: o anel aberto, igual em todos os tiles ---- */
+#pg-conteudo .cattile .catic{width:clamp(26px,2.5vw,32px);height:clamp(26px,2.5vw,32px);
+  font-size:0;opacity:.82;right:13px;top:13px}
+#pg-conteudo .cattile .catic svg{width:100%;height:100%;stroke-width:2.1}
+
+/* ---- trilhos em loop: sem scroll-snap, que era o que dava o solavanco ---- */
+#pg-conteudo .catrail{scroll-snap-type:none}
+#pg-conteudo .catrail>*{scroll-snap-align:none}
 </style>
 </head>
 <body>
@@ -8257,7 +8266,7 @@ routeFromHash();
     'Bipolar disorder'  :'photo-1565733293285-77aa342b22dd', /* mar aereo, espuma */
     'ADHD'              :'photo-1706366490101-a7a078c4c98a', /* mesa com caneta e caderno */
     'Ketogenic therapy' :'photo-1771698254255-e64331d09046', /* abacate com salmao */
-    'Gut & brain'       :'photo-1741518957919-d7b19058616a', /* potes de fermentados */
+    'Gut & brain'       :'photo-1501959915551-4e8d30928317', /* tigela de iogurte com fruta */
     'For clinicians'    :'photo-1631217868264-e5b90bb7e133'  /* medico conversando com paciente */
   };
 
@@ -8271,6 +8280,12 @@ routeFromHash();
         ph.style.backgroundImage="url('"+U+id+Q+"')";
         t.insertBefore(ph,t.firstChild);
       }
+      var ic=t.querySelector('.catic');
+      if(ic){
+        ic.removeAttribute('data-icon'); ic.dataset.done='1';
+        ic.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '+
+          'stroke-linecap="round"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg>';
+      }
       var g=document.createElement('span'); g.className='catgrad';
       var lab=t.querySelector('.catlabel');
       if(lab) t.insertBefore(g,lab); else t.appendChild(g);
@@ -8283,6 +8298,9 @@ routeFromHash();
     if(rail.dataset.looped) return;
     var kids=[].slice.call(rail.children);
     if(!kids.length) return;
+    /* So faz sentido dar a volta se o trilho realmente transborda. Com poucos
+       cards numa tela larga as copias apareciam lado a lado com o original. */
+    if(rail.scrollWidth < rail.clientWidth*1.25) return;
     var tail=document.createDocumentFragment(), head=document.createDocumentFragment();
     kids.forEach(function(k){
       var a=k.cloneNode(true); a.setAttribute('aria-hidden','true'); a.dataset.clone='1'; tail.appendChild(a);
@@ -8291,17 +8309,26 @@ routeFromHash();
     rail.appendChild(tail);
     rail.insertBefore(head, rail.firstChild);
     rail.dataset.looped='1';
-    var set=0,t=null;
+    var set=0,t=null,last=-1,still=0;
     function measure(){ set=rail.scrollWidth/3; if(set) rail.scrollLeft=set; }
     requestAnimationFrame(measure);
     window.addEventListener('resize',function(){ requestAnimationFrame(measure); });
+    /* So reposiciona quando o scroll parou de verdade: o inercial do trackpad
+       continua depois do ultimo evento, e mexer no scrollLeft no meio dele
+       era o que produzia o solavanco. Confere duas vezes o mesmo valor. */
+    function settle(){
+      if(!set){ t=null; return; }
+      var x=Math.round(rail.scrollLeft);
+      if(x===last){ still++; } else { still=0; last=x; }
+      if(still<2){ t=setTimeout(settle,70); return; }
+      t=null;
+      if(rail.scrollLeft < set*0.5) rail.scrollLeft += set;
+      else if(rail.scrollLeft > set*1.5) rail.scrollLeft -= set;
+    }
     rail.addEventListener('scroll',function(){
-      clearTimeout(t);
-      t=setTimeout(function(){
-        if(!set) return;
-        if(rail.scrollLeft < set*0.5) rail.scrollLeft += set;
-        else if(rail.scrollLeft > set*1.5) rail.scrollLeft -= set;
-      },140);
+      last=-1; still=0;
+      if(t) clearTimeout(t);
+      t=setTimeout(settle,90);
     },{passive:true});
   }
 
@@ -8322,6 +8349,34 @@ routeFromHash();
   }
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',setup);
   else setup();
+})();
+</script>
+
+<script>
+/* Voltar do programa devolve a pagina de conteudo exatamente onde estava,
+   em vez de jogar o usuario no topo. */
+(function(){
+  var y=null;
+  if(typeof openProgram==='function'){
+    var _open=openProgram;
+    window.openProgram=function(){ y=window.scrollY||window.pageYOffset||0; return _open.apply(this,arguments); };
+  }
+  if(typeof showSub==='function'){
+    var _sub=showSub;
+    window.showSub=function(id,scroll){
+      var cur=document.querySelector('#site .subpage.active');
+      var from=cur?cur.id:null;
+      var r=_sub.apply(this,arguments);
+      if(id==='pg-conteudo' && from==='pg-programa' && y!=null){
+        var target=y;
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){
+          window.scrollTo(0,target);
+          if(window.__syncTone) window.__syncTone();
+        }); });
+      }
+      return r;
+    };
+  }
 })();
 </script>
 </body>
