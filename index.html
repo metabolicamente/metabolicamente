@@ -1622,6 +1622,34 @@ body:not(.intro-done) .hf-art{animation:none;opacity:0}
 .discsearch .ic{position:absolute;left:20px;top:50%;transform:translateY(-50%);
   color:var(--soft);font-size:17px}
 
+/* ---- hero imersivo da pagina de conteudo ---- */
+.imhero{position:relative;width:100%;height:clamp(420px,68vh,660px);overflow:hidden;background:var(--t900)}
+.imhero .imbg{position:absolute;inset:0;background-size:cover;background-position:52% 36%;transform:scale(1.04)}
+.imhero .imscrim{position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(9,38,47,.90) 0%,rgba(9,38,47,.72) 34%,rgba(9,38,47,.15) 66%,rgba(9,38,47,0) 100%)}
+.imhero .imfade{position:absolute;left:0;right:0;bottom:0;height:32%;
+  background:linear-gradient(180deg,rgba(0,0,0,0) 0%,var(--bg) 100%)}
+.imhero .imin{position:relative;z-index:3;height:100%;display:flex;flex-direction:column;
+  justify-content:center;padding:0 var(--gut);max-width:1400px;margin:0 auto}
+.imhero .imkick{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase;color:#9FD3C8;margin:0 0 14px}
+.imhero h2{font-family:var(--display);font-weight:800;color:#F5EFE4;margin:0 0 16px;
+  font-size:clamp(44px,7vw,92px);line-height:.95;letter-spacing:-.035em;max-width:12ch}
+.imhero .imlead{font-family:var(--calm);color:rgba(245,239,228,.86);
+  font-size:clamp(15px,1.4vw,19px);line-height:1.55;max-width:46ch;margin:0 0 26px}
+.imhero .imbtns{display:flex;align-items:center;gap:12px}
+.imhero .imsave{width:50px;height:50px;border-radius:50%;border:1px solid rgba(245,239,228,.45);
+  background:rgba(245,239,228,.10);color:#F5EFE4;display:flex;align-items:center;justify-content:center;
+  font-size:22px;line-height:1;cursor:pointer}
+.imhero .imdots{position:absolute;z-index:3;left:50%;transform:translateX(-50%);bottom:60px;display:flex;gap:8px}
+.imhero .imdots i{width:7px;height:7px;border-radius:50%;background:rgba(245,239,228,.38)}
+.imhero .imdots i.on{width:22px;border-radius:99px;background:#F5EFE4}
+@media(max-width:680px){.imhero{height:clamp(360px,58vh,480px)}.imhero .imdots{display:none}}
+
+/* ---- categorias em trilhos agrupados ---- */
+.catclus{padding:26px 0 6px}
+.catrail .cattile{width:clamp(178px,17vw,226px)}
+
 .catgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:13px}
 .cattile{position:relative;aspect-ratio:4/5;border-radius:16px;overflow:hidden;
   background:linear-gradient(155deg,var(--g1),var(--g2));display:flex;align-items:flex-end;
@@ -2219,15 +2247,21 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
   <div class="subpage" id="pg-conteudo">
     <h1 class="sr-only">Content</h1>
 
-    <!-- ---------- 1. podcasts ---------- -->
-    <section class="hl-sec hl-first">
-      <div class="hl-head reveal"><h2>Podcasts &amp; talks</h2></div>
-      <div class="railwrap" id="wrap-podRail">
-        <button class="railnav prev" onclick="railScroll('podRail',-1)" aria-label="Previous"><span class="ic" data-icon="chevron-left"></span></button>
-        <div class="rail" id="podRail"></div>
-        <button class="railnav next" onclick="railScroll('podRail',1)" aria-label="Next"><span class="ic" data-icon="chevron-right"></span></button>
+    <!-- ---------- 1. hero imersivo ---------- -->
+    <section class="imhero">
+      <div class="imbg" style="background-image:url('https://images.unsplash.com/photo-1527137342181-19aab11a8ee8?fm=jpg&amp;q=70&amp;w=2400&amp;auto=format&amp;fit=crop')"></div>
+      <div class="imscrim"></div>
+      <div class="imfade"></div>
+      <div class="imin">
+        <p class="imkick">Knowledge library</p>
+        <h2>Content</h2>
+        <p class="imlead">Videos, articles, and podcasts on metabolic psychiatry and evidence-based mental health.</p>
+        <div class="imbtns">
+          <span class="btn btn-cream" onclick="goAccount()">Get started</span>
+          <button class="imsave" aria-label="Save">+</button>
+        </div>
       </div>
-      <div class="noresults" id="vnores">No results for your search.</div>
+      <div class="imdots"><i class="on"></i><i></i><i></i><i></i></div>
     </section>
 
     <!-- ---------- 2. conta ---------- -->
@@ -2245,7 +2279,80 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       </div>
     </section>
 
-    <!-- ---------- 3. artigos ---------- -->
+    <!-- ---------- 3. programas (categorias agrupadas em trilhos) ---------- -->
+    <section class="disc">
+      <div class="csearch discsearch"><span class="ic" data-icon="search"></span><input type="text" id="csearch" placeholder="Search for a topic, episode, or article" oninput="cFilter()"></div>
+      <div id="catgrid">
+      <section class="catclus">
+        <div class="hl-head reveal"><h2>Start here</h2><span>Where to begin if this is new to you.</span></div>
+        <div class="railwrap" id="wrap-catRail1">
+          <button class="railnav prev" onclick="railScroll('catRail1',-1)" aria-label="Previous"><span class="ic" data-icon="chevron-left"></span></button>
+          <div class="rail catrail" id="catRail1">
+          <a class="cattile" onclick="goAccount()" data-cat="Getting started" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="sparkles"></span><span class="catlabel">Getting started</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Fundamentals" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="zap"></span><span class="catlabel">Fundamentals</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="The science" style="--g1:#7A5C8E;--g2:#3F2C4D"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="chart"></span><span class="catlabel">The science</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Podcasts" style="--g1:#2A9D8F;--g2:#12615A"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="mic"></span><span class="catlabel">Podcasts</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Patient stories" style="--g1:#4FA8C7;--g2:#1D6076"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="users"></span><span class="catlabel">Patient stories</span></a>
+          </div>
+          <button class="railnav next" onclick="railScroll('catRail1',1)" aria-label="Next"><span class="ic" data-icon="chevron-right"></span></button>
+        </div>
+      </section>
+      <section class="catclus">
+        <div class="hl-head reveal"><h2>Everyday pillars</h2><span>The daily levers — food, sleep, movement, mind.</span></div>
+        <div class="railwrap" id="wrap-catRail2">
+          <button class="railnav prev" onclick="railScroll('catRail2',-1)" aria-label="Previous"><span class="ic" data-icon="chevron-left"></span></button>
+          <div class="rail catrail" id="catRail2">
+          <a class="cattile" onclick="goAccount()" data-cat="Nutrition" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="utensils"></span><span class="catlabel">Nutrition</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Sleep" style="--g1:#D9A420;--g2:#8E6704"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="moon"></span><span class="catlabel">Sleep</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Movement" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="activity"></span><span class="catlabel">Movement</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Recipes" style="--g1:#4FA8C7;--g2:#1D6076"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="apple"></span><span class="catlabel">Recipes</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Mindfulness" style="--g1:#114B5F;--g2:#07222C"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="smile"></span><span class="catlabel">Mindfulness</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Stress & cortisol" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="flame"></span><span class="catlabel">Stress &amp; cortisol</span></a>
+          </div>
+          <button class="railnav next" onclick="railScroll('catRail2',1)" aria-label="Next"><span class="ic" data-icon="chevron-right"></span></button>
+        </div>
+      </section>
+      <section class="catclus">
+        <div class="hl-head reveal"><h2>By condition</h2><span>Start from what you are living with.</span></div>
+        <div class="railwrap" id="wrap-catRail3">
+          <button class="railnav prev" onclick="railScroll('catRail3',-1)" aria-label="Previous"><span class="ic" data-icon="chevron-left"></span></button>
+          <div class="rail catrail" id="catRail3">
+          <a class="cattile" onclick="goAccount()" data-cat="Depression" style="--g1:#2A9D8F;--g2:#12615A"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="moon-star"></span><span class="catlabel">Depression</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Anxiety" style="--g1:#114B5F;--g2:#07222C"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="droplet"></span><span class="catlabel">Anxiety</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Bipolar disorder" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="trending-down"></span><span class="catlabel">Bipolar disorder</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="ADHD" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="target"></span><span class="catlabel">ADHD</span></a>
+          </div>
+          <button class="railnav next" onclick="railScroll('catRail3',1)" aria-label="Next"><span class="ic" data-icon="chevron-right"></span></button>
+        </div>
+      </section>
+      <section class="catclus">
+        <div class="hl-head reveal"><h2>Going deeper</h2><span>Protocols, mechanisms and the clinical side.</span></div>
+        <div class="railwrap" id="wrap-catRail4">
+          <button class="railnav prev" onclick="railScroll('catRail4',-1)" aria-label="Previous"><span class="ic" data-icon="chevron-left"></span></button>
+          <div class="rail catrail" id="catRail4">
+          <a class="cattile" onclick="goAccount()" data-cat="Ketogenic therapy" style="--g1:#7A5C8E;--g2:#3F2C4D"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="leaf"></span><span class="catlabel">Ketogenic therapy</span></a>
+          <a class="cattile" onclick="goAccount()" data-cat="Gut & brain" style="--g1:#D9A420;--g2:#8E6704"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="egg"></span><span class="catlabel">Gut &amp; brain</span></a>
+          <a class="cattile" onclick="location.hash='#/profissionais'" data-cat="For clinicians" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="stethoscope"></span><span class="catlabel">For clinicians</span></a>
+          </div>
+          <button class="railnav next" onclick="railScroll('catRail4',1)" aria-label="Next"><span class="ic" data-icon="chevron-right"></span></button>
+        </div>
+      </section>
+      </div>
+      <div class="noresults" id="catnores">No categories match your search.</div>
+    </section>
+
+    <!-- ---------- 4. podcasts ---------- -->
+    <section class="hl-sec">
+      <div class="hl-head reveal"><h2>Podcasts &amp; talks</h2></div>
+      <div class="railwrap" id="wrap-podRail">
+        <button class="railnav prev" onclick="railScroll('podRail',-1)" aria-label="Previous"><span class="ic" data-icon="chevron-left"></span></button>
+        <div class="rail" id="podRail"></div>
+        <button class="railnav next" onclick="railScroll('podRail',1)" aria-label="Next"><span class="ic" data-icon="chevron-right"></span></button>
+      </div>
+      <div class="noresults" id="vnores">No results for your search.</div>
+    </section>
+
+    <!-- ---------- 5. artigos ---------- -->
     <section class="hl-sec">
       <div class="hl-head reveal"><h2>Opinion articles</h2><span>What is being written about metabolic psychiatry.</span></div>
       <div class="railwrap" id="wrap-artRail">
@@ -2256,7 +2363,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       <div class="noresults" id="anores">No results for your search.</div>
     </section>
 
-    <!-- ---------- 4. citacao ---------- -->
+    <!-- ---------- 6. citacao ---------- -->
     <section class="hl-sec">
       <div class="quotepanel reveal">
         <span class="qp-mark ic" data-icon="sparkles"></span>
@@ -2265,33 +2372,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       </div>
     </section>
 
-    <!-- ---------- 5. busca e categorias ---------- -->
-    <section class="disc">
-      <div class="csearch discsearch"><span class="ic" data-icon="search"></span><input type="text" id="csearch" placeholder="Search for a topic, episode, or article" oninput="cFilter()"></div>
-      <div class="catgrid" id="catgrid">
-          <a class="cattile" onclick="goAccount()" data-cat="Fundamentals" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="zap"></span><span class="catlabel">Fundamentals</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="Nutrition" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="utensils"></span><span class="catlabel">Nutrition</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="Sleep" style="--g1:#D9A420;--g2:#8E6704"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="moon"></span><span class="catlabel">Sleep</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="Movement" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="activity"></span><span class="catlabel">Movement</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="Ketogenic therapy" style="--g1:#7A5C8E;--g2:#3F2C4D"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="leaf"></span><span class="catlabel">Ketogenic therapy</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="Recipes" style="--g1:#4FA8C7;--g2:#1D6076"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="apple"></span><span class="catlabel">Recipes</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="Depression" style="--g1:#2A9D8F;--g2:#12615A"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="moon-star"></span><span class="catlabel">Depression</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="Anxiety" style="--g1:#114B5F;--g2:#07222C"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="droplet"></span><span class="catlabel">Anxiety</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="Bipolar disorder" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="trending-down"></span><span class="catlabel">Bipolar disorder</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="ADHD" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="target"></span><span class="catlabel">ADHD</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="Gut & brain" style="--g1:#D9A420;--g2:#8E6704"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="egg"></span><span class="catlabel">Gut &amp; brain</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="Stress & cortisol" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="flame"></span><span class="catlabel">Stress &amp; cortisol</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="The science" style="--g1:#7A5C8E;--g2:#3F2C4D"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="chart"></span><span class="catlabel">The science</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="Patient stories" style="--g1:#4FA8C7;--g2:#1D6076"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="users"></span><span class="catlabel">Patient stories</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="Podcasts" style="--g1:#2A9D8F;--g2:#12615A"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><ellipse cx="150" cy="200" rx="92" ry="74" fill="#fff" opacity=".12"/><g fill="#fff" opacity=".32"><circle cx="38" cy="44" r="4"/><circle cx="76" cy="82" r="3"/><circle cx="28" cy="108" r="2.6"/><circle cx="112" cy="38" r="3.2"/><circle cx="60" cy="140" r="2.2"/></g></svg><span class="catic ic" data-icon="mic"></span><span class="catlabel">Podcasts</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="Mindfulness" style="--g1:#114B5F;--g2:#07222C"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="152" cy="56" r="54" fill="#fff" opacity=".15"/><circle cx="152" cy="56" r="30" fill="#fff" opacity=".2"/><path d="M0 172 Q50 144 100 166 T200 154 L200 250 L0 250Z" fill="#fff" opacity=".12"/><path d="M0 204 Q54 178 108 198 T200 188 L200 250 L0 250Z" fill="#fff" opacity=".12"/></svg><span class="catic ic" data-icon="smile"></span><span class="catlabel">Mindfulness</span></a>
-          <a class="cattile" onclick="goAccount()" data-cat="Getting started" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="sparkles"></span><span class="catlabel">Getting started</span></a>
-          <a class="cattile" onclick="location.hash='#/profissionais'" data-cat="For clinicians" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="150" cy="58" r="27" fill="#fff" opacity=".22"/><path d="M0 198 L62 134 L112 184 L158 138 L200 174 L200 250 L0 250Z" fill="#fff" opacity=".13"/><path d="M0 224 L48 190 L104 222 L156 192 L200 216 L200 250 L0 250Z" fill="#fff" opacity=".1"/></svg><span class="catic ic" data-icon="stethoscope"></span><span class="catlabel">For clinicians</span></a>
-      </div>
-      <div class="noresults" id="catnores">No categories match your search.</div>
-    </section>
-
-    <!-- ---------- 6. cta final ---------- -->
+    <!-- ---------- 7. cta final ---------- -->
     <section class="hl-sec" style="padding-bottom:clamp(46px,6vw,86px)">
       <div class="tm-join reveal">
         <div class="tm-join-l">
@@ -4863,7 +4944,7 @@ function railSync(id){
   w.classList.toggle('at-start', r.scrollLeft<=2);
   w.classList.toggle('at-end', r.scrollLeft>=max || max<=0);
 }
-['podRail','artRail'].forEach(function(id){
+['podRail','artRail','catRail1','catRail2','catRail3','catRail4'].forEach(function(id){
   document.addEventListener('DOMContentLoaded',function(){
     const r=document.getElementById(id); if(!r) return;
     r.addEventListener('scroll',function(){ railSync(id); },{passive:true});
@@ -4897,7 +4978,7 @@ function cFilter(){
   const v=document.getElementById('vnores'); if(v) v.style.display=vn?'none':'block';
   const a=document.getElementById('anores'); if(a) a.style.display=an?'none':'block';
   const c=document.getElementById('catnores'); if(c) c.style.display=cn?'none':'block';
-  railSync('podRail'); railSync('artRail');
+  ['podRail','artRail','catRail1','catRail2','catRail3','catRail4'].forEach(railSync);
 }
 
 /* --- criar conta: mesma tela de login, em modo cadastro --- */
@@ -6669,6 +6750,13 @@ routeFromHash();
     "Close":"Fechar","Please fill in the required fields.":"Preencha os campos obrigatórios.",
     // conteudo page
     "Knowledge library":"Biblioteca de conhecimento",
+    "Where to begin if this is new to you.":"Por onde começar, se isso é novo para você.",
+    "Everyday pillars":"Pilares do dia a dia",
+    "The daily levers — food, sleep, movement, mind.":"As alavancas diárias — comida, sono, movimento, mente.",
+    "By condition":"Por condição",
+    "Start from what you are living with.":"Comece pelo que você está vivendo.",
+    "Going deeper":"Aprofundando",
+    "Protocols, mechanisms and the clinical side.":"Protocolos, mecanismos e o lado clínico.",
     "Videos, articles, and podcasts on metabolic psychiatry and evidence-based mental health.":"Vídeos, artigos e podcasts sobre psiquiatria metabólica e saúde mental baseada em evidências.",
     "Search videos, articles, or podcasts...":"Buscar vídeos, artigos ou podcasts...",
     "All":"Todos","Videos & podcasts":"Vídeos e podcasts","Opinion articles":"Artigos de opinião","Read article":"Ler artigo",
