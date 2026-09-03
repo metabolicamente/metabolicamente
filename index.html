@@ -1139,6 +1139,7 @@ body:not(.intro-done) .hf-art{animation:none;opacity:0}
   padding:11px 14px;border-radius:9px;font-size:14px;font-weight:600;color:var(--hd2);cursor:pointer}
 .apmenu button:hover{background:var(--bg-dim)}
 .apmenu button .ic{font-size:17px;color:var(--soft)}
+
 .appshell .dnotif{top:calc(var(--aph) - 6px);left:50%;right:auto;transform:translateX(-50%)}
 .apptop .logo-only{gap:0}
 .apptop .logo-mark svg{width:26px;height:26px}
@@ -1196,6 +1197,15 @@ body:not(.intro-done) .hf-art{animation:none;opacity:0}
 .btile.wide{grid-column:span 2}
 .btile.sm{grid-column:span 1}
 .btile.full{grid-column:span 4}
+/* camada de imagem real do preview — usada quando o tile recebe o.img */
+.bimg{position:absolute;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.bimg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.72;
+  transform:scale(1.02);transition:transform .5s ease}
+.btile:hover .bimg img{transform:scale(1.08)}
+.bscrim{position:absolute;inset:0;
+  background:linear-gradient(155deg,rgba(9,40,50,.2),rgba(9,40,50,.55) 55%,rgba(9,40,50,.85))}
+.bskin::after{content:'';position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to top,rgba(9,40,50,.6),rgba(9,40,50,.12) 46%,transparent 72%)}
 .bart{position:absolute;inset:0;pointer-events:none;transition:transform .5s ease,opacity .3s ease}
 .bart svg{position:absolute;inset:0;width:100%;height:100%}
 .btile:hover .bart{transform:scale(1.06)}
@@ -1237,6 +1247,164 @@ body:not(.intro-done) .hf-art{animation:none;opacity:0}
   .btile{animation:none}
   .btile:hover .bskin{transform:translateY(-4px)}
 }
+
+/* ---- HOME: dashboard de bolhas em 4 categorias ---- */
+.hub{display:grid;grid-template-columns:1.24fr 1fr 1fr;gap:clamp(14px,1.6vw,26px);align-items:start}
+.hubcol{display:flex;flex-direction:column;gap:clamp(16px,1.8vw,28px);min-width:0}
+.hubgrp h4{font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--soft);margin:0 0 10px 4px}
+.hubset{display:flex;flex-direction:column;gap:clamp(12px,1.2vw,20px)}
+.hubgrp-2 .hubset{display:grid;grid-template-columns:1fr 1fr}
+.btile.hub{width:100%;min-height:clamp(128px,12.5vw,164px)}
+.btile.hub-xl{min-height:clamp(250px,27vw,340px)}
+.btile.hub-sq{min-height:clamp(150px,15vw,190px)}
+.hub .btile.hub .bmain b{font-size:clamp(15px,1.25vw,18px)}
+.hub .btile.hub-sq .bmain b{font-size:clamp(15px,1.2vw,17px)}
+@media(max-width:1080px){
+  .hub{grid-template-columns:1fr 1fr}
+  .hubcol:first-child{grid-column:1 / -1}
+  .hubcol:first-child .hubgrp{}
+  .btile.hub-xl{min-height:230px}
+}
+@media(max-width:640px){
+  .hub{grid-template-columns:1fr}
+  .hubcol:first-child{grid-column:auto}
+}
+
+/* ================= JOURNEY: o mapa ================= */
+.jsec{max-width:820px;margin:0 auto}
+.jstats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.jstat{display:flex;align-items:center;gap:9px;padding:13px 16px;border-radius:16px;
+  background:var(--card);border:1px solid var(--line)}
+.jstat .ic{font-size:19px;color:var(--t500)}
+.jstat b{font-family:var(--display);font-size:19px;color:var(--hd)}
+.jstat span:last-child{font-size:11.5px;color:var(--soft);line-height:1.25}
+.jtoday{display:flex;align-items:center;gap:14px;width:100%;text-align:left;cursor:pointer;
+  padding:16px 18px;border-radius:20px;margin-bottom:14px;color:#F5EFE4;border:none;
+  background:linear-gradient(150deg,#114B5F,#07222C);
+  box-shadow:0 8px 24px rgba(9,40,50,.16);transition:transform .22s cubic-bezier(.2,.8,.3,1),box-shadow .22s}
+.jtoday:hover{transform:translateY(-3px);box-shadow:0 16px 38px rgba(9,40,50,.24)}
+.jtic{flex-shrink:0;width:44px;height:44px;border-radius:14px;display:flex;align-items:center;
+  justify-content:center;background:rgba(245,239,228,.13)}
+.jtic .ic{font-size:20px}
+.jtb{flex:1;min-width:0}
+.jtb b{display:block;font-family:var(--serif);font-weight:400;font-size:19px;line-height:1.2}
+.jtb span{display:block;font-size:12.5px;color:rgba(245,239,228,.72);margin-top:4px}
+.jtgo{flex-shrink:0;display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;
+  padding:9px 16px;border-radius:99px;background:rgba(245,239,228,.14)}
+.jtgo .ic{font-size:15px}
+@media(max-width:560px){.jtoday{flex-wrap:wrap}.jtgo{width:100%;justify-content:center}}
+
+.mlrow,.tmrow{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.mlrow:last-child,.tmrow:last-child{border-bottom:none}
+.mlrow>div,.tmrow>div{flex:1;min-width:0}
+.mlrow b,.tmrow b{display:block;font-size:13.5px;color:var(--hd)}
+.mlrow span:last-child,.tmrow span:last-child{font-size:12px;color:var(--soft)}
+.mlic{flex-shrink:0;width:38px;height:38px;border-radius:12px;background:var(--bg-dim);
+  display:flex;align-items:center;justify-content:center;color:var(--t500)}
+.mlic .ic{font-size:18px}
+.tmrow .dbtn{flex-shrink:0;padding:8px 12px}
+
+.jskel{display:flex;align-items:center;gap:10px;padding:11px 16px;border-radius:14px;margin-bottom:26px;
+  background:var(--bg-dim);border:1px dashed var(--line);color:var(--soft);font-size:13px}
+.jskel .ic{font-size:17px;color:var(--t500);flex-shrink:0}
+
+.junit{margin-bottom:38px}
+.junit.locked{opacity:.62}
+.jbanner{display:flex;align-items:center;gap:16px;padding:clamp(16px,2vw,22px);border-radius:20px;
+  color:#F5EFE4;background:linear-gradient(150deg,var(--g1),var(--g2));
+  box-shadow:0 8px 24px rgba(9,40,50,.14)}
+.jkick{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;opacity:.72}
+.jbanner h2{font-family:var(--serif);font-weight:400;font-size:clamp(19px,2.2vw,25px);
+  line-height:1.15;margin:5px 0 5px}
+.jbanner p{font-size:13px;line-height:1.5;color:rgba(245,239,228,.76);max-width:44em}
+.jbadge{margin-left:auto;flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:3px;
+  padding:12px 15px;border-radius:16px;background:rgba(245,239,228,.14)}
+.jbadge .ic{font-size:19px}
+.jbadge b{font-family:var(--display);font-size:14px}
+
+.jpath{display:flex;flex-direction:column;align-items:center;padding:56px 0 6px;position:relative}
+.jnode{position:relative;transform:translateX(var(--x));display:flex;flex-direction:column;
+  align-items:center;gap:7px;margin-bottom:20px}
+.jdot{position:relative;width:66px;height:66px;border-radius:50%;cursor:pointer;display:flex;
+  align-items:center;justify-content:center;border:none;
+  background:var(--line);color:var(--soft);
+  box-shadow:0 6px 0 rgba(9,40,50,.12);transition:transform .14s ease,box-shadow .14s ease}
+.jdot .ic{font-size:26px}
+.jdot:hover{transform:translateY(-2px);box-shadow:0 8px 0 rgba(9,40,50,.14)}
+.jdot:active{transform:translateY(4px);box-shadow:0 2px 0 rgba(9,40,50,.12)}
+.jnode.done .jdot{background:var(--t500);color:#06222B;box-shadow:0 6px 0 #16665D}
+.jnode.now .jdot{background:var(--c-gold);color:#3A2A00;box-shadow:0 6px 0 #9A7404;
+  width:78px;height:78px}
+.jnode.now .jdot::after{content:'';position:absolute;inset:-7px;border-radius:50%;
+  border:3px solid var(--c-gold);opacity:.5;animation:jpulse 1.9s ease-out infinite}
+@keyframes jpulse{0%{transform:scale(1);opacity:.5}70%{transform:scale(1.22);opacity:0}100%{opacity:0}}
+.jnode.lock .jdot{cursor:default}
+.jnode.lock .jdot:hover{transform:none;box-shadow:0 6px 0 rgba(9,40,50,.12)}
+.jchest{background:var(--c-gold);color:#3A2A00;box-shadow:0 6px 0 #9A7404}
+.jnode.lock .jchest{background:var(--line);color:var(--soft);box-shadow:0 6px 0 rgba(9,40,50,.12)}
+.jlab{font-size:12px;font-weight:600;color:var(--soft);text-align:center;max-width:15em;line-height:1.35}
+.jnode.now .jlab{color:var(--hd)}
+.jnow{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  padding:6px 15px;border-radius:99px;background:var(--card);border:2px solid var(--c-gold);
+  color:var(--hd);font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+  white-space:nowrap;box-shadow:0 4px 12px rgba(9,40,50,.14)}
+.jnow::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:6px solid transparent;border-top-color:var(--c-gold)}
+@media(max-width:560px){
+  .jnode{transform:translateX(calc(var(--x) * .62))}
+  .jdot{width:58px;height:58px}.jnode.now .jdot{width:68px;height:68px}
+  .jstats{grid-template-columns:1fr;gap:8px}
+  .jbanner{flex-direction:column;align-items:flex-start}
+  .jbadge{margin-left:0;flex-direction:row}
+}
+@media(prefers-reduced-motion:reduce){.jnode.now .jdot::after{animation:none}}
+
+/* ================= SERVICE ================= */
+.svcgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));
+  gap:clamp(12px,1.4vw,20px);align-items:start}
+.svccard{padding:clamp(16px,1.6vw,22px)}
+.svch{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.svch .ic{font-size:19px;color:var(--t500)}
+.svch h3{font-family:var(--display);font-size:15px;font-weight:700;color:var(--hd)}
+.svcmore{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;
+  color:var(--soft);cursor:pointer;padding:5px 10px;border-radius:99px;transition:.15s}
+.svcmore:hover{color:var(--t500);background:var(--bg-dim)}
+.svcmore .ic{font-size:14px}
+.svcnote{font-size:12.5px;color:var(--soft);margin-top:12px}
+.mkchart{color:var(--t500);border-radius:14px;background:var(--bg-dim);padding:14px 14px 10px}
+.mkchart .spark{width:100%;height:clamp(84px,11vw,110px);display:block}
+.mkfoot{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:8px}
+.mkfoot span{font-size:11.5px;color:var(--soft)}
+.mkfoot b{font-family:var(--display);font-size:15px;color:var(--t500)}
+.mklist{margin-top:14px;display:flex;flex-direction:column}
+.mkrow{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+.mkrow:last-child{border-bottom:none}
+.mkl{flex:1;font-size:13px;color:var(--hd2)}
+.mkv{font-family:var(--display);font-size:13px;font-weight:700;color:var(--hd)}
+
+.commlist{display:flex;flex-direction:column;gap:12px;max-width:720px}
+.commc{display:flex;gap:12px;padding:14px;border-radius:16px;background:var(--bg-dim);
+  border:1px solid var(--line);margin-bottom:10px}
+.commlist .commc{margin-bottom:0;background:var(--card)}
+.commc:last-child{margin-bottom:0}
+.commav{flex-shrink:0;width:40px;height:40px;border-radius:50%;background:var(--t700);color:#F5EFE4;
+  display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:700;letter-spacing:.03em}
+.commb{min-width:0;flex:1}
+.commh{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px}
+.commh b{font-size:13.5px;color:var(--hd)}
+.commh span{font-size:12px;color:var(--soft)}
+.commb p{font-size:13.5px;line-height:1.55;color:var(--hd2);margin:6px 0 8px;font-style:italic}
+.commf{display:flex;gap:10px;font-size:11.5px;color:var(--soft)}
+.commf span:last-child{margin-left:auto}
+
+.ntf{display:flex;gap:11px;padding:14px 0;border-bottom:1px solid var(--line)}
+.ntf:last-child{border-bottom:none}
+.ntfdot{width:8px;height:8px;border-radius:50%;background:var(--coral);margin-top:6px;flex-shrink:0}
+.ntf.unread b{color:var(--hd)}
+.ntf b{display:block;font-size:14px;color:var(--hd2);margin-bottom:3px}
+.ntf p{font-size:13px;color:var(--soft);line-height:1.5}
+.ntft{display:block;font-size:11.5px;color:var(--soft);opacity:.8;margin-top:5px}
 
 /* ---- profissional: especialidade, captacao, negocio ---- */
 .specsw{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:-8px 0 20px}
@@ -3049,7 +3217,12 @@ const ICONS={
  'settings':'<circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5v.2a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3H9a1.6 1.6 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8V9a1.6 1.6 0 0 0 1.5 1h.2a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1Z"/>',
  'award':'<circle cx="12" cy="8" r="6"/><path d="M8.2 13.9 7 22l5-3 5 3-1.2-8.1"/>',
 
- 'shield':'<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/>'
+ 'shield':'<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"/>',
+ 'arrow-left':'<line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>',
+ 'sword':'<path d="M14.5 12.5 20 7V3h-4l-5.5 5.5"/><path d="m8.8 10.7-5 5a2 2 0 0 0 0 2.8l1.7 1.7a2 2 0 0 0 2.8 0l5-5"/><line x1="9.5" y1="14.5" x2="12.5" y2="11.5"/><line x1="4.2" y1="19.8" x2="2" y2="22"/>',
+ 'star':'<polygon points="12 2.5 15 9 22 9.8 17 14.5 18.3 21.5 12 18.1 5.7 21.5 7 14.5 2 9.8 9 9"/>',
+ 'flag':'<path d="M4 21V4h9l.6 2H20v9h-7l-.6-2H4"/>',
+ 'compass':'<circle cx="12" cy="12" r="9.5"/><polygon points="15.5 8.5 13.5 13.5 8.5 15.5 10.5 10.5"/>'
 };
 function renderIcons(root){
   (root||document).querySelectorAll('.ic[data-icon]').forEach(el=>{
@@ -3478,11 +3651,14 @@ DASH.student={
   notif:[['New track','Clinical protocol and patient management is open','1h ago',1],
          ['Module released','Reading a metabolic panel psychiatrically','yesterday',0]]
 };
+/* Header do app. Cada item e [secao, label, icone].
+   '@bell' e '@me' sao slots especiais (sino e avatar).
+   No paciente sino e perfil sairam do header — vivem no menu, em "General". */
 const APNAV={
-  patient:[['inicio','Dashboard','brain'],['programas','Content','tv']],
-  doctor:[['inicio','Dashboard','brain'],['formacao','Courses','tv']],
-  nutri:[['inicio','Dashboard','brain'],['formacao','Courses','tv']],
-  student:[['inicio','Dashboard','brain'],['trilhas','Tracks','tv']]
+  patient:[['inicio','Home','home'],['journey','Journey','sword'],['service','Service','brain'],['programas','Content','tv']],
+  doctor:[['inicio','Dashboard','brain'],['formacao','Courses','tv'],['@bell','Notifications','bell'],['@me','Me','user-circle']],
+  nutri:[['inicio','Dashboard','brain'],['formacao','Courses','tv'],['@bell','Notifications','bell'],['@me','Me','user-circle']],
+  student:[['inicio','Dashboard','brain'],['trilhas','Tracks','tv'],['@bell','Notifications','bell'],['@me','Me','user-circle']]
 };
 let APROLE='patient';
 const MEALS=[
@@ -3521,14 +3697,13 @@ function renderDash(role){
   };
   const an=APNAV[role]||APNAV.patient;
   const apnav=
-    '<nav class="apnav">'+
-      apBtn({on:D.sec===an[0][0],act:"dashNav('"+role+"','"+an[0][0]+"')",lab:__tr(an[0][1]),inner:dIcon(an[0][2])})+
-      apBtn({on:D.sec===an[1][0],act:"dashNav('"+role+"','"+an[1][0]+"')",lab:__tr(an[1][1]),inner:dIcon(an[1][2])})+
-      apBtn({on:false,act:"dashBell('"+role+"',event)",lab:__tr('Notifications'),
-             inner:dIcon('bell')+(unread?'<span class="badge">'+unread+'</span>':'')})+
-      apBtn({on:D.sec==='perfil',act:"dashNav('"+role+"','perfil')",lab:__tr('Me'),
-             inner:'<span class="apavc">'+ini+'</span>'})+
-    '</nav>';
+    '<nav class="apnav">'+an.map(function(s){
+      if(s[0]==='@bell') return apBtn({on:false,act:"dashBell('"+role+"',event)",lab:__tr(s[1]),
+        inner:dIcon('bell')+(unread?'<span class="badge">'+unread+'</span>':'')});
+      if(s[0]==='@me') return apBtn({on:D.sec==='perfil',act:"dashNav('"+role+"','perfil')",lab:__tr(s[1]),
+        inner:'<span class="apavc">'+ini+'</span>'});
+      return apBtn({on:D.sec===s[0],act:"dashNav('"+role+"','"+s[0]+"')",lab:__tr(s[1]),inner:dIcon(s[2])});
+    }).join('')+'</nav>';
   const apmenu=
     '<button class="apburger" id="apBurger-'+role+'" onclick="appMenu(\''+role+'\',event)" aria-label="'+__tr('Menu')+'">'+
       '<span class="ic apbar" data-icon="menu"></span><span class="ic apx" data-icon="x"></span></button>'+
@@ -3561,6 +3736,49 @@ function renderDash(role){
   renderIcons(el);
   dashSection(role);
 }
+/* ================= MENU PRINCIPAL EM BUBBLES =================
+   4 categorias — Journey · General · Service · Content.
+   Cada bolha mostra um preview do que existe na tela e leva ate ela. */
+
+// <!-- PLACEHOLDER --> reacoes do time ao progresso do paciente
+const COMMUNITY=[
+ {init:'RM',who:'Dr. Rafael Mendes',role:'Metabolic Psychiatrist',
+  txt:'Seven check-ins in a row. This is exactly the pattern I wanted to see before our appointment.',
+  when:'2h ago',react:'reacted to your streak'},
+ {init:'CT',who:'Dra. Camila Torres',role:'Functional Nutritionist',
+  txt:'Your breakfast swap is holding. Keep the protein where it is this week and we look at the panel again.',
+  when:'yesterday',react:'commented on your meal plan'},
+ {init:'RM',who:'Dr. Rafael Mendes',role:'Metabolic Psychiatrist',
+  txt:'Fasting glucose came down 9 points. Small number, right direction.',
+  when:'3 days ago',react:'reacted to your exams'}
+];
+
+// sparkline dos marcadores, usada no preview e na pagina Service
+function miniSpark(pts,w,h){
+  const W=w||120,H=h||44,mx=Math.max.apply(null,pts),mn=Math.min.apply(null,pts);
+  const rg=(mx-mn)||1;
+  const d=pts.map(function(v,i){
+    return (i?'L':'M')+(i*(W/(pts.length-1))).toFixed(1)+' '+(H-((v-mn)/rg)*(H-8)-4).toFixed(1);
+  }).join(' ');
+  return '<svg class="spark" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none" aria-hidden="true">'+
+    '<path d="'+d+' L'+W+' '+H+' L0 '+H+'Z" fill="currentColor" opacity=".14"/>'+
+    '<path d="'+d+'" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'+
+    '</svg>';
+}
+
+// mapa em miniatura do Journey — mesma leitura da pagina, em 4 nos
+function miniMap(done,total){
+  const nodes=[[22,74,1],[62,44,1],[102,66,0],[142,28,0]];
+  let g='<svg class="jmini" viewBox="0 0 164 96" aria-hidden="true">'+
+    '<path d="M22 74 C42 74 46 44 62 44 S86 66 102 66 128 28 142 28" fill="none" '+
+    'stroke="currentColor" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round" opacity=".45"/>';
+  nodes.forEach(function(n,i){
+    g+='<circle cx="'+n[0]+'" cy="'+n[1]+'" r="'+(i===2?11:9)+'" fill="currentColor" opacity="'+(n[2]?'.95':'.3')+'"/>';
+    if(i===2) g+='<circle cx="'+n[0]+'" cy="'+n[1]+'" r="15" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"/>';
+  });
+  return g+'</svg>';
+}
+
 function apMenuSet(open,role){
   if(!open){
     document.querySelectorAll('.apmenu.open,.apburger.open').forEach(function(x){ x.classList.remove('open'); });
@@ -3642,6 +3860,10 @@ function head(t,s){ return '<div class="dhead"><div><h1>'+t+'</h1><p>'+s+'</p></
 function pSection(D){
   const s=D.sec, fn=D.name.split(' ')[0];
   if(s==='inicio') return pHome(D);
+  if(s==='journey') return pJourney(D);
+  if(s==='service') return pService(D);
+  if(s==='comunidade') return pCommunity(D);
+  if(s==='notificacoes') return pNotifs(D);
   if(s==='programas') return progSection();
   if(s==='checkin') return renderCheckin(D);
   if(s==='plano'){
@@ -4673,6 +4895,67 @@ function bentoArt(kind){
       '<g fill="#fff" opacity=".3"><circle cx="62" cy="52" r="4"/><circle cx="128" cy="96" r="3"/>'+
       '<circle cx="44" cy="130" r="2.6"/><circle cx="186" cy="46" r="3.2"/></g></svg>'
   };
+  /* ---- previews de tela: cada card mostra uma miniatura do que ha do outro lado,
+     no lugar da cor chapada. Ficam a direita para nao brigar com o texto. ---- */
+  const S='<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">';
+  const P={
+    // check-in: cartao de pergunta + escala de 1 a 10
+    checkin:S+'<rect x="196" y="52" width="248" height="150" rx="18" fill="#fff" opacity=".13"/>'+
+      '<rect x="216" y="74" width="86" height="9" rx="4.5" fill="#fff" opacity=".4"/>'+
+      '<rect x="216" y="94" width="170" height="11" rx="5.5" fill="#fff" opacity=".28"/>'+
+      '<rect x="216" y="113" width="130" height="11" rx="5.5" fill="#fff" opacity=".28"/>'+
+      '<g fill="#fff">'+[0,1,2,3,4,5].map(function(i){
+        return '<rect x="'+(216+i*32)+'" y="146" width="26" height="26" rx="8" opacity="'+(i===3?'.55':'.18')+'"/>';
+      }).join('')+'</g>'+
+      '</svg>',
+    // agenda: linhas de consulta com bloco de data
+    agenda:S+'<g fill="#fff">'+[0,1,2].map(function(i){ const y=56+i*74;
+        return '<rect x="206" y="'+y+'" width="230" height="58" rx="14" opacity=".12"/>'+
+          '<rect x="220" y="'+(y+13)+'" width="34" height="32" rx="9" opacity="'+(i?'.26':'.5')+'"/>'+
+          '<rect x="266" y="'+(y+17)+'" width="108" height="9" rx="4.5" opacity=".38"/>'+
+          '<rect x="266" y="'+(y+33)+'" width="72" height="8" rx="4" opacity=".22"/>';
+      }).join('')+'</g></svg>',
+    // programa em andamento: capa + barra de progresso + play
+    progress:S+'<rect x="228" y="26" width="200" height="118" rx="18" fill="#fff" opacity=".13"/>'+
+      '<circle cx="328" cy="76" r="26" fill="#fff" opacity=".26"/>'+
+      '<polygon points="320,64 344,76 320,88" fill="#fff" opacity=".62"/>'+
+      '<rect x="248" y="118" width="160" height="7" rx="3.5" fill="#fff" opacity=".22"/>'+
+      '<rect x="248" y="118" width="96" height="7" rx="3.5" fill="#fff" opacity=".6"/></svg>',
+    // plano alimentar: prato e lista
+    meal:S+'<circle cx="292" cy="140" r="74" fill="#fff" opacity=".12"/>'+
+      '<circle cx="292" cy="140" r="52" fill="#fff" opacity=".1"/>'+
+      '<path d="M292 88a52 52 0 0 1 0 104Z" fill="#fff" opacity=".16"/>'+
+      '</svg>',
+    // exames: barras + linha de tendencia
+    labs:S+'<g fill="#fff">'+[62,96,54,110,78].map(function(h,i){
+        return '<rect x="'+(224+i*40)+'" y="'+(196-h)+'" width="24" height="'+h+'" rx="8" opacity="'+(i===3?'.5':'.2')+'"/>';
+      }).join('')+'</g>'+
+      '<path d="M236 128 L276 104 L316 138 L356 88 L396 116" fill="none" stroke="#fff" '+
+      'stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" opacity=".6"/>'+
+      '<rect x="224" y="212" width="176" height="8" rx="4" fill="#fff" opacity=".18"/></svg>',
+    // equipe: dois avatares e um balao de conversa
+    team:S+'<circle cx="278" cy="118" r="40" fill="#fff" opacity=".2"/>'+
+      '<circle cx="352" cy="118" r="40" fill="#fff" opacity=".14"/>'+
+      '<circle cx="278" cy="106" r="14" fill="#fff" opacity=".4"/>'+
+      '<path d="M256 142a24 24 0 0 1 44 0Z" fill="#fff" opacity=".4"/>'+
+      '<rect x="234" y="182" width="176" height="52" rx="18" fill="#fff" opacity=".12"/>'+
+      '<rect x="252" y="198" width="120" height="8" rx="4" fill="#fff" opacity=".3"/>'+
+      '<rect x="252" y="214" width="84" height="8" rx="4" fill="#fff" opacity=".22"/></svg>',
+    // perfil: checklist de missoes do dia
+    missions:S+'<g fill="#fff">'+[0,1,2,3].map(function(i){ const y=64+i*46;
+        return '<rect x="216" y="'+y+'" width="212" height="34" rx="12" opacity=".11"/>'+
+          '<circle cx="238" cy="'+(y+17)+'" r="10" opacity="'+(i<2?'.55':'.2')+'"/>'+
+          '<rect x="258" y="'+(y+12)+'" width="'+(140-i*22)+'" height="9" rx="4.5" opacity=".28"/>';
+      }).join('')+'</g></svg>',
+    // journey: a trilha em miniatura
+    map:'<svg viewBox="0 0 400 280" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
+      '<path d="M96 224 C146 224 150 172 200 172 S258 192 288 146 322 78 352 78" fill="none" '+
+      'stroke="#fff" stroke-width="4" stroke-dasharray="2 12" stroke-linecap="round" opacity=".42"/>'+
+      '<g fill="#fff"><circle cx="96" cy="224" r="11" opacity=".5"/><circle cx="200" cy="172" r="11" opacity=".5"/>'+
+      '<circle cx="288" cy="146" r="14" opacity=".85"/><circle cx="352" cy="78" r="11" opacity=".2"/></g>'+
+      '<circle cx="288" cy="146" r="22" fill="none" stroke="#fff" stroke-width="2.5" opacity=".45"/></svg>'
+  };
+  if(P[kind]) return P[kind];
   return A[kind]||A.wave;
 }
 function bTile(o){
@@ -4680,6 +4963,8 @@ function bTile(o){
   return '<button class="btile '+o.size+(o.hero?' hero':'')+'" style="--g1:'+o.g1+';--g2:'+o.g2+'" '+
     'onclick="'+act+'">'+
     '<span class="bskin">'+
+    // o.img aceita uma imagem real de preview; sem ela, entra a miniatura em SVG
+    (o.img?'<span class="bimg"><img src="'+o.img+'" alt="" loading="lazy"><span class="bscrim"></span></span>':'')+
     '<div class="bart">'+bentoArt(o.art)+'</div>'+
     '<div class="bbody">'+
       '<div class="btop"><span class="bic">'+dIcon(o.icon)+'</span><span class="blabel">'+o.label+'</span></div>'+
@@ -4693,54 +4978,244 @@ function pHome(D){
   const started=pStarted();
   const cur=pProg(st.last)||started[0]||PROGRAMS[0];
   const tot=cur.days.length, dn=pDone(cur.id), pct=pPct(cur.id), nx=pNext(cur.id);
-  const progMain= dn
-    ? '<b>'+cur.title+'</b><div class="bbar"><i style="width:'+pct+'%"></i></div>'+
-      '<span class="bsub">'+__tr('Day')+' '+(nx+1)+' '+__tr('of')+' '+tot+' · '+cur.days[nx].t+'</span>'
-    : '<b>'+cur.title+'</b><span class="bsub">'+tot+' '+__tr('days')+' · 10 '+__tr('min/day')+'</span>';
-  const streak = st.streak>0 ? '<span class="bchip"><span class="ic" data-icon="flame"></span>'+st.streak+' '+__tr('day streak')+'</span>' : '';
-
-  const ap=PAGENDA[0];
-  const meal=MEALS[0];
+  const ap=PAGENDA[0], cm=COMMUNITY[0];
   const bad=PEXAMS.filter(function(e){return e[3]==='bad';}).length;
+  const unread=D.notif.filter(function(n){return n[3];}).length;
   const doneM=D.missions.filter(function(m){return m[1];}).length, totM=D.missions.length;
+  const streak = st.streak>0
+    ? '<span class="bchip"><span class="ic" data-icon="flame"></span>'+st.streak+' '+__tr('day streak')+'</span>'
+    : '';
 
-  const tiles=[
-   {go:'checkin',size:'xl',hero:1,art:'prog',icon:'clipboard',g1:'#114B5F',g2:'#07222C',
-    label:__tr('Daily check-in'),
-    main:'<b>'+__tr('How are you today?')+'</b><span class="bsub">'+
-      CISTEPS.length+' '+__tr('questions')+' · 2 '+__tr('min')+' · '+__tr('your team reads every one')+'</span>',
-    foot:streak,more:__tr('Log today')},
-   {go:'agenda',size:'wide',art:'wave',icon:'calendar',g1:'#2A9D8F',g2:'#12615A',
-    label:__tr('Schedule'),
-    main:'<b>'+ap[2]+'</b><span class="bsub">'+ap[3]+' · '+ap[0]+', '+ap[1]+'</span>',
-    more:PAGENDA.length+' '+__tr('appointments booked')},
-   {go:'programas',size:'sm',art:'rings',icon:'sparkles',g1:'#E76F51',g2:'#A83F22',
-    label:__tr('In progress'),main:progMain,
-    more:dn?__tr('Continue where you left off'):__tr('Start your first program')},
-   {go:'plano',size:'sm',art:'dots',icon:'utensils',g1:'#D9A420',g2:'#8E6704',
-    label:__tr('Meal plan'),
-    main:'<b>'+__tr(meal[1])+'</b><span class="bsub">'+meal[2][0]+'</span>',
-    more:__tr('See the full day')},
-   {go:'exames',size:'sm',art:'rings',icon:'heart',g1:'#5B7DB1',g2:'#294567',
-    label:__tr('Exams'),
-    main:'<b>'+PEXAMS.length+' '+__tr('markers')+'</b><span class="bsub">'+bad+' '+__tr('need attention')+'</span>',
-    more:__tr('Last collection Mar 5')},
-   {go:'equipe',size:'sm',art:'wave',icon:'users',g1:'#7A5C8E',g2:'#3F2C4D',
-    label:__tr('My team'),
-    main:'<div class="bavs">'+PTEAM.map(function(m){return '<span>'+m[0]+'</span>';}).join('')+'</div>'+
-      '<span class="bsub">'+PTEAM[0][1]+' · '+PTEAM[1][1]+'</span>',
-    more:__tr('Message your team')},
-   {go:'perfil',size:'wide',art:'dots',icon:'user-circle',g1:'#1A5F76',g2:'#0C333F',
+  /* ---------- JOURNEY: uma bolha grande, o mapa ---------- */
+  const journey=[{go:'journey',size:'hub hub-xl',hero:1,art:'map',icon:'sword',g1:'#114B5F',g2:'#07222C',
+    label:__tr('Your map'),
+    main:'<b>'+cur.title+'</b><div class="bbar"><i style="width:'+pct+'%"></i></div>'+
+      '<span class="bsub">'+__tr('Day')+' '+Math.min(dn+1,tot)+' '+__tr('of')+' '+tot+
+      ' · '+cur.days[Math.min(nx,tot-1)].t+'</span>',
+    foot:streak,
+    more:dn?__tr('Continue where you left off'):__tr('Open your map')}];
+
+  /* ---------- GENERAL: notificacoes e perfil ---------- */
+  const general=[
+   {go:'notificacoes',size:'hub hub-sq',art:'rings',icon:'bell',g1:'#E76F51',g2:'#A83F22',
+    label:__tr('Notifications'),
+    main:'<b>'+(unread?unread+' '+__tr('unread'):__tr('All caught up'))+'</b>'+
+      '<span class="bsub">'+(unread?D.notif[0][0]:__tr('Nothing waiting for you'))+'</span>',
+    more:__tr('Open notifications')},
+   {go:'perfil',size:'hub hub-sq',art:'missions',icon:'user-circle',g1:'#1A5F76',g2:'#0C333F',
     label:__tr('Profile'),
-    main:'<b>'+esc(D.name)+'</b><span class="bsub">'+doneM+' '+__tr('of')+' '+totM+' '+__tr('missions done today')+'</span>',
+    main:'<b>'+esc(D.name)+'</b><span class="bsub">'+doneM+' '+__tr('of')+' '+totM+' '+
+      __tr('missions done today')+'</span>',
     more:__tr('Account and notifications')}
   ];
-  return '<div class="dsec bento-wrap">'+
+
+  /* ---------- SERVICE: as 3 coisas do tratamento ---------- */
+  const service=[
+   {go:'agenda',size:'hub',art:'agenda',icon:'calendar',g1:'#2A9D8F',g2:'#12615A',
+    label:__tr('Next appointment'),
+    main:'<b>'+ap[2]+'</b><span class="bsub">'+ap[3]+' · '+ap[0]+', '+ap[1]+'</span>',
+    more:PAGENDA.length+' '+__tr('appointments booked')},
+   {go:'exames',size:'hub',art:'labs',icon:'chart',g1:'#5B7DB1',g2:'#294567',
+    label:__tr('Your markers'),
+    main:'<b>'+PEXAMS.length+' '+__tr('markers')+'</b><span class="bsub">'+bad+' '+
+      __tr('need attention')+' · '+__tr('Last collection Mar 5')+'</span>',
+    more:__tr('See the panel')},
+   {go:'comunidade',size:'hub',art:'team',icon:'message',g1:'#7A5C8E',g2:'#3F2C4D',
+    label:__tr('Community'),
+    main:'<b>'+cm.who+'</b><span class="bsub">“'+cm.txt.slice(0,64)+'…”</span>',
+    more:__tr('Read what your team said')}
+  ];
+
+  /* ---------- CONTENT: um em andamento e dois em destaque ---------- */
+  const content=[
+   {act:"openProgram('"+cur.id+"')",size:'hub',art:'progress',icon:'sparkles',g1:'#E76F51',g2:'#A83F22',
+    label:dn?__tr('Watching'):__tr('Featured'),
+    main:'<b>'+cur.title+'</b><span class="bsub">'+tot+' '+__tr('days')+' · 10 '+__tr('min/day')+'</span>',
+    more:dn?__tr('Continue where you left off'):__tr('Start your first program')}
+  ].concat(PODCASTS.slice(0,2).map(function(pd){
+    return {go:'programas',size:'hub',art:'wave',icon:'tv',g1:'#114B5F',g2:'#07222C',
+      img:'https://img.youtube.com/vi/'+pd.v+'/mqdefault.jpg',
+      label:pd.chan,
+      main:'<b>'+pd.t+'</b><span class="bsub">'+pd.guest+'</span>',
+      more:__tr('Open the library')};
+  }));
+
+  const grp=function(t,tiles,cls){
+    return '<section class="hubgrp'+(cls?' '+cls:'')+'"><h4>'+__tr(t)+'</h4>'+
+      '<div class="hubset">'+tiles.map(bTile).join('')+'</div></section>';
+  };
+
+  return '<div class="dsec hub-wrap">'+
     '<div class="bhead"><h1>'+__tr('Hello')+', '+givenName(D.name)+'</h1>'+
-      '<p>'+__tr('Everything in one place. Tap a card to open it.')+'</p></div>'+
-    '<div class="bento">'+tiles.map(bTile).join('')+'</div></div>';
+      '<p>'+__tr('Everything in one place. Tap a bubble to open it.')+'</p></div>'+
+    '<div class="hub">'+
+      '<div class="hubcol">'+grp('Journey',journey)+grp('General',general,'hubgrp-2')+'</div>'+
+      '<div class="hubcol">'+grp('Service',service)+'</div>'+
+      '<div class="hubcol">'+grp('Content',content)+'</div>'+
+    '</div></div>';
 }
 function pBack(){ dashNav('patient','inicio'); }
+
+/* ================= JOURNEY — o mapa =================
+   ESQUELETO. A trilha e montada a partir dos PROGRAMS: cada programa e uma
+   unidade, cada dia e um no. Estados: feito · atual · bloqueado.
+   Falta definir: XP, vidas, ligas, recompensa de fim de unidade. */
+function pJourney(D){
+  const st=pState();
+  const doneTotal=PROGRAMS.reduce(function(a,p){ return a+pDone(p.id); },0);
+  const dayTotal=PROGRAMS.reduce(function(a,p){ return a+p.days.length; },0);
+
+  const stats='<div class="jstats">'+
+    '<div class="jstat"><span class="ic" data-icon="flame"></span><b>'+st.streak+'</b>'+
+      '<span>'+__tr('day streak')+'</span></div>'+
+    '<div class="jstat"><span class="ic" data-icon="star"></span><b>'+doneTotal+'</b>'+
+      '<span>'+__tr('sessions done')+'</span></div>'+
+    '<div class="jstat"><span class="ic" data-icon="target"></span><b>'+
+      Math.round(doneTotal/dayTotal*100)+'%</b><span>'+__tr('of the map')+'</span></div>'+
+  '</div>';
+
+  // primeiro programa ainda nao concluido define onde o mapa "acorda"
+  let openedUnit=PROGRAMS.findIndex(function(p){ return pDone(p.id)<p.days.length; });
+  if(openedUnit<0) openedUnit=PROGRAMS.length-1;
+
+  const units=PROGRAMS.map(function(p,ui){
+    const dn=pDone(p.id), tot=p.days.length, locked=ui>openedUnit;
+    let nodes='';
+    p.days.forEach(function(day,i){
+      const state=locked?'lock':(i<dn?'done':(i===dn?'now':'lock'));
+      const x=Math.round(Math.sin(i*0.85)*102);
+      const icon=state==='done'?'check':(state==='now'?'star':'lock');
+      nodes+='<div class="jnode '+state+'" style="--x:'+x+'px">'+
+        (state==='now'?'<span class="jnow">'+__tr('Start')+'</span>':'')+
+        '<button class="jdot" onclick="'+(state==='lock'
+            ? "toast('"+__tr('Finish the session before this one to unlock it.')+"')"
+            : "openProgram('"+p.id+"')")+'" aria-label="'+esc(day.t)+'">'+
+          dIcon(icon)+'</button>'+
+        '<span class="jlab">'+esc(day.t)+'</span></div>';
+    });
+    // bau de fim de unidade <!-- PLACEHOLDER: recompensa -->
+    nodes+='<div class="jnode '+(dn>=tot?'done':'lock')+'" style="--x:0px">'+
+      '<button class="jdot jchest" onclick="toast(\''+__tr('Finish the unit to open it.')+'\')" aria-label="'+__tr('Reward')+'">'+
+      dIcon('award')+'</button><span class="jlab">'+__tr('Unit reward')+'</span></div>';
+
+    return '<section class="junit'+(locked?' locked':'')+'" style="--g1:'+p.g1+';--g2:'+p.g2+'">'+
+      '<header class="jbanner">'+
+        '<div><span class="jkick">'+__tr('Unit')+' '+(ui+1)+'</span><h2>'+p.title+'</h2>'+
+        '<p>'+p.sub+'</p></div>'+
+        '<div class="jbadge">'+dIcon(p.icon)+'<b>'+dn+'/'+tot+'</b></div>'+
+      '</header>'+
+      '<div class="jpath">'+nodes+'</div></section>';
+  }).join('');
+
+  // o check-in diario vinha do mosaico antigo — e o ritual da jornada, vive aqui
+  const today='<button class="jtoday" onclick="dashNav(\'patient\',\'checkin\')">'+
+    '<span class="jtic">'+dIcon('clipboard')+'</span>'+
+    '<span class="jtb"><b>'+__tr('How are you today?')+'</b>'+
+    '<span>'+CISTEPS.length+' '+__tr('questions')+' · 2 '+__tr('min')+' · '+
+      __tr('your team reads every one')+'</span></span>'+
+    '<span class="jtgo">'+__tr('Log today')+dIcon('arrow-right')+'</span></button>';
+
+  return '<div class="dsec jsec">'+
+    '<div class="bhead"><h1>'+__tr('Your journey')+'</h1>'+
+      '<p>'+__tr('One session at a time. The map opens as you go.')+'</p></div>'+
+    today+stats+
+    '<div class="jskel">'+dIcon('compass')+'<span>'+
+      __tr('Skeleton — leagues, rewards and daily goals still to come.')+'</span></div>'+
+    units+'</div>';
+}
+
+/* ================= SERVICE — o tratamento em 3 blocos ================= */
+function pService(D){
+  const bad=PEXAMS.filter(function(e){return e[3]==='bad';}).length;
+
+  let ags='';
+  PAGENDA.slice(0,3).forEach(function(a){
+    ags+='<div class="drow"><div class="ddate"><div class="dd">'+a[0]+'</div><div class="dt">'+a[1]+'</div></div>'+
+      '<div class="dinfo"><b>'+a[2]+'</b><span>'+a[3]+'</span></div>'+
+      (a[4]?'<button class="dbtn dbtn-line" onclick="toast(\''+__tr('Demo: the video session would open here')+'\')">'+
+        dIcon('video')+__tr('Enter')+'</button>':'')+'</div>';
+  });
+
+  // <!-- PLACEHOLDER --> serie de glicemia de jejum das ultimas coletas
+  const series=[126,124,121,119,118,116,112];
+  let bars='';
+  PEXAMS.forEach(function(e){
+    bars+='<div class="mkrow"><span class="mkl">'+e[0]+'</span>'+
+      '<span class="mkv">'+e[1]+'</span><span class="exs '+e[3]+'">'+e[2]+'</span></div>';
+  });
+
+  const cm=COMMUNITY.slice(0,2).map(commCard).join('');
+
+  let mealRows='';
+  MEALS.slice(0,3).forEach(function(m){
+    mealRows+='<div class="mlrow"><span class="mlic">'+dIcon(m[0])+'</span>'+
+      '<div><b>'+__tr(m[1])+'</b><span>'+m[2].slice(0,2).join(' · ')+'</span></div></div>';
+  });
+
+  let teamRows='';
+  PTEAM.forEach(function(m){
+    teamRows+='<div class="tmrow"><span class="commav">'+m[0]+'</span>'+
+      '<div><b>'+m[1]+'</b><span>'+m[2]+'</span></div>'+
+      '<button class="dbtn dbtn-line" onclick="toast(\''+__tr('Demo: chat would open here')+'\')">'+
+      dIcon('message')+'</button></div>';
+  });
+
+  return '<div class="dsec svc">'+
+    '<div class="bhead"><h1>'+__tr('Service')+'</h1>'+
+      '<p>'+__tr('What matters most in your treatment, in one screen.')+'</p></div>'+
+    '<div class="svcgrid">'+
+      '<div class="dcard svccard"><div class="svch">'+dIcon('calendar')+
+        '<h3>'+__tr('Next appointments')+'</h3>'+
+        '<button class="svcmore" onclick="dashNav(\'patient\',\'agenda\')">'+__tr('See all')+
+        dIcon('arrow-right')+'</button></div>'+ags+'</div>'+
+      '<div class="dcard svccard"><div class="svch">'+dIcon('chart')+
+        '<h3>'+__tr('Your markers')+'</h3>'+
+        '<button class="svcmore" onclick="dashNav(\'patient\',\'exames\')">'+__tr('See all')+
+        dIcon('arrow-right')+'</button></div>'+
+        '<div class="mkchart">'+miniSpark(series,320,110)+
+          '<div class="mkfoot"><span>'+__tr('Fasting glucose')+' · '+__tr('last 7 collections')+'</span>'+
+          '<b>-14 mg/dL</b></div></div>'+
+        '<div class="mklist">'+bars+'</div>'+
+        '<p class="svcnote">'+bad+' '+__tr('of')+' '+PEXAMS.length+' '+__tr('markers need attention')+'.</p></div>'+
+      '<div class="dcard svccard"><div class="svch">'+dIcon('message')+
+        '<h3>'+__tr('Community')+'</h3>'+
+        '<button class="svcmore" onclick="dashNav(\'patient\',\'comunidade\')">'+__tr('See all')+
+        dIcon('arrow-right')+'</button></div>'+cm+'</div>'+
+      // vindos do mosaico antigo: o plano do dia e quem cuida de voce
+      '<div class="dcard svccard"><div class="svch">'+dIcon('utensils')+
+        '<h3>'+__tr('Meal plan')+'</h3>'+
+        '<button class="svcmore" onclick="dashNav(\'patient\',\'plano\')">'+__tr('See all')+
+        dIcon('arrow-right')+'</button></div>'+mealRows+'</div>'+
+      '<div class="dcard svccard"><div class="svch">'+dIcon('users')+
+        '<h3>'+__tr('My team')+'</h3>'+
+        '<button class="svcmore" onclick="dashNav(\'patient\',\'equipe\')">'+__tr('See all')+
+        dIcon('arrow-right')+'</button></div>'+teamRows+'</div>'+
+    '</div></div>';
+}
+
+function commCard(c){
+  return '<div class="commc"><div class="commav">'+c.init+'</div>'+
+    '<div class="commb"><div class="commh"><b>'+c.who+'</b><span>'+__tr(c.react)+'</span></div>'+
+    '<p>“'+c.txt+'”</p>'+
+    '<div class="commf"><span>'+c.role+'</span><span>'+c.when+'</span></div></div></div>';
+}
+
+function pCommunity(D){
+  return '<div class="dsec">'+head(__tr('Community'),__tr('What your team is saying about your progress.'))+
+    '<div class="commlist">'+COMMUNITY.map(commCard).join('')+'</div></div>';
+}
+
+function pNotifs(D){
+  let r='';
+  D.notif.forEach(function(n){
+    r+='<div class="ntf'+(n[3]?' unread':'')+'">'+(n[3]?'<span class="ntfdot"></span>':'')+
+      '<div><b>'+n[0]+'</b><p>'+n[1]+'</p><span class="ntft">'+n[2]+'</span></div></div>';
+  });
+  const unread=D.notif.filter(function(n){return n[3];}).length;
+  return '<div class="dsec">'+head(__tr('Notifications'),
+      unread?unread+' '+__tr('unread'):__tr('All caught up'))+
+    '<div class="dcard">'+r+'</div></div>';
+}
 
 /* ============ MOSAICOS DOS OUTROS PAPEIS ============ */
 function proBento(role){
@@ -5828,6 +6303,31 @@ routeFromHash();
 /* ============ LANGUAGE TOGGLE (EN / PT-BR) ============ */
 (function(){
   const EN2PT={
+    /* --- header de 4 botoes, menu de bubbles, Journey e Service --- */
+    "Everything in one place. Tap a bubble to open it.":"Tudo num lugar só. Toque numa bolha para abrir.",
+    "Open your map":"Abrir seu mapa","Open notifications":"Abrir notificações",
+    "Nothing waiting for you":"Nada esperando por você",
+    "See the panel":"Ver o painel","Read what your team said":"Ler o que seu time disse",
+    "Watching":"Assistindo","Featured":"Em destaque","Open the library":"Abrir a biblioteca",
+    "Demo: chat would open here":"Demo: o chat abriria aqui",
+    "Journey":"Jornada","Service":"Acompanhamento","General":"Geral",
+    "Your map":"Seu mapa","Your journey":"Sua jornada",
+    "One session at a time. The map opens as you go.":"Uma sessão por vez. O mapa se abre conforme você avança.",
+    "sessions done":"sessões feitas","of the map":"do mapa",
+    "Skeleton — leagues, rewards and daily goals still to come.":"Esqueleto — ligas, recompensas e metas diárias ainda por vir.",
+    "Unit":"Unidade","Unit reward":"Recompensa da unidade","Reward":"Recompensa",
+    "Finish the session before this one to unlock it.":"Termine a sessão anterior para desbloquear.",
+    "Finish the unit to open it.":"Termine a unidade para abrir.",
+    "What matters most in your treatment, in one screen.":"O que mais importa no seu tratamento, numa tela só.",
+    "Next appointment":"Próxima consulta","Next appointments":"Próximas consultas",
+    "Your markers":"Seus marcadores","See all":"Ver tudo",
+    "Fasting glucose":"Glicemia de jejum","last 7 collections":"últimas 7 coletas",
+    "markers need attention":"marcadores precisam de atenção",
+    "Community":"Comunidade",
+    "What your team is saying about your progress.":"O que seu time está dizendo sobre seu progresso.",
+    "reacted to your streak":"reagiu à sua sequência",
+    "commented on your meal plan":"comentou seu plano alimentar",
+    "reacted to your exams":"reagiu aos seus exames",
     "Continue with email":"Continuar com e-mail",
     "Continue with Phone or Email":"Continuar com Telefone ou E-mail",
     "Join 100,000 people restoring their mental health, metabolically.":"Junte-se a 100.000 pessoas restaurando sua saúde mental, metabolicamente.",
