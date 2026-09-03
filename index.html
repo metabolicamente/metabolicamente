@@ -1646,6 +1646,31 @@ body:not(.intro-done) .hf-art{animation:none;opacity:0}
 .imhero .imdots i.on{width:22px;border-radius:99px;background:#F5EFE4}
 @media(max-width:680px){.imhero{height:clamp(360px,58vh,480px)}.imhero .imdots{display:none}}
 
+/* ---- nav transparente sobre o hero imersivo ---- */
+body.imm #pg-conteudo{padding-top:0}
+body.imm .imhero{margin-top:-64px;height:clamp(484px,72vh,724px)}
+body.imm .imhero .imin{padding-top:64px}
+.nav.over{background:transparent;backdrop-filter:none;border-bottom-color:rgba(245,239,228,.16)}
+.nav.over .logo{color:#F5EFE4}
+.nav.over .logo svg{stroke:#F5EFE4}
+.nav.over a.nl{color:rgba(245,239,228,.90)}
+.nav.over a.nl:hover{color:#fff}
+.nav.over .themetog,.nav.over .langtog,.nav.over .navsearch{color:#F5EFE4;border-color:rgba(245,239,228,.42)}
+.nav.over .btn-solid{background:#F5EFE4;color:var(--t900)}
+
+/* ---- busca em icone ---- */
+.navsearch{display:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);
+  background:transparent;color:var(--soft);align-items:center;justify-content:center;
+  font-size:15px;cursor:pointer;padding:0;flex:none}
+.navsearch:hover{color:var(--hd2)}
+body.on-conteudo .navsearch{display:flex}
+#pg-conteudo .discsearch{position:fixed;top:72px;right:clamp(18px,3.4vw,48px);z-index:70;
+  width:min(420px,calc(100vw - 36px));margin:0;opacity:0;pointer-events:none;
+  transform:translateY(-8px);transition:opacity .18s ease,transform .18s ease}
+body.searchopen #pg-conteudo .discsearch{opacity:1;pointer-events:auto;transform:none}
+#pg-conteudo .discsearch input[type=text]{box-shadow:0 12px 34px rgba(12,51,63,.16)}
+#pg-conteudo .disc{padding-top:20px}
+
 /* ---- categorias em trilhos agrupados ---- */
 .catclus{padding:26px 0 6px}
 .catrail .cattile{width:clamp(178px,17vw,226px)}
@@ -2022,6 +2047,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
     <a class="nl" href="#/tratamento">Learn more</a>
     <a class="nl" href="#/equipe">About us</a>
     <a class="nl" href="#/faq">FAQs</a>
+    <button class="navsearch" id="navSearch" onclick="toggleSearch()" aria-label="Search"><span class="ic" data-icon="search"></span></button>
     <a class="nl" id="navLogin" onclick="goLogin()" style="cursor:pointer">Log in</a>
     <a class="btn btn-solid" onclick="go('wizard')" style="cursor:pointer">Get started</a>
   </nav>
@@ -3041,6 +3067,7 @@ function go(id){
   document.body.classList.toggle('in-app', id==='patient'||id==='doctor'||id==='nutri');
   if(id==='patient'||id==='doctor'||id==='nutri') renderDash(id);
   if(id==='wizard') wizRender();
+  if(id!=='site'&&window.setImmersive) setImmersive(false);
   renderIcons();
 }
 function goHome(){
@@ -4824,7 +4851,38 @@ function showSub(id,scroll){
   startGlows();
   if(window.__applyLang){ try{__applyLang()}catch(e){} }
   renderIcons();
+  setImmersive(id==='pg-conteudo');
 }
+
+/* ============ NAV IMERSIVA + BUSCA EM ICONE (pagina conteudo) ============ */
+function setImmersive(on){
+  document.body.classList.toggle('imm',!!on);
+  document.body.classList.toggle('on-conteudo',!!on);
+  if(!on) closeSearch();
+  syncNavOver();
+}
+function syncNavOver(){
+  const nav=document.querySelector('.nav'); if(!nav) return;
+  const imm=document.body.classList.contains('imm');
+  const h=document.querySelector('#pg-conteudo .imhero');
+  const limit=h?Math.max(0,h.offsetHeight-140):0;
+  nav.classList.toggle('over',imm&&window.scrollY<limit);
+}
+function toggleSearch(){
+  const open=document.body.classList.toggle('searchopen');
+  const i=document.getElementById('csearch');
+  if(open&&i){ setTimeout(()=>i.focus(),60); }
+}
+function closeSearch(){ document.body.classList.remove('searchopen'); }
+window.addEventListener('scroll',syncNavOver,{passive:true});
+window.addEventListener('resize',syncNavOver);
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeSearch(); });
+document.addEventListener('click',e=>{
+  if(!document.body.classList.contains('searchopen')) return;
+  if(e.target.closest('#pg-conteudo .discsearch')||e.target.closest('#navSearch')) return;
+  closeSearch();
+});
+
 function routeFromHash(){
   const h=location.hash||'';
   if(h.indexOf('#/')===0){
