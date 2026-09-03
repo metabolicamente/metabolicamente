@@ -2304,6 +2304,40 @@ body.imm #pg-programa .pgin{padding-top:112px}
 #pg-programa .pgfact{display:flex;justify-content:space-between;font-size:13px;padding:7px 0}
 #pg-programa .pgfact span:first-child{color:var(--psoft)}
 #pg-programa .pgfact span:last-child{color:var(--pink);font-weight:600}
+
+/* ============ CONTEUDO v2: tiles fotograficos + trilhos em loop ============ */
+/* subtitulo desce para baixo do titulo, em todas as fileiras */
+#pg-conteudo .hl-head{display:block;padding:0 var(--gut);margin-bottom:18px}
+#pg-conteudo .hl-head h2{font-size:clamp(20px,1.9vw,26px);margin:0 0 5px;line-height:1.15}
+#pg-conteudo .hl-head span{display:block;font-size:14px;line-height:1.4}
+
+/* o duotone escuro sai; entra a foto com grading na cor da categoria */
+#pg-conteudo .cattile{filter:none;background:#0E171B;
+  transition:transform .24s cubic-bezier(.4,0,.2,1),box-shadow .24s ease}
+#pg-conteudo .cattile .catph{position:absolute;inset:0;z-index:0;background-size:cover;
+  background-position:center;filter:grayscale(.22) contrast(1.04);transition:filter .3s ease,transform .5s ease}
+#pg-conteudo .cattile::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(158deg,var(--g1),var(--g2));mix-blend-mode:multiply;opacity:.56}
+#pg-conteudo .cattile .catgrad{position:absolute;left:0;right:0;bottom:0;height:62%;z-index:2;
+  pointer-events:none;background:linear-gradient(180deg,rgba(4,8,10,0),rgba(4,8,10,.86))}
+#pg-conteudo .cattile svg.catart{z-index:2;opacity:.5}
+#pg-conteudo .cattile .catic{z-index:3;color:#fff;opacity:.72}
+#pg-conteudo .catlabel{z-index:3;font-family:var(--display);font-weight:700;letter-spacing:-.01em;
+  text-shadow:0 1px 14px rgba(0,0,0,.5)}
+#pg-conteudo .cattile:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(0,0,0,.6)}
+#pg-conteudo .cattile:hover .catph{filter:grayscale(0) contrast(1.04);transform:scale(1.04)}
+
+/* em loop as setas ficam sempre visiveis */
+#pg-conteudo .railwrap.at-start .railnav.prev,
+#pg-conteudo .railwrap.at-end .railnav.next{opacity:1;pointer-events:auto}
+
+/* ---- program page: titulo em Montserrat e os dois cards na mesma linha ---- */
+#pg-programa .pgbody{gap:22px 30px}
+#pg-programa .pgbody .pghead{grid-column:1 / -1}
+#pg-programa .pgsec-h{font-family:var(--display);font-weight:800;
+  font-size:clamp(24px,2.6vw,34px);letter-spacing:-.025em;margin:0 0 6px}
+#pg-programa .pgsec-s{margin:0}
+#pg-programa .pgprog{top:24px}
 </style>
 </head>
 <body>
@@ -2619,7 +2653,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
         </div>
       </section>
       <section class="catclus">
-        <div class="hl-head reveal"><h2>Everyday pillars</h2><span>The daily levers — food, sleep, movement, mind.</span></div>
+        <div class="hl-head reveal"><h2>Everyday pillars</h2><span>Food, sleep, movement, mind.</span></div>
         <div class="railwrap" id="wrap-catRail2">
           <button class="railnav prev" onclick="railScroll('catRail2',-1)" aria-label="Previous"><span class="ic" data-icon="chevron-left"></span></button>
           <div class="rail catrail" id="catRail2">
@@ -2730,11 +2764,11 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       </div>
     </section>
     <div class="pgbody">
-      <div>
+      <div class="pghead">
         <h2 class="pgsec-h">Content</h2>
         <p class="pgsec-s" id="pgCount"></p>
-        <div id="pgMods"></div>
       </div>
+      <div id="pgMods"></div>
       <aside>
         <div class="pgprog">
           <h4>Your progress</h4>
@@ -7503,7 +7537,7 @@ routeFromHash();
     "Knowledge library":"Biblioteca de conhecimento",
     "Where to begin if this is new to you.":"Por onde começar, se isso é novo para você.",
     "Everyday pillars":"Pilares do dia a dia",
-    "The daily levers — food, sleep, movement, mind.":"As alavancas diárias — comida, sono, movimento, mente.",
+    "Food, sleep, movement, mind.":"Comida, sono, movimento, mente.",
     "By condition":"Por condição",
     "Start from what you are living with.":"Comece pelo que você está vivendo.",
     "Going deeper":"Aprofundando",
@@ -8196,6 +8230,98 @@ routeFromHash();
   };
 
   syncTone();
+})();
+</script>
+
+<script>
+/* ============================================================
+   Fotos das categorias (Unsplash, licenca livre — hotlink no CDN,
+   igual ao heroi da pagina) e trilhos em carrossel infinito.
+   ============================================================ */
+(function(){
+  var U='https://images.unsplash.com/', Q='?fm=jpg&q=72&w=560&auto=format&fit=crop';
+  var PHOTOS={
+    'Getting started'   :'photo-1613578519724-22fdb5d06388', /* planta em janela ensolarada */
+    'Fundamentals'      :'photo-1760477667665-dcbfe146aea0', /* livro aberto */
+    'The science'       :'photo-1602052577122-f73b9710adba', /* bancada de laboratorio */
+    'Podcasts'          :'photo-1559523161-0fc0d8b38a7a',    /* dois homens gravando podcast */
+    'Patient stories'   :'photo-1747374135959-9291ba69215e', /* homem sorrindo sob folhagem */
+    'Nutrition'         :'photo-1634114042751-527be6421f41', /* legumes na mesa */
+    'Sleep'             :'photo-1587023705100-8094f8d47e86', /* cama branca junto a janela */
+    'Movement'          :'photo-1773561212492-66b0404b72aa', /* corrida ao por do sol */
+    'Recipes'           :'photo-1642689690565-bf0afb7eb41e', /* prato com ovos e abacate */
+    'Mindfulness'       :'photo-1522075782449-e45a34f1ddfb', /* pessoa em banco, montanha */
+    'Stress & cortisol' :'photo-1470432581262-e7880e8fe79a', /* chuva na janela */
+    'Depression'        :'photo-1631816591249-ba33dde81a23', /* janela com arvore fora */
+    'Anxiety'           :'photo-1780800489388-225b22ce947d', /* trilha na floresta com sol */
+    'Bipolar disorder'  :'photo-1565733293285-77aa342b22dd', /* mar aereo, espuma */
+    'ADHD'              :'photo-1706366490101-a7a078c4c98a', /* mesa com caneta e caderno */
+    'Ketogenic therapy' :'photo-1771698254255-e64331d09046', /* abacate com salmao */
+    'Gut & brain'       :'photo-1741518957919-d7b19058616a', /* potes de fermentados */
+    'For clinicians'    :'photo-1631217868264-e5b90bb7e133'  /* medico conversando com paciente */
+  };
+
+  function paintTiles(){
+    document.querySelectorAll('#pg-conteudo .cattile').forEach(function(t){
+      if(t.dataset.phdone) return;
+      var id=PHOTOS[t.getAttribute('data-cat')];
+      if(id){
+        var ph=document.createElement('span');
+        ph.className='catph';
+        ph.style.backgroundImage="url('"+U+id+Q+"')";
+        t.insertBefore(ph,t.firstChild);
+      }
+      var g=document.createElement('span'); g.className='catgrad';
+      var lab=t.querySelector('.catlabel');
+      if(lab) t.insertBefore(g,lab); else t.appendChild(g);
+      t.dataset.phdone='1';
+    });
+  }
+
+  /* --- carrossel infinito: tres copias, o salto acontece quando o scroll para --- */
+  function loopRail(rail){
+    if(rail.dataset.looped) return;
+    var kids=[].slice.call(rail.children);
+    if(!kids.length) return;
+    var tail=document.createDocumentFragment(), head=document.createDocumentFragment();
+    kids.forEach(function(k){
+      var a=k.cloneNode(true); a.setAttribute('aria-hidden','true'); a.dataset.clone='1'; tail.appendChild(a);
+      var b=k.cloneNode(true); b.setAttribute('aria-hidden','true'); b.dataset.clone='1'; head.appendChild(b);
+    });
+    rail.appendChild(tail);
+    rail.insertBefore(head, rail.firstChild);
+    rail.dataset.looped='1';
+    var set=0,t=null;
+    function measure(){ set=rail.scrollWidth/3; if(set) rail.scrollLeft=set; }
+    requestAnimationFrame(measure);
+    window.addEventListener('resize',function(){ requestAnimationFrame(measure); });
+    rail.addEventListener('scroll',function(){
+      clearTimeout(t);
+      t=setTimeout(function(){
+        if(!set) return;
+        if(rail.scrollLeft < set*0.5) rail.scrollLeft += set;
+        else if(rail.scrollLeft > set*1.5) rail.scrollLeft -= set;
+      },140);
+    },{passive:true});
+  }
+
+  function setup(){
+    paintTiles();
+    document.querySelectorAll('#pg-conteudo .catrail').forEach(loopRail);
+    if(window.renderIcons) renderIcons(document.getElementById('pg-conteudo'));
+  }
+
+  /* roda quando a pagina de conteudo aparece */
+  if(typeof showSub==='function'){
+    var _s=showSub;
+    window.showSub=function(id,scroll){
+      var r=_s.apply(this,arguments);
+      if(id==='pg-conteudo') setTimeout(setup,0);
+      return r;
+    };
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',setup);
+  else setup();
 })();
 </script>
 </body>
