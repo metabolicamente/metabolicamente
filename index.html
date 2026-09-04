@@ -1526,6 +1526,81 @@ body:not(.intro-done) .hf-art{animation:none;opacity:0}
   display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 .artread{font-size:12.5px;font-weight:600;color:var(--t500);display:inline-flex;align-items:center;gap:5px}
 
+/* ---- podcasts em bolhas desenhadas a mao (substitui o card 16:9) ---- */
+#podRail .podcard.bub{width:172px;text-align:center;padding-top:6px;align-self:start}
+.bub .bdisc{position:relative;display:block;width:150px;height:150px;margin:0 auto 12px;
+  transition:transform .2s ease}
+.bub:hover .bdisc{transform:translateY(-4px)}
+.bub .bfill{position:absolute;inset:8px;border-radius:50%;overflow:hidden;background:#FAF6F0;
+  display:block}
+.bub .bart{width:100%;height:100%;display:block}
+.bub .bplay{position:absolute;right:7px;bottom:7px;z-index:3;width:37px;height:37px;
+  border-radius:50%;background:var(--t900);border:2.5px solid #FAF6F0;display:flex;
+  align-items:center;justify-content:center;
+  transition:transform .18s ease,background .18s ease}
+.bub .bplay svg{width:12px;height:12px;margin-left:2px;fill:#F5EFE4;stroke:none;display:block}
+.bub:hover .bplay{background:var(--t500);transform:scale(1.1)}
+.bub .bring{position:absolute;inset:0;width:100%;height:100%;overflow:visible;color:var(--t500)}
+.bub:nth-child(3n+2) .bring{color:var(--coral)}
+.bub:nth-child(3n) .bring{color:#D9A420}
+.bub .bchan{font-family:'Caveat',cursive;font-size:17px;line-height:1.05;color:var(--soft);
+  margin:0 0 4px}
+.bub .btt{font-family:var(--sans);font-size:13px;font-weight:600;line-height:1.3;color:var(--hd);
+  margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+
+/* ---- artigos: recortes de papel (substitui a capa em gradiente) ---- */
+#artRail.pqgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:22px;
+  padding:10px var(--gut) 34px;overflow:visible}
+#wrap-artRail .railnav{display:none}
+.artcard.clipcard{width:auto;position:relative;background:#FAF6F0;color:#12414F;border-radius:4px;
+  padding:28px 22px 22px;display:flex;flex-direction:column;gap:12px;
+  transition:transform .2s ease}
+.artcard.clipcard:nth-child(2n){transform:rotate(-.7deg)}
+.artcard.clipcard:nth-child(3n){transform:rotate(.6deg)}
+.artcard.clipcard:hover{transform:translateY(-5px) rotate(0deg)}
+.clipcard .cframe{position:absolute;inset:6px;width:calc(100% - 12px);height:calc(100% - 12px);
+  color:rgba(18,65,79,.4);overflow:visible;pointer-events:none}
+.clipcard .ctape{position:absolute;top:-9px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:66px;height:20px;background:rgba(217,164,32,.34);border-radius:2px}
+.clipcard .csrc{position:relative;font-family:'Caveat',cursive;font-size:17px;color:var(--coral);
+  margin:0}
+.clipcard h3{position:relative;display:block;-webkit-line-clamp:unset;overflow:visible;
+  font-family:var(--serif);font-weight:600;font-size:19px;
+  line-height:1.22;color:#12414F;letter-spacing:0;margin:0}
+.clipcard .cdesc{position:relative;font-family:var(--calm);font-size:13px;line-height:1.5;
+  color:rgba(18,65,79,.72);margin:0}
+.clipcard .cread{position:relative;margin-top:auto;font-family:var(--display);font-size:11.5px;
+  font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--t800)}
+.clipcard:hover .cread{color:var(--t500)}
+
+/* ---- gate: convite a criar conta dentro do programa ---- */
+.gscrim{position:fixed;inset:0;z-index:120;background:rgba(3,7,9,.76);backdrop-filter:blur(8px);
+  display:none;align-items:center;justify-content:center;padding:24px}
+.gscrim.open{display:flex}
+.gsplit{position:relative;width:100%;max-width:660px;display:grid;grid-template-columns:200px 1fr;
+  background:#101D21;border:1px solid rgba(245,239,228,.1);border-radius:20px;overflow:hidden;
+  box-shadow:0 30px 70px rgba(0,0,0,.55);animation:gpop .24s cubic-bezier(.2,.8,.3,1)}
+@keyframes gpop{from{opacity:0;transform:translateY(14px) scale(.975)}}
+.gsplit .gart{background:#FAF6F0;display:flex;align-items:center;justify-content:center;padding:22px}
+.gsplit .gart svg{width:100%;height:auto;display:block;max-width:150px}
+.gsplit .gbody{padding:34px 32px 30px;display:flex;flex-direction:column;gap:12px;
+  align-items:flex-start}
+.gsplit .gctx{font-family:'Caveat',cursive;font-size:19px;color:#D9A420;margin:0}
+.gsplit h3{font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.16;color:#DDD6C6;
+  letter-spacing:0;margin:0}
+.gsplit .gsub{font-family:var(--calm);font-size:14.5px;line-height:1.55;color:#9DB2B6;
+  max-width:36ch;margin:0}
+.gsplit .grow{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.gsplit .gfine{font-family:var(--calm);font-size:12px;color:rgba(157,178,182,.6);margin:0}
+.gclose{position:absolute;top:10px;right:14px;background:none;border:0;cursor:pointer;
+  color:rgba(157,178,182,.7);font-size:26px;line-height:1;z-index:2}
+@media(max-width:620px){
+  .gsplit{grid-template-columns:1fr}
+  .gsplit .gart{padding:18px}
+  .gsplit .gart svg{max-width:120px;margin:0 auto}
+  .gsplit .gbody{padding:26px 24px 24px}
+}
+
 /* ---- filtros de canal ---- */
 #pg-conteudo .libfilters{padding:0 var(--gut);margin-bottom:16px}
 #pg-conteudo .cattile{cursor:pointer}
@@ -2721,22 +2796,13 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       <div class="hl-head reveal"><h2>Opinion articles</h2><span>What is being written about metabolic psychiatry.</span></div>
       <div class="railwrap" id="wrap-artRail">
         <button class="railnav prev" onclick="railScroll('artRail',-1)" aria-label="Previous"><span class="ic" data-icon="chevron-left"></span></button>
-        <div class="rail" id="artRail"></div>
+        <div class="rail pqgrid" id="artRail"></div>
         <button class="railnav next" onclick="railScroll('artRail',1)" aria-label="Next"><span class="ic" data-icon="chevron-right"></span></button>
       </div>
       <div class="noresults" id="anores">No results for your search.</div>
     </section>
 
-    <!-- ---------- 6. citacao ---------- -->
-    <section class="hl-sec">
-      <div class="quotepanel reveal">
-        <span class="qp-mark ic" data-icon="sparkles"></span>
-        <p class="qp-src">Insight of the day</p>
-        <p class="qp-text">The brain is two percent of your body weight and burns twenty percent of your energy. When that supply falters, the mind is the first place you feel it.</p>
-      </div>
-    </section>
-
-    <!-- ---------- 7. cta final ---------- -->
+    <!-- ---------- 6. cta final ---------- -->
     <section class="hl-sec" style="padding-bottom:clamp(46px,6vw,86px)">
       <div class="tm-join reveal">
         <div class="tm-join-l">
@@ -2766,9 +2832,9 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
         <h2 id="pgTitle">Program</h2>
         <p class="pgmeta" id="pgMeta"></p>
         <div class="pgacts">
-          <span class="btn btn-cream" onclick="goAccount()"><span class="ic" data-icon="play"></span> Start program</span>
-          <button class="pgicb" onclick="goAccount()" aria-label="About"><span class="ic" data-icon="info"></span></button>
-          <button class="pgicb" onclick="goAccount()" aria-label="Save"><span class="ic" data-icon="heart"></span></button>
+          <span class="btn btn-cream" style="cursor:pointer" onclick="openGate('start')"><span class="ic" data-icon="play"></span> Start program</span>
+          <button class="pgicb" onclick="openGate('about')" aria-label="About"><span class="ic" data-icon="info"></span></button>
+          <button class="pgicb" onclick="openGate('save')" aria-label="Save"><span class="ic" data-icon="heart"></span></button>
         </div>
       </div>
     </section>
@@ -3179,6 +3245,34 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       </div>
     </section>
   </div>
+
+  <!-- ============ GATE: criar conta (dentro do programa) ============ -->
+  <div class="gscrim" id="gateModal" onclick="if(event.target===this)closeGate()">
+    <div class="gsplit" role="dialog" aria-modal="true" aria-labelledby="gateH">
+      <button class="gclose" onclick="closeGate()" aria-label="Close">&times;</button>
+      <div class="gart" id="gateArt" aria-hidden="true"></div>
+      <div class="gbody">
+        <p class="gctx" id="gateCtx">Free library</p>
+        <h3 id="gateH">You are one account away from the rest.</h3>
+        <p class="gsub">The whole free library opens, and your progress is kept from this lesson on.</p>
+        <div class="grow">
+          <span class="btn btn-cream" style="cursor:pointer" onclick="closeGate();goAccount()">Create free account</span>
+          <span class="btn btn-ghost" style="cursor:pointer" onclick="closeGate();goLogin()">Log in</span>
+        </div>
+        <p class="gfine">Free. No card. About a minute.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- filtros de tra&#231;o a mao (bolhas dos podcasts) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+    <filter id="mbrgh"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="5" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="mbrgh2"><feTurbulence type="fractalNoise" baseFrequency="0.031" numOctaves="2" seed="4" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.6" xChannelSelector="R" yChannelSelector="G"/></filter>
+    <filter id="mbrgh3"><feTurbulence type="fractalNoise" baseFrequency="0.042" numOctaves="2" seed="12" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.1" xChannelSelector="R" yChannelSelector="G"/></filter>
+  </defs></svg>
 
   <!-- ============ TEAM APPLICATION MODAL ============ -->
   <div class="modal" id="teamModal">
@@ -5643,35 +5737,100 @@ function startGlows(){
 
 /* ============ CONTEUDO: biblioteca aberta ============ */
 const PODCASTS=[
- {v:'dI0CztCzjbc',chan:'Roundabout Productions',guest:'Dr. Régis Chachamovich',t:'A Dieta Cetogênica é Mais Eficaz que Antidepressivos?',d:'Why rising antidepressant use is not improving mental health, and the ketogenic diet as a therapeutic intervention.'},
- {v:'sWiJ679ZWFE',chan:'Modo Primal Podcast',guest:'Dr. Régis Chachamovich',t:'Alimente seu Cérebro: Como a Dieta Pode Ser a Chave para Saúde Mental',d:'Ancestral eating, metabolic health, and how nutrition shapes brain function.'},
- {v:'LcFeODsiXI4',chan:'Antonio Kraychete',guest:'Dr. Régis Chachamovich',t:'Esse Método Cura a Depressão?',d:'Metabolic approaches to treating depression, beyond traditional medication.'},
- {v:'927R9WQL9ps',chan:'Lutz Podcast',guest:'Dr. Régis Chachamovich',t:'Como o Metabolismo Pode Salvar Sua Saúde Mental',d:'A pioneer of metabolic psychiatry in Brazil on metabolic disease, ketogenic diet and mental illness.'},
- {v:'q5IBHaYKKJc',chan:'Roundabout Productions',guest:'Dr. Juan Pablo Roig',t:'Somos Viciados em Carboidratos?',d:'Food compulsion, carbohydrate addiction, and the role of inflammation and insulin resistance.'},
- {v:'IpLo1B4fhF0',chan:'Modo Primal Podcast',guest:'Dr. Juan Pablo Roig',t:'Médico Curou o Fígado e a Depressão com Dieta Carnívora',d:'Ancestral nutrition and metabolic psychiatry, with a personal story and clinical practice insights.'}
+ {v:'dI0CztCzjbc',art:'plate',chan:'Roundabout Productions',guest:'Dr. Régis Chachamovich',t:'A Dieta Cetogênica é Mais Eficaz que Antidepressivos?',d:'Why rising antidepressant use is not improving mental health, and the ketogenic diet as a therapeutic intervention.'},
+ {v:'sWiJ679ZWFE',art:'brain',chan:'Modo Primal Podcast',guest:'Dr. Régis Chachamovich',t:'Alimente seu Cérebro: Como a Dieta Pode Ser a Chave para Saúde Mental',d:'Ancestral eating, metabolic health, and how nutrition shapes brain function.'},
+ {v:'LcFeODsiXI4',art:'mic',chan:'Antonio Kraychete',guest:'Dr. Régis Chachamovich',t:'Esse Método Cura a Depressão?',d:'Metabolic approaches to treating depression, beyond traditional medication.'},
+ {v:'927R9WQL9ps',art:'mito',chan:'Lutz Podcast',guest:'Dr. Régis Chachamovich',t:'Como o Metabolismo Pode Salvar Sua Saúde Mental',d:'A pioneer of metabolic psychiatry in Brazil on metabolic disease, ketogenic diet and mental illness.'},
+ {v:'q5IBHaYKKJc',art:'waves',chan:'Roundabout Productions',guest:'Dr. Juan Pablo Roig',t:'Somos Viciados em Carboidratos?',d:'Food compulsion, carbohydrate addiction, and the role of inflammation and insulin resistance.'},
+ {v:'IpLo1B4fhF0',art:'sprout',chan:'Modo Primal Podcast',guest:'Dr. Juan Pablo Roig',t:'Médico Curou o Fígado e a Depressão com Dieta Carnívora',d:'Ancestral nutrition and metabolic psychiatry, with a personal story and clinical practice insights.'}
 ];
 const ARTICLES=[
- {u:'https://www.proactivepsychiatry.com/post/metabolic-psychiatry-where-mental-health-meets-metabolic-health',src:'Proactive Psychiatry',t:'Metabolic Psychiatry: Where Mental Health Meets Metabolic Health',d:'For a long time psychiatry was stuck in the chemical-imbalance model. What if mental illness is more than a neurotransmitter problem?',g1:'#114B5F',g2:'#07222C',icon:'clipboard'},
- {u:'https://cardinalclinic.co.uk/blog/metabolic-psychiatry-integrating-bioenergetics-into-mental-health-care/',src:'Cardinal Clinic',t:'Integrating Bioenergetics into Mental Health Care',d:'For decades the dominant model focused on the synapse. Researchers are now investigating cellular bioenergetics.',g1:'#2A9D8F',g2:'#12615A',icon:'zap'},
- {u:'https://www.linkedin.com/pulse/rise-metabolic-psychiatry-game-changer-mental-health-greenland-u33le',src:'LinkedIn · Greenland',t:'The Rise of Metabolic Psychiatry: A Game Changer in Mental Health?',d:'How metabolic psychiatry is transforming the mental-health field with metabolism-based approaches.',g1:'#5B7DB1',g2:'#294567',icon:'trending-down'},
- {u:'https://scienmag.com/metabolic-psychiatry-defining-priorities-for-emerging-field/',src:'SciEnMag',t:'Metabolic Psychiatry: Defining Priorities for an Emerging Field',d:'Researchers define priorities for the emerging field, including clinical trials and biomarkers.',g1:'#7A5C8E;',g2:'#3F2C4D',icon:'chart'}
+ {u:'https://www.proactivepsychiatry.com/post/metabolic-psychiatry-where-mental-health-meets-metabolic-health',src:'Proactive Psychiatry',t:'Metabolic Psychiatry: Where Mental Health Meets Metabolic Health',d:'For a long time psychiatry was stuck in the chemical-imbalance model. What if mental illness is more than a neurotransmitter problem?',q:'What if mental illness is more than a neurotransmitter problem?',blurb:'For a long time psychiatry was stuck in the chemical-imbalance model.',rule:'#2A9D8F',g1:'#114B5F',g2:'#07222C',icon:'clipboard'},
+ {u:'https://cardinalclinic.co.uk/blog/metabolic-psychiatry-integrating-bioenergetics-into-mental-health-care/',src:'Cardinal Clinic',t:'Integrating Bioenergetics into Mental Health Care',d:'For decades the dominant model focused on the synapse. Researchers are now investigating cellular bioenergetics.',q:'Researchers are now investigating cellular bioenergetics',blurb:'For decades the dominant model focused on the synapse.',rule:'#E76F51',g1:'#2A9D8F',g2:'#12615A',icon:'zap'},
+ {u:'https://www.linkedin.com/pulse/rise-metabolic-psychiatry-game-changer-mental-health-greenland-u33le',src:'LinkedIn · Greenland',t:'The Rise of Metabolic Psychiatry: A Game Changer in Mental Health?',d:'How metabolic psychiatry is transforming the mental-health field with metabolism-based approaches.',q:'A field transformed by metabolism-based approaches',blurb:'How metabolic psychiatry is changing mental-health practice.',rule:'#5B7DB1',g1:'#5B7DB1',g2:'#294567',icon:'trending-down'},
+ {u:'https://scienmag.com/metabolic-psychiatry-defining-priorities-for-emerging-field/',src:'SciEnMag',t:'Metabolic Psychiatry: Defining Priorities for an Emerging Field',d:'Researchers define priorities for the emerging field, including clinical trials and biomarkers.',q:'Priorities for an emerging field: clinical trials, and biomarkers',blurb:'What researchers say has to be settled next.',rule:'#D9A420',g1:'#7A5C8E;',g2:'#3F2C4D',icon:'chart'}
 ];
-function podCard(p){
-  return '<a class="podcard" data-chan="'+p.chan+'" href="https://www.youtube.com/watch?v='+p.v+'" target="_blank" rel="noopener">'+
-    '<div class="podthumb"><img src="https://img.youtube.com/vi/'+p.v+'/hqdefault.jpg" alt="" loading="lazy">'+
-    '<span class="podplay"><i>▶</i></span></div>'+
-    '<p class="podchan">'+p.chan+'</p><h3>'+p.t+'</h3><p class="poddesc">'+p.guest+'</p></a>';
+/* ---- ilustracoes a mao dentro das bolhas (mesma linguagem do Learn more) ---- */
+var BINK='#12414F', BCOR='#E76F51', BGOLD='#D9A420', BTEAL='#2A9D8F';
+var BART={
+  /* prato: dieta */
+  plate:'<circle cx="75" cy="78" r="35" fill="none" stroke="'+BINK+'" stroke-width="3"/>'+
+    '<circle cx="75" cy="78" r="26" fill="none" stroke="'+BINK+'" stroke-width="1.6" opacity=".55"/>'+
+    '<path d="M70 64 q10 -4 14 6 q4 12 -8 14 q-12 2 -12 -8 q0 -8 6 -12Z" fill="'+BCOR+'" opacity=".85"/>'+
+    '<path d="M62 88 q10 6 20 0" fill="none" stroke="'+BTEAL+'" stroke-width="3" stroke-linecap="round"/>'+
+    '<path d="M30 54 v22 M26 54 v14 M34 54 v14 M30 76 v22" fill="none" stroke="'+BINK+'" stroke-width="2.6" stroke-linecap="round"/>'+
+    '<path d="M120 54 q6 12 0 20 v24" fill="none" stroke="'+BINK+'" stroke-width="2.6" stroke-linecap="round"/>',
+  /* cerebro */
+  brain:'<path d="M56 46 C40 50 33 63 40 75 C29 85 36 102 50 104 C56 114 74 116 82 108 C98 111 111 99 106 86 C117 74 110 57 96 53 C88 43 68 40 56 46Z" fill="none" stroke="'+BINK+'" stroke-width="3" stroke-linejoin="round"/>'+
+    '<path d="M63 58 q11 8 4 18 q-8 9 3 17" fill="none" stroke="'+BINK+'" stroke-width="2" stroke-linecap="round" opacity=".7"/>'+
+    '<path d="M86 56 q-9 10 -1 18 q9 8 1 17" fill="none" stroke="'+BINK+'" stroke-width="2" stroke-linecap="round" opacity=".7"/>'+
+    '<path d="M113 34 l4 9 9 4 -9 4 -4 9 -4 -9 -9 -4 9 -4Z" fill="'+BCOR+'"/>',
+  /* microfone */
+  mic:'<rect x="64" y="34" width="23" height="44" rx="11.5" fill="none" stroke="'+BINK+'" stroke-width="3"/>'+
+    '<path d="M50 68 a25 25 0 0 0 51 0" fill="none" stroke="'+BINK+'" stroke-width="3" stroke-linecap="round"/>'+
+    '<path d="M75 93 v16 M60 111 h31" fill="none" stroke="'+BINK+'" stroke-width="3" stroke-linecap="round"/>'+
+    '<path d="M34 52 q-8 20 0 40" fill="none" stroke="'+BCOR+'" stroke-width="2.8" stroke-linecap="round"/>'+
+    '<path d="M117 52 q8 20 0 40" fill="none" stroke="'+BCOR+'" stroke-width="2.8" stroke-linecap="round"/>',
+  /* mitocondria */
+  mito:'<g transform="rotate(-16 75 78)">'+
+    '<ellipse cx="75" cy="78" rx="45" ry="27" fill="#E4EFEC" stroke="'+BINK+'" stroke-width="3"/>'+
+    '<path d="M44 68 q9 12 0 22 M58 62 q10 16 0 32 M72 61 q11 17 0 34 M86 62 q10 16 0 32 M100 68 q9 12 0 22" fill="none" stroke="'+BINK+'" stroke-width="2" stroke-linecap="round" opacity=".8"/></g>'+
+    '<rect x="26" y="34" width="12" height="12" rx="2.5" fill="'+BGOLD+'"/>'+
+    '<rect x="104" y="26" width="10" height="10" rx="2.5" fill="'+BGOLD+'"/>'+
+    '<rect x="116" y="106" width="11" height="11" rx="2.5" fill="'+BGOLD+'"/>'+
+    '<path d="M118 62 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3Z" fill="'+BCOR+'"/>'+
+    '<path d="M30 104 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5Z" fill="'+BCOR+'"/>',
+  /* broto com raizes */
+  sprout:'<path d="M75 100 v-30" fill="none" stroke="'+BINK+'" stroke-width="3" stroke-linecap="round"/>'+
+    '<path d="M75 78 q-19 -3 -22 -21 q19 1 22 21Z" fill="'+BTEAL+'" fill-opacity=".26" stroke="'+BINK+'" stroke-width="2.6" stroke-linejoin="round"/>'+
+    '<path d="M75 70 q19 -4 23 -22 q-20 1 -23 22Z" fill="'+BTEAL+'" fill-opacity=".26" stroke="'+BINK+'" stroke-width="2.6" stroke-linejoin="round"/>'+
+    '<path d="M40 100 h70" fill="none" stroke="'+BINK+'" stroke-width="2" stroke-linecap="round" stroke-dasharray="7 6" opacity=".6"/>'+
+    '<path d="M75 100 q-8 12 -19 19 M75 100 q5 14 14 19 M75 100 v22 M75 108 q-7 4 -11 12" fill="none" stroke="'+BCOR+'" stroke-width="2.4" stroke-linecap="round"/>',
+  /* onda sonora */
+  waves:'<path d="M34 78 v-6 M48 78 v-24 M62 78 v-38 M76 78 v-22 M90 78 v-34 M104 78 v-16 M118 78 v-8" fill="none" stroke="'+BINK+'" stroke-width="5" stroke-linecap="round"/>'+
+    '<path d="M34 82 v6 M48 82 v24 M62 82 v34 M76 82 v20 M90 82 v30 M104 82 v14 M118 82 v6" fill="none" stroke="'+BINK+'" stroke-width="5" stroke-linecap="round" opacity=".45"/>'+
+    '<path d="M62 40 l3 7 7 3 -7 3 -3 7 -3 -7 -7 -3 7 -3Z" fill="'+BCOR+'"/>',
+  /* chave: usada no convite de conta */
+  key:'<circle cx="60" cy="62" r="22" fill="none" stroke="'+BINK+'" stroke-width="3.4"/>'+
+    '<circle cx="60" cy="62" r="8" fill="none" stroke="'+BINK+'" stroke-width="2.4"/>'+
+    '<path d="M76 76 L112 112 M100 100 l10 -10 M108 108 l9 -9" fill="none" stroke="'+BINK+'" stroke-width="3.4" stroke-linecap="round"/>'+
+    '<path d="M118 36 l3.5 8 8 3.5 -8 3.5 -3.5 8 -3.5 -8 -8 -3.5 8 -3.5Z" fill="'+BCOR+'"/>'+
+    '<rect x="24" y="104" width="12" height="12" rx="2.5" fill="'+BGOLD+'"/>'
+};
+function bubArt(name){
+  return '<svg class="bart" viewBox="0 0 150 150" aria-hidden="true">'+
+    '<g filter="url(#mbrgh3)">'+(BART[name]||BART.mic)+'</g></svg>';
 }
-function artCard(a){
-  return '<a class="artcard" href="'+a.u+'" target="_blank" rel="noopener">'+
-    '<div class="artcover" style="--g1:'+a.g1+';--g2:'+a.g2+'"><span class="artq">&#8220;</span>'+
-    '<span class="artic ic" data-icon="'+a.icon+'"></span></div>'+
-    '<p class="artsrc">'+a.src+'</p><h3>'+a.t+'</h3><p class="artdesc">'+a.d+'</p>'+
-    '<span class="artread">'+__tr('Read article')+' <span class="ic" data-icon="arrow-right"></span></span></a>';
+/* anel desenhado a mao das bolhas */
+function bubRing(i){
+  return '<svg class="bring" viewBox="0 0 150 150" aria-hidden="true">'+
+    '<circle cx="75" cy="75" r="69" fill="none" stroke="currentColor" stroke-width="2.4" '+
+    'filter="url(#'+(i%2?'mbrgh':'mbrgh2')+')" opacity=".92"/>'+
+    '<circle cx="75" cy="75" r="72.5" fill="none" stroke="currentColor" stroke-width="1.1" '+
+    'filter="url(#mbrgh)" opacity=".42"/></svg>';
+}
+function podCard(p,i){
+  return '<a class="podcard bub" data-chan="'+p.chan+'" href="https://www.youtube.com/watch?v='+p.v+'" target="_blank" rel="noopener">'+
+    '<span class="bdisc"><span class="bfill">'+bubArt(p.art)+'</span>'+bubRing(i||0)+
+    '<span class="bplay"><svg viewBox="0 0 10 12" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg></span></span>'+
+    '<p class="bchan">'+p.chan.replace(/ (Podcast|Productions)$/,'')+'</p>'+
+    '<h3 class="btt">'+p.t+'</h3></a>';
+}
+function artCard(a,i){
+  return '<a class="artcard clipcard" href="'+a.u+'" target="_blank" rel="noopener">'+
+    '<span class="ctape"></span>'+
+    '<svg class="cframe" viewBox="0 0 240 260" preserveAspectRatio="none" aria-hidden="true">'+
+    '<rect x="3" y="3" width="234" height="254" rx="5" fill="none" stroke="currentColor" '+
+    'stroke-width="1.6" filter="url(#'+(i%2?'mbrgh':'mbrgh2')+')"/></svg>'+
+    '<p class="csrc">'+a.src+'</p>'+
+    '<h3>'+(a.q||a.t)+'</h3>'+
+    '<p class="cdesc">'+(a.blurb||'')+'</p>'+
+    '<span class="cread">'+__tr('Read article')+'</span></a>';
 }
 function renderLibrary(){
   const pr=document.getElementById('podRail'); if(!pr) return;
-  pr.innerHTML=PODCASTS.map(podCard).join('');
+  /* uma vez em loop o trilho ja carrega as copias: nao redesenhar por cima */
+  if(!pr.dataset.looped) pr.innerHTML=PODCASTS.map(podCard).join('');
   const ar=document.getElementById('artRail'); if(ar) ar.innerHTML=ARTICLES.map(artCard).join('');
   renderIcons(document.getElementById('pg-conteudo'));
   cFilter();
@@ -5732,6 +5891,30 @@ function cFilter(){
 /* ============ LOGIN: uma tela so, escolha de visao ============ */
 function goLogin(){ go('login'); }
 function goAccount(){ go('login'); }
+
+/* ---- gate: dentro do programa, qualquer clique pede a conta ---- */
+var GATEH={
+  start:'Start this program with a free account.',
+  lesson:'You are one account away from the rest.',
+  save:'Keep this in your account.',
+  about:'The full program lives in your account.'
+};
+var GATEART={ start:'sprout', lesson:'key', save:'key', about:'mito' };
+function openGate(kind){
+  var m=document.getElementById('gateModal'); if(!m) return;
+  var P=window.__prog||{}, h=document.getElementById('gateH'),
+      a=document.getElementById('gateArt');
+  document.getElementById('gateCtx').textContent=P.name||'Free library';
+  if(h) h.textContent=GATEH[kind]||GATEH.lesson;
+  if(a && typeof bubArt==='function') a.innerHTML=bubArt(GATEART[kind]||'key');
+  m.classList.add('open');
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
+}
+function closeGate(){
+  var m=document.getElementById('gateModal'); if(m) m.classList.remove('open');
+}
+document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeGate(); });
+window.addEventListener('hashchange',function(){ closeGate(); });
 
 /* ============ EQUIPE: application modal ============ */
 function teamModal(open){
@@ -7213,6 +7396,22 @@ routeFromHash();
     "Fourteen ways in.":"Quatorze portas de entrada.",
     "No categories match your search.":"Nenhuma categoria corresponde à sua busca.",
     "No programs match your search.":"Nenhum programa corresponde à sua busca.",
+    "Free library":"Biblioteca gratuita",
+    "You are one account away from the rest.":"Falta só uma conta para abrir o resto.",
+    "Start this program with a free account.":"Comece este programa com uma conta gratuita.",
+    "Keep this in your account.":"Guarde isto na sua conta.",
+    "The full program lives in your account.":"O programa completo fica na sua conta.",
+    "The whole free library opens, and your progress is kept from this lesson on.":"A biblioteca gratuita inteira abre, e seu progresso fica salvo a partir desta aula.",
+    "Create free account":"Criar conta gratuita",
+    "Free. No card. About a minute.":"Grátis. Sem cartão. Cerca de um minuto.",
+    "What if mental illness is more than a neurotransmitter problem?":"E se a doença mental for mais do que um problema de neurotransmissores?",
+    "For a long time psychiatry was stuck in the chemical-imbalance model.":"Por muito tempo a psiquiatria ficou presa ao modelo do desequilíbrio químico.",
+    "Researchers are now investigating cellular bioenergetics":"Pesquisadores agora investigam a bioenergética celular",
+    "For decades the dominant model focused on the synapse.":"Por décadas o modelo dominante se concentrou na sinapse.",
+    "A field transformed by metabolism-based approaches":"Um campo transformado por abordagens baseadas no metabolismo",
+    "How metabolic psychiatry is changing mental-health practice.":"Como a psiquiatria metabólica está mudando a prática em saúde mental.",
+    "Priorities for an emerging field: clinical trials, and biomarkers":"Prioridades de um campo emergente: ensaios clínicos e biomarcadores",
+    "What researchers say has to be settled next.":"O que os pesquisadores dizem que precisa ser definido a seguir.",
     "Start here":"Comece por aqui",
     "The programs":"Os programas",
     "Start program":"Iniciar programa",
@@ -8140,6 +8339,29 @@ routeFromHash();
       ['Reading a clinical trial without a science degree','Reading'],
       ['Open questions and what we still do not know','Video']]]
   ];
+  /* Estrutura de exemplo para os programas ainda sem conteudo definido.
+     Titulos propositalmente TBD — a forma e real, o conteudo nao. */
+  var TBDMODS=[
+    ['01','Module 01 · TBD',[
+      ['Video lesson · TBD','Video'],
+      ['Video lesson · TBD','Video'],
+      ['Video lesson · TBD','Video'],
+      ['Reading · TBD','Reading']]],
+    ['02','Module 02 · TBD',[
+      ['Video lesson · TBD','Video'],
+      ['Video lesson · TBD','Video'],
+      ['Reading · TBD','Reading']]],
+    ['03','Module 03 · TBD',[
+      ['Video lesson · TBD','Video'],
+      ['Video lesson · TBD','Video'],
+      ['Video lesson · TBD','Video']]]
+  ];
+  var MODS={
+    'The science':SCIENCE,
+    'Getting started':TBDMODS,
+    'Fundamentals':TBDMODS,
+    'Nutrition':TBDMODS
+  };
   var GROUP={
     'Getting started':'Start here','Fundamentals':'Start here','The science':'Start here',
     'Podcasts':'Start here','Patient stories':'Start here',
@@ -8181,7 +8403,7 @@ routeFromHash();
     document.getElementById('pgKick').textContent='Program · '+(GROUP[P.name]||'Library');
     document.getElementById('pgTitle').textContent=P.name;
 
-    var mods = (P.name==='The science') ? SCIENCE : null;
+    var mods = MODS[P.name] || null;
     var meta=document.getElementById('pgMeta');
     if(mods){
       var n=0; mods.forEach(function(m){n+=m[2].length;});
@@ -8195,7 +8417,7 @@ routeFromHash();
           '<p>'+m[2].length+' lessons</p></div>'+
           '<span class="pgchev ic" data-icon="chevron-down"></span></div>'+
           '<div class="pgles">'+m[2].map(function(l){
-            return '<div class="pgl" onclick="goAccount()"><div class="pglt">'+
+            return '<div class="pgl" onclick="openGate(\'lesson\')"><div class="pglt">'+
               '<span class="ic" data-icon="play"></span></div>'+
               '<div class="pglb"><b>'+l[0]+'</b><i>'+l[1]+'</i></div>'+
               '<span class="pgmark"></span></div>';
@@ -8335,6 +8557,19 @@ routeFromHash();
   function setup(){
     paintTiles();
     document.querySelectorAll('#pg-conteudo .catrail').forEach(loopRail);
+    /* as bolhas de podcast tambem giram sem fim. Sao poucas para transbordar
+       numa tela larga, entao repete a lista ate encher antes de fechar o loop. */
+    var pr=document.getElementById('podRail');
+    if(pr && pr.children.length && !pr.dataset.looped){
+      var base=[].slice.call(pr.children), guard=0;
+      while(pr.scrollWidth < pr.clientWidth*1.4 && guard<8){
+        base.forEach(function(k){
+          var c=k.cloneNode(true); c.setAttribute('aria-hidden','true'); pr.appendChild(c);
+        });
+        guard++;
+      }
+      loopRail(pr);
+    }
     if(window.renderIcons) renderIcons(document.getElementById('pg-conteudo'));
   }
 
