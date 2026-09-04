@@ -2417,6 +2417,90 @@ body.imm #pg-programa .pgin{padding-top:112px}
 /* ---- trilhos em loop: sem scroll-snap, que era o que dava o solavanco ---- */
 #pg-conteudo .catrail{scroll-snap-type:none}
 #pg-conteudo .catrail>*{scroll-snap-align:none}
+/* ================= CONTENT DENTRO DA CONTA =================
+   A pele da pagina publica de conteudo (#/conteudo) reaproveitada no app do
+   paciente. Escopo .contentskin — as regras da pagina publica ficam intactas. */
+.contentskin .cattile{cursor:pointer;filter:none;background:#0E171B;
+  transition:transform .24s cubic-bezier(.4,0,.2,1),box-shadow .24s ease}
+.contentskin .cattile .catph{position:absolute;inset:0;z-index:0;background-size:cover;
+  background-position:center;filter:grayscale(.22) contrast(1.04);
+  transition:filter .3s ease,transform .5s ease}
+.contentskin .cattile::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(158deg,var(--g1),var(--g2));mix-blend-mode:multiply;opacity:.56}
+.contentskin .cattile .catgrad{position:absolute;left:0;right:0;bottom:0;height:62%;z-index:2;
+  pointer-events:none;background:linear-gradient(180deg,rgba(4,8,10,0),rgba(4,8,10,.86))}
+.contentskin .cattile svg.catart{z-index:2;opacity:.5}
+.contentskin .cattile .catic{z-index:3;color:#fff;opacity:.82;right:12px;top:12px;font-size:0;
+  width:clamp(24px,2.2vw,30px);height:clamp(24px,2.2vw,30px)}
+.contentskin .cattile .catic svg{width:100%;height:100%;stroke-width:2.1}
+.contentskin .catlabel{z-index:3;font-family:var(--display);font-weight:700;letter-spacing:-.01em;
+  text-shadow:0 1px 14px rgba(0,0,0,.5)}
+.contentskin .cattile:hover{transform:translateY(-5px);box-shadow:0 16px 34px rgba(12,51,63,.28)}
+.contentskin .cattile:hover .catph{filter:grayscale(0) contrast(1.04);transform:scale(1.04)}
+.contentskin .catrail{scroll-snap-type:none}
+.contentskin .catrail>*{scroll-snap-align:none}
+.contentskin .railwrap.at-start .railnav.prev,
+.contentskin .railwrap.at-end .railnav.next{opacity:1;pointer-events:auto}
+.contentskin .catclus{padding-top:10px}
+.contentskin .podcard.bub{width:172px;text-align:center;padding-top:6px;align-self:start}
+.contentskin .pqgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:20px;padding:6px 0 26px;overflow:visible}
+.contentskin .appsearch{position:relative;max-width:560px;margin:0 auto 30px}
+
+/* ---- a aba Content fica preta e imersiva, igual a pagina publica ---- */
+body.appdark #patient{
+  --bg:#070D10; --bg-dim:#0D1519; --card:#111A1E; --line:#1E282D; --tintband:#0D1519;
+  --ink:#EDE7DB; --soft:#93A5AA; --hd:#F2ECE0; --hd2:#D8E2E0; --hd3:#8FC1BB;
+  background:#070D10}
+body.appdark{background:#070D10}
+body.appdark #patient .apptop{background:#0A1216;border-bottom:1px solid #17242B}
+body.appdark #patient .dmain{padding-top:0}
+body.appdark #patient .appback{display:none}
+.contentskin{--gut:clamp(18px,3.4vw,48px)}
+/* o heroi rompe a caixa do painel e vai de ponta a ponta */
+.contentskin .imhero{width:100vw;margin-left:calc(50% - 50vw);height:clamp(360px,52vh,520px)}
+.contentskin .imhero h2{font-size:clamp(38px,6vw,78px)}
+.contentskin .zlabel{display:block;padding:22px var(--gut) 2px;font-family:var(--display);
+  font-weight:700;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.contentskin .disc{padding:34px var(--gut) 10px;border-top:1px solid var(--line);margin-top:26px}
+.contentskin .hl-sec{padding:22px 0 2px}
+.contentskin .hl-head{padding:0 var(--gut);margin-bottom:16px}
+.contentskin .rail,.contentskin .pqgrid{padding-left:var(--gut);padding-right:var(--gut)}
+.contentskin .catclus .hl-head{padding:0}
+.contentskin .catclus .rail{padding-left:0;padding-right:0}
+.contentskin .tm-join{margin:0 var(--gut)}
+.contentskin .tm-join-r{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.contentskin .tm-join-r .subfine{font-size:13px;color:rgba(245,239,228,.66)}
+.contentskin .tm-join-r .subfine:hover{color:#F5EFE4}
+.contentskin .noresults{padding:0 var(--gut) 20px}
+
+/* ---- widget da jornada: o mesmo retangulo do CTA publico, virado em progresso ---- */
+.jwidget{position:relative;width:min(calc(100% - 44px),880px);border-radius:22px;overflow:hidden;
+  background:linear-gradient(115deg,var(--g1),var(--g2));display:flex;align-items:stretch;
+  margin:2px 0 4px;cursor:pointer;transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.jwidget:hover{transform:translateY(-4px)}
+.contentskin .jwidget{width:100%;border:1px solid rgba(245,239,228,.09)}
+.jwbody{position:relative;z-index:2;padding:clamp(22px,2.4vw,34px);flex:1;min-width:0}
+.jwidget h3{font-family:var(--serif);font-size:clamp(20px,2.2vw,30px);line-height:1.08;
+  letter-spacing:-.015em;color:#F7F2E7;margin:0 0 6px}
+.jwnow{font-family:var(--calm);font-size:13.5px;color:rgba(245,239,228,.7);margin:0 0 16px}
+.jwbar{height:6px;border-radius:99px;background:rgba(245,239,228,.2);overflow:hidden;
+  max-width:340px;margin:0 0 18px}
+.jwbar i{display:block;height:100%;border-radius:99px;background:#F5EFE4;
+  transition:width .8s cubic-bezier(.4,0,.2,1)}
+.jwstats{display:flex;gap:26px;margin:0 0 20px;flex-wrap:wrap}
+.jwstat b{display:block;font-family:var(--display);font-weight:800;font-size:22px;
+  color:#F7F2E7;line-height:1;margin-bottom:4px}
+.jwstat span{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:rgba(245,239,228,.6)}
+.jwmap{position:relative;z-index:2;width:clamp(170px,22vw,260px);display:flex;align-items:center;
+  justify-content:center;padding:20px 22px 20px 0;color:#F5EFE4}
+.jwmap .jwsvg{width:100%;height:auto;display:block;overflow:visible}
+.jwmap:hover{color:#3FB5A4}
+@media(max-width:820px){
+  .jwidget{flex-direction:column-reverse}
+  .jwmap{width:100%;padding:20px 22px 0}
+}
 </style>
 </head>
 <body>
@@ -2780,7 +2864,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       <div class="hl-head reveal"><h2>Podcasts &amp; talks</h2></div>
       <div class="railwrap" id="wrap-podRail">
         <button class="railnav prev" onclick="railScroll('podRail',-1)" aria-label="Previous"><span class="ic" data-icon="chevron-left"></span></button>
-        <div class="rail" id="podRail"></div>
+        <div class="rail podloop" id="podRail"></div>
         <button class="railnav next" onclick="railScroll('podRail',1)" aria-label="Next"><span class="ic" data-icon="chevron-right"></span></button>
       </div>
       <div class="noresults" id="vnores">No results for your search.</div>
@@ -3412,6 +3496,27 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
   </div>
 </div>
 
+  <!-- ============ FIM DE PROGRAMA: plano ou terapeuta (dentro da conta) ============ -->
+  <div class="gscrim" id="planModal" onclick="if(event.target===this)closePlanGate()">
+    <button class="gclose" onclick="closePlanGate()" aria-label="Close">&times;</button>
+    <div class="ghalo" role="dialog" aria-modal="true" aria-labelledby="planH">
+      <div class="gglow"></div>
+      <div class="grings" aria-hidden="true"><svg viewBox="0 0 200 200">
+        <g class="r-in"><path d="M154 66A62 62 0 1 0 166 103" fill="none" stroke="currentColor"
+          stroke-width="2.6" stroke-linecap="round" opacity=".9"/></g>
+        <g class="r-out"><path d="M172 50A86 86 0 1 0 188 108" fill="none" stroke="currentColor"
+          stroke-width="1.2" stroke-linecap="round" opacity=".3"/></g>
+      </svg></div>
+      <div class="gin">
+        <p class="gctx" id="planCtx">Program complete</p>
+        <h3 id="planH">That is the end of this one</h3>
+        <p class="gsub">A plan opens the rest of the programs. Or a therapist reads your progress and takes it from there.</p>
+        <span class="btn btn-cream" style="cursor:pointer" onclick="closePlanGate();plansModal(true)">See the plans</span>
+        <p class="galt">Or <b onclick="closePlanGate();dashNav('patient','equipe')">talk to a therapist</b></p>
+      </div>
+    </div>
+  </div>
+
 <div class="askm" id="plansModal"><div class="askm-in plansm">
   <h3>Choose your plan</h3>
   <p>Start free and stay free for as long as you want. The treatment plan opens everything and puts a care team behind it.</p>
@@ -3544,6 +3649,7 @@ function go(id){
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
   document.body.classList.toggle('in-app', id==='patient'||id==='doctor'||id==='nutri');
+  if(id!=='patient'&&id!=='session') document.body.classList.remove('appdark');
   if(id==='patient'||id==='doctor'||id==='nutri') renderDash(id);
   if(id==='wizard') wizRender();
   if(id!=='site'&&window.setImmersive) setImmersive(false);
@@ -4144,10 +4250,13 @@ function dashSection(role){
   else if(role==='patient') html=pSection(D);
   else if(role==='doctor') html=dSection(D);
   else html=nSection(D);
+  document.body.classList.toggle('appdark', role==='patient'&&D.sec==='programas');
   w.innerHTML=appBack+html;
   renderIcons(w);
   drawEvo(role);
   animateBars(w);
+  if(role==='patient'&&D.sec==='programas'&&!PDETAIL&&typeof progAfter==='function')
+    setTimeout(function(){ progAfter(w); },0);
   if(window.__applyLang){ try{__applyLang()}catch(e){} }
 }
 // Refill progress bars (missions hero + check-in) from 0 on render, so they
@@ -4785,28 +4894,211 @@ function refreshTracks(){
   if(cur==='student') renderStudent();
   else if((cur==='doctor'||cur==='nutri')&&DASH[cur].sec==='formacao') dashSection(cur);
 }
+/* ================= CONTENT: a biblioteca publica dentro da conta =================
+   Mesmas trilhas, bolhas e recortes da pagina #/conteudo. As categorias sao um
+   indice de navegacao: so abrem o que existe de verdade em PROGRAMS. */
+const CATG=[
+ ['Start here','Where to begin if this is new to you.',[
+   ['Getting started','sparkles','#E76F51','#A83F22'],
+   ['Fundamentals','zap','#E76F51','#A83F22'],
+   ['The science','chart','#7A5C8E','#3F2C4D'],
+   ['Podcasts','mic','#2A9D8F','#12615A'],
+   ['Patient stories','users','#4FA8C7','#1D6076']]],
+ ['Everyday pillars','Food, sleep, movement, mind.',[
+   ['Nutrition','utensils','#5B7DB1','#294567'],
+   ['Sleep','moon','#D9A420','#8E6704'],
+   ['Movement','activity','#1E7D46','#0B3D20'],
+   ['Recipes','apple','#4FA8C7','#1D6076'],
+   ['Mindfulness','smile','#114B5F','#07222C'],
+   ['Stress & cortisol','flame','#1E7D46','#0B3D20']]],
+ ['By condition','Start from what you are living with.',[
+   ['Depression','moon-star','#2A9D8F','#12615A'],
+   ['Anxiety','droplet','#114B5F','#07222C'],
+   ['Bipolar disorder','trending-down','#E76F51','#A83F22'],
+   ['ADHD','target','#5B7DB1','#294567']]],
+ ['Going deeper','Protocols, mechanisms and the clinical side.',[
+   ['Ketogenic therapy','leaf','#7A5C8E','#3F2C4D'],
+   ['Gut & brain','egg','#D9A420','#8E6704']]]
+];
+const ARAILS=['acat1','acat2','acat3','acat4','apodRail'];
+function catTile(c){
+  return '<a class="cattile" onclick="appCat(&quot;'+esc(c[0])+'&quot;)" data-cat="'+esc(c[0])+'" '+
+    'style="--g1:'+c[2]+';--g2:'+c[3]+'">'+
+    '<span class="catic ic" data-icon="'+c[1]+'"></span>'+
+    '<span class="catlabel">'+esc(c[0])+'</span></a>';
+}
+function catClusters(){
+  return CATG.map(function(g,i){
+    const id='acat'+(i+1);
+    return '<section class="hl-sec catclus"><div class="hl-head"><h2>'+__tr(g[0])+'</h2>'+
+      '<span>'+__tr(g[1])+'</span></div>'+
+      '<div class="railwrap" id="wrap-'+id+'">'+
+      '<button class="railnav prev" onclick="railScroll(\''+id+'\',-1)" aria-label="Previous">'+
+        '<span class="ic" data-icon="chevron-left"></span></button>'+
+      '<div class="rail catrail" id="'+id+'">'+g[2].map(catTile).join('')+'</div>'+
+      '<button class="railnav next" onclick="railScroll(\''+id+'\',1)" aria-label="Next">'+
+        '<span class="ic" data-icon="chevron-right"></span></button>'+
+      '</div></section>';
+  }).join('');
+}
+/* Categoria sem programa correspondente ainda nao tem conteudo — nao inventar. */
+function appCat(name){
+  const p=PROGRAMS.filter(function(x){ return x.title===name; })[0];
+  if(p){ openProgram(p.id); return; }
+  toast(name+' — TBD');
+}
+function appHero(){
+  return '<section class="imhero">'+
+    '<div class="imbg" style="background-image:url(\'https://images.unsplash.com/'+
+      'photo-1527137342181-19aab11a8ee8?fm=jpg&q=70&w=2400&auto=format&fit=crop\')"></div>'+
+    '<div class="imscrim"></div><div class="imfade"></div>'+
+    '<div class="imin"><p class="imkick">'+__tr('Knowledge library')+'</p>'+
+    '<h2>'+__tr('Content')+'</h2>'+
+    '<p class="imlead">'+__tr('Videos, articles, and podcasts on metabolic psychiatry and evidence-based mental health.')+'</p>'+
+    '</div></section>';
+}
+/* fecho da pagina: no publico e "crie sua conta"; aqui e a equipe clinica */
+function specPanel(){
+  if(isSub()){
+    return '<section class="hl-sec" style="padding-bottom:clamp(40px,5vw,74px)">'+
+      '<div class="tm-join"><div class="tm-join-l">'+
+      '<p class="upkick" style="color:rgba(245,239,228,.66)">'+__tr('Treatment plan')+'</p>'+
+      '<h3>'+__tr('Your team is reading this with you.')+'</h3>'+
+      '<p>'+__tr('Every program is open, and the care team follows your progress inside the app.')+'</p>'+
+      '</div><div class="tm-join-r">'+
+      '<a class="btn btn-cream" style="cursor:pointer" onclick="dashNav(\'patient\',\'equipe\')">'+
+        __tr('Message your team')+' <span class="ic" data-icon="arrow-right"></span></a>'+
+      '</div></div></section>';
+  }
+  return '<section class="hl-sec" style="padding-bottom:clamp(40px,5vw,74px)">'+
+    '<div class="tm-join" id="subPanel"><div class="tm-join-l">'+
+    '<p class="upkick" style="color:rgba(245,239,228,.66)">'+__tr('Care team')+'</p>'+
+    '<h3>'+__tr('Ready for someone to read this with you?')+'</h3>'+
+    '<p>'+__tr('A psychiatrist and a nutritionist follow your progress inside the app, and build the plan around your labs.')+'</p>'+
+    '</div><div class="tm-join-r">'+
+    '<a class="btn btn-cream" style="cursor:pointer" onclick="dashNav(\'patient\',\'equipe\')">'+
+      __tr('Connect with a specialist')+' <span class="ic" data-icon="arrow-right"></span></a>'+
+    '<span class="subfine" style="cursor:pointer;text-decoration:underline" onclick="plansModal(true)">'+
+      __tr('See the plans')+'</span>'+
+    '</div></div></section>';
+}
+function appSearch(){
+  return '<div class="csearch appsearch"><span class="ic" data-icon="search"></span>'+
+    '<input type="text" id="asearch" placeholder="Search for a topic, episode, or article" '+
+    'oninput="aFilter()"></div>';
+}
+function aFilter(){
+  const el=document.getElementById('asearch'); if(!el) return;
+  const root=document.getElementById('dwrap-patient'); if(!root) return;
+  const q=(el.value||'').toLowerCase();
+  function pass(n,txt){ n.style.display=(!q||txt.toLowerCase().indexOf(q)>-1)?'':'none'; }
+  root.querySelectorAll('.podcard').forEach(function(v){ pass(v,v.textContent); });
+  root.querySelectorAll('.artcard').forEach(function(a){ pass(a,a.textContent); });
+  let cn=0;
+  root.querySelectorAll('.cattile').forEach(function(t){
+    pass(t,t.dataset.cat||''); if(t.style.display!=='none') cn++; });
+  const nr=document.getElementById('acatnores'); if(nr) nr.style.display=cn?'none':'block';
+  ARAILS.forEach(railSync);
+}
+function appPods(){
+  return '<section class="hl-sec"><div class="hl-head"><h2>'+__tr('Podcasts & talks')+'</h2>'+
+    '<span>'+__tr('From the open library, always free.')+'</span></div>'+
+    '<div class="railwrap" id="wrap-apodRail">'+
+    '<button class="railnav prev" onclick="railScroll(\'apodRail\',-1)" aria-label="Previous">'+
+      '<span class="ic" data-icon="chevron-left"></span></button>'+
+    '<div class="rail podloop" id="apodRail">'+PODCASTS.map(podCard).join('')+'</div>'+
+    '<button class="railnav next" onclick="railScroll(\'apodRail\',1)" aria-label="Next">'+
+      '<span class="ic" data-icon="chevron-right"></span></button>'+
+    '</div></section>';
+}
+function appArts(){
+  return '<section class="hl-sec"><div class="hl-head"><h2>'+__tr('Opinion articles')+'</h2>'+
+    '<span>'+__tr('What is being written about metabolic psychiatry.')+'</span></div>'+
+    '<div class="pqgrid" id="aartRail">'+ARTICLES.map(artCard).join('')+'</div></section>';
+}
+/* trilha em miniatura: um no por sessao, na ordem real dos programas */
+function jwPath(){
+  const seq=[]; let cur=-1;
+  PROGRAMS.forEach(function(p){
+    const dn=pDone(p.id);
+    p.days.forEach(function(d,i){
+      if(i>=dn && cur<0) cur=seq.length;
+      seq.push(i<dn);
+    });
+  });
+  if(cur<0) cur=seq.length-1;
+  const W=250,H=112,n=Math.max(1,seq.length);
+  const pts=seq.map(function(_,i){
+    return [16+i*((W-32)/Math.max(1,n-1)), H/2-Math.sin(i*0.78)*(H/2-20)];
+  });
+  let d='';
+  pts.forEach(function(pt,i){ d+=(i?' L':'M')+pt[0].toFixed(1)+' '+pt[1].toFixed(1); });
+  let g='<svg class="jwsvg" viewBox="0 0 '+W+' '+H+'" aria-hidden="true">'+
+    '<path d="'+d+'" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="1 6" '+
+    'stroke-linecap="round" opacity=".45"/>';
+  pts.forEach(function(pt,i){
+    const now=(i===cur), x=pt[0].toFixed(1), y=pt[1].toFixed(1);
+    g+='<circle cx="'+x+'" cy="'+y+'" r="'+(now?5:3.6)+'" fill="currentColor" opacity="'+
+      (seq[i]||now?'.95':'.28')+'"/>';
+    if(now) g+='<circle cx="'+x+'" cy="'+y+'" r="9.5" fill="none" stroke="currentColor" '+
+      'stroke-width="1.6" opacity=".62"/>';
+  });
+  return g+'</svg>';
+}
+/* o retangulo do CTA publico, aqui como progresso ligado a jornada */
+function jWidget(){
+  const st=pState();
+  const dn=PROGRAMS.reduce(function(a,p){ return a+pDone(p.id); },0);
+  const tot=PROGRAMS.reduce(function(a,p){ return a+p.days.length; },0);
+  const pct=tot?Math.round(dn/tot*100):0;
+  let cur=pProg(st.last);
+  if(!cur||pDone(cur.id)>=cur.days.length){
+    cur=PROGRAMS.filter(function(p){ return pDone(p.id)<p.days.length; })[0]||PROGRAMS[0];
+  }
+  const n=pNext(cur.id), ct=cur.days.length;
+  return '<article class="jwidget" style="--g1:#114B5F;--g2:#07222C" '+
+    'onclick="openProgram(\''+cur.id+'\')">'+
+    '<div class="upart">'+upArt()+'</div>'+
+    '<div class="jwbody">'+
+      '<p class="upkick">'+__tr('Your journey')+'</p>'+
+      '<h3>'+esc(cur.days[n].t)+'</h3>'+
+      '<p class="jwnow">'+esc(cur.title)+' · '+__tr('Day')+' '+(n+1)+' '+__tr('of')+' '+ct+'</p>'+
+      '<div class="jwbar"><i style="width:'+pct+'%"></i></div>'+
+      '<div class="jwstats">'+
+        '<div class="jwstat"><b>'+(st.streak||0)+'</b><span>'+__tr('day streak')+'</span></div>'+
+        '<div class="jwstat"><b>'+dn+'</b><span>'+__tr('sessions done')+'</span></div>'+
+        '<div class="jwstat"><b>'+pct+'%</b><span>'+__tr('of the map')+'</span></div>'+
+      '</div>'+
+      '<span class="btn btn-cream upplay"><i>&#9654;</i> '+
+        (dn?__tr('Continue'):__tr('Start free'))+'</span>'+
+    '</div>'+
+    '<div class="jwmap" title="'+__tr('Your map')+'" '+
+      'onclick="event.stopPropagation();dashNav(\'patient\',\'journey\')">'+jwPath()+'</div>'+
+  '</article>';
+}
+/* depois do render: fotos das categorias, trilhos em loop e as setas */
+function progAfter(w){
+  ARAILS.forEach(function(id){
+    const r=document.getElementById(id); if(!r) return;
+    r.addEventListener('scroll',function(){ railSync(id); },{passive:true});
+  });
+  if(window.__contentSkin) window.__contentSkin(w);
+  ARAILS.forEach(railSync);
+}
 function progSection(){
   if(PDETAIL) return progDetail(pProg(PDETAIL)||PROGRAMS[0]);
-  const st=pState(), started=pStarted();
-  let list;
-  if(started.length){
-    const lastP=pProg(st.last)||started[0];
-    list=[lastP].concat(started.filter(function(x){return x.id!==lastP.id;}))
-                .concat(PROGRAMS.filter(function(x){ return (st.done[x.id]||[]).length===0; }));
-  } else { list=PROGRAMS.slice(); }
-  const chip = st.streak>0 ? '<span class="streakchip"><span class="ic" data-icon="flame"></span>'+st.streak+' '+__tr('day streak')+'</span>' : '';
-  return '<div class="dsec dprog">'+
-    head(__tr('Programs'),__tr('Short daily sessions. Your progress is saved as you go.'))+
-    '<section class="hl-sec hl-first"><div class="hl-head"><h2>'+__tr('Up next')+'</h2>'+
-      '<span>'+__tr('Pick up where you left off.')+'</span>'+chip+'</div>'+
-      '<div class="rail">'+list.map(function(p){ return upCard(p,(st.done[p.id]||[]).length>0); }).join('')+'</div></section>'+
-    '<section class="hl-sec"><div class="hl-head"><h2>'+__tr('All programs')+'</h2>'+
-      '<span>'+__tr('The foundation, in short daily sessions.')+'</span></div>'+
-      '<div class="rail">'+PROGRAMS.map(function(x){return progCard(x);}).join('')+'</div></section>'+
-    '<section class="hl-sec"><div class="hl-head"><h2>'+__tr('Podcasts & talks')+'</h2>'+
-      '<span>'+__tr('From the open library, always free.')+'</span></div>'+
-      '<div class="rail">'+PODCASTS.map(podCard).join('')+'</div></section>'+
-    subPanel()+'</div>';
+  return '<div class="dsec dprog contentskin">'+
+    appHero()+
+    '<section class="hl-sec"><div class="hl-solo">'+jWidget()+'</div></section>'+
+    '<span class="zlabel">'+__tr('The programs')+'</span>'+
+    '<section class="disc">'+
+      appSearch()+
+      '<div id="acatgrid">'+catClusters()+'</div>'+
+      '<div class="noresults" id="acatnores">'+__tr('No categories match your search.')+'</div>'+
+    '</section>'+
+    appPods()+
+    appArts()+
+    specPanel()+'</div>';
 }
 function courseSection(role){
   if(PDETAIL&&pProg(PDETAIL)) return progDetail(pProg(PDETAIL));
@@ -4903,7 +5195,7 @@ function finishSession(){
   pComplete(p.id,CURD);
   if(CURD<p.days.length-1){ openSession(p.id,CURD+1); toast(course?__tr('Module complete.'):__tr('Session complete.')); }
   else if(course){ certAdd(p.id); closeSession(); toast(__tr('Track complete. Certificate issued.')); }
-  else { closeSession(); toast(__tr('Program complete. Well done.')); }
+  else { closeSession(); setTimeout(function(){ openPlanGate(p.title); },60); }
 }
 function closeSession(){
   PDETAIL=CURP;
@@ -5916,8 +6208,19 @@ function openGate(kind){
 function closeGate(){
   var m=document.getElementById('gateModal'); if(m) m.classList.remove('open');
 }
-document.addEventListener('keydown',function(e){ if(e.key==='Escape') closeGate(); });
-window.addEventListener('hashchange',function(){ closeGate(); });
+/* ---- dentro da conta o mesmo modal fecha o programa: plano ou terapeuta ---- */
+function openPlanGate(title){
+  var m=document.getElementById('planModal'); if(!m) return;
+  var c=document.getElementById('planCtx');
+  if(c) c.textContent=title||__tr('Program complete');
+  m.classList.add('open');
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
+}
+function closePlanGate(){
+  var m=document.getElementById('planModal'); if(m) m.classList.remove('open');
+}
+document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ closeGate(); closePlanGate(); } });
+window.addEventListener('hashchange',function(){ closeGate(); closePlanGate(); });
 
 /* ============ EQUIPE: application modal ============ */
 function teamModal(open){
@@ -7716,6 +8019,16 @@ routeFromHash();
     "Jul 3":"3 jul","Jun 28":"28 jun","Jun 30":"30 jun","Jul 15":"15 jul","Sep 2":"2 set","May 6":"6 mai","May 20":"20 mai","Jun 12":"12 jun","Apr 14":"14 abr","Jul 11":"11 jul",
     // nav (pages)
     "Content":"Conteúdo","Care team":"Corpo clínico",
+    "Ready for someone to read this with you?":"Pronto para ter alguém lendo isso com você?",
+    "A psychiatrist and a nutritionist follow your progress inside the app, and build the plan around your labs.":"Um psiquiatra e uma nutricionista acompanham seu progresso dentro do app e montam o plano a partir dos seus exames.",
+    "Connect with a specialist":"Falar com um especialista",
+    "Your team is reading this with you.":"Sua equipe está lendo isso com você.",
+    "Message your team":"Mandar mensagem para a equipe",
+    "Your progress, the programs, and the whole open library.":"Seu progresso, os programas e toda a biblioteca aberta.",
+    "Program complete":"Programa concluído",
+    "That is the end of this one":"Esse aqui você terminou",
+    "A plan opens the rest of the programs. Or a therapist reads your progress and takes it from there.":"Um plano abre o resto dos programas. Ou um terapeuta lê o seu progresso e segue daí.",
+    "talk to a therapist":"falar com um terapeuta",
     // equipe page
     "Excellence in metabolic psychiatry":"Excelência em psiquiatria metabólica",
     "Professionals united by one mission: transforming mental health through the metabolic approach.":"Profissionais unidos pela missão de transformar a saúde mental através da abordagem metabólica.",
@@ -8387,7 +8700,12 @@ routeFromHash();
     return null;
   }
 
+  var _appOpenProgram=window.openProgram;
   window.openProgram=function(name){
+    /* ids reais de PROGRAMS pertencem ao app do paciente; nomes de categoria
+       sao da pagina publica. Sem isto o app saltava para #/programa. */
+    if(typeof _appOpenProgram==='function'&&typeof pProg==='function'&&pProg(name))
+      return _appOpenProgram(name);
     var t=tileFor(name), g1='#114B5F', g2='#07222C';
     if(t){ var st=t.getAttribute('style')||'';
       var m1=st.match(/--g1:\s*([^;]+)/), m2=st.match(/--g2:\s*([^;]+)/);
@@ -8495,8 +8813,8 @@ routeFromHash();
     'For clinicians'    :'photo-1631217868264-e5b90bb7e133'  /* medico conversando com paciente */
   };
 
-  function paintTiles(){
-    document.querySelectorAll('#pg-conteudo .cattile').forEach(function(t){
+  function paintTiles(root){
+    (root||document).querySelectorAll('.cattile').forEach(function(t){
       if(t.dataset.phdone) return;
       var id=PHOTOS[t.getAttribute('data-cat')];
       if(id){
@@ -8557,12 +8875,14 @@ routeFromHash();
     },{passive:true});
   }
 
-  function setup(){
-    paintTiles();
-    document.querySelectorAll('#pg-conteudo .catrail').forEach(loopRail);
+  function setup(root){
+    root = root || document.getElementById('pg-conteudo');
+    if(!root) return;
+    paintTiles(root);
+    root.querySelectorAll('.catrail').forEach(loopRail);
     /* as bolhas de podcast tambem giram sem fim. Sao poucas para transbordar
        numa tela larga, entao repete a lista ate encher antes de fechar o loop. */
-    var pr=document.getElementById('podRail');
+    var pr=root.querySelector('.podloop');
     if(pr && pr.children.length && !pr.dataset.looped){
       var base=[].slice.call(pr.children), guard=0;
       while(pr.scrollWidth < pr.clientWidth*1.4 && guard<8){
@@ -8573,8 +8893,10 @@ routeFromHash();
       }
       loopRail(pr);
     }
-    if(window.renderIcons) renderIcons(document.getElementById('pg-conteudo'));
+    if(window.renderIcons) renderIcons(root);
   }
+  /* o painel do paciente chama isto depois de desenhar a aba Content */
+  window.__contentSkin=setup;
 
   /* roda quando a pagina de conteudo aparece */
   if(typeof showSub==='function'){
@@ -8585,8 +8907,9 @@ routeFromHash();
       return r;
     };
   }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',setup);
-  else setup();
+  function boot(){ setup(); }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',boot);
+  else boot();
 })();
 </script>
 
