@@ -1531,16 +1531,16 @@ body:not(.intro-done) .hf-art{animation:none;opacity:0}
 .bub .bdisc{position:relative;display:block;width:150px;height:150px;margin:0 auto 12px;
   transition:transform .2s ease}
 .bub:hover .bdisc{transform:translateY(-4px)}
-.bub .bfill{position:absolute;inset:8px;border-radius:50%;overflow:hidden;background:#FAF6F0;
-  display:block}
+.bub .bfill{position:absolute;inset:8px;border-radius:50%;overflow:hidden;display:block;
+  background:radial-gradient(120% 120% at 32% 22%,#153138,#0C2026)}
 .bub .bart{width:100%;height:100%;display:block}
 .bub .bplay{position:absolute;right:7px;bottom:7px;z-index:3;width:37px;height:37px;
-  border-radius:50%;background:var(--t900);border:2.5px solid #FAF6F0;display:flex;
+  border-radius:50%;background:#F5EFE4;border:2.5px solid #0C2026;display:flex;
   align-items:center;justify-content:center;
   transition:transform .18s ease,background .18s ease}
-.bub .bplay svg{width:12px;height:12px;margin-left:2px;fill:#F5EFE4;stroke:none;display:block}
-.bub:hover .bplay{background:var(--t500);transform:scale(1.1)}
-.bub .bring{position:absolute;inset:0;width:100%;height:100%;overflow:visible;color:var(--t500)}
+.bub .bplay svg{width:12px;height:12px;margin-left:2px;fill:#0C333F;stroke:none;display:block}
+.bub:hover .bplay{background:#3FB5A4;transform:scale(1.1)}
+.bub .bring{position:absolute;inset:0;width:100%;height:100%;overflow:visible;color:#3FB5A4}
 .bub:nth-child(3n+2) .bring{color:var(--coral)}
 .bub:nth-child(3n) .bring{color:#D9A420}
 .bub .bchan{font-family:'Caveat',cursive;font-size:17px;line-height:1.05;color:var(--soft);
@@ -1548,58 +1548,53 @@ body:not(.intro-done) .hf-art{animation:none;opacity:0}
 .bub .btt{font-family:var(--sans);font-size:13px;font-weight:600;line-height:1.3;color:var(--hd);
   margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 
-/* ---- artigos: recortes de papel (substitui a capa em gradiente) ---- */
-#artRail.pqgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:22px;
+/* ---- artigos: cartoes de contorno desenhado ---- */
+#artRail.pqgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px;
   padding:10px var(--gut) 34px;overflow:visible}
 #wrap-artRail .railnav{display:none}
-.artcard.clipcard{width:auto;position:relative;background:#FAF6F0;color:#12414F;border-radius:4px;
-  padding:28px 22px 22px;display:flex;flex-direction:column;gap:12px;
-  transition:transform .2s ease}
-.artcard.clipcard:nth-child(2n){transform:rotate(-.7deg)}
-.artcard.clipcard:nth-child(3n){transform:rotate(.6deg)}
-.artcard.clipcard:hover{transform:translateY(-5px) rotate(0deg)}
-.clipcard .cframe{position:absolute;inset:6px;width:calc(100% - 12px);height:calc(100% - 12px);
-  color:rgba(18,65,79,.4);overflow:visible;pointer-events:none}
-.clipcard .ctape{position:absolute;top:-9px;left:50%;transform:translateX(-50%) rotate(-2deg);
-  width:66px;height:20px;background:rgba(217,164,32,.34);border-radius:2px}
-.clipcard .csrc{position:relative;font-family:'Caveat',cursive;font-size:17px;color:var(--coral);
-  margin:0}
-.clipcard h3{position:relative;display:block;-webkit-line-clamp:unset;overflow:visible;
-  font-family:var(--serif);font-weight:600;font-size:19px;
-  line-height:1.22;color:#12414F;letter-spacing:0;margin:0}
-.clipcard .cdesc{position:relative;font-family:var(--calm);font-size:13px;line-height:1.5;
-  color:rgba(18,65,79,.72);margin:0}
-.clipcard .cread{position:relative;margin-top:auto;font-family:var(--display);font-size:11.5px;
-  font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--t800)}
-.clipcard:hover .cread{color:var(--t500)}
+.artcard.ocard{width:auto;position:relative;padding:26px 22px 22px;display:flex;
+  flex-direction:column;gap:11px;min-height:206px;transition:transform .2s ease}
+.ocard .oframe{position:absolute;inset:0;width:100%;height:100%;overflow:visible;
+  pointer-events:none;color:rgba(233,227,215,.34);transition:color .2s ease}
+.artcard.ocard:hover{transform:translateY(-4px)}
+.artcard.ocard:hover .oframe{color:#3FB5A4}
+.ocard .oic{position:relative;width:40px;height:40px;display:block;color:#3FB5A4;margin-bottom:2px}
+.artcard.ocard:nth-child(3n+2) .oic{color:var(--coral)}
+.artcard.ocard:nth-child(3n) .oic{color:#D9A420}
+.ocard .osrc{position:relative;font-family:'Caveat',cursive;font-size:17px;color:var(--soft);margin:0}
+.ocard h3{position:relative;display:block;-webkit-line-clamp:unset;overflow:visible;
+  font-family:var(--serif);font-weight:500;font-size:18px;line-height:1.24;color:var(--hd);
+  letter-spacing:0;margin:0}
+.ocard .oread{position:relative;margin-top:auto;font-family:var(--display);font-size:11px;
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#3FB5A4}
 
-/* ---- gate: convite a criar conta dentro do programa ---- */
-.gscrim{position:fixed;inset:0;z-index:120;background:rgba(3,7,9,.76);backdrop-filter:blur(8px);
+/* ---- gate: halo do anel da marca ---- */
+.gscrim{position:fixed;inset:0;z-index:120;background:rgba(3,7,9,.82);backdrop-filter:blur(9px);
   display:none;align-items:center;justify-content:center;padding:24px}
 .gscrim.open{display:flex}
-.gsplit{position:relative;width:100%;max-width:660px;display:grid;grid-template-columns:200px 1fr;
-  background:#101D21;border:1px solid rgba(245,239,228,.1);border-radius:20px;overflow:hidden;
-  box-shadow:0 30px 70px rgba(0,0,0,.55);animation:gpop .24s cubic-bezier(.2,.8,.3,1)}
-@keyframes gpop{from{opacity:0;transform:translateY(14px) scale(.975)}}
-.gsplit .gart{background:#FAF6F0;display:flex;align-items:center;justify-content:center;padding:22px}
-.gsplit .gart svg{width:100%;height:auto;display:block;max-width:150px}
-.gsplit .gbody{padding:34px 32px 30px;display:flex;flex-direction:column;gap:12px;
-  align-items:flex-start}
-.gsplit .gctx{font-family:'Caveat',cursive;font-size:19px;color:#D9A420;margin:0}
-.gsplit h3{font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.16;color:#DDD6C6;
-  letter-spacing:0;margin:0}
-.gsplit .gsub{font-family:var(--calm);font-size:14.5px;line-height:1.55;color:#9DB2B6;
-  max-width:36ch;margin:0}
-.gsplit .grow{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
-.gsplit .gfine{font-family:var(--calm);font-size:12px;color:rgba(157,178,182,.6);margin:0}
-.gclose{position:absolute;top:10px;right:14px;background:none;border:0;cursor:pointer;
-  color:rgba(157,178,182,.7);font-size:26px;line-height:1;z-index:2}
-@media(max-width:620px){
-  .gsplit{grid-template-columns:1fr}
-  .gsplit .gart{padding:18px}
-  .gsplit .gart svg{max-width:120px;margin:0 auto}
-  .gsplit .gbody{padding:26px 24px 24px}
-}
+.ghalo{position:relative;width:min(470px,88vw);aspect-ratio:1;display:flex;align-items:center;
+  justify-content:center;animation:gpop .3s cubic-bezier(.2,.8,.3,1)}
+@keyframes gpop{from{opacity:0;transform:scale(.93)}}
+.ghalo .gglow{position:absolute;inset:8%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(12,51,63,.92),rgba(8,27,33,.72) 62%,transparent 78%)}
+.ghalo .grings{position:absolute;inset:0;width:100%;height:100%;color:#3FB5A4}
+.ghalo .grings svg{width:100%;height:100%;display:block;overflow:visible}
+@keyframes gswing{to{transform:rotate(360deg)}}
+.ghalo .r-in{transform-origin:100px 100px;animation:gswing 7s cubic-bezier(.7,0,.3,1) infinite}
+.ghalo .r-out{transform-origin:100px 100px;
+  animation:gswing 11s cubic-bezier(.55,0,.45,1) infinite reverse}
+@media(prefers-reduced-motion:reduce){.ghalo .r-in,.ghalo .r-out{animation:none}}
+.ghalo .gin{position:relative;text-align:center;display:flex;flex-direction:column;gap:10px;
+  align-items:center;padding:0 22%}
+.ghalo .gctx{font-family:'Caveat',cursive;font-size:19px;color:#D9A420;line-height:1;margin:0}
+.ghalo h3{font-family:var(--serif);font-weight:500;font-size:clamp(20px,2.4vw,24px);
+  line-height:1.14;color:#F5EFE4;letter-spacing:0;margin:0}
+.ghalo .gsub{font-family:var(--calm);font-size:13px;line-height:1.5;color:#9DB2B6;margin:0}
+.ghalo .galt{font-family:var(--calm);font-size:12.5px;color:#9DB2B6;margin:-2px 0 0}
+.ghalo .galt b{color:#DDD6C6;font-weight:600;border-bottom:1px solid #3FB5A4;cursor:pointer}
+.gclose{position:fixed;top:22px;right:26px;background:none;border:0;cursor:pointer;
+  color:rgba(157,178,182,.6);font-size:30px;line-height:1;z-index:2}
+.gclose:hover{color:#F5EFE4}
 
 /* ---- filtros de canal ---- */
 #pg-conteudo .libfilters{padding:0 var(--gut);margin-bottom:16px}
@@ -3248,18 +3243,21 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
 
   <!-- ============ GATE: criar conta (dentro do programa) ============ -->
   <div class="gscrim" id="gateModal" onclick="if(event.target===this)closeGate()">
-    <div class="gsplit" role="dialog" aria-modal="true" aria-labelledby="gateH">
-      <button class="gclose" onclick="closeGate()" aria-label="Close">&times;</button>
-      <div class="gart" id="gateArt" aria-hidden="true"></div>
-      <div class="gbody">
+    <button class="gclose" onclick="closeGate()" aria-label="Close">&times;</button>
+    <div class="ghalo" role="dialog" aria-modal="true" aria-labelledby="gateH">
+      <div class="gglow"></div>
+      <div class="grings" aria-hidden="true"><svg viewBox="0 0 200 200">
+        <g class="r-in"><path d="M154 66A62 62 0 1 0 166 103" fill="none" stroke="currentColor"
+          stroke-width="2.6" stroke-linecap="round" opacity=".9"/></g>
+        <g class="r-out"><path d="M172 50A86 86 0 1 0 188 108" fill="none" stroke="currentColor"
+          stroke-width="1.2" stroke-linecap="round" opacity=".3"/></g>
+      </svg></div>
+      <div class="gin">
         <p class="gctx" id="gateCtx">Free library</p>
-        <h3 id="gateH">You are one account away from the rest.</h3>
-        <p class="gsub">The whole free library opens, and your progress is kept from this lesson on.</p>
-        <div class="grow">
-          <span class="btn btn-cream" style="cursor:pointer" onclick="closeGate();goAccount()">Create free account</span>
-          <span class="btn btn-ghost" style="cursor:pointer" onclick="closeGate();goLogin()">Log in</span>
-        </div>
-        <p class="gfine">Free. No card. About a minute.</p>
+        <h3 id="gateH">One account opens it</h3>
+        <p class="gsub">The whole free library, and your place is kept.</p>
+        <span class="btn btn-cream" style="cursor:pointer" onclick="closeGate();goAccount()">Create free account</span>
+        <p class="galt">Already have one? <b onclick="closeGate();goLogin()">Log in</b></p>
       </div>
     </div>
   </div>
@@ -5745,13 +5743,21 @@ const PODCASTS=[
  {v:'IpLo1B4fhF0',art:'sprout',chan:'Modo Primal Podcast',guest:'Dr. Juan Pablo Roig',t:'Médico Curou o Fígado e a Depressão com Dieta Carnívora',d:'Ancestral nutrition and metabolic psychiatry, with a personal story and clinical practice insights.'}
 ];
 const ARTICLES=[
- {u:'https://www.proactivepsychiatry.com/post/metabolic-psychiatry-where-mental-health-meets-metabolic-health',src:'Proactive Psychiatry',t:'Metabolic Psychiatry: Where Mental Health Meets Metabolic Health',d:'For a long time psychiatry was stuck in the chemical-imbalance model. What if mental illness is more than a neurotransmitter problem?',q:'What if mental illness is more than a neurotransmitter problem?',blurb:'For a long time psychiatry was stuck in the chemical-imbalance model.',rule:'#2A9D8F',g1:'#114B5F',g2:'#07222C',icon:'clipboard'},
- {u:'https://cardinalclinic.co.uk/blog/metabolic-psychiatry-integrating-bioenergetics-into-mental-health-care/',src:'Cardinal Clinic',t:'Integrating Bioenergetics into Mental Health Care',d:'For decades the dominant model focused on the synapse. Researchers are now investigating cellular bioenergetics.',q:'Researchers are now investigating cellular bioenergetics',blurb:'For decades the dominant model focused on the synapse.',rule:'#E76F51',g1:'#2A9D8F',g2:'#12615A',icon:'zap'},
- {u:'https://www.linkedin.com/pulse/rise-metabolic-psychiatry-game-changer-mental-health-greenland-u33le',src:'LinkedIn · Greenland',t:'The Rise of Metabolic Psychiatry: A Game Changer in Mental Health?',d:'How metabolic psychiatry is transforming the mental-health field with metabolism-based approaches.',q:'A field transformed by metabolism-based approaches',blurb:'How metabolic psychiatry is changing mental-health practice.',rule:'#5B7DB1',g1:'#5B7DB1',g2:'#294567',icon:'trending-down'},
- {u:'https://scienmag.com/metabolic-psychiatry-defining-priorities-for-emerging-field/',src:'SciEnMag',t:'Metabolic Psychiatry: Defining Priorities for an Emerging Field',d:'Researchers define priorities for the emerging field, including clinical trials and biomarkers.',q:'Priorities for an emerging field: clinical trials, and biomarkers',blurb:'What researchers say has to be settled next.',rule:'#D9A420',g1:'#7A5C8E;',g2:'#3F2C4D',icon:'chart'}
+ {u:'https://www.proactivepsychiatry.com/post/metabolic-psychiatry-where-mental-health-meets-metabolic-health',src:'Proactive Psychiatry',ic:'spark',t:'Metabolic Psychiatry: Where Mental Health Meets Metabolic Health',d:'For a long time psychiatry was stuck in the chemical-imbalance model. What if mental illness is more than a neurotransmitter problem?',q:'What if mental illness is more than a neurotransmitter problem?',blurb:'For a long time psychiatry was stuck in the chemical-imbalance model.',rule:'#2A9D8F',g1:'#114B5F',g2:'#07222C',icon:'clipboard'},
+ {u:'https://cardinalclinic.co.uk/blog/metabolic-psychiatry-integrating-bioenergetics-into-mental-health-care/',src:'Cardinal Clinic',ic:'cell',t:'Integrating Bioenergetics into Mental Health Care',d:'For decades the dominant model focused on the synapse. Researchers are now investigating cellular bioenergetics.',q:'Researchers are now investigating cellular bioenergetics',blurb:'For decades the dominant model focused on the synapse.',rule:'#E76F51',g1:'#2A9D8F',g2:'#12615A',icon:'zap'},
+ {u:'https://www.linkedin.com/pulse/rise-metabolic-psychiatry-game-changer-mental-health-greenland-u33le',src:'LinkedIn · Greenland',ic:'arrowup',t:'The Rise of Metabolic Psychiatry: A Game Changer in Mental Health?',d:'How metabolic psychiatry is transforming the mental-health field with metabolism-based approaches.',q:'A field transformed by metabolism-based approaches',blurb:'How metabolic psychiatry is changing mental-health practice.',rule:'#5B7DB1',g1:'#5B7DB1',g2:'#294567',icon:'trending-down'},
+ {u:'https://scienmag.com/metabolic-psychiatry-defining-priorities-for-emerging-field/',src:'SciEnMag',ic:'flag',t:'Metabolic Psychiatry: Defining Priorities for an Emerging Field',d:'Researchers define priorities for the emerging field, including clinical trials and biomarkers.',q:'Priorities for an emerging field: clinical trials, and biomarkers',blurb:'What researchers say has to be settled next.',rule:'#D9A420',g1:'#7A5C8E;',g2:'#3F2C4D',icon:'chart'}
 ];
+/* ---- marcas de linha dos cartoes de artigo ---- */
+var OIC={
+  spark:'<path d="M20 4 l3.6 9.4 9.4 3.6 -9.4 3.6 -3.6 9.4 -3.6 -9.4 -9.4 -3.6 9.4 -3.6Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>',
+  cell:'<ellipse cx="20" cy="21" rx="15" ry="9.5" fill="none" stroke="currentColor" stroke-width="2.4" transform="rotate(-16 20 21)"/><path d="M13 16 q3 5 0 9 M20 14 q3.5 7 0 14 M27 16 q3 5 0 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" transform="rotate(-16 20 21)"/>',
+  arrowup:'<path d="M5 30 L15 19 L23 25 L34 11" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M26 10 h9 v9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>',
+  flag:'<path d="M10 34 V6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M10 8 q9 -4 15 0 t9 0 v12 q-9 4 -15 0 t-9 0Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>'
+};
+
 /* ---- ilustracoes a mao dentro das bolhas (mesma linguagem do Learn more) ---- */
-var BINK='#12414F', BCOR='#E76F51', BGOLD='#D9A420', BTEAL='#2A9D8F';
+var BINK='rgba(233,227,215,.86)', BCOR='#E76F51', BGOLD='#D9A420', BTEAL='#3FB5A4';
 var BART={
   /* prato: dieta */
   plate:'<circle cx="75" cy="78" r="35" fill="none" stroke="'+BINK+'" stroke-width="3"/>'+
@@ -5773,7 +5779,7 @@ var BART={
     '<path d="M117 52 q8 20 0 40" fill="none" stroke="'+BCOR+'" stroke-width="2.8" stroke-linecap="round"/>',
   /* mitocondria */
   mito:'<g transform="rotate(-16 75 78)">'+
-    '<ellipse cx="75" cy="78" rx="45" ry="27" fill="#E4EFEC" stroke="'+BINK+'" stroke-width="3"/>'+
+    '<ellipse cx="75" cy="78" rx="45" ry="27" fill="rgba(63,181,164,.14)" stroke="'+BINK+'" stroke-width="3"/>'+
     '<path d="M44 68 q9 12 0 22 M58 62 q10 16 0 32 M72 61 q11 17 0 34 M86 62 q10 16 0 32 M100 68 q9 12 0 22" fill="none" stroke="'+BINK+'" stroke-width="2" stroke-linecap="round" opacity=".8"/></g>'+
     '<rect x="26" y="34" width="12" height="12" rx="2.5" fill="'+BGOLD+'"/>'+
     '<rect x="104" y="26" width="10" height="10" rx="2.5" fill="'+BGOLD+'"/>'+
@@ -5782,8 +5788,8 @@ var BART={
     '<path d="M30 104 l2.5 6 6 2.5 -6 2.5 -2.5 6 -2.5 -6 -6 -2.5 6 -2.5Z" fill="'+BCOR+'"/>',
   /* broto com raizes */
   sprout:'<path d="M75 100 v-30" fill="none" stroke="'+BINK+'" stroke-width="3" stroke-linecap="round"/>'+
-    '<path d="M75 78 q-19 -3 -22 -21 q19 1 22 21Z" fill="'+BTEAL+'" fill-opacity=".26" stroke="'+BINK+'" stroke-width="2.6" stroke-linejoin="round"/>'+
-    '<path d="M75 70 q19 -4 23 -22 q-20 1 -23 22Z" fill="'+BTEAL+'" fill-opacity=".26" stroke="'+BINK+'" stroke-width="2.6" stroke-linejoin="round"/>'+
+    '<path d="M75 78 q-19 -3 -22 -21 q19 1 22 21Z" fill="rgba(63,181,164,.2)" stroke="'+BINK+'" stroke-width="2.6" stroke-linejoin="round"/>'+
+    '<path d="M75 70 q19 -4 23 -22 q-20 1 -23 22Z" fill="rgba(63,181,164,.2)" stroke="'+BINK+'" stroke-width="2.6" stroke-linejoin="round"/>'+
     '<path d="M40 100 h70" fill="none" stroke="'+BINK+'" stroke-width="2" stroke-linecap="round" stroke-dasharray="7 6" opacity=".6"/>'+
     '<path d="M75 100 q-8 12 -19 19 M75 100 q5 14 14 19 M75 100 v22 M75 108 q-7 4 -11 12" fill="none" stroke="'+BCOR+'" stroke-width="2.4" stroke-linecap="round"/>',
   /* onda sonora */
@@ -5817,15 +5823,15 @@ function podCard(p,i){
     '<h3 class="btt">'+p.t+'</h3></a>';
 }
 function artCard(a,i){
-  return '<a class="artcard clipcard" href="'+a.u+'" target="_blank" rel="noopener">'+
-    '<span class="ctape"></span>'+
-    '<svg class="cframe" viewBox="0 0 240 260" preserveAspectRatio="none" aria-hidden="true">'+
-    '<rect x="3" y="3" width="234" height="254" rx="5" fill="none" stroke="currentColor" '+
-    'stroke-width="1.6" filter="url(#'+(i%2?'mbrgh':'mbrgh2')+')"/></svg>'+
-    '<p class="csrc">'+a.src+'</p>'+
+  return '<a class="artcard ocard" href="'+a.u+'" target="_blank" rel="noopener">'+
+    '<svg class="oframe" viewBox="0 0 240 210" preserveAspectRatio="none" aria-hidden="true">'+
+    '<rect x="3" y="3" width="234" height="204" rx="14" fill="none" stroke="currentColor" '+
+    'stroke-width="1.7" filter="url(#'+(i%2?'mbrgh':'mbrgh2')+')"/></svg>'+
+    '<svg class="oic" viewBox="0 0 40 40" aria-hidden="true"><g filter="url(#mbrgh3)">'+
+    (OIC[a.ic]||OIC.spark)+'</g></svg>'+
+    '<p class="osrc">'+a.src+'</p>'+
     '<h3>'+(a.q||a.t)+'</h3>'+
-    '<p class="cdesc">'+(a.blurb||'')+'</p>'+
-    '<span class="cread">'+__tr('Read article')+'</span></a>';
+    '<span class="oread">'+__tr('Read article')+' &#8594;</span></a>';
 }
 function renderLibrary(){
   const pr=document.getElementById('podRail'); if(!pr) return;
@@ -5894,19 +5900,16 @@ function goAccount(){ go('login'); }
 
 /* ---- gate: dentro do programa, qualquer clique pede a conta ---- */
 var GATEH={
-  start:'Start this program with a free account.',
-  lesson:'You are one account away from the rest.',
-  save:'Keep this in your account.',
-  about:'The full program lives in your account.'
+  start:'One account starts it',
+  lesson:'One account opens it',
+  save:'Keep it in your account',
+  about:'It lives in your account'
 };
-var GATEART={ start:'sprout', lesson:'key', save:'key', about:'mito' };
 function openGate(kind){
   var m=document.getElementById('gateModal'); if(!m) return;
-  var P=window.__prog||{}, h=document.getElementById('gateH'),
-      a=document.getElementById('gateArt');
+  var P=window.__prog||{}, h=document.getElementById('gateH');
   document.getElementById('gateCtx').textContent=P.name||'Free library';
   if(h) h.textContent=GATEH[kind]||GATEH.lesson;
-  if(a && typeof bubArt==='function') a.innerHTML=bubArt(GATEART[kind]||'key');
   m.classList.add('open');
   if(window.__applyLang){ try{__applyLang()}catch(e){} }
 }
@@ -7397,13 +7400,13 @@ routeFromHash();
     "No categories match your search.":"Nenhuma categoria corresponde à sua busca.",
     "No programs match your search.":"Nenhum programa corresponde à sua busca.",
     "Free library":"Biblioteca gratuita",
-    "You are one account away from the rest.":"Falta só uma conta para abrir o resto.",
-    "Start this program with a free account.":"Comece este programa com uma conta gratuita.",
-    "Keep this in your account.":"Guarde isto na sua conta.",
-    "The full program lives in your account.":"O programa completo fica na sua conta.",
-    "The whole free library opens, and your progress is kept from this lesson on.":"A biblioteca gratuita inteira abre, e seu progresso fica salvo a partir desta aula.",
+    "One account opens it":"Uma conta abre tudo",
+    "One account starts it":"Uma conta começa tudo",
+    "Keep it in your account":"Guarde na sua conta",
+    "It lives in your account":"Fica na sua conta",
+    "The whole free library, and your place is kept.":"A biblioteca gratuita inteira, e seu lugar fica salvo.",
     "Create free account":"Criar conta gratuita",
-    "Free. No card. About a minute.":"Grátis. Sem cartão. Cerca de um minuto.",
+    "Already have one?":"Já tem uma?",
     "What if mental illness is more than a neurotransmitter problem?":"E se a doença mental for mais do que um problema de neurotransmissores?",
     "For a long time psychiatry was stuck in the chemical-imbalance model.":"Por muito tempo a psiquiatria ficou presa ao modelo do desequilíbrio químico.",
     "Researchers are now investigating cellular bioenergetics":"Pesquisadores agora investigam a bioenergética celular",
