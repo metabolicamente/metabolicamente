@@ -2284,100 +2284,100 @@ body.nav-dark .nav:not(.over) .navsearch{color:#F5EFE4;border-color:rgba(245,239
 body.nav-dark .nav:not(.over) .btn-solid{background:#F5EFE4;color:var(--t900)}
 
 /* ============ PAGE: PROGRAMA ============ */
-#pg-programa{--gut:clamp(18px,3.4vw,48px);--pbg:#070D10;--pcard:#111A1E;
+:is(#pg-programa,.progskin){--gut:clamp(18px,3.4vw,48px);--pbg:#070D10;--pcard:#111A1E;
   --pline:rgba(245,239,228,.10);--pline2:rgba(245,239,228,.18);
   --pink:#EDE7DB;--psoft:#93A5AA;--phd:#F2ECE0;
   background:var(--pbg);color:var(--pink)}
-#pg-programa .pghero{position:relative;width:100%;min-height:clamp(500px,74vh,700px);
+:is(#pg-programa,.progskin) .pghero{position:relative;width:100%;min-height:clamp(500px,74vh,700px);
   overflow:hidden;display:flex;align-items:center}
-body.imm #pg-programa{padding-top:0}
-body.imm #pg-programa .pghero{margin-top:-64px}
-body.imm #pg-programa .pgin{padding-top:112px}
+body.imm :is(#pg-programa,.progskin){padding-top:0}
+body.imm :is(#pg-programa,.progskin) .pghero{margin-top:-64px}
+body.imm :is(#pg-programa,.progskin) .pgin{padding-top:112px}
 /* a arte cobre o heroi inteiro e entra por mascara, entao os dois lados
    se dissolvem em vez de encostar numa linha */
-#pg-programa .pgart{position:absolute;inset:0;background:linear-gradient(150deg,var(--g1),var(--g2));
+:is(#pg-programa,.progskin) .pgart{position:absolute;inset:0;background:linear-gradient(150deg,var(--g1),var(--g2));
   -webkit-mask-image:linear-gradient(90deg,transparent 4%,rgba(0,0,0,.06) 22%,rgba(0,0,0,.28) 38%,rgba(0,0,0,.62) 52%,rgba(0,0,0,.88) 66%,#000 80%);
   mask-image:linear-gradient(90deg,transparent 4%,rgba(0,0,0,.06) 22%,rgba(0,0,0,.28) 38%,rgba(0,0,0,.62) 52%,rgba(0,0,0,.88) 66%,#000 80%)}
-#pg-programa .pgart svg{position:absolute;inset:0;width:100%;height:100%}
-#pg-programa .pgglow{position:absolute;inset:0;pointer-events:none;opacity:.20;filter:blur(46px);
+:is(#pg-programa,.progskin) .pgart svg{position:absolute;inset:0;width:100%;height:100%}
+:is(#pg-programa,.progskin) .pgglow{position:absolute;inset:0;pointer-events:none;opacity:.20;filter:blur(46px);
   background:radial-gradient(58% 74% at 74% 42%,var(--g1),transparent 68%)}
-#pg-programa .pgscrim{position:absolute;inset:0;background:linear-gradient(90deg,
+:is(#pg-programa,.progskin) .pgscrim{position:absolute;inset:0;background:linear-gradient(90deg,
   var(--pbg) 0%,rgba(7,13,16,.94) 22%,rgba(7,13,16,.66) 40%,
   rgba(7,13,16,.30) 56%,rgba(7,13,16,.08) 72%,rgba(7,13,16,0) 86%)}
-#pg-programa .pgfade{position:absolute;left:0;right:0;bottom:0;height:34%;
+:is(#pg-programa,.progskin) .pgfade{position:absolute;left:0;right:0;bottom:0;height:34%;
   background:linear-gradient(180deg,rgba(7,13,16,0),var(--pbg))}
-#pg-programa .pgin{position:relative;z-index:3;padding:56px var(--gut);max-width:800px}
-#pg-programa .pgback{position:absolute;left:var(--gut);top:88px;z-index:4;width:44px;height:44px;
+:is(#pg-programa,.progskin) .pgin{position:relative;z-index:3;padding:56px var(--gut);max-width:800px}
+:is(#pg-programa,.progskin) .pgback{position:absolute;left:var(--gut);top:88px;z-index:4;width:44px;height:44px;
   border-radius:50%;border:1px solid var(--pline2);background:rgba(16,24,28,.6);
   backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;
   color:#F5EFE4;cursor:pointer}
-#pg-programa .pgback:hover{background:rgba(30,42,48,.85)}
-#pg-programa .pgkick{font-family:var(--display);font-weight:700;font-size:11.5px;letter-spacing:.2em;
+:is(#pg-programa,.progskin) .pgback:hover{background:rgba(30,42,48,.85)}
+:is(#pg-programa,.progskin) .pgkick{font-family:var(--display);font-weight:700;font-size:11.5px;letter-spacing:.2em;
   text-transform:uppercase;color:#8FC1BB;margin-bottom:16px}
-#pg-programa h2#pgTitle{font-family:var(--display);font-weight:800;font-size:clamp(44px,6.6vw,88px);
+:is(#pg-programa,.progskin) h2#pgTitle,.progskin .pgin h2{font-family:var(--display);font-weight:800;font-size:clamp(44px,6.6vw,88px);
   line-height:.96;letter-spacing:-.03em;color:#F5EFE4;margin:0 0 22px;text-wrap:balance}
-#pg-programa .pgmeta{font-family:var(--calm);font-size:15.5px;line-height:1.6;
+:is(#pg-programa,.progskin) .pgmeta{font-family:var(--calm);font-size:15.5px;line-height:1.6;
   color:rgba(245,239,228,.7);margin:0 0 30px}
-#pg-programa .pgmeta b{color:#F5EFE4;font-weight:600}
-#pg-programa .pgacts{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-#pg-programa .pgacts .btn{padding:14px 30px;font-size:15px;cursor:pointer}
-#pg-programa .pgicb{width:48px;height:48px;border-radius:50%;border:1px solid rgba(245,239,228,.4);
+:is(#pg-programa,.progskin) .pgmeta b{color:#F5EFE4;font-weight:600}
+:is(#pg-programa,.progskin) .pgacts{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+:is(#pg-programa,.progskin) .pgacts .btn{padding:14px 30px;font-size:15px;cursor:pointer}
+:is(#pg-programa,.progskin) .pgicb{width:48px;height:48px;border-radius:50%;border:1px solid rgba(245,239,228,.4);
   display:flex;align-items:center;justify-content:center;color:#F5EFE4;cursor:pointer}
-#pg-programa .pgicb:hover{background:rgba(245,239,228,.1)}
-#pg-programa .pgicb .ic{font-size:19px}
-#pg-programa .pgbody{padding:8px var(--gut) 70px;display:grid;grid-template-columns:1fr 340px;
+:is(#pg-programa,.progskin) .pgicb:hover{background:rgba(245,239,228,.1)}
+:is(#pg-programa,.progskin) .pgicb .ic{font-size:19px}
+:is(#pg-programa,.progskin) .pgbody{padding:8px var(--gut) 70px;display:grid;grid-template-columns:1fr 340px;
   gap:30px;align-items:start}
-@media(max-width:980px){#pg-programa .pgbody{grid-template-columns:1fr}}
-#pg-programa .pgsec-h{font-family:var(--serif);font-size:clamp(26px,3vw,38px);font-weight:600;
+@media(max-width:980px){:is(#pg-programa,.progskin) .pgbody{grid-template-columns:1fr}}
+:is(#pg-programa,.progskin) .pgsec-h{font-family:var(--serif);font-size:clamp(26px,3vw,38px);font-weight:600;
   letter-spacing:-.02em;color:var(--phd);margin:0 0 6px}
-#pg-programa .pgsec-s{font-size:14px;color:var(--psoft);margin-bottom:24px}
-#pg-programa .pgmod{border:1px solid var(--pline);border-radius:18px;background:var(--pcard);
+:is(#pg-programa,.progskin) .pgsec-s{font-size:14px;color:var(--psoft);margin-bottom:24px}
+:is(#pg-programa,.progskin) .pgmod{border:1px solid var(--pline);border-radius:18px;background:var(--pcard);
   margin-bottom:14px;overflow:hidden}
-#pg-programa .pgmodh{display:flex;align-items:center;gap:16px;padding:20px 22px;cursor:pointer}
-#pg-programa .pgnum{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.1em;
+:is(#pg-programa,.progskin) .pgmodh{display:flex;align-items:center;gap:16px;padding:20px 22px;cursor:pointer}
+:is(#pg-programa,.progskin) .pgnum{font-family:var(--display);font-weight:800;font-size:12px;letter-spacing:.1em;
   color:var(--t500)}
-#pg-programa .pgmodh h4{font-family:var(--display);font-weight:700;font-size:16.5px;
+:is(#pg-programa,.progskin) .pgmodh h4{font-family:var(--display);font-weight:700;font-size:16.5px;
   letter-spacing:-.01em;color:var(--phd);margin:0 0 4px}
-#pg-programa .pgmodh p{font-size:12.5px;color:var(--psoft);margin:0}
-#pg-programa .pgchev{margin-left:auto;width:34px;height:34px;border-radius:50%;
+:is(#pg-programa,.progskin) .pgmodh p{font-size:12.5px;color:var(--psoft);margin:0}
+:is(#pg-programa,.progskin) .pgchev{margin-left:auto;width:34px;height:34px;border-radius:50%;
   border:1px solid var(--pline2);display:flex;align-items:center;justify-content:center;
   color:var(--psoft);flex-shrink:0;transition:transform .2s}
-#pg-programa .pgmod.open .pgchev{transform:rotate(180deg);color:#F5EFE4}
-#pg-programa .pgles{display:none;padding:0 14px 14px}
-#pg-programa .pgmod.open .pgles{display:block}
-#pg-programa .pgl{display:flex;align-items:center;gap:14px;padding:10px 8px;border-radius:12px;
+:is(#pg-programa,.progskin) .pgmod.open .pgchev{transform:rotate(180deg);color:#F5EFE4}
+:is(#pg-programa,.progskin) .pgles{display:none;padding:0 14px 14px}
+:is(#pg-programa,.progskin) .pgmod.open .pgles{display:block}
+:is(#pg-programa,.progskin) .pgl{display:flex;align-items:center;gap:14px;padding:10px 8px;border-radius:12px;
   transition:background .16s;cursor:pointer}
-#pg-programa .pgl:hover{background:rgba(245,239,228,.05)}
-#pg-programa .pglt{width:104px;aspect-ratio:16/10;border-radius:9px;flex-shrink:0;position:relative;
+:is(#pg-programa,.progskin) .pgl:hover{background:rgba(245,239,228,.05)}
+:is(#pg-programa,.progskin) .pglt{width:104px;aspect-ratio:16/10;border-radius:9px;flex-shrink:0;position:relative;
   background:linear-gradient(150deg,var(--g1),var(--g2));overflow:hidden}
-#pg-programa .pglt .ic{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+:is(#pg-programa,.progskin) .pglt .ic{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
   width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.42);color:#fff;font-size:11px;
   display:flex;align-items:center;justify-content:center}
-#pg-programa .pglb{min-width:0}
-#pg-programa .pglb b{display:block;font-weight:600;font-size:14px;line-height:1.35;
+:is(#pg-programa,.progskin) .pglb{min-width:0}
+:is(#pg-programa,.progskin) .pglb b{display:block;font-weight:600;font-size:14px;line-height:1.35;
   color:var(--pink);margin-bottom:4px}
-#pg-programa .pglb i{font-style:normal;font-size:11.5px;font-weight:600;letter-spacing:.09em;
+:is(#pg-programa,.progskin) .pglb i{font-style:normal;font-size:11.5px;font-weight:600;letter-spacing:.09em;
   text-transform:uppercase;color:var(--psoft)}
-#pg-programa .pgmark{margin-left:auto;width:22px;height:22px;border-radius:50%;
+:is(#pg-programa,.progskin) .pgmark{margin-left:auto;width:22px;height:22px;border-radius:50%;
   border:1.5px solid var(--pline2);flex-shrink:0}
-#pg-programa .pgprog{border:1px solid var(--pline);border-radius:18px;background:var(--pcard);
+:is(#pg-programa,.progskin) .pgprog{border:1px solid var(--pline);border-radius:18px;background:var(--pcard);
   padding:26px 24px;position:sticky;top:84px}
-#pg-programa .pgprog h4{font-family:var(--display);font-weight:700;font-size:16.5px;
+:is(#pg-programa,.progskin) .pgprog h4{font-family:var(--display);font-weight:700;font-size:16.5px;
   color:var(--phd);margin:0 0 20px}
-#pg-programa .pgrow{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;
+:is(#pg-programa,.progskin) .pgrow{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;
   margin-bottom:14px}
-#pg-programa .pgpct{font-family:var(--display);font-weight:800;font-size:44px;line-height:1;
+:is(#pg-programa,.progskin) .pgpct{font-family:var(--display);font-weight:800;font-size:44px;line-height:1;
   letter-spacing:-.03em;color:var(--t500);font-variant-numeric:tabular-nums}
-#pg-programa .pgof{font-size:13px;color:var(--psoft);padding-bottom:5px}
-#pg-programa .pgbar{height:6px;border-radius:99px;background:rgba(245,239,228,.1);
+:is(#pg-programa,.progskin) .pgof{font-size:13px;color:var(--psoft);padding-bottom:5px}
+:is(#pg-programa,.progskin) .pgbar{height:6px;border-radius:99px;background:rgba(245,239,228,.1);
   overflow:hidden;margin-bottom:18px}
-#pg-programa .pgbar i{display:block;height:100%;width:0%;background:var(--t500);border-radius:99px}
-#pg-programa .pgstate{font-weight:600;font-size:13.5px;color:var(--pink);margin-bottom:6px}
-#pg-programa .pgnote{font-size:13px;line-height:1.55;color:var(--psoft);margin-bottom:20px}
-#pg-programa .pgdiv{height:1px;background:var(--pline);margin:22px -24px 20px}
-#pg-programa .pgfact{display:flex;justify-content:space-between;font-size:13px;padding:7px 0}
-#pg-programa .pgfact span:first-child{color:var(--psoft)}
-#pg-programa .pgfact span:last-child{color:var(--pink);font-weight:600}
+:is(#pg-programa,.progskin) .pgbar i{display:block;height:100%;width:0%;background:var(--t500);border-radius:99px}
+:is(#pg-programa,.progskin) .pgstate{font-weight:600;font-size:13.5px;color:var(--pink);margin-bottom:6px}
+:is(#pg-programa,.progskin) .pgnote{font-size:13px;line-height:1.55;color:var(--psoft);margin-bottom:20px}
+:is(#pg-programa,.progskin) .pgdiv{height:1px;background:var(--pline);margin:22px -24px 20px}
+:is(#pg-programa,.progskin) .pgfact{display:flex;justify-content:space-between;font-size:13px;padding:7px 0}
+:is(#pg-programa,.progskin) .pgfact span:first-child{color:var(--psoft)}
+:is(#pg-programa,.progskin) .pgfact span:last-child{color:var(--pink);font-weight:600}
 
 /* ============ CONTEUDO v2: tiles fotograficos + trilhos em loop ============ */
 /* subtitulo desce para baixo do titulo, em todas as fileiras */
@@ -2406,12 +2406,12 @@ body.imm #pg-programa .pgin{padding-top:112px}
 #pg-conteudo .railwrap.at-end .railnav.next{opacity:1;pointer-events:auto}
 
 /* ---- program page: titulo em Montserrat e os dois cards na mesma linha ---- */
-#pg-programa .pgbody{gap:22px 30px}
-#pg-programa .pgbody .pghead{grid-column:1 / -1}
-#pg-programa .pgsec-h{font-family:var(--display);font-weight:800;
+:is(#pg-programa,.progskin) .pgbody{gap:22px 30px}
+:is(#pg-programa,.progskin) .pgbody .pghead{grid-column:1 / -1}
+:is(#pg-programa,.progskin) .pgsec-h{font-family:var(--display);font-weight:800;
   font-size:clamp(24px,2.6vw,34px);letter-spacing:-.025em;margin:0 0 6px}
-#pg-programa .pgsec-s{margin:0}
-#pg-programa .pgprog{top:24px}
+:is(#pg-programa,.progskin) .pgsec-s{margin:0}
+:is(#pg-programa,.progskin) .pgprog{top:24px}
 
 /* ---- marca no lugar do icone: o anel aberto, igual em todos os tiles ---- */
 #pg-conteudo .cattile .catic{width:clamp(26px,2.5vw,32px);height:clamp(26px,2.5vw,32px);
@@ -2484,6 +2484,11 @@ body.apptop-solid #patient .apptop{background:#0A1216;border-bottom-color:#17242
 .contentskin .tm-join-r .subfine{font-size:13px;color:rgba(245,239,228,.66)}
 .contentskin .tm-join-r .subfine:hover{color:#F5EFE4}
 .contentskin .noresults{padding:0 var(--gut) 20px}
+
+/* ---- pagina de categoria dentro da conta: mesma pele de #/programa ---- */
+.progskin{width:100vw;margin-left:calc(50% - 50vw)}
+.progskin .pgback{top:calc(var(--aph,68px) + 20px)}
+.progskin .pgl{cursor:pointer}
 
 /* ---- widget da jornada: o mesmo retangulo do CTA publico, virado em progresso ---- */
 .jwidget{position:relative;width:min(calc(100% - 44px),880px);border-radius:22px;overflow:hidden;
@@ -3346,9 +3351,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
           stroke-width="4" stroke-linecap="round"/></g>
       </svg></div>
       <div class="gin">
-        <p class="gctx" id="gateCtx">Free library</p>
-        <h3 id="gateH">One account opens it</h3>
-        <p class="gsub">The whole free library, and your place is kept.</p>
+        <h3 id="gateH">Free, with an account</h3>
         <span class="btn btn-cream" style="cursor:pointer" onclick="closeGate();goAccount()">Create free account</span>
         <p class="galt">Already have one? <b onclick="closeGate();goLogin()">Log in</b></p>
       </div>
@@ -4948,11 +4951,18 @@ function catClusters(){
       '</div></section>';
   }).join('');
 }
-/* Categoria sem programa correspondente ainda nao tem conteudo — nao inventar. */
+/* Categoria com programa real abre o programa; o resto abre a mesma pagina de
+   categoria da area publica, agora dentro da conta. Conteudo continua TBD. */
+var CDETAIL=null;
 function appCat(name){
   const p=PROGRAMS.filter(function(x){ return x.title===name; })[0];
-  if(p){ openProgram(p.id); return; }
-  toast(name+' — TBD');
+  if(p){ CDETAIL=null; openProgram(p.id); return; }
+  CDETAIL=name; PDETAIL=null; DASH.patient.sec='programas';
+  renderDash('patient'); window.scrollTo(0,0);
+}
+function catBack(){
+  CDETAIL=null; DASH.patient.sec='programas';
+  renderDash('patient'); window.scrollTo(0,0);
 }
 function appHero(){
   return '<section class="imhero">'+
@@ -5094,6 +5104,7 @@ function progAfter(w){
 }
 function progSection(){
   if(PDETAIL) return progDetail(pProg(PDETAIL)||PROGRAMS[0]);
+  if(CDETAIL&&window.__catDetail) return window.__catDetail(CDETAIL);
   return '<div class="dsec dprog contentskin">'+
     appHero()+
     '<section class="hl-sec"><div class="hl-solo">'+jWidget()+'</div></section>'+
@@ -6199,17 +6210,12 @@ function goLogin(){ go('login'); }
 function goAccount(){ go('login'); }
 
 /* ---- gate: dentro do programa, qualquer clique pede a conta ---- */
-var GATEH={
-  start:'One account starts it',
-  lesson:'One account opens it',
-  save:'Keep it in your account',
-  about:'It lives in your account'
-};
+/* uma so linha, igual para qualquer clique: o anel e o botao ja explicam o resto */
+var GATEH='Free, with an account';
 function openGate(kind){
   var m=document.getElementById('gateModal'); if(!m) return;
-  var P=window.__prog||{}, h=document.getElementById('gateH');
-  document.getElementById('gateCtx').textContent=P.name||'Free library';
-  if(h) h.textContent=GATEH[kind]||GATEH.lesson;
+  var h=document.getElementById('gateH');
+  if(h) h.textContent=GATEH;
   m.classList.add('open');
   if(window.__applyLang){ try{__applyLang()}catch(e){} }
 }
@@ -7711,6 +7717,12 @@ routeFromHash();
     "No categories match your search.":"Nenhuma categoria corresponde à sua busca.",
     "No programs match your search.":"Nenhum programa corresponde à sua busca.",
     "Free library":"Biblioteca gratuita",
+    "Free, with an account":"Grátis, com uma conta",
+    "lessons":"aulas",
+    "Lesson":"Aula",
+    "Lessons coming soon":"Aulas em breve",
+    "Library":"Biblioteca",
+    "Your free account":"Sua conta gratuita",
     "One account opens it":"Uma conta abre tudo",
     "One account starts it":"Uma conta começa tudo",
     "Keep it in your account":"Guarde na sua conta",
@@ -8764,6 +8776,9 @@ routeFromHash();
     if(window.__applyLang){ try{__applyLang()}catch(e){} }
   }
 
+  /* os mesmos dados alimentam a pagina de categoria dentro da conta */
+  window.__PROGDATA={ART:ART,MODS:MODS,GROUP:GROUP,ARTOF:ARTOF};
+
   /* ---------- 3. rota + nav imersiva ---------- */
   if(typeof PAGES==='object') PAGES['programa']='pg-programa';
 
@@ -8997,7 +9012,12 @@ routeFromHash();
     if(!document.body.classList.contains('appdark')
        || document.body.classList.contains('dark')){ clear(); return; }
     var m=document.getElementById('adarkstart');
-    if(!m){ paint(1); return; }               /* subpagina do programa: escuro direto */
+    if(!m){                                   /* subpagina do programa: escuro direto,
+                                                 mas o header so fecha depois do heroi */
+      paint(1);
+      document.body.classList.toggle('apptop-solid',(window.scrollY||0)>260);
+      return;
+    }
     var vh=window.innerHeight, top=m.getBoundingClientRect().top;
     paint((vh*0.72-top)/(vh*0.34));
   }
@@ -9019,6 +9039,109 @@ routeFromHash();
   });
   window.addEventListener('hashchange',function(){ setTimeout(sync,0); });
   sync();
+})();
+</script>
+
+<script>
+/* ============================================================
+   Pagina de CATEGORIA dentro da conta. Mesma pele e mesmos dados
+   de #/programa; a diferenca e que o paciente nao sai do app e nao
+   ve o gate de conta. Conteudo segue TBD onde ainda nao existe.
+   ============================================================ */
+(function(){
+  function tr(x){ return (typeof __tr==='function') ? __tr(x) : x; }
+  function esc2(x){ return (typeof esc==='function') ? esc(x) : String(x); }
+
+  function catMeta(name){
+    var g={icon:'sparkles',g1:'#114B5F',g2:'#07222C'};
+    if(typeof CATG==='undefined') return g;
+    for(var i=0;i<CATG.length;i++){
+      var row=CATG[i][2];
+      for(var j=0;j<row.length;j++){
+        if(row[j][0]===name) return {icon:row[j][1],g1:row[j][2],g2:row[j][3]};
+      }
+    }
+    return g;
+  }
+
+  window.__catDetail=function(name){
+    var D=window.__PROGDATA||{}, ART=D.ART||{}, MODS=D.MODS||{},
+        GROUP=D.GROUP||{}, ARTOF=D.ARTOF||{};
+    var c=catMeta(name), mods=MODS[name]||null;
+    var lessons=0; if(mods) mods.forEach(function(m){ lessons+=m[2].length; });
+
+    var body;
+    if(mods){
+      body=mods.map(function(m,i){
+        return '<div class="pgmod'+(i===0?' open':'')+'">'+
+          '<div class="pgmodh" onclick="this.parentNode.classList.toggle(\'open\')">'+
+            '<span class="pgnum">'+esc2(m[0])+'</span>'+
+            '<div><h4>'+esc2(m[1])+'</h4><p>'+m[2].length+' '+tr('lessons')+'</p></div>'+
+            '<span class="pgchev ic" data-icon="chevron-down"></span></div>'+
+          '<div class="pgles">'+m[2].map(function(l){
+            return '<div class="pgl" onclick="toast(\''+tr('Lesson')+' · TBD\')">'+
+              '<div class="pglt"><span class="ic" data-icon="play"></span></div>'+
+              '<div class="pglb"><b>'+esc2(l[0])+'</b><i>'+esc2(l[1])+'</i></div>'+
+              '<span class="pgmark"></span></div>';
+          }).join('')+'</div></div>';
+      }).join('');
+    }else{
+      body='<div class="pgmod open"><div class="pgmodh"><span class="pgnum">01</span>'+
+        '<div><h4>'+tr('Lessons coming soon')+'</h4><p>TBD</p></div></div></div>';
+    }
+
+    var meta = mods
+      ? '<b>'+mods.length+' '+tr('modules')+'</b> · <b>'+lessons+' '+tr('lessons')+'</b>'
+      : 'TBD';
+    var count = mods ? (mods.length+' '+tr('modules')+' · '+lessons+' '+tr('lessons')) : 'TBD';
+    var of    = mods ? ('0 '+tr('of')+' '+lessons+' '+tr('lessons')) : 'TBD';
+
+    return '<div class="dsec dprog progskin" style="--g1:'+c.g1+';--g2:'+c.g2+'">'+
+      '<section class="pghero">'+
+        '<button class="pgback" onclick="catBack()" aria-label="'+tr('Back')+'">'+
+          '<span class="ic" data-icon="arrow-left"></span></button>'+
+        '<div class="pgart"><svg viewBox="0 0 800 700" preserveAspectRatio="xMidYMid slice" '+
+          'aria-hidden="true">'+(ART[ARTOF[name]]||ART.rings||'')+'</svg></div>'+
+        '<div class="pgglow"></div><div class="pgscrim"></div><div class="pgfade"></div>'+
+        '<div class="pgin">'+
+          '<p class="pgkick">'+tr('Program')+' · '+tr(GROUP[name]||'Library')+'</p>'+
+          '<h2>'+tr(name)+'</h2>'+
+          '<p class="pgmeta">'+meta+'</p>'+
+          '<div class="pgacts">'+
+            '<span class="btn btn-cream" style="cursor:pointer" onclick="catStart()">'+
+              '<span class="ic" data-icon="play"></span> '+tr('Start program')+'</span>'+
+          '</div>'+
+        '</div>'+
+      '</section>'+
+      '<div class="pgbody" id="catBody">'+
+        '<div class="pghead"><h2 class="pgsec-h">'+tr('Content')+'</h2>'+
+          '<p class="pgsec-s">'+count+'</p></div>'+
+        '<div>'+body+'</div>'+
+        '<aside><div class="pgprog">'+
+          '<h4>'+tr('Your progress')+'</h4>'+
+          '<div class="pgrow"><span class="pgpct">0%</span><span class="pgof">'+of+'</span></div>'+
+          '<div class="pgbar"><i></i></div>'+
+          '<p class="pgstate">'+tr('Not started')+'</p>'+
+          '<div class="pgdiv"></div>'+
+          '<div class="pgfact"><span>'+tr('Format')+'</span><span>'+tr('Video & reading')+'</span></div>'+
+          '<div class="pgfact"><span>'+tr('Level')+'</span><span>'+tr('No background needed')+'</span></div>'+
+          '<div class="pgfact"><span>'+tr('Access')+'</span><span>'+tr('Your free account')+'</span></div>'+
+        '</div></aside>'+
+      '</div></div>';
+  };
+
+  window.catStart=function(){
+    var b=document.getElementById('catBody'); if(!b) return;
+    var m=b.querySelector('.pgmod'); if(m) m.classList.add('open');
+    b.scrollIntoView({behavior:'smooth',block:'start'});
+  };
+
+  /* sair da aba, ou abrir um programa real, fecha a pagina de categoria */
+  ['dashNav','go','openProgram','progBack'].forEach(function(fn){
+    if(typeof window[fn]!=='function') return;
+    var _f=window[fn];
+    window[fn]=function(){ try{ CDETAIL=null; }catch(e){} return _f.apply(this,arguments); };
+  });
 })();
 </script>
 </body>
