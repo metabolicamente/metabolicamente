@@ -27,82 +27,101 @@
 }
 
 /* ============ CONSTELACAO DA EQUIPE (#/equipe) ============ */
-.cst-sec{--gut:clamp(18px,3.4vw,48px);padding:clamp(14px,2.4vw,30px) 0 clamp(8px,1.4vw,18px)}
+/* pagina em branco: fundo mais limpo e moderno que o creme do resto do site */
+#pg-equipe{background:#FFFFFF}
+body.dark #pg-equipe{background:var(--bg)}
+
+.cst-sec{--gut:clamp(18px,3.4vw,48px);padding:clamp(14px,2.4vw,30px) 0 clamp(20px,3vw,42px)}
 .cst-field{position:relative;max-width:1240px;margin:0 auto;padding:0 var(--gut);
   height:clamp(600px,72vw,740px)}
+.cst-net{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;
+  -webkit-mask-image:radial-gradient(ellipse 44% 34% at 50% 50%,transparent 12%,#000 76%);
+  mask-image:radial-gradient(ellipse 44% 34% at 50% 50%,transparent 12%,#000 76%)}
 .cst-centre{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:min(620px,86%);text-align:center;z-index:6}
+  width:min(720px,84%);text-align:center;z-index:6}
 .cst-eyebrow{font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.2em;
   text-transform:uppercase;color:var(--t500);margin:0 0 18px}
-.cst-h{font-family:var(--display);font-weight:600;font-size:clamp(38px,6.1vw,72px);
-  line-height:1.04;letter-spacing:-.035em;color:var(--hd);margin:0}
-.cst-ul{display:block;width:min(360px,72%);height:15px;margin:6px auto 0;overflow:visible}
+.cst-h{font-family:var(--display);font-weight:600;font-size:clamp(36px,5.4vw,64px);
+  line-height:1.05;letter-spacing:-.035em;color:var(--hd);margin:0;text-wrap:balance}
+.cst-ul{display:block;width:min(330px,66%);height:15px;margin:8px auto 0;overflow:visible}
 .cst-ul path{fill:none;stroke:var(--coral);stroke-linecap:round}
-.cst-lead{font-family:var(--calm);font-size:clamp(15.5px,1.35vw,18px);line-height:1.62;
-  color:var(--soft);margin:20px auto 0;max-width:34em}
+.cst-lead{font-family:var(--calm);font-size:clamp(15.5px,1.3vw,17.5px);line-height:1.62;
+  color:var(--soft);margin:20px auto 0;max-width:28em}
 .cst-cta{display:flex;gap:10px;justify-content:center;margin-top:26px;flex-wrap:wrap}
 .cst-ghost{border:1.5px solid var(--line);color:var(--hd2);background:transparent}
 .cst-ghost:hover{border-color:var(--hd3)}
 
-.cst-disc{position:absolute;z-index:4;border-radius:34%;overflow:hidden;
-  background:var(--dc,#2A9D8F);box-shadow:0 18px 46px rgba(12,51,63,.13);
+/* O botao carrega SO a deriva (transform) e o parallax (translate).
+   A face carrega o hover (scale). Propriedades separadas = nada se atropela. */
+.cst-person{position:absolute;left:var(--x);top:var(--y);width:var(--sz);height:var(--sz);
+  z-index:4;border:0;padding:0;background:none;cursor:pointer;font:inherit;
+  translate:var(--px,0px) var(--py,0px);
   animation:cstDrift var(--dur,15s) ease-in-out var(--del,0s) infinite;
-  transition:transform .28s cubic-bezier(.3,.8,.35,1),box-shadow .28s ease}
-body.dark .cst-disc{box-shadow:0 18px 46px rgba(0,0,0,.44)}
-.cst-disc::after{content:"";position:absolute;inset:0;border-radius:inherit;
+  will-change:transform,translate}
+.cst-face{position:absolute;inset:0;border-radius:22px;overflow:hidden;background:var(--dc,#2A9D8F);
+  box-shadow:0 14px 34px rgba(12,51,63,.14);
+  transition:scale .34s cubic-bezier(.22,.7,.28,1),box-shadow .34s ease}
+body.dark .cst-face{box-shadow:0 14px 34px rgba(0,0,0,.44)}
+.cst-face::after{content:"";position:absolute;inset:0;border-radius:inherit;
   box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
-.cst-disc .cst-mono{position:absolute;inset:0;display:grid;place-items:center;
+.cst-person:hover .cst-face,.cst-person:focus-visible .cst-face{scale:1.045;
+  box-shadow:0 22px 52px rgba(12,51,63,.2)}
+.cst-mono{position:absolute;inset:0;display:grid;place-items:center;
   font-family:var(--serif);font-weight:500;color:#fff;opacity:.34;
-  font-size:calc(var(--sz) * .52);letter-spacing:-.03em;line-height:1}
-.cst-disc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.cst-person{width:var(--sz);height:var(--sz);left:var(--x);top:var(--y);
-  border:0;padding:0;cursor:pointer;font:inherit}
-.cst-person:hover,.cst-person:focus-visible{transform:scale(1.055) translateY(-4px);
-  box-shadow:0 26px 60px rgba(12,51,63,.22)}
-.cst-person::before{content:"";position:absolute;left:0;right:0;bottom:0;height:46%;
-  background:linear-gradient(to top,rgba(7,34,44,.55),transparent);opacity:0;
-  transition:opacity .28s ease}
-.cst-person:hover::before,.cst-person:focus-visible::before{opacity:1}
+  font-size:calc(var(--sz) * .5);letter-spacing:-.03em;line-height:1}
+.cst-face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cst-face::before{content:"";position:absolute;left:0;right:0;bottom:0;height:48%;
+  background:linear-gradient(to top,rgba(7,34,44,.58),transparent);opacity:0;
+  transition:opacity .34s ease;z-index:1}
+.cst-person:hover .cst-face::before,.cst-person:focus-visible .cst-face::before{opacity:1}
 .cst-plate{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;text-align:left;z-index:2;
-  opacity:0;transform:translateY(6px);transition:opacity .28s ease,transform .28s ease}
+  opacity:0;transform:translateY(6px);transition:opacity .34s ease,transform .34s ease}
 .cst-person:hover .cst-plate,.cst-person:focus-visible .cst-plate{opacity:1;transform:none}
 .cst-plate b{display:block;font-family:var(--display);font-size:13px;font-weight:600;
   color:#fff;line-height:1.2}
 .cst-plate span{display:block;font-family:var(--sans);font-size:11px;
   color:rgba(245,239,228,.82);margin-top:2px}
-.cst-mini{width:var(--sz);height:var(--sz);left:var(--x);top:var(--y);z-index:2;opacity:.9;
-  box-shadow:0 8px 22px rgba(12,51,63,.10)}
+
+.cst-mini{position:absolute;left:var(--x);top:var(--y);width:var(--sz);height:var(--sz);z-index:2;
+  border-radius:14px;background:var(--dc);opacity:.92;translate:var(--px,0px) var(--py,0px);
+  box-shadow:0 8px 20px rgba(12,51,63,.10);
+  animation:cstDrift var(--dur,15s) ease-in-out var(--del,0s) infinite}
+body.dark .cst-mini{box-shadow:0 8px 20px rgba(0,0,0,.34)}
 
 .cst-pill{position:absolute;left:var(--x);top:var(--y);z-index:5;
-  display:inline-flex;align-items:center;gap:7px;height:34px;padding:0 15px;border-radius:99px;
-  background:var(--card);border:1px solid var(--line);box-shadow:0 8px 22px rgba(12,51,63,.10);
+  display:inline-flex;align-items:center;gap:8px;height:33px;padding:0 14px;border-radius:10px;
+  background:var(--card);border:1px solid var(--line);box-shadow:0 6px 18px rgba(12,51,63,.07);
   font-family:var(--display);font-size:12.5px;font-weight:600;color:var(--hd2);white-space:nowrap;
+  translate:var(--px,0px) var(--py,0px);
   animation:cstDrift var(--dur,15s) ease-in-out var(--del,0s) infinite}
-body.dark .cst-pill{box-shadow:0 8px 22px rgba(0,0,0,.34)}
+body.dark .cst-pill{box-shadow:0 6px 18px rgba(0,0,0,.3)}
 .cst-pill i{width:6px;height:6px;border-radius:50%;background:var(--pc,var(--t500));flex:none}
 .cst-pill.tbd{background:transparent;border-style:dashed;color:var(--soft);font-weight:500}
 @keyframes cstDrift{0%,100%{transform:translate3d(0,0,0)}
   50%{transform:translate3d(var(--dx,6px),var(--dy,-14px),0)}}
 @media(prefers-reduced-motion:reduce){
-  .cst-disc,.cst-pill{animation:none}
-  .cst-person:hover,.cst-person:focus-visible{transform:none}
+  .cst-person,.cst-mini,.cst-pill{animation:none;translate:none}
+  .cst-person:hover .cst-face,.cst-person:focus-visible .cst-face{scale:1}
 }
 .cst-hint{text-align:center;font-family:var(--calm);font-size:14px;color:var(--soft);margin:0}
 
 @media(max-width:820px){
   .cst-field{height:auto;padding-top:8px;padding-bottom:8px}
+  .cst-net{display:none}
   .cst-centre{position:static;transform:none;width:auto;padding:26px 0 28px}
   .cst-mini,.cst-pill{display:none}
-  .cst-person{position:static;width:100%;height:auto;aspect-ratio:1/1;border-radius:24px;animation:none}
+  .cst-person{position:static;width:100%;height:auto;aspect-ratio:1/1;animation:none;translate:none}
+  .cst-face{border-radius:18px}
   .cst-roster{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
   .cst-plate{opacity:1;transform:none}
-  .cst-person::before{opacity:1}
-  .cst-disc .cst-mono{font-size:clamp(38px,13vw,64px)}
+  .cst-face::before{opacity:1}
+  .cst-mono{font-size:clamp(38px,13vw,64px)}
 }
 @media(min-width:821px){.cst-roster{display:contents}}
 
 /* ---- ficha do profissional ---- */
-.cst-sheet{--gut:clamp(18px,3.4vw,48px);position:fixed;inset:0;z-index:90;overflow-y:auto;background:var(--bg)}
+.cst-sheet{--gut:clamp(18px,3.4vw,48px);position:fixed;inset:0;z-index:90;overflow-y:auto;background:#FFFFFF}
+body.dark .cst-sheet{background:var(--bg)}
 .cst-sheet[hidden]{display:none}
 body.cst-open{overflow:hidden}
 .cst-sheet-in{max-width:1120px;margin:0 auto;padding:26px var(--gut) 90px;
@@ -110,12 +129,12 @@ body.cst-open{overflow:hidden}
 @keyframes cstRise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){.cst-sheet-in,.cst-art{animation:none}}
 .cst-back{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;
-  border-radius:99px;border:1px solid var(--line);background:transparent;cursor:pointer;
+  border-radius:10px;border:1px solid var(--line);background:transparent;cursor:pointer;
   font-family:var(--display);font-size:13.5px;font-weight:600;color:var(--hd2);margin-bottom:30px}
 .cst-back:hover{background:var(--bg-dim)}
 .cst-pro{display:grid;grid-template-columns:300px 1fr;gap:clamp(28px,4.4vw,60px);align-items:start}
 @media(max-width:840px){.cst-pro{grid-template-columns:1fr;gap:26px}}
-.cst-art{position:relative;aspect-ratio:1/1;border-radius:30px;overflow:hidden;background:var(--pc);
+.cst-art{position:relative;aspect-ratio:1/1;border-radius:24px;overflow:hidden;background:var(--pc);
   box-shadow:0 18px 46px rgba(12,51,63,.13);animation:cstPop .42s cubic-bezier(.25,.85,.3,1) both}
 @keyframes cstPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
 @media(max-width:840px){.cst-art{max-width:220px}}
@@ -134,7 +153,7 @@ body.cst-open{overflow:hidden}
   color:var(--soft);margin:18px 0 0;max-width:36em}
 .cst-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
 .cst-tags span{font-family:var(--display);font-size:12.5px;font-weight:600;padding:8px 14px;
-  border-radius:99px;background:var(--bg-dim);color:var(--hd2)}
+  border-radius:9px;background:var(--bg-dim);color:var(--hd2)}
 .cst-line{margin:38px 0 0;padding:24px 26px;border-left:3px solid var(--coral);
   background:var(--bg-dim);border-radius:0 16px 16px 0}
 .cst-line p{font-family:var(--serif);font-size:clamp(18px,1.8vw,23px);line-height:1.34;
@@ -155,10 +174,10 @@ body.cst-open{overflow:hidden}
   text-transform:uppercase;color:var(--soft);margin:0 0 16px}
 .cst-also-row{display:flex;gap:12px;flex-wrap:wrap}
 .cst-also-btn{display:flex;align-items:center;gap:12px;padding:10px 18px 10px 10px;
-  border-radius:99px;border:1px solid var(--line);background:transparent;cursor:pointer;
+  border-radius:12px;border:1px solid var(--line);background:transparent;cursor:pointer;
   text-align:left;transition:background .16s ease}
 .cst-also-btn:hover{background:var(--bg-dim)}
-.cst-also-btn .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+.cst-also-btn .av{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
   font-family:var(--serif);font-size:15px;color:#fff;background:var(--ac);flex:none}
 .cst-also-btn b{font-family:var(--display);font-size:13.5px;font-weight:600;display:block;
   line-height:1.2;color:var(--hd2)}
@@ -2954,6 +2973,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
     <!-- ---------- CONSTELACAO DA EQUIPE (substituiu o rail de cards) ---------- -->
     <section class="cst-sec">
       <div class="cst-field" id="cstField">
+        <canvas class="cst-net" id="cstNet" aria-hidden="true"></canvas>
         <div class="cst-centre">
           <p class="cst-eyebrow">About us</p>
           <h2 class="cst-h">Meet the care team</h2>
@@ -2968,15 +2988,15 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
           </div>
         </div>
 
-        <span class="cst-disc cst-mini" style="--sz:58px;--x:5%;--y:27%;--dc:#E76F51;--dur:16s;--del:-3s;--dx:-8px;--dy:12px" aria-hidden="true"></span>
-        <span class="cst-disc cst-mini" style="--sz:44px;--x:57%;--y:6%;--dc:#5B7DB1;--dur:19s;--del:-7s;--dx:10px;--dy:10px" aria-hidden="true"></span>
-        <span class="cst-disc cst-mini" style="--sz:36px;--x:92%;--y:40%;--dc:#2A9D8F;--dur:14s;--del:-1s;--dx:-6px;--dy:-12px" aria-hidden="true"></span>
-        <span class="cst-disc cst-mini" style="--sz:50px;--x:36%;--y:88%;--dc:#0C333F;--dur:17s;--del:-9s;--dx:9px;--dy:-9px" aria-hidden="true"></span>
+        <span class="cst-mini" style="--sz:54px;--x:3%;--y:28%;--dc:#E76F51;--dur:16s;--del:-3s;--dx:-8px;--dy:12px" aria-hidden="true"></span>
+        <span class="cst-mini" style="--sz:40px;--x:62%;--y:4%;--dc:#5B7DB1;--dur:19s;--del:-7s;--dx:10px;--dy:10px" aria-hidden="true"></span>
+        <span class="cst-mini" style="--sz:32px;--x:94%;--y:38%;--dc:#2A9D8F;--dur:14s;--del:-1s;--dx:-6px;--dy:-12px" aria-hidden="true"></span>
+        <span class="cst-mini" style="--sz:46px;--x:33%;--y:90%;--dc:#0C333F;--dur:17s;--del:-9s;--dx:9px;--dy:-9px" aria-hidden="true"></span>
 
-        <span class="cst-pill" style="--x:3%;--y:12%;--pc:#2A9D8F;--dur:18s;--del:-2s;--dx:8px;--dy:10px"><i></i>18 years in psychiatry</span>
-        <span class="cst-pill" style="--x:60%;--y:82%;--pc:#E76F51;--dur:15s;--del:-6s;--dx:-9px;--dy:-11px"><i></i>Seen by more than one clinician</span>
-        <span class="cst-pill" style="--x:8%;--y:78%;--pc:#5B7DB1;--dur:20s;--del:-11s;--dx:7px;--dy:-8px"><i></i>Ketogenic therapy</span>
-        <span class="cst-pill tbd" style="--x:78%;--y:8%;--dur:16s;--del:-4s;--dx:-7px;--dy:11px">TBD — team stat</span>
+        <span class="cst-pill" style="--x:2%;--y:3%;--pc:#2A9D8F;--dur:18s;--del:-2s;--dx:8px;--dy:10px"><i></i>18 years in psychiatry</span>
+        <span class="cst-pill" style="--x:63%;--y:84%;--pc:#E76F51;--dur:15s;--del:-6s;--dx:-9px;--dy:-11px"><i></i>Seen by more than one clinician</span>
+        <span class="cst-pill" style="--x:5%;--y:80%;--pc:#5B7DB1;--dur:20s;--del:-11s;--dx:7px;--dy:-8px"><i></i>Ketogenic therapy</span>
+        <span class="cst-pill tbd" style="--x:80%;--y:4%;--dur:16s;--del:-4s;--dx:-7px;--dy:11px">TBD — team stat</span>
 
         <div class="cst-roster" id="cstRoster"></div>
       </div>
@@ -2986,32 +3006,6 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
     <div class="cst-sheet" id="cstSheet" role="dialog" aria-modal="true" aria-labelledby="cstName" hidden>
       <div class="cst-sheet-in" id="cstSheetIn"></div>
     </div>
-
-    <section class="hl-sec">
-      <div class="quotepanel reveal">
-        <span class="qp-mark ic" data-icon="users"></span>
-        <p class="qp-src">How we work</p>
-        <p class="qp-text">A psychiatrist and a dietitian look at your case at the same time, not one after the other.</p>
-      </div>
-    </section>
-
-    <section class="disc">
-      <div class="hl-head reveal" style="padding:0;margin-bottom:18px"><h2>What the team treats</h2><span>The conditions and the tools we work with.</span></div>
-      <div class="catgrid">
-          <span class="cattile" style="--g1:#2A9D8F;--g2:#12615A"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="zap"></span><span class="catlabel">Metabolic psychiatry</span></span>
-          <span class="cattile" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="moon-star"></span><span class="catlabel">Mood disorders</span></span>
-          <span class="cattile" style="--g1:#7A5C8E;--g2:#3F2C4D"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="droplet"></span><span class="catlabel">Treatment-resistant depression</span></span>
-          <span class="cattile" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="trending-down"></span><span class="catlabel">Bipolar disorder</span></span>
-          <span class="cattile" style="--g1:#114B5F;--g2:#07222C"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="activity"></span><span class="catlabel">Anxiety</span></span>
-          <span class="cattile" style="--g1:#D9A420;--g2:#8E6704"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="target"></span><span class="catlabel">ADHD</span></span>
-          <span class="cattile" style="--g1:#1E7D46;--g2:#0B3D20"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="leaf"></span><span class="catlabel">Ketogenic therapy</span></span>
-          <span class="cattile" style="--g1:#4FA8C7;--g2:#1D6076"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="utensils"></span><span class="catlabel">Functional nutrition</span></span>
-          <span class="cattile" style="--g1:#2A9D8F;--g2:#12615A"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="chart"></span><span class="catlabel">Insulin resistance</span></span>
-          <span class="cattile" style="--g1:#5B7DB1;--g2:#294567"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="moon"></span><span class="catlabel">Sleep and circadian rhythm</span></span>
-          <span class="cattile" style="--g1:#E76F51;--g2:#A83F22"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="smile"></span><span class="catlabel">Behaviour change</span></span>
-          <span class="cattile" style="--g1:#114B5F;--g2:#07222C"><svg class="catart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g fill="none" stroke="#fff" stroke-width="13" opacity=".13"><circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/><circle cx="14" cy="240" r="154"/></g></svg><span class="catic ic" data-icon="clipboard"></span><span class="catlabel">Clinical research</span></span>
-      </div>
-    </section>
 
     <section class="hl-sec">
       <div class="tm-join reveal">
@@ -6194,6 +6188,7 @@ function showSub(id,scroll){
   if(id==='pg-conteudo'&&window.renderLibrary) setTimeout(renderLibrary,0);
   if(id==='pg-prof'&&window.renderCourseRail) setTimeout(renderCourseRail,0);
   document.querySelectorAll('#site .subpage').forEach(s=>s.classList.toggle('active',s.id===id));
+  if(id==='pg-equipe'&&window.__cstNet) setTimeout(window.__cstNet,0);
   if(id==='pg-tratamento'&&window.__drawSprouts){ setTimeout(window.__drawSprouts,0); if(window.__drawQU) setTimeout(window.__drawQU,0); if(window.__drawFoods) setTimeout(window.__drawFoods,0); if(window.__drawPlates) setTimeout(window.__drawPlates,0); if(window.__drawMitoFeed) setTimeout(window.__drawMitoFeed,0); if(window.__drawRoad) setTimeout(window.__drawRoad,0); if(window.__drawBrain) setTimeout(window.__drawBrain,0); }
   if(scroll!==false) window.scrollTo(0,0);
   startGlows();
@@ -7296,7 +7291,7 @@ routeFromHash();
          So o tema muda o halo dos rotulos — sem esta guarda o desenho reinicia a cada scroll. */
       var d=document.body.classList.contains('dark');
       if(d===__wasDark) return; __wasDark=d;
-      window.__drawSprouts(); if(window.__drawQU) window.__drawQU(); if(window.__drawNeuron) window.__drawNeuron(); if(window.__drawCell) window.__drawCell(); if(window.__drawMitoFeed) window.__drawMitoFeed(); if(window.__drawRoad) window.__drawRoad(); if(window.__drawBrain) window.__drawBrain(); if(window.__drawFoods) window.__drawFoods(); if(window.__drawPlates) window.__drawPlates(); if(window.__drawHeroArt) window.__drawHeroArt(); })
+      window.__drawSprouts(); if(window.__drawQU) window.__drawQU(); if(window.__cstNet) window.__cstNet(); if(window.__drawNeuron) window.__drawNeuron(); if(window.__drawCell) window.__drawCell(); if(window.__drawMitoFeed) window.__drawMitoFeed(); if(window.__drawRoad) window.__drawRoad(); if(window.__drawBrain) window.__drawBrain(); if(window.__drawFoods) window.__drawFoods(); if(window.__drawPlates) window.__drawPlates(); if(window.__drawHeroArt) window.__drawHeroArt(); })
         .observe(document.body,{attributes:true,attributeFilter:['class']}); }catch(e){}
 })();
 
@@ -7310,22 +7305,22 @@ routeFromHash();
      role:'Psychiatrist and clinical director',
      bio:'Eighteen years putting nutrition, metabolism and medication in the same treatment plan.',
      tags:['Metabolic psychiatry','Mood disorders','Ketogenic therapy'],
-     pos:{x:'19%',y:'9%',sz:'156px',dur:'15s',del:'-2s',dx:'-9px',dy:'13px'}},
+     pos:{x:'13%',y:'13%',sz:'150px',dur:'15s',del:'-2s',dx:'-9px',dy:'13px'}},
     {id:'cf',mono:'CF',name:'Dra. Camila Ferreira',crm:'CRM/SP 158.203',color:'#114B5F',
      role:'Psychiatrist, neurometabolism',
      bio:'Researches the link between mitochondrial dysfunction and psychiatric illness.',
      tags:['Neurometabolism','Treatment-resistant depression','Clinical research'],
-     pos:{x:'71%',y:'16%',sz:'134px',dur:'18s',del:'-8s',dx:'10px',dy:'-12px'}},
+     pos:{x:'77%',y:'12%',sz:'130px',dur:'18s',del:'-8s',dx:'10px',dy:'-12px'}},
     {id:'lt',mono:'LT',name:'Dr. Lucas Tavares',crm:'CRM/RJ 098.412',color:'#E76F51',
      role:'Nutrition physician',
      bio:'Builds the food side of every plan, from therapeutic diets to insulin resistance.',
      tags:['Functional nutrition','Supplementation','Metabolic health'],
-     pos:{x:'10%',y:'50%',sz:'122px',dur:'17s',del:'-5s',dx:'8px',dy:'-14px'}},
+     pos:{x:'6%',y:'55%',sz:'120px',dur:'17s',del:'-5s',dx:'8px',dy:'-14px'}},
     {id:'bl',mono:'BL',name:'Dra. Beatriz Linhares',crm:'CRP 05/67.891',color:'#5B7DB1',
      role:'Clinical psychologist',
      bio:'Keeps the change sustainable when the plan meets real life.',
      tags:['Behaviour change','Psychoeducation'],
-     pos:{x:'74%',y:'54%',sz:'146px',dur:'14s',del:'-10s',dx:'-8px',dy:'12px'}}
+     pos:{x:'80%',y:'58%',sz:'136px',dur:'14s',del:'-10s',dx:'-8px',dy:'12px'}}
   ];
   TEAM.forEach(function(p){ p.short=p.role; });
   function esc(v){return String(v).replace(/[&<>"]/g,function(c){
@@ -7333,29 +7328,120 @@ routeFromHash();
 
   var roster=document.getElementById('cstRoster');
   if(!roster) return;
-  roster.innerHTML=TEAM.map(function(p){return '<button class="cst-disc cst-person" data-cst="'+p.id+'"'
+  roster.innerHTML=TEAM.map(function(p){return '<button class="cst-person" data-cst="'+p.id+'"'
     +' aria-label="'+esc(p.name)+'" style="--dc:'+p.color+';--sz:'+p.pos.sz+';--x:'+p.pos.x
     +';--y:'+p.pos.y+';--dur:'+p.pos.dur+';--del:'+p.pos.del+';--dx:'+p.pos.dx+';--dy:'+p.pos.dy+'">'
-    +'<span class="cst-mono" aria-hidden="true">'+p.mono+'</span>'
-    +'<span class="cst-plate"><b>'+esc(p.name)+'</b><span>'+esc(p.short)+'</span></span></button>';}).join('');
+    +'<span class="cst-face"><span class="cst-mono" aria-hidden="true">'+p.mono+'</span>'
+    +'<span class="cst-plate"><b>'+esc(p.name)+'</b><span>'+esc(p.short)+'</span></span></span></button>';}).join('');
 
-  /* parallax: cada camada anda um pouco, as mais fundas andam menos */
+  /* Parallax: alvo do ponteiro + interpolacao a cada quadro, escrito em `translate`
+     (a deriva usa `transform`, entao as duas nunca disputam a mesma propriedade). */
   var field=document.getElementById('cstField');
   var RM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(field&&!RM&&window.matchMedia&&window.matchMedia('(min-width:821px)').matches){
-    var layers=[].slice.call(field.querySelectorAll('.cst-disc,.cst-pill')).map(function(el){
-      return {el:el,k:el.classList.contains('cst-person')?18:el.classList.contains('cst-pill')?10:26};});
-    var raf;
+    var layers=[].slice.call(field.querySelectorAll('.cst-person,.cst-mini,.cst-pill')).map(function(el){
+      return {el:el,
+        k:el.classList.contains('cst-person')?16:el.classList.contains('cst-pill')?9:24,
+        x:0,y:0};});
+    var tx=0,ty=0,run=false;
+    function step(){
+      var moving=false;
+      for(var i=0;i<layers.length;i++){
+        var l=layers[i];
+        var nx=l.x+(tx*l.k-l.x)*.09, ny=l.y+(ty*l.k-l.y)*.09;
+        if(Math.abs(nx-l.x)>.01||Math.abs(ny-l.y)>.01) moving=true;
+        l.x=nx; l.y=ny;
+        l.el.style.translate=nx.toFixed(2)+'px '+ny.toFixed(2)+'px';
+      }
+      if(moving) requestAnimationFrame(step); else run=false;
+    }
+    function kick(){ if(!run){ run=true; requestAnimationFrame(step); } }
     field.addEventListener('pointermove',function(e){
       var r=field.getBoundingClientRect();
-      var nx=(e.clientX-r.left)/r.width-.5, ny=(e.clientY-r.top)/r.height-.5;
-      cancelAnimationFrame(raf);
-      raf=requestAnimationFrame(function(){ layers.forEach(function(l){
-        l.el.style.marginLeft=(-nx*l.k)+'px'; l.el.style.marginTop=(-ny*l.k)+'px'; }); });
-    });
-    field.addEventListener('pointerleave',function(){ layers.forEach(function(l){
-      l.el.style.marginLeft=''; l.el.style.marginTop=''; }); });
+      tx=-((e.clientX-r.left)/r.width-.5); ty=-((e.clientY-r.top)/r.height-.5); kick();
+    },{passive:true});
+    field.addEventListener('pointerleave',function(){ tx=0; ty=0; kick(); });
   }
+
+  /* ---- fundo de sinapses: nos que derivam, ligados quando ficam perto ---- */
+  (function(){
+    var cv=document.getElementById('cstNet'); if(!cv||!cv.getContext) return;
+    var ctx=cv.getContext('2d'), W=0,H=0,DPR=1,nodes=[],raf=null,live=false;
+    var LINK=178;                       /* distancia maxima de ligacao, em px */
+    function palette(){
+      return document.body.classList.contains('dark')
+        ? {line:'143,193,187',dot:'143,193,187',spark:'231,111,81'}
+        : {line:'42,157,143', dot:'42,157,143', spark:'231,111,81'};
+    }
+    function build(){
+      var r=cv.getBoundingClientRect(); if(!r.width||!r.height) return false;
+      DPR=Math.min(2,window.devicePixelRatio||1);
+      W=r.width; H=r.height;
+      cv.width=Math.round(W*DPR); cv.height=Math.round(H*DPR);
+      ctx.setTransform(DPR,0,0,DPR,0,0);
+      var n=Math.max(26,Math.min(52,Math.round(W*H/16000)));
+      nodes=[];
+      for(var i=0;i<n;i++) nodes.push({
+        x:Math.random()*W, y:Math.random()*H,
+        vx:(Math.random()-.5)*.15, vy:(Math.random()-.5)*.15,
+        r:Math.random()<.18?2.4:1.35,
+        ph:Math.random()*Math.PI*2, sp:.5+Math.random()*.7
+      });
+      return true;
+    }
+    function frame(t){
+      if(!live) return;
+      var c=palette(); ctx.clearRect(0,0,W,H);
+      var i,j,a,b,dx,dy,d,al;
+      for(i=0;i<nodes.length;i++){
+        a=nodes[i]; a.x+=a.vx; a.y+=a.vy;
+        if(a.x<-30) a.x=W+30; if(a.x>W+30) a.x=-30;
+        if(a.y<-30) a.y=H+30; if(a.y>H+30) a.y=-30;
+      }
+      ctx.lineWidth=1;
+      for(i=0;i<nodes.length;i++){
+        a=nodes[i];
+        for(j=i+1;j<nodes.length;j++){
+          b=nodes[j]; dx=a.x-b.x; dy=a.y-b.y; d=Math.sqrt(dx*dx+dy*dy);
+          if(d>LINK) continue;
+          al=(1-d/LINK)*0.26;
+          ctx.strokeStyle='rgba('+c.line+','+al.toFixed(3)+')';
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+        }
+      }
+      for(i=0;i<nodes.length;i++){
+        a=nodes[i];
+        al=0.20+0.16*Math.sin(t/1000*a.sp+a.ph);
+        ctx.fillStyle='rgba('+c.dot+','+al.toFixed(3)+')';
+        ctx.beginPath(); ctx.arc(a.x,a.y,a.r,0,6.2832); ctx.fill();
+      }
+      raf=requestAnimationFrame(frame);
+    }
+    function still(){                    /* uma passada estatica, sem movimento */
+      if(!build()) return;
+      var c=palette(); ctx.clearRect(0,0,W,H); ctx.lineWidth=1;
+      for(var i=0;i<nodes.length;i++){ var a=nodes[i];
+        for(var j=i+1;j<nodes.length;j++){ var b=nodes[j];
+          var dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy); if(d>LINK) continue;
+          ctx.strokeStyle='rgba('+c.line+','+((1-d/LINK)*0.26).toFixed(3)+')';
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
+        ctx.fillStyle='rgba('+c.dot+',0.26)';
+        ctx.beginPath(); ctx.arc(a.x,a.y,a.r,0,6.2832); ctx.fill(); }
+    }
+    function start(){
+      if(RM) return still();
+      if(live) return; if(!build()) return;
+      live=true; raf=requestAnimationFrame(frame);
+    }
+    function stop(){ live=false; if(raf) cancelAnimationFrame(raf); raf=null; }
+    window.__cstNet=function(){ stop(); if(document.getElementById('pg-equipe')
+      && document.getElementById('pg-equipe').classList.contains('active')) start(); };
+    /* so anima enquanto estiver na tela */
+    try{ new IntersectionObserver(function(es){ es.forEach(function(e){
+      if(e.isIntersecting) start(); else stop(); }); },{threshold:0}).observe(cv); }catch(e){ start(); }
+    var rt; window.addEventListener('resize',function(){ clearTimeout(rt);
+      rt=setTimeout(function(){ stop(); window.__cstNet(); },160); });
+  })();
 
   var sheet=document.getElementById('cstSheet'), inner=document.getElementById('cstSheetIn'), lastFocus=null;
   function tr(v){ return (window.__tr?__tr(v):v); }
