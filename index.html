@@ -36,7 +36,8 @@ body.dark{
   --pile-shadow:#12333D; --egg-edge:#CFC3AB;
 }
 body.dark .cta-panel{background:linear-gradient(180deg,#112F3B,#0E2831);border-color:#1C4150;box-shadow:0 3px 6px rgba(0,0,0,.2),0 22px 60px rgba(0,0,0,.3)}
-.themetog{border:1px solid var(--line);background:transparent;color:var(--soft);border-radius:99px;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .15s}
+.themetog{position:relative;border:1px solid var(--line);background:transparent;color:var(--soft);border-radius:99px;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all .15s}
+.themetog.auto::after{content:"";position:absolute;top:1px;right:1px;width:6px;height:6px;border-radius:50%;background:#E76F51}
 .themetog:hover{color:var(--hd2);border-color:var(--hd3)}
 .themetog svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .topbar .themetog,.wiz-top .themetog{border-color:rgba(255,255,255,.25);color:#F5EFE4}
@@ -1901,11 +1902,15 @@ body.imm .imhero .imin{padding-top:64px}
 .nav.over .btn-solid{background:#F5EFE4;color:var(--t900)}
 
 /* ---- busca em icone ---- */
-.navsearch{display:none;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);
+.navsearch{display:flex;width:34px;height:34px;border-radius:50%;border:1px solid var(--line);
   background:transparent;color:var(--soft);align-items:center;justify-content:center;
-  font-size:15px;cursor:pointer;padding:0;flex:none}
+  font-size:15px;cursor:pointer;padding:0;flex:none;
+  /* fica sempre no layout: so aparece no Conteudo, mas nunca desloca os links */
+  visibility:hidden;opacity:0;pointer-events:none;
+  transition:opacity .2s ease,visibility 0s linear .2s}
 .navsearch:hover{color:var(--hd2)}
-body.on-conteudo .navsearch{display:flex}
+body.on-conteudo .navsearch{visibility:visible;opacity:1;pointer-events:auto;
+  transition:opacity .2s ease,visibility 0s}
 #pg-conteudo .discsearch{position:fixed;top:72px;right:clamp(18px,3.4vw,48px);z-index:70;
   width:min(420px,calc(100vw - 36px));margin:0;opacity:0;pointer-events:none;
   transform:translateY(-8px);transition:opacity .18s ease,transform .18s ease}
@@ -2088,6 +2093,13 @@ body.dark .pyr-svg{color:#EDE6D8}
 .wm-open-q{font-family:var(--serif);font-size:clamp(25px,2.7vw,37px);line-height:1.18;
   letter-spacing:-.015em;color:var(--coral);margin:28px 0 0}
 .wm-open-art{position:relative}
+/* sublinhado desenhado a mao (rough.js) sob a pergunta */
+.uwrap{position:relative;display:inline}
+.uw-svg{position:absolute;left:0;top:100%;margin-top:.04em;overflow:visible;pointer-events:none}
+.uw-svg path{stroke-dasharray:var(--ul);stroke-dashoffset:var(--ul);
+  transition:stroke-dashoffset .9s cubic-bezier(.4,0,.2,1) var(--uld,0s)}
+.uw-svg.on path{stroke-dashoffset:0}
+@media(prefers-reduced-motion:reduce){.uw-svg path{transition:none;stroke-dashoffset:0}}
 .neuron-svg{width:100%;max-width:540px;display:block;margin:0 auto;overflow:visible;color:var(--hd2)}
 
 /* --- BLOCO 2: energia --- */
@@ -3075,7 +3087,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
         <div class="wm-open-txt reveal">
           <h2 class="wm-open-h">We stopped thinking about the root of the problem.</h2>
           <p class="wm-open-p">Psychiatry measures your neurotransmitter imbalance and treats the imbalance. But the question left out is the only one that matters:</p>
-          <p class="wm-open-q">What caused the imbalance?</p>
+          <p class="wm-open-q"><span class="uwrap">What caused the imbalance?<svg class="uw-svg" id="qUnderline" aria-hidden="true"></svg></span></p>
         </div>
         <div class="wm-open-art reveal"><svg class="neuron-svg" id="neuron1" aria-hidden="true"></svg></div>
       </div>
@@ -6049,7 +6061,7 @@ function showSub(id,scroll){
   if(id==='pg-conteudo'&&window.renderLibrary) setTimeout(renderLibrary,0);
   if(id==='pg-prof'&&window.renderCourseRail) setTimeout(renderCourseRail,0);
   document.querySelectorAll('#site .subpage').forEach(s=>s.classList.toggle('active',s.id===id));
-  if(id==='pg-tratamento'&&window.__drawSprouts){ setTimeout(window.__drawSprouts,0); if(window.__drawFoods) setTimeout(window.__drawFoods,0); if(window.__drawPlates) setTimeout(window.__drawPlates,0); if(window.__drawMitoFeed) setTimeout(window.__drawMitoFeed,0); if(window.__drawRoad) setTimeout(window.__drawRoad,0); if(window.__drawBrain) setTimeout(window.__drawBrain,0); }
+  if(id==='pg-tratamento'&&window.__drawSprouts){ setTimeout(window.__drawSprouts,0); if(window.__drawQU) setTimeout(window.__drawQU,0); if(window.__drawFoods) setTimeout(window.__drawFoods,0); if(window.__drawPlates) setTimeout(window.__drawPlates,0); if(window.__drawMitoFeed) setTimeout(window.__drawMitoFeed,0); if(window.__drawRoad) setTimeout(window.__drawRoad,0); if(window.__drawBrain) setTimeout(window.__drawBrain,0); }
   if(scroll!==false) window.scrollTo(0,0);
   startGlows();
   if(window.__applyLang){ try{__applyLang()}catch(e){} }
@@ -6099,20 +6111,41 @@ function routeFromHash(){
 }
 window.addEventListener('hashchange',routeFromHash);
 
-/* ============ THEME (light / dark) ============ */
+/* ============ THEME (auto / light / dark) ============ */
+/* Modo automatico: escuro das 19h as 6h59 no relogio do proprio usuario.
+   O botao continua manual — cada clique percorre auto -> claro -> escuro -> auto. */
+const THEME_DARK_FROM=19, THEME_DARK_UNTIL=7;
+let THEME_MODE='auto';
+function themeAutoDark(){ const h=new Date().getHours(); return h>=THEME_DARK_FROM||h<THEME_DARK_UNTIL; }
+function themeWantsDark(){ return THEME_MODE==='auto'?themeAutoDark():THEME_MODE==='dark'; }
+/* setTheme continua recebendo um booleano: os wrappers de tom dependem disso */
 function setTheme(dark){
   document.body.classList.toggle('dark',dark);
-  try{localStorage.setItem('mbtheme',dark?'dark':'light')}catch(e){}
-  document.querySelectorAll('.themetog').forEach(b=>{ b.innerHTML='<svg viewBox="0 0 24 24">'+ICONS[dark?'sun':'moon']+'</svg>'; });
+  try{localStorage.setItem('mbtheme',THEME_MODE)}catch(e){}
+  const auto=THEME_MODE==='auto';
+  document.querySelectorAll('.themetog').forEach(b=>{
+    b.innerHTML='<svg viewBox="0 0 24 24">'+ICONS[dark?'sun':'moon']+'</svg>';
+    b.classList.toggle('auto',auto);
+    b.title=auto?'Theme: auto — follows the time of day':(dark?'Theme: dark':'Theme: light');
+  });
 }
+function setThemeMode(m){ THEME_MODE=m; setTheme(themeWantsDark()); }
+/* do automatico salta primeiro para o oposto do que esta na tela, para o clique ser visivel */
+function cycleTheme(){
+  const first=themeAutoDark()?'light':'dark';
+  if(THEME_MODE==='auto') return setThemeMode(first);
+  setThemeMode(THEME_MODE===first?(first==='light'?'dark':'light'):'auto');
+}
+/* enquanto estiver em auto, vira sozinho ao cruzar o horario */
+setInterval(()=>{ if(THEME_MODE==='auto'&&document.body.classList.contains('dark')!==themeAutoDark()) setTheme(themeAutoDark()); },60000);
 function injectTheme(){
   const mk=()=>{ const b=document.createElement('button'); b.className='themetog'; b.title='Light / dark';
-    b.onclick=()=>setTheme(!document.body.classList.contains('dark')); return b; };
+    b.onclick=()=>cycleTheme(); return b; };
   const nav=document.querySelector('.nav'); if(nav&&!nav.querySelector('.themetog')){ const b=mk(); const nl=nav.querySelector('#navLogin'); if(nl) nav.insertBefore(b,nl); else nav.appendChild(b); }
   document.querySelectorAll('.topbar').forEach(tb=>{ if(!tb.querySelector('.themetog')){ const sl=tb.querySelector('.switch-label'); const b=mk(); if(sl) tb.insertBefore(b,sl); else tb.appendChild(b); } });
   const wt=document.querySelector('.wiz-top'); if(wt&&!wt.querySelector('.themetog')){ const b=mk(); b.style.position='absolute'; b.style.right='92px'; wt.appendChild(b); }
   let saved=null; try{saved=localStorage.getItem('mbtheme')}catch(e){}
-  setTheme(saved==='dark');
+  setThemeMode(saved==='dark'||saved==='light'?saved:'auto');
 }
 
 /* ============ GLOW (drifting light blobs) ============ */
@@ -7130,8 +7163,62 @@ routeFromHash();
          So o tema muda o halo dos rotulos — sem esta guarda o desenho reinicia a cada scroll. */
       var d=document.body.classList.contains('dark');
       if(d===__wasDark) return; __wasDark=d;
-      window.__drawSprouts(); if(window.__drawNeuron) window.__drawNeuron(); if(window.__drawCell) window.__drawCell(); if(window.__drawMitoFeed) window.__drawMitoFeed(); if(window.__drawRoad) window.__drawRoad(); if(window.__drawBrain) window.__drawBrain(); if(window.__drawFoods) window.__drawFoods(); if(window.__drawPlates) window.__drawPlates(); if(window.__drawHeroArt) window.__drawHeroArt(); })
+      window.__drawSprouts(); if(window.__drawQU) window.__drawQU(); if(window.__drawNeuron) window.__drawNeuron(); if(window.__drawCell) window.__drawCell(); if(window.__drawMitoFeed) window.__drawMitoFeed(); if(window.__drawRoad) window.__drawRoad(); if(window.__drawBrain) window.__drawBrain(); if(window.__drawFoods) window.__drawFoods(); if(window.__drawPlates) window.__drawPlates(); if(window.__drawHeroArt) window.__drawHeroArt(); })
         .observe(document.body,{attributes:true,attributeFilter:['class']}); }catch(e){}
+})();
+
+/* ============ SUBLINHADO A MAO sob "What caused the imbalance?" ============ */
+(function(){
+  var RM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var svg,span,seen=false;
+  function build(){
+    svg=document.getElementById('qUnderline'); if(!svg||!window.rough) return false;
+    span=svg.parentNode;
+    var w=Math.round(span.getBoundingClientRect().width);
+    if(!w) return false;
+    var h=17;
+    svg.setAttribute('viewBox','0 0 '+w+' '+h);
+    svg.setAttribute('width',w); svg.setAttribute('height',h);
+    svg.classList.remove('on');
+    while(svg.firstChild) svg.removeChild(svg.firstChild);
+    var rc=rough.svg(svg);
+    var base={stroke:'#E76F51',fill:'none',disableMultiStroke:true};
+    /* dois tracos: um firme e um de retorno mais leve, como caneta */
+    var strokes=[
+      rc.line(1,6,w-1,4.5,Object.assign({},base,{seed:23,strokeWidth:2.6,roughness:1.1,bowing:1.1})),
+      rc.line(w-16,10.5,6,12,Object.assign({},base,{seed:61,strokeWidth:1.3,roughness:1.7,bowing:1.5}))
+    ];
+    strokes.forEach(function(g,i){
+      if(i) g.setAttribute('opacity','.55');
+      svg.appendChild(g);
+      Array.prototype.forEach.call(g.querySelectorAll('path'),function(pt){
+        pt.setAttribute('stroke-linecap','round');
+        var L=Math.max(1,pt.getTotalLength());
+        pt.style.setProperty('--ul',L);
+        pt.style.setProperty('--uld',(0.18+i*0.30)+'s');
+      });
+    });
+    return true;
+  }
+  function show(){ if(!svg) return; void svg.getBoundingClientRect();
+    requestAnimationFrame(function(){ svg.classList.add('on'); }); }
+  function draw(){ if(!build()) return; if(RM||seen) show(); }
+  window.__drawQU=draw;
+
+  function init(){
+    if(!draw()) {}
+    if(!svg) return;
+    try{
+      new IntersectionObserver(function(es){ es.forEach(function(e){
+        if(e.isIntersecting){ seen=true; show(); } }); },{threshold:.6}).observe(span);
+    }catch(e){ seen=true; show(); }
+    /* largura muda com resize, troca de idioma e carregamento da fonte */
+    try{ var t; new ResizeObserver(function(){ clearTimeout(t);
+      t=setTimeout(function(){ var was=seen; build(); if(was||RM) show(); },120); }).observe(span); }catch(e){}
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(function(){ var was=seen; build(); if(was||RM) show(); });
+  }
+  if(document.readyState!=='loading') init();
+  else document.addEventListener('DOMContentLoaded',init);
 })();
 
 /* ============ LANGUAGE TOGGLE (EN / PT-BR) ============ */
