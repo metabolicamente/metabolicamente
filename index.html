@@ -2485,10 +2485,120 @@ body.apptop-solid #patient .apptop{background:#0A1216;border-bottom-color:#17242
 .contentskin .tm-join-r .subfine:hover{color:#F5EFE4}
 .contentskin .noresults{padding:0 var(--gut) 20px}
 
+/* ---- tela da aula: video a esquerda, painel Ask a direita ---- */
+.vidskin{width:100vw;margin-left:calc(50% - 50vw);--gut:clamp(16px,2.4vw,30px);
+  background:#070D10;color:#EDE7DB;min-height:70vh}
+.vidskin .vgrid{display:grid;grid-template-columns:minmax(0,1fr) 372px;align-items:start}
+.vidskin .vmain{padding:calc(var(--aph,68px) + 18px) var(--gut) 40px;min-width:0}
+.vcrumb{display:inline-flex;align-items:center;gap:9px;font-size:13px;font-weight:600;
+  color:#93A5AA;border:1px solid #1E282D;background:#111A1E;border-radius:99px;
+  padding:7px 15px 7px 11px;margin-bottom:16px;cursor:pointer;transition:.15s}
+.vcrumb:hover{color:#F5EFE4;border-color:#3FB5A4}
+.vcrumb .ic{font-size:15px}
+.vplayer{position:relative;border-radius:14px;overflow:hidden;background:#05090B;aspect-ratio:16/9;
+  display:flex;align-items:center;justify-content:center}
+.vplayer .vposter{position:absolute;inset:0;
+  background:radial-gradient(120% 90% at 72% 18%,var(--g1,#16333C) 0%,var(--g2,#0B1A20) 52%,#05090B 100%)}
+.vplayer .vposter svg{position:absolute;inset:0;width:100%;height:100%}
+.vplay{position:relative;z-index:2;width:clamp(58px,6vw,74px);aspect-ratio:1;border-radius:50%;
+  background:#F5EFE4;display:flex;align-items:center;justify-content:center;cursor:pointer;
+  transition:transform .2s ease;box-shadow:0 8px 30px rgba(0,0,0,.45)}
+.vplay:hover{transform:scale(1.05)}
+.vplay svg{width:26px;height:26px;margin-left:4px;fill:#0C333F;display:block}
+.vbar{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:26px 16px 12px;
+  background:linear-gradient(180deg,transparent,rgba(3,7,9,.86))}
+.vtrack{height:3px;border-radius:99px;background:rgba(245,239,228,.22);position:relative;margin-bottom:11px}
+.vtrack i{position:absolute;left:0;top:0;bottom:0;width:0;border-radius:99px;background:#3FB5A4}
+.vctl{display:flex;align-items:center;gap:14px;color:rgba(245,239,228,.86);font-size:12px;
+  font-weight:500;font-variant-numeric:tabular-nums}
+.vctl .ic{font-size:17px}
+.vctl .vsp{margin-left:auto}
+.vkick{font-family:var(--display);font-weight:700;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:#3FB5A4;margin:20px 0 8px}
+.vtitle{font-family:var(--serif);font-weight:400;font-size:clamp(21px,2.4vw,29px);line-height:1.14;
+  letter-spacing:-.012em;color:#F5EFE4;margin:0 0 10px}
+.vmeta{display:flex;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;color:#93A5AA;
+  margin-bottom:20px}
+.vmeta span{display:inline-flex;align-items:center;gap:6px}
+.vmeta .ic{font-size:14px}
+.vacts{display:flex;gap:8px;flex-wrap:wrap;padding-bottom:22px;border-bottom:1px solid #1E282D}
+.vact{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:#EDE7DB;
+  background:#111A1E;border:1px solid #1E282D;border-radius:99px;padding:9px 16px;cursor:pointer;
+  transition:border-color .18s ease,color .18s ease}
+.vact:hover{border-color:#3FB5A4;color:#F5EFE4}
+.vact.on{background:#F5EFE4;border-color:#F5EFE4;color:#0C333F}
+.vact .ic{font-size:15px}
+.vnext{padding-top:22px}
+.vnext h4{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:#93A5AA;margin:0 0 14px}
+.vrow{display:flex;align-items:center;gap:14px;padding:10px 8px;border-radius:12px;cursor:pointer}
+.vrow:hover{background:rgba(245,239,228,.05)}
+.vthumb{width:96px;aspect-ratio:16/10;border-radius:9px;flex:0 0 auto;position:relative;
+  background:linear-gradient(150deg,var(--g1,#114B5F),var(--g2,#07222C))}
+.vthumb .ic{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  font-size:17px;color:#fff;opacity:.85}
+.vrb{min-width:0}
+.vrb b{display:block;font-size:14px;font-weight:600;color:#EDE7DB;line-height:1.35}
+.vrb i{font-style:normal;font-size:11.5px;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase;color:#6E8087}
+.vmark{margin-left:auto;width:20px;height:20px;border-radius:50%;border:1.5px solid #1E282D;
+  flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:11px;color:#0C333F}
+.vmark.done{background:#3FB5A4;border-color:#3FB5A4}
+/* painel */
+.vrail{border-left:1px solid #1E282D;background:#0E171B;position:sticky;top:0;
+  height:100vh;display:flex;flex-direction:column;padding-top:var(--aph,68px)}
+.vtabs{display:flex;gap:2px;padding:12px 12px 0;border-bottom:1px solid #1E282D}
+.vtab{flex:1;text-align:center;font-family:var(--display);font-weight:700;font-size:11.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:#6E8087;padding:11px 4px 13px;cursor:pointer;
+  border-bottom:2px solid transparent;margin-bottom:-1px}
+.vtab.on{color:#F5EFE4;border-bottom-color:#3FB5A4}
+.vpane{flex:1;padding:18px 16px;display:none;flex-direction:column;gap:14px;min-height:0;overflow:hidden}
+.vpane.on{display:flex}
+.vahead{display:flex;gap:11px;align-items:flex-start}
+.vring{width:30px;height:30px;flex:0 0 auto;border-radius:50%;border:1px solid rgba(63,181,164,.5);
+  display:flex;align-items:center;justify-content:center}
+.vring svg{width:17px;height:17px;fill:none;stroke:#3FB5A4;stroke-width:2;stroke-linecap:round}
+.vahead p{font-family:var(--calm);font-size:13.5px;line-height:1.55;color:#93A5AA;margin:0}
+.vahead p b{color:#F5EFE4;font-weight:600}
+.vchips{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.vchiplbl{align-self:flex-start;font-size:11.5px;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:#6E8087}
+.vchip{font-family:var(--calm);font-size:13px;line-height:1.35;color:#EDE7DB;text-align:right;
+  border:1px solid #1E282D;border-radius:16px 16px 4px 16px;padding:9px 14px;cursor:pointer;
+  background:#111A1E;transition:border-color .18s ease}
+.vchip:hover{border-color:#3FB5A4}
+.vthread{display:flex;flex-direction:column;gap:12px;padding-top:4px;overflow-y:auto;min-height:0;flex:1}
+.vthread:not(:empty){border-top:1px solid #1E282D}
+.vq{align-self:flex-end;max-width:88%;font-family:var(--calm);font-size:13px;line-height:1.45;
+  background:rgba(63,181,164,.13);border:1px solid rgba(63,181,164,.28);color:#F5EFE4;
+  border-radius:16px 16px 4px 16px;padding:10px 14px}
+.va{display:flex;gap:11px}
+.va .vring{width:26px;height:26px}
+.va p{font-family:var(--calm);font-size:13.5px;line-height:1.6;color:#EDE7DB;margin:0}
+.vtbd{display:inline-block;font-family:var(--display);font-weight:700;font-size:10px;
+  letter-spacing:.12em;color:#D9A420;border:1px solid rgba(217,164,32,.45);border-radius:4px;
+  padding:2px 6px;vertical-align:middle;margin-right:6px}
+.vfoot{font-family:var(--calm);font-size:11.5px;line-height:1.5;color:#6E8087;margin:0}
+.vask{margin-top:auto;display:flex;align-items:center;gap:10px;border:1px solid #1E282D;
+  background:#111A1E;border-radius:99px;padding:8px 8px 8px 16px}
+.vask input{flex:1;min-width:0;background:none;border:0;outline:none;font-family:var(--calm);
+  font-size:13.5px;color:#EDE7DB}
+.vask input::placeholder{color:#6E8087}
+.vsend{width:32px;height:32px;flex:0 0 auto;border-radius:50%;background:#F5EFE4;display:flex;
+  align-items:center;justify-content:center;cursor:pointer;color:#0C333F;font-size:15px}
+.vempty{font-family:var(--calm);font-size:13.5px;line-height:1.6;color:#93A5AA;margin:0}
+@media(max-width:940px){
+  .vidskin .vgrid{grid-template-columns:minmax(0,1fr)}
+  .vrail{border-left:0;border-top:1px solid #1E282D;padding-top:0;position:static;
+    height:auto;min-height:420px}
+}
+
 /* ---- pagina de categoria dentro da conta: mesma pele de #/programa ---- */
 .progskin{width:100vw;margin-left:calc(50% - 50vw)}
 .progskin .pgback{top:calc(var(--aph,68px) + 20px)}
 .progskin .pgl{cursor:pointer}
+.progskin .pgmark.done{background:#3FB5A4;border-color:#3FB5A4}
+body.on-lesson .dfab{display:none}
 
 /* ---- widget da jornada: o mesmo retangulo do CTA publico, virado em progresso ---- */
 .jwidget{position:relative;width:min(calc(100% - 44px),880px);border-radius:22px;overflow:hidden;
@@ -4953,7 +5063,7 @@ function catClusters(){
 }
 /* Categoria com programa real abre o programa; o resto abre a mesma pagina de
    categoria da area publica, agora dentro da conta. Conteudo continua TBD. */
-var CDETAIL=null;
+var CDETAIL=null, LDETAIL=null;
 function appCat(name){
   const p=PROGRAMS.filter(function(x){ return x.title===name; })[0];
   if(p){ CDETAIL=null; openProgram(p.id); return; }
@@ -5104,6 +5214,7 @@ function progAfter(w){
 }
 function progSection(){
   if(PDETAIL) return progDetail(pProg(PDETAIL)||PROGRAMS[0]);
+  if(LDETAIL&&window.__lessonView) return window.__lessonView(LDETAIL);
   if(CDETAIL&&window.__catDetail) return window.__catDetail(CDETAIL);
   return '<div class="dsec dprog contentskin">'+
     appHero()+
@@ -7718,6 +7829,26 @@ routeFromHash();
     "No programs match your search.":"Nenhum programa corresponde à sua busca.",
     "Free library":"Biblioteca gratuita",
     "Free, with an account":"Grátis, com uma conta",
+    "Ask":"Perguntar",
+    "Transcript":"Transcrição",
+    "Notes":"Anotações",
+    "Ask about this lesson.":"Pergunte sobre esta aula.",
+    "Answers come from what is said in the video, with the moment it was said.":"As respostas vêm do que é dito no vídeo, com o minuto em que foi dito.",
+    "Try":"Tente",
+    "Summarize this lesson":"Resuma esta aula",
+    "What should I take from this?":"O que eu levo desta aula?",
+    "Ask a question…":"Faça uma pergunta…",
+    "Ask answers once this lesson has a transcript. The answer will point at the minute it came from.":"O Perguntar responde assim que esta aula tiver transcrição. A resposta vai apontar o minuto de onde veio.",
+    "Answers can be wrong, and this is not medical advice. Your care team is in Messages.":"As respostas podem estar erradas, e isto não é orientação médica. Seu time de cuidado está em Mensagens.",
+    "The transcript of this lesson goes here, and it is what Ask reads to answer.":"A transcrição desta aula fica aqui, e é o que o Perguntar lê para responder.",
+    "Notes you take while watching go here.":"As anotações que você faz durante a aula ficam aqui.",
+    "Mark complete":"Marcar como concluída",
+    "Completed":"Concluída",
+    "My list":"Minha lista",
+    "Rate":"Avaliar",
+    "Share":"Compartilhar",
+    "Next in this module":"A seguir neste módulo",
+    "Your place is kept":"Seu lugar fica salvo",
     "lessons":"aulas",
     "Lesson":"Aula",
     "Lessons coming soon":"Aulas em breve",
@@ -8994,6 +9125,7 @@ routeFromHash();
     if(p&&painted){ for(var k in VARS) p.style.removeProperty(VARS[k]); }
     document.body.style.removeProperty('background-color');
     document.body.classList.remove('apptop-solid');
+    document.body.classList.remove('on-lesson');
     painted=false;
   }
   function paint(v){
@@ -9012,12 +9144,16 @@ routeFromHash();
     if(!document.body.classList.contains('appdark')
        || document.body.classList.contains('dark')){ clear(); return; }
     var m=document.getElementById('adarkstart');
-    if(!m){                                   /* subpagina do programa: escuro direto,
-                                                 mas o header so fecha depois do heroi */
+    if(!m){                                   /* subpagina: escuro direto. Na pagina de
+                                                 categoria o header so fecha depois do
+                                                 heroi; na aula ja nasce fechado. */
       paint(1);
-      document.body.classList.toggle('apptop-solid',(window.scrollY||0)>260);
+      var vid=document.querySelector('#patient .vidskin');
+      document.body.classList.toggle('on-lesson', !!vid);
+      document.body.classList.toggle('apptop-solid', !!vid || (window.scrollY||0)>260);
       return;
     }
+    document.body.classList.remove('on-lesson');
     var vh=window.innerHeight, top=m.getBoundingClientRect().top;
     paint((vh*0.72-top)/(vh*0.34));
   }
@@ -9078,11 +9214,12 @@ routeFromHash();
             '<span class="pgnum">'+esc2(m[0])+'</span>'+
             '<div><h4>'+esc2(m[1])+'</h4><p>'+m[2].length+' '+tr('lessons')+'</p></div>'+
             '<span class="pgchev ic" data-icon="chevron-down"></span></div>'+
-          '<div class="pgles">'+m[2].map(function(l){
-            return '<div class="pgl" onclick="toast(\''+tr('Lesson')+' · TBD\')">'+
+          '<div class="pgles">'+m[2].map(function(l,li){
+            var done=lessonDone(name,i,li);
+            return '<div class="pgl" onclick="openLesson(&quot;'+esc2(name)+'&quot;,'+i+','+li+')">'+
               '<div class="pglt"><span class="ic" data-icon="play"></span></div>'+
               '<div class="pglb"><b>'+esc2(l[0])+'</b><i>'+esc2(l[1])+'</i></div>'+
-              '<span class="pgmark"></span></div>';
+              '<span class="pgmark'+(done?' done':'')+'"></span></div>';
           }).join('')+'</div></div>';
       }).join('');
     }else{
@@ -9141,6 +9278,184 @@ routeFromHash();
     if(typeof window[fn]!=='function') return;
     var _f=window[fn];
     window[fn]=function(){ try{ CDETAIL=null; }catch(e){} return _f.apply(this,arguments); };
+  });
+})();
+</script>
+
+<script>
+/* ============================================================
+   TELA DA AULA (dentro da conta): video a esquerda, painel Ask a
+   direita. O painel cita o minuto da aula; enquanto nao existir
+   transcricao, a resposta e TBD de proposito.
+   ============================================================ */
+(function(){
+  function tr(x){ return (typeof __tr==='function') ? __tr(x) : x; }
+  function esc2(x){ return (typeof esc==='function') ? esc(x) : String(x); }
+
+  if(typeof ICONS==='object'){
+    if(!ICONS['send'])  ICONS['send']='<path d="M4 12h15"/><path d="M13 6l6 6-6 6"/>';
+    if(!ICONS['share']) ICONS['share']='<path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M18 14v6H4V6h6"/>';
+    if(!ICONS['plus'])  ICONS['plus']='<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>';
+  }
+
+  /* ---------- aulas concluidas ---------- */
+  var KEY='mb.lessons';
+  function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||'{}'); }catch(e){ return {}; } }
+  function save(o){ try{ localStorage.setItem(KEY,JSON.stringify(o)); }catch(e){} }
+  function slot(cat,mi,li){ return cat+'|'+mi+'|'+li; }
+  window.lessonDone=function(cat,mi,li){ return !!load()[slot(cat,mi,li)]; };
+
+  function mods(cat){ var D=window.__PROGDATA||{}; return (D.MODS||{})[cat]||null; }
+  function catCols(cat){
+    if(typeof CATG!=='undefined'){
+      for(var i=0;i<CATG.length;i++) for(var j=0;j<CATG[i][2].length;j++)
+        if(CATG[i][2][j][0]===cat) return {g1:CATG[i][2][j][2],g2:CATG[i][2][j][3]};
+    }
+    return {g1:'#114B5F',g2:'#07222C'};
+  }
+  var RING='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor">'+
+    '<path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg>';
+
+  window.openLesson=function(cat,mi,li){
+    LDETAIL={cat:cat,mi:mi,li:li};
+    DASH.patient.sec='programas'; PDETAIL=null;
+    renderDash('patient'); window.scrollTo(0,0);
+  };
+  window.lessonBack=function(){
+    var cat=LDETAIL&&LDETAIL.cat;
+    LDETAIL=null; CDETAIL=cat||CDETAIL;
+    renderDash('patient'); window.scrollTo(0,0);
+  };
+
+  window.__lessonView=function(L){
+    var M=mods(L.cat); if(!M){ LDETAIL=null; return window.__catDetail(L.cat); }
+    var mod=M[L.mi]||M[0], row=(mod[2]||[])[L.li]||mod[2][0];
+    var c=catCols(L.cat), done=window.lessonDone(L.cat,L.mi,L.li);
+    var total=mod[2].length;
+
+    var rest=mod[2].map(function(l,i){
+      if(i===L.li) return '';
+      return '<div class="vrow" onclick="openLesson(&quot;'+esc2(L.cat)+'&quot;,'+L.mi+','+i+')">'+
+        '<div class="vthumb" style="--g1:'+c.g1+';--g2:'+c.g2+'">'+
+          '<span class="ic" data-icon="'+(l[1]==='Reading'?'clipboard':'play')+'"></span></div>'+
+        '<div class="vrb"><b>'+esc2(l[0])+'</b><i>'+esc2(l[1])+'</i></div>'+
+        '<span class="vmark'+(window.lessonDone(L.cat,L.mi,i)?' done':'')+'">'+
+          (window.lessonDone(L.cat,L.mi,i)?'<span class="ic" data-icon="check"></span>':'')+'</span></div>';
+    }).join('');
+
+    return '<div class="dsec vidskin"><div class="vgrid">'+
+      '<div class="vmain">'+
+        '<span class="vcrumb" onclick="lessonBack()"><span class="ic" data-icon="arrow-left"></span>'+
+          tr(L.cat)+' · '+esc2(mod[1])+'</span>'+
+
+        '<div class="vplayer">'+
+          '<div class="vposter" style="--g1:'+c.g1+';--g2:'+c.g2+'">'+
+            '<svg viewBox="0 0 800 450" preserveAspectRatio="none" aria-hidden="true">'+
+            '<circle cx="612" cy="106" r="118" fill="#fff" opacity=".05"/>'+
+            '<circle cx="612" cy="106" r="64" fill="#fff" opacity=".06"/>'+
+            '<path d="M0 300 Q160 250 330 296 T800 268 L800 450 L0 450Z" fill="#fff" opacity=".045"/>'+
+            '<path d="M0 352 Q180 302 360 350 T800 326 L800 450 L0 450Z" fill="#fff" opacity=".04"/>'+
+            '</svg></div>'+
+          '<div class="vplay" onclick="toast(&quot;'+tr('Video')+' · TBD&quot;)">'+'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></div>'+
+          '<div class="vbar"><div class="vtrack"><i></i></div>'+
+            '<div class="vctl"><span class="ic" data-icon="play"></span>'+
+            '<span>0:00 / TBD</span><span class="vsp"></span>'+
+            '<span class="ic" data-icon="settings"></span></div></div>'+
+        '</div>'+
+
+        '<p class="vkick">'+tr('Lesson')+' '+(L.li+1)+' '+tr('of')+' '+total+'</p>'+
+        '<h1 class="vtitle">'+esc2(row[0])+'</h1>'+
+        '<div class="vmeta">'+
+          '<span><span class="ic" data-icon="'+(row[1]==='Reading'?'clipboard':'video')+'"></span> '+
+            esc2(row[1])+' · TBD</span>'+
+          '<span><span class="ic" data-icon="clock"></span> '+tr('Your place is kept')+'</span>'+
+        '</div>'+
+
+        '<div class="vacts">'+
+          '<span class="vact'+(done?' on':'')+'" id="vDone" onclick="lessonToggle()">'+
+            '<span class="ic" data-icon="check"></span> '+
+            (done?tr('Completed'):tr('Mark complete'))+'</span>'+
+          '<span class="vact" onclick="vTab(\'notes\')"><span class="ic" data-icon="edit"></span> '+tr('Notes')+'</span>'+
+          '<span class="vact" onclick="toast(&quot;'+tr('My list')+' · TBD&quot;)">'+
+            '<span class="ic" data-icon="plus"></span> '+tr('My list')+'</span>'+
+          '<span class="vact" onclick="toast(&quot;'+tr('Rate')+' · TBD&quot;)">'+
+            '<span class="ic" data-icon="star"></span> '+tr('Rate')+'</span>'+
+          '<span class="vact" onclick="toast(&quot;'+tr('Share')+' · TBD&quot;)">'+
+            '<span class="ic" data-icon="share"></span> '+tr('Share')+'</span>'+
+        '</div>'+
+
+        (rest ? '<div class="vnext"><h4>'+tr('Next in this module')+'</h4>'+rest+'</div>' : '')+
+      '</div>'+
+
+      '<aside class="vrail">'+
+        '<div class="vtabs">'+
+          '<div class="vtab on" id="vtab-ask" onclick="vTab(\'ask\')">'+tr('Ask')+'</div>'+
+          '<div class="vtab" id="vtab-transcript" onclick="vTab(\'transcript\')">'+tr('Transcript')+'</div>'+
+          '<div class="vtab" id="vtab-notes" onclick="vTab(\'notes\')">'+tr('Notes')+'</div>'+
+        '</div>'+
+
+        '<div class="vpane on" id="vpane-ask">'+
+          '<div class="vahead"><span class="vring">'+RING+'</span>'+
+            '<p><b>'+tr('Ask about this lesson.')+'</b> '+
+            tr('Answers come from what is said in the video, with the moment it was said.')+'</p></div>'+
+          '<div class="vchips">'+
+            '<span class="vchiplbl">'+tr('Try')+'</span>'+
+            '<span class="vchip" onclick="vAsk(this.textContent)">'+tr('Summarize this lesson')+'</span>'+
+            '<span class="vchip" onclick="vAsk(this.textContent)">'+tr('What should I take from this?')+'</span>'+
+          '</div>'+
+          '<div class="vthread" id="vThread"></div>'+
+          '<p class="vfoot">'+tr('Answers can be wrong, and this is not medical advice. Your care team is in Messages.')+'</p>'+
+          '<div class="vask">'+
+            '<input id="vInput" placeholder="'+tr('Ask a question…')+'" '+
+              'onkeydown="if(event.key===\'Enter\')vAsk(this.value)">'+
+            '<span class="vsend" onclick="vAsk(document.getElementById(\'vInput\').value)">'+
+              '<span class="ic" data-icon="send"></span></span>'+
+          '</div>'+
+        '</div>'+
+
+        '<div class="vpane" id="vpane-transcript">'+
+          '<p class="vempty"><span class="vtbd">TBD</span>'+
+          tr('The transcript of this lesson goes here, and it is what Ask reads to answer.')+'</p></div>'+
+
+        '<div class="vpane" id="vpane-notes">'+
+          '<p class="vempty"><span class="vtbd">TBD</span>'+
+          tr('Notes you take while watching go here.')+'</p></div>'+
+      '</aside></div></div>';
+  };
+
+  window.vTab=function(which){
+    ['ask','transcript','notes'].forEach(function(k){
+      var t=document.getElementById('vtab-'+k), p=document.getElementById('vpane-'+k);
+      if(t) t.classList.toggle('on',k===which);
+      if(p) p.classList.toggle('on',k===which);
+    });
+  };
+
+  window.vAsk=function(q){
+    q=(q||'').trim(); if(!q) return;
+    var t=document.getElementById('vThread'); if(!t) return;
+    var i=document.getElementById('vInput'); if(i) i.value='';
+    var qb=document.createElement('div'); qb.className='vq'; qb.textContent=q; t.appendChild(qb);
+    var a=document.createElement('div'); a.className='va';
+    a.innerHTML='<span class="vring">'+RING+'</span><div><p><span class="vtbd">TBD</span>'+
+      tr('Ask answers once this lesson has a transcript. The answer will point at the minute it came from.')+
+      '</p></div>';
+    t.appendChild(a);
+    t.scrollTop=t.scrollHeight;
+  };
+
+  window.lessonToggle=function(){
+    if(!LDETAIL) return;
+    var o=load(), k=slot(LDETAIL.cat,LDETAIL.mi,LDETAIL.li);
+    if(o[k]) delete o[k]; else o[k]=1;
+    save(o); renderDash('patient');
+  };
+
+  /* sair da aba fecha a aula */
+  ['dashNav','go','openProgram','progBack','appCat','catBack'].forEach(function(fn){
+    if(typeof window[fn]!=='function') return;
+    var _f=window[fn];
+    window[fn]=function(){ try{ LDETAIL=null; }catch(e){} return _f.apply(this,arguments); };
   });
 })();
 </script>
