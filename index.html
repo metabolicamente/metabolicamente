@@ -2218,7 +2218,7 @@ body.dark .pyr-vs{color:#6f8a8f}
 .wm-raw{padding:clamp(14px,2.4vw,30px) var(--gut) clamp(26px,4vw,52px)}
 .wm-brain{display:block;width:100%;max-width:clamp(300px,42vw,520px);margin:0 auto clamp(8px,1.6vw,20px);
   color:var(--hd2)}
-.wm-raw-in{max-width:46em;margin:0 auto;text-align:center}
+.wm-raw-in{max-width:min(1180px,92vw);margin:0 auto;text-align:center}
 /* mesmo tipo do heroi da home ("Feed your brain. Change your mind.") */
 .wm-raw-in h2{font-family:var(--quiet);font-size:clamp(26px,3.9vw,52px);line-height:1.06;
   letter-spacing:-.04em;color:var(--hd);margin:0 auto 22px;font-weight:500;
@@ -2250,18 +2250,27 @@ body.dark .pyr-vs{color:#6f8a8f}
   letter-spacing:-.015em;color:var(--coral);margin:clamp(12px,2vw,26px) auto 0;max-width:24em}
 .wm-panel-cta{position:relative;isolation:isolate;overflow:hidden;
   max-width:none;margin:clamp(36px,5vw,68px) calc(-1 * var(--gut)) 0;border-radius:0;
-  background:#07222C;display:grid;
-  grid-template-columns:1fr 1fr;gap:clamp(24px,3.6vw,56px);text-align:left;
-  padding:clamp(44px,6vw,88px) max(var(--gut),calc((100vw - 1240px)/2));align-items:center}
-.wm-pc-ph{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:52% 42%}
-.wm-pc-sc{position:absolute;inset:0;z-index:-1;background:linear-gradient(112deg,
-  rgba(7,34,44,.90) 0%,rgba(9,45,58,.84) 46%,rgba(12,58,74,.72) 100%)}
+  background:#07222C;display:flex;align-items:center;text-align:left;
+  min-height:clamp(420px,46vw,560px)}
+.wm-pc-ph{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:62% 44%}
+/* escuro a esquerda, limpo a direita: a foto fica em cor normal onde esta o assunto */
+.wm-pc-sc{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,
+  rgba(7,34,44,.94) 0%,rgba(7,34,44,.86) 30%,rgba(7,34,44,.46) 56%,
+  rgba(7,34,44,.12) 80%,rgba(7,34,44,0) 100%)}
+.wm-pc-in{padding:clamp(40px,6vw,86px) var(--gut);max-width:min(640px,88%)}
+@media(max-width:760px){
+  .wm-panel-cta{min-height:clamp(380px,84vw,480px)}
+  .wm-pc-sc{background:linear-gradient(180deg,rgba(7,34,44,.55),rgba(7,34,44,.93))}
+  .wm-pc-in{max-width:100%}
+}
 .wm-pc-kick{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:rgba(245,239,228,.66);margin:0 0 14px}
-.wm-pc-txt{font-size:clamp(15px,1.2vw,17px);line-height:1.68;color:rgba(245,239,228,.86);margin:0}
-.wm-pc-right h3{font-family:var(--serif);font-size:clamp(24px,2.7vw,36px);line-height:1.1;
+  color:rgba(245,239,228,.7);margin:0 0 14px}
+.wm-pc-txt{font-family:var(--calm);font-size:clamp(15px,1.2vw,17px);line-height:1.66;
+  color:rgba(245,239,228,.86);margin:0 0 26px}
+.wm-pc-in h3{font-family:var(--serif);font-size:clamp(26px,3.2vw,42px);line-height:1.06;
   color:#F7F2E7;margin:0 0 12px;font-weight:400}
-.wm-pc-right p{font-size:15px;line-height:1.62;color:rgba(245,239,228,.8);margin:0 0 24px;max-width:30em}
+.wm-pc-in .wm-pc-sub{font-family:var(--calm);font-size:15px;line-height:1.6;
+  color:rgba(245,239,228,.8);margin:0 0 26px;max-width:32em}
 .wm-pc-btns{display:flex;gap:12px;flex-wrap:wrap}
 .wm-pc-ghost{border:1.5px solid rgba(245,239,228,.4);color:#F5EFE4}
 .wm-pc-ghost:hover{border-color:#F5EFE4}
@@ -3407,15 +3416,13 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       <p class="wm-path-q reveal">The goal was never the strictest diet. It is the least restrictive one that works for you.</p>
 
       <div class="wm-panel-cta reveal">
-        <div class="wm-pc-ph" style="background-image:url('https://images.unsplash.com/photo-1666214280465-a40313304801?fm=jpg&amp;q=74&amp;w=2000&amp;auto=format&amp;fit=crop')" aria-hidden="true"></div>
+        <div class="wm-pc-ph" style="background-image:url('https://images.unsplash.com/photo-1758691462353-36b215702253?fm=jpg&amp;q=76&amp;w=2200&amp;auto=format&amp;fit=crop')" aria-hidden="true"></div>
         <div class="wm-pc-sc" aria-hidden="true"></div>
-        <div class="wm-pc-left">
+        <div class="wm-pc-in">
           <p class="wm-pc-kick">And you do not do this alone</p>
           <p class="wm-pc-txt">A drop in carbohydrate moves blood sugar and blood pressure, and it can change the dose you need. That is why a dietitian and a psychiatrist sit on the same side of the table, from the first appointment.</p>
-        </div>
-        <div class="wm-pc-right">
           <h3>Start by understanding your case.</h3>
-          <p>A free assessment, and a plan built around your labs, your symptoms and your routine.</p>
+          <p class="wm-pc-sub">A free assessment, and a plan built around your labs, your symptoms and your routine.</p>
           <div class="wm-pc-btns">
             <a class="btn btn-cream" onclick="go('wizard')" style="cursor:pointer">Take the assessment <span class="ic" data-icon="arrow-right"></span></a>
             <a class="btn wm-pc-ghost" href="#/conteudo">Explore the programs</a>
