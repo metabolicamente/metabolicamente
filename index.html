@@ -30,19 +30,23 @@
 /* pagina em branco: fundo mais limpo e moderno que o creme do resto do site */
 #pg-equipe{background:#FFFFFF}
 body.dark #pg-equipe{background:var(--bg)}
+body.on-equipe .nav{background:rgba(255,255,255,.90);border-bottom-color:rgba(12,51,63,.07)}
+body.on-equipe.dark .nav{background:var(--navbg);border-bottom-color:var(--line)}
 
 .cst-sec{--gut:clamp(18px,3.4vw,48px);padding:clamp(14px,2.4vw,30px) 0 clamp(20px,3vw,42px)}
 .cst-field{position:relative;max-width:1340px;margin:0 auto;padding:0 var(--gut);
-  height:clamp(640px,74vw,790px)}
+  height:clamp(680px,78vw,870px)}
 .cst-net{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;
   -webkit-mask-image:radial-gradient(ellipse 42% 32% at 50% 50%,transparent 10%,#000 74%);
   mask-image:radial-gradient(ellipse 42% 32% at 50% 50%,transparent 10%,#000 74%)}
 .cst-centre{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:min(680px,80%);text-align:center;z-index:6}
+  width:min(600px,72%);text-align:center;z-index:6}
 .cst-eyebrow{font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.2em;
   text-transform:uppercase;color:var(--t500);margin:0 0 18px}
-.cst-h{font-family:var(--display);font-weight:600;font-size:clamp(36px,5.4vw,64px);
+.cst-h{font-family:var(--display);font-weight:600;font-size:clamp(33px,4.3vw,52px);
   line-height:1.05;letter-spacing:-.035em;color:var(--hd);margin:0;text-wrap:balance}
+.cst-sub{font-family:var(--display);font-size:clamp(14px,1.15vw,16px);font-weight:600;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--t500);margin:16px 0 0}
 .cst-lead{font-family:var(--calm);font-size:clamp(15.5px,1.3vw,17.5px);line-height:1.62;
   color:var(--soft);margin:20px auto 0;max-width:28em}
 .cst-cta{display:flex;gap:10px;justify-content:center;margin-top:26px;flex-wrap:wrap}
@@ -2995,7 +2999,8 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       <div class="cst-field" id="cstField">
         <canvas class="cst-net" id="cstNet" aria-hidden="true"></canvas>
         <div class="cst-centre">
-          <h2 class="cst-h">Meet the care team</h2>
+          <h2 class="cst-h">You deserve to feel well.</h2>
+          <p class="cst-sub">Meet the care team</p>
           <p class="cst-lead">A psychiatrist, a nutrition physician and a psychologist reading the same case. Tap anyone to see how they work.</p>
           <div class="cst-cta">
             <a class="btn cst-grad" onclick="go('wizard')" style="cursor:pointer">Start the assessment</a>
@@ -6212,6 +6217,9 @@ function showSub(id,scroll){
 function setImmersive(on){
   document.body.classList.toggle('imm',!!on);
   document.body.classList.toggle('on-conteudo',!!on);
+  /* a faixa da nav acompanha o branco desta pagina */
+  var eq=document.getElementById('pg-equipe');
+  document.body.classList.toggle('on-equipe',!!(eq&&eq.classList.contains('active')));
   if(!on) closeSearch();
   syncNavOver();
 }
@@ -7317,25 +7325,25 @@ routeFromHash();
      bio:'Eighteen years putting nutrition, metabolism and medication in the same treatment plan.',
      photo:'https://images.unsplash.com/photo-1637059824899-a441006a6875?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Metabolic psychiatry','Mood disorders','Ketogenic therapy'],
-     pos:{x:'2%',y:'8%',sz:'204px',dur:'15s',del:'-2s',dx:'-11px',dy:'16px',rot:'-1.4deg'}},
+     pos:{x:'7%',y:'3%',sz:'204px',dur:'15s',del:'-2s',dx:'-11px',dy:'16px',rot:'-1.4deg'}},
     {id:'cf',mono:'CF',name:'Dra. Camila Ferreira',crm:'CRM/SP 158.203',color:'#114B5F',
      role:'Psychiatrist, neurometabolism',
      bio:'Researches the link between mitochondrial dysfunction and psychiatric illness.',
      photo:'https://images.unsplash.com/photo-1678695972687-033fa0bdbac9?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Neurometabolism','Treatment-resistant depression','Clinical research'],
-     pos:{x:'82%',y:'6%',sz:'182px',dur:'18s',del:'-8s',dx:'13px',dy:'-15px',rot:'1.6deg'}},
+     pos:{x:'79%',y:'3%',sz:'186px',dur:'18s',del:'-8s',dx:'13px',dy:'-15px',rot:'1.6deg'}},
     {id:'lt',mono:'LT',name:'Dr. Lucas Tavares',crm:'CRM/RJ 098.412',color:'#E76F51',
      role:'Nutrition physician',
      bio:'Builds the food side of every plan, from therapeutic diets to insulin resistance.',
      photo:'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Functional nutrition','Supplementation','Metabolic health'],
-     pos:{x:'0%',y:'56%',sz:'170px',dur:'17s',del:'-5s',dx:'11px',dy:'-17px',rot:'1.2deg'}},
+     pos:{x:'5%',y:'58%',sz:'176px',dur:'17s',del:'-5s',dx:'11px',dy:'-17px',rot:'1.2deg'}},
     {id:'bl',mono:'BL',name:'Dra. Beatriz Linhares',crm:'CRP 05/67.891',color:'#5B7DB1',
      role:'Clinical psychologist',
      bio:'Keeps the change sustainable when the plan meets real life.',
      photo:'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Behaviour change','Psychoeducation'],
-     pos:{x:'85%',y:'57%',sz:'190px',dur:'14s',del:'-10s',dx:'-11px',dy:'15px',rot:'-1.5deg'}}
+     pos:{x:'80%',y:'59%',sz:'194px',dur:'14s',del:'-10s',dx:'-11px',dy:'15px',rot:'-1.5deg'}}
   ];
   TEAM.forEach(function(p){ p.short=p.role; });
   function esc(v){return String(v).replace(/[&<>"]/g,function(c){
@@ -7798,6 +7806,7 @@ routeFromHash();
     "Bipolar disorder":"Transtorno bipolar",
     "Join the team":"Faça parte do time",
     "Meet the care team":"Conheça o time de cuidado",
+    "You deserve to feel well.":"Você merece se sentir bem.",
     "A psychiatrist, a nutrition physician and a psychologist reading the same case. Tap anyone to see how they work.":"Um psiquiatra, um médico nutrólogo e uma psicóloga lendo o mesmo caso. Toque em qualquer um para ver como trabalham.",
     "Start the assessment":"Começar a avaliação",
     "18 years in psychiatry":"18 anos em psiquiatria",
