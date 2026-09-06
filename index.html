@@ -33,6 +33,14 @@ body.dark #pg-equipe{background:var(--bg)}
 body.on-equipe .nav{background:rgba(255,255,255,.90);border-bottom-color:rgba(12,51,63,.07)}
 body.on-equipe.dark .nav{background:var(--navbg);border-bottom-color:var(--line)}
 
+/* pagina "Learn more" (#/tratamento) tambem em branco, nav inclusa */
+#pg-tratamento{background:#FFFFFF}
+body.dark #pg-tratamento{background:var(--bg)}
+body.on-tratamento{background:#FFFFFF}
+body.on-tratamento.dark{background:var(--bg)}
+body.on-tratamento .nav{background:rgba(255,255,255,.90);border-bottom-color:rgba(12,51,63,.07)}
+body.on-tratamento.dark .nav{background:var(--navbg);border-bottom-color:var(--line)}
+
 .cst-sec{--gut:clamp(18px,3.4vw,48px);padding:clamp(14px,2.4vw,30px) 0 clamp(20px,3vw,42px)}
 .cst-field{position:relative;max-width:1340px;margin:0 auto;padding:0 var(--gut);
   height:clamp(680px,78vw,870px)}
@@ -2211,10 +2219,14 @@ body.dark .pyr-vs{color:#6f8a8f}
 .wm-road{display:block;width:100%;max-width:900px;margin:clamp(18px,3vw,36px) auto 0;color:var(--hd2)}
 .wm-path-q{font-family:var(--serif);font-size:clamp(21px,2.4vw,31px);line-height:1.22;
   letter-spacing:-.015em;color:var(--coral);margin:clamp(12px,2vw,26px) auto 0;max-width:24em}
-.wm-panel-cta{max-width:1180px;margin:clamp(36px,5vw,68px) auto 0;border-radius:24px;
-  background:linear-gradient(115deg,#114B5F,#07222C);display:grid;
+.wm-panel-cta{position:relative;isolation:isolate;overflow:hidden;
+  max-width:1180px;margin:clamp(36px,5vw,68px) auto 0;border-radius:24px;
+  background:#07222C;display:grid;
   grid-template-columns:1fr 1fr;gap:clamp(24px,3.6vw,56px);text-align:left;
   padding:clamp(30px,4vw,56px) clamp(26px,3.4vw,52px);align-items:center}
+.wm-pc-ph{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:52% 42%}
+.wm-pc-sc{position:absolute;inset:0;z-index:-1;background:linear-gradient(112deg,
+  rgba(7,34,44,.90) 0%,rgba(9,45,58,.84) 46%,rgba(12,58,74,.72) 100%)}
 .wm-pc-kick{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
   color:rgba(245,239,228,.66);margin:0 0 14px}
 .wm-pc-txt{font-size:clamp(15px,1.2vw,17px);line-height:1.68;color:rgba(245,239,228,.86);margin:0}
@@ -3051,7 +3063,6 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
         <a class="btn btn-cream" style="cursor:pointer" onclick="location.hash='#/profissionais'">I want to work with you <span class="ic" data-icon="arrow-right"></span></a>
       </div>
     </section>
-    <p class="team-note" style="text-align:center;margin:22px 0 6px">Illustrative team for the prototype. Final clinicians to be confirmed.</p>
   </div>
 
   <!-- ============ PAGE: PROGRAM DETAIL ============ -->
@@ -3368,6 +3379,8 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       <p class="wm-path-q reveal">The goal was never the strictest diet. It is the least restrictive one that works for you.</p>
 
       <div class="wm-panel-cta reveal">
+        <div class="wm-pc-ph" style="background-image:url('https://images.unsplash.com/photo-1666214280465-a40313304801?fm=jpg&amp;q=74&amp;w=2000&amp;auto=format&amp;fit=crop')" aria-hidden="true"></div>
+        <div class="wm-pc-sc" aria-hidden="true"></div>
         <div class="wm-pc-left">
           <p class="wm-pc-kick">And you do not do this alone</p>
           <p class="wm-pc-txt">A drop in carbohydrate moves blood sugar and blood pressure, and it can change the dose you need. That is why a dietitian and a psychiatrist sit on the same side of the table, from the first appointment.</p>
@@ -6236,6 +6249,8 @@ function setImmersive(on){
   /* a faixa da nav acompanha o branco desta pagina */
   var eq=document.getElementById('pg-equipe');
   document.body.classList.toggle('on-equipe',!!(eq&&eq.classList.contains('active')));
+  var tr=document.getElementById('pg-tratamento');
+  document.body.classList.toggle('on-tratamento',!!(tr&&tr.classList.contains('active')));
   if(!on) closeSearch();
   syncNavOver();
 }
