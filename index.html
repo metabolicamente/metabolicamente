@@ -35,19 +35,21 @@ body.dark #pg-equipe{background:var(--bg)}
 .cst-field{position:relative;max-width:1240px;margin:0 auto;padding:0 var(--gut);
   height:clamp(600px,72vw,740px)}
 .cst-net{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;
-  -webkit-mask-image:radial-gradient(ellipse 44% 34% at 50% 50%,transparent 12%,#000 76%);
-  mask-image:radial-gradient(ellipse 44% 34% at 50% 50%,transparent 12%,#000 76%)}
+  -webkit-mask-image:radial-gradient(ellipse 42% 32% at 50% 50%,transparent 10%,#000 74%);
+  mask-image:radial-gradient(ellipse 42% 32% at 50% 50%,transparent 10%,#000 74%)}
 .cst-centre{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
   width:min(720px,84%);text-align:center;z-index:6}
 .cst-eyebrow{font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.2em;
   text-transform:uppercase;color:var(--t500);margin:0 0 18px}
 .cst-h{font-family:var(--display);font-weight:600;font-size:clamp(36px,5.4vw,64px);
   line-height:1.05;letter-spacing:-.035em;color:var(--hd);margin:0;text-wrap:balance}
-.cst-ul{display:block;width:min(330px,66%);height:15px;margin:8px auto 0;overflow:visible}
-.cst-ul path{fill:none;stroke:var(--coral);stroke-linecap:round}
 .cst-lead{font-family:var(--calm);font-size:clamp(15.5px,1.3vw,17.5px);line-height:1.62;
   color:var(--soft);margin:20px auto 0;max-width:28em}
 .cst-cta{display:flex;gap:10px;justify-content:center;margin-top:26px;flex-wrap:wrap}
+.cst-grad{background:linear-gradient(100deg,#E76F51,#E9A277,#79D0C4,#2A9D8F,#8FB8E2,#E76F51);
+  background-size:300% 100%;color:#0C333F;animation:flowtxt 9s linear infinite;border:0}
+.cst-grad:hover{filter:saturate(1.12)}
+@media(prefers-reduced-motion:reduce){.cst-grad{animation:none}}
 .cst-ghost{border:1.5px solid var(--line);color:var(--hd2);background:transparent}
 .cst-ghost:hover{border-color:var(--hd3)}
 
@@ -72,6 +74,12 @@ body.dark .cst-face::after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
   font-size:calc(var(--sz) * .5);letter-spacing:-.03em;line-height:1}
 .cst-face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 /* sem retrato ainda: o gradiente da marca, para o vazio parecer decidido e nao esquecido */
+.cst-mini.grad{background:linear-gradient(140deg,#E76F51,#E9A277,#79D0C4,#2A9D8F,#8FB8E2,#E76F51);
+  background-size:260% 260%;
+  /* o mesmo --del serve as duas: cada quadrado pega uma fase diferente da paleta */
+  animation:cstDrift var(--dur,15s) ease-in-out var(--del,0s) infinite,
+            cstFlow 16s ease-in-out var(--del,0s) infinite}
+@media(prefers-reduced-motion:reduce){.cst-mini.grad{animation:none}}
 .cst-face.nophoto,.cst-art.nophoto{background:linear-gradient(140deg,#E76F51,#E9A277,#79D0C4,#2A9D8F,#8FB8E2,#E76F51);
   background-size:260% 260%;animation:cstFlow 16s ease-in-out infinite}
 @keyframes cstFlow{0%,100%{background-position:0% 40%}50%{background-position:100% 60%}}
@@ -94,19 +102,10 @@ body.dark .cst-face::after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
   animation:cstDrift var(--dur,15s) ease-in-out var(--del,0s) infinite}
 body.dark .cst-mini{box-shadow:0 8px 20px rgba(0,0,0,.34)}
 
-.cst-pill{position:absolute;left:var(--x);top:var(--y);z-index:5;
-  display:inline-flex;align-items:center;gap:8px;height:33px;padding:0 14px;border-radius:10px;
-  background:var(--card);border:1px solid var(--line);box-shadow:0 6px 18px rgba(12,51,63,.07);
-  font-family:var(--display);font-size:12.5px;font-weight:600;color:var(--hd2);white-space:nowrap;
-  translate:var(--px,0px) var(--py,0px);
-  animation:cstDrift var(--dur,15s) ease-in-out var(--del,0s) infinite}
-body.dark .cst-pill{box-shadow:0 6px 18px rgba(0,0,0,.3)}
-.cst-pill i{width:6px;height:6px;border-radius:50%;background:var(--pc,var(--t500));flex:none}
-.cst-pill.tbd{background:transparent;border-style:dashed;color:var(--soft);font-weight:500}
 @keyframes cstDrift{0%,100%{transform:translate3d(0,0,0)}
   50%{transform:translate3d(var(--dx,6px),var(--dy,-14px),0)}}
 @media(prefers-reduced-motion:reduce){
-  .cst-person,.cst-mini,.cst-pill{animation:none;translate:none}
+  .cst-person,.cst-mini{animation:none;translate:none}
   .cst-person:hover .cst-face,.cst-person:focus-visible .cst-face{scale:1}
 }
 .cst-hint{text-align:center;font-family:var(--calm);font-size:14px;color:var(--soft);margin:0}
@@ -115,7 +114,7 @@ body.dark .cst-pill{box-shadow:0 6px 18px rgba(0,0,0,.3)}
   .cst-field{height:auto;padding-top:8px;padding-bottom:8px}
   .cst-net{display:none}
   .cst-centre{position:static;transform:none;width:auto;padding:26px 0 28px}
-  .cst-mini,.cst-pill{display:none}
+  .cst-mini{display:none}
   .cst-person{position:static;width:100%;height:auto;aspect-ratio:1/1;animation:none;translate:none}
   .cst-face{border-radius:18px}
   .cst-roster{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
@@ -2982,27 +2981,19 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       <div class="cst-field" id="cstField">
         <canvas class="cst-net" id="cstNet" aria-hidden="true"></canvas>
         <div class="cst-centre">
-          <h2 class="cst-h flowtxt">Meet the care team</h2>
-          <svg class="cst-ul" viewBox="0 0 360 15" preserveAspectRatio="none" aria-hidden="true">
-            <path d="M4 7.5 C 62 4.4, 143 4.0, 210 5.6 S 318 8.2, 356 6.1" stroke-width="2.6"/>
-            <path d="M348 12.2 C 286 13.6, 176 13.1, 118 12.0 S 34 11.0, 12 11.8" stroke-width="1.3" opacity=".55"/>
-          </svg>
+          <h2 class="cst-h">Meet the care team</h2>
           <p class="cst-lead">A psychiatrist, a nutrition physician and a psychologist reading the same case. Tap anyone to see how they work.</p>
           <div class="cst-cta">
-            <a class="btn btn-solid" onclick="go('wizard')" style="cursor:pointer">Start the assessment</a>
+            <a class="btn cst-grad" onclick="go('wizard')" style="cursor:pointer">Start the assessment</a>
             <a class="btn cst-ghost" onclick="location.hash='#/profissionais'" style="cursor:pointer">Join the team</a>
           </div>
         </div>
 
-        <span class="cst-mini" style="--sz:54px;--x:3%;--y:28%;--dc:#E76F51;--dur:16s;--del:-3s;--dx:-8px;--dy:12px" aria-hidden="true"></span>
-        <span class="cst-mini" style="--sz:40px;--x:62%;--y:4%;--dc:#5B7DB1;--dur:19s;--del:-7s;--dx:10px;--dy:10px" aria-hidden="true"></span>
-        <span class="cst-mini" style="--sz:32px;--x:94%;--y:38%;--dc:#2A9D8F;--dur:14s;--del:-1s;--dx:-6px;--dy:-12px" aria-hidden="true"></span>
-        <span class="cst-mini" style="--sz:46px;--x:33%;--y:90%;--dc:#0C333F;--dur:17s;--del:-9s;--dx:9px;--dy:-9px" aria-hidden="true"></span>
+        <span class="cst-mini grad" style="--sz:54px;--x:2%;--y:30%;--dur:16s;--del:-1s;--dx:-8px;--dy:12px" aria-hidden="true"></span>
+        <span class="cst-mini grad" style="--sz:40px;--x:62%;--y:3%;--dur:19s;--del:-5s;--dx:10px;--dy:10px" aria-hidden="true"></span>
+        <span class="cst-mini grad" style="--sz:32px;--x:95%;--y:36%;--dur:14s;--del:-9s;--dx:-6px;--dy:-12px" aria-hidden="true"></span>
+        <span class="cst-mini grad" style="--sz:46px;--x:33%;--y:91%;--dur:17s;--del:-13s;--dx:9px;--dy:-9px" aria-hidden="true"></span>
 
-        <span class="cst-pill" style="--x:2%;--y:3%;--pc:#2A9D8F;--dur:18s;--del:-2s;--dx:8px;--dy:10px"><i></i>18 years in psychiatry</span>
-        <span class="cst-pill" style="--x:63%;--y:84%;--pc:#E76F51;--dur:15s;--del:-6s;--dx:-9px;--dy:-11px"><i></i>Seen by more than one clinician</span>
-        <span class="cst-pill" style="--x:5%;--y:80%;--pc:#5B7DB1;--dur:20s;--del:-11s;--dx:7px;--dy:-8px"><i></i>Ketogenic therapy</span>
-        <span class="cst-pill tbd" style="--x:44%;--y:5%;--dur:16s;--del:-4s;--dx:-7px;--dy:11px">TBD — team stat</span>
 
         <div class="cst-roster" id="cstRoster"></div>
       </div>
@@ -7310,26 +7301,27 @@ routeFromHash();
     {id:'rm',mono:'RM',name:'Dr. Ricardo Mendes',crm:'CRM/SP 142.587',color:'#2A9D8F',
      role:'Psychiatrist and clinical director',
      bio:'Eighteen years putting nutrition, metabolism and medication in the same treatment plan.',
-     photo:'team/rm.jpg',
+     photo:'https://images.unsplash.com/photo-1637059824899-a441006a6875?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Metabolic psychiatry','Mood disorders','Ketogenic therapy'],
-     pos:{x:'13%',y:'13%',sz:'150px',dur:'15s',del:'-2s',dx:'-9px',dy:'13px'}},
+     pos:{x:'11%',y:'11%',sz:'186px',dur:'15s',del:'-2s',dx:'-9px',dy:'13px'}},
     {id:'cf',mono:'CF',name:'Dra. Camila Ferreira',crm:'CRM/SP 158.203',color:'#114B5F',
      role:'Psychiatrist, neurometabolism',
      bio:'Researches the link between mitochondrial dysfunction and psychiatric illness.',
-     photo:'team/cf.jpg',
+     photo:'https://images.unsplash.com/photo-1678695972687-033fa0bdbac9?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Neurometabolism','Treatment-resistant depression','Clinical research'],
-     pos:{x:'77%',y:'12%',sz:'130px',dur:'18s',del:'-8s',dx:'10px',dy:'-12px'}},
+     pos:{x:'76%',y:'10%',sz:'166px',dur:'18s',del:'-8s',dx:'10px',dy:'-12px'}},
     {id:'lt',mono:'LT',name:'Dr. Lucas Tavares',crm:'CRM/RJ 098.412',color:'#E76F51',
      role:'Nutrition physician',
      bio:'Builds the food side of every plan, from therapeutic diets to insulin resistance.',
-     photo:'team/lt.jpg',
+     photo:'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Functional nutrition','Supplementation','Metabolic health'],
-     pos:{x:'6%',y:'55%',sz:'120px',dur:'17s',del:'-5s',dx:'8px',dy:'-14px'}},
+     pos:{x:'5%',y:'54%',sz:'152px',dur:'17s',del:'-5s',dx:'8px',dy:'-14px'}},
     {id:'bl',mono:'BL',name:'Dra. Beatriz Linhares',crm:'CRP 05/67.891',color:'#5B7DB1',
      role:'Clinical psychologist',
      bio:'Keeps the change sustainable when the plan meets real life.',
+     photo:'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Behaviour change','Psychoeducation'],
-     pos:{x:'80%',y:'58%',sz:'136px',dur:'14s',del:'-10s',dx:'-8px',dy:'12px'}}
+     pos:{x:'79%',y:'56%',sz:'172px',dur:'14s',del:'-10s',dx:'-8px',dy:'12px'}}
   ];
   TEAM.forEach(function(p){ p.short=p.role; });
   function esc(v){return String(v).replace(/[&<>"]/g,function(c){
@@ -7350,9 +7342,9 @@ routeFromHash();
   var field=document.getElementById('cstField');
   var RM=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(field&&!RM&&window.matchMedia&&window.matchMedia('(min-width:821px)').matches){
-    var layers=[].slice.call(field.querySelectorAll('.cst-person,.cst-mini,.cst-pill')).map(function(el){
+    var layers=[].slice.call(field.querySelectorAll('.cst-person,.cst-mini')).map(function(el){
       return {el:el,
-        k:el.classList.contains('cst-person')?16:el.classList.contains('cst-pill')?9:24,
+        k:el.classList.contains('cst-person')?16:24,
         x:0,y:0};});
     var tx=0,ty=0,run=false;
     function step(){
@@ -7378,7 +7370,7 @@ routeFromHash();
   (function(){
     var cv=document.getElementById('cstNet'); if(!cv||!cv.getContext) return;
     var ctx=cv.getContext('2d'), W=0,H=0,DPR=1,nodes=[],raf=null,live=false;
-    var LINK=178;                       /* distancia maxima de ligacao, em px */
+    var LINK=192;                       /* distancia maxima de ligacao, em px */
     /* as mesmas paradas do gradiente do "Feed your brain": a malha percorre a paleta
        da esquerda para a direita, em vez de ser toda de uma cor so */
     var STOPS=[[231,111,81],[233,162,119],[121,208,196],[42,157,143],[143,184,226]];
@@ -7396,12 +7388,12 @@ routeFromHash();
       W=r.width; H=r.height;
       cv.width=Math.round(W*DPR); cv.height=Math.round(H*DPR);
       ctx.setTransform(DPR,0,0,DPR,0,0);
-      var n=Math.max(26,Math.min(52,Math.round(W*H/16000)));
+      var n=Math.max(34,Math.min(70,Math.round(W*H/11500)));
       nodes=[];
       for(var i=0;i<n;i++) nodes.push({
         x:Math.random()*W, y:Math.random()*H,
         vx:(Math.random()-.5)*.15, vy:(Math.random()-.5)*.15,
-        r:Math.random()<.18?2.4:1.35,
+        r:Math.random()<.18?2.8:1.6,
         ph:Math.random()*Math.PI*2, sp:.5+Math.random()*.7
       });
       return true;
@@ -7421,14 +7413,14 @@ routeFromHash();
         for(j=i+1;j<nodes.length;j++){
           b=nodes[j]; dx=a.x-b.x; dy=a.y-b.y; d=Math.sqrt(dx*dx+dy*dy);
           if(d>LINK) continue;
-          al=(1-d/LINK)*0.32*B;
+          al=(1-d/LINK)*0.44*B;
           ctx.strokeStyle='rgba('+ramp((a.x+b.x)/2/W)+','+al.toFixed(3)+')';
           ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
         }
       }
       for(i=0;i<nodes.length;i++){
         a=nodes[i];
-        al=(0.24+0.18*Math.sin(t/1000*a.sp+a.ph))*B;
+        al=(0.34+0.22*Math.sin(t/1000*a.sp+a.ph))*B;
         ctx.fillStyle='rgba('+ramp(a.x/W)+','+al.toFixed(3)+')';
         ctx.beginPath(); ctx.arc(a.x,a.y,a.r,0,6.2832); ctx.fill();
       }
@@ -7440,9 +7432,9 @@ routeFromHash();
       for(var i=0;i<nodes.length;i++){ var a=nodes[i];
         for(var j=i+1;j<nodes.length;j++){ var b=nodes[j];
           var dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy); if(d>LINK) continue;
-          ctx.strokeStyle='rgba('+ramp((a.x+b.x)/2/W)+','+((1-d/LINK)*0.32*B).toFixed(3)+')';
+          ctx.strokeStyle='rgba('+ramp((a.x+b.x)/2/W)+','+((1-d/LINK)*0.44*B).toFixed(3)+')';
           ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
-        ctx.fillStyle='rgba('+ramp(a.x/W)+','+(0.32*B).toFixed(3)+')';
+        ctx.fillStyle='rgba('+ramp(a.x/W)+','+(0.44*B).toFixed(3)+')';
         ctx.beginPath(); ctx.arc(a.x,a.y,a.r,0,6.2832); ctx.fill(); }
     }
     function start(){
