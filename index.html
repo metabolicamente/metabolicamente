@@ -32,13 +32,13 @@
 body.dark #pg-equipe{background:var(--bg)}
 
 .cst-sec{--gut:clamp(18px,3.4vw,48px);padding:clamp(14px,2.4vw,30px) 0 clamp(20px,3vw,42px)}
-.cst-field{position:relative;max-width:1240px;margin:0 auto;padding:0 var(--gut);
-  height:clamp(600px,72vw,740px)}
+.cst-field{position:relative;max-width:1340px;margin:0 auto;padding:0 var(--gut);
+  height:clamp(640px,74vw,790px)}
 .cst-net{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;
   -webkit-mask-image:radial-gradient(ellipse 42% 32% at 50% 50%,transparent 10%,#000 74%);
   mask-image:radial-gradient(ellipse 42% 32% at 50% 50%,transparent 10%,#000 74%)}
 .cst-centre{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:min(720px,84%);text-align:center;z-index:6}
+  width:min(680px,80%);text-align:center;z-index:6}
 .cst-eyebrow{font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.2em;
   text-transform:uppercase;color:var(--t500);margin:0 0 18px}
 .cst-h{font-family:var(--display);font-weight:600;font-size:clamp(36px,5.4vw,64px);
@@ -46,8 +46,11 @@ body.dark #pg-equipe{background:var(--bg)}
 .cst-lead{font-family:var(--calm);font-size:clamp(15.5px,1.3vw,17.5px);line-height:1.62;
   color:var(--soft);margin:20px auto 0;max-width:28em}
 .cst-cta{display:flex;gap:10px;justify-content:center;margin-top:26px;flex-wrap:wrap}
-.cst-grad{background:linear-gradient(100deg,#E76F51,#E9A277,#79D0C4,#2A9D8F,#8FB8E2,#E76F51);
-  background-size:300% 100%;color:#0C333F;animation:flowtxt 9s linear infinite;border:0}
+.cst-grad{color:#fff;border:0;
+  /* mesma rampa coral -> teal, so que nos tons fundos: o branco passa 4.5:1
+     em todas as paradas sem precisar de veu, que deixava o botao barrento */
+  background:linear-gradient(100deg,#C74A28,#A83F22,#14706A,#0F5A6B,#114B5F,#C74A28);
+  background-size:300% 100%;animation:flowtxt 9s linear infinite}
 .cst-grad:hover{filter:saturate(1.12)}
 @media(prefers-reduced-motion:reduce){.cst-grad{animation:none}}
 .cst-ghost{border:1.5px solid var(--line);color:var(--hd2);background:transparent}
@@ -102,8 +105,9 @@ body.dark .cst-face::after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
   animation:cstDrift var(--dur,15s) ease-in-out var(--del,0s) infinite}
 body.dark .cst-mini{box-shadow:0 8px 20px rgba(0,0,0,.34)}
 
-@keyframes cstDrift{0%,100%{transform:translate3d(0,0,0)}
-  50%{transform:translate3d(var(--dx,6px),var(--dy,-14px),0)}}
+@keyframes cstDrift{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  50%{transform:translate3d(var(--dx,6px),var(--dy,-14px),0) rotate(var(--rot,0deg))}}
 @media(prefers-reduced-motion:reduce){
   .cst-person,.cst-mini{animation:none;translate:none}
   .cst-person:hover .cst-face,.cst-person:focus-visible .cst-face{scale:1}
@@ -151,17 +155,26 @@ body.cst-open{overflow:hidden}
   border:1px dashed rgba(245,239,228,.42);border-radius:8px;padding:6px 9px;text-align:center}
 .cst-crm{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.16em;
   text-transform:uppercase;color:var(--soft);margin:0 0 12px;font-variant-numeric:tabular-nums}
-.cst-pro h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.6vw,54px);
-  line-height:1.03;letter-spacing:-.025em;margin:0;color:var(--hd)}
+.cst-pro h2{font-family:var(--display);font-weight:600;font-size:clamp(31px,4.1vw,48px);
+  line-height:1.06;letter-spacing:-.035em;margin:0;color:var(--hd)}
 .cst-role{font-family:var(--display);font-size:14px;font-weight:600;letter-spacing:.02em;
   color:var(--pc);margin:14px 0 0}
 .cst-bio{font-family:var(--calm);font-size:clamp(16px,1.3vw,18.5px);line-height:1.66;
   color:var(--soft);margin:18px 0 0;max-width:36em}
 .cst-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
-.cst-tags span{font-family:var(--display);font-size:12.5px;font-weight:600;padding:8px 14px;
-  border-radius:9px;background:var(--bg-dim);color:var(--hd2)}
-.cst-line{margin:38px 0 0;padding:24px 26px;border-left:3px solid var(--coral);
-  background:var(--bg-dim);border-radius:0 16px 16px 0}
+.cst-tags span{font-family:var(--display);font-size:12.5px;font-weight:600;padding:9px 15px;
+  border-radius:10px;color:var(--hd);border:1px solid rgba(12,51,63,.07);
+  background:linear-gradient(100deg,rgba(231,111,81,.24),rgba(233,162,119,.24),
+    rgba(121,208,196,.24),rgba(42,157,143,.24),rgba(143,184,226,.24));
+  background-size:220% 100%;background-position:var(--tp,0%) 0}
+body.dark .cst-tags span{color:var(--hd);border-color:rgba(255,255,255,.10)}
+.cst-line{margin:38px 0 0;padding:26px 28px;border-radius:16px;border:1px solid rgba(12,51,63,.07);
+  background:linear-gradient(100deg,rgba(231,111,81,.20),rgba(233,162,119,.18),
+    rgba(121,208,196,.20),rgba(42,157,143,.18),rgba(143,184,226,.22));
+  background-size:260% 100%;animation:cstWash 22s ease-in-out infinite}
+@keyframes cstWash{0%,100%{background-position:0% 0}50%{background-position:100% 0}}
+@media(prefers-reduced-motion:reduce){.cst-line{animation:none}}
+body.dark .cst-line{border-color:rgba(255,255,255,.10)}
 .cst-line p{font-family:var(--serif);font-size:clamp(18px,1.8vw,23px);line-height:1.34;
   color:var(--hd);margin:0}
 .cst-line cite{display:block;font-family:var(--sans);font-style:normal;font-size:11.5px;
@@ -184,7 +197,8 @@ body.cst-open{overflow:hidden}
   text-align:left;transition:background .16s ease}
 .cst-also-btn:hover{background:var(--bg-dim)}
 .cst-also-btn .av{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
-  font-family:var(--serif);font-size:15px;color:#fff;background:var(--ac);flex:none}
+  font-family:var(--serif);font-size:15px;color:#fff;background:var(--ac);flex:none;
+  object-fit:cover}
 .cst-also-btn b{font-family:var(--display);font-size:13.5px;font-weight:600;display:block;
   line-height:1.2;color:var(--hd2)}
 .cst-also-btn .rl{font-family:var(--sans);font-size:11.5px;color:var(--soft)}
@@ -7303,25 +7317,25 @@ routeFromHash();
      bio:'Eighteen years putting nutrition, metabolism and medication in the same treatment plan.',
      photo:'https://images.unsplash.com/photo-1637059824899-a441006a6875?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Metabolic psychiatry','Mood disorders','Ketogenic therapy'],
-     pos:{x:'11%',y:'11%',sz:'186px',dur:'15s',del:'-2s',dx:'-9px',dy:'13px'}},
+     pos:{x:'2%',y:'8%',sz:'204px',dur:'15s',del:'-2s',dx:'-11px',dy:'16px',rot:'-1.4deg'}},
     {id:'cf',mono:'CF',name:'Dra. Camila Ferreira',crm:'CRM/SP 158.203',color:'#114B5F',
      role:'Psychiatrist, neurometabolism',
      bio:'Researches the link between mitochondrial dysfunction and psychiatric illness.',
      photo:'https://images.unsplash.com/photo-1678695972687-033fa0bdbac9?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Neurometabolism','Treatment-resistant depression','Clinical research'],
-     pos:{x:'76%',y:'10%',sz:'166px',dur:'18s',del:'-8s',dx:'10px',dy:'-12px'}},
+     pos:{x:'82%',y:'6%',sz:'182px',dur:'18s',del:'-8s',dx:'13px',dy:'-15px',rot:'1.6deg'}},
     {id:'lt',mono:'LT',name:'Dr. Lucas Tavares',crm:'CRM/RJ 098.412',color:'#E76F51',
      role:'Nutrition physician',
      bio:'Builds the food side of every plan, from therapeutic diets to insulin resistance.',
      photo:'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Functional nutrition','Supplementation','Metabolic health'],
-     pos:{x:'5%',y:'54%',sz:'152px',dur:'17s',del:'-5s',dx:'8px',dy:'-14px'}},
+     pos:{x:'0%',y:'56%',sz:'170px',dur:'17s',del:'-5s',dx:'11px',dy:'-17px',rot:'1.2deg'}},
     {id:'bl',mono:'BL',name:'Dra. Beatriz Linhares',crm:'CRP 05/67.891',color:'#5B7DB1',
      role:'Clinical psychologist',
      bio:'Keeps the change sustainable when the plan meets real life.',
      photo:'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Behaviour change','Psychoeducation'],
-     pos:{x:'79%',y:'56%',sz:'172px',dur:'14s',del:'-10s',dx:'-8px',dy:'12px'}}
+     pos:{x:'85%',y:'57%',sz:'190px',dur:'14s',del:'-10s',dx:'-11px',dy:'15px',rot:'-1.5deg'}}
   ];
   TEAM.forEach(function(p){ p.short=p.role; });
   function esc(v){return String(v).replace(/[&<>"]/g,function(c){
@@ -7331,7 +7345,8 @@ routeFromHash();
   if(!roster) return;
   roster.innerHTML=TEAM.map(function(p){return '<button class="cst-person" data-cst="'+p.id+'"'
     +' aria-label="'+esc(p.name)+'" style="--dc:'+p.color+';--sz:'+p.pos.sz+';--x:'+p.pos.x
-    +';--y:'+p.pos.y+';--dur:'+p.pos.dur+';--del:'+p.pos.del+';--dx:'+p.pos.dx+';--dy:'+p.pos.dy+'">'
+    +';--y:'+p.pos.y+';--dur:'+p.pos.dur+';--del:'+p.pos.del+';--dx:'+p.pos.dx+';--dy:'+p.pos.dy
+    +';--rot:'+p.pos.rot+'">'
     +'<span class="cst-face'+(p.photo?'':' nophoto')+'">'
     +(p.photo?'<img src="'+p.photo+'" alt="" loading="lazy" decoding="async">'
              :'<span class="cst-mono" aria-hidden="true">'+p.mono+'</span>')
@@ -7468,7 +7483,8 @@ routeFromHash();
       +'<h2 id="cstName">'+esc(p.name)+'</h2>'
       +'<p class="cst-role">'+tr(p.role)+'</p>'
       +'<p class="cst-bio">'+tr(p.bio)+'</p>'
-      +'<div class="cst-tags">'+p.tags.map(function(t){return '<span>'+tr(t)+'</span>';}).join('')+'</div>'
+      +'<div class="cst-tags">'+p.tags.map(function(t,i){
+          return '<span style="--tp:'+(i*38)+'%">'+tr(t)+'</span>';}).join('')+'</div>'
       +'<div class="cst-line"><p>'+tr('A psychiatrist and a dietitian look at your case at the same time, not one after the other.')+'</p>'
       +'<cite>'+tr('How we work')+'</cite></div>'
       +'<dl class="cst-facts">'
@@ -7478,7 +7494,8 @@ routeFromHash();
       +'</dl>'
       +'<div class="cst-also"><h3>'+tr('Also on the case')+'</h3><div class="cst-also-row">'
       +others.map(function(o){return '<button class="cst-also-btn" data-cst="'+o.id+'" style="--ac:'+o.color+'">'
-        +'<span class="av" aria-hidden="true">'+o.mono+'</span>'
+        +(o.photo?'<img class="av" src="'+o.photo+'" alt="">'
+                 :'<span class="av" aria-hidden="true">'+o.mono+'</span>')
         +'<span><b>'+esc(o.name)+'</b><span class="rl">'+tr(o.short)+'</span></span></button>';}).join('')
       +'</div></div></div></article>';
   }
