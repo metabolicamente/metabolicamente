@@ -638,18 +638,64 @@ body.in-app .wabub{display:none}
 #login{display:none;background:var(--bg)}
 #login.active{display:block}
 .lg-split{position:relative;display:flex;min-height:100vh;min-height:100svh}
-.lg-form{flex:1 1 50%;display:flex;align-items:center;justify-content:center;padding:72px 5vw 56px}
-.lg-art{flex:1 1 50%;background:var(--bg-dim);border-left:1px solid var(--line);display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:30px;padding:56px 4vw;overflow:hidden}
-.lg-art p{font-family:var(--quiet);font-weight:500;font-size:clamp(19px,2vw,27px);line-height:1.22;
-  letter-spacing:-.025em;color:var(--hd);max-width:15em;text-align:center;margin:0}
-.lg-art svg{display:block;width:100%;height:auto;max-width:520px}
-.lg-hand{display:flex;flex-direction:column;align-items:center;gap:clamp(6px,1.4vw,22px);
-  width:100%;color:var(--hd3)}
-.lg-hand svg{overflow:visible}
-.lg-hand #lgBrain{max-width:clamp(190px,22vw,300px)}
-.lg-hand #lgNeuron{max-width:clamp(240px,30vw,410px);opacity:.8}
-#loginDemo{display:none;margin-top:24px;padding-top:0;border-top:none}
+.lg-form{flex:1 1 50%;display:flex;align-items:center;justify-content:center;
+  padding:56px 5vw 48px;background:#FFFFFF}
+body.dark .lg-form{background:var(--bg)}
+.lg-art{position:relative;flex:1 1 50%;background:var(--bg);border-left:1px solid var(--line);
+  display:flex;align-items:center;padding:56px clamp(34px,4.4vw,72px);overflow:hidden}
+body.dark .lg-art{background:var(--bg-dim)}
+.lg-art-in{position:relative;z-index:2;max-width:26em}
+.lg-blob{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none}
+.lg-b1{width:38vw;height:38vw;max-width:420px;max-height:420px;background:var(--coral);
+  opacity:.16;left:-9%;top:-14%}
+.lg-b2{width:34vw;height:34vw;max-width:380px;max-height:380px;background:#79D0C4;
+  opacity:.22;right:-8%;bottom:-12%}
+body.dark .lg-b1,body.dark .lg-b2{opacity:.10}
+.lg-quote{font-family:var(--serif);font-weight:400;font-size:clamp(23px,2.5vw,34px);
+  line-height:1.16;letter-spacing:-.015em;color:var(--hd);margin:0 0 16px}
+.lg-who{font-family:var(--calm);font-size:13px;line-height:1.5;color:var(--soft);margin:0}
+.lg-trust{list-style:none;margin:clamp(26px,3.4vw,44px) 0 0;padding:0;
+  display:flex;flex-direction:column;gap:13px}
+.lg-trust li{position:relative;padding-left:30px;font-family:var(--calm);font-size:14.5px;
+  line-height:1.5;color:var(--hd2)}
+.lg-trust li::before{content:'';position:absolute;left:0;top:3px;width:19px;height:19px;
+  border-radius:6px;background:var(--card);border:1px solid var(--line)}
+.lg-trust li::after{content:'';position:absolute;left:6px;top:8px;width:7px;height:4px;
+  border-left:1.8px solid var(--t500);border-bottom:1.8px solid var(--t500);transform:rotate(-45deg)}
+#loginDemo{display:none;margin-top:22px;padding-top:20px;border-top:1px solid var(--line)}
+
+/* --- login: SSO, campos, rodape --- */
+.lg-sso{display:flex;gap:10px;margin-top:4px}
+.lg-ssob{flex:1;min-height:48px;border:1.5px solid var(--line);background:var(--card);
+  border-radius:12px;font-family:var(--sans);font-size:14.5px;font-weight:600;color:var(--hd);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:border-color .15s}
+.lg-ssob:hover{border-color:var(--t500)}
+.lg-g{width:17px;height:17px;border-radius:50%;
+  background:conic-gradient(#EA4335 0 25%,#FBBC05 0 50%,#34A853 0 75%,#4285F4 0)}
+.lg-ap{font-size:17px;line-height:1}
+.lg-div{display:flex;align-items:center;gap:14px;margin:20px 0 18px;
+  font-family:var(--calm);font-size:12.5px;color:var(--soft)}
+.lg-div::before,.lg-div::after{content:'';flex:1;height:1px;background:var(--line)}
+.lg-pw{position:relative}
+.lg-pwrow{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.lg-forgot{font-size:13px;font-weight:600;color:var(--t500);cursor:pointer;margin-bottom:6px}
+.lg-forgot:hover{text-decoration:underline}
+.lg-pw input{padding-right:76px}
+.lg-show{position:absolute;right:8px;bottom:8px;min-height:32px;padding:0 12px;
+  border:0;border-radius:8px;background:var(--bg-dim);font-family:var(--sans);font-size:12.5px;
+  font-weight:600;color:var(--hd2);cursor:pointer}
+.lg-show:hover{background:var(--line)}
+.lg-keep{display:flex;gap:10px;align-items:flex-start;margin:4px 0 20px;cursor:pointer}
+.lg-keep input{width:19px;height:19px;flex:none;margin:1px 0 0;accent-color:var(--t500)}
+.lg-keep span{font-family:var(--calm);font-size:13.5px;line-height:1.45;color:var(--soft)}
+.lg-alt{font-family:var(--calm);font-size:14px;color:var(--soft);margin:20px 0 0;text-align:center}
+.lg-alt b{color:var(--t500);font-family:var(--sans);font-weight:700;cursor:pointer}
+.lg-priv{display:flex;gap:9px;align-items:flex-start;margin-top:24px;padding-top:18px;
+  border-top:1px solid var(--line)}
+.lg-priv .ic{font-size:14px;color:var(--soft);margin-top:1px;flex:none}
+.lg-priv p{font-family:var(--calm);font-size:12.5px;line-height:1.5;color:var(--soft);margin:0}
+.lg-priv b{font-weight:500;text-decoration:underline;cursor:pointer}
+.lg-demolink{font-weight:700;color:var(--hd2);cursor:pointer}
 .login-kick{font-size:11.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
   color:var(--t500);margin:26px 0 8px}
 .lg-art.role{background:var(--bg);border-left:1px solid var(--line)}
@@ -669,19 +715,23 @@ body.in-app .wabub{display:none}
 .lg-roles button:hover{border-color:var(--t500);color:var(--hd2)}
 .lg-roles button.on{background:var(--t800);border-color:var(--t800);color:#F5EFE4}
 @media(max-width:900px){.lg-roles{margin-top:18px}}
-.login-card{background:transparent;border-radius:0;padding:0;max-width:390px;width:100%;box-shadow:none}
+.login-card{background:transparent;border-radius:0;padding:0;max-width:400px;width:100%;box-shadow:none}
 #login .login-card{position:static}
-#login .login-card h1{font-family:var(--quiet);font-weight:500;font-size:clamp(30px,3.2vw,42px);
-  line-height:1.02;letter-spacing:-.035em;color:var(--hd);margin:26px 0 22px}
-#login .login-sub{display:none}
-#login .login-btn{background:var(--t800);border-radius:99px;padding:14px;margin-top:12px}
-#login .login-btn:hover{background:var(--t900)}
-@media(max-width:860px){
+#login .login-card h1{font-family:var(--quiet);font-weight:500;font-size:clamp(28px,3vw,38px);
+  line-height:1.04;letter-spacing:-.035em;color:var(--hd);margin:24px 0 6px}
+#login .login-sub{display:block;font-family:var(--calm);font-size:15px;color:var(--soft);margin:0 0 22px}
+#login .login-btn{background:var(--t900);border-radius:99px;padding:15px;margin-top:2px;min-height:52px}
+#login .login-btn:hover{background:var(--t800)}
+body.dark #login .login-btn{background:var(--t500);color:#06232B}
+body.dark #login .login-btn:hover{background:#35B3A3}
+#login .lfield input{min-height:50px;font-size:15.5px;border-radius:12px}
+#login .lfield label{font-size:13.5px;color:var(--hd2);margin-bottom:7px}
+@media(max-width:900px){
   .lg-art{display:none}
-  .lg-form{padding:64px 6vw 48px}
-  #login .login-sub{display:block;margin-top:-8px}
-  #login .login-card h1{margin-bottom:12px}
+  .lg-form{padding:52px 6vw 44px}
 }
+/* telas baixas: nao centrar, senao o botao cai abaixo da dobra */
+@media(max-height:760px){.lg-form{align-items:flex-start}}
 .login-card .logo{margin-bottom:24px;font-size:20px}
 .login-card h1{font-size:25px;color:var(--hd);margin-bottom:8px}
 .login-sub{color:var(--soft);font-size:14px;margin-bottom:24px}
@@ -3866,13 +3916,44 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
 <!-- ================= LOGIN ================= -->
 <div class="screen" id="login">
   <div class="lg-split">
+  <!-- coluna do formulario primeiro no DOM: teclado e leitor de tela chegam nela antes da arte -->
   <div class="lg-form">
   <div class="login-card">
     <a class="logo" onclick="goHome()" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>Metabolicamente</a>
-    <p class="login-kick">Prototype</p>
-    <h1>Choose a view</h1>
-    <div class="login-sub">Pick which side of the platform you want to explore.</div>
-    <div id="loginDemo" class="show">
+    <h1>Welcome back</h1>
+    <p class="login-sub">Pick up where you left off.</p>
+
+    <div class="lg-sso">
+      <button type="button" class="lg-ssob" onclick="toast('Demo prototype — SSO not wired')"><span class="lg-g" aria-hidden="true"></span>Google</button>
+      <button type="button" class="lg-ssob" onclick="toast('Demo prototype — SSO not wired')"><span class="lg-ap" aria-hidden="true">&#63743;</span>Apple</button>
+    </div>
+    <div class="lg-div"><span>or use your email</span></div>
+
+    <form onsubmit="event.preventDefault();go('patient')">
+      <div class="lfield">
+        <label for="lgEmail">Email</label>
+        <input id="lgEmail" name="email" type="email" autocomplete="username"
+               inputmode="email" spellcheck="false" autocapitalize="none" placeholder="you@email.com">
+      </div>
+      <div class="lfield lg-pw">
+        <div class="lg-pwrow">
+          <label for="lgPass">Password</label>
+          <a class="lg-forgot" onclick="toast('Demo prototype — reset not wired')">Forgot password?</a>
+        </div>
+        <input id="lgPass" name="password" type="password" autocomplete="current-password">
+        <button type="button" class="lg-show" id="lgShow" onclick="lgTogglePw()" aria-label="Show password">Show</button>
+      </div>
+      <label class="lg-keep" for="lgKeep">
+        <input type="checkbox" id="lgKeep">
+        <span>Stay signed in on this device — not on a shared computer.</span>
+      </label>
+      <button class="login-btn" type="submit">Log in</button>
+    </form>
+
+    <p class="lg-alt">New here? <b onclick="goAccount()">Create an account</b></p>
+
+    <div id="loginDemo">
+      <p class="login-kick">Prototype views</p>
       <button class="role-btn" onclick="go('patient')">
         <div class="av" style="background:var(--coral)"><svg viewBox="0 0 24 24"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
         <b>Patient view</b>
@@ -3890,15 +3971,27 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
         <b>Professional in certification</b>
       </button>
     </div>
-    <div class="login-foot">Demo prototype · fictional data only</div>
-    <span class="back-site" onclick="go('site')">← Back to site</span>
+
+    <div class="lg-priv">
+      <span class="ic" data-icon="lock" aria-hidden="true"></span>
+      <p>Your health data is encrypted and never sold. <b onclick="toast('TBD')">Privacy</b> · <b onclick="toast('TBD')">Terms</b> · <b onclick="toast('TBD')">Support</b></p>
+    </div>
+    <div class="login-foot">Demo prototype · fictional data only · <b class="lg-demolink" onclick="toggleLoginDemo()">Demo views</b></div>
+    <span class="back-site" onclick="go('site')">&#8592; Back to site</span>
   </div>
   </div>
-  <aside class="lg-art">
-    <p>Caring for your mind by caring for your metabolism.</p>
-    <div class="lg-hand">
-      <svg id="lgBrain" aria-hidden="true"></svg>
-      <svg id="lgNeuron" aria-hidden="true"></svg>
+
+  <aside class="lg-art" aria-label="About Metabolicamente">
+    <span class="lg-blob lg-b1" aria-hidden="true"></span>
+    <span class="lg-blob lg-b2" aria-hidden="true"></span>
+    <div class="lg-art-in">
+      <blockquote class="lg-quote">The first appointment was the first time anyone asked what I ate.</blockquote>
+      <p class="lg-who">Illustrative quote for the prototype &#183; real patient stories TBD</p>
+      <ul class="lg-trust">
+        <li>A psychiatrist and a dietitian on the same case</li>
+        <li>Encrypted records, never sold or shared</li>
+        <li>Everything online, including the follow-ups</li>
+      </ul>
     </div>
   </aside>
   </div>
@@ -6683,6 +6776,16 @@ function cFilter(){
 /* --- criar conta: mesma tela de login, em modo cadastro --- */
 /* ============ LOGIN: uma tela so, escolha de visao ============ */
 function goLogin(){ go('login'); }
+function toggleLoginDemo(){ const d=document.getElementById('loginDemo');
+  if(d) d.style.display = (d.style.display==='block') ? 'none' : 'block'; }
+function lgTogglePw(){
+  const i=document.getElementById('lgPass'), b=document.getElementById('lgShow');
+  if(!i||!b) return;
+  const hidden = i.type==='password';
+  i.type = hidden ? 'text' : 'password';
+  b.textContent = hidden ? 'Hide' : 'Show';
+  b.setAttribute('aria-label', hidden ? 'Hide password' : 'Show password');
+}
 function goAccount(){ go('login'); }
 
 /* ---- gate: dentro do programa, qualquer clique pede a conta ---- */
@@ -7991,6 +8094,16 @@ routeFromHash();
     "The one we are asked before anything else.":"A que perguntam antes de qualquer outra.",
     "The first question":"A primeira pergunta",
     "Frequently Asked Questions":"Perguntas frequentes",
+    "Welcome back":"Bem-vindo de volta","Pick up where you left off.":"Continue de onde parou.",
+    "or use your email":"ou use seu e-mail","Email":"E-mail","Password":"Senha",
+    "Forgot password?":"Esqueceu a senha?","Show":"Mostrar","Hide":"Ocultar",
+    "Stay signed in on this device — not on a shared computer.":"Continuar conectado neste dispositivo — nao em um computador compartilhado.",
+    "Prototype views":"Visoes do protótipo",
+    "Your health data is encrypted and never sold.":"Seus dados de saude sao criptografados e nunca vendidos.",
+    "Illustrative quote for the prototype · real patient stories TBD":"Citacao ilustrativa do protótipo · historias reais TBD",
+    "A psychiatrist and a dietitian on the same case":"Um psiquiatra e uma nutricionista no mesmo caso",
+    "Encrypted records, never sold or shared":"Registros criptografados, nunca vendidos ou compartilhados",
+    "Everything online, including the follow-ups":"Tudo online, inclusive os retornos",
     "Do I have to stop my medication?":"Preciso parar meu medicamento?",
     "Do I have to stop my medication?":"Preciso parar o meu remédio?",
     "No, and never on your own. The metabolic approach is complementary to your psychiatric treatment, not a replacement for it. Any change of dose is your psychiatrist\"s decision, made gradually and only when it is clinically appropriate. Plenty of people improve and stay on medication.":"Não, e nunca por conta própria. A abordagem metabólica é complementar ao seu tratamento psiquiátrico, não um substituto dele. Qualquer mudança de dose é decisão do seu psiquiatra, feita de forma gradual e só quando for clinicamente apropriado. Muita gente melhora e segue medicada.",
