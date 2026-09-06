@@ -63,13 +63,19 @@ body.dark #pg-equipe{background:var(--bg)}
   transition:scale .34s cubic-bezier(.22,.7,.28,1),box-shadow .34s ease}
 body.dark .cst-face{box-shadow:0 14px 34px rgba(0,0,0,.44)}
 .cst-face::after{content:"";position:absolute;inset:0;border-radius:inherit;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+  box-shadow:inset 0 0 0 1px rgba(12,51,63,.10)}
+body.dark .cst-face::after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
 .cst-person:hover .cst-face,.cst-person:focus-visible .cst-face{scale:1.045;
   box-shadow:0 22px 52px rgba(12,51,63,.2)}
 .cst-mono{position:absolute;inset:0;display:grid;place-items:center;
   font-family:var(--serif);font-weight:500;color:#fff;opacity:.34;
   font-size:calc(var(--sz) * .5);letter-spacing:-.03em;line-height:1}
 .cst-face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* sem retrato ainda: o gradiente da marca, para o vazio parecer decidido e nao esquecido */
+.cst-face.nophoto,.cst-art.nophoto{background:linear-gradient(140deg,#E76F51,#E9A277,#79D0C4,#2A9D8F,#8FB8E2,#E76F51);
+  background-size:260% 260%;animation:cstFlow 16s ease-in-out infinite}
+@keyframes cstFlow{0%,100%{background-position:0% 40%}50%{background-position:100% 60%}}
+@media(prefers-reduced-motion:reduce){.cst-face.nophoto,.cst-art.nophoto{animation:none}}
 .cst-face::before{content:"";position:absolute;left:0;right:0;bottom:0;height:48%;
   background:linear-gradient(to top,rgba(7,34,44,.58),transparent);opacity:0;
   transition:opacity .34s ease;z-index:1}
@@ -138,6 +144,7 @@ body.cst-open{overflow:hidden}
   box-shadow:0 18px 46px rgba(12,51,63,.13);animation:cstPop .42s cubic-bezier(.25,.85,.3,1) both}
 @keyframes cstPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:none}}
 @media(max-width:840px){.cst-art{max-width:220px}}
+.cst-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 .cst-art .cst-mono{position:absolute;inset:0;display:grid;place-items:center;
   font-family:var(--serif);font-weight:500;font-size:130px;color:#fff;opacity:.34;letter-spacing:-.03em}
 .cst-slot{position:absolute;left:14px;right:14px;bottom:14px;font-family:var(--sans);font-size:10.5px;
@@ -868,11 +875,11 @@ body.intro-done .hq-art{opacity:1}
 .hq-cue svg{width:22px;height:22px;stroke:var(--soft);fill:none;stroke-width:1.6;
   stroke-linecap:round;stroke-linejoin:round;animation:hqbob 2.6s ease-in-out infinite}
 @keyframes hqbob{0%,100%{transform:translateY(-3px);opacity:.32}50%{transform:translateY(3px);opacity:.72}}
-@media(prefers-reduced-motion:reduce){.flowtxt{animation:none}}
 .flowtxt{background:linear-gradient(100deg,#E76F51,#E9A277,#79D0C4,#2A9D8F,#8FB8E2,#E76F51);
   background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;
   animation:flowtxt 9s linear infinite}
 @keyframes flowtxt{to{background-position:300% 0}}
+@media(prefers-reduced-motion:reduce){.flowtxt{animation:none}}
 @media(max-width:900px){
   .hero-quiet .hq-grid{grid-template-columns:1fr;padding:56px 5vw 0;min-height:0;gap:26px}
   .hero-quiet p{max-width:none}
@@ -2975,8 +2982,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       <div class="cst-field" id="cstField">
         <canvas class="cst-net" id="cstNet" aria-hidden="true"></canvas>
         <div class="cst-centre">
-          <p class="cst-eyebrow">About us</p>
-          <h2 class="cst-h">Meet the care team</h2>
+          <h2 class="cst-h flowtxt">Meet the care team</h2>
           <svg class="cst-ul" viewBox="0 0 360 15" preserveAspectRatio="none" aria-hidden="true">
             <path d="M4 7.5 C 62 4.4, 143 4.0, 210 5.6 S 318 8.2, 356 6.1" stroke-width="2.6"/>
             <path d="M348 12.2 C 286 13.6, 176 13.1, 118 12.0 S 34 11.0, 12 11.8" stroke-width="1.3" opacity=".55"/>
@@ -2996,7 +3002,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
         <span class="cst-pill" style="--x:2%;--y:3%;--pc:#2A9D8F;--dur:18s;--del:-2s;--dx:8px;--dy:10px"><i></i>18 years in psychiatry</span>
         <span class="cst-pill" style="--x:63%;--y:84%;--pc:#E76F51;--dur:15s;--del:-6s;--dx:-9px;--dy:-11px"><i></i>Seen by more than one clinician</span>
         <span class="cst-pill" style="--x:5%;--y:80%;--pc:#5B7DB1;--dur:20s;--del:-11s;--dx:7px;--dy:-8px"><i></i>Ketogenic therapy</span>
-        <span class="cst-pill tbd" style="--x:80%;--y:4%;--dur:16s;--del:-4s;--dx:-7px;--dy:11px">TBD — team stat</span>
+        <span class="cst-pill tbd" style="--x:44%;--y:5%;--dur:16s;--del:-4s;--dx:-7px;--dy:11px">TBD — team stat</span>
 
         <div class="cst-roster" id="cstRoster"></div>
       </div>
@@ -7304,16 +7310,19 @@ routeFromHash();
     {id:'rm',mono:'RM',name:'Dr. Ricardo Mendes',crm:'CRM/SP 142.587',color:'#2A9D8F',
      role:'Psychiatrist and clinical director',
      bio:'Eighteen years putting nutrition, metabolism and medication in the same treatment plan.',
+     photo:'team/rm.jpg',
      tags:['Metabolic psychiatry','Mood disorders','Ketogenic therapy'],
      pos:{x:'13%',y:'13%',sz:'150px',dur:'15s',del:'-2s',dx:'-9px',dy:'13px'}},
     {id:'cf',mono:'CF',name:'Dra. Camila Ferreira',crm:'CRM/SP 158.203',color:'#114B5F',
      role:'Psychiatrist, neurometabolism',
      bio:'Researches the link between mitochondrial dysfunction and psychiatric illness.',
+     photo:'team/cf.jpg',
      tags:['Neurometabolism','Treatment-resistant depression','Clinical research'],
      pos:{x:'77%',y:'12%',sz:'130px',dur:'18s',del:'-8s',dx:'10px',dy:'-12px'}},
     {id:'lt',mono:'LT',name:'Dr. Lucas Tavares',crm:'CRM/RJ 098.412',color:'#E76F51',
      role:'Nutrition physician',
      bio:'Builds the food side of every plan, from therapeutic diets to insulin resistance.',
+     photo:'team/lt.jpg',
      tags:['Functional nutrition','Supplementation','Metabolic health'],
      pos:{x:'6%',y:'55%',sz:'120px',dur:'17s',del:'-5s',dx:'8px',dy:'-14px'}},
     {id:'bl',mono:'BL',name:'Dra. Beatriz Linhares',crm:'CRP 05/67.891',color:'#5B7DB1',
@@ -7331,7 +7340,9 @@ routeFromHash();
   roster.innerHTML=TEAM.map(function(p){return '<button class="cst-person" data-cst="'+p.id+'"'
     +' aria-label="'+esc(p.name)+'" style="--dc:'+p.color+';--sz:'+p.pos.sz+';--x:'+p.pos.x
     +';--y:'+p.pos.y+';--dur:'+p.pos.dur+';--del:'+p.pos.del+';--dx:'+p.pos.dx+';--dy:'+p.pos.dy+'">'
-    +'<span class="cst-face"><span class="cst-mono" aria-hidden="true">'+p.mono+'</span>'
+    +'<span class="cst-face'+(p.photo?'':' nophoto')+'">'
+    +(p.photo?'<img src="'+p.photo+'" alt="" loading="lazy" decoding="async">'
+             :'<span class="cst-mono" aria-hidden="true">'+p.mono+'</span>')
     +'<span class="cst-plate"><b>'+esc(p.name)+'</b><span>'+esc(p.short)+'</span></span></span></button>';}).join('');
 
   /* Parallax: alvo do ponteiro + interpolacao a cada quadro, escrito em `translate`
@@ -7368,11 +7379,17 @@ routeFromHash();
     var cv=document.getElementById('cstNet'); if(!cv||!cv.getContext) return;
     var ctx=cv.getContext('2d'), W=0,H=0,DPR=1,nodes=[],raf=null,live=false;
     var LINK=178;                       /* distancia maxima de ligacao, em px */
-    function palette(){
-      return document.body.classList.contains('dark')
-        ? {line:'143,193,187',dot:'143,193,187',spark:'231,111,81'}
-        : {line:'42,157,143', dot:'42,157,143', spark:'231,111,81'};
+    /* as mesmas paradas do gradiente do "Feed your brain": a malha percorre a paleta
+       da esquerda para a direita, em vez de ser toda de uma cor so */
+    var STOPS=[[231,111,81],[233,162,119],[121,208,196],[42,157,143],[143,184,226]];
+    function ramp(t){
+      t=t<0?0:t>1?1:t;
+      var f=t*(STOPS.length-1), i=Math.min(STOPS.length-2,Math.floor(f)), k=f-i;
+      var a=STOPS[i], b=STOPS[i+1];
+      return Math.round(a[0]+(b[0]-a[0])*k)+','+Math.round(a[1]+(b[1]-a[1])*k)
+           +','+Math.round(a[2]+(b[2]-a[2])*k);
     }
+    function boost(){ return document.body.classList.contains('dark')?1.5:1; }
     function build(){
       var r=cv.getBoundingClientRect(); if(!r.width||!r.height) return false;
       DPR=Math.min(2,window.devicePixelRatio||1);
@@ -7391,7 +7408,7 @@ routeFromHash();
     }
     function frame(t){
       if(!live) return;
-      var c=palette(); ctx.clearRect(0,0,W,H);
+      var B=boost(); ctx.clearRect(0,0,W,H);
       var i,j,a,b,dx,dy,d,al;
       for(i=0;i<nodes.length;i++){
         a=nodes[i]; a.x+=a.vx; a.y+=a.vy;
@@ -7404,28 +7421,28 @@ routeFromHash();
         for(j=i+1;j<nodes.length;j++){
           b=nodes[j]; dx=a.x-b.x; dy=a.y-b.y; d=Math.sqrt(dx*dx+dy*dy);
           if(d>LINK) continue;
-          al=(1-d/LINK)*0.26;
-          ctx.strokeStyle='rgba('+c.line+','+al.toFixed(3)+')';
+          al=(1-d/LINK)*0.32*B;
+          ctx.strokeStyle='rgba('+ramp((a.x+b.x)/2/W)+','+al.toFixed(3)+')';
           ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
         }
       }
       for(i=0;i<nodes.length;i++){
         a=nodes[i];
-        al=0.20+0.16*Math.sin(t/1000*a.sp+a.ph);
-        ctx.fillStyle='rgba('+c.dot+','+al.toFixed(3)+')';
+        al=(0.24+0.18*Math.sin(t/1000*a.sp+a.ph))*B;
+        ctx.fillStyle='rgba('+ramp(a.x/W)+','+al.toFixed(3)+')';
         ctx.beginPath(); ctx.arc(a.x,a.y,a.r,0,6.2832); ctx.fill();
       }
       raf=requestAnimationFrame(frame);
     }
     function still(){                    /* uma passada estatica, sem movimento */
       if(!build()) return;
-      var c=palette(); ctx.clearRect(0,0,W,H); ctx.lineWidth=1;
+      var B=boost(); ctx.clearRect(0,0,W,H); ctx.lineWidth=1;
       for(var i=0;i<nodes.length;i++){ var a=nodes[i];
         for(var j=i+1;j<nodes.length;j++){ var b=nodes[j];
           var dx=a.x-b.x,dy=a.y-b.y,d=Math.sqrt(dx*dx+dy*dy); if(d>LINK) continue;
-          ctx.strokeStyle='rgba('+c.line+','+((1-d/LINK)*0.26).toFixed(3)+')';
+          ctx.strokeStyle='rgba('+ramp((a.x+b.x)/2/W)+','+((1-d/LINK)*0.32*B).toFixed(3)+')';
           ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); }
-        ctx.fillStyle='rgba('+c.dot+',0.26)';
+        ctx.fillStyle='rgba('+ramp(a.x/W)+','+(0.32*B).toFixed(3)+')';
         ctx.beginPath(); ctx.arc(a.x,a.y,a.r,0,6.2832); ctx.fill(); }
     }
     function start(){
@@ -7450,8 +7467,11 @@ routeFromHash();
     var others=TEAM.filter(function(o){return o.id!==p.id;});
     return '<button class="cst-back" data-cst-back="1">← '+tr('All of the team')+'</button>'
       +'<article class="cst-pro" style="--pc:'+p.color+'">'
-      +'<div class="cst-art"><span class="cst-mono" aria-hidden="true">'+p.mono+'</span>'
-      +'<span class="cst-slot">'+tr('Photo slot')+'</span></div><div>'
+      +'<div class="cst-art'+(p.photo?'':' nophoto')+'">'
+      +(p.photo?'<img src="'+p.photo+'" alt="">'
+               :'<span class="cst-mono" aria-hidden="true">'+p.mono+'</span>'
+                +'<span class="cst-slot">'+tr('Photo slot')+'</span>')
+      +'</div><div>'
       +'<p class="cst-crm">'+esc(p.crm)+'</p>'
       +'<h2 id="cstName">'+esc(p.name)+'</h2>'
       +'<p class="cst-role">'+tr(p.role)+'</p>'
