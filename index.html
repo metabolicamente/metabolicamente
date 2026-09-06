@@ -2369,7 +2369,7 @@ body.dark .pyr-vs{color:#6f8a8f}
 .pyr-svg{width:100%;max-width:420px;margin:0 auto;display:block;overflow:visible;color:var(--hd2)}
 .pyr-scene{display:block;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
 .pyr-scene::-webkit-scrollbar{display:none}
-.pyr-wide{display:block;width:100%;min-width:860px;max-width:1180px;margin:0 auto;color:var(--hd2)}
+.pyr-wide{display:block;width:100%;min-width:860px;max-width:1400px;margin:0 auto;color:var(--hd2)}
 .wm-divider{display:flex;justify-content:center;padding:clamp(18px,3vw,34px) 0 clamp(4px,1vw,10px);color:var(--line)}
 .wm-divider svg{width:168px;height:12px;display:block}
 .wm-root{padding:clamp(10px,2vw,22px) var(--gut) clamp(20px,3vw,38px)}
@@ -2382,7 +2382,7 @@ body.dark .pyr-vs{color:#6f8a8f}
 .wm-raw{padding:clamp(14px,2.4vw,30px) var(--gut) clamp(26px,4vw,52px)}
 .wm-brain{display:block;width:100%;max-width:clamp(300px,42vw,520px);margin:0 auto clamp(8px,1.6vw,20px);
   color:var(--hd2)}
-.wm-raw-in{max-width:min(1180px,92vw);margin:0 auto;text-align:center}
+.wm-raw-in{max-width:min(1320px,92vw);margin:0 auto;text-align:center}
 /* mesmo tipo do heroi da home ("Feed your brain. Change your mind.") */
 .wm-raw-in h2{font-family:var(--quiet);font-size:clamp(26px,3.9vw,52px);line-height:1.06;
   letter-spacing:-.04em;color:var(--hd);margin:0 auto 22px;font-weight:500;
@@ -2441,7 +2441,7 @@ body.dark .pyr-vs{color:#6f8a8f}
 @media(max-width:880px){.wm-panel-cta{grid-template-columns:1fr;gap:26px}}
 /* --- BLOCO 7: como a cetona age --- */
 .wm-ket{padding:clamp(16px,2.6vw,32px) var(--gut) clamp(30px,4.4vw,60px)}
-.wm-ket-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:.94fr 1.06fr;
+.wm-ket-in{max-width:var(--wmax);margin:0 auto;display:grid;grid-template-columns:.94fr 1.06fr;
   gap:clamp(22px,3.6vw,58px);align-items:center}
 .mito-svg{width:100%;max-width:520px;display:block;margin:0 auto;color:var(--hd2)}
 .wm-ket h2{font-family:var(--serif);font-size:clamp(28px,3.7vw,46px);line-height:1.08;
@@ -2475,9 +2475,9 @@ body.dark .pyr-vs{color:#6f8a8f}
   margin:0 auto;max-width:44em}
 .wm-keto-end{font-family:var(--serif);font-size:clamp(20px,2.2vw,28px);line-height:1.28;
   letter-spacing:-.012em;color:var(--hd);margin:clamp(18px,2.6vw,34px) auto 0;max-width:26em}
-.wm-three-lead{max-width:1020px;margin:0 auto 20px;text-align:center;font-size:17px;
+.wm-three-lead{max-width:1240px;margin:0 auto 20px;text-align:center;font-size:17px;
   line-height:1.5;color:var(--soft)}
-.wm-three{max-width:1020px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);
+.wm-three{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);
   gap:clamp(20px,3.4vw,52px)}
 .wm-c{border-top:2px solid var(--t100);padding-top:18px}
 .wm-c .n{display:block;font-family:var(--display);font-size:12px;font-weight:700;
@@ -2485,7 +2485,7 @@ body.dark .pyr-vs{color:#6f8a8f}
 .wm-c h3{font-family:var(--serif);font-size:clamp(22px,2.4vw,31px);line-height:1.1;
   color:var(--hd);margin:0 0 10px;font-weight:400}
 .wm-c p{font-size:15.5px;line-height:1.66;color:var(--soft);margin:0}
-.wm-foods{display:block;width:100%;max-width:1020px;margin:clamp(26px,4vw,52px) auto 0;
+.wm-foods{display:block;width:100%;max-width:1240px;margin:clamp(26px,4vw,52px) auto 0;
   color:var(--hd2)}
 @media(max-width:820px){.wm-three{grid-template-columns:1fr;gap:22px}}
 body.dark .pyr-svg{color:#EDE6D8}
@@ -2495,11 +2495,11 @@ body.dark .pyr-svg{color:#EDE6D8}
 /* ================= WHY METABOLISM MATTERS =================
    Mesma linguagem da Content: gutter full-bleed, cantos generosos,
    tipografia grande. Fundo claro, seguindo o tema do site.        */
-#pg-tratamento{--gut:clamp(18px,3.4vw,48px)}
+#pg-tratamento{--gut:clamp(18px,3.4vw,48px);--wmax:1560px}
 
 /* --- BLOCO 1: abertura com neuronio --- */
 .wm-open{padding:clamp(34px,5vw,72px) var(--gut) clamp(16px,2.6vw,34px)}
-.wm-open-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.02fr .98fr;
+.wm-open-in{max-width:var(--wmax);margin:0 auto;display:grid;grid-template-columns:1.02fr .98fr;
   gap:clamp(20px,3.6vw,60px);align-items:center}
 .wm-open-h{font-family:var(--display);font-size:clamp(33px,4.7vw,60px);line-height:1.04;
   letter-spacing:-.03em;color:var(--hd);margin:0 0 22px;font-weight:600}
@@ -2519,7 +2519,7 @@ body.dark .pyr-svg{color:#EDE6D8}
 
 /* --- BLOCO 2: energia --- */
 .wm-en{padding:clamp(30px,4.4vw,60px) var(--gut) clamp(24px,3.4vw,46px)}
-.wm-en-in{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:.92fr 1.08fr;
+.wm-en-in{max-width:var(--wmax);margin:0 auto;display:grid;grid-template-columns:.92fr 1.08fr;
   gap:clamp(22px,3.6vw,58px);align-items:center}
 .wm-en-h{font-family:var(--serif);font-size:clamp(28px,3.7vw,46px);line-height:1.08;
   letter-spacing:-.018em;color:var(--hd);margin:0 0 18px;font-weight:400}
@@ -2531,7 +2531,7 @@ body.dark .pyr-svg{color:#EDE6D8}
 .wm-m h3{font-family:var(--sans);font-size:14px;font-weight:700;letter-spacing:.04em;
   color:var(--t500);margin:0 0 6px}
 .wm-m p{font-size:15px;line-height:1.66;color:var(--soft);margin:0;max-width:44em}
-.wm-en-out{max-width:1240px;margin:clamp(30px,4vw,54px) auto 0;padding-top:clamp(24px,3vw,38px);
+.wm-en-out{max-width:var(--wmax);margin:clamp(30px,4vw,54px) auto 0;padding-top:clamp(24px,3vw,38px);
   border-top:1px solid var(--line);text-align:center}
 .wm-en-states{font-size:clamp(15.5px,1.3vw,18px);line-height:1.6;color:var(--soft);
   margin:0 auto 14px;max-width:34em}
@@ -2542,6 +2542,41 @@ body.dark .pyr-svg{color:#EDE6D8}
   .cell-svg{max-width:420px}
 }
 
+/* ---- CENA FIXA: o desenho fica parado, o texto passa por ele ----
+   Os desenhos e as animacoes sao exatamente os de antes: so mudou o fluxo. */
+.wm-scene{padding:clamp(20px,3vw,40px) var(--gut) clamp(30px,4.4vw,60px)}
+.wm-scene-in{max-width:var(--wmax);margin:0 auto;display:grid;
+  gap:clamp(28px,5vw,84px);align-items:start}
+.wm-scene-in.artright{grid-template-columns:1.04fr .96fr}
+.wm-scene-in.artleft{grid-template-columns:.96fr 1.04fr}
+.wm-scene-in.artleft .wm-scene-art{order:-1}
+.wm-scene-art{position:sticky;top:24vh;align-self:start}
+.wm-stage{display:grid}
+.wm-frame{grid-area:1/1;opacity:0;pointer-events:none;
+  transition:opacity .55s ease,transform .75s cubic-bezier(.3,.9,.3,1);transform:translateY(10px)}
+.wm-frame.on{opacity:1;pointer-events:auto;transform:none}
+.wm-step{min-height:70vh;display:flex;flex-direction:column;justify-content:center;
+  padding:10px 0;opacity:.3;transition:opacity .45s ease}
+.wm-step.on{opacity:1}
+.wm-step:last-child{min-height:56vh}
+/* No telefone o desenho fica preso no topo e o texto passa por baixo dele. */
+@media(max-width:900px){
+  .wm-scene-in,.wm-scene-in.artright,.wm-scene-in.artleft{grid-template-columns:1fr;gap:0}
+  .wm-scene-in.artright .wm-scene-art,.wm-scene-in.artleft .wm-scene-art{order:-1}
+  .wm-scene-art{position:sticky;top:70px;z-index:3;background:#FFFFFF;
+    margin:0 calc(var(--gut) * -1);padding:8px var(--gut) 12px;
+    border-bottom:1px solid var(--line)}
+  body.dark .wm-scene-art{background:var(--bg)}
+  .wm-stage{max-width:300px;margin:0 auto}
+  .wm-frame{transform:none}
+  .wm-scene .neuron-svg,.wm-scene .cell-svg,.wm-scene .mito-svg{max-width:300px}
+  .wm-step{min-height:56vh;padding:16px 0}
+  .wm-step:last-child{min-height:40vh}
+}
+@media(prefers-reduced-motion:reduce){
+  .wm-step{opacity:1;transition:none}
+  .wm-frame{transition:opacity .2s ease;transform:none}
+}
 .wm-open-art.reveal{transition-delay:.15s}
 @media(max-width:880px){
   .wm-open-in{grid-template-columns:1fr;gap:26px}
@@ -3433,37 +3468,62 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
   <!-- ============ PAGE: HOW IT WORKS (TREATMENT JOURNEY) ============ -->
   <div class="subpage" id="pg-tratamento">
     <!-- ---------- BLOCO 1: abertura ---------- -->
-    <section class="wm-open">
-      <h1 class="sr-only">Metabolic Psychiatry</h1>
-      <div class="wm-open-in">
-        <div class="wm-open-txt reveal">
-          <h2 class="wm-open-h">We stopped thinking about the root of the problem.</h2>
-          <p class="wm-open-p">Psychiatry measures your neurotransmitter imbalance and treats the imbalance. But the question left out is the only one that matters:</p>
-          <p class="wm-open-q"><span class="uwrap">What caused the imbalance?<svg class="uw-svg" id="qUnderline" aria-hidden="true"></svg></span></p>
-        </div>
-        <div class="wm-open-art reveal"><svg class="neuron-svg" id="neuron1" aria-hidden="true"></svg></div>
-      </div>
-    </section>
+
 
     <!-- ---------- BLOCO 2: energia ---------- -->
-    <section class="wm-en">
-      <div class="wm-en-in">
-        <div class="wm-en-art reveal"><svg class="cell-svg" id="cell1" aria-hidden="true"></svg></div>
-        <div class="wm-en-txt reveal">
-          <h2 class="wm-en-h">Maybe the energy is not getting through.</h2>
-          <p class="wm-en-p">Your brain is 2% of your weight and burns 20% of your energy. It is the most expensive organ you have. When metabolism is compromised, the neuron cannot produce the energy it needs, and the brain starts to fail.</p>
-          <div class="wm-mech">
-            <div class="wm-m">
-              <h3>Insulin resistance</h3>
-              <p>Insulin is what lets a cell turn glucose into energy. When blood insulin runs high for years, less of it reaches the brain. The glucose is still there. The cell just cannot use it. A brain like this can be swimming in glucose and still be starving.</p>
+    <!-- ---------- CENA 1: o neuronio e a celula ficam fixos, o texto passa ---------- -->
+    <section class="wm-scene" id="wmScene1">
+      <h1 class="sr-only">Metabolic Psychiatry</h1>
+      <div class="wm-scene-in artright">
+        <div class="wm-scene-steps">
+
+          <div class="wm-step on" data-f="0">
+            <div class="wm-open-txt reveal">
+              <h2 class="wm-open-h">We stopped thinking about the root of the problem.</h2>
+              <p class="wm-open-p">Psychiatry measures your neurotransmitter imbalance and treats the imbalance. But the question left out is the only one that matters:</p>
+              <p class="wm-open-q"><span class="uwrap">What caused the imbalance?<svg class="uw-svg" id="qUnderline" aria-hidden="true"></svg></span></p>
             </div>
-            <div class="wm-m">
-              <h3>Inflammation and oxidative stress</h3>
-              <p>Defence is normal and necessary. When it turns chronic, it wears down the architecture of the brain instead of protecting it.</p>
+          </div>
+
+          <div class="wm-step" data-f="1">
+            <div class="wm-en-txt reveal">
+              <h2 class="wm-en-h">Maybe the energy is not getting through.</h2>
+              <p class="wm-en-p">Your brain is 2% of your weight and burns 20% of your energy. It is the most expensive organ you have. When metabolism is compromised, the neuron cannot produce the energy it needs, and the brain starts to fail.</p>
+            </div>
+          </div>
+
+          <div class="wm-step" data-f="1">
+            <div class="wm-mech reveal" style="margin-top:0">
+              <div class="wm-m">
+                <h3>Insulin resistance</h3>
+                <p>Insulin is what lets a cell turn glucose into energy. When blood insulin runs high for years, less of it reaches the brain. The glucose is still there. The cell just cannot use it. A brain like this can be swimming in glucose and still be starving.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="wm-step" data-f="1">
+            <div class="wm-mech reveal" style="margin-top:0">
+              <div class="wm-m">
+                <h3>Inflammation and oxidative stress</h3>
+                <p>Defence is normal and necessary. When it turns chronic, it wears down the architecture of the brain instead of protecting it.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="wm-scene-art">
+          <div class="wm-stage">
+            <div class="wm-frame on" data-f="0">
+              <div class="wm-open-art reveal"><svg class="neuron-svg" id="neuron1" aria-hidden="true"></svg></div>
+            </div>
+            <div class="wm-frame" data-f="1">
+              <div class="wm-en-art reveal"><svg class="cell-svg" id="cell1" aria-hidden="true"></svg></div>
             </div>
           </div>
         </div>
       </div>
+
       <div class="wm-en-out reveal">
         <p class="wm-en-states">Some areas of the brain get too slow. Others get too fast. Some stop.</p>
         <p class="wm-en-punch">This is what symptoms are made of.</p>
@@ -3532,20 +3592,44 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
     </div>
 
     <!-- ---------- BLOCO 7: como a cetona age ---------- -->
-    <section class="wm-ket">
-      <div class="wm-ket-in">
-        <div class="wm-ket-art reveal"><svg class="mito-svg" id="mitoFeed" aria-hidden="true"></svg></div>
-        <div class="wm-ket-txt reveal">
-          <h2>In ketosis, the brain chooses.</h2>
-          <p class="wm-ket-lead">Ketones are not an emergency fuel. There is always plenty of glucose in the blood, and even so, when ketones are available the brain keeps burning ketones.</p>
-          <div class="wm-ket-list">
-            <div class="wm-kl"><b>Less insulin.</b><span>Ketones burn best exactly when insulin is low.</span></div>
-            <div class="wm-kl"><b>A shorter path.</b><span>Glucose takes thirteen chemical reactions to become energy. Ketones take three.</span></div>
-            <div class="wm-kl"><b>Less oxidation.</b><span>Burning ketones produces less oxidative stress than burning glucose.</span></div>
+    <section class="wm-ket wm-scene" id="wmScene2">
+      <div class="wm-scene-in artleft">
+        <div class="wm-scene-art">
+          <div class="wm-stage">
+            <div class="wm-frame on" data-f="0">
+              <div class="wm-ket-art reveal"><svg class="mito-svg" id="mitoFeed" aria-hidden="true"></svg></div>
+            </div>
           </div>
         </div>
-      </div>
+        <div class="wm-scene-steps wm-ket-txt">
 
+          <div class="wm-step on" data-f="0">
+            <div class="reveal">
+              <h2>In ketosis, the brain chooses.</h2>
+              <p class="wm-ket-lead">Ketones are not an emergency fuel. There is always plenty of glucose in the blood, and even so, when ketones are available the brain keeps burning ketones.</p>
+            </div>
+          </div>
+
+          <div class="wm-step" data-f="0">
+            <div class="wm-ket-list reveal" style="margin-top:0">
+              <div class="wm-kl"><b>Less insulin.</b><span>Ketones burn best exactly when insulin is low.</span></div>
+            </div>
+          </div>
+
+          <div class="wm-step" data-f="0">
+            <div class="wm-ket-list reveal" style="margin-top:0">
+              <div class="wm-kl"><b>A shorter path.</b><span>Glucose takes thirteen chemical reactions to become energy. Ketones take three.</span></div>
+            </div>
+          </div>
+
+          <div class="wm-step" data-f="0">
+            <div class="wm-ket-list reveal" style="margin-top:0">
+              <div class="wm-kl"><b>Less oxidation.</b><span>Burning ketones produces less oxidative stress than burning glucose.</span></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </section>
 
 
@@ -10359,6 +10443,32 @@ routeFromHash();
 </script>
 
 <script>
+/* Cena fixa da pagina Learn more: o passo ativo comanda qual desenho aparece. */
+(function(){
+  function wire(sec){
+    var steps=[].slice.call(sec.querySelectorAll('.wm-step'));
+    var frames=[].slice.call(sec.querySelectorAll('.wm-frame'));
+    if(!steps.length) return;
+    if(typeof IntersectionObserver==='undefined'){
+      steps.forEach(function(x){x.classList.add('on');});
+      frames.forEach(function(f,i){ f.classList.toggle('on', i===0); });
+      return;
+    }
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var f=e.target.dataset.f;
+        steps.forEach(function(x){ x.classList.toggle('on', x===e.target); });
+        frames.forEach(function(fr){ fr.classList.toggle('on', fr.dataset.f===f); });
+      });
+    },{rootMargin:'-45% 0px -45% 0px',threshold:0});
+    steps.forEach(function(x){ io.observe(x); });
+  }
+  function init(){ document.querySelectorAll('.wm-scene').forEach(wire); }
+  if(document.readyState!=='loading') init();
+  else document.addEventListener('DOMContentLoaded',init);
+})();
+
 /* Titulo do 1o cartao sempre em UMA linha: encolhe ate caber (EN e PT). */
 (function(){
   function fit(){
