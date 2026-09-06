@@ -1,0 +1,453 @@
+<title>Learn More Scroll Study</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400&family=Instrument+Sans:wght@400;500;600&family=Mulish:wght@400;500&family=Montserrat:wght@600;700&display=swap">
+<style>
+:root{
+  --bg:#FAF6F0; --card:#FFFFFF; --hd:#0C333F; --soft:#5A737C;
+  --line:rgba(12,51,63,.13); --t900:#0C333F; --t500:#2A9D8F; --t100:#CFE7E2;
+  --coral:#E76F51; --cream:#F5EFE4;
+  --serif:'Fraunces',Georgia,serif;
+  --quiet:'Instrument Sans',-apple-system,'Segoe UI',sans-serif;
+  --calm:'Mulish',-apple-system,sans-serif;
+  --display:'Montserrat','Instrument Sans',sans-serif;
+  --gut:clamp(18px,3.4vw,48px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#08222B; --card:#0E2E39; --hd:#EFE7DA; --soft:#9FB4BC;
+    --line:rgba(245,239,228,.16); --t100:#1E4C52;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#08222B; --card:#0E2E39; --hd:#EFE7DA; --soft:#9FB4BC;
+  --line:rgba(245,239,228,.16); --t100:#1E4C52;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--hd);font-family:var(--quiet);margin:0;line-height:1.6}
+h1,h2,h3{text-wrap:balance}
+
+/* ---------- shell ---------- */
+.brief{padding:clamp(34px,6vw,72px) var(--gut) clamp(26px,3vw,40px);
+  max-width:1240px;margin:0 auto}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--soft);margin:0 0 12px}
+.brief h1{font-family:var(--display);font-weight:600;letter-spacing:-.032em;
+  font-size:clamp(30px,4.6vw,50px);line-height:1.05;margin:0 0 14px}
+.brief p{font-family:var(--calm);font-size:17px;color:var(--soft);margin:0;max-width:60ch}
+
+.label{position:sticky;top:0;z-index:40;background:var(--t900);color:var(--cream);
+  padding:11px var(--gut);display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.label b{font-family:var(--display);font-weight:700;font-size:12px;letter-spacing:.16em;
+  text-transform:uppercase}
+.label span{font-family:var(--calm);font-size:13.5px;color:rgba(245,239,228,.72)}
+
+/* ---------- 0. margins ---------- */
+.wid{padding:clamp(30px,4vw,54px) 0 clamp(40px,5vw,72px)}
+.wid-ctl{display:flex;gap:8px;flex-wrap:wrap;padding:0 var(--gut);margin-bottom:26px}
+.wid-ctl button{font-family:var(--display);font-size:12.5px;font-weight:600;cursor:pointer;
+  border:1px solid var(--line);background:transparent;color:var(--soft);
+  border-radius:99px;padding:8px 16px;transition:all .18s}
+.wid-ctl button:hover{color:var(--hd)}
+.wid-ctl button[aria-pressed="true"]{background:var(--t900);border-color:var(--t900);color:var(--cream)}
+.wid-demo{padding:0 var(--gut)}
+.wid-in{margin:0 auto;display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(20px,3.6vw,60px);
+  align-items:center;transition:max-width .35s cubic-bezier(.3,.9,.3,1);
+  outline:1px dashed var(--t100);outline-offset:22px}
+.wid-in.w1240{max-width:1240px}
+.wid-in.w1560{max-width:1560px}
+.wid-in.wfull{max-width:none}
+.wid-h{font-family:var(--display);font-weight:600;letter-spacing:-.03em;
+  font-size:clamp(28px,4vw,54px);line-height:1.04;margin:0 0 18px}
+.wid-p{font-family:var(--calm);font-size:clamp(15.5px,1.3vw,18px);color:var(--soft);margin:0;max-width:33em}
+.wid-q{font-family:var(--serif);font-size:clamp(23px,2.6vw,36px);line-height:1.18;
+  color:var(--coral);margin:24px 0 0}
+.wid-note{padding:22px var(--gut) 0;font-family:var(--calm);font-size:14.5px;
+  color:var(--soft);max-width:70ch;margin:0}
+.wid-note code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;
+  background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+
+/* ---------- shared art ---------- */
+.art svg{width:100%;height:auto;display:block;color:var(--hd);overflow:visible}
+.art{max-width:520px;margin:0 auto}
+
+/* ---------- A. pinned scene ---------- */
+.pin{padding:clamp(20px,3vw,40px) var(--gut) clamp(60px,8vw,120px);max-width:1560px;margin:0 auto}
+.pin-in{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(30px,5vw,90px);align-items:start}
+.pin-art{position:sticky;top:22vh;align-self:start}
+.pin-scene{position:relative;aspect-ratio:1/.9}
+.pin-scene svg{position:absolute;inset:0;width:100%;height:100%}
+.pin-layer{opacity:0;transition:opacity .5s ease,transform .7s cubic-bezier(.3,.9,.3,1);
+  transform:translateY(10px)}
+.pin-layer.on{opacity:1;transform:none}
+.pin-step{min-height:76vh;display:flex;flex-direction:column;justify-content:center;
+  padding:8px 0;opacity:.28;transition:opacity .45s ease}
+.pin-step.on{opacity:1}
+.pin-n{font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.2em;
+  color:var(--t500);margin:0 0 12px}
+.pin-step h3{font-family:var(--serif);font-weight:400;letter-spacing:-.018em;
+  font-size:clamp(26px,3.4vw,44px);line-height:1.08;margin:0 0 16px}
+.pin-step p{font-family:var(--calm);font-size:clamp(15.5px,1.25vw,17.5px);line-height:1.7;
+  color:var(--soft);margin:0;max-width:36em}
+@media(max-width:900px){
+  .pin-in{grid-template-columns:1fr;gap:20px}
+  .pin-art{position:static}
+  .pin-step{min-height:0;opacity:1;padding:26px 0}
+}
+
+/* ---------- B. chapter rooms ---------- */
+.room{padding:clamp(64px,10vw,150px) var(--gut);position:relative}
+.room-in{max-width:1560px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;
+  gap:clamp(24px,4vw,70px);align-items:start}
+.room-n{font-family:var(--display);font-weight:700;font-size:clamp(38px,5vw,72px);
+  line-height:1;letter-spacing:-.04em;opacity:.18;font-variant-numeric:tabular-nums}
+.room h3{font-family:var(--display);font-weight:600;letter-spacing:-.03em;
+  font-size:clamp(28px,4.2vw,56px);line-height:1.04;margin:0 0 18px;max-width:16em}
+.room p{font-family:var(--calm);font-size:clamp(15.5px,1.3vw,18px);line-height:1.72;
+  margin:0;max-width:38em}
+.room.pale{background:var(--card)}
+.room.deep{background:var(--t900);color:var(--cream)}
+.room.deep p{color:rgba(245,239,228,.8)}
+.room.deep .room-n{opacity:.3}
+.room.sand{background:linear-gradient(180deg,#F3E9DC,#FAF6F0)}
+:root[data-theme="dark"] .room.sand,
+:root:not([data-theme="light"]) .room.sand{background:linear-gradient(180deg,#0B2A34,#08222B)}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) .room.sand{background:linear-gradient(180deg,#F3E9DC,#FAF6F0)}}
+.room .rise{opacity:0;transform:translateY(26px);
+  transition:opacity .7s ease,transform .9s cubic-bezier(.25,.9,.3,1)}
+.room.seen .rise{opacity:1;transform:none}
+.room.seen .room-n{transition-delay:0s}
+.room.seen h3{transition-delay:.06s}
+.room.seen p{transition-delay:.12s}
+@media(max-width:760px){.room-in{grid-template-columns:1fr;gap:10px}}
+
+/* ---------- C. stacked panels ---------- */
+.stack{padding:0 var(--gut) clamp(60px,8vw,110px)}
+.stack-in{max-width:1560px;margin:0 auto}
+.panel{position:sticky;top:96px;border-radius:26px;border:1px solid var(--line);
+  background:var(--card);padding:clamp(30px,4.4vw,64px);margin-bottom:26px;
+  box-shadow:0 -12px 40px rgba(9,40,50,.07)}
+.panel:nth-child(1){top:96px}
+.panel:nth-child(2){top:120px}
+.panel:nth-child(3){top:144px}
+.panel:nth-child(4){top:168px}
+.panel-top{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.panel-dot{width:9px;height:9px;border-radius:50%;background:var(--t500);flex-shrink:0}
+.panel-k{font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--soft)}
+.panel h3{font-family:var(--serif);font-weight:400;letter-spacing:-.018em;
+  font-size:clamp(26px,3.4vw,44px);line-height:1.08;margin:0 0 14px}
+.panel p{font-family:var(--calm);font-size:clamp(15.5px,1.25vw,17.5px);line-height:1.7;
+  color:var(--soft);margin:0;max-width:44em}
+.panel.deep{background:var(--t900);border-color:var(--t900);color:var(--cream)}
+.panel.deep p{color:rgba(245,239,228,.8)}
+.panel.deep .panel-k{color:rgba(245,239,228,.6)}
+.stack-tail{height:36vh}
+@media(max-width:760px){.panel{position:static;margin-bottom:16px}.stack-tail{height:0}}
+
+/* ---------- D. chapter rail ---------- */
+.rail-sec{position:relative;padding:clamp(30px,4vw,60px) var(--gut) clamp(60px,8vw,110px)}
+.rail-grid{max-width:1560px;margin:0 auto;display:grid;grid-template-columns:190px minmax(0,1fr);
+  gap:clamp(28px,5vw,80px);align-items:start}
+.rail{position:sticky;top:22vh;display:flex;flex-direction:column;gap:0}
+.rail a{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;
+  padding:11px 0;text-decoration:none;color:var(--soft);
+  font-family:var(--display);font-size:13px;font-weight:600;transition:color .2s}
+.rail a .tick{width:26px;height:2px;background:var(--line);transition:background .25s,width .25s}
+.rail a.on{color:var(--hd)}
+.rail a.on .tick{background:var(--t500);width:40px}
+.rail-prog{position:fixed;left:0;top:0;height:3px;background:var(--t500);width:0;z-index:60;
+  transition:width .12s linear}
+.rchunk{padding:clamp(34px,5vw,72px) 0;border-top:1px solid var(--line)}
+.rchunk:first-child{border-top:none;padding-top:0}
+.rchunk h3{font-family:var(--display);font-weight:600;letter-spacing:-.028em;
+  font-size:clamp(24px,3vw,38px);line-height:1.08;margin:0 0 14px}
+.rchunk p{font-family:var(--calm);font-size:clamp(15.5px,1.25vw,17.5px);line-height:1.7;
+  color:var(--soft);margin:0;max-width:44em}
+@media(max-width:900px){.rail-grid{grid-template-columns:1fr}.rail{display:none}}
+
+footer{padding:clamp(44px,6vw,80px) var(--gut) clamp(70px,9vw,120px);
+  max-width:1240px;margin:0 auto;border-top:1px solid var(--line)}
+footer h2{font-family:var(--display);font-weight:600;letter-spacing:-.028em;
+  font-size:clamp(22px,2.6vw,32px);margin:0 0 12px}
+footer p{font-family:var(--calm);font-size:16px;color:var(--soft);margin:0 0 10px;max-width:62ch}
+footer ul{font-family:var(--calm);font-size:15.5px;color:var(--soft);padding-left:20px;margin:0;max-width:62ch}
+footer li{margin-bottom:6px}
+footer b{color:var(--hd)}
+@media (prefers-reduced-motion:reduce){
+  .pin-step,.pin-layer,.room .rise{opacity:1!important;transform:none!important;transition:none}
+  .wid-in{transition:none}
+}
+</style>
+
+<div class="rail-prog" id="prog" aria-hidden="true"></div>
+
+<header class="brief">
+  <p class="eyebrow">Metabolicamente · Learn more</p>
+  <h1>Four ways to make this page move</h1>
+  <p>The copy and the drawings below are the real ones from <b>Learn more</b>. What changes in each block is only the scroll behaviour and the width. Scroll through, then tell me which one — they can be mixed.</p>
+</header>
+
+<!-- ============ 0. THE MARGINS ============ -->
+<div class="label"><b>First · the margins</b><span>Why the page feels narrow on a big screen</span></div>
+<section class="wid">
+  <div class="wid-ctl" role="group" aria-label="Content width">
+    <button type="button" data-w="w1240" aria-pressed="true">1240px — today</button>
+    <button type="button" data-w="w1560" aria-pressed="false">1560px</button>
+    <button type="button" data-w="wfull" aria-pressed="false">Full-bleed to the gutter</button>
+  </div>
+  <div class="wid-demo">
+    <div class="wid-in w1240" id="widIn">
+      <div>
+        <h2 class="wid-h">We stopped thinking about the root of the problem.</h2>
+        <p class="wid-p">Psychiatry measures your neurotransmitter imbalance and treats the imbalance. But the question left out is the only one that matters:</p>
+        <p class="wid-q">What caused the imbalance?</p>
+      </div>
+      <div class="art" aria-hidden="true">
+        <svg viewBox="0 0 420 300">
+          <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+            <circle cx="120" cy="150" r="46"/>
+            <circle cx="120" cy="150" r="18"/>
+            <path d="M120 104c-14-26-38-34-58-30M74 150c-26-6-44 6-54 22M120 196c-16 24-40 30-60 26"/>
+            <path d="M166 150h96"/>
+            <path d="M262 150l38-30M262 150l38 30"/>
+            <circle cx="316" cy="112" r="21"/><circle cx="316" cy="188" r="21"/>
+            <path d="M337 112l24-12M337 188l24 12"/>
+          </g>
+          <circle cx="214" cy="150" r="9" fill="var(--coral)"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+  <p class="wid-note">The gutter is already tight — <code>clamp(18px, 3.4vw, 48px)</code>. What holds the content in is <code>max-width:1240px</code> on every <code>.wm-*-in</code>. On a 2000px display that leaves ~380px of dead margin on each side. The dashed outline shows where the content box ends.</p>
+</section>
+
+<!-- ============ A ============ -->
+<div class="label"><b>Idea A · Pinned scene</b><span>The drawing holds still, the text steps past it — the drawing changes as you go</span></div>
+<section class="pin">
+  <div class="pin-in">
+    <div class="pin-art">
+      <div class="pin-scene art" aria-hidden="true">
+        <svg viewBox="0 0 420 380">
+          <g class="pin-layer on" data-l="0" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+            <circle cx="150" cy="190" r="56"/><circle cx="150" cy="190" r="22"/>
+            <path d="M150 134c-16-30-44-40-68-34M94 190c-30-8-52 6-64 26M150 246c-18 28-46 34-70 30"/>
+            <path d="M206 190h104"/><path d="M310 190l40-32M310 190l40 32"/>
+            <circle cx="368" cy="152" r="22"/><circle cx="368" cy="228" r="22"/>
+          </g>
+          <g class="pin-layer" data-l="1">
+            <circle cx="258" cy="190" r="13" fill="var(--coral)"/>
+            <g fill="none" stroke="var(--coral)" stroke-width="3" stroke-linecap="round" opacity=".7">
+              <path d="M258 150v-26"/><path d="M258 230v26"/>
+            </g>
+          </g>
+          <g class="pin-layer" data-l="2" fill="none" stroke="var(--t500)" stroke-width="3">
+            <ellipse cx="118" cy="176" rx="26" ry="14" transform="rotate(-24 118 176)"/>
+            <ellipse cx="176" cy="212" rx="26" ry="14" transform="rotate(-24 176 212)"/>
+            <ellipse cx="134" cy="236" rx="22" ry="12" transform="rotate(-24 134 236)"/>
+          </g>
+          <g class="pin-layer" data-l="3">
+            <g fill="none" stroke="var(--t500)" stroke-width="3" stroke-linecap="round">
+              <path d="M60 330h300"/><path d="M110 330V296"/><path d="M180 330V270"/>
+              <path d="M250 330V250"/><path d="M320 330V232"/>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+    <div class="pin-steps">
+      <div class="pin-step on" data-s="0">
+        <p class="pin-n">01</p>
+        <h3>Maybe the energy is not getting through.</h3>
+        <p>Your brain is 2% of your weight and burns 20% of your energy. It is the most expensive organ you have. When metabolism is compromised, the neuron cannot produce the energy it needs, and the brain starts to fail.</p>
+      </div>
+      <div class="pin-step" data-s="1">
+        <p class="pin-n">02</p>
+        <h3>Insulin resistance</h3>
+        <p>Insulin is what lets a cell turn glucose into energy. When blood insulin runs high for years, less of it reaches the brain. The glucose is still there. The cell just cannot use it. A brain like this can be swimming in glucose and still be starving.</p>
+      </div>
+      <div class="pin-step" data-s="2">
+        <p class="pin-n">03</p>
+        <h3>Inflammation and oxidative stress</h3>
+        <p>Defence is normal and necessary. When it turns chronic, it wears down the architecture of the brain instead of protecting it.</p>
+      </div>
+      <div class="pin-step" data-s="3">
+        <p class="pin-n">04</p>
+        <h3>What matters is treating the root.</h3>
+        <p>Therapy and medication matter, and nothing here asks you to give them up. What they cannot do is replace a healthy metabolism. Your mental health depends on the health of your brain.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ B ============ -->
+<div class="label"><b>Idea B · Chapter rooms</b><span>Each section takes the whole width and changes ground — you feel yourself walking through</span></div>
+<div class="rooms">
+  <section class="room">
+    <div class="room-in">
+      <div class="room-n rise">01</div>
+      <div>
+        <h3 class="rise">We stopped thinking about the root of the problem.</h3>
+        <p class="rise">Psychiatry measures your neurotransmitter imbalance and treats the imbalance. But the question left out is the only one that matters: what caused the imbalance?</p>
+      </div>
+    </div>
+  </section>
+  <section class="room pale">
+    <div class="room-in">
+      <div class="room-n rise">02</div>
+      <div>
+        <h3 class="rise">Maybe the energy is not getting through.</h3>
+        <p class="rise">Your brain is 2% of your weight and burns 20% of your energy. When metabolism is compromised, the neuron cannot produce the energy it needs, and the brain starts to fail.</p>
+      </div>
+    </div>
+  </section>
+  <section class="room deep">
+    <div class="room-in">
+      <div class="room-n rise">03</div>
+      <div>
+        <h3 class="rise">Your brain is built out of what you eat.</h3>
+        <p class="rise">Serotonin, dopamine and the rest are assembled from amino acids, vitamins and minerals, and all of it arrives through food. Food is not the advice at the end of the appointment. It is raw material, and it is fuel.</p>
+      </div>
+    </div>
+  </section>
+  <section class="room sand">
+    <div class="room-in">
+      <div class="room-n rise">04</div>
+      <div>
+        <h3 class="rise">In ketosis, the brain chooses.</h3>
+        <p class="rise">Glucose takes thirteen chemical reactions to become energy. Ketones take three, they burn best exactly when insulin is low, and they leave less oxidative stress behind.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============ C ============ -->
+<div class="label"><b>Idea C · Stacked panels</b><span>Each panel parks under the nav and the next one slides over it</span></div>
+<section class="stack">
+  <div class="stack-in">
+    <article class="panel">
+      <div class="panel-top"><span class="panel-dot"></span><span class="panel-k">The question</span></div>
+      <h3>We stopped thinking about the root of the problem.</h3>
+      <p>Psychiatry measures your neurotransmitter imbalance and treats the imbalance. But the question left out is the only one that matters: what caused the imbalance?</p>
+    </article>
+    <article class="panel">
+      <div class="panel-top"><span class="panel-dot"></span><span class="panel-k">The mechanism</span></div>
+      <h3>Maybe the energy is not getting through.</h3>
+      <p>Your brain is 2% of your weight and burns 20% of your energy. It is the most expensive organ you have. When metabolism is compromised, the neuron cannot produce the energy it needs, and the brain starts to fail.</p>
+    </article>
+    <article class="panel deep">
+      <div class="panel-top"><span class="panel-dot"></span><span class="panel-k">The raw material</span></div>
+      <h3>Your brain is built out of what you eat.</h3>
+      <p>Serotonin, dopamine and the rest are assembled from amino acids, vitamins and minerals, and all of it arrives through food. Food is not the advice at the end of the appointment. It is raw material, and it is fuel.</p>
+    </article>
+    <article class="panel">
+      <div class="panel-top"><span class="panel-dot"></span><span class="panel-k">The path</span></div>
+      <h3>It is a path, not a leap.</h3>
+      <p>Nobody is asked to change everything on a Monday. The plan starts from where your metabolism actually is, and both clinicians move it one step at a time.</p>
+    </article>
+    <div class="stack-tail"></div>
+  </div>
+</section>
+
+<!-- ============ D ============ -->
+<div class="label"><b>Idea D · Chapter rail</b><span>A quiet index on the left that marks where you are, plus a progress line at the very top</span></div>
+<section class="rail-sec">
+  <div class="rail-grid">
+    <nav class="rail" id="rail" aria-label="Chapters">
+      <a href="#r1"><span class="tick"></span>The question</a>
+      <a href="#r2"><span class="tick"></span>The mechanism</a>
+      <a href="#r3"><span class="tick"></span>The root</a>
+      <a href="#r4"><span class="tick"></span>The raw material</a>
+      <a href="#r5"><span class="tick"></span>The path</a>
+    </nav>
+    <div>
+      <div class="rchunk" id="r1">
+        <h3>We stopped thinking about the root of the problem.</h3>
+        <p>Psychiatry measures your neurotransmitter imbalance and treats the imbalance. But the question left out is the only one that matters: what caused the imbalance?</p>
+      </div>
+      <div class="rchunk" id="r2">
+        <h3>Maybe the energy is not getting through.</h3>
+        <p>Your brain is 2% of your weight and burns 20% of your energy. It is the most expensive organ you have. When metabolism is compromised, the neuron cannot produce the energy it needs, and the brain starts to fail.</p>
+      </div>
+      <div class="rchunk" id="r3">
+        <h3>What matters is treating the root.</h3>
+        <p>Therapy and medication matter, and nothing here asks you to give them up. What they cannot do is replace a healthy metabolism. Your mental health depends on the health of your brain.</p>
+      </div>
+      <div class="rchunk" id="r4">
+        <h3>Your brain is built out of what you eat.</h3>
+        <p>Serotonin, dopamine and the rest are assembled from amino acids, vitamins and minerals, and all of it arrives through food. Food is not the advice at the end of the appointment. It is raw material, and it is fuel.</p>
+      </div>
+      <div class="rchunk" id="r5">
+        <h3>It is a path, not a leap.</h3>
+        <p>Nobody is asked to change everything on a Monday. The plan starts from where your metabolism actually is, and both clinicians move it one step at a time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <h2>How I'd combine them</h2>
+  <p>These are not exclusive. My recommendation, if you want one answer:</p>
+  <ul>
+    <li><b>Width →</b> 1560px. Full-bleed makes long paragraphs hard to read on a wide screen; 1560 kills most of the dead margin and keeps the line length sane.</li>
+    <li><b>A for the middle of the page.</b> The mechanism section is the one place where a drawing genuinely earns being held on screen while the explanation advances.</li>
+    <li><b>D everywhere.</b> The rail plus the top progress line is what actually tells someone "you are moving", and it costs almost nothing.</li>
+    <li><b>B for the two emotional beats</b> — "built out of what you eat" and the closing. Changing the ground colour there does more than any animation.</li>
+    <li><b>C</b> is the most fun and the riskiest: it fights the reader on a long page and it breaks down on mobile.</li>
+  </ul>
+</footer>
+
+<script>
+/* width switcher */
+(function(){
+  var box=document.getElementById('widIn');
+  document.querySelectorAll('.wid-ctl button').forEach(function(b){
+    b.addEventListener('click',function(){
+      document.querySelectorAll('.wid-ctl button').forEach(function(o){o.setAttribute('aria-pressed','false');});
+      b.setAttribute('aria-pressed','true');
+      box.className='wid-in '+b.dataset.w;
+    });
+  });
+})();
+
+/* A — active step drives the drawing */
+(function(){
+  var steps=[].slice.call(document.querySelectorAll('.pin-step'));
+  var layers=[].slice.call(document.querySelectorAll('.pin-layer'));
+  if(!steps.length) return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var i=+e.target.dataset.s;
+      steps.forEach(function(s){ s.classList.toggle('on', +s.dataset.s===i); });
+      layers.forEach(function(l){ l.classList.toggle('on', +l.dataset.l<=i); });
+    });
+  },{rootMargin:'-45% 0px -45% 0px',threshold:0});
+  steps.forEach(function(s){ io.observe(s); });
+})();
+
+/* B — rooms rise in */
+(function(){
+  var rooms=[].slice.call(document.querySelectorAll('.room'));
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('seen'); });
+  },{rootMargin:'0px 0px -18% 0px',threshold:.12});
+  rooms.forEach(function(r){ io.observe(r); });
+})();
+
+/* D — rail state + top progress */
+(function(){
+  var links=[].slice.call(document.querySelectorAll('.rail a'));
+  var chunks=[].slice.call(document.querySelectorAll('.rchunk'));
+  var bar=document.getElementById('prog');
+  function tick(){
+    var d=document.documentElement;
+    var p=d.scrollTop/Math.max(1,d.scrollHeight-d.clientHeight);
+    if(bar) bar.style.width=(p*100)+'%';
+    var mid=d.clientHeight*0.42, best=0;
+    chunks.forEach(function(c,i){ if(c.getBoundingClientRect().top<=mid) best=i; });
+    links.forEach(function(a,i){ a.classList.toggle('on', i===best); });
+  }
+  addEventListener('scroll',tick,{passive:true});
+  addEventListener('resize',tick);
+  tick();
+})();
+</script>
