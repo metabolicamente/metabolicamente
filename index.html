@@ -33,6 +33,16 @@ body.dark #pg-equipe{background:var(--bg)}
 body.on-equipe .nav{background:rgba(255,255,255,.90);border-bottom-color:rgba(12,51,63,.07)}
 body.on-equipe.dark .nav{background:var(--navbg);border-bottom-color:var(--line)}
 
+/* home tambem em branco, nav inclusa */
+#home{background:#FFFFFF}
+body.dark #home{background:var(--bg)}
+body.on-home{background:#FFFFFF}
+body.on-home.dark{background:var(--bg)}
+body.on-home .nav{background:rgba(255,255,255,.90);border-bottom-color:rgba(12,51,63,.07)}
+body.on-home.dark .nav{background:var(--navbg);border-bottom-color:var(--line)}
+body.on-home .hero.hero-flat{background:#FFFFFF}
+body.on-home.dark .hero.hero-flat{background:var(--bg)}
+
 /* pagina "Learn more" (#/tratamento) tambem em branco, nav inclusa */
 #pg-tratamento{background:#FFFFFF}
 body.dark #pg-tratamento{background:var(--bg)}
@@ -1231,14 +1241,15 @@ body:not(.intro-done) .hf-art{animation:none;opacity:0}
 .lt-card{position:relative;display:flex;flex-direction:column;overflow:hidden;cursor:pointer;
   border-radius:clamp(18px,1.5vw,24px);color:#F5EFE4;background:linear-gradient(158deg,var(--g1),var(--g2));
   box-shadow:0 6px 20px rgba(9,40,50,.10);border:none;text-align:center;
-  padding:0 0 clamp(26px,2.6vw,38px);min-height:clamp(380px,34vw,498px);
+  padding:0 0 clamp(30px,3vw,44px);min-height:clamp(400px,35vw,524px);
   transition:transform .3s cubic-bezier(.2,.8,.3,1),box-shadow .3s ease}
 .lt-card:hover,.lt-card:focus-visible{outline:none;transform:translateY(-6px);
   box-shadow:0 20px 46px rgba(9,40,50,.2)}
-.lt-art{position:relative;flex:1 1 auto;min-height:200px;overflow:hidden}
+.lt-art{position:relative;flex:1 1 auto;min-height:200px;overflow:hidden;
+  margin-bottom:clamp(16px,1.8vw,26px)}
 .lt-art svg{position:absolute;inset:0;width:100%;height:100%}
 .lt-card h3{font-family:var(--serif);font-weight:400;font-size:clamp(18px,1.5vw,22px);
-  line-height:1.18;margin:auto 0 9px;padding:0 clamp(16px,1.6vw,26px);color:#F7F2E7;text-wrap:balance}
+  line-height:1.2;margin:0 0 10px;padding:0 clamp(16px,1.6vw,26px);color:#F7F2E7;text-wrap:balance}
 .lt-sub{font-size:13.5px;line-height:1.5;color:rgba(245,239,228,.76);margin:0;
   padding:0 clamp(18px,1.9vw,30px);text-wrap:balance}
 .lt-arrow{position:absolute;right:14px;bottom:14px;display:flex;font-size:16px;
@@ -2193,8 +2204,11 @@ body.dark .pyr-vs{color:#6f8a8f}
 .wm-brain{display:block;width:100%;max-width:clamp(300px,42vw,520px);margin:0 auto clamp(8px,1.6vw,20px);
   color:var(--hd2)}
 .wm-raw-in{max-width:46em;margin:0 auto;text-align:center}
-.wm-raw-in h2{font-family:var(--serif);font-size:clamp(28px,3.7vw,46px);line-height:1.08;
-  letter-spacing:-.018em;color:var(--hd);margin:0 0 20px;font-weight:400}
+/* mesmo tipo do heroi da home ("Feed your brain. Change your mind.") */
+.wm-raw-in h2{font-family:var(--quiet);font-size:clamp(26px,3.9vw,52px);line-height:1.06;
+  letter-spacing:-.04em;color:var(--hd);margin:0 auto 22px;font-weight:500;
+  max-width:min(1180px,92vw);width:max-content;text-wrap:balance}
+@media(max-width:900px){.wm-raw-in h2{width:auto;max-width:100%}}
 .wm-raw-in p{font-size:clamp(15.5px,1.3vw,18px);line-height:1.72;color:var(--soft);
   margin:0 auto;max-width:40em}
 .wm-raw-q{font-family:var(--serif);font-size:clamp(23px,2.6vw,34px)!important;line-height:1.2;
@@ -2211,7 +2225,7 @@ body.dark .pyr-vs{color:#6f8a8f}
   letter-spacing:-.015em;color:var(--coral);text-align:center;
   margin:0 auto clamp(34px,5vw,64px);max-width:22em}
 /* --- BLOCO 8: o caminho --- */
-.wm-path{padding:clamp(16px,2.6vw,32px) var(--gut) clamp(40px,5.4vw,76px);text-align:center}
+.wm-path{padding:clamp(16px,2.6vw,32px) var(--gut) 0;text-align:center}
 .wm-path h2{font-family:var(--serif);font-size:clamp(28px,3.7vw,46px);line-height:1.08;
   letter-spacing:-.018em;color:var(--hd);margin:0 auto 18px;font-weight:400;max-width:16em}
 .wm-path-lead{font-size:clamp(15.5px,1.3vw,18px);line-height:1.72;color:var(--soft);
@@ -2220,10 +2234,10 @@ body.dark .pyr-vs{color:#6f8a8f}
 .wm-path-q{font-family:var(--serif);font-size:clamp(21px,2.4vw,31px);line-height:1.22;
   letter-spacing:-.015em;color:var(--coral);margin:clamp(12px,2vw,26px) auto 0;max-width:24em}
 .wm-panel-cta{position:relative;isolation:isolate;overflow:hidden;
-  max-width:1180px;margin:clamp(36px,5vw,68px) auto 0;border-radius:24px;
+  max-width:none;margin:clamp(36px,5vw,68px) calc(-1 * var(--gut)) 0;border-radius:0;
   background:#07222C;display:grid;
   grid-template-columns:1fr 1fr;gap:clamp(24px,3.6vw,56px);text-align:left;
-  padding:clamp(30px,4vw,56px) clamp(26px,3.4vw,52px);align-items:center}
+  padding:clamp(44px,6vw,88px) max(var(--gut),calc((100vw - 1240px)/2));align-items:center}
 .wm-pc-ph{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:52% 42%}
 .wm-pc-sc{position:absolute;inset:0;z-index:-1;background:linear-gradient(112deg,
   rgba(7,34,44,.90) 0%,rgba(9,45,58,.84) 46%,rgba(12,58,74,.72) 100%)}
@@ -3309,7 +3323,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
     <section class="wm-raw">
       <svg class="wm-brain reveal" id="brainArt" aria-hidden="true"></svg>
       <div class="wm-raw-in reveal">
-        <h2>Your brain is built out of what you eat.</h2>
+        <h2>Your brain is built out of <span class="flowtxt">what you eat.</span></h2>
         <p>Serotonin, dopamine and the rest are assembled from amino acids, vitamins and minerals, and all of it arrives through food. Food is not the advice at the end of the appointment. It is raw material, and it is fuel.</p>
         <p class="wm-raw-q">An imbalance has to start somewhere.</p>
       </div>
@@ -6251,6 +6265,8 @@ function setImmersive(on){
   document.body.classList.toggle('on-equipe',!!(eq&&eq.classList.contains('active')));
   var tr=document.getElementById('pg-tratamento');
   document.body.classList.toggle('on-tratamento',!!(tr&&tr.classList.contains('active')));
+  var hm=document.getElementById('home');
+  document.body.classList.toggle('on-home',!!(hm&&hm.classList.contains('active')));
   if(!on) closeSearch();
   syncNavOver();
 }
@@ -7976,6 +7992,7 @@ routeFromHash();
     "Keep glucose and insulin in a healthy range, for life.":"Manter glicose e insulina numa faixa saudável, pela vida inteira.",
     // bloco 4
     "Your brain is built out of what you eat.":"Seu cérebro é feito daquilo que você come.",
+    "Your brain is built out of":"Seu cérebro é feito de","what you eat.":"aquilo que você come.",
     "Serotonin, dopamine and the rest are assembled from amino acids, vitamins and minerals, and all of it arrives through food. Food is not the advice at the end of the appointment. It is raw material, and it is fuel.":"Serotonina, dopamina e todo o resto são fabricados a partir de aminoácidos, vitaminas e minerais, e tudo isso chega pela comida. Comida não é o conselho do fim da consulta. É matéria-prima, e é combustível.",
     "An imbalance has to start somewhere.":"Um desequilíbrio precisa começar em algum lugar.",
     // bloco 3
