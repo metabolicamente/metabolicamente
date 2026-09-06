@@ -45,17 +45,17 @@ body.on-equipe.dark .nav{background:var(--navbg);border-bottom-color:var(--line)
   text-transform:uppercase;color:var(--t500);margin:0 0 18px}
 .cst-h{font-family:var(--display);font-weight:600;font-size:clamp(33px,4.3vw,52px);
   line-height:1.05;letter-spacing:-.035em;color:var(--hd);margin:0;text-wrap:balance}
-.cst-sub{font-family:var(--display);font-size:clamp(14px,1.15vw,16px);font-weight:600;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--t500);margin:16px 0 0}
-.cst-lead{font-family:var(--calm);font-size:clamp(15.5px,1.3vw,17.5px);line-height:1.62;
-  color:var(--soft);margin:20px auto 0;max-width:28em}
+.cst-lead{font-family:var(--calm);font-size:clamp(17px,1.5vw,21px);line-height:1.5;
+  color:var(--soft);margin:16px auto 0;max-width:24em}
 .cst-cta{display:flex;gap:10px;justify-content:center;margin-top:26px;flex-wrap:wrap}
-.cst-grad{color:#fff;border:0;
-  /* mesma rampa coral -> teal, so que nos tons fundos: o branco passa 4.5:1
-     em todas as paradas sem precisar de veu, que deixava o botao barrento */
-  background:linear-gradient(100deg,#C74A28,#A83F22,#14706A,#0F5A6B,#114B5F,#C74A28);
-  background-size:300% 100%;animation:flowtxt 9s linear infinite}
-.cst-grad:hover{filter:saturate(1.12)}
+.cst-grad{color:var(--hd);border:1px solid rgba(12,51,63,.09);
+  /* mesma lavagem suave das etiquetas e do bloco "How we work" */
+  background:linear-gradient(100deg,rgba(231,111,81,.52),rgba(233,162,119,.46),
+    rgba(121,208,196,.50),rgba(42,157,143,.44),rgba(143,184,226,.54),rgba(231,111,81,.52));
+  background-size:300% 100%;animation:flowtxt 14s linear infinite;
+  box-shadow:0 6px 18px rgba(12,51,63,.08)}
+.cst-grad:hover{filter:saturate(1.1);box-shadow:0 10px 26px rgba(12,51,63,.12)}
+body.dark .cst-grad{color:var(--hd);border-color:rgba(255,255,255,.12)}
 @media(prefers-reduced-motion:reduce){.cst-grad{animation:none}}
 .cst-ghost{border:1.5px solid var(--line);color:var(--hd2);background:transparent}
 .cst-ghost:hover{border-color:var(--hd3)}
@@ -79,7 +79,7 @@ body.dark .cst-face::after{box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
 .cst-mono{position:absolute;inset:0;display:grid;place-items:center;
   font-family:var(--serif);font-weight:500;color:#fff;opacity:.34;
   font-size:calc(var(--sz) * .5);letter-spacing:-.03em;line-height:1}
-.cst-face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cst-face img,.cst-toon{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
 /* sem retrato ainda: o gradiente da marca, para o vazio parecer decidido e nao esquecido */
 .cst-mini.grad{background:linear-gradient(140deg,#E76F51,#E9A277,#79D0C4,#2A9D8F,#8FB8E2,#E76F51);
   background-size:260% 260%;
@@ -3000,8 +3000,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
         <canvas class="cst-net" id="cstNet" aria-hidden="true"></canvas>
         <div class="cst-centre">
           <h2 class="cst-h">You deserve to feel well.</h2>
-          <p class="cst-sub">Meet the care team</p>
-          <p class="cst-lead">A psychiatrist, a nutrition physician and a psychologist reading the same case. Tap anyone to see how they work.</p>
+          <p class="cst-lead">Meet the care team</p>
           <div class="cst-cta">
             <a class="btn cst-grad" onclick="go('wizard')" style="cursor:pointer">Start the assessment</a>
             <a class="btn cst-ghost" onclick="location.hash='#/profissionais'" style="cursor:pointer">Join the team</a>
@@ -7325,27 +7324,72 @@ routeFromHash();
      bio:'Eighteen years putting nutrition, metabolism and medication in the same treatment plan.',
      photo:'https://images.unsplash.com/photo-1637059824899-a441006a6875?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Metabolic psychiatry','Mood disorders','Ketogenic therapy'],
-     pos:{x:'7%',y:'3%',sz:'204px',dur:'15s',del:'-2s',dx:'-11px',dy:'16px',rot:'-1.4deg'}},
+     toon:{bg:'#F7E3DA',skin:'#C98B62',skin2:'#B87A52',hair:'#22181A',wear:'#2A9D8F',coat:'#FFFFFF',style:'short',beard:true,glasses:true},
+     pos:{x:'6%',y:'5%',sz:'218px',dur:'15s',del:'-2s',dx:'-11px',dy:'16px',rot:'-1.4deg'}},
     {id:'cf',mono:'CF',name:'Dra. Camila Ferreira',crm:'CRM/SP 158.203',color:'#114B5F',
      role:'Psychiatrist, neurometabolism',
      bio:'Researches the link between mitochondrial dysfunction and psychiatric illness.',
      photo:'https://images.unsplash.com/photo-1678695972687-033fa0bdbac9?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Neurometabolism','Treatment-resistant depression','Clinical research'],
-     pos:{x:'79%',y:'3%',sz:'186px',dur:'18s',del:'-8s',dx:'13px',dy:'-15px',rot:'1.6deg'}},
+     toon:{bg:'#DFF0EC',skin:'#8D5A3B',skin2:'#7C4C31',hair:'#1B1416',wear:'#B03A5B',coat:'#FFFFFF',style:'bob',beard:false,glasses:false},
+     pos:{x:'78%',y:'1%',sz:'202px',dur:'18s',del:'-8s',dx:'13px',dy:'-15px',rot:'1.6deg'}},
     {id:'lt',mono:'LT',name:'Dr. Lucas Tavares',crm:'CRM/RJ 098.412',color:'#E76F51',
      role:'Nutrition physician',
      bio:'Builds the food side of every plan, from therapeutic diets to insulin resistance.',
      photo:'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Functional nutrition','Supplementation','Metabolic health'],
-     pos:{x:'5%',y:'58%',sz:'176px',dur:'17s',del:'-5s',dx:'11px',dy:'-17px',rot:'1.2deg'}},
+     toon:{bg:'#E7EFF9',skin:'#B87A52',skin2:'#A66C46',hair:'#241A1C',wear:'#5B7DB1',coat:'#F4F7FB',style:'short',beard:false,glasses:false},
+     pos:{x:'3%',y:'55%',sz:'194px',dur:'17s',del:'-5s',dx:'11px',dy:'-17px',rot:'1.2deg'}},
     {id:'bl',mono:'BL',name:'Dra. Beatriz Linhares',crm:'CRP 05/67.891',color:'#5B7DB1',
      role:'Clinical psychologist',
      bio:'Keeps the change sustainable when the plan meets real life.',
      photo:'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
      tags:['Behaviour change','Psychoeducation'],
-     pos:{x:'80%',y:'59%',sz:'194px',dur:'14s',del:'-10s',dx:'-11px',dy:'15px',rot:'-1.5deg'}}
+     toon:{bg:'#FAEFDC',skin:'#E0B08A',skin2:'#CE9E78',hair:'#3A2320',wear:'#2A9D8F',coat:'#FFFFFF',style:'curly',beard:false,glasses:false},
+     pos:{x:'80%',y:'62%',sz:'210px',dur:'14s',del:'-10s',dx:'-11px',dy:'15px',rot:'-1.5deg'}}
   ];
   TEAM.forEach(function(p){ p.short=p.role; });
+
+  /* ---- retratos em desenho para a fachada; a foto real fica na ficha ----
+     O cabelo e uma elipse desenhada ANTES do rosto: o rosto cobre a parte de
+     baixo e sobra a franja por cima. Desenhar so uma faixa vira tiara. */
+  function avatar(a){
+    var F='#0C333F', H=a.hair;
+    var back = a.style==='bob'   ? '<ellipse cx="100" cy="100" rx="46" ry="50" fill="'+H+'"/>'
+             : a.style==='curly' ? '<ellipse cx="100" cy="94" rx="46" ry="46" fill="'+H+'"/>'
+                 +'<circle cx="62" cy="70" r="16" fill="'+H+'"/><circle cx="138" cy="70" r="16" fill="'+H+'"/>'
+                 +'<circle cx="78" cy="50" r="17" fill="'+H+'"/><circle cx="122" cy="50" r="17" fill="'+H+'"/>'
+                 +'<circle cx="100" cy="42" r="18" fill="'+H+'"/>'
+             : '';
+    var crown = '<ellipse cx="100" cy="'+(a.style==='bob'?74:72)+'" rx="38" ry="38" fill="'+H+'"/>';
+    var beard = a.beard
+      ? '<path d="M66 92 C66 132 134 132 134 92 C134 116 120 129 100 129 C80 129 66 116 66 92Z" fill="'+H+'"/>'
+        +'<ellipse cx="100" cy="110" rx="17" ry="13" fill="'+a.skin+'"/>'   /* area da boca */
+      : '';
+    var glasses = a.glasses
+      ? '<g fill="none" stroke="'+F+'" stroke-width="3.4"><rect x="72" y="82" width="26" height="22" rx="8"/>'
+        +'<rect x="102" y="82" width="26" height="22" rx="8"/><path d="M98 91h4"/>'
+        +'<path d="M72 89l-8 3"/><path d="M128 89l8 3"/></g>'
+      : '';
+    return '<svg class="cst-toon" viewBox="0 0 200 200" aria-hidden="true">'
+      +'<rect width="200" height="200" fill="'+a.bg+'"/>'
+      +back
+      +'<rect x="86" y="112" width="28" height="36" rx="13" fill="'+a.skin2+'"/>'
+      +'<path d="M72 128 L100 180 L128 128Z" fill="'+a.wear+'"/>'
+      +'<path d="M14 200 C14 158 48 139 74 130 L100 178 L126 130 C152 139 186 158 186 200Z" fill="'+a.coat+'"/>'
+      +'<g fill="none" stroke="rgba(12,51,63,.13)" stroke-width="2.4" stroke-linecap="round">'
+      +'<path d="M74 130 L100 178"/><path d="M126 130 L100 178"/></g>'
+      +'<circle cx="65" cy="96" r="8.5" fill="'+a.skin+'"/><circle cx="135" cy="96" r="8.5" fill="'+a.skin+'"/>'
+      +crown
+      +'<ellipse cx="100" cy="92" rx="34" ry="38" fill="'+a.skin+'"/>'
+      +beard
+      +'<g fill="'+F+'"><ellipse cx="87" cy="93" rx="3.4" ry="4.2"/><ellipse cx="113" cy="93" rx="3.4" ry="4.2"/></g>'
+      +'<g fill="none" stroke="'+F+'" stroke-width="2.6" stroke-linecap="round">'
+      +'<path d="M80 81 Q87 77 94 81"/><path d="M106 81 Q113 77 120 81"/>'
+      +'<path d="M90 108 Q100 116 110 108"/></g>'
+      +glasses
+      +'</svg>';
+  }
   function esc(v){return String(v).replace(/[&<>"]/g,function(c){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
 
@@ -7355,9 +7399,7 @@ routeFromHash();
     +' aria-label="'+esc(p.name)+'" style="--dc:'+p.color+';--sz:'+p.pos.sz+';--x:'+p.pos.x
     +';--y:'+p.pos.y+';--dur:'+p.pos.dur+';--del:'+p.pos.del+';--dx:'+p.pos.dx+';--dy:'+p.pos.dy
     +';--rot:'+p.pos.rot+'">'
-    +'<span class="cst-face'+(p.photo?'':' nophoto')+'">'
-    +(p.photo?'<img src="'+p.photo+'" alt="" loading="lazy" decoding="async">'
-             :'<span class="cst-mono" aria-hidden="true">'+p.mono+'</span>')
+    +'<span class="cst-face">'+avatar(p.toon)
     +'<span class="cst-plate"><b>'+esc(p.name)+'</b><span>'+esc(p.short)+'</span></span></span></button>';}).join('');
 
   /* Parallax: alvo do ponteiro + interpolacao a cada quadro, escrito em `translate`
@@ -7392,7 +7434,7 @@ routeFromHash();
   /* ---- fundo de sinapses: nos que derivam, ligados quando ficam perto ---- */
   (function(){
     var cv=document.getElementById('cstNet'); if(!cv||!cv.getContext) return;
-    var ctx=cv.getContext('2d'), W=0,H=0,DPR=1,nodes=[],raf=null,live=false;
+    var ctx=cv.getContext('2d'), W=0,H=0,DPR=1,nodes=[],sparks=[],last=0,raf=null,live=false;
     var LINK=192;                       /* distancia maxima de ligacao, em px */
     /* as mesmas paradas do gradiente do "Feed your brain": a malha percorre a paleta
        da esquerda para a direita, em vez de ser toda de uma cor so */
@@ -7415,11 +7457,24 @@ routeFromHash();
       nodes=[];
       for(var i=0;i<n;i++) nodes.push({
         x:Math.random()*W, y:Math.random()*H,
-        vx:(Math.random()-.5)*.15, vy:(Math.random()-.5)*.15,
+        vx:(Math.random()-.5)*.26, vy:(Math.random()-.5)*.26,
         r:Math.random()<.18?2.8:1.6,
         ph:Math.random()*Math.PI*2, sp:.5+Math.random()*.7
       });
+      sparks=[];
+      for(var k=0;k<7;k++) sparks.push({a:0,b:1,t:Math.random(),sp:.10+Math.random()*.16,on:false});
       return true;
+    }
+    /* uma faisca escolhe um par de nos ligados e viaja entre eles */
+    function reseat(sp){
+      for(var tries=0;tries<14;tries++){
+        var i=(Math.random()*nodes.length)|0, j=(Math.random()*nodes.length)|0;
+        if(i===j) continue;
+        var dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+        if(dx*dx+dy*dy<LINK*LINK){ sp.a=i; sp.b=j; sp.t=0; sp.on=true;
+          sp.sp=.10+Math.random()*.16; return; }
+      }
+      sp.on=false;
     }
     function frame(t){
       if(!live) return;
@@ -7447,6 +7502,22 @@ routeFromHash();
         ctx.fillStyle='rgba('+ramp(a.x/W)+','+al.toFixed(3)+')';
         ctx.beginPath(); ctx.arc(a.x,a.y,a.r,0,6.2832); ctx.fill();
       }
+      var dt=Math.min(.05,(t-(last||t))/1000); last=t;
+      for(i=0;i<sparks.length;i++){
+        var sp=sparks[i];
+        if(!sp.on){ if(Math.random()<.012) reseat(sp); continue; }
+        sp.t+=sp.sp*dt*3;
+        if(sp.t>=1){ sp.on=false; continue; }
+        a=nodes[sp.a]; b=nodes[sp.b];
+        dx=a.x-b.x; dy=a.y-b.y;
+        if(dx*dx+dy*dy>LINK*LINK*1.35){ sp.on=false; continue; }   /* soltou: some */
+        var px=a.x+(b.x-a.x)*sp.t, py=a.y+(b.y-a.y)*sp.t;
+        var fade=Math.sin(sp.t*Math.PI), col=ramp(px/W);
+        ctx.fillStyle='rgba('+col+','+(0.14*fade*B).toFixed(3)+')';
+        ctx.beginPath(); ctx.arc(px,py,5.5,0,6.2832); ctx.fill();
+        ctx.fillStyle='rgba('+col+','+(0.85*fade*B).toFixed(3)+')';
+        ctx.beginPath(); ctx.arc(px,py,2.1,0,6.2832); ctx.fill();
+      }
       raf=requestAnimationFrame(frame);
     }
     function still(){                    /* uma passada estatica, sem movimento */
@@ -7463,7 +7534,7 @@ routeFromHash();
     function start(){
       if(RM) return still();
       if(live) return; if(!build()) return;
-      live=true; raf=requestAnimationFrame(frame);
+      live=true; last=0; raf=requestAnimationFrame(frame);
     }
     function stop(){ live=false; if(raf) cancelAnimationFrame(raf); raf=null; }
     window.__cstNet=function(){ stop(); if(document.getElementById('pg-equipe')
