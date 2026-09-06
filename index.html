@@ -3489,23 +3489,15 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
             <div class="wm-en-txt reveal">
               <h2 class="wm-en-h">Maybe the energy is not getting through.</h2>
               <p class="wm-en-p">Your brain is 2% of your weight and burns 20% of your energy. It is the most expensive organ you have. When metabolism is compromised, the neuron cannot produce the energy it needs, and the brain starts to fail.</p>
-            </div>
-          </div>
-
-          <div class="wm-step" data-f="1">
-            <div class="wm-mech reveal" style="margin-top:0">
-              <div class="wm-m">
-                <h3>Insulin resistance</h3>
-                <p>Insulin is what lets a cell turn glucose into energy. When blood insulin runs high for years, less of it reaches the brain. The glucose is still there. The cell just cannot use it. A brain like this can be swimming in glucose and still be starving.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="wm-step" data-f="1">
-            <div class="wm-mech reveal" style="margin-top:0">
-              <div class="wm-m">
-                <h3>Inflammation and oxidative stress</h3>
-                <p>Defence is normal and necessary. When it turns chronic, it wears down the architecture of the brain instead of protecting it.</p>
+              <div class="wm-mech">
+                <div class="wm-m">
+                  <h3>Insulin resistance</h3>
+                  <p>Insulin is what lets a cell turn glucose into energy. When blood insulin runs high for years, less of it reaches the brain. The glucose is still there. The cell just cannot use it. A brain like this can be swimming in glucose and still be starving.</p>
+                </div>
+                <div class="wm-m">
+                  <h3>Inflammation and oxidative stress</h3>
+                  <p>Defence is normal and necessary. When it turns chronic, it wears down the architecture of the brain instead of protecting it.</p>
+                </div>
               </div>
             </div>
           </div>
@@ -3607,24 +3599,11 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
             <div class="reveal">
               <h2>In ketosis, the brain chooses.</h2>
               <p class="wm-ket-lead">Ketones are not an emergency fuel. There is always plenty of glucose in the blood, and even so, when ketones are available the brain keeps burning ketones.</p>
-            </div>
-          </div>
-
-          <div class="wm-step" data-f="0">
-            <div class="wm-ket-list reveal" style="margin-top:0">
-              <div class="wm-kl"><b>Less insulin.</b><span>Ketones burn best exactly when insulin is low.</span></div>
-            </div>
-          </div>
-
-          <div class="wm-step" data-f="0">
-            <div class="wm-ket-list reveal" style="margin-top:0">
-              <div class="wm-kl"><b>A shorter path.</b><span>Glucose takes thirteen chemical reactions to become energy. Ketones take three.</span></div>
-            </div>
-          </div>
-
-          <div class="wm-step" data-f="0">
-            <div class="wm-ket-list reveal" style="margin-top:0">
-              <div class="wm-kl"><b>Less oxidation.</b><span>Burning ketones produces less oxidative stress than burning glucose.</span></div>
+              <div class="wm-ket-list">
+                <div class="wm-kl"><b>Less insulin.</b><span>Ketones burn best exactly when insulin is low.</span></div>
+                <div class="wm-kl"><b>A shorter path.</b><span>Glucose takes thirteen chemical reactions to become energy. Ketones take three.</span></div>
+                <div class="wm-kl"><b>Less oxidation.</b><span>Burning ketones produces less oxidative stress than burning glucose.</span></div>
+              </div>
             </div>
           </div>
 
@@ -7635,17 +7614,24 @@ routeFromHash();
     svg.setAttribute('viewBox','0 0 1030 152'); svg.innerHTML='';
     const rc=rough.svg(svg), cc='currentColor';
     const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const items=[foodRibeye,foodEggs,foodTbone,foodAvocado,foodButter,foodShortrib,foodFish,foodBacon,foodOlives];
-    const CY=15.2;
+    /* Sete desenhos, nao nove: o t-bone e o short rib saiam — eram mais dois cortes
+       de carne vermelha e os mais fracos do conjunto. Para trazer de volta, basta
+       recolocar foodTbone e foodShortrib nesta lista. */
+    const items=[foodRibeye,foodEggs,foodAvocado,foodButter,foodFish,foodBacon,foodOlives];
+    const N=items.length, STEP=1030/N, CY=12.5;
+    /* A entrada varre da esquerda para a direita; a saida faz o mesmo caminho.
+       Nada de tempos aleatorios: cada desenho espera a sua vez. */
+    const IN0=0.30, IND=0.55, HOLD=8.6, OUTD=0.5;
     items.forEach(function(fn,k){
-      const grp=el('g',{transform:'translate('+(62+k*113)+',76) scale(1.3)'});
+      const grp=el('g',{transform:'translate('+Math.round(STEP/2+k*STEP)+',76) scale(1.3)'});
       fn(grp,rc,cc);
       if(!still){
+        const inA=k*IN0, inB=inA+IND, outA=inA+HOLD, outB=outA+OUTD;
+        const kt=[0,inA/CY,inB/CY,outA/CY,outB/CY,1].map(function(v){return v.toFixed(4);});
         grp.setAttribute('opacity','0');
         grp.appendChild(el('animate',{attributeName:'opacity',
-          values:'0;1;1;0;0', keyTimes:'0;0.05;0.66;0.76;1',
-          dur:CY+'s', begin:(-(k*CY/items.length)).toFixed(2)+'s',
-          repeatCount:'indefinite', calcMode:'linear'}));
+          values:'0;0;1;1;0;0', keyTimes:kt.join(';'),
+          dur:CY+'s', repeatCount:'indefinite', calcMode:'linear'}));
       }
       svg.appendChild(grp);
     });
