@@ -127,9 +127,9 @@ body.on-tratamento.dark .nav{background:var(--navbg);border-bottom-color:var(--l
   width:min(600px,72%);text-align:center;z-index:6}
 .cst-eyebrow{font-family:var(--display);font-size:11.5px;font-weight:700;letter-spacing:.2em;
   text-transform:uppercase;color:var(--t500);margin:0 0 18px}
-.cst-h{font-family:var(--display);font-weight:600;font-size:clamp(33px,4.3vw,52px);
+.cst-h{font-family:var(--display);font-weight:600;font-size:clamp(38px,5.2vw,66px);
   line-height:1.05;letter-spacing:-.035em;color:var(--hd);margin:0;text-wrap:balance}
-.cst-lead{font-family:var(--calm);font-size:clamp(17px,1.5vw,21px);line-height:1.5;
+.cst-lead{font-family:var(--calm);font-size:clamp(19px,1.85vw,26px);line-height:1.45;
   color:var(--soft);margin:16px auto 0;max-width:24em}
 .cst-cta{display:flex;gap:10px;justify-content:center;margin-top:26px;flex-wrap:wrap}
 .cst-grad{color:var(--hd);border:1px solid rgba(12,51,63,.09);
@@ -1381,8 +1381,16 @@ body.dark .hf-wash{opacity:.20;filter:blur(130px)}
 .lt-art svg{position:absolute;inset:0;width:100%;height:100%}
 .lt-card h3{font-family:var(--serif);font-weight:400;font-size:clamp(18px,1.5vw,22px);
   line-height:1.2;margin:0 0 10px;padding:0 clamp(16px,1.6vw,26px);color:#F7F2E7;text-wrap:balance}
-.lt-sub{font-size:13.5px;line-height:1.5;color:rgba(245,239,228,.76);margin:0;
+.lt-sub{font-family:var(--quiet);font-weight:450;font-size:14.5px;letter-spacing:-.012em;
+  line-height:1.5;color:rgba(245,239,228,.78);margin:0;
   padding:0 clamp(18px,1.9vw,30px);text-wrap:balance}
+.lt-card h3.lt-1line{white-space:nowrap;font-size:clamp(14.5px,1.19vw,19px);
+  letter-spacing:-.014em;padding-left:8px;padding-right:8px}
+:root[lang="pt-BR"] .lt-card h3.lt-1line{font-size:clamp(13px,1.1vw,17.4px)}
+@media(max-width:1080px){.lt-card h3.lt-1line{white-space:normal;
+  font-size:clamp(18px,1.5vw,22px);letter-spacing:normal;
+  padding-left:clamp(16px,1.6vw,26px);padding-right:clamp(16px,1.6vw,26px)}
+  :root[lang="pt-BR"] .lt-card h3.lt-1line{font-size:clamp(18px,1.5vw,22px)}}
 .lt-arrow{position:absolute;right:14px;bottom:14px;display:flex;font-size:16px;
   color:#F5EFE4;opacity:0;transform:translateX(-6px);transition:opacity .25s,transform .25s}
 .lt-card:hover .lt-arrow,.lt-card:focus-visible .lt-arrow{opacity:.85;transform:none}
@@ -2250,6 +2258,7 @@ body.imm .imhero .imin{padding-top:64px}
 .nav.over a.nl{color:rgba(245,239,228,.90)}
 .nav.over a.nl:hover{color:#fff}
 .nav.over .themetog,.nav.over .langtog,.nav.over .navsearch{color:#F5EFE4;border-color:rgba(245,239,228,.42)}
+.nav .langtog{border:0 !important;padding:4px 2px !important}
 .nav.over .btn-solid{background:#F5EFE4;color:var(--t900)}
 
 /* ---- busca em icone ---- */
@@ -3081,7 +3090,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
             </g>
           </svg>
         </div>
-        <h3>What is Metabolic Psychiatry?</h3>
+        <h3 class="lt-1line">What is Metabolic Psychiatry?</h3>
         <p class="lt-sub">The science behind it, in plain language.</p>
         <span class="lt-arrow" aria-hidden="true"><span class="ic" data-icon="arrow-right"></span></span>
       </article>
@@ -7611,28 +7620,28 @@ routeFromHash();
     {id:'rm',mono:'RM',name:'Dr. Ricardo Mendes',crm:'CRM/SP 142.587',color:'#2A9D8F',
      role:'Psychiatrist and clinical director',
      bio:'Eighteen years putting nutrition, metabolism and medication in the same treatment plan.',
-     photo:'https://images.unsplash.com/photo-1637059824899-a441006a6875?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
+     photo:'team/rm.jpg',
      tags:['Metabolic psychiatry','Mood disorders','Ketogenic therapy'],
      toon:{bg:'#F7E3DA',skin:'#C98B62',skin2:'#B87A52',hair:'#22181A',wear:'#2A9D8F',coat:'#FFFFFF',style:'short',beard:true,glasses:true},
      pos:{x:'6%',y:'5%',sz:'218px',dur:'15s',del:'-2s',dx:'-11px',dy:'16px',rot:'-1.4deg'}},
     {id:'cf',mono:'CF',name:'Dra. Camila Ferreira',crm:'CRM/SP 158.203',color:'#114B5F',
      role:'Psychiatrist, neurometabolism',
      bio:'Researches the link between mitochondrial dysfunction and psychiatric illness.',
-     photo:'https://images.unsplash.com/photo-1678695972687-033fa0bdbac9?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
+     photo:'team/cf.jpg',
      tags:['Neurometabolism','Treatment-resistant depression','Clinical research'],
      toon:{bg:'#DFF0EC',skin:'#8D5A3B',skin2:'#7C4C31',hair:'#1B1416',wear:'#B03A5B',coat:'#FFFFFF',style:'bob',beard:false,glasses:false},
      pos:{x:'78%',y:'1%',sz:'202px',dur:'18s',del:'-8s',dx:'13px',dy:'-15px',rot:'1.6deg'}},
     {id:'lt',mono:'LT',name:'Dr. Lucas Tavares',crm:'CRM/RJ 098.412',color:'#E76F51',
      role:'Nutrition physician',
      bio:'Builds the food side of every plan, from therapeutic diets to insulin resistance.',
-     photo:'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
+     photo:'team/lt.jpg',
      tags:['Functional nutrition','Supplementation','Metabolic health'],
      toon:{bg:'#E7EFF9',skin:'#B87A52',skin2:'#A66C46',hair:'#241A1C',wear:'#5B7DB1',coat:'#F4F7FB',style:'short',beard:false,glasses:false},
      pos:{x:'3%',y:'55%',sz:'194px',dur:'17s',del:'-5s',dx:'11px',dy:'-17px',rot:'1.2deg'}},
     {id:'bl',mono:'BL',name:'Dra. Beatriz Linhares',crm:'CRP 05/67.891',color:'#5B7DB1',
      role:'Clinical psychologist',
      bio:'Keeps the change sustainable when the plan meets real life.',
-     photo:'https://images.unsplash.com/photo-1594824476967-48c8b964273f?w=760&h=760&fit=crop&crop=faces&q=80&auto=format',
+     photo:'team/bl.jpg',
      tags:['Behaviour change','Psychoeducation'],
      toon:{bg:'#FAEFDC',skin:'#E0B08A',skin2:'#CE9E78',hair:'#3A2320',wear:'#2A9D8F',coat:'#FFFFFF',style:'curly',beard:false,glasses:false},
      pos:{x:'80%',y:'62%',sz:'210px',dur:'14s',del:'-10s',dx:'-11px',dy:'15px',rot:'-1.5deg'}}
@@ -9181,10 +9190,12 @@ routeFromHash();
     cur=l; document.documentElement.lang = (l==='pt'?'pt-BR':'en');
     apply();
     document.querySelectorAll('.langtog').forEach(b=>b.textContent = (l==='pt'?'EN':'PT'));
+    try{ if(window.__fitLt) window.__fitLt(); }catch(e){}
   }
   window.__setLang=setLang;
   function makeTog(){ const b=document.createElement('button'); b.className='langtog'; b.textContent='PT'; b.title='English / Português (BR)';
-    b.style.cssText='border:1px solid currentColor;background:transparent;color:inherit;border-radius:99px;padding:4px 11px;font-size:12px;font-weight:700;letter-spacing:.03em;margin-left:10px;cursor:pointer;opacity:.85;flex-shrink:0';
+    b.style.cssText='border:0;background:transparent;color:inherit;padding:4px 2px;font-family:var(--quiet);font-size:12.5px;font-weight:600;letter-spacing:.09em;margin-left:10px;cursor:pointer;opacity:.62;flex-shrink:0;transition:opacity .15s';
+    b.onmouseenter=function(){b.style.opacity='1'}; b.onmouseleave=function(){b.style.opacity='.62'};
     b.onclick=function(e){ e.preventDefault(); setLang(cur==='en'?'pt':'en'); };
     return b; }
   function inject(){
@@ -10303,6 +10314,23 @@ routeFromHash();
     var _f=window[fn];
     window[fn]=function(){ try{ LDETAIL=null; }catch(e){} return _f.apply(this,arguments); };
   });
+})();
+</script>
+
+<script>
+/* Titulo do 1o cartao sempre em UMA linha: encolhe ate caber (EN e PT). */
+(function(){
+  function fit(){
+    document.querySelectorAll('.lt-1line').forEach(function(h){
+      if(getComputedStyle(h).whiteSpace!=='nowrap'){ h.style.fontSize=''; return; }
+      var fs=19; h.style.fontSize=fs+'px';
+      var n=0; while(fs>12 && h.scrollWidth>h.clientWidth && n++<20){ fs-=0.5; h.style.fontSize=fs+'px'; }
+    });
+  }
+  window.addEventListener('resize',fit);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(fit);
+  if(document.readyState!=='loading') fit(); else document.addEventListener('DOMContentLoaded',fit);
+  window.__fitLt=fit;
 })();
 </script>
 </body>
