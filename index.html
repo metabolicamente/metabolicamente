@@ -2369,16 +2369,17 @@ body.dark .pyr-vs{color:#6f8a8f}
 .pyr-svg{width:100%;max-width:420px;margin:0 auto;display:block;overflow:visible;color:var(--hd2)}
 .pyr-scene{display:block;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none}
 .pyr-scene::-webkit-scrollbar{display:none}
-.pyr-wide{display:block;width:100%;min-width:860px;max-width:1400px;margin:0 auto;color:var(--hd2)}
+.pyr-wide{display:block;width:100%;min-width:860px;max-width:1400px;margin:0 auto;
+  max-height:min(56vh,600px);color:var(--hd2)}
 .wm-divider{display:flex;justify-content:center;padding:clamp(18px,3vw,34px) 0 clamp(4px,1vw,10px);color:var(--line)}
 .wm-divider svg{width:168px;height:12px;display:block}
-.wm-root{padding:clamp(10px,2vw,22px) var(--gut) clamp(20px,3vw,38px)}
+.wm-root{padding:clamp(8px,1.4vw,18px) var(--gut) clamp(14px,2vw,28px)}
 /* mesmo tipo de "Your brain is built out of what you eat." */
 .wm-root-h{font-family:var(--quiet);font-weight:500;font-size:clamp(26px,3.9vw,52px);
   line-height:1.06;letter-spacing:-.04em;color:var(--hd);
-  margin:0 auto clamp(16px,2.4vw,26px);max-width:1240px;text-align:center;text-wrap:balance}
+  margin:0 auto clamp(12px,1.8vw,20px);max-width:1240px;text-align:center;text-wrap:balance}
 .wm-root-note{font-size:clamp(15.5px,1.3vw,18px);line-height:1.72;color:var(--soft);
-  margin:0 auto clamp(20px,3vw,36px);max-width:46em;text-align:center}
+  margin:0 auto clamp(14px,2vw,24px);max-width:46em;text-align:center}
 /* --- BLOCO 4: materia-prima --- */
 .wm-raw{padding:clamp(14px,2.4vw,30px) var(--gut) clamp(26px,4vw,52px)}
 .wm-brain{display:block;width:100%;max-width:clamp(300px,42vw,520px);margin:0 auto clamp(8px,1.6vw,20px);
@@ -2396,7 +2397,11 @@ body.dark .pyr-vs{color:#6f8a8f}
 
 /* --- BLOCO 5: a regua --- */
 .wm-crit{padding:clamp(30px,5vw,72px) var(--gut) clamp(24px,3.4vw,44px)}
-.wm-quote{max-width:var(--wmax);margin:0 auto;padding:clamp(28px,5vw,80px) 0 clamp(18px,2.6vw,34px)}
+.wm-quote{max-width:var(--wmax);margin:0 auto;padding:clamp(24px,4vw,60px) 0 clamp(18px,2.6vw,34px);
+  min-height:calc(100vh - 380px);display:flex;align-items:center}
+.wm-quote-in{width:100%}
+/* respiro depois da seta da citacao, para "Have you ever..." nao aparecer junto */
+.wm-crit > .wm-down{padding-bottom:clamp(70px,17vh,190px)}
 .wm-quote-in{display:grid;grid-template-columns:clamp(180px,20vw,290px) minmax(0,1fr);
   gap:clamp(24px,4vw,68px);align-items:center}
 /* o retrato entra como mascara: pega a cor do texto e funciona nos dois temas */
@@ -2555,10 +2560,10 @@ body.dark .wm-m{background:rgba(255,255,255,.035)}
 body.dark .wm-sk{opacity:.42}
 .wm-m > *:not(.wm-sk){position:relative;z-index:1}
 .wm-m h3{display:flex;align-items:baseline;gap:9px;
-  font-family:var(--display);font-size:14.5px;font-weight:600;letter-spacing:-.005em;
-  margin:0 0 9px}
+  font-family:var(--display);font-size:17px;font-weight:600;letter-spacing:-.012em;
+  margin:0 0 10px}
 /* o ponto usa o mesmo degrade corrido do texto */
-.wm-m h3::before{content:"";width:8px;height:8px;border-radius:50%;flex-shrink:0;
+.wm-m h3::before{content:"";width:9px;height:9px;border-radius:50%;flex-shrink:0;
   transform:translateY(-1px);
   background:linear-gradient(100deg,#E76F51,#E9A277,#79D0C4,#2A9D8F,#8FB8E2,#E76F51);
   background-size:300% 100%;animation:flowtxt 9s linear infinite}
