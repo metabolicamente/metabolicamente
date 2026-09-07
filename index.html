@@ -2169,6 +2169,8 @@ body.dark .hf-wash{opacity:.20;filter:blur(130px)}
   grid-template-columns:1.5fr auto;gap:clamp(20px,3vw,44px);align-items:center}
 .tm-join h3{font-family:var(--serif);font-size:clamp(24px,2.7vw,34px);line-height:1.1;
   color:#F7F2E7;margin:0 0 10px;font-weight:400}
+/* titulos de CTA na fonte dos titulos da Learn more, nao no serif */
+.upcard h3.qh,.tm-join h3.qh{font-family:var(--quiet);font-weight:600;letter-spacing:-.035em;line-height:1.04}
 .tm-join p{font-size:15px;line-height:1.64;color:rgba(245,239,228,.82);margin:0;max-width:38em}
 @media(max-width:820px){.tm-join{grid-template-columns:1fr;gap:22px}}
 
@@ -2608,6 +2610,8 @@ body.dark .wm-sk{opacity:.42}
 /* O primeiro passo ocupa a tela inteira: ninguem ve o proximo titulo ao chegar. */
 .wm-scene-steps > .wm-step{position:relative}
 #wmScene1 .wm-step{min-height:calc(100vh - 96px);padding-bottom:96px}
+/* o primeiro passo termina mais cedo: a seta precisa aparecer na primeira tela */
+#wmScene1 .wm-step:first-child{min-height:calc(100vh - 200px);padding-bottom:56px}
 /* seta discreta: "da pra rolar" */
 /* a seta flutua sozinha, sem circulo, e no meio da PAGINA — nao da coluna.
    --colx = distancia da borda da janela ate a coluna de texto. */
@@ -3389,7 +3393,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
           <div class="upart"><svg viewBox="0 0 1200 440" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><circle cx="962" cy="118" r="88" fill="#fff" opacity=".13"/><circle cx="962" cy="118" r="49" fill="#fff" opacity=".2"/><path d="M0 296 Q220 246 460 286 T1200 258 L1200 440 L0 440Z" fill="#fff" opacity=".1"/><path d="M0 350 Q250 298 500 340 T1200 320 L1200 440 L0 440Z" fill="#fff" opacity=".1"/><g fill="#fff" opacity=".42"><circle cx="784" cy="62" r="3.4"/><circle cx="1094" cy="196" r="2.8"/><circle cx="868" cy="238" r="2.4"/><circle cx="1138" cy="72" r="3"/><circle cx="716" cy="166" r="2.2"/></g></svg></div>
           <div class="upbody">
             <p class="upkick">Inside the app</p>
-            <h3>Create an account to access exclusive content!</h3>
+            <h3 class="qh">Create an account to access <span class="flowtxt">exclusive content!</span></h3>
             <p class="upsub">Guided programs, short daily sessions and a library that keeps your progress. Free to start.</p>
             <span class="btn btn-cream upplay">Create your account <span class="ic" data-icon="arrow-right"></span></span>
           </div>
@@ -3488,7 +3492,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       <div class="tm-join reveal">
         <div class="tm-join-l">
           <p class="upkick" style="color:rgba(245,239,228,.66)">Free account</p>
-          <h3>The rest of the library is one click away.</h3>
+          <h3 class="qh">The rest of the library is <span class="flowtxt">one click away.</span></h3>
           <p>Create your account to open the guided programs and keep your progress. It costs nothing to start.</p>
         </div>
         <div class="tm-join-r">
@@ -3699,10 +3703,9 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
 
     <!-- ---------- BLOCO 8: o caminho e o servico ---------- -->
     <section class="wm-path">
-      <h2 class="reveal">It is a path, not a leap.</h2>
+      <h2 class="reveal">Find a diet <span class="flowtxt">that works for you.</span></h2>
       <p class="wm-path-lead reveal">You start wider: real food, less carbohydrate, a few weeks. If your labs and your symptoms ask for more, you tighten. If they do not, you stop there.</p>
       <svg class="wm-road" id="roadMap" aria-hidden="true"></svg>
-      <p class="wm-path-q reveal">The goal was never the strictest diet. It is the least restrictive one <span class="flowtxt">that works for you.</span></p>
 
       <div class="wm-down reveal"><button type="button" class="wm-cue flow" aria-label="Scroll down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button></div>
 
@@ -8384,10 +8387,9 @@ routeFromHash();
     "Opportunities":"Oportunidades",
     "About us":"Sobre nós",
     // bloco 8
-    "It is a path, not a leap.":"É um caminho, não um salto.",
+    "Find a diet that works for you.":"Encontre uma dieta que funcione para você.",
+    "Find a diet":"Encontre uma dieta",
     "You start wider: real food, less carbohydrate, a few weeks. If your labs and your symptoms ask for more, you tighten. If they do not, you stop there.":"Você começa mais largo: comida de verdade, menos carboidrato, algumas semanas. Se os exames e os sintomas pedirem mais, você aperta. Se não pedirem, para por ali.",
-    "The goal was never the strictest diet. It is the least restrictive one that works for you.":"A meta nunca foi a dieta mais restritiva. É a menos restritiva que funciona para você.",
-    "The goal was never the strictest diet. It is the least restrictive one":"A meta nunca foi a dieta mais restritiva. É a menos restritiva",
     "that works for you.":"que funciona para você.",
     "And you do not do this alone":"E você não faz isso sozinho",
     "A drop in carbohydrate moves blood sugar and blood pressure, and it can change the dose you need. That is why a dietitian and a psychiatrist sit on the same side of the table, from the first appointment.":"Uma queda no carboidrato mexe com glicemia e pressão, e pode mudar a dose de que você precisa. É por isso que um nutricionista e um psiquiatra ficam do mesmo lado da mesa, desde a primeira consulta.",
@@ -8609,11 +8611,15 @@ routeFromHash();
     "Podcasts & talks":"Podcasts e entrevistas",
     "Conversations on metabolic psychiatry. Free, no account needed.":"Conversas sobre psiquiatria metabólica. Abertas, sem precisar de conta.",
     "Create an account to access exclusive content!":"Crie uma conta para acessar o conteúdo exclusivo!",
+    "Create an account to access":"Crie uma conta para acessar o",
+    "exclusive content!":"conteúdo exclusivo!",
     "Guided programs, short daily sessions and a library that keeps your progress. Free to start.":"Programas guiados, sessões diárias curtas e uma biblioteca que guarda o seu progresso. Começar é grátis.",
     "What is being written about metabolic psychiatry.":"O que está sendo escrito sobre psiquiatria metabólica.",
     "Search for a topic, episode, or article":"Busque um tema, episódio ou artigo",
     "Free account":"Conta gratuita",
     "The rest of the library is one click away.":"O resto da biblioteca está a um clique.",
+    "The rest of the library is":"O resto da biblioteca está",
+    "one click away.":"a um clique.",
     "Create your account to open the guided programs and keep your progress. It costs nothing to start.":"Crie sua conta para abrir os programas guiados e guardar seu progresso. Começar não custa nada.",
     "Create account":"Criar conta",
     "Free to start. Your progress is saved as you go.":"Começar é grátis. Seu progresso fica salvo conforme você avança.",
@@ -10512,17 +10518,37 @@ routeFromHash();
   /* offsetTop/offsetHeight, nao getBoundingClientRect: os blocos .reveal ainda
      carregam translateY(22px) quando a seta e clicada, e o rect mediria errado. */
   function absTop(el){ var y=0; while(el){ y+=el.offsetTop; el=el.offsetParent; } return y; }
+  /* SVG nao tem offsetTop: cai para o rect + scroll */
+  function absBottom(el){
+    if(typeof el.offsetHeight==='number' && el.offsetParent!==undefined && el.offsetHeight)
+      return absTop(el)+el.offsetHeight;
+    var r=el.getBoundingClientRect();
+    return r.bottom+(window.scrollY||window.pageYOffset);
+  }
+  /* fundo do capitulo: o ultimo irmao antes da proxima seta */
+  function contentBottom(startEl,endEl){
+    var el=startEl, last=startEl;
+    while(el && el!==endEl && !(endEl && el.contains(endEl))){ last=el; el=el.nextElementSibling; }
+    var b=absBottom(last);
+    return isFinite(b)?b:absTop(startEl)+startEl.offsetHeight;
+  }
+  /* Regra: centrar o CONTEUDO do capitulo na tela. A seta seguinte so puxa o
+     enquadramento para cima quando falta pouco para ela caber — nunca ao ponto
+     de colar o titulo no topo. */
   function landRange(startEl,endEl){
     if(!startEl){ scrollBy({top:innerHeight*0.85,behavior:'smooth'}); return; }
     var nh=navH(), avail=innerHeight-nh;
-    var top=absTop(startEl), bottom=top+startEl.offsetHeight;
+    var top=absTop(startEl);
+    var h=Math.max(startEl.offsetHeight, contentBottom(startEl,endEl)-top);
+    var gap=(avail-h)/2;
+    if(!(gap>0)) gap=Math.max(26,avail*0.05);
     if(endEl){
       var btn=endEl.querySelector('.wm-cue')||endEl;
-      bottom=absTop(btn)+btn.offsetHeight+10;
+      var far=absTop(btn)+btn.offsetHeight+10;
+      var over=(far-top)-(avail-gap);
+      if(over>0 && over<=48) gap-=over;   /* cede so o suficiente para a seta aparecer */
     }
-    var h=bottom-top;
-    var y=(h<=avail) ? top-nh-(avail-h)/2 : top-nh-20;
-    scrollTo({top:Math.max(0,Math.round(y)),behavior:'smooth'});
+    scrollTo({top:Math.max(0,Math.round(top-nh-gap)),behavior:'smooth'});
   }
   function land(el){ landRange(el,null); }
   function init(){
@@ -10551,12 +10577,15 @@ routeFromHash();
       cues.forEach(function(c){
         var step=c.closest('.wm-step'); if(!step) return;
         var r=step.getBoundingClientRect();
-        /* some assim que o passo comeca a sair da tela */
-        c.classList.toggle('gone', r.bottom < innerHeight*0.72);
+        /* some assim que o passo comeca a sair da tela; no topo da pagina
+           a seta esta sempre visivel (chegar na Learn more nao pode escode-la) */
+        c.classList.toggle('gone', (scrollY||pageYOffset)>8 && r.bottom < innerHeight*0.72);
       });
     }
     addEventListener('scroll',check,{passive:true});
-    addEventListener('resize',check); check();
+    addEventListener('resize',check);
+    addEventListener('hashchange',function(){ setTimeout(check,80); });
+    check();
   }
   if(document.readyState!=='loading') init();
   else document.addEventListener('DOMContentLoaded',init);
