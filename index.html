@@ -2373,12 +2373,12 @@ body.dark .pyr-vs{color:#6f8a8f}
 .wm-divider{display:flex;justify-content:center;padding:clamp(18px,3vw,34px) 0 clamp(4px,1vw,10px);color:var(--line)}
 .wm-divider svg{width:168px;height:12px;display:block}
 .wm-root{padding:clamp(10px,2vw,22px) var(--gut) clamp(20px,3vw,38px)}
-.wm-root-h{font-family:var(--display);font-weight:700;letter-spacing:-.03em;
-  font-size:clamp(30px,4.3vw,54px);line-height:1.04;
-  letter-spacing:-.018em;color:var(--hd);margin:0 auto clamp(18px,3vw,34px);font-weight:400;
-  max-width:1240px;text-align:center}
-.wm-root-note{font-size:clamp(15.5px,1.3vw,18px);line-height:1.7;color:var(--soft);
-  margin:clamp(20px,3vw,34px) auto 0;max-width:46em;text-align:center}
+/* mesmo tipo de "Your brain is built out of what you eat." */
+.wm-root-h{font-family:var(--quiet);font-weight:500;font-size:clamp(26px,3.9vw,52px);
+  line-height:1.06;letter-spacing:-.04em;color:var(--hd);
+  margin:0 auto clamp(16px,2.4vw,26px);max-width:1240px;text-align:center;text-wrap:balance}
+.wm-root-note{font-size:clamp(15.5px,1.3vw,18px);line-height:1.72;color:var(--soft);
+  margin:0 auto clamp(20px,3vw,36px);max-width:46em;text-align:center}
 /* --- BLOCO 4: materia-prima --- */
 .wm-raw{padding:clamp(14px,2.4vw,30px) var(--gut) clamp(26px,4vw,52px)}
 .wm-brain{display:block;width:100%;max-width:clamp(300px,42vw,520px);margin:0 auto clamp(8px,1.6vw,20px);
@@ -2415,9 +2415,9 @@ body.dark .wm-quote-mark{color:var(--t500);opacity:.5}
   letter-spacing:-.022em;color:var(--hd);margin:0 0 22px;font-weight:400}
 .wm-epi cite{display:block;font-style:normal;font-size:12px;font-weight:700;text-align:left;
   letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
-.wm-ask{font-family:var(--display);font-weight:700;font-size:clamp(26px,3.4vw,44px);
-  line-height:1.08;letter-spacing:-.03em;color:var(--hd);text-align:center;
-  margin:0 auto clamp(34px,5vw,64px);max-width:18em}
+.wm-ask{font-family:var(--quiet);font-weight:500;font-size:clamp(26px,3.9vw,52px);
+  line-height:1.06;letter-spacing:-.04em;color:var(--hd);text-align:center;
+  margin:0 auto clamp(34px,5vw,64px);max-width:16em;text-wrap:balance}
 /* --- BLOCO 8: o caminho --- */
 .wm-path{padding:clamp(16px,2.6vw,32px) var(--gut) 0;text-align:center}
 .wm-path h2{font-family:var(--serif);font-size:clamp(28px,3.7vw,46px);line-height:1.08;
@@ -3588,10 +3588,10 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
 
     <section class="wm-root">
       <h2 class="wm-root-h reveal">What matters is treating <span class="flowtxt">the root.</span></h2>
+      <p class="wm-root-note reveal">Therapy and medication matter, and nothing here asks you to give them up. What they cannot do is replace a healthy metabolism. Your mental health depends on the health of your brain.</p>
       <div class="pyr-scene reveal">
         <svg class="pyr-wide" id="pyrScene" aria-hidden="true"></svg>
       </div>
-      <p class="wm-root-note reveal">Therapy and medication matter, and nothing here asks you to give them up. What they cannot do is replace a healthy metabolism. Your mental health depends on the health of your brain.</p>
     </section>
 
     <div class="wm-down reveal"><button type="button" class="wm-cue flow" aria-label="Scroll down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button></div>
@@ -10480,6 +10480,17 @@ routeFromHash();
 /* Setas da Learn more: cada uma leva ao passo seguinte e some quando ele chega. */
 (function(){
   function targets(){ return [].slice.call(document.querySelectorAll('#wmScene1 .wm-step')); }
+  /* Enquadra a secao: se cabe na tela, fica centrada; se nao, encosta o topo
+     logo abaixo da barra, com uma folga. */
+  function land(el){
+    if(!el){ scrollBy({top:innerHeight*0.85,behavior:'smooth'}); return; }
+    var nav=document.querySelector('.nav');
+    var navH=nav?nav.getBoundingClientRect().height:64;
+    var pad=26, vh=innerHeight;
+    var r=el.getBoundingClientRect(), top=r.top+(window.scrollY||0), h=r.height;
+    var y=(h<=vh-navH-pad*2) ? top-navH-(vh-navH-h)/2 : top-navH-pad;
+    scrollTo({top:Math.max(0,Math.round(y)),behavior:'smooth'});
+  }
   function init(){
     var cues=[].slice.call(document.querySelectorAll('.wm-cue'));
     if(!cues.length) return;
@@ -10487,19 +10498,12 @@ routeFromHash();
       c.addEventListener('click',function(){
         /* seta de divisor: leva a secao seguinte */
         var box=c.closest('.wm-down');
-        if(box){
-          var nx=box.nextElementSibling;
-          if(nx) nx.scrollIntoView({behavior:'smooth',block:'start'});
-          else scrollBy({top:innerHeight*0.85,behavior:'smooth'});
-          return;
-        }
+        if(box) return land(box.nextElementSibling);
         /* seta dentro da cena fixa: leva ao proximo passo */
         var st=targets(), i=+c.dataset.cue+1;
-        if(st[i]) st[i].scrollIntoView({behavior:'smooth',block:'start'});
-        else{ var sc=document.getElementById('wmScene1');
-              var nx2=sc&&sc.nextElementSibling;
-              if(nx2) nx2.scrollIntoView({behavior:'smooth',block:'start'});
-              else scrollBy({top:innerHeight*0.85,behavior:'smooth'}); }
+        if(st[i]) return land(st[i]);
+        var sc=document.getElementById('wmScene1');
+        land(sc&&sc.nextElementSibling);
       });
     });
     function check(){
