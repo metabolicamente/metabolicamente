@@ -2403,6 +2403,7 @@ body.dark .pyr-vs{color:#6f8a8f}
 .wm-quote-in{width:100%}
 /* respiro depois da seta da citacao, para "Have you ever..." nao aparecer junto */
 .wm-crit > .wm-down{padding-bottom:clamp(70px,17vh,190px)}
+.wm-path > .wm-down{padding-top:clamp(22px,4vh,54px);padding-bottom:clamp(60px,14vh,160px)}
 .wm-quote-in{display:grid;grid-template-columns:clamp(180px,20vw,290px) minmax(0,1fr);
   gap:clamp(24px,4vw,68px);align-items:center}
 /* o retrato entra como mascara: pega a cor do texto e funciona nos dois temas */
@@ -2431,8 +2432,9 @@ body.dark .wm-quote-mark{color:var(--t500);opacity:.5}
 .wm-path-lead{font-size:clamp(15.5px,1.3vw,18px);line-height:1.72;color:var(--soft);
   margin:0 auto;max-width:42em}
 .wm-road{display:block;width:100%;max-width:900px;margin:clamp(18px,3vw,36px) auto 0;color:var(--hd2)}
-.wm-path-q{font-family:var(--serif);font-size:clamp(21px,2.4vw,31px);line-height:1.22;
-  letter-spacing:-.015em;color:var(--coral);margin:clamp(12px,2vw,26px) auto 0;max-width:24em}
+.wm-path-q{font-family:var(--quiet);font-weight:500;font-size:clamp(24px,3.2vw,44px);
+  line-height:1.08;letter-spacing:-.04em;color:var(--hd);
+  margin:clamp(16px,2.4vw,30px) auto 0;max-width:17em;text-wrap:balance}
 .wm-panel-cta{position:relative;isolation:isolate;overflow:hidden;
   max-width:none;margin:clamp(36px,5vw,68px) calc(-1 * var(--gut)) 0;border-radius:0;
   background:#07222C;display:flex;align-items:center;text-align:left;
@@ -2599,7 +2601,7 @@ body.dark .wm-sk{opacity:.42}
 /* seta discreta: "da pra rolar" */
 /* a seta flutua sozinha, sem circulo, e no meio da PAGINA — nao da coluna.
    --colx = distancia da borda da janela ate a coluna de texto. */
-.wm-cue{position:absolute;bottom:clamp(18px,4vh,52px);
+.wm-cue{position:absolute;bottom:clamp(34px,7vh,88px);
   left:calc(50vw - max(var(--gut),(100vw - var(--wmax))/2));transform:translateX(-50%);
   display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;
   border:0;background:transparent;color:var(--soft);cursor:pointer;
@@ -3690,7 +3692,9 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       <h2 class="reveal">It is a path, not a leap.</h2>
       <p class="wm-path-lead reveal">You start wider: real food, less carbohydrate, a few weeks. If your labs and your symptoms ask for more, you tighten. If they do not, you stop there.</p>
       <svg class="wm-road" id="roadMap" aria-hidden="true"></svg>
-      <p class="wm-path-q reveal">The goal was never the strictest diet. It is the least restrictive one that works for you.</p>
+      <p class="wm-path-q reveal">The goal was never the strictest diet. It is the least restrictive one <span class="flowtxt">that works for you.</span></p>
+
+      <div class="wm-down reveal"><button type="button" class="wm-cue flow" aria-label="Scroll down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button></div>
 
       <div class="wm-panel-cta reveal">
         <div class="wm-pc-ph" style="background-image:url('https://images.unsplash.com/photo-1758691462353-36b215702253?fm=jpg&amp;q=76&amp;w=2200&amp;auto=format&amp;fit=crop')" aria-hidden="true"></div>
@@ -8372,6 +8376,8 @@ routeFromHash();
     "It is a path, not a leap.":"É um caminho, não um salto.",
     "You start wider: real food, less carbohydrate, a few weeks. If your labs and your symptoms ask for more, you tighten. If they do not, you stop there.":"Você começa mais largo: comida de verdade, menos carboidrato, algumas semanas. Se os exames e os sintomas pedirem mais, você aperta. Se não pedirem, para por ali.",
     "The goal was never the strictest diet. It is the least restrictive one that works for you.":"A meta nunca foi a dieta mais restritiva. É a menos restritiva que funciona para você.",
+    "The goal was never the strictest diet. It is the least restrictive one":"A meta nunca foi a dieta mais restritiva. É a menos restritiva",
+    "that works for you.":"que funciona para você.",
     "And you do not do this alone":"E você não faz isso sozinho",
     "A drop in carbohydrate moves blood sugar and blood pressure, and it can change the dose you need. That is why a dietitian and a psychiatrist sit on the same side of the table, from the first appointment.":"Uma queda no carboidrato mexe com glicemia e pressão, e pode mudar a dose de que você precisa. É por isso que um nutricionista e um psiquiatra ficam do mesmo lado da mesa, desde a primeira consulta.",
     "Start by understanding your case.":"Comece entendendo o seu caso.",
@@ -10518,9 +10524,12 @@ routeFromHash();
           var i=all.indexOf(box);
           return landRange(box.nextElementSibling, all[i+1]||null);
         }
-        /* seta dentro da cena fixa: leva ao proximo passo */
+        /* seta dentro da cena fixa: leva ao proximo passo, e no ultimo passo
+           entrega o capitulo inteiro que vem depois da cena */
         var st=targets(), i=+c.dataset.cue+1;
         if(st[i]) return land(st[i]);
+        var all2=[].slice.call(document.querySelectorAll('#pg-tratamento .wm-down'));
+        if(all2.length) return landRange(all2[0].nextElementSibling, all2[1]||null);
         var sc=document.getElementById('wmScene1');
         land(sc&&sc.nextElementSibling);
       });
