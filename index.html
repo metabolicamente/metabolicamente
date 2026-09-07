@@ -2373,7 +2373,7 @@ body.dark .pyr-vs{color:#6f8a8f}
 .wm-divider{display:flex;justify-content:center;padding:clamp(18px,3vw,34px) 0 clamp(4px,1vw,10px);color:var(--line)}
 .wm-divider svg{width:168px;height:12px;display:block}
 .wm-root{padding:clamp(10px,2vw,22px) var(--gut) clamp(20px,3vw,38px)}
-.wm-root-h{font-family:var(--display);font-weight:600;letter-spacing:-.03em;
+.wm-root-h{font-family:var(--display);font-weight:700;letter-spacing:-.03em;
   font-size:clamp(30px,4.3vw,54px);line-height:1.04;
   letter-spacing:-.018em;color:var(--hd);margin:0 auto clamp(18px,3vw,34px);font-weight:400;
   max-width:1240px;text-align:center}
@@ -2415,9 +2415,9 @@ body.dark .wm-quote-mark{color:var(--t500);opacity:.5}
   letter-spacing:-.022em;color:var(--hd);margin:0 0 22px;font-weight:400}
 .wm-epi cite{display:block;font-style:normal;font-size:12px;font-weight:700;text-align:left;
   letter-spacing:.2em;text-transform:uppercase;color:var(--soft)}
-.wm-ask{font-family:var(--serif);font-size:clamp(22px,2.5vw,32px);line-height:1.24;
-  letter-spacing:-.015em;color:var(--coral);text-align:center;
-  margin:0 auto clamp(34px,5vw,64px);max-width:22em}
+.wm-ask{font-family:var(--display);font-weight:700;font-size:clamp(26px,3.4vw,44px);
+  line-height:1.08;letter-spacing:-.03em;color:var(--hd);text-align:center;
+  margin:0 auto clamp(34px,5vw,64px);max-width:18em}
 /* --- BLOCO 8: o caminho --- */
 .wm-path{padding:clamp(16px,2.6vw,32px) var(--gut) 0;text-align:center}
 .wm-path h2{font-family:var(--serif);font-size:clamp(28px,3.7vw,46px);line-height:1.08;
@@ -2602,6 +2602,10 @@ body.dark .wm-sk{opacity:.42}
   stroke-linecap:round;stroke-linejoin:round;animation:wmcue 2.1s ease-in-out infinite}
 .wm-cue:hover{color:var(--hd)}
 .wm-cue.gone{opacity:0;pointer-events:none}
+/* a mesma seta usada como divisor entre secoes, no lugar das ondinhas */
+.wm-down{display:flex;justify-content:center;
+  padding:clamp(16px,2.8vw,36px) 0 clamp(6px,1.2vw,14px)}
+.wm-cue.flow{position:static;transform:none;left:auto;bottom:auto}
 @media(max-width:900px){.wm-cue{position:static;transform:none;margin:22px auto 0;display:flex}}
 @keyframes wmcue{0%,100%{transform:translateY(-2px)}50%{transform:translateY(3px)}}
 @media(prefers-reduced-motion:reduce){.wm-cue svg{animation:none}}
@@ -3577,15 +3581,10 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
         </div>
       </div>
 
-      <div class="wm-en-out reveal">
-        <p class="wm-en-states">Some areas of the brain get too slow. Others get too fast. Some stop. <span>This is what symptoms are made of.</span></p>
-      </div>
     </section>
 
     <!-- ---------- BLOCO 3: as duas plantas ---------- -->
-    <div class="wm-divider reveal" aria-hidden="true">
-      <svg viewBox="0 0 168 12" preserveAspectRatio="none"><path d="M3 7 Q15 1 27 7 T51 7 T75 7 T99 7 T123 7 T147 7 T165 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </div>
+    <div class="wm-down reveal"><button type="button" class="wm-cue flow" aria-label="Scroll down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button></div>
 
     <section class="wm-root">
       <h2 class="wm-root-h reveal">What matters is treating <span class="flowtxt">the root.</span></h2>
@@ -3595,9 +3594,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       <p class="wm-root-note reveal">Therapy and medication matter, and nothing here asks you to give them up. What they cannot do is replace a healthy metabolism. Your mental health depends on the health of your brain.</p>
     </section>
 
-    <div class="wm-divider reveal" aria-hidden="true">
-      <svg viewBox="0 0 168 12" preserveAspectRatio="none"><path d="M3 7 Q15 1 27 7 T51 7 T75 7 T99 7 T123 7 T147 7 T165 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </div>
+    <div class="wm-down reveal"><button type="button" class="wm-cue flow" aria-label="Scroll down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button></div>
 
     <!-- ---------- BLOCO 4: materia-prima ---------- -->
     <section class="wm-raw">
@@ -3605,9 +3602,10 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       <div class="wm-raw-in reveal">
         <h2>Your brain is built out of <span class="flowtxt">what you eat.</span></h2>
         <p>Serotonin, dopamine and the rest are assembled from amino acids, vitamins and minerals, and all of it arrives through food. Food is not the advice at the end of the appointment. It is raw material, and it is fuel.</p>
-        <p class="wm-raw-q">An imbalance has to start somewhere.</p>
       </div>
     </section>
+
+    <div class="wm-down reveal"><button type="button" class="wm-cue flow" aria-label="Scroll down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button></div>
 
     <!-- ---------- BLOCO 5: a regua ---------- -->
     <section class="wm-crit">
@@ -3621,7 +3619,10 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
           </blockquote>
         </div>
       </section>
-      <p class="wm-ask reveal">Have you ever considered treating yourself with nutritional therapy?</p>
+
+      <div class="wm-down reveal"><button type="button" class="wm-cue flow" aria-label="Scroll down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button></div>
+
+      <p class="wm-ask reveal">Have you ever considered treating yourself with <span class="flowtxt">nutritional therapy</span>?</p>
       <p class="wm-three-lead reveal">A brain-healthy diet must:</p>
       <div class="wm-three reveal">
         <div class="wm-c">
@@ -3645,9 +3646,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
 
 
 
-    <div class="wm-divider reveal" aria-hidden="true">
-      <svg viewBox="0 0 168 12" preserveAspectRatio="none"><path d="M3 7 Q15 1 27 7 T51 7 T75 7 T99 7 T123 7 T147 7 T165 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </div>
+    <div class="wm-down reveal"><button type="button" class="wm-cue flow" aria-label="Scroll down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button></div>
 
     <!-- ---------- BLOCO 7: como a cetona age ---------- -->
     <section class="wm-ket wm-scene" id="wmScene2">
@@ -3678,9 +3677,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
     </section>
 
 
-    <div class="wm-divider reveal" aria-hidden="true">
-      <svg viewBox="0 0 168 12" preserveAspectRatio="none"><path d="M3 7 Q15 1 27 7 T51 7 T75 7 T99 7 T123 7 T147 7 T165 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-    </div>
+    <div class="wm-down reveal"><button type="button" class="wm-cue flow" aria-label="Scroll down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button></div>
 
     <!-- ---------- BLOCO 8: o caminho e o servico ---------- -->
     <section class="wm-path">
@@ -7527,7 +7524,7 @@ routeFromHash();
     const sp=man(g,rc,cc);
     /* rotulo unico, parado no meio */
     const lb=document.createElementNS(NS,'text');
-    lb.setAttribute('x',CX1); lb.setAttribute('y',64); lb.setAttribute('text-anchor','middle');
+    lb.setAttribute('x',CX1); lb.setAttribute('y',GY+256); lb.setAttribute('text-anchor','middle');
     lb.setAttribute('font-family',"'Caveat',cursive"); lb.setAttribute('font-size',24);
     lb.setAttribute('font-weight',700); lb.setAttribute('fill',WATER);
     lb.textContent='therapy & medication'; g.appendChild(lb);
@@ -8404,6 +8401,8 @@ routeFromHash();
     "A brain-healthy diet must:":"Uma dieta ideal ao cérebro deve:",
     "Changing your mind with diet requires changing your mind about diet.":"Transformar sua mente usando dieta exige mudar a sua mente sobre dieta.",
     "Have you ever considered treating yourself with nutritional therapy?":"Já pensou em se tratar com uma terapia nutricional?",
+    "Have you ever considered treating yourself with":"Já pensou em se tratar com uma",
+    "nutritional therapy":"terapia nutricional",
     "Nourish":"Nutrir",
     "Provide every essential nutrient the brain uses to build and maintain itself.":"Fornecer todos os nutrientes essenciais que o cérebro usa para se construir e se manter.",
     "Protect":"Proteger",
@@ -10486,10 +10485,21 @@ routeFromHash();
     if(!cues.length) return;
     cues.forEach(function(c){
       c.addEventListener('click',function(){
+        /* seta de divisor: leva a secao seguinte */
+        var box=c.closest('.wm-down');
+        if(box){
+          var nx=box.nextElementSibling;
+          if(nx) nx.scrollIntoView({behavior:'smooth',block:'start'});
+          else scrollBy({top:innerHeight*0.85,behavior:'smooth'});
+          return;
+        }
+        /* seta dentro da cena fixa: leva ao proximo passo */
         var st=targets(), i=+c.dataset.cue+1;
         if(st[i]) st[i].scrollIntoView({behavior:'smooth',block:'start'});
-        else{ var out=document.querySelector('#wmScene1 ~ *, .wm-en-out');
-              if(out) out.scrollIntoView({behavior:'smooth',block:'start'}); }
+        else{ var sc=document.getElementById('wmScene1');
+              var nx2=sc&&sc.nextElementSibling;
+              if(nx2) nx2.scrollIntoView({behavior:'smooth',block:'start'});
+              else scrollBy({top:innerHeight*0.85,behavior:'smooth'}); }
       });
     });
     function check(){
