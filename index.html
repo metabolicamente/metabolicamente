@@ -2434,7 +2434,7 @@ body.dark .wm-quote-mark{color:var(--t500);opacity:.5}
 .wm-road{display:block;width:100%;max-width:900px;margin:clamp(18px,3vw,36px) auto 0;color:var(--hd2)}
 .wm-path-q{font-family:var(--quiet);font-weight:500;font-size:clamp(24px,3.2vw,44px);
   line-height:1.08;letter-spacing:-.04em;color:var(--hd);
-  margin:clamp(16px,2.4vw,30px) auto 0;max-width:17em;text-wrap:balance}
+  margin:clamp(16px,2.4vw,30px) auto 0;max-width:27em;text-wrap:balance}
 .wm-panel-cta{position:relative;isolation:isolate;overflow:hidden;
   max-width:none;margin:clamp(36px,5vw,68px) calc(-1 * var(--gut)) 0;border-radius:0;
   background:#07222C;display:flex;align-items:center;text-align:left;
@@ -2467,8 +2467,8 @@ body.dark .wm-quote-mark{color:var(--t500);opacity:.5}
 .wm-ket-in{max-width:var(--wmax);margin:0 auto;display:grid;grid-template-columns:.94fr 1.06fr;
   gap:clamp(22px,3.6vw,58px);align-items:center}
 .mito-svg{width:100%;max-width:520px;display:block;margin:0 auto;color:var(--hd2)}
-.wm-ket h2{font-family:var(--serif);font-size:clamp(28px,3.7vw,46px);line-height:1.08;
-  letter-spacing:-.018em;color:var(--hd);margin:0 0 18px;font-weight:400}
+.wm-ket h2{font-family:var(--quiet);font-weight:500;font-size:clamp(28px,3.9vw,50px);
+  line-height:1.06;letter-spacing:-.04em;color:var(--hd);margin:0 0 20px}
 .wm-ket-lead{font-size:clamp(15.5px,1.25vw,17.5px);line-height:1.7;color:var(--soft);margin:0;max-width:38em}
 .wm-ket-list{margin-top:24px;display:grid;gap:14px}
 .wm-kl{padding-left:18px;border-left:2px solid var(--t100)}
@@ -2520,7 +2520,17 @@ body.dark .pyr-fig{filter:invert(1) hue-rotate(180deg) saturate(.85)}
 /* ================= WHY METABOLISM MATTERS =================
    Mesma linguagem da Content: gutter full-bleed, cantos generosos,
    tipografia grande. Fundo claro, seguindo o tema do site.        */
-#pg-tratamento{--gut:clamp(20px,5vw,96px);--wmax:1560px}
+#pg-tratamento{--gut:clamp(20px,5vw,96px);--wmax:1560px;position:relative}
+/* Papel quadriculado: o caderno de onde os desenhos sairam. Fica preso a janela,
+   com o vinheta radial apagando as bordas, e nunca cobre o conteudo. */
+#pg-tratamento::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:38px 38px;opacity:.42;
+  -webkit-mask-image:radial-gradient(ellipse 78% 68% at 50% 46%,#000 35%,transparent 100%);
+  mask-image:radial-gradient(ellipse 78% 68% at 50% 46%,#000 35%,transparent 100%)}
+body.dark #pg-tratamento::before{opacity:.30}
+#pg-tratamento > *{position:relative;z-index:1}
 
 /* --- BLOCO 1: abertura com neuronio --- */
 .wm-open{padding:clamp(34px,5vw,72px) var(--gut) clamp(16px,2.6vw,34px)}
@@ -3670,7 +3680,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
 
           <div class="wm-step on" data-f="0">
             <div class="reveal">
-              <h2>In ketosis, the brain chooses.</h2>
+              <h2>In ketosis, the <span class="flowtxt">brain chooses.</span></h2>
               <p class="wm-ket-lead">Ketones are not an emergency fuel. There is always plenty of glucose in the blood, and even so, when ketones are available the brain keeps burning ketones.</p>
               <div class="wm-ket-list">
                 <div class="wm-kl"><b>Less insulin.</b><span>Ketones burn best exactly when insulin is low.</span></div>
@@ -8389,6 +8399,8 @@ routeFromHash();
     "find your limit":"ache o seu limite",
     // bloco 7
     "In ketosis, the brain chooses.":"Em cetose, o cérebro escolhe.",
+    "In ketosis, the":"Em cetose, o",
+    "brain chooses.":"cérebro escolhe.",
     "Ketones are not an emergency fuel. There is always plenty of glucose in the blood, and even so, when ketones are available the brain keeps burning ketones.":"Corpo cetônico não é combustível de emergência. Glicose sobra no sangue o tempo todo, e mesmo assim, havendo cetona, o cérebro continua queimando cetona.",
     "Less insulin.":"Menos insulina.",
     "Ketones burn best exactly when insulin is low.":"A cetona queima melhor justamente quando a insulina está baixa.",
