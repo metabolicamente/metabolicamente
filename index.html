@@ -910,6 +910,10 @@ tr:last-child td{border-bottom:none}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.55}
+/* TESTE (Sep 7): todo o lado publico — landing, subpaginas, nav e rodape — le em
+   Instrument Sans em vez de Inter. As telas de conta (.screen: wizard, login,
+   dashboards) ficam no Inter. Para voltar atras, apague estas duas linhas. */
+.subpage,.nav,.footer{font-family:var(--quiet)}
 h1,h2,h3,.serif{font-family:var(--serif);font-weight:500}
 /* App/dashboard/wizard/login use Plus Jakarta Sans; marketing keeps Fraunces */
 #wizard h1,#wizard h2,#login h1,.dash h1,.dash h2,.dash h3,.dash .dh2,.jhero .jn,.stat2 .sv,.chcard .cch b{font-family:var(--display);font-weight:700;letter-spacing:normal}
@@ -2534,11 +2538,7 @@ body.dark .pyr-fig{filter:invert(1) hue-rotate(180deg) saturate(.85)}
   mask-image:radial-gradient(ellipse 78% 68% at 50% 46%,#000 35%,transparent 100%)}
 body.dark #pg-tratamento::before{opacity:.30}
 #pg-tratamento > *{position:relative;z-index:1}
-/* Learn more: os textos de apoio saem do Inter e vao para a fonte dos titulos.
-   Lista explicita — a mao (Caveat), a citacao e os serifados ficam como estao. */
-#pg-tratamento :is(.wm-open-p,.wm-en-p,.wm-m p,.wm-root-note,.wm-raw-in p,
-  .wm-ket-lead,.wm-kl b,.wm-kl span,.wm-three-lead,.wm-c p,.wm-path-lead,
-  .wm-pc-txt,.wm-pc-sub){font-family:var(--quiet)}
+
 
 /* --- BLOCO 1: abertura com neuronio --- */
 .wm-open{padding:clamp(34px,5vw,72px) var(--gut) clamp(16px,2.6vw,34px)}
