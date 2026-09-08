@@ -4081,6 +4081,13 @@ body.dark #pg-tratamento::before,body.dark #pg-prof::before{opacity:.30}
 .wm-open-q{font-family:'Caveat',cursive;font-weight:700;
   font-size:clamp(34px,4vw,56px);line-height:1.1;letter-spacing:0;
   color:var(--hd);margin:26px 0 0}
+/* a pergunta e a caligrafia do Felipe (PNG). O PT nao tem arte propria, entao
+   volta a ser texto vivo em Caveat. */
+.wm-open-q-img{display:block;width:min(100%,560px);height:auto}
+.wm-open-q-pt{display:none}
+body.dark .wm-open-q-img{filter:invert(1)}
+html[lang="pt-BR"] .wm-open-q-img{display:none}
+html[lang="pt-BR"] .wm-open-q-pt{display:inline}
 .wm-open-art{position:relative}
 /* sublinhado desenhado a mao (rough.js) sob a pergunta */
 .uwrap{position:relative;display:inline}
@@ -5091,7 +5098,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
             <div class="wm-open-txt reveal">
               <h2 class="wm-open-h">We stopped thinking about the <span class="flowtxt">root of the problem.</span></h2>
               <p class="wm-open-p">Psychiatry measures your neurotransmitter imbalance and treats the imbalance. But the question left out is the only one that matters:</p>
-              <p class="wm-open-q">What caused the imbalance?</p>
+              <p class="wm-open-q"><img class="wm-open-q-img" src="art/q-imbalance.png" width="1234" height="167" alt="What caused the imbalance?"><span class="wm-open-q-pt">O que causou o desequilíbrio?</span></p>
               <button type="button" class="wm-cue" data-cue="0" aria-label="Scroll down">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg>
               </button>
