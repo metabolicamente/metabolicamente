@@ -1506,24 +1506,26 @@ body.dark .hf-wash{opacity:.20;filter:blur(130px)}
 @media(max-width:700px){.hf-wash{filter:blur(76px);opacity:.36}}
 .hero-flat .hero-inner{position:relative;z-index:2;max-width:1240px;padding:0;margin:0}
 /* o mascote espia por tras da manchete: so a copa e os olhos passam do texto */
-/* a palavra e o poste: o mascote e medido em em, entao acompanha a manchete
-   em qualquer largura, e o corte cai exatamente na altura das maiusculas */
-.hw{position:relative;display:inline-block}
-.hf-peek{position:absolute;left:50%;bottom:calc(100% - .30em);
-  transform:translateX(-50%);display:block;
-  width:2em;height:1.52em;
-  overflow:hidden;pointer-events:none;z-index:-1}
-.hf-peek svg{width:100%;height:auto;display:block;
-  animation:peekUp 6s cubic-bezier(.3,.9,.35,1) infinite}
-/* fica escondido atras da manchete e sobe por dois segundos a cada seis */
-@keyframes peekUp{
-  0%,54%{transform:translateY(104%)}
-  64%,88%{transform:translateY(0)}
-  97%,100%{transform:translateY(104%)}
+/* o mascote mora atras da barra e desce de cabeca para baixo ao lado do
+   logotipo. Ancorado no proprio .logo: left:100% e a ponta da palavra, e
+   50% + 32px leva a borda de baixo da nav (a nav tem 64px e centra o logo). */
+.logo{position:relative}
+.nav-peek{position:absolute;left:100%;top:calc(50% + 32px);margin-left:16px;
+  width:clamp(50px,4.8vw,76px);height:clamp(38px,3.65vw,58px);
+  overflow:hidden;pointer-events:none}
+.nav-peek svg{width:100%;height:auto;display:block;
+  animation:navPeek 7s cubic-bezier(.3,.9,.35,1) infinite}
+/* a translacao vem antes da rotacao, entao o -104% e para cima na tela */
+@keyframes navPeek{
+  0%,58%{transform:translateY(-104%) rotate(180deg)}
+  68%,90%{transform:translateY(0) rotate(180deg)}
+  98%,100%{transform:translateY(-104%) rotate(180deg)}
 }
-@media(prefers-reduced-motion:reduce){.hf-peek svg{animation:none}}
-.hf-peek .pup{animation:brainThink 7s ease-in-out infinite}
-@media(prefers-reduced-motion:reduce){.hf-peek .pup{animation:none}}
+.nav-peek .pup{animation:brainThink 7s ease-in-out infinite}
+@media(prefers-reduced-motion:reduce){
+  .nav-peek svg{animation:none;transform:rotate(180deg)}
+  .nav-peek .pup{animation:none}
+}
 .hero-flat h1{font-family:var(--quiet);font-weight:500;color:var(--hd);max-width:none;
   font-size:clamp(31px,5.6vw,70px);line-height:1.05;letter-spacing:-.042em;text-wrap:balance}
 .hero-flat h1 .hl2{display:inline}
@@ -4901,7 +4903,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
 <!-- ================= PUBLIC SITE ================= -->
 <div class="screen active" id="site">
   <nav class="nav">
-    <a class="logo" onclick="goHome()" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>Metabolicamente</a>
+    <a class="logo" onclick="goHome()" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>Metabolicamente<span class="nav-peek" aria-hidden="true"><svg viewBox="0 3 100 76"><path d="M50 8c-9-6-22-2-24 8-9 1-14 9-11 17-7 6-6 17 2 21-2 10 7 18 16 15 4 7 13 9 17 4 4 5 13 3 17-4 9 3 18-5 16-15 8-4 9-15 2-21 3-8-2-16-11-17-2-10-15-14-24-8Z" fill="#8FD3C8" stroke="#1A5F76" stroke-width="3" stroke-linejoin="round"/><g fill="none" stroke="#1A5F76" stroke-width="2" stroke-linecap="round" opacity=".55"><path d="M50 14v22"/><path d="M30 26c7 2 9 8 4 12"/><path d="M70 26c-7 2-9 8-4 12"/><path d="M26 46c8 0 11 5 7 9"/><path d="M74 46c-8 0-11 5-7 9"/></g><g><circle cx="38" cy="52" r="9" fill="#fff"/><circle cx="62" cy="52" r="9" fill="#fff"/><g class="pup"><circle cx="40" cy="53" r="4.4" fill="#0C333F"/><circle cx="41.6" cy="51" r="1.5" fill="#fff"/></g><g class="pup"><circle cx="64" cy="53" r="4.4" fill="#0C333F"/><circle cx="65.6" cy="51" r="1.5" fill="#fff"/></g></g><path d="M42 68c4 4 12 4 16 0" stroke="#1A5F76" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></a>
     <a class="nl" href="#/conteudo">Content</a>
     <a class="nl" href="#/tratamento">Learn more</a>
     <a class="nl" href="#/equipe">About us</a>
@@ -4915,7 +4917,7 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
   <header class="hero hero-flat" id="top">
     <div class="hf-wash" aria-hidden="true"><span class="w1"></span><span class="w2"></span><span class="w3"></span></div>
     <div class="hero-inner">
-      <h1 id="heroTitle">Feed your <span class="hw">brain.<span class="hf-peek" aria-hidden="true"><svg viewBox="0 3 100 76"><path d="M50 8c-9-6-22-2-24 8-9 1-14 9-11 17-7 6-6 17 2 21-2 10 7 18 16 15 4 7 13 9 17 4 4 5 13 3 17-4 9 3 18-5 16-15 8-4 9-15 2-21 3-8-2-16-11-17-2-10-15-14-24-8Z" fill="#8FD3C8" stroke="#1A5F76" stroke-width="3" stroke-linejoin="round"/><g fill="none" stroke="#1A5F76" stroke-width="2" stroke-linecap="round" opacity=".55"><path d="M50 14v22"/><path d="M30 26c7 2 9 8 4 12"/><path d="M70 26c-7 2-9 8-4 12"/><path d="M26 46c8 0 11 5 7 9"/><path d="M74 46c-8 0-11 5-7 9"/></g><g><circle cx="38" cy="52" r="9" fill="#fff"/><circle cx="62" cy="52" r="9" fill="#fff"/><g class="pup"><circle cx="40" cy="53" r="4.4" fill="#0C333F"/><circle cx="41.6" cy="51" r="1.5" fill="#fff"/></g><g class="pup"><circle cx="64" cy="53" r="4.4" fill="#0C333F"/><circle cx="65.6" cy="51" r="1.5" fill="#fff"/></g></g><path d="M42 68c4 4 12 4 16 0" stroke="#1A5F76" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></span> <span class="hl2 flowtxt">Change your mind.</span></h1>
+      <h1 id="heroTitle">Feed your brain. <span class="hl2 flowtxt">Change your mind.</span></h1>
     </div>
   </header>
 
@@ -12222,8 +12224,6 @@ routeFromHash();
     "Log in":"Entrar","Start your journey":"Comece sua jornada","See why":"Veja por quê","Video coming soon":"Vídeo em breve","Get started":"Começar","Learn more":"Saiba mais",
     "Metabolic Psychiatry":"Psiquiatria Metabólica",
     "Feed your brain.":"Alimente seu cérebro.",
-    "Feed your":"Alimente seu",
-    "brain.":"cérebro.",
     "Psychiatrists and dietitians, working as one team on the biology underneath how you feel.":"Psiquiatras e nutricionistas trabalhando como um só time na biologia por trás de como você se sente.",
     "Watch the film · 1:40":"Assista ao filme · 1:40",
     "Metabolic psychiatry":"Psiquiatria metabólica",
