@@ -3961,13 +3961,20 @@ body.dark .wm-quote-mark{color:var(--t500);opacity:.5}
   max-width:var(--wmax);margin:clamp(36px,5vw,68px) auto clamp(30px,4vw,56px);
   border-radius:clamp(22px,2.4vw,34px);
   background:#07222C;display:flex;align-items:center;text-align:left;
-  min-height:clamp(420px,46vw,560px)}
+  min-height:clamp(320px,36vw,460px)}
+/* o mascote ocupa a direita da bolha, no lugar da foto */
+.wm-pc-art{position:absolute;right:clamp(16px,4vw,64px);top:50%;transform:translateY(-50%);
+  width:clamp(150px,23vw,290px);pointer-events:none;z-index:0}
+.wm-pc-art::before{content:'';position:absolute;inset:-12%;border-radius:50%;
+  background:#2A9D8F;opacity:.16}
+.wm-pc-art svg{position:relative;width:100%;height:auto;display:block}
 .wm-pc-ph{position:absolute;inset:0;z-index:-2;background-size:cover;background-position:62% 44%}
 /* escuro a esquerda, limpo a direita: a foto fica em cor normal onde esta o assunto */
 .wm-pc-sc{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,
   rgba(7,34,44,.94) 0%,rgba(7,34,44,.86) 30%,rgba(7,34,44,.46) 56%,
   rgba(7,34,44,.12) 80%,rgba(7,34,44,0) 100%)}
-.wm-pc-in{padding:clamp(34px,4.4vw,64px) clamp(28px,4vw,64px);max-width:min(640px,88%)}
+.wm-pc-in{position:relative;z-index:1;padding:clamp(34px,4.4vw,64px) clamp(28px,4vw,64px);
+  max-width:min(620px,56%)}
 @media(max-width:760px){
   .wm-panel-cta{min-height:clamp(380px,84vw,480px)}
   .wm-pc-sc{background:linear-gradient(180deg,rgba(7,34,44,.55),rgba(7,34,44,.93))}
@@ -3977,14 +3984,21 @@ body.dark .wm-quote-mark{color:var(--t500);opacity:.5}
   color:rgba(245,239,228,.7);margin:0 0 14px}
 .wm-pc-txt{font-family:var(--calm);font-size:clamp(15px,1.2vw,17px);line-height:1.66;
   color:rgba(245,239,228,.86);margin:0 0 14px}
-.wm-pc-in h3{font-family:var(--serif);font-size:clamp(26px,3.2vw,42px);line-height:1.06;
-  color:#F7F2E7;margin:0 0 16px;font-weight:400}
+.wm-pc-in h3{font-family:var(--quiet);font-size:clamp(27px,3.1vw,42px);line-height:1.06;
+  letter-spacing:-.035em;color:#F7F2E7;margin:0 0 16px;font-weight:600}
+.wm-pc-in h3 .flowtxt{color:transparent;animation-duration:24s}
 .wm-pc-in .wm-pc-sub{font-family:var(--calm);font-size:15px;line-height:1.6;
   color:rgba(245,239,228,.8);margin:0 0 26px;max-width:32em}
 .wm-pc-btns{display:flex;gap:12px;flex-wrap:wrap}
 .wm-pc-ghost{border:1.5px solid rgba(245,239,228,.4);color:#F5EFE4}
 .wm-pc-ghost:hover{border-color:#F5EFE4}
-@media(max-width:880px){.wm-panel-cta{grid-template-columns:1fr;gap:26px}}
+@media(max-width:880px){
+  .wm-panel-cta{flex-direction:column;align-items:stretch;min-height:0}
+  .wm-pc-art{position:relative;top:auto;right:auto;transform:none;order:-1;width:clamp(140px,38vw,210px);
+    margin:clamp(26px,6vw,40px) auto 0}
+  .wm-pc-in{max-width:100%;text-align:center}
+  .wm-pc-btns{justify-content:center}
+}
 /* --- BLOCO 7: como a cetona age --- */
 .wm-ket{padding:clamp(16px,2.6vw,32px) var(--gut) clamp(30px,4.4vw,60px)}
 .wm-ket-in{max-width:var(--wmax);margin:0 auto;display:grid;grid-template-columns:.94fr 1.06fr;
@@ -5225,13 +5239,23 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
       <div class="wm-down reveal"><button type="button" class="wm-cue flow" aria-label="Scroll down"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7"/></svg></button></div>
 
       <div class="wm-panel-cta reveal">
-        <div class="wm-pc-ph" style="background-image:url('https://images.unsplash.com/photo-1758691462353-36b215702253?fm=jpg&amp;q=76&amp;w=2200&amp;auto=format&amp;fit=crop')" aria-hidden="true"></div>
-        <div class="wm-pc-sc" aria-hidden="true"></div>
+        <div class="wm-pc-art" aria-hidden="true">
+          <svg viewBox="0 0 100 104">
+            <ellipse cx="50" cy="98" rx="22" ry="5" fill="#0C333F" opacity=".18"/>
+            <path d="M50 8c-9-6-22-2-24 8-9 1-14 9-11 17-7 6-6 17 2 21-2 10 7 18 16 15 4 7 13 9 17 4 4 5 13 3 17-4 9 3 18-5 16-15 8-4 9-15 2-21 3-8-2-16-11-17-2-10-15-14-24-8Z" fill="#8FD3C8" stroke="#1A5F76" stroke-width="3" stroke-linejoin="round"/>
+            <g fill="none" stroke="#1A5F76" stroke-width="2" stroke-linecap="round" opacity=".55">
+              <path d="M50 14v22"/><path d="M30 26c7 2 9 8 4 12"/><path d="M70 26c-7 2-9 8-4 12"/>
+              <path d="M26 46c8 0 11 5 7 9"/><path d="M74 46c-8 0-11 5-7 9"/></g>
+            <g><circle cx="38" cy="52" r="9" fill="#fff"/><circle cx="62" cy="52" r="9" fill="#fff"/>
+              <circle cx="40" cy="53" r="4.4" fill="#0C333F"/><circle cx="64" cy="53" r="4.4" fill="#0C333F"/>
+              <circle cx="41.6" cy="51" r="1.5" fill="#fff"/><circle cx="65.6" cy="51" r="1.5" fill="#fff"/></g>
+            <path d="M42 68c4 4 12 4 16 0" stroke="#1A5F76" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+        </div>
         <div class="wm-pc-in">
           <p class="wm-pc-kick">And you do not do this alone</p>
-          <h3>Start by understanding your case.</h3>
-          <p class="wm-pc-txt">A drop in carbohydrate moves blood sugar and blood pressure, and it can change the dose you need. That is why a dietitian and a psychiatrist sit on the same side of the table, from the first appointment.</p>
-          <p class="wm-pc-sub">A free assessment, and a plan built around your labs, your symptoms and your routine.</p>
+          <h3>Start by understanding <span class="flowtxt">your case.</span></h3>
+          <p class="wm-pc-sub">A free assessment. Create an account and explore from there.</p>
           <div class="wm-pc-btns">
             <a class="btn btn-cream" onclick="go('wizard')" style="cursor:pointer">Take the assessment <span class="ic" data-icon="arrow-right"></span></a>
             <a class="btn wm-pc-ghost" href="#/conteudo">Explore the programs</a>
@@ -11472,6 +11496,9 @@ routeFromHash();
     "And you do not do this alone":"E você não faz isso sozinho",
     "A drop in carbohydrate moves blood sugar and blood pressure, and it can change the dose you need. That is why a dietitian and a psychiatrist sit on the same side of the table, from the first appointment.":"Uma queda no carboidrato mexe com glicemia e pressão, e pode mudar a dose de que você precisa. É por isso que um nutricionista e um psiquiatra ficam do mesmo lado da mesa, desde a primeira consulta.",
     "Start by understanding your case.":"Comece entendendo o seu caso.",
+    "Start by understanding":"Comece entendendo",
+    "your case.":"o seu caso.",
+    "A free assessment. Create an account and explore from there.":"Uma avaliação gratuita. Crie uma conta e explore a partir daí.",
     "A free assessment, and a plan built around your labs, your symptoms and your routine.":"Uma avaliação gratuita, e um plano montado a partir dos seus exames, dos seus sintomas e da sua rotina.",
     "Take the assessment":"Fazer a avaliação",
     "Explore the programs":"Ver os programas",
@@ -13621,22 +13648,32 @@ routeFromHash();
     var b=absBottom(last);
     return isFinite(b)?b:absTop(startEl)+startEl.offsetHeight;
   }
-  /* Regra: centrar o CONTEUDO do capitulo na tela. A seta seguinte so puxa o
-     enquadramento para cima quando falta pouco para ela caber — nunca ao ponto
-     de colar o titulo no topo. */
+  /* Teto do enquadramento: nunca abrir tanto espaco acima que o capitulo
+     ANTERIOR reapareca. No maximo a propria seta clicada fica na borda. */
+  function topLid(startEl){
+    var p=startEl.previousElementSibling;
+    if(p && p.classList && p.classList.contains('wm-down')) return p.offsetHeight;
+    return Infinity;
+  }
+  /* Regra: o capitulo inteiro — do titulo ate a seta seguinte, ela inclusa —
+     cabe na tela e fica centrado. Se nao couber, encosta no topo. Nada do
+     trecho anterior sobra em cima, em qualquer altura de tela. */
   function landRange(startEl,endEl){
     if(!startEl){ scrollBy({top:innerHeight*0.85,behavior:'smooth'}); return; }
     var nh=navH(), avail=innerHeight-nh;
     var top=absTop(startEl);
-    var h=Math.max(startEl.offsetHeight, contentBottom(startEl,endEl)-top);
-    var gap=(avail-h)/2;
-    if(!(gap>0)) gap=Math.max(26,avail*0.05);
-    if(endEl){
+    var bot=contentBottom(startEl,endEl);
+    if(endEl){                            /* a proxima seta entra na conta */
       var btn=endEl.querySelector('.wm-cue')||endEl;
-      var far=absTop(btn)+btn.offsetHeight+10;
-      var over=(far-top)-(avail-gap);
-      if(over>0 && over<=48) gap-=over;   /* cede so o suficiente para a seta aparecer */
+      bot=Math.max(bot, absTop(btn)+btn.offsetHeight+12);
     }
+    var h=Math.max(startEl.offsetHeight, bot-top);
+    var gap=(avail-h)/2;
+    var lid=topLid(startEl);
+    if(gap>lid) gap=lid;                  /* nada do capitulo anterior aparece */
+    if(!(gap>0)) gap=Math.max(14,avail*0.03);
+    var over=(bot-top)-(avail-gap);       /* por pouco a seta seguinte nao cabe? */
+    if(over>0 && over<=gap) gap-=Math.ceil(over);
     scrollTo({top:Math.max(0,Math.round(top-nh-gap)),behavior:'smooth'});
   }
   function land(el){ landRange(el,null); }
