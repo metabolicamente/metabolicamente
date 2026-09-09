@@ -546,13 +546,39 @@ body.dark .snav.on{background:var(--t700)}
 .dwrap{max-width:1160px;margin:0 auto}
 @media(max-width:900px){.dside{display:none}.dmain{padding:22px 18px 96px}.duser{display:none}}
 .dsec{animation:fadeUp .35s ease}
-.dhead{margin-bottom:22px;display:flex;align-items:center;gap:12px}
-.dhead .hic{color:var(--t500);display:flex;align-items:center;font-size:26px;flex-shrink:0}
-.dhead h1{font-size:26px;color:var(--hd);letter-spacing:-.01em}
-.dhead p{color:var(--soft);font-size:14px;margin-top:3px}
-.dcard{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 22px;box-shadow:var(--shadow)}
+.dcard{background:var(--card);border:1px solid var(--line);
+  border-radius:clamp(16px,1.4vw,22px);padding:clamp(15px,1.4vw,20px) clamp(16px,1.5vw,22px);
+  box-shadow:0 1px 2px rgba(12,51,63,.03),0 8px 24px rgba(12,51,63,.045)}
+
+/* =========================================================================
+   GRAMATICA DA CONTENT DENTRO DO APP
+   A pagina publica de Content abre com rotulo em maiusculas, titulo grande e
+   secoes com subtitulo. Aqui a mesma estrutura, no creme: o cabecalho de toda
+   tela do app (o funil e a funcao head()) passa a falar essa lingua.
+   ========================================================================= */
+.dhead{display:block;margin-bottom:clamp(20px,2.4vw,32px)}
+.dhead .dhk{display:block;font-family:var(--display);font-weight:700;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--t500);margin-bottom:9px}
+.dhead h1{font-family:var(--display);font-weight:700;
+  font-size:clamp(29px,3.4vw,46px);line-height:1.04;letter-spacing:-.03em;
+  color:var(--hd);margin:0}
+.dhead p{font-size:clamp(14px,1.1vw,15.5px);line-height:1.5;color:var(--soft);
+  margin-top:11px;max-width:56ch}
+/* o icone antigo do cabecalho nao entra mais: o rotulo faz esse trabalho */
+.dhead .hic{display:none}
+
+/* rotulo de secao e cabecalho de secao, iguais aos da Content */
+.dzl{display:block;font-family:var(--display);font-weight:700;font-size:12px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--soft);
+  padding:clamp(20px,2.4vw,34px) 0 2px}
+.dh2{display:block;font-family:var(--display);font-weight:700;
+  font-size:clamp(18px,1.7vw,23px);letter-spacing:-.01em;color:var(--hd);
+  margin:26px 0 14px;line-height:1.15}
+.dh2 .ic{display:none}
+.dh2 span{display:block;font-family:var(--sans);font-weight:400;font-size:13.5px;
+  letter-spacing:0;color:var(--soft);margin-top:4px}
+
 .dcard+.dcard{margin-top:16px}
-.dh2{font-size:16px;color:var(--hd);display:flex;align-items:center;gap:10px;margin:26px 0 14px}
 .dh2 .hbadge{display:flex;align-items:center;font-size:21px;flex-shrink:0}
 .dh2 .hbadge.teal{color:var(--t500)}
 .dh2 .hbadge.coral{color:var(--coral)}
@@ -620,7 +646,7 @@ body.dark .snav.on{background:var(--t700)}
 .excell .exs{font-size:11px;font-weight:600;margin-top:3px}
 .exs.bad{color:var(--alert)}.exs.warn{color:var(--watch)}.exs.ok{color:var(--ok)}
 .dsearch{position:relative;margin-bottom:16px}
-.dsearch input{width:100%;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px 12px 40px;font-family:var(--sans);font-size:14px;color:var(--ink);outline:none}
+.dsearch input[type=text]{width:100%;background:var(--card);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px 12px 40px;font-family:var(--sans);font-size:14px;color:var(--ink);outline:none}
 .dsearch input:focus{border-color:var(--t500)}
 .dsearch .ic{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--soft);font-size:15px}
 .pcard{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px;transition:all .2s}
@@ -1506,26 +1532,7 @@ body.dark .hf-wash{opacity:.20;filter:blur(130px)}
 @media(max-width:700px){.hf-wash{filter:blur(76px);opacity:.36}}
 .hero-flat .hero-inner{position:relative;z-index:2;max-width:1240px;padding:0;margin:0}
 /* o mascote espia por tras da manchete: so a copa e os olhos passam do texto */
-/* o mascote mora atras da barra e desce de cabeca para baixo ao lado do
-   logotipo. Ancorado no proprio .logo: left:100% e a ponta da palavra, e
-   50% + 32px leva a borda de baixo da nav (a nav tem 64px e centra o logo). */
 .logo{position:relative}
-.nav-peek{position:absolute;left:100%;top:calc(50% + 32px);margin-left:16px;
-  width:clamp(50px,4.8vw,76px);height:clamp(38px,3.65vw,58px);
-  overflow:hidden;pointer-events:none}
-.nav-peek svg{width:100%;height:auto;display:block;
-  animation:navPeek 7s cubic-bezier(.3,.9,.35,1) infinite}
-/* a translacao vem antes da rotacao, entao o -104% e para cima na tela */
-@keyframes navPeek{
-  0%,58%{transform:translateY(-104%) rotate(180deg)}
-  68%,90%{transform:translateY(0) rotate(180deg)}
-  98%,100%{transform:translateY(-104%) rotate(180deg)}
-}
-.nav-peek .pup{animation:brainThink 7s ease-in-out infinite}
-@media(prefers-reduced-motion:reduce){
-  .nav-peek svg{animation:none;transform:rotate(180deg)}
-  .nav-peek .pup{animation:none}
-}
 .hero-flat h1{font-family:var(--quiet);font-weight:500;color:var(--hd);max-width:none;
   font-size:clamp(31px,5.6vw,70px);line-height:1.05;letter-spacing:-.042em;text-wrap:balance}
 .hero-flat h1 .hl2{display:inline}
@@ -2915,6 +2922,100 @@ body.cpopen{overflow:hidden}
 .svag2 .tx span{display:block;font-size:11px;color:var(--soft);margin-top:1px}
 .svag2 .tx{min-width:0}
 
+/* --- Your team: blocos flutuantes na gramatica do About us --------------
+   Retrato grande, canto arredondado, placa com o nome que sobe no hover, e
+   uma deriva lenta para cada bloco ter vida propria. Clicar abre a ficha. */
+.svteam{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:clamp(14px,1.6vw,24px)}
+.svtm{position:relative;border:none;padding:0;background:none;cursor:pointer;
+  text-align:left;border-radius:22px;
+  animation:svdrift var(--dur,17s) ease-in-out var(--del,0s) infinite alternate}
+@keyframes svdrift{0%{transform:translate3d(0,0,0)}
+  100%{transform:translate3d(var(--dx,7px),var(--dy,-10px),0)}}
+@media(prefers-reduced-motion:reduce){.svtm{animation:none}}
+.svtm .fc{display:block;position:relative;aspect-ratio:4/5;border-radius:22px;overflow:hidden;
+  background:var(--dc,#2A9D8F);
+  box-shadow:0 10px 26px rgba(12,51,63,.14);
+  transition:scale .34s cubic-bezier(.2,.8,.3,1),box-shadow .34s ease}
+.svtm:hover .fc,.svtm:focus-visible .fc{scale:1.035;
+  box-shadow:0 20px 46px rgba(12,51,63,.24)}
+.svtm:focus-visible{outline:none}
+.svtm .fc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* veu que segura o nome, sempre visivel mas mais forte no hover */
+.svtm .fc::after{content:"";position:absolute;left:0;right:0;bottom:0;height:56%;
+  background:linear-gradient(180deg,rgba(6,20,26,0),rgba(6,20,26,.82));
+  opacity:.9;transition:opacity .3s ease}
+.svtm:hover .fc::after{opacity:1}
+.svtm .plate{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:14px 15px;
+  transition:transform .34s cubic-bezier(.2,.8,.3,1)}
+.svtm:hover .plate{transform:translateY(-3px)}
+.svtm .plate b{display:block;font-family:var(--display);font-weight:700;font-size:13.5px;
+  color:#F5EFE4;letter-spacing:-.01em;line-height:1.2}
+.svtm .plate span{display:block;font-size:11.5px;color:rgba(245,239,228,.80);margin-top:3px}
+/* pastilha da reacao mais recente, no canto de cima */
+.svtm .rx{position:absolute;top:11px;right:11px;z-index:3;width:26px;height:26px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;
+  background:rgba(255,255,255,.92);box-shadow:0 4px 12px rgba(12,51,63,.22)}
+/* o bloco de "trocar" nao e uma pessoa: e um convite, em traco */
+.svtm.add .fc{background:var(--bg-dim);border:1.5px dashed var(--line);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:9px;text-align:center;padding:18px}
+.svtm.add .fc::after{display:none}
+.svtm.add .ic{font-size:24px;color:var(--t500)}
+.svtm.add b{font-family:var(--display);font-size:13px;color:var(--hd)}
+.svtm.add span{font-size:11.5px;line-height:1.4;color:var(--soft)}
+
+/* ficha do profissional: as tres saidas, e a carreira que abre no lugar */
+.svpf .hd{display:flex;align-items:center;gap:13px;margin-bottom:16px}
+.svpf .av{width:60px;height:60px;border-radius:18px;overflow:hidden;flex-shrink:0;
+  position:relative;background:var(--t100)}
+.svpf .av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.svpf .hd h3{font-family:var(--display);font-size:17px;color:var(--hd);line-height:1.2}
+.svpf .hd .rl{display:block;font-size:12.5px;color:var(--soft);margin-top:3px}
+.svpf .hd .crm{display:block;font-family:var(--quiet);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--soft);margin-top:4px;opacity:.8}
+.svpf .hd .x{margin-left:auto;align-self:flex-start;border:none;background:none;
+  cursor:pointer;color:var(--soft);font-size:20px;line-height:1}
+.svop{display:flex;align-items:center;gap:12px;width:100%;text-align:left;cursor:pointer;
+  background:var(--bg-dim);border:1px solid transparent;border-radius:14px;
+  padding:13px 15px;margin-bottom:9px;
+  transition:border-color .22s ease,transform .22s ease}
+.svop:hover{border-color:var(--t500);transform:translateX(3px)}
+.svop .ic0{width:32px;height:32px;border-radius:50%;flex-shrink:0;font-size:15px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--t50);color:var(--t500)}
+.svop b{display:block;font-family:var(--display);font-size:13px;color:var(--hd)}
+.svop span{display:block;font-size:11.5px;line-height:1.4;color:var(--soft);margin-top:2px}
+.svop.warn .ic0{background:var(--watch-bg);color:var(--watch)}
+.svop .cv{margin-left:auto;color:var(--soft);font-size:15px;transition:transform .3s}
+.svop.open .cv{transform:rotate(90deg)}
+/* a carreira: abre embaixo da propria opcao */
+.svcv{max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .45s cubic-bezier(.2,.8,.3,1),opacity .3s,margin .3s}
+.svcv.open{max-height:520px;opacity:1;margin:-3px 0 11px}
+.svcv .in{background:var(--t50);border-radius:14px;padding:14px 16px}
+.svcv p{font-size:12.5px;line-height:1.55;color:var(--ink)}
+.svcv .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.svcv .tags span{font-size:11px;color:var(--t500);border:1px solid var(--t100);
+  border-radius:99px;padding:4px 10px}
+.svcv .tl{margin-top:13px;padding-top:12px;border-top:1px solid var(--t100)}
+.svcv .tl div{display:flex;gap:11px;padding:5px 0;font-size:12px;color:var(--ink)}
+.svcv .tl b{font-family:var(--display);font-size:11.5px;color:var(--t500);
+  flex:0 0 42px}
+
+/* --- titulos dos cards da lateral --- */
+.svsidet{display:block;font-family:var(--display);font-weight:700;font-size:13px;
+  color:var(--hd)}
+.svsides{display:block;font-size:11.5px;line-height:1.4;color:var(--soft);
+  margin:3px 0 13px}
+/* na lateral o calendario e os horarios empilham */
+.svbook .svcal{display:block}
+.svbook .svcalbox{max-width:none;min-width:0}
+.svbook .svslots{max-width:none;min-width:0;margin-top:14px;
+  border-top:1px solid var(--line);padding-top:13px}
+.svbook .svslot{padding:8px 11px;font-size:12px}
+.svbook .svday{font-size:12px}
+
 /* --- pauta da proxima sessao, na lateral --- */
 .svtp{display:flex;align-items:flex-start;gap:9px;padding:9px 0;
   border-bottom:1px solid var(--line)}
@@ -2943,7 +3044,7 @@ body.cpopen{overflow:hidden}
 .svmbox .vv{font-family:var(--display);font-weight:700;font-size:32px;color:var(--hd);
   letter-spacing:-.02em}
 .svmbox .vv i{font-style:normal;font-size:.42em;color:var(--soft);margin-left:5px}
-.svmbox svg{width:100%;height:96px;margin:12px 0;display:block;overflow:visible}
+.svmbox > svg{width:100%;height:96px;margin:12px 0;display:block;overflow:visible}
 .svmbox p{font-size:13px;line-height:1.55;color:var(--ink)}
 .svmbox .who{display:flex;align-items:center;gap:9px;margin-top:14px;background:var(--t50);
   border-radius:12px;padding:11px 13px}
@@ -3165,6 +3266,79 @@ body.dark .svai{background:linear-gradient(142deg,rgba(28,65,80,.6),rgba(17,47,5
    trilha e faz brotar sinapses no no. O cerebro ganha halo conforme cresce.
    ========================================================================= */
 .jsec2{max-width:1180px;margin:0 auto;padding-bottom:clamp(20px,2.4vw,34px)}
+
+/* =========================================================================
+   JOURNEY IMERSIVA — a mesma ideia da Content: o chao escurece, o header do
+   app fica por cima em vez de empurrar, e o fundo sugere estar dentro do
+   cranio. Os tokens sao redefinidos no escopo .jskin, entao tudo que ja
+   usava var(--card)/var(--line)/var(--hd) acompanha sozinho.
+   ========================================================================= */
+body.jdark,body.jdark #patient{background:#070D10}
+body.jdark #patient .dmain{padding-top:0;padding-bottom:0}
+body.jdark #patient .appback{display:none}
+body.jdark #patient .dbody.app{margin-top:calc(var(--aph) * -1)}
+body.jdark #patient .apptop{background:transparent;border-bottom:1px solid transparent;
+  isolation:isolate}
+body.jdark #patient .apptop::before{content:"";position:absolute;left:0;right:0;top:0;
+  height:190%;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(4,9,12,.72) 0%,rgba(4,9,12,.44) 48%,
+    rgba(4,9,12,.14) 78%,rgba(4,9,12,0) 100%)}
+
+.jskin{
+  --bg:#070D10; --bg-dim:#14242B; --card:#101F26;
+  --ink:#DDE6E6; --soft:#8DA2A9; --line:rgba(233,240,238,.15);
+  --hd:#F2ECE0; --hd2:#E3EEEC; --hd3:#9FD4CB;
+  --t50:rgba(42,157,143,.13); --t100:rgba(143,211,200,.30);
+  --shadow:0 1px 2px rgba(0,0,0,.30),0 14px 40px rgba(0,0,0,.42);
+  position:relative;color:var(--ink);
+  width:100vw;margin-left:calc(50% - 50vw);max-width:none;
+  min-height:100vh;overflow:hidden;
+  padding:calc(var(--aph) + clamp(14px,2vw,28px)) clamp(18px,3.4vw,48px)
+          clamp(18px,2.4vw,34px)}
+.jskin > *{position:relative;z-index:2}
+
+/* dentro do cranio: tecido fundo, dois focos de luz e um veu de vinheta */
+.jskin::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(58% 46% at 26% 22%,rgba(42,157,143,.20) 0%,rgba(42,157,143,0) 68%),
+    radial-gradient(52% 44% at 78% 30%,rgba(91,125,177,.17) 0%,rgba(91,125,177,0) 70%),
+    radial-gradient(60% 50% at 62% 88%,rgba(231,111,81,.11) 0%,rgba(231,111,81,0) 72%),
+    radial-gradient(90% 70% at 50% 46%,#0D2029 0%,#070D10 74%);
+  animation:jtissue 22s ease-in-out infinite alternate}
+@keyframes jtissue{0%{transform:scale(1) translate3d(0,0,0)}
+  100%{transform:scale(1.07) translate3d(-1.2%,1%,0)}}
+/* vinheta: fecha as bordas e da a sensacao de estar dentro de algo */
+.jskin::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(78% 66% at 50% 46%,rgba(0,0,0,0) 42%,rgba(0,0,0,.45) 100%)}
+@media(prefers-reduced-motion:reduce){.jskin::before{animation:none}}
+
+/* O cerebro segue claro: e ele que ilumina a cena, nao o contrario.
+   Massa em creme leitoso, sulcos e nos em tom escuro, como no tema claro. */
+.jskin .jmap .brainfill{fill:rgba(238,245,244,.94);stroke:rgba(255,255,255,.9);
+  stroke-width:1.2;opacity:1;filter:drop-shadow(0 0 26px rgba(190,230,224,.30))}
+.jskin .jmap .gyri{stroke:#B9D6D1;opacity:.85}
+.jskin .jmap .route{stroke:#9FBDB8;opacity:.9}
+.jskin .jdust{fill:#5A6B72;opacity:.26}
+.jskin .jlk{stroke:#9FBDB8;opacity:.75}
+.jskin .jsat{fill:#9FBDB8;opacity:.8}
+.jskin .jn .disc{fill:#FFFFFF;stroke:#C6DAD6}
+/* especificidade acima das regras de estado, que vem depois no arquivo */
+.jskin .jmap .jn.now .disc{fill:#FFFFFF}
+.jskin .jmap .jn.lock .disc{fill:#E4EDEB;stroke:#A9C3BE;stroke-opacity:1}
+.jskin .jmap .jn.done .disc{fill:var(--tc);stroke:var(--tc)}
+.jskin .jn .jlab{fill:#0C333F}
+.jskin .brainnext{stroke:#8FD3C8;opacity:.34}
+/* a fronteira das frentes fica sobre o creme, entao escurece um tom */
+.jskin .jfront{opacity:.5}
+.jskin .jgn{opacity:.45}
+.jskin .jgn.far{opacity:.26}
+.jskin .jstreak{background:rgba(233,240,238,.09)}
+/* o grafo ocupa o que sobra da janela: o cerebro fica no centro da cena */
+.jskin .jgraph{height:calc(100vh - var(--aph) - clamp(150px,15vh,196px));
+  max-width:1280px;margin-left:auto;margin-right:auto}
+.jskin .jhead{max-width:1280px;margin-left:auto;margin-right:auto;width:100%}
+.jskin .jpop .ic0{background:rgba(233,240,238,.10);color:var(--tc,#9FD4CB)}
+
 .jhead{position:relative;z-index:30;display:flex;align-items:center;gap:18px;
   margin-bottom:clamp(6px,1vw,12px)}
 .jhead h1{font-family:var(--display);font-weight:700;letter-spacing:-.02em;
@@ -3256,13 +3430,11 @@ body.dark .jdust{fill:var(--soft);opacity:.22}
 .jlk{stroke:var(--line);stroke-width:.7;opacity:.85}
 .jlk.done{opacity:.5}
 .jlk.lock{opacity:.4}
-/* satelites: a proxima conexao de cada no */
+/* satelites: a proxima conexao de cada no. Parados — so o no atual respira. */
 .jsat{fill:var(--line)}
-.jsat.done{opacity:.72;animation:satPulse 4.2s ease-in-out infinite}
+.jsat.done{opacity:.72}
 .jsat.now{fill:var(--soft);opacity:.5}
 .jsat.lock{opacity:.55}
-@keyframes satPulse{0%,100%{opacity:.5}50%{opacity:.85}}
-@media(prefers-reduced-motion:reduce){.jsat.done{animation:none}}
 
 .jn{cursor:pointer}
 .jn .disc{fill:var(--card);stroke:var(--line);stroke-width:1.2;
@@ -3272,9 +3444,31 @@ body.dark .jdust{fill:var(--soft);opacity:.22}
 .jn.lock .disc{fill:var(--bg-dim);stroke:var(--soft);stroke-opacity:.4;stroke-width:1}
 .jn:hover .disc,.jn:focus-visible .disc{transform:scale(1.55)}
 .jn:focus-visible{outline:none}
-.jn .halo{fill:none;stroke:var(--tc);stroke-width:1.4;opacity:.5;
-  animation:jpulse 2.4s ease-out infinite;transform-origin:center}
-@keyframes jpulse{0%{transform:scale(1);opacity:.55}100%{transform:scale(2.4);opacity:0}}
+/* o no atual respira devagar no proprio lugar, sem lancar anel para fora */
+.jn.now .disc{animation:jbreath 4.6s ease-in-out infinite;transform-origin:center}
+@keyframes jbreath{
+  0%,100%{transform:scale(1);stroke-opacity:.8}
+  50%{transform:scale(1.045);stroke-opacity:1}
+}
+.jn.now:hover .disc,.jn.now:focus-visible .disc{animation:none}
+@media(prefers-reduced-motion:reduce){.jn.now .disc{animation:none}}
+
+/* ---- continuidade: o mapa mostra que ha mais para abrir ----
+   Cada frente segue depois do ultimo no com um traco pontilhado e dois nos
+   fantasma; por fora, um contorno tracejado maior diz que o cerebro cresce. */
+.jfront{fill:none;stroke:var(--tc,var(--soft));stroke-width:1.1;stroke-linecap:round;
+  stroke-dasharray:2 4;opacity:.34}
+.jgn{fill:none;stroke:var(--tc,var(--soft));stroke-width:1;stroke-dasharray:2 2.4;
+  opacity:.30}
+.jgn.far{opacity:.17}
+.brainnext{fill:none;stroke:var(--t500);stroke-width:1;stroke-dasharray:3 7;
+  opacity:.20;transform-origin:198px 128px;
+  animation:jgrow 9s ease-in-out infinite}
+@keyframes jgrow{
+  0%,100%{transform:scale(1.045);opacity:.14}
+  50%{transform:scale(1.085);opacity:.26}
+}
+@media(prefers-reduced-motion:reduce){.brainnext{animation:none}}
 /* o nome so aparece quando o mouse chega, como no grafo do Obsidian */
 .jn .jlab{font-family:var(--sans);font-size:4.6px;text-anchor:middle;fill:var(--hd);
   opacity:0;pointer-events:none;transition:opacity .2s ease}
@@ -3963,6 +4157,13 @@ body.imm #pg-conteudo{padding-top:0}
 body.imm .imhero{margin-top:-64px;height:clamp(484px,72vh,724px)}
 body.imm .imhero .imin{padding-top:64px}
 .nav.over{background:transparent;backdrop-filter:none;border-bottom-color:rgba(245,239,228,.16)}
+/* Sobre foto clara o texto creme sumia. Um veu que escurece so o topo e
+   dissolve alguns pixels abaixo da nav: da chao para o texto sem virar barra. */
+.nav.over::before{content:"";position:absolute;left:0;right:0;top:0;height:172%;
+  z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(6,12,15,.62) 0%,rgba(6,12,15,.42) 46%,
+    rgba(6,12,15,.16) 76%,rgba(6,12,15,0) 100%)}
+.nav.over{isolation:isolate}
 .nav.over .logo{color:#F5EFE4}
 .nav.over .logo svg{stroke:#F5EFE4}
 .nav.over a.nl{color:rgba(245,239,228,.90)}
@@ -4689,21 +4890,116 @@ body.imm :is(#pg-programa,.progskin) .pgin{padding-top:112px}
 .contentskin .appsearch{position:relative;max-width:560px;margin:0 auto 30px}
 
 /* ---- a aba Content fica preta e imersiva, igual a pagina publica ---- */
-body.appdark #patient{background:var(--bg)}
+body.appdark :is(#patient,#doctor,#nutri){background:var(--bg)}
 /* no dark mode do site a transicao por scroll fica desligada: cai direto no escuro */
-body.appdark.dark #patient{
+body.appdark.dark :is(#patient,#doctor,#nutri){
   --bg:#070D10; --bg-dim:#0D1519; --card:#111A1E; --line:#1E282D; --tintband:#0D1519;
   --ink:#EDE7DB; --soft:#93A5AA; --hd:#F2ECE0; --hd2:#D8E2E0; --hd3:#8FC1BB}
 body.appdark.dark{background:#070D10}
-body.appdark #patient .dmain{padding-top:0}
-body.appdark #patient .appback{display:none}
+body.appdark :is(#patient,#doctor,#nutri) .dmain{padding-top:0}
+body.appdark :is(#patient,#doctor,#nutri) .appback{display:none}
 /* o heroi passa por baixo do header do app, igual a nav transparente da pagina publica */
-body.appdark #patient .dbody.app{margin-top:calc(var(--aph) * -1)}
-body.appdark #patient .apptop{background:transparent;border-bottom:1px solid transparent;
+body.appdark :is(#patient,#doctor,#nutri) .dbody.app{margin-top:calc(var(--aph) * -1)}
+body.appdark :is(#patient,#doctor,#nutri) .apptop{background:transparent;border-bottom:1px solid transparent;
   transition:background .3s ease,border-color .3s ease}
-body.appdark #patient .contentskin .imhero{height:clamp(430px,62vh,620px)}
-body.appdark #patient .contentskin .imhero .imin{padding-top:var(--aph)}
-body.apptop-solid #patient .apptop{background:#0A1216;border-bottom-color:#17242B}
+/* mesmo problema da nav publica: sobre a foto clara os icones do header
+   sumiam. Um veu que so escurece o topo e dissolve logo abaixo. */
+body.appdark :is(#patient,#doctor,#nutri) .apptop{isolation:isolate}
+body.appdark :is(#patient,#doctor,#nutri) .apptop::before{content:"";position:absolute;left:0;right:0;top:0;
+  height:190%;z-index:-1;pointer-events:none;opacity:1;
+  transition:opacity .3s ease;
+  background:linear-gradient(180deg,rgba(6,12,15,.60) 0%,rgba(6,12,15,.40) 46%,
+    rgba(6,12,15,.15) 76%,rgba(6,12,15,0) 100%)}
+body.appdark.apptop-solid :is(#patient,#doctor,#nutri) .apptop::before{opacity:0}
+body.appdark :is(#patient,#doctor,#nutri) .contentskin .imhero{height:clamp(430px,62vh,620px)}
+body.appdark :is(#patient,#doctor,#nutri) .contentskin .imhero .imin{padding-top:var(--aph)}
+body.apptop-solid :is(#patient,#doctor,#nutri) .apptop{background:#0A1216;border-bottom-color:#17242B}
+/* =========================================================================
+   CONTENT DO PROFISSIONAL — mesmo chao escuro do paciente, mas o miolo e
+   outro: as certificacoes ganham um bloco proprio, em trilha numerada, com
+   o selo e o progresso de cada faixa. Escopo .certskin.
+   ========================================================================= */
+.certskin{--cink:#EDE7DB;--csoft:#93A5AA;--chd:#F2ECE0;
+  --cline:rgba(245,239,228,.12);--cline2:rgba(245,239,228,.22);--ccard:#101A1E}
+
+/* o painel do selo: o que o profissional ganha ao fechar as faixas */
+.crtseal{position:relative;overflow:hidden;margin:0 var(--gut);
+  border:1px solid var(--cline);border-radius:clamp(18px,1.7vw,26px);
+  background:linear-gradient(140deg,rgba(217,164,32,.16) 0%,rgba(42,157,143,.10) 46%,
+    rgba(16,26,30,0) 82%),#101A1E;
+  padding:clamp(20px,2.2vw,30px) clamp(20px,2.4vw,34px);
+  display:flex;align-items:center;gap:clamp(18px,2.2vw,32px);flex-wrap:wrap}
+.crtseal .medal{position:relative;flex:0 0 auto;width:clamp(72px,7vw,96px)}
+.crtseal .medal svg{width:100%;height:auto;display:block;overflow:visible}
+.crtseal .medal .ring{transform-origin:50% 50%;animation:crtspin 26s linear infinite}
+@keyframes crtspin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.crtseal .medal .ring{animation:none}}
+.crtseal .tx{flex:1;min-width:230px}
+.crtseal .k{font-family:var(--display);font-weight:700;font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:#D9A420;margin-bottom:7px}
+.crtseal h2{font-family:var(--display);font-weight:700;letter-spacing:-.02em;
+  font-size:clamp(21px,2.1vw,29px);color:var(--chd);line-height:1.1}
+.crtseal p{font-size:13.5px;line-height:1.55;color:var(--csoft);margin-top:9px;max-width:56ch}
+.crtseal .meter{display:flex;align-items:center;gap:11px;margin-top:15px}
+.crtseal .meter .bar{flex:1;max-width:260px;height:7px;border-radius:99px;
+  background:rgba(245,239,228,.12);overflow:hidden}
+.crtseal .meter .bar i{display:block;height:100%;border-radius:99px;
+  background:linear-gradient(90deg,#2A9D8F,#D9A420);
+  transition:width 1.1s cubic-bezier(.3,0,.2,1)}
+.crtseal .meter b{font-family:var(--display);font-size:12.5px;color:var(--chd)}
+.crtseal .act{flex:0 0 auto}
+
+/* a trilha: tres faixas numeradas, uma puxando a outra */
+.crttrack{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));
+  gap:clamp(14px,1.5vw,20px);padding:0 var(--gut)}
+.crtc{position:relative;text-align:left;cursor:pointer;overflow:hidden;
+  border:1px solid var(--cline);border-radius:clamp(16px,1.5vw,22px);
+  background:var(--ccard);padding:0;
+  transition:transform .34s cubic-bezier(.2,.8,.3,1),border-color .3s,box-shadow .3s}
+.crtc:hover{transform:translateY(-5px);border-color:var(--cline2);
+  box-shadow:0 22px 48px rgba(0,0,0,.42)}
+.crtc .art{display:block;position:relative;height:clamp(104px,10vw,136px);overflow:hidden;
+  background:linear-gradient(150deg,var(--g1),var(--g2))}
+.crtc .art svg.deco{position:absolute;inset:0;width:100%;height:100%;opacity:.30}
+.crtc .art .n{position:absolute;left:16px;top:13px;font-family:var(--display);
+  font-weight:800;font-size:clamp(30px,3.2vw,44px);letter-spacing:-.03em;
+  color:rgba(245,239,228,.30);line-height:1}
+.crtc .art > .ic{position:absolute;right:15px;bottom:13px;font-size:22px;
+  color:rgba(245,239,228,.85)}
+.crtc .art::after{content:"";position:absolute;left:0;right:0;bottom:0;height:56%;
+  background:linear-gradient(180deg,rgba(16,26,30,0),var(--ccard))}
+.crtc .bd{display:block;position:relative;z-index:2;padding:2px 17px 17px;margin-top:-6px}
+.crtc h3{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:-.01em;
+  color:var(--chd);line-height:1.25}
+.crtc .sb{display:-webkit-box;font-size:12.5px;line-height:1.5;color:var(--csoft);margin-top:6px;
+  -webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.crtc .mt{display:flex;align-items:center;gap:9px;margin-top:13px;
+  font-family:var(--quiet);font-size:11px;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--csoft)}
+.crtc .mt i{font-style:normal;opacity:.4}
+.crtc .pb{display:block;height:5px;border-radius:99px;background:rgba(245,239,228,.10);
+  overflow:hidden;margin-top:12px}
+.crtc .pb i{display:block;height:100%;border-radius:99px;background:var(--t500)}
+/* selo de faixa concluida, no canto da arte */
+.crtc .seal{position:absolute;right:14px;top:12px;z-index:3;width:30px;height:30px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;
+  background:#D9A420;color:#3A2A00;box-shadow:0 6px 16px rgba(0,0,0,.34)}
+.crtc.done .art > .ic{display:none}
+/* a proxima faixa a fazer ganha um fio dourado */
+.crtc.next{border-color:rgba(217,164,32,.45)}
+.crtc.next .lb{position:absolute;left:0;top:0;bottom:0;width:3px;z-index:3;
+  background:linear-gradient(180deg,#D9A420,rgba(217,164,32,0))}
+
+/* fecho da pagina: o painel da rede de parceiros, com a marca */
+.crtcta .tm-join-r{display:flex;flex-direction:column;align-items:flex-start;gap:13px}
+.crtlogo{display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--quiet);font-weight:500;letter-spacing:-.03em;font-size:17px;
+  color:#F5EFE4;opacity:.92}
+.crtlogo svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:2;
+  stroke-linecap:round;flex-shrink:0}
+.crtcta .subfine{font-size:13px;color:rgba(245,239,228,.66);cursor:pointer}
+.crtcta .subfine:hover{color:#F5EFE4}
+
 .contentskin{--gut:clamp(18px,3.4vw,48px)}
 /* o heroi rompe a caixa do painel e vai de ponta a ponta */
 .contentskin .imhero{width:100vw;margin-left:calc(50% - 50vw);height:clamp(360px,52vh,520px)}
@@ -4903,9 +5199,9 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
 <!-- ================= PUBLIC SITE ================= -->
 <div class="screen active" id="site">
   <nav class="nav">
-    <a class="logo" onclick="goHome()" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>Metabolicamente<span class="nav-peek" aria-hidden="true"><svg viewBox="0 3 100 76"><path d="M50 8c-9-6-22-2-24 8-9 1-14 9-11 17-7 6-6 17 2 21-2 10 7 18 16 15 4 7 13 9 17 4 4 5 13 3 17-4 9 3 18-5 16-15 8-4 9-15 2-21 3-8-2-16-11-17-2-10-15-14-24-8Z" fill="#8FD3C8" stroke="#1A5F76" stroke-width="3" stroke-linejoin="round"/><g fill="none" stroke="#1A5F76" stroke-width="2" stroke-linecap="round" opacity=".55"><path d="M50 14v22"/><path d="M30 26c7 2 9 8 4 12"/><path d="M70 26c-7 2-9 8-4 12"/><path d="M26 46c8 0 11 5 7 9"/><path d="M74 46c-8 0-11 5-7 9"/></g><g><circle cx="38" cy="52" r="9" fill="#fff"/><circle cx="62" cy="52" r="9" fill="#fff"/><g class="pup"><circle cx="40" cy="53" r="4.4" fill="#0C333F"/><circle cx="41.6" cy="51" r="1.5" fill="#fff"/></g><g class="pup"><circle cx="64" cy="53" r="4.4" fill="#0C333F"/><circle cx="65.6" cy="51" r="1.5" fill="#fff"/></g></g><path d="M42 68c4 4 12 4 16 0" stroke="#1A5F76" stroke-width="3" fill="none" stroke-linecap="round"/></svg></span></a>
-    <a class="nl" href="#/conteudo">Content</a>
+    <a class="logo" onclick="goHome()" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>Metabolicamente</a>
     <a class="nl" href="#/tratamento">Learn more</a>
+    <a class="nl" href="#/conteudo">Content</a>
     <a class="nl" href="#/equipe">About us</a>
     <a class="nl" href="#/faq">FAQs</a>
     <button class="navsearch" id="navSearch" onclick="toggleSearch()" aria-label="Search"><span class="ic" data-icon="search"></span></button>
@@ -5760,8 +6056,8 @@ if(!window.INTRO_ON&&document.body) document.body.classList.add('intro-off','int
 
       <div class="ft-cols">
         <div class="ft-col">
-          <a href="#/conteudo">Content</a>
           <a href="#/tratamento">Learn more</a>
+          <a href="#/conteudo">Content</a>
           <a href="#/equipe">About us</a>
           <a href="#/faq">FAQs</a>
         </div>
@@ -6055,7 +6351,8 @@ function go(id){
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
   document.body.classList.toggle('in-app', id==='patient'||id==='doctor'||id==='nutri');
-  if(id!=='patient'&&id!=='session') document.body.classList.remove('appdark');
+  if(id!=='patient'&&id!=='session'){ document.body.classList.remove('appdark');
+    document.body.classList.remove('jdark'); }
   if(id!=='patient') document.body.classList.remove('apphallow');
   if(typeof cpClose==='function') cpClose();
   if(id==='patient'||id==='doctor'||id==='nutri') renderDash(id);
@@ -6579,8 +6876,8 @@ const PPACK={done:4,total:8};
 // <!-- PLACEHOLDER --> ultima mensagem de cada profissional, com a reacao dele
 // <!-- PLACEHOLDER --> retratos genericos, trocar pelas fotos reais
 const PPHOTO={
-  doctor:'https://randomuser.me/api/portraits/men/41.jpg',
-  nutri :'https://randomuser.me/api/portraits/men/76.jpg',
+  doctor:'team/rm.jpg',
+  nutri :'team/lt.jpg',
   patient:'https://randomuser.me/api/portraits/men/32.jpg'
 };
 const PMSG={
@@ -6853,7 +7150,10 @@ function dashSection(role){
   else if(role==='patient') html=pSection(D);
   else if(role==='doctor') html=dSection(D);
   else html=nSection(D);
-  document.body.classList.toggle('appdark', role==='patient'&&D.sec==='programas');
+  document.body.classList.toggle('appdark',
+    (role==='patient'&&D.sec==='programas')||
+    ((role==='doctor'||role==='nutri')&&D.sec==='formacao'));
+  document.body.classList.toggle('jdark', role==='patient'&&D.sec==='journey');
   document.body.classList.toggle('apphallow',
     role==='patient'&&D.sec==='inicio'&&HOMEUI==='hallow');
   document.body.classList.toggle('dshfit',
@@ -6862,7 +7162,9 @@ function dashSection(role){
   renderIcons(w);
   drawEvo(role);
   animateBars(w);
-  if(role==='patient'&&D.sec==='programas'&&!PDETAIL&&typeof progAfter==='function')
+  const contentSec=(role==='patient'&&D.sec==='programas')||
+                   ((role==='doctor'||role==='nutri')&&D.sec==='formacao');
+  if(contentSec&&!PDETAIL&&typeof progAfter==='function')
     setTimeout(function(){ progAfter(w); },0);
   if(window.__applyLang){ try{__applyLang()}catch(e){} }
 }
@@ -6877,7 +7179,11 @@ function animateBars(root){
     el.style.transition=trans||''; requestAnimationFrame(()=>{ el.style.width=target; });
   });
 }
-function head(t,s){ return '<div class="dhead"><div><h1>'+t+'</h1><p>'+s+'</p></div></div>'; }
+function head(t,s,k){
+  /* k e o rotulo em maiusculas, na gramatica da pagina Content */
+  return '<div class="dhead">'+(k?'<span class="dhk">'+__tr(k)+'</span>':'')+
+    '<h1>'+t+'</h1><p>'+s+'</p></div>';
+}
 
 function pSection(D){
   const s=D.sec, fn=D.name.split(' ')[0];
@@ -6893,25 +7199,25 @@ function pSection(D){
     let m='';
     MEALS.forEach(meal=>{ let items=''; meal[2].forEach(it=>items+='<li>'+it+'</li>');
       m+='<div class="dcard meal2"><div class="mt"><div class="mic">'+dIcon(meal[0])+'</div><b>'+meal[1]+'</b></div><ul>'+items+'</ul></div>'; });
-    return '<div class="dsec">'+head('Meal plan','Suggested menu for today','utensils')+m+'</div>';
+    return '<div class="dsec">'+head(__tr('Meal plan'),__tr('Suggested menu for today'),'Your plan')+m+'</div>';
   }
   if(s==='exames'){
     let g='';
     PEXAMS.forEach(e=>{ g+='<div class="excell"><div class="exl">'+e[0]+'</div><div class="exv">'+e[1]+'</div><div class="exs '+e[3]+'">'+e[2]+'</div></div>'; });
-    return '<div class="dsec">'+head('My exams','Last collection: Mar 5, 2026','clipboard')+'<div class="dcard"><div class="exgrid">'+g+'</div></div></div>';
+    return '<div class="dsec">'+head(__tr('My exams'),__tr('Last collection: Mar 5, 2026'),'Your markers')+'<div class="dcard"><div class="exgrid">'+g+'</div></div></div>';
   }
   if(s==='agenda'){
     let r='';
     PAGENDA.forEach(a=>{ r+='<div class="drow"><div class="ddate"><div class="dd">'+a[0]+'</div><div class="dt">'+a[1]+'</div></div>'+
       '<div class="dinfo"><b>'+a[2]+'</b><span>'+a[3]+'</span></div>'+(a[4]?'<button class="dbtn dbtn-line" onclick="toast(\'Demo: the video session would open here\')">'+dIcon('video')+'Enter</button>':'')+'</div>'; });
-    return '<div class="dsec">'+head('My schedule','Upcoming appointments','calendar')+'<div class="dcard">'+r+'</div></div>';
+    return '<div class="dsec">'+head(__tr('My schedule'),__tr('Upcoming appointments'),'Your care')+'<div class="dcard">'+r+'</div></div>';
   }
   if(s==='equipe'){
     let t='';
     PTEAM.forEach(m=>{ t+='<div class="tmem"><div class="tav">'+m[0]+'</div><b>'+m[1]+'</b><div class="tr">'+m[2]+'</div>'+
       '<div class="tacts"><button class="dbtn dbtn-line" style="flex:1;justify-content:center" onclick="toast(\'Demo: chat would open here\')">'+dIcon('message')+'Chat</button>'+
       (m[3]?'<button class="dbtn dbtn-solid" style="flex:1;justify-content:center" onclick="toast(\'Demo: the video session would open here\')">'+dIcon('video')+'Video</button>':'')+'</div></div>'; });
-    return '<div class="dsec">'+head('My team','The professionals caring for you','users')+'<div class="tgrid">'+t+'</div></div>';
+    return '<div class="dsec">'+head(__tr('My team'),__tr('The professionals caring for you'),'Your care')+'<div class="tgrid">'+t+'</div></div>';
   }
   return perfil(D,'patient');
 }
@@ -6943,7 +7249,7 @@ function ciInner(role){
 }
 function renderCheckin(D){
   const role=(D===DASH.doctor)?'doctor':(D===DASH.nutri?'nutri':'patient');
-  return '<div class="dsec">'+head('Weekly check-in','Answer in a few steps for your care team','clipboard')+
+  return '<div class="dsec">'+head(__tr('Weekly check-in'),__tr('Answer in a few steps for your care team'),'Your journey')+
     '<div id="ci-inner">'+ciInner(role)+'</div></div>';
 }
 // Update only the check-in body so the surrounding section (and its entrance
@@ -6969,7 +7275,7 @@ function perfil(D,role){
     ? editField('user','Name','name',pf.name)+editField('mail','Email','email',pf.email)+editField('phone','Phone','phone',pf.phone,'(11) 99999-9999')+editField('map-pin','City','city',pf.city,'São Paulo, SP')
     : readField('user','Name',pf.name)+readField('mail','Email',pf.email)+readField('phone','Phone',pf.phone,'Not provided')+readField('map-pin','City',pf.city,'Not provided');
   const tog=(k,label,desc)=>'<div class="pftog"><div class="pl"><b>'+label+'</b><span>'+desc+'</span></div><div class="sw'+(pf[k]?' on':'')+'" onclick="pfTog(\''+role+'\',\''+k+'\',this)"></div></div>';
-  return '<div class="dsec">'+head('My profile','Your information and preferences','user-circle')+
+  return '<div class="dsec">'+head(__tr('My profile'),__tr('Your information and preferences'),'Your account')+
     '<div class="dcard"><div class="pfhead"><div class="pfav"><div class="pfc">'+init+'</div>'+(editing?'<div class="pfcam">'+dIcon('camera')+'</div>':'')+'</div>'+
       '<div class="pfn"><b>'+esc(pf.name)+'</b><span>'+esc(pf.email)+'</span></div>'+
       (editing?'':'<button class="dbtn dbtn-line pfedit" onclick="pfEdit(\''+role+'\')">'+dIcon('edit')+'Edit</button>')+'</div>'+
@@ -7009,7 +7315,7 @@ function dSection(D){
     D.patients.forEach((p,i)=>{ list+='<button class="pcard" onclick="dashSelPatient(\'doctor\','+i+')"><div class="pav">'+p.init+'</div>'+
       '<div class="pmain"><b>'+p.name+'</b><span>'+p.sub+'</span><div><span class="ptag mut">'+dIcon('zap')+'Energy: '+p.energy+'/10</span><span class="ptag '+(p.risk==='moderate'?'warn':'ok')+'">'+dIcon('alert')+'Risk: '+p.risk+'</span></div></div>'+
       '<span class="pchev">'+dIcon('chevron-right')+'</span></button>'; });
-    return '<div class="dsec">'+head('My patients','Triage and follow-up overview','users')+
+    return '<div class="dsec">'+head(__tr('My patients'),__tr('Triage and follow-up overview'),'Your practice')+
       '<div class="dsearch">'+dIcon('search')+'<input type="text" placeholder="Search patient..." oninput="dashPFilter(\'doctor\',this.value)"></div>'+
       '<div id="plist-doctor" style="display:grid;gap:12px">'+list+'</div></div>';
   }
@@ -7017,9 +7323,9 @@ function dSection(D){
     let r='';
     DAGENDA.forEach(a=>{ r+='<div class="drow"><div class="ddate"><div class="dd">'+a[0]+'</div><div class="dt">'+a[1]+'</div></div><div class="dinfo"><b>'+a[2]+'</b><span>'+a[3]+'</span></div>'+
       (a[4]?'<button class="dbtn dbtn-solid" onclick="toast(\'Demo: the video session would open here\')">'+dIcon('video')+'Start</button>':'')+'</div>'; });
-    return '<div class="dsec">'+head('Schedule','Your upcoming appointments','calendar')+'<div class="dcard">'+r+'</div></div>';
+    return '<div class="dsec">'+head(__tr('Schedule'),__tr('Your upcoming appointments'),'Your practice')+'<div class="dcard">'+r+'</div></div>';
   }
-  if(s==='prontuarios') return '<div class="dsec">'+head('Records','Clinical notes and history','clipboard')+
+  if(s==='prontuarios') return '<div class="dsec">'+head(__tr('Records'),__tr('Clinical notes and history'),'Your practice')+
     '<div class="dcard"><p style="color:var(--soft);font-size:14px;line-height:1.7">Select a patient to view and add clinical notes, past sessions, and shared documents.</p>'+
     '<button class="dbtn dbtn-solid" style="margin-top:16px" onclick="dashNav(\'doctor\',\'pacientes\')">Go to patients</button></div></div>';
   return perfil(D,'doctor');
@@ -7042,17 +7348,17 @@ function nSection(D){
     D.patients.forEach((p,i)=>{ list+='<button class="pcard" onclick="dashSelPatient(\'nutri\','+i+')"><div class="pav">'+p.init+'</div>'+
       '<div class="pmain"><b>'+p.name+'</b><span>'+p.sub+'</span><div><span class="ptag '+(p.adhc==='ok'?'ok':'warn')+'">'+p.adh+'</span></div></div>'+
       '<span class="pchev">'+dIcon('chevron-right')+'</span></button>'; });
-    return '<div class="dsec">'+head('My patients','Nutrition follow-up','users')+
+    return '<div class="dsec">'+head(__tr('My patients'),__tr('Nutrition follow-up'),'Your practice')+
       '<div class="dsearch">'+dIcon('search')+'<input type="text" placeholder="Search patient..." oninput="dashPFilter(\'nutri\',this.value)"></div>'+
       '<div id="plist-nutri" style="display:grid;gap:12px">'+list+'</div></div>';
   }
-  if(s==='cardapios') return '<div class="dsec">'+head('Menus','Templates and delivered plans','utensils')+
+  if(s==='cardapios') return '<div class="dsec">'+head(__tr('Menus'),__tr('Templates and delivered plans'),'Your practice')+
     '<div class="dcard"><p style="color:var(--soft);font-size:14px;line-height:1.7">Build reusable menu templates or generate a personalized plan for a patient with AI.</p>'+
     '<button class="dbtn dbtn-solid" style="margin-top:16px" onclick="toast(\'Demo: the AI menu generator would open here\')">'+dIcon('sparkles')+'New menu</button></div></div>';
   if(s==='agenda'){
     let r='';
     DAGENDA.slice(0,3).forEach(a=>{ r+='<div class="drow"><div class="ddate"><div class="dd">'+a[0]+'</div><div class="dt">'+a[1]+'</div></div><div class="dinfo"><b>'+a[2]+'</b><span>Nutrition</span></div></div>'; });
-    return '<div class="dsec">'+head('Schedule','Your upcoming sessions','calendar')+'<div class="dcard">'+r+'</div></div>';
+    return '<div class="dsec">'+head(__tr('Schedule'),__tr('Your upcoming sessions'),'Your practice')+'<div class="dcard">'+r+'</div></div>';
   }
   return perfil(D,'nutri');
 }
@@ -7718,14 +8024,22 @@ function catBack(){
   renderDash('patient'); window.scrollTo(0,0);
 }
 function appHero(){
+  /* o mesmo heroi da pagina publica de Content: mesma foto do por do sol,
+     mesmo veu, mesmos pontos. Dentro do app nao ha "Get started" — quem
+     esta aqui ja entrou —, entao no lugar dele vai o atalho da jornada. */
   return '<section class="imhero">'+
-    '<div class="imbg" style="background-image:url(\'https://images.unsplash.com/'+
-      'photo-1527137342181-19aab11a8ee8?fm=jpg&q=70&w=2400&auto=format&fit=crop\')"></div>'+
+    '<div class="imbg" style="background-image:url(\'art/content-hero-sun.jpg\')"></div>'+
     '<div class="imscrim"></div><div class="imfade"></div>'+
     '<div class="imin"><p class="imkick">'+__tr('Knowledge library')+'</p>'+
     '<h2>'+__tr('Content')+'</h2>'+
     '<p class="imlead">'+__tr('Videos, articles, and podcasts on metabolic psychiatry and evidence-based mental health.')+'</p>'+
-    '</div></section>';
+    '<div class="imbtns">'+
+      '<span class="btn btn-cream" style="cursor:pointer" '+
+        'onclick="dashNav(\'patient\',\'journey\')">'+__tr('Open your map')+'</span>'+
+      '<button class="imsave" aria-label="'+__tr('Save')+'">+</button>'+
+    '</div></div>'+
+    '<div class="imdots"><i class="on"></i><i></i><i></i><i></i></div>'+
+    '</section>';
 }
 /* fecho da pagina: no publico e "crie sua conta"; aqui e a equipe clinica */
 function specPanel(){
@@ -7758,8 +8072,9 @@ function appSearch(){
     'oninput="aFilter()"></div>';
 }
 function aFilter(){
-  const el=document.getElementById('asearch'); if(!el) return;
-  const root=document.getElementById('dwrap-patient'); if(!root) return;
+  const scr=document.querySelector('#patient.active,#doctor.active,#nutri.active');
+  const el=(scr||document).querySelector('#asearch'); if(!el) return;
+  const root=(scr||document).querySelector('.dwrap'); if(!root) return;
   const q=(el.value||'').toLowerCase();
   function pass(n,txt){ n.style.display=(!q||txt.toLowerCase().indexOf(q)>-1)?'':'none'; }
   root.querySelectorAll('.podcard').forEach(function(v){ pass(v,v.textContent); });
@@ -7767,7 +8082,7 @@ function aFilter(){
   let cn=0;
   root.querySelectorAll('.cattile').forEach(function(t){
     pass(t,t.dataset.cat||''); if(t.style.display!=='none') cn++; });
-  const nr=document.getElementById('acatnores'); if(nr) nr.style.display=cn?'none':'block';
+  const nr=root.querySelector('#acatnores'); if(nr) nr.style.display=cn?'none':'block';
   ARAILS.forEach(railSync);
 }
 function appPods(){
@@ -7873,21 +8188,141 @@ function progSection(){
     appArts()+
     specPanel()+'</div>';
 }
+/* ---- CONTENT DO PROFISSIONAL: mesmo chao imersivo do paciente ----------
+   O heroi usa a ilustracao do clinico; as certificacoes ganham um bloco
+   proprio, com selo e trilha numerada, em vez de mais um trilho de cards.
+   ---------------------------------------------------------------------- */
+function certHero(role){
+  const nm=givenName(DASH[role].name);
+  return '<section class="imhero">'+
+    '<div class="imbg" style="background-image:url(\'art/cta-clinician.jpg\');'+
+      'background-position:72% 38%"></div>'+
+    '<div class="imscrim"></div><div class="imfade"></div>'+
+    '<div class="imin"><p class="imkick">'+__tr('Professional training')+'</p>'+
+    '<h2>'+__tr('Courses')+'</h2>'+
+    '<p class="imlead">'+__tr('Certification tracks in metabolic psychiatry, and every program your patients are working through.')+'</p>'+
+    '<div class="imbtns">'+
+      '<span class="btn btn-cream" style="cursor:pointer" '+
+        'onclick="document.querySelector(\'.crtseal\').scrollIntoView({behavior:\'smooth\',block:\'center\'})">'+
+        __tr('See the tracks')+'</span>'+
+      '<button class="imsave" aria-label="'+__tr('Save')+'">+</button>'+
+    '</div></div>'+
+    '<div class="imdots"><i class="on"></i><i></i><i></i></div>'+
+    '</section>';
+}
+/* o selo: um disco com o anel girando devagar */
+function certMedal(){
+  return '<svg viewBox="0 0 100 100" aria-hidden="true">'+
+    '<g class="ring" fill="none" stroke="#D9A420" stroke-width="1.6" opacity=".7">'+
+      '<circle cx="50" cy="50" r="45" stroke-dasharray="5 7"/>'+
+      '<circle cx="50" cy="50" r="38" stroke-dasharray="2 9" opacity=".6"/></g>'+
+    '<circle cx="50" cy="50" r="31" fill="rgba(217,164,32,.14)" '+
+      'stroke="#D9A420" stroke-width="1.4"/>'+
+    '<path d="M50 30c-6.5-4.3-15.9-1.4-17.3 5.8-6.5.7-10.1 6.5-7.9 12.2-5 4.3-4.3 12.2 1.4 15.1'+
+      '-1.4 7.2 5 13 11.5 10.8 2.9 5 9.4 6.5 12.3 2.9 2.9 3.6 9.4 2.2 12.3-2.9 6.5 2.2 13-3.6 11.5-10.8'+
+      '5.8-2.9 6.5-10.8 1.4-15.1 2.2-5.8-1.4-11.5-7.9-12.2C65.9 28.6 56.5 25.7 50 30Z" '+
+      'fill="none" stroke="#D9A420" stroke-width="2" stroke-linejoin="round" opacity=".85"/>'+
+    '<path d="M42 52l6 6 12-13" fill="none" stroke="#D9A420" stroke-width="3.4" '+
+      'stroke-linecap="round" stroke-linejoin="round"/>'+
+  '</svg>';
+}
+function certTrackCard(c,i,nextId){
+  const pct=pPct(c.id), done=courseDone(c.id);
+  const cls='crtc'+(done?' done':'')+(c.id===nextId?' next':'');
+  return '<button class="'+cls+'" style="--g1:'+c.g1+';--g2:'+c.g2+'" '+
+    'onclick="openProgram(\''+c.id+'\')">'+
+    (c.id===nextId?'<span class="lb"></span>':'')+
+    '<span class="art">'+
+      '<svg class="deco" viewBox="0 0 300 140" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
+        '<g fill="none" stroke="#F5EFE4" stroke-width="1.6" stroke-linecap="round" opacity=".55">'+
+        '<path d="M-10 96 C40 62 78 118 126 88 C168 62 196 106 240 82 C268 66 292 78 310 66"/>'+
+        '<path d="M-10 120 C46 96 74 138 130 114 C180 92 210 128 250 108"/></g>'+
+        '<g fill="#F5EFE4" opacity=".5"><circle cx="126" cy="88" r="3.4"/>'+
+        '<circle cx="240" cy="82" r="3.4"/><circle cx="40" cy="62" r="2.6"/></g>'+
+      '</svg>'+
+      '<span class="n">'+('0'+(i+1))+'</span>'+
+      '<span class="ic" data-icon="'+c.icon+'"></span>'+
+      (done?'<span class="seal"><span class="ic" data-icon="award"></span></span>':'')+
+    '</span>'+
+    '<span class="bd">'+
+      '<h3>'+__tr(c.title)+'</h3>'+
+      '<span class="sb">'+__tr(c.sub)+'</span>'+
+      '<span class="mt">'+c.days.length+' '+__tr('modules')+'<i>·</i>'+c.price+
+        (done?'<i>·</i>'+__tr('Certified'):(pct>0?'<i>·</i>'+pct+'%':''))+'</span>'+
+      (pct>0?'<span class="pb"><i style="width:'+pct+'%"></i></span>':'')+
+    '</span></button>';
+}
+/* o fecho: a rede de parceiros, assinada com a marca */
+function certCTA(role){
+  const n=certCount();
+  return '<section class="hl-sec" style="padding-bottom:clamp(40px,5vw,74px)">'+
+    '<div class="tm-join crtcta"><div class="tm-join-l">'+
+      '<p class="upkick" style="color:rgba(245,239,228,.66)">'+
+        __tr('Partner network')+'</p>'+
+      '<h3 class="qh">'+(n?__tr('Your certificate is ready to work for you.')
+                          :__tr('Finish a track and your profile goes public.'))+'</h3>'+
+      '<p>'+__tr('Certified professionals appear in the directory patients search, and the partner application opens without further screening.')+'</p>'+
+    '</div><div class="tm-join-r">'+
+      '<span class="crtlogo"><svg viewBox="0 0 24 24" aria-hidden="true">'+
+        '<path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg>Metabolicamente</span>'+
+      '<a class="btn btn-cream" style="cursor:pointer" onclick="triageOpen()">'+
+        __tr('Apply as a partner')+' <span class="ic" data-icon="arrow-right"></span></a>'+
+      '<span class="subfine" onclick="dashNav(\''+role+'\',\'perfil\')">'+
+        __tr('See your public profile')+'</span>'+
+    '</div></div></section>';
+}
 function courseSection(role){
   if(PDETAIL&&pProg(PDETAIL)) return progDetail(pProg(PDETAIL));
-  const n=certCount();
-  return '<div class="dsec dprog">'+
-    head(__tr('Courses'),__tr('Certification tracks, and everything the patients are reading.'))+
-    '<div class="stbanner'+(n?' ok':'')+'"><span class="ic" data-icon="award"></span><div>'+
-      '<b>'+n+' '+__tr('of')+' '+COURSES.length+' '+__tr('tracks complete')+'</b>'+
-      '<span>'+__tr('Certificates you earn here appear on your public profile.')+'</span></div>'+
-      (n?'<a class="btn btn-line" style="cursor:pointer" onclick="diplomaOpen(\''+COURSES.filter(function(c){return courseDone(c.id);})[0].id+'\')">'+__tr('View certificate')+'</a>':'')+'</div>'+
-    '<section class="hl-sec hl-first"><div class="hl-head"><h2>'+__tr('Certification tracks')+'</h2>'+
-      '<span>'+__tr('Three tracks, from fundamentals to clinical protocol.')+'</span></div>'+
-      '<div class="rail">'+COURSES.map(courseCard).join('')+'</div></section>'+
-    '<section class="hl-sec"><div class="hl-head"><h2>'+__tr('What your patients see')+'</h2>'+
-      '<span>'+__tr('The same programs, from their side.')+'</span></div>'+
-      '<div class="rail">'+PROGRAMS.map(function(x){return progCard(x,true);}).join('')+'</div></section>'+
+  if(LDETAIL&&window.__lessonView) return window.__lessonView(LDETAIL);
+  const n=certCount(), tot=COURSES.length;
+  const pct=tot?Math.round(n/tot*100):0;
+  const first=COURSES.filter(function(c){ return courseDone(c.id); })[0];
+  const nextC=COURSES.filter(function(c){ return !courseDone(c.id); })[0];
+
+  const seal=
+    '<div class="crtseal">'+
+      '<span class="medal">'+certMedal()+'</span>'+
+      '<span class="tx">'+
+        '<span class="k">'+__tr('Certification')+'</span>'+
+        '<h2>'+(n>=tot?__tr('Every track complete.')
+                      :__tr('Three tracks, one certificate each.'))+'</h2>'+
+        '<p>'+__tr('Each track ends with a certificate issued to your public profile, which opens the partner application without further screening.')+'</p>'+
+        '<span class="meter"><span class="bar"><i style="width:'+pct+'%"></i></span>'+
+          '<b>'+n+' '+__tr('of')+' '+tot+'</b></span>'+
+      '</span>'+
+      '<span class="act">'+
+        (first?'<a class="btn btn-cream" style="cursor:pointer" onclick="diplomaOpen(\''+
+            first.id+'\')">'+__tr('View certificate')+'</a>'
+              :'<a class="btn btn-cream" style="cursor:pointer" onclick="openProgram(\''+
+            (nextC?nextC.id:COURSES[0].id)+'\')">'+__tr('Start the first track')+'</a>')+
+      '</span>'+
+    '</div>';
+
+  return '<div class="dsec dprog contentskin certskin">'+
+    certHero(role)+
+    '<div id="adarkstart"></div>'+
+    '<span class="zlabel">'+__tr('Certification')+'</span>'+
+    '<section class="hl-sec" style="padding-top:6px">'+seal+'</section>'+
+    '<section class="hl-sec">'+
+      '<div class="hl-head"><h2>'+__tr('The three tracks')+'</h2>'+
+      '<span>'+__tr('From the fundamentals to the clinical protocol. Each one stands alone.')+'</span></div>'+
+      '<div class="crttrack">'+COURSES.map(function(c,i){
+        return certTrackCard(c,i,nextC?nextC.id:null); }).join('')+
+    '</section>'+
+    '<span class="zlabel">'+__tr('The library')+'</span>'+
+    '<section class="disc">'+
+      appSearch()+
+      '<div id="acatgrid">'+catClusters()+'</div>'+
+      '<div class="noresults" id="acatnores">'+__tr('No categories match your search.')+'</div>'+
+    '</section>'+
+    '<section class="hl-sec">'+
+      '<div class="hl-head"><h2>'+__tr('What your patients see')+'</h2>'+
+      '<span>'+__tr('The same programs, from their side, so your plan and the app say the same thing.')+'</span></div>'+
+      '<div class="rail">'+PROGRAMS.map(function(x){return progCard(x,true);}).join('')+'</div>'+
+    '</section>'+
+    appPods()+
+    appArts()+
+    certCTA(role)+
     '</div>';
 }
 function certBox(p){
@@ -8077,7 +8512,7 @@ function studentTracks(){
     : '<div class="stbanner"><span class="ic" data-icon="award"></span><div><b>'+__tr('No track finished yet')+'</b>'+
       '<span>'+__tr('Each track ends with a certificate that opens the partner application.')+'</span></div></div>';
   return '<div class="dsec dprog">'+
-    head(__tr('Certification'),__tr('Short modules, built to fit around a practice.'))+
+    head(__tr('Certification'),__tr('Short modules, built to fit around a practice.'),'Keep learning')+
     banner+
     '<section class="hl-sec hl-first"><div class="hl-head"><h2>'+__tr('Your tracks')+'</h2>'+
       '<span>'+__tr('Pick up where you left off.')+'</span></div>'+
@@ -8666,7 +9101,7 @@ function dgPro(who,name,role,m){
 
 /* a grade ocupa exatamente o que sobra da janela, sem rolagem */
 function dshFit(){
-  const act=document.querySelector('.dash.active')||document;
+  const act=document.querySelector('#patient.active,#doctor.active,#nutri.active')||document;
   const g=act.querySelector('.dsh-fit .dgrid'); if(!g) return;
   g.style.height='auto';
   const top=g.getBoundingClientRect().top;
@@ -9056,6 +9491,7 @@ function jMapSVG(sfx){
       '<stop offset="100%" stop-color="#2A9D8F" stop-opacity="0"/>'+
     '</radialGradient></defs>'+
     '<ellipse cx="198" cy="128" rx="170" ry="128" fill="url(#jhalog'+sfx+')"/>'+
+    '<path class="brainnext" d="'+JBRAIN+'"/>'+
     '<path class="brainfill" d="'+JBRAIN+'"/>'+
     JGYRI.map(function(d){ return '<path class="gyri" d="'+d+'"/>'; }).join('')+
     T.map(function(t){
@@ -9063,7 +9499,7 @@ function jMapSVG(sfx){
              '<path class="routelit" id="jl-'+t.k+sfx+'" d="'+t.route+'" '+
                'style="stroke:'+t.c+'"/>';
     }).join('')+
-    '<g id="jamb'+sfx+'"></g><g id="jlinks'+sfx+'"></g>'+
+    '<g id="jamb'+sfx+'"></g><g id="jfront'+sfx+'"></g><g id="jlinks'+sfx+'"></g>'+
     '<g id="jdend'+sfx+'"></g><g id="jnodes'+sfx+'"></g>'+
   '</svg>';
 }
@@ -9076,12 +9512,14 @@ function jAfter(sfx,inert){
   const svg=document.getElementById('jbrainSvg'+sfx); if(!svg) return;
   const gN=document.getElementById('jnodes'+sfx), gD=document.getElementById('jdend'+sfx);
   const gL=document.getElementById('jlinks'+sfx), gA=document.getElementById('jamb'+sfx);
+  const gF=document.getElementById('jfront'+sfx);
   if(!gN) return;
   const NS='http://www.w3.org/2000/svg';
   const mk=function(tag,at){ const e=document.createElementNS(NS,tag);
     for(const k in at) e.setAttribute(k,at[k]); return e; };
   const rnd=function(n){ const x=Math.sin(n*127.1)*43758.5453; return x-Math.floor(x); };
   gN.innerHTML=''; gD.innerHTML=''; if(gL) gL.innerHTML=''; if(gA) gA.innerHTML='';
+  if(gF) gF.innerHTML='';
   const T=jTracks();
   const brain=svg.querySelector('.brainfill');
   const pts=[];
@@ -9127,7 +9565,6 @@ function jAfter(sfx,inert){
       g.style.setProperty('--tc',t.c);
       g.style.setProperty('--tcd',t.cd);
       if(!inert){ g.setAttribute('tabindex','0'); g.setAttribute('role','button'); }
-      if(state==='now') g.appendChild(mk('circle',{class:'halo',r:t.r+3}));
       g.appendChild(mk('circle',{class:'disc',r:t.r}));
       const ti2=mk('title'); ti2.textContent=t.name+' · '+label; g.appendChild(ti2);
       /* rotulo que so aparece no hover, como no Obsidian */
@@ -9167,6 +9604,31 @@ function jAfter(sfx,inert){
       gN.appendChild(g);
       if(i<t.done) d0++;
     });
+
+    /* --- a fronteira desta frente: para onde ela ainda vai ---
+       Sai do fim da rota na direcao da propria tangente, com o traco
+       pontilhado e dois nos fantasma cada vez mais fracos. Le-se como
+       "tem mais checkpoint para desbloquear aqui". */
+    if(gF){
+      const pe=route.getPointAtLength(L), pb=route.getPointAtLength(Math.max(0,L-6));
+      let vx=pe.x-pb.x, vy=pe.y-pb.y;
+      const vl=Math.hypot(vx,vy)||1; vx/=vl; vy/=vl;
+      const g1={x:pe.x+vx*15, y:pe.y+vy*15};
+      const g2={x:pe.x+vx*30+vy*5, y:pe.y+vy*30-vx*5};
+      const tail=mk('path',{class:'jfront',
+        d:'M'+pe.x.toFixed(1)+' '+pe.y.toFixed(1)+
+          ' Q'+(pe.x+vx*17).toFixed(1)+' '+(pe.y+vy*17).toFixed(1)+
+          ' '+g2.x.toFixed(1)+' '+g2.y.toFixed(1)});
+      tail.style.setProperty('--tc',t.c);
+      gF.appendChild(tail);
+      [[g1,t.r*0.72,''],[g2,t.r*0.52,' far']].forEach(function(q){
+        const c=mk('circle',{class:'jgn'+q[2],cx:q[0].x.toFixed(1),
+          cy:q[0].y.toFixed(1),r:q[1].toFixed(2)});
+        c.style.setProperty('--tc',t.c);
+        gF.appendChild(c);
+      });
+      pts.push(g1,g2);
+    }
   });
 
   /* poeira: o que ainda nao foi aberto, espalhado dentro do cerebro */
@@ -9288,7 +9750,7 @@ function pJourney(D){
 
   setTimeout(function(){ jAfter(''); },0);
 
-  return '<div class="dsec jsec2">'+
+  return '<div class="dsec jsec2 jskin">'+
     '<div class="jhead">'+
       '<h1>'+__tr('Your')+' <span class="flowtxt">'+__tr('Journey')+'</span></h1>'+
       '<div class="jright">'+
@@ -9495,18 +9957,123 @@ function svMkOpen(i){
 }
 function svMkShut(){ const b=document.getElementById('svModal'); if(b) b.classList.remove('open'); }
 
+/* ---- YOUR TEAM: quem cuida de voce, na gramatica do About us ----------
+   Cada profissional e um bloco com retrato. Clicar abre a ficha com as tres
+   saidas que o paciente tem: falar, pedir troca, ou ler a carreira.
+   ---------------------------------------------------------------------- */
+// <!-- PLACEHOLDER --> ficha de carreira de cada profissional do paciente
+const SVPRO=[
+  {k:'doctor',name:'Dr. Juan Pablo Roig',role:'Metabolic Psychiatrist',
+   crm:'CRM/SP 142.587',c:'#2A9D8F',photo:'team/rm.jpg',since:'January 2026',
+   bio:'Eighteen years putting nutrition, metabolism and medication in the same treatment plan. Leads the clinical protocol used across the platform.',
+   tags:['Metabolic psychiatry','Mood disorders','Ketogenic therapy'],
+   cv:[['2008','Medicine, USP'],['2013','Psychiatry residency, HC-FMUSP'],
+       ['2017','Fellowship in neurometabolism, Karolinska'],
+       ['2021','Clinical director, Metabolicamente']]},
+  {k:'nutri',name:'Dr. Henrique Autran',role:'Functional Nutritionist',
+   crm:'CRN-3 45.902',c:'#E76F51',photo:'team/lt.jpg',since:'February 2026',
+   bio:'Builds the food side of every plan, from therapeutic diets to insulin resistance. Works from the lab panel backwards, never from a template.',
+   tags:['Functional nutrition','Supplementation','Metabolic health'],
+   cv:[['2011','Nutrition, UFRJ'],['2015','MSc in clinical nutrition, UNIFESP'],
+       ['2019','Certified in ketogenic therapy, Charlie Foundation'],
+       ['2023','Lead nutrition, Metabolicamente']]}
+];
+function svProAt(k){ return SVPRO.filter(function(x){return x.k===k;})[0]||SVPRO[0]; }
+
+function svTeamHTML(){
+  // <!-- PLACEHOLDER --> deriva de cada bloco, para nao ficarem alinhados
+  const DR=[['17s','-1s','7px','-10px'],['15s','-6s','-8px','9px']];
+  let t='';
+  SVPRO.forEach(function(pr,i){
+    const m=PMSG[pr.k];
+    t+='<button class="svtm" style="--dc:'+pr.c+';--dur:'+DR[i][0]+';--del:'+DR[i][1]+
+      ';--dx:'+DR[i][2]+';--dy:'+DR[i][3]+'" onclick="svProOpen(\''+pr.k+'\')" '+
+      'aria-label="'+esc(pr.name)+'">'+
+      '<span class="fc">'+
+        '<img src="'+pr.photo+'" alt="" loading="lazy" onerror="this.remove()">'+
+        (m&&m.react?'<span class="rx">'+m.react+'</span>':'')+
+        '<span class="plate"><b>'+esc(pr.name)+'</b>'+
+        '<span>'+__tr(pr.role)+'</span></span>'+
+      '</span></button>';
+  });
+  /* o convite: pedir alguem a mais para o time */
+  t+='<button class="svtm add" style="--dur:19s;--del:-11s;--dx:5px;--dy:8px" '+
+    'onclick="svProAsk(\'add\')">'+
+    '<span class="fc">'+dIcon('user-plus')+
+      '<b>'+__tr('Add a professional')+'</b>'+
+      '<span>'+__tr('A psychologist or another specialty to your team')+'</span>'+
+    '</span></button>';
+  return '<span class="svzl">'+__tr('Team')+'</span>'+
+    '<div class="svh"><h2>'+__tr('Your team')+'</h2>'+
+      '<span>'+__tr('Open anyone to talk, read their background, or ask for a change')+'</span></div>'+
+    '<div class="svteam">'+t+'</div>';
+}
+
+function svProOpen(k){
+  const pr=svProAt(k), box=document.getElementById('svModal');
+  if(!box) return;
+  let cv='';
+  pr.cv.forEach(function(r){ cv+='<div><b>'+r[0]+'</b><span>'+__tr(r[1])+'</span></div>'; });
+  box.innerHTML='<div class="svmbox svpf" onclick="event.stopPropagation()">'+
+    '<div class="hd"><span class="av">'+
+      '<img src="'+pr.photo+'" alt="" onerror="this.remove()"></span>'+
+      '<span><h3>'+esc(pr.name)+'</h3>'+
+        '<span class="rl">'+__tr(pr.role)+'</span>'+
+        '<span class="crm">'+esc(pr.crm)+' · '+__tr('with you since')+' '+
+          __tr(pr.since)+'</span></span>'+
+      '<button class="x" onclick="svMkShut()" aria-label="'+__tr('Close')+'">×</button></div>'+
+
+    '<div class="svop" role="button" tabindex="0" onclick="svProAsk(\'talk\',\''+k+'\')">'+
+      '<span class="ic0">'+dIcon('message')+'</span>'+
+      '<span><b>'+__tr('Send a message')+'</b>'+
+      '<span>'+__tr('Goes to the thread you already share')+'</span></span></div>'+
+
+    '<div class="svop" id="svCvBtn" role="button" tabindex="0" onclick="svProCv(this)">'+
+      '<span class="ic0">'+dIcon('award')+'</span>'+
+      '<span><b>'+__tr('Career summary')+'</b>'+
+      '<span>'+__tr('Training, focus and time on the team')+'</span></span>'+
+      '<span class="cv">'+dIcon('chevron-right')+'</span></div>'+
+    '<div class="svcv" id="svCvBox"><div class="in">'+
+      '<p>'+__tr(pr.bio)+'</p>'+
+      '<div class="tags">'+pr.tags.map(function(x){
+        return '<span>'+__tr(x)+'</span>'; }).join('')+'</div>'+
+      '<div class="tl">'+cv+'</div>'+
+    '</div></div>'+
+
+    '<div class="svop warn" role="button" tabindex="0" onclick="svProAsk(\'swap\',\''+k+'\')">'+
+      '<span class="ic0">'+dIcon('users')+'</span>'+
+      '<span><b>'+__tr('Ask for a different professional')+'</b>'+
+      '<span>'+__tr('Confidential, and it never reaches them')+'</span></span></div>'+
+    '</div>';
+  renderIcons(box);
+  box.classList.add('open');
+}
+function svProCv(el){
+  const b=document.getElementById('svCvBox'); if(!b) return;
+  const on=b.classList.toggle('open');
+  el.classList.toggle('open',on);
+}
+function svProAsk(what,k){
+  const pr=k?svProAt(k):null;
+  svMkShut();
+  if(what==='talk') toast(__tr('Demo: the thread with')+' '+(pr?pr.name:'')+' '+__tr('would open here'));
+  else if(what==='swap') toast(__tr('Demo: a confidential request would go to the care team'));
+  else toast(__tr('Demo: the specialties open to add would be listed here'));
+}
+
 function pService(D){
   const sv=svState();
   const pack={done:PPACK.done,total:PPACK.total+(sv.extra||0)};
   const left=Math.max(0,pack.total-pack.done);
   const up=svBooked();
 
-  /* --- 1 · agendar --- */
+  /* --- agendar: mora na lateral, junto com o que ja esta marcado --- */
   const book=
-    '<span class="svzl">'+__tr('Book')+'</span>'+
-    '<div class="svh"><h2>'+__tr('Schedule a session')+'</h2>'+
-      '<span>'+__tr('Your team keeps these hours open for you')+'</span></div>'+
-    '<div class="svcard"><div class="svcal" id="svCal">'+svCalHTML()+'</div></div>';
+    '<div class="svcard svbook">'+
+      '<b class="svsidet">'+__tr('Book a session')+'</b>'+
+      '<span class="svsides">'+__tr('Your team keeps these hours open for you')+'</span>'+
+      '<div class="svcal" id="svCal">'+svCalHTML()+'</div>'+
+    '</div>';
 
   /* --- 2 · o plano --- */
   let pips='';
@@ -9573,25 +10140,6 @@ function pService(D){
         '<button onclick="svAsk(\'glucose\')">'+__tr('Fasting glucose')+'</button>'+
         '<button onclick="svAsk(\'sleep\')">'+__tr('Sleep')+'</button>'+
       '</div></div>';
-  let ag='';
-  sv.agenda.forEach(function(a,i){
-    ag+='<div class="svtp"><span class="dot"></span>'+
-      '<span class="tx">'+esc(a.t)+'<span>'+esc(a.s)+'</span></span>'+
-      '<button class="x" onclick="svAgendaDel('+i+')" aria-label="'+__tr('Remove')+'">×</button>'+
-      '</div>';
-  });
-  if(!ag) ag='<div class="svempty">'+__tr('Nothing on the agenda yet.')+'</div>';
-  const agenda=
-    '<div class="svcard">'+
-      '<div class="tp" style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px">'+
-        '<b style="font-family:var(--display);font-size:13px;color:var(--hd)">'+
-          __tr('Agenda for your next session')+'</b></div>'+
-      '<div>'+ag+'</div>'+
-      '<div class="svfield" style="margin-top:11px">'+
-        '<input id="svAddIn" type="text" placeholder="'+__tr('Something you want to ask')+'" '+
-          'onkeydown="if(event.key===\'Enter\')svAgendaFromInput()">'+
-        '<button onclick="svAgendaFromInput()">'+__tr('Add')+'</button></div>'+
-    '</div>';
   let nx='';
   up.slice(0,4).forEach(function(b){
     const pr=String(b.d).split(' ');
@@ -9602,16 +10150,15 @@ function pService(D){
   });
   const next=
     '<div class="svcard">'+
-      '<b style="display:block;font-family:var(--display);font-size:13px;color:var(--hd);'+
-        'margin-bottom:11px">'+__tr('Upcoming')+'</b>'+
+      '<b class="svsidet" style="margin-bottom:11px">'+__tr('Upcoming')+'</b>'+
       '<div class="svag2">'+nx+'</div></div>';
 
   return '<div class="dsec svsec">'+
     '<div class="svhead"><h1>'+__tr('Your')+' <span class="flowtxt">'+__tr('care')+
       '</span></h1><p>'+__tr('Everything your team and you decided, in one place.')+'</p></div>'+
     '<div class="svwrap">'+
-      '<div class="svmain">'+book+plan+marks+hist+'</div>'+
-      '<aside class="svside">'+bot+agenda+next+'</aside>'+
+      '<div class="svmain">'+marks+svTeamHTML()+plan+hist+'</div>'+
+      '<aside class="svside">'+book+next+bot+'</aside>'+
     '</div>'+
     '<div class="svmodal" id="svModal" onclick="svMkShut()"></div></div>';
 }
@@ -9624,7 +10171,7 @@ function commCard(c){
 }
 
 function pCommunity(D){
-  return '<div class="dsec">'+head(__tr('Community'),__tr('What your team is saying about your progress.'))+
+  return '<div class="dsec">'+head(__tr('Community'),__tr('What your team is saying about your progress.'),'Your care')+
     '<div class="commlist">'+COMMUNITY.map(commCard).join('')+'</div></div>';
 }
 
@@ -9636,7 +10183,7 @@ function pNotifs(D){
   });
   const unread=D.notif.filter(function(n){return n[3];}).length;
   return '<div class="dsec">'+head(__tr('Notifications'),
-      unread?unread+' '+__tr('unread'):__tr('All caught up'))+
+      unread?unread+' '+__tr('unread'):__tr('All caught up'),'Your account')+
     '<div class="dcard">'+r+'</div></div>';
 }
 
@@ -9646,10 +10193,7 @@ function pNotifs(D){
    precisa ver ao abrir o dia. Depois o Igor refina o conteudo.
    ===================================================================== */
 // <!-- PLACEHOLDER --> fotos genericas dos profissionais e dos pacientes
-const DPHOTO={
-  doctor:'https://randomuser.me/api/portraits/men/41.jpg',
-  nutri :'https://randomuser.me/api/portraits/men/76.jpg'
-};
+const DPHOTO={ doctor:'team/rm.jpg', nutri:'team/lt.jpg' };
 const DPPH={
   'Igor Zillner':'https://randomuser.me/api/portraits/men/32.jpg',
   'Maria Oliveira':'https://randomuser.me/api/portraits/women/44.jpg',
@@ -9985,10 +10529,16 @@ window.addEventListener('hashchange',routeFromHash);
 /* ============ THEME (auto / light / dark) ============ */
 /* Modo automatico: escuro das 19h as 6h59 no relogio do proprio usuario.
    O botao continua manual — cada clique percorre auto -> claro -> escuro -> auto. */
+/* TEMA TRAVADO NO CLARO. O motor abaixo continua inteiro — setTheme, os
+   wrappers de tom e todas as regras body.dark seguem no arquivo. Para
+   religar o escuro depois basta pôr THEME_LOCKED=false e chamar
+   injectTheme() de novo, que o botão volta e o modo automático volta junto. */
+const THEME_LOCKED=true;
 const THEME_DARK_FROM=19, THEME_DARK_UNTIL=7;
-let THEME_MODE='auto';
+let THEME_MODE='light';
 function themeAutoDark(){ const h=new Date().getHours(); return h>=THEME_DARK_FROM||h<THEME_DARK_UNTIL; }
-function themeWantsDark(){ return THEME_MODE==='auto'?themeAutoDark():THEME_MODE==='dark'; }
+function themeWantsDark(){ if(THEME_LOCKED) return false;
+  return THEME_MODE==='auto'?themeAutoDark():THEME_MODE==='dark'; }
 /* setTheme continua recebendo um booleano: os wrappers de tom dependem disso */
 function setTheme(dark){
   document.body.classList.toggle('dark',dark);
@@ -10005,11 +10555,19 @@ function setThemeMode(m){ THEME_MODE=m; setTheme(themeWantsDark()); }
 /* um clique = o oposto do que esta na tela. Depois do primeiro clique a escolha
    do usuario manda; o modo automatico so vale ate ele tocar no botao. */
 function cycleTheme(){
+  if(THEME_LOCKED) return;
   setThemeMode(document.body.classList.contains('dark')?'light':'dark');
 }
 /* enquanto estiver em auto, vira sozinho ao cruzar o horario */
-setInterval(()=>{ if(THEME_MODE==='auto'&&document.body.classList.contains('dark')!==themeAutoDark()) setTheme(themeAutoDark()); },60000);
+if(!THEME_LOCKED) setInterval(()=>{ if(THEME_MODE==='auto'&&document.body.classList.contains('dark')!==themeAutoDark()) setTheme(themeAutoDark()); },60000);
 function injectTheme(){
+  if(THEME_LOCKED){
+    /* nenhum botão de lua entra no header, e o que já existir sai */
+    document.querySelectorAll('.themetog').forEach(b=>b.remove());
+    document.body.classList.remove('dark');
+    try{localStorage.removeItem('mbtheme')}catch(e){}
+    return;
+  }
   const mk=()=>{ const b=document.createElement('button'); b.className='themetog'; b.title='Light / dark';
     b.onclick=()=>cycleTheme(); return b; };
   const nav=document.querySelector('.nav'); if(nav&&!nav.querySelector('.themetog')){ const b=mk(); const nl=nav.querySelector('#navLogin'); if(nl) nav.insertBefore(b,nl); else nav.appendChild(b); }
@@ -13437,10 +13995,17 @@ routeFromHash();
   function ss(t){ t=t<0?0:t>1?1:t; return t*t*(3-2*t); }
 
   var painted=false;
-  function el(){ return document.getElementById('patient'); }
+  /* o tom vale para a tela em foco, nao so para a do paciente: medico e
+     nutricionista tambem tem Content escura agora. */
+  function el(){ return document.querySelector('#patient.active,#doctor.active,#nutri.active')
+                     || document.getElementById('patient'); }
   function clear(){
-    var p=el();
-    if(p&&painted){ for(var k in VARS) p.style.removeProperty(VARS[k]); }
+    if(painted){
+      ['patient','doctor','nutri'].forEach(function(id){
+        var p=document.getElementById(id); if(!p) return;
+        for(var k in VARS) p.style.removeProperty(VARS[k]);
+      });
+    }
     document.body.style.removeProperty('background-color');
     document.body.classList.remove('apptop-solid');
     document.body.classList.remove('on-lesson');
@@ -13461,19 +14026,22 @@ routeFromHash();
     ticking=false;
     if(!document.body.classList.contains('appdark')
        || document.body.classList.contains('dark')){ clear(); return; }
-    var m=document.getElementById('adarkstart');
+    var m=(el()||document).querySelector('#adarkstart');
     if(!m){                                   /* subpagina: escuro direto. Na pagina de
                                                  categoria o header so fecha depois do
                                                  heroi; na aula ja nasce fechado. */
       paint(1);
-      var vid=document.querySelector('#patient .vidskin');
+      var vid=(el()||document).querySelector('.vidskin');
       document.body.classList.toggle('on-lesson', !!vid);
       document.body.classList.toggle('apptop-solid', !!vid || (window.scrollY||0)>260);
       return;
     }
     document.body.classList.remove('on-lesson');
-    var vh=window.innerHeight, top=m.getBoundingClientRect().top;
-    paint((vh*0.72-top)/(vh*0.34));
+    /* igual a pagina publica: o chao ja nasce escuro, sem faixa creme entre o
+       heroi e os programas. O header so fecha depois que o heroi passa. */
+    paint(1);
+    document.body.classList.toggle('apptop-solid',
+      m.getBoundingClientRect().top < window.innerHeight*0.30);
   }
   window.__appTone=sync;
   window.addEventListener('scroll',function(){
