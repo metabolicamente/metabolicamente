@@ -2462,6 +2462,189 @@ body.dshfit #patient .dmain,body.dshfit #doctor .dmain,body.dshfit #nutri .dmain
 .dgc-pro .dgpro{flex-shrink:0}
 .dsh-fit .dgstack .dgav{width:40px;height:40px;font-size:13px}
 .dsh-fit .dgstack .dgmsg{margin-top:9px}
+
+/* ======================= PAINEL PROFISSIONAL — Sep 15 =======================
+   Fundo branco (mesma escolha ja feita em #home e #pg-equipe), agenda de
+   verdade no "Your day", pacientes como constelacao, mascote no lugar do FAB. */
+
+/* ---- o creme sai: so nas telas do profissional ---- */
+#doctor,#nutri{--bg:#FFFFFF;--bg-dim:#F4F8F8;--line:#E6EDEE;background:#FFFFFF}
+body.dark #doctor,body.dark #nutri{--bg:#0A1E26;--bg-dim:#0E2831;--line:#1C4150;background:var(--bg)}
+/* branco sobre branco precisa de fio, nao so de sombra */
+#doctor .dgc,#nutri .dgc{border-color:rgba(12,51,63,.075)}
+/* a agenda precisa de mais altura que o bloco de formacao logo abaixo */
+#doctor .dsh-fit .dgrid,#nutri .dsh-fit .dgrid{grid-template-rows:minmax(0,1.6fr) minmax(0,1fr)}
+body.dark #doctor .dgc,body.dark #nutri .dgc{border-color:rgba(255,255,255,.08)}
+
+/* ---- (A) AGENDA ---- */
+.pcal{display:flex;flex-direction:column;flex:1;min-height:0}
+.pcalwk{display:flex;gap:4px;margin-bottom:12px;flex-shrink:0}
+.pcalwk button{flex:1;border:0;background:none;cursor:pointer;border-radius:12px;padding:6px 0 7px;
+  font-family:var(--sans);display:flex;flex-direction:column;align-items:center;gap:5px;
+  transition:background .22s ease}
+.pcalwk button:hover{background:var(--bg-dim)}
+.pcalwk .wd{font-family:var(--quiet);font-size:9.5px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--soft)}
+.pcalwk .dn{font-family:var(--display);font-size:14px;font-weight:700;color:var(--hd2);line-height:1}
+.pcalwk .dots{display:flex;gap:2.5px;height:4px;align-items:center}
+.pcalwk .dots i{width:4px;height:4px;border-radius:50%;background:var(--t100)}
+.pcalwk button.on{background:var(--t900)}
+.pcalwk button.on .wd{color:rgba(255,255,255,.62)}
+.pcalwk button.on .dn{color:#fff}
+.pcalwk button.on .dots i{background:rgba(255,255,255,.5)}
+
+.pcalbody{position:relative;flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;
+  padding-right:3px;margin-right:-3px}
+.pcalbody::-webkit-scrollbar{width:4px}
+.pcalbody::-webkit-scrollbar-thumb{background:var(--line);border-radius:9px}
+.pcalgrid{position:relative}
+.pcalrow{position:relative;border-top:1px solid var(--line)}
+.pcalrow:last-of-type{border-bottom:1px solid var(--line)}
+.pcalrow .hr{position:absolute;left:0;top:-7px;width:44px;font-family:var(--quiet);
+  font-size:10px;font-weight:600;letter-spacing:.05em;color:var(--soft);text-align:right;
+  padding-right:9px}
+.pcallane{position:absolute;left:52px;right:0;top:0;bottom:0}
+
+.pappt{position:absolute;left:0;right:2px;border-radius:12px;padding:6px 10px;cursor:pointer;
+  overflow:hidden;display:flex;flex-direction:column;justify-content:center;
+  border-left:3px solid var(--ac);background:var(--acbg);
+  transition:transform .26s cubic-bezier(.2,.8,.3,1),box-shadow .3s ease}
+.pappt:hover{transform:translateX(2px) scale(1.012);box-shadow:0 8px 22px rgba(12,51,63,.13);z-index:3}
+.pappt b{font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--hd);line-height:1.25;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pappt .sb{font-size:10.5px;line-height:1.3;color:var(--soft);font-weight:500;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis}
+.pappt .tm{font-family:var(--quiet);font-size:9.5px;line-height:1.35;font-weight:700;
+  letter-spacing:.06em;color:var(--ac);text-transform:uppercase}
+
+.pfree{position:absolute;left:0;right:2px;border-radius:11px;cursor:pointer;
+  border:1.5px dashed var(--line);background:none;display:grid;place-items:center;
+  font-family:var(--quiet);font-size:10.5px;font-weight:600;letter-spacing:.05em;color:var(--soft);
+  transition:all .24s ease;opacity:.75}
+.pfree:hover{border-color:var(--t500);color:var(--t500);background:var(--t50);opacity:1}
+
+.pnow{position:absolute;left:44px;right:0;height:0;z-index:4;pointer-events:none}
+.pnow::before{content:'';position:absolute;left:0;top:-3.5px;width:7px;height:7px;
+  border-radius:50%;background:var(--coral)}
+.pnow::after{content:'';position:absolute;left:7px;right:0;top:0;height:1.5px;
+  background:linear-gradient(90deg,var(--coral),rgba(231,111,81,.12))}
+
+.pcalfoot{display:flex;gap:7px;margin-top:12px;flex-shrink:0}
+.pcalfoot button{flex:1;border:1px solid var(--line);background:none;border-radius:11px;
+  padding:9px;cursor:pointer;font-family:var(--sans);font-size:11.5px;font-weight:600;
+  color:var(--hd2);display:flex;align-items:center;justify-content:center;gap:6px;
+  transition:all .24s ease}
+.pcalfoot button:hover{border-color:var(--t500);color:var(--t500);background:var(--t50)}
+.pcalfoot button.solid{background:var(--t900);border-color:var(--t900);color:#fff}
+.pcalfoot button.solid:hover{background:var(--t800);border-color:var(--t800);color:#fff}
+.pcalfoot .ic{font-size:14px;display:flex}
+
+/* ---- (B) CONSTELACAO DOS PACIENTES ---- */
+.pcst{position:relative;flex:1;min-height:clamp(300px,30vw,480px);overflow:hidden;
+  border-radius:16px;margin:-2px -4px -4px}
+.pcstnet{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;
+  -webkit-mask-image:radial-gradient(ellipse 46% 34% at 50% 50%,transparent 12%,#000 76%);
+  mask-image:radial-gradient(ellipse 46% 34% at 50% 50%,transparent 12%,#000 76%)}
+.pcstc{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:5;
+  text-align:center;pointer-events:none;width:64%}
+.pcstc .n{font-family:var(--display);font-weight:700;letter-spacing:-.035em;
+  font-size:clamp(38px,4.2vw,58px);line-height:1;color:var(--hd)}
+.pcstc .lb{font-family:var(--quiet);font-size:10.5px;font-weight:700;letter-spacing:.17em;
+  text-transform:uppercase;color:var(--soft);margin-top:7px}
+.pcstc .att{display:inline-flex;align-items:center;gap:6px;margin-top:11px;
+  background:var(--watch-bg);color:var(--watch);border-radius:99px;padding:5px 12px;
+  font-size:11px;font-weight:700;pointer-events:auto;cursor:pointer;border:0;font-family:var(--sans)}
+.pcstc .att i{width:6px;height:6px;border-radius:50%;background:currentColor;
+  animation:pcstPulse 2.1s ease-in-out infinite}
+@keyframes pcstPulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+
+.pnode{position:absolute;left:var(--x);top:var(--y);width:var(--sz);height:var(--sz);
+  z-index:4;border:0;padding:0;background:none;cursor:pointer;font:inherit;
+  translate:var(--px,0px) var(--py,0px);
+  animation:pcstDrift var(--dur,15s) ease-in-out var(--del,0s) infinite;
+  transition:translate .5s cubic-bezier(.2,.8,.3,1)}
+@keyframes pcstDrift{0%,100%{transform:translate(0,0)}
+  33%{transform:translate(6px,-9px)}66%{transform:translate(-5px,7px)}}
+.pface{position:absolute;inset:0;border-radius:50%;overflow:hidden;display:grid;place-items:center;
+  font-family:var(--display);font-weight:700;color:#fff;font-size:calc(var(--sz)*.31);
+  letter-spacing:-.02em;background:linear-gradient(140deg,var(--g1),var(--g2));
+  box-shadow:0 12px 30px rgba(12,51,63,.16);
+  transition:scale .34s cubic-bezier(.22,.7,.28,1),box-shadow .34s ease}
+.pface img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.pface::after{content:'';position:absolute;inset:0;border-radius:inherit;
+  box-shadow:inset 0 0 0 1px rgba(12,51,63,.08)}
+.pnode:hover .pface,.pnode:focus-visible .pface{scale:1.07;box-shadow:0 20px 46px rgba(12,51,63,.24)}
+.pring{position:absolute;inset:-7px;border-radius:50%;border:2px solid transparent;pointer-events:none}
+.pnode[data-s="ok"] .pring{border-color:rgba(42,157,143,.34)}
+.pnode[data-s="new"] .pring{border-color:var(--line);border-style:dashed}
+.pnode[data-s="warn"] .pring{border-color:var(--watch);
+  box-shadow:0 0 0 0 rgba(180,83,9,.38);animation:pcstHalo 2.4s ease-out infinite}
+@keyframes pcstHalo{0%{box-shadow:0 0 0 0 rgba(180,83,9,.34)}
+  70%{box-shadow:0 0 0 15px rgba(180,83,9,0)}100%{box-shadow:0 0 0 0 rgba(180,83,9,0)}}
+.pflag{position:absolute;right:-3px;top:-3px;width:21px;height:21px;border-radius:50%;
+  display:grid;place-items:center;border:2.5px solid var(--card);z-index:3}
+.pflag svg{width:10px;height:10px;stroke:currentColor;fill:none}
+.pnode[data-s="ok"] .pflag{background:var(--ok);color:#fff}
+.pnode[data-s="warn"] .pflag{background:var(--watch);color:#fff}
+.pnode[data-s="new"] .pflag{background:var(--t100);color:var(--hd2)}
+.pplate{position:absolute;left:50%;top:calc(100% + 11px);transform:translateX(-50%) translateY(5px);
+  background:var(--t900);color:#fff;border-radius:11px;padding:8px 12px;white-space:nowrap;
+  opacity:0;pointer-events:none;transition:opacity .28s ease,transform .28s ease;z-index:9;
+  box-shadow:0 12px 30px rgba(12,51,63,.28)}
+.pnode:hover .pplate,.pnode:focus-visible .pplate{opacity:1;transform:translateX(-50%)}
+.pplate b{display:block;font-family:var(--display);font-size:12.5px;font-weight:600;line-height:1.25}
+.pplate span{display:block;font-size:10.5px;color:rgba(255,255,255,.66);margin-top:2px}
+.pcstlg{position:absolute;left:0;bottom:0;z-index:6;display:flex;gap:13px;padding:9px 2px;flex-wrap:wrap}
+.pcstlg span{display:flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;color:var(--soft)}
+.pcstlg i{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+
+/* ---- (C) O MASCOTE NO LUGAR DO FAB ---- */
+.dfab-brain{background:var(--card);width:62px;height:62px;
+  box-shadow:0 10px 30px rgba(12,51,63,.18),0 2px 6px rgba(12,51,63,.08);overflow:visible}
+.dfab-brain::before{content:'';position:absolute;inset:-2px;border-radius:50%;z-index:-1;
+  background:linear-gradient(140deg,#E76F51,#E9A277,#79D0C4,#2A9D8F,#8FB8E2,#E76F51);
+  background-size:260% 260%;animation:pcstFlow 15s ease-in-out infinite;opacity:.9}
+@keyframes pcstFlow{0%,100%{background-position:0% 40%}50%{background-position:100% 60%}}
+.dfab-brain svg{width:40px;height:40px;animation:pcstBob 4.6s ease-in-out infinite}
+@keyframes pcstBob{0%,100%{transform:translateY(0) rotate(0)}
+  30%{transform:translateY(-2.5px) rotate(-3deg)}65%{transform:translateY(1.5px) rotate(2deg)}}
+.dfab-brain .fdot{position:absolute;top:1px;right:1px;width:15px;height:15px;border-radius:50%;
+  background:var(--coral);border:2.5px solid var(--card);z-index:2}
+
+.pchat{position:fixed;right:24px;bottom:98px;z-index:59;width:min(360px,calc(100vw - 40px));
+  background:var(--card);border:1px solid rgba(12,51,63,.075);border-radius:22px;
+  box-shadow:0 24px 64px rgba(12,51,63,.24);overflow:hidden;
+  opacity:0;transform:translateY(14px) scale(.96);transform-origin:bottom right;
+  pointer-events:none;transition:opacity .3s ease,transform .34s cubic-bezier(.2,.8,.3,1)}
+.pchat.open{opacity:1;transform:none;pointer-events:auto}
+.pchh{display:flex;align-items:center;gap:11px;padding:15px 17px;background:var(--t900)}
+.pchh svg{width:34px;height:34px;flex-shrink:0}
+.pchh b{font-family:var(--display);font-size:14px;font-weight:600;color:#fff;line-height:1.2}
+.pchh .sb{display:block;font-size:10.5px;color:rgba(255,255,255,.58);margin-top:2px}
+.pchh .x{margin-left:auto;background:none;border:0;cursor:pointer;color:rgba(255,255,255,.55);
+  width:28px;height:28px;border-radius:9px;display:grid;place-items:center;transition:all .2s;font-size:16px}
+.pchh .x:hover{background:rgba(255,255,255,.1);color:#fff}
+.pchb{padding:16px 17px}
+.pbub{background:var(--bg-dim);border-radius:14px 14px 14px 5px;padding:12px 14px;
+  font-size:13px;line-height:1.5;color:var(--ink);font-family:var(--calm)}
+.pchips{display:flex;flex-direction:column;gap:7px;margin-top:13px}
+.pchip{text-align:left;border:1px solid var(--line);background:none;border-radius:12px;
+  padding:10px 13px;cursor:pointer;font-family:var(--sans);font-size:12.5px;font-weight:500;
+  color:var(--hd2);transition:all .24s ease}
+.pchip:hover{border-color:var(--t500);background:var(--t50);color:var(--t500);transform:translateX(3px)}
+.pchin{display:flex;align-items:center;gap:9px;padding:12px 15px;border-top:1px solid rgba(12,51,63,.075)}
+.pchin input{flex:1;border:0;background:none;font-family:var(--sans);font-size:13px;
+  color:var(--ink);outline:none}
+.pchin input::placeholder{color:var(--soft)}
+.pchin button{width:33px;height:33px;border-radius:11px;border:0;background:var(--t500);color:#fff;
+  cursor:pointer;display:grid;place-items:center;flex-shrink:0;transition:all .22s;font-size:15px}
+.pchin button:hover{background:var(--t700)}
+@media(max-width:600px){.pchat{right:16px;left:16px;width:auto;bottom:92px}}
+
+@media(prefers-reduced-motion:reduce){
+  .pnode,.pcstc .att i,.pnode[data-s="warn"] .pring,
+  .dfab-brain svg,.dfab-brain::before{animation:none}
+}
 .dsh-fit .dgstack .dgmw{margin-top:7px}
 .dgrid{grid-template-rows:1fr 1fr}
 .dg-a{grid-column:1;grid-row:1;padding-bottom:clamp(26px,2.4vw,34px)}
@@ -6309,6 +6492,7 @@ const ICONS={
  'chevron-right':'<polyline points="9 18 15 12 9 6"/>',
  'coffee':'<path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/>',
  'stethoscope':'<path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/>',
+ 'plus':'<path d="M12 5v14"/><path d="M5 12h14"/>',
  'user-plus':'<path d="M15 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/>',
  'user-circle':'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.7a6 6 0 0 1 10 0"/>',
  'chart':'<path d="M3 3v18h18"/><path d="M7 15l3-4 3 2 4-6"/>',
@@ -6955,7 +7139,12 @@ function renderDash(role){
           '<main class="dmain"><div class="dwrap" id="dwrap-'+role+'"></div></main>'+
         '</div>'+
         '<nav class="dtabs">'+tabs+'</nav>')+
-    '<button class="dfab" onclick="toast(\'Demo: the AI assistant would open here\')" aria-label="AI assistant">'+dIcon('sparkles')+'</button>';
+    /* no painel do profissional o mascote substitui o botao laranja */
+    ((role==='doctor'||role==='nutri')
+      ? pchatPanel(role)+
+        '<button class="dfab dfab-brain" onclick="pchatToggle(\''+role+'\')" aria-label="'+
+          __tr('Assistant')+'">'+dshMascot()+'<span class="fdot"></span></button>'
+      : '<button class="dfab" onclick="toast(\'Demo: the AI assistant would open here\')" aria-label="AI assistant">'+dIcon('sparkles')+'</button>');
   renderIcons(el);
   dashSection(role);
 }
@@ -10221,6 +10410,328 @@ function dproAv(name){
     (ph?'<img src="'+ph+'" alt="" loading="lazy" onerror="this.remove()">':'')+'</span>';
 }
 
+/* ============ AGENDA, CONSTELACAO E MASCOTE DO PAINEL (Sep 15) ============ */
+
+/* a agenda le DAGENDA; cada consulta dura 60 min salvo indicacao */
+var PCAL_H0=8, PCAL_H1=19, PCAL_ROW=54, PCAL_ROW_MIN=38;
+var PCAL_KIND={
+  'Teleconsultation':['#2A9D8F','rgba(42,157,143,.10)'],
+  'Follow-up'       :['#5B7DB1','rgba(91,125,177,.10)'],
+  'Evaluation'      :['#E76F51','rgba(231,111,81,.10)']
+};
+var PCAL_WD=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+var PCAL_MON={Jan:0,Feb:1,Mar:2,Apr:3,May:4,Jun:5,Jul:6,Aug:7,Sep:8,Oct:9,Nov:10,Dec:11};
+/* 'Mar 17' -> Date real, para o dia da semana nao ser chutado */
+function pcalDate(str){
+  var m=String(str).match(/([A-Za-z]{3})\s*(\d+)/); if(!m) return null;
+  var mo=PCAL_MON[m[1]]; if(mo===undefined) return null;
+  return new Date(new Date().getFullYear(),mo,+m[2]);
+}
+var pcalSel={};
+
+function pcalMin(hhmm){ var p=String(hhmm).split(':'); return (+p[0])*60+(+p[1]||0); }
+function pcalDayNum(d){ var m=String(d).match(/(\d+)/); return m?+m[1]:0; }
+/* a semana vem das datas que existem em DAGENDA, ancorada na primeira */
+function pcalWeek(){
+  var d0=null;
+  DAGENDA.forEach(function(a){ var d=pcalDate(a[0]); if(d&&(!d0||d<d0)) d0=d; });
+  if(!d0) d0=new Date();
+  var out=[];
+  for(var i=0;i<7;i++){
+    var d=new Date(d0.getFullYear(),d0.getMonth(),d0.getDate()+i);
+    var n=d.getDate();
+    out.push({n:n, wd:PCAL_WD[d.getDay()],
+      c:DAGENDA.filter(function(a){ return pcalDayNum(a[0])===n; }).length});
+  }
+  return out;
+}
+function pcalFor(n){
+  return DAGENDA.filter(function(a){ return pcalDayNum(a[0])===n; })
+    .sort(function(x,y){ return pcalMin(x[1])-pcalMin(y[1]); });
+}
+
+function pcalRender(role,rw){
+  var wrap=document.getElementById('pcalWrap-'+role); if(!wrap) return;
+  var wk=pcalWeek();
+  if(pcalSel[role]===undefined||pcalSel[role]===null) pcalSel[role]=wk[0].n;
+  var sel=pcalSel[role];
+
+  var strip=wk.map(function(d){
+    var dots=''; for(var i=0;i<d.c;i++) dots+='<i></i>';
+    return '<button data-d="'+d.n+'" class="'+(d.n===sel?'on':'')+'" '+
+      'onclick="event.stopPropagation();pcalPick('+d.n+',\''+role+'\')">'+
+      '<span class="wd">'+__tr(d.wd)+'</span><span class="dn">'+d.n+'</span>'+
+      '<span class="dots">'+dots+'</span></button>';
+  }).join('');
+
+  var list=pcalFor(sel);
+
+  /* a janela segue as consultas do dia: sem isto a coluna abria sempre as 08:00
+     e, num ecra baixo, nao sobrava altura para mostrar onde ha consulta */
+  var H0=PCAL_H0, H1=PCAL_H1;
+  if(list.length){
+    var hs=list.map(function(a){ return Math.floor(pcalMin(a[1])/60); });
+    H0=Math.max(PCAL_H0,Math.min.apply(null,hs)-1);
+    H1=Math.min(PCAL_H1,Math.max.apply(null,hs)+2);
+  }
+  if(H1-H0<4){ H1=Math.min(PCAL_H1,H0+4); H0=Math.max(PCAL_H0,H1-4); }
+  var N=H1-H0, RW=rw||PCAL_ROW;
+
+  var rows='';
+  for(var h=H0;h<H1;h++){
+    rows+='<div class="pcalrow" style="height:'+RW+'px"><span class="hr">'+
+      (h<10?'0':'')+h+':00</span></div>';
+  }
+
+  var blocks='';
+  /* vaos livres de 45 min ou mais viram slot clicavel */
+  var busy=list.map(function(a){ return [pcalMin(a[1]),pcalMin(a[1])+60]; });
+  var cur=H0*60, gaps=[];
+  busy.forEach(function(b){ if(b[0]-cur>=45) gaps.push([cur,b[0]]); cur=Math.max(cur,b[1]); });
+  if(H1*60-cur>=45) gaps.push([cur,H1*60]);
+  gaps.forEach(function(g){
+    var t=((g[0]-H0*60)/60)*RW, hg=((g[1]-g[0])/60)*RW-4;
+    blocks+='<button class="pfree" style="top:'+(t+2)+'px;height:'+hg+'px" '+
+      'onclick="event.stopPropagation();toast(\''+__tr('Demo: a booking form would open here')+'\')">'+
+      '+ '+__tr('Free')+'</button>';
+  });
+  list.forEach(function(a){
+    var k=PCAL_KIND[a[3]]||PCAL_KIND['Teleconsultation'];
+    var t=((pcalMin(a[1])-H0*60)/60)*RW, hg=RW-5;
+    var end=pcalMin(a[1])+60, eh=Math.floor(end/60), em=end%60;
+    blocks+='<div class="pappt" style="top:'+(t+2.5)+'px;height:'+hg+'px;--ac:'+k[0]+';--acbg:'+k[1]+'" '+
+      'role="button" tabindex="0" '+
+      'onclick="event.stopPropagation();dashNav(\''+role+'\',\'agenda\')">'+
+      '<span class="tm">'+a[1]+' - '+(eh<10?'0':'')+eh+':'+(em<10?'0':'')+em+'</span>'+
+      '<b>'+esc(a[2])+'</b><span class="sb">'+__tr(a[3])+'</span></div>';
+  });
+
+  /* linha do agora, so no primeiro dia da semana (o "hoje" da demo) */
+  var now=new Date(), nm=now.getHours()*60+now.getMinutes(), nowl='';
+  if(sel===wk[0].n && nm>H0*60 && nm<H1*60){
+    nowl='<div class="pnow" style="top:'+(((nm-H0*60)/60)*RW)+'px"></div>';
+  }
+
+  wrap.innerHTML=
+    '<div class="pcalwk">'+strip+'</div>'+
+    '<div class="pcalbody" id="pcalBody-'+role+'"><div class="pcalgrid" style="height:'+
+      (N*RW)+'px">'+rows+
+      '<div class="pcallane">'+blocks+'</div>'+nowl+'</div></div>'+
+    '<div class="pcalfoot">'+
+      '<button onclick="event.stopPropagation();toast(\''+__tr('Demo: a booking form would open here')+'\')">'+
+        dIcon('plus')+__tr('New appointment')+'</button>'+
+      '<button class="solid" onclick="event.stopPropagation();dashNav(\''+role+'\',\'agenda\')">'+
+        dIcon('calendar')+__tr('Full schedule')+'</button></div>';
+  renderIcons(wrap);
+
+  var b=document.getElementById('pcalBody-'+role);
+  if(!b) return;
+
+  /* segunda passagem: agora sabemos a altura real, encolhe a linha para caber */
+  if(!rw){
+    var fit=Math.floor(b.clientHeight/N);
+    if(fit<PCAL_ROW){
+      var use=Math.max(PCAL_ROW_MIN,Math.min(PCAL_ROW,fit));
+      if(use!==PCAL_ROW){ pcalRender(role,use); return; }
+    }
+  }
+
+  /* encosta num limite de linha, e nunca rola para depois das consultas */
+  var nowTop=(nm/60-H0)*RW, want;
+  if(list.length){
+    var fT=((pcalMin(list[0][1])-H0*60)/60)*RW;
+    var lT=((pcalMin(list[list.length-1][1])-H0*60)/60)*RW;
+    want=(nowTop>fT&&nowTop<lT+RW) ? nowTop-b.clientHeight*0.45 : fT-RW;
+  } else { want=nowTop-b.clientHeight*0.45; }
+  var maxS=Math.max(0,b.scrollHeight-b.clientHeight);
+  b.scrollTop=Math.min(maxS,Math.max(0,Math.round(want/RW)*RW));
+}
+function pcalPick(n,role){ pcalSel[role]=n; pcalRender(role); }
+
+/* ---- a constelacao dos pacientes ---- */
+var PCST_POS=[
+  {x:19,y:28,sz:80},{x:79,y:25,sz:72},{x:76,y:71,sz:90},
+  {x:20,y:73,sz:62},{x:50,y:12,sz:56},{x:52,y:88,sz:56}
+];
+var PCST_G=[['#2A9D8F','#12615A'],['#1A5F76','#0C333F'],['#E76F51','#A83F22'],
+            ['#8FB8E2','#5B7DB1'],['#D9A420','#8E6704'],['#7A5C8E','#3F2C4D']];
+var PCST_ICN={
+  ok  :'<svg viewBox="0 0 24 24" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5 9.5 18 20 6.5"/></svg>',
+  warn:'<svg viewBox="0 0 24 24" stroke-width="3.2" stroke-linecap="round"><path d="M12 5.5v8"/><path d="M12 18.4v.2"/></svg>',
+  "new":'<svg viewBox="0 0 24 24" stroke-width="2.8" stroke-linecap="round"><path d="M12 6v12M6 12h12"/></svg>'
+};
+function pcstNodes(role){
+  var D=DASH[role], out=[];
+  D.patients.forEach(function(p,i){
+    var st=(p.risk==='moderate'||p.adhc==='warn')?'warn':'ok';
+    out.push({i:p.init,n:p.name,s:st,
+      note:esc(p.adh||(__tr('Risk')+': '+__tr(p.risk||'low'))),act:'dashSelPatient(\''+role+'\','+i+')'});
+  });
+  LEADS.filter(function(l){ return !l.taken; }).slice(0,2).forEach(function(l){
+    out.push({i:l.init,n:l.name,s:'new',note:__tr('New request'),
+      act:'dashNav(\''+role+'\',\'pratica\')'});
+  });
+  return out;
+}
+function pcstRender(role){
+  var host=document.getElementById('pcstField-'+role); if(!host) return;
+  /* re-render limpo: sem isto os nos se acumulam a cada volta ao painel */
+  Array.prototype.forEach.call(host.querySelectorAll('.pnode'),function(n){ n.remove(); });
+  var ns=pcstNodes(role), warn=0, act=DASH[role].patients.length, h='';
+  ns.forEach(function(p,i){
+    if(p.s==='warn') warn++;
+    var pos=PCST_POS[i%PCST_POS.length], g=PCST_G[i%PCST_G.length];
+    h+='<button class="pnode" data-s="'+p.s+'" '+
+      'style="--x:'+pos.x+'%;--y:'+pos.y+'%;--sz:'+pos.sz+'px;'+
+      'margin-left:'+(-pos.sz/2)+'px;margin-top:'+(-pos.sz/2)+'px;'+
+      '--dur:'+(13+i*1.9)+'s;--del:'+(i*-2.4)+'s" '+
+      'onclick="event.stopPropagation();'+p.act+'">'+
+      '<span class="pring"></span>'+
+      '<span class="pface" style="--g1:'+g[0]+';--g2:'+g[1]+'">'+esc(p.i)+'</span>'+
+      '<span class="pflag">'+PCST_ICN[p.s]+'</span>'+
+      '<span class="pplate"><b>'+esc(p.n)+'</b><span>'+p.note+'</span></span></button>';
+  });
+  host.insertAdjacentHTML('beforeend',h);
+  var cn=document.getElementById('pcstN-'+role); if(cn) cn.textContent=act;
+  var ca=document.getElementById('pcstAtt-'+role);
+  if(ca) ca.textContent=warn+' '+(warn===1?__tr('needs attention'):__tr('need attention'));
+  if(!host.__par){ host.__par=1; pcstParallax(host); }
+  pcstNet(role);
+}
+function pcstParallax(host){
+  if(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var ns=Array.prototype.slice.call(host.querySelectorAll('.pnode')).map(function(el,i){
+    return {el:el,d:(i%2?-1:1)*(9+i*3)};
+  });
+  host.addEventListener('pointermove',function(e){
+    var r=host.getBoundingClientRect();
+    var nx=((e.clientX-r.left)/r.width-.5), ny=((e.clientY-r.top)/r.height-.5);
+    ns.forEach(function(n){ n.el.style.translate=(-nx*n.d).toFixed(1)+'px '+(-ny*n.d).toFixed(1)+'px'; });
+  },{passive:true});
+  host.addEventListener('pointerleave',function(){
+    ns.forEach(function(n){ n.el.style.translate='0px 0px'; });
+  });
+}
+
+/* a mesma malha de sinapses do #/equipe, agora atras dos pacientes */
+var pcstRAF={};
+function pcstNet(role){
+  if(pcstRAF[role]){ cancelAnimationFrame(pcstRAF[role]); pcstRAF[role]=null; }
+  var cv=document.getElementById('pcstNet-'+role); if(!cv||!cv.getContext) return;
+  var ctx=cv.getContext('2d'), W=0,H=0,DPR=1, nodes=[], sparks=[], last=0;
+  var LINK=168, STOPS=[[231,111,81],[233,162,119],[121,208,196],[42,157,143],[143,184,226]];
+  var RM=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function ramp(t){
+    t=t<0?0:t>1?1:t;
+    var f=t*(STOPS.length-1), i=Math.min(STOPS.length-2,Math.floor(f)), k=f-i;
+    var a=STOPS[i], b=STOPS[i+1];
+    return Math.round(a[0]+(b[0]-a[0])*k)+','+Math.round(a[1]+(b[1]-a[1])*k)+','+
+           Math.round(a[2]+(b[2]-a[2])*k);
+  }
+  function boost(){ return document.body.classList.contains('dark')?1.5:1; }
+  function build(){
+    var r=cv.getBoundingClientRect(); if(!r.width||!r.height) return false;
+    DPR=Math.min(2,window.devicePixelRatio||1); W=r.width; H=r.height;
+    cv.width=Math.round(W*DPR); cv.height=Math.round(H*DPR);
+    ctx.setTransform(DPR,0,0,DPR,0,0);
+    var n=Math.max(26,Math.min(56,Math.round(W*H/12500)));
+    nodes=[];
+    for(var i=0;i<n;i++) nodes.push({x:Math.random()*W,y:Math.random()*H,
+      vx:(Math.random()-.5)*.24,vy:(Math.random()-.5)*.24,
+      r:Math.random()<.18?2.6:1.5,ph:Math.random()*6.2832,sp:.5+Math.random()*.7});
+    sparks=[];
+    for(var k=0;k<6;k++) sparks.push({a:0,b:1,t:Math.random(),sp:.1+Math.random()*.16,on:false});
+    return true;
+  }
+  function reseat(sp){
+    for(var t=0;t<14;t++){
+      var i=(Math.random()*nodes.length)|0, j=(Math.random()*nodes.length)|0;
+      if(i===j) continue;
+      var dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+      if(dx*dx+dy*dy<LINK*LINK){ sp.a=i;sp.b=j;sp.t=0;sp.on=true;sp.sp=.1+Math.random()*.16; return; }
+    }
+    sp.on=false;
+  }
+  function draw(t,move){
+    var B=boost(); ctx.clearRect(0,0,W,H);
+    var i,j,a,b,dx,dy,d,al;
+    if(move) for(i=0;i<nodes.length;i++){ a=nodes[i]; a.x+=a.vx; a.y+=a.vy;
+      if(a.x<-30)a.x=W+30; if(a.x>W+30)a.x=-30;
+      if(a.y<-30)a.y=H+30; if(a.y>H+30)a.y=-30; }
+    ctx.lineWidth=1;
+    for(i=0;i<nodes.length;i++){ a=nodes[i];
+      for(j=i+1;j<nodes.length;j++){ b=nodes[j];
+        dx=a.x-b.x; dy=a.y-b.y; d=Math.sqrt(dx*dx+dy*dy);
+        if(d>LINK) continue;
+        al=(1-d/LINK)*0.40*B;
+        ctx.strokeStyle='rgba('+ramp((a.x+b.x)/2/W)+','+al.toFixed(3)+')';
+        ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); } }
+    for(i=0;i<nodes.length;i++){ a=nodes[i];
+      al=move?(0.32+0.22*Math.sin(t/1000*a.sp+a.ph))*B:0.42*B;
+      ctx.fillStyle='rgba('+ramp(a.x/W)+','+al.toFixed(3)+')';
+      ctx.beginPath(); ctx.arc(a.x,a.y,a.r,0,6.2832); ctx.fill(); }
+    if(!move) return;
+    var dt=Math.min(.05,(t-(last||t))/1000); last=t;
+    for(i=0;i<sparks.length;i++){ var sp=sparks[i];
+      if(!sp.on){ if(Math.random()<.012) reseat(sp); continue; }
+      sp.t+=sp.sp*dt*3;
+      if(sp.t>=1){ sp.on=false; continue; }
+      a=nodes[sp.a]; b=nodes[sp.b]; dx=a.x-b.x; dy=a.y-b.y;
+      if(dx*dx+dy*dy>LINK*LINK*1.35){ sp.on=false; continue; }
+      var px=a.x+(b.x-a.x)*sp.t, py=a.y+(b.y-a.y)*sp.t;
+      var fade=Math.sin(sp.t*Math.PI), col=ramp(px/W);
+      ctx.fillStyle='rgba('+col+','+(0.14*fade*B).toFixed(3)+')';
+      ctx.beginPath(); ctx.arc(px,py,5.5,0,6.2832); ctx.fill();
+      ctx.fillStyle='rgba('+col+','+(0.85*fade*B).toFixed(3)+')';
+      ctx.beginPath(); ctx.arc(px,py,2.1,0,6.2832); ctx.fill(); }
+  }
+  function frame(t){
+    if(!document.getElementById('pcstNet-'+role)){ pcstRAF[role]=null; return; }
+    draw(t,true); pcstRAF[role]=requestAnimationFrame(frame);
+  }
+  if(!build()) return;
+  if(RM){ draw(0,false); return; }
+  last=0; pcstRAF[role]=requestAnimationFrame(frame);
+}
+
+/* ---- o mascote: cabeca no FAB, cabeca no topo do chat ---- */
+function pchatToggle(role){
+  var c=document.getElementById('pchat-'+role); if(!c) return;
+  c.classList.toggle('open');
+  if(c.classList.contains('open')){
+    var s=document.getElementById('dash-'+role);
+    var d=s&&s.querySelector('.dfab-brain .fdot'); if(d) d.style.display='none';
+  }
+}
+function pchatPanel(role){
+  var D=DASH[role];
+  var flagged=D.patients.filter(function(p){ return p.risk==='moderate'||p.adhc==='warn'; })[0];
+  var line=flagged
+    ? __tr('is the one flagged today. Want me to start there?')
+    : __tr('Nothing flagged today. Want a look at the week?');
+  var who=flagged?givenName(flagged.name):'';
+  return '<div class="pchat" id="pchat-'+role+'">'+
+    '<div class="pchh">'+dshMascot()+
+      '<div><b>'+__tr('Assistant')+'</b><span class="sb">'+
+        __tr("Reads your patients' records")+'</span></div>'+
+      '<button class="x" onclick="pchatToggle(\''+role+'\')" aria-label="'+__tr('Close')+'">'+dIcon('x')+'</button>'+
+    '</div>'+
+    '<div class="pchb">'+
+      '<div class="pbub">'+(who?esc(who)+' ':'')+line+'</div>'+
+      '<div class="pchips">'+
+        '<button class="pchip" onclick="toast(\''+__tr('Demo: the assistant would answer here')+'\')">'+
+          __tr('Summarize the latest panel')+'</button>'+
+        '<button class="pchip" onclick="toast(\''+__tr('Demo: the assistant would answer here')+'\')">'+
+          __tr('Draft a reply to a check-in')+'</button>'+
+        '<button class="pchip" onclick="toast(\''+__tr('Demo: the assistant would answer here')+'\')">'+
+          __tr('What changed since the last visit?')+'</button>'+
+      '</div></div>'+
+    '<div class="pchin"><input placeholder="'+__tr('Ask about a patient')+'" aria-label="'+
+      __tr('Ask about a patient')+'">'+
+      '<button onclick="toast(\''+__tr('Demo: the assistant would answer here')+'\')" aria-label="'+
+        __tr('Send')+'">'+dIcon('arrow-right')+'</button></div></div>';
+}
+
 function proDash(role){
   const D=DASH[role];
   const un=D.notif.filter(function(n){return n[3];}).length;
@@ -10256,14 +10767,12 @@ function proDash(role){
         '<span><b>'+esc(t[2])+'</b><span class="rl">'+__tr(t[3])+'</span></span></div>'+
       '</div>';
   });
+  /* a agenda de verdade substitui a lista solta; pcalRender pinta depois do mount */
   const day=
-    '<div class="dgc dgc-still dgc-glass dg-a" role="button" tabindex="0" '+
-      'onclick="dashNav(\''+role+'\',\'agenda\')" '+
-      'onkeydown="if(event.key===\'Enter\'){dashNav(\''+role+'\',\'agenda\')}" '+
-      'style="cursor:pointer">'+
+    '<div class="dgc dgc-still dgc-glass dg-a">'+
       '<div class="dgh dgh-bare"><span class="dgi">'+dIcon('calendar')+'</span>'+
         '<h3>'+__tr('Your day')+'</h3></div>'+
-      '<div class="dgin">'+ag+'</div></div>';
+      '<div class="pcal" id="pcalWrap-'+role+'"></div></div>';
 
   /* (B) a coluna alta: os pacientes */
   let pl='';
@@ -10283,19 +10792,23 @@ function proDash(role){
       '<span class="nm">'+esc(l.name)+'</span>'+
       '<span class="vl">'+__tr('New request')+'</span></button>';
   });
+  /* a lista vira constelacao: mesma malha do #/equipe, um no por paciente */
   const pats=
-    '<div class="dgc dgc-still dgc-glass dg-b" role="button" tabindex="0" '+
-      'onclick="dashNav(\''+role+'\',\'pacientes\')" '+
-      'onkeydown="if(event.key===\'Enter\'){dashNav(\''+role+'\',\'pacientes\')}" '+
-      'style="cursor:pointer">'+
+    '<div class="dgc dgc-still dgc-glass dg-b">'+
       '<div class="dgh dgh-bare"><span class="dgi">'+dIcon('users')+'</span>'+
-        '<h3>'+__tr('Your patients')+'</h3></div>'+
-      '<div class="dgin">'+
-        '<div class="dgib dgib-ses" style="flex:0 0 auto">'+
-          '<span class="dgib-when">'+__tr('Active')+'</span>'+
-          '<div class="dgpk"><b>'+D.patients.length+'</b>'+
-            '<span>'+risky+' '+__tr('need attention')+'</span></div></div>'+
-        '<div class="dgmks">'+pl+'</div>'+
+        '<h3>'+__tr('Your patients')+'</h3>'+
+        '<div class="rt"><span class="dgib-when" style="position:static">'+
+          __tr('Active')+'</span></div></div>'+
+      '<div class="pcst" id="pcstField-'+role+'">'+
+        '<canvas class="pcstnet" id="pcstNet-'+role+'"></canvas>'+
+        '<div class="pcstc"><div class="n" id="pcstN-'+role+'">'+D.patients.length+'</div>'+
+          '<div class="lb">'+__tr('In your care')+'</div>'+
+          '<button class="att" onclick="event.stopPropagation();dashNav(\''+role+'\',\'pacientes\')">'+
+            '<i></i><span id="pcstAtt-'+role+'">'+risky+' '+__tr('need attention')+'</span></button></div>'+
+        '<div class="pcstlg">'+
+          '<span><i style="background:var(--ok)"></i>'+__tr('On track')+'</span>'+
+          '<span><i style="background:var(--watch)"></i>'+__tr('Needs attention')+'</span>'+
+          '<span><i style="background:var(--t100)"></i>'+__tr('New request')+'</span></div>'+
       '</div></div>';
 
   /* (C) a caixa: o que espera resposta */
@@ -10355,7 +10868,7 @@ function proDash(role){
             '<span>'+__tr('waiting for you')+'</span></div></div>'+
       '</div></div>';
 
-  setTimeout(function(){ dshFit(); },0);
+  setTimeout(function(){ dshFit(); pcalRender(role); pcstRender(role); },0);
 
   return '<div class="dsec dsh dsh-fit">'+hi+
     '<div class="dgrid">'+day+pats+inbox+content+practice+'</div></div>';
@@ -11936,6 +12449,22 @@ routeFromHash();
 /* ============ LANGUAGE TOGGLE (EN / PT-BR) ============ */
 (function(){
   const EN2PT={
+    "Tue":"Ter","Wed":"Qua","Thu":"Qui","Fri":"Sex","Sat":"Sab","Sun":"Dom",
+    "New appointment":"Nova consulta",
+    "Full schedule":"Agenda completa",
+    "In your care":"Sob seus cuidados",
+    "Needs attention":"Pede atencao",
+    "needs attention":"pede atencao",
+    "Assistant":"Assistente",
+    "Reads your patients' records":"Le os prontuarios dos seus pacientes",
+    "is the one flagged today. Want me to start there?":"e quem esta sinalizado hoje. Comeco por ele?",
+    "Nothing flagged today. Want a look at the week?":"Nada sinalizado hoje. Quer ver a semana?",
+    "Summarize the latest panel":"Resumir o ultimo exame",
+    "Draft a reply to a check-in":"Rascunhar resposta a um check-in",
+    "What changed since the last visit?":"O que mudou desde a ultima consulta?",
+    "Ask about a patient":"Pergunte sobre um paciente",
+    "Demo: the assistant would answer here":"Demo: o assistente responderia aqui",
+    "Demo: a booking form would open here":"Demo: o formulario de agendamento abriria aqui",
     /* --- header de 4 botoes, menu de bubbles, Journey e Service --- */
     "Everything in one place. Tap a bubble to open it.":"Tudo num lugar só. Toque numa bolha para abrir.",
     "Open your map":"Abrir seu mapa","Open notifications":"Abrir notificações",
