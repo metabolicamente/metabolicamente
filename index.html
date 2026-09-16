@@ -2759,8 +2759,26 @@ body.dark .mtcard{border-color:rgba(255,255,255,.08)}
 
 
 /* --- as bolhas do assistente: a mesma linguagem das tiles de Conteudo --- */
-.wzgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(142px,15vw,186px),1fr));
-  gap:clamp(9px,.9vw,13px)}
+.wzgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(118px,11.5vw,152px),1fr));
+  gap:clamp(8px,.8vw,11px)}
+/* as prateleiras do paciente, com os mesmos nomes e cores que ele ve */
+.wzrail{margin-bottom:clamp(14px,1.5vw,20px)}
+.wzrail:last-of-type{margin-bottom:0}
+.wzrailh{margin-bottom:9px}
+.wzrailh b{font-family:var(--display);font-size:13.5px;font-weight:700;color:var(--hd);
+  letter-spacing:-.01em}
+.wzrailh span{display:block;font-size:11.5px;color:var(--soft);margin-top:2px}
+/* categoria sem modulos: visivel, nao atribuivel */
+.wzb.empty{cursor:not-allowed;filter:saturate(.22) brightness(.86);opacity:.55}
+.wzb.empty:hover{transform:none;filter:saturate(.22) brightness(.86);
+  box-shadow:0 8px 22px rgba(12,51,63,.14)}
+.wzb.empty .wzlab em{color:rgba(255,255,255,.8)}
+/* o visto vive sempre no DOM e so aparece quando escolhido, para o clique
+   nao precisar de repintar a lista */
+.wzpill i .ic{opacity:0;transition:opacity .18s ease;display:flex}
+.wzpill.on i .ic{opacity:1}
+.wzrefbox .ic{opacity:0;transition:opacity .18s ease;display:flex}
+.wzref.on .wzrefbox .ic{opacity:1}
 .wzb{position:relative;aspect-ratio:5/4;border:0;padding:0;cursor:pointer;font:inherit;
   border-radius:clamp(14px,1.4vw,20px);overflow:hidden;text-align:left;
   background:linear-gradient(145deg,var(--g1),var(--g2));
@@ -2909,6 +2927,46 @@ body.dark .mtwiz{border-color:rgba(255,255,255,.08)}
   box-shadow .26s ease}
 @media(prefers-reduced-motion:reduce){.agday.swap{animation:none}}
 
+
+/* ---- (F) A AVENTURA SOBRE O MAPA DA JORNADA ---- */
+.aqlay{position:absolute;inset:0;z-index:7;pointer-events:none}
+.aqb{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);
+  display:flex;flex-direction:column;align-items:center;gap:6px;width:max-content;
+  max-width:clamp(120px,15vw,180px);border:0;background:none;padding:0;font:inherit;
+  pointer-events:auto;cursor:default;
+  animation:aqPop .5s cubic-bezier(.2,1.1,.4,1) backwards}
+.aqb.open{cursor:pointer}
+@keyframes aqPop{from{opacity:0;transform:translate(-50%,-50%) scale(.45)}
+  to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.aqd{position:relative;width:clamp(42px,4.4vw,54px);height:clamp(42px,4.4vw,54px);
+  border-radius:50%;display:grid;place-items:center;background:#0A1419;
+  border:2px solid var(--c);color:var(--c);font-size:clamp(17px,1.8vw,21px);
+  box-shadow:0 6px 20px rgba(0,0,0,.5);
+  transition:transform .28s cubic-bezier(.2,.8,.3,1),background .3s ease,color .3s ease}
+.aqd .ic{display:flex}
+.aqb.open:hover .aqd{transform:scale(1.12)}
+.aqb.open:focus-visible .aqd{outline:2px solid #EEF5F4;outline-offset:4px}
+.aqb.done .aqd{background:var(--c);color:#07222C}
+.aqb.open .aqd::after{content:'';position:absolute;inset:-6px;border-radius:50%;
+  border:2px solid var(--c);opacity:.5;animation:aqRipple 2.4s ease-out infinite}
+@keyframes aqRipple{0%{transform:scale(.84);opacity:.6}100%{transform:scale(1.4);opacity:0}}
+.aqc{font-size:11.5px;font-weight:600;line-height:1.3;text-align:center;color:#EEF5F4;
+  background:rgba(7,13,16,.8);border-radius:9px;padding:4px 8px;
+  -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
+.aqc i{display:block;font-style:normal;font-size:10px;font-weight:500;
+  color:rgba(238,245,244,.62);margin-top:2px}
+.aqb.done .aqc{color:rgba(238,245,244,.6)}
+.jformed{display:inline-flex;align-items:center;gap:6px;border-radius:99px;
+  padding:6px 13px;background:rgba(238,245,244,.08);border:1px solid rgba(238,245,244,.14);
+  font-family:var(--quiet);font-size:10.5px;font-weight:700;letter-spacing:.11em;
+  text-transform:uppercase;color:rgba(238,245,244,.66);white-space:nowrap}
+.jformed b{font-family:var(--display);font-size:13px;letter-spacing:-.01em;color:#8FD3C8}
+@media(max-width:700px){
+  .aqb{max-width:clamp(96px,26vw,140px)}
+  .aqc{font-size:10.5px;padding:3px 7px}
+  .aqc i{display:none}
+}
+@media(prefers-reduced-motion:reduce){.aqb,.aqb.open .aqd::after{animation:none}}
 /* ---- (D) CALENDARIO DO MES ---- */
 .agwrap{display:flex;flex-direction:column;gap:clamp(14px,1.4vw,20px)}
 .agtop{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
@@ -6853,6 +6911,7 @@ const ICONS={
  'coffee':'<path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/>',
  'stethoscope':'<path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/>',
  'phone-off':'<path d="M10.7 13.3a11 11 0 0 1-2-3l1.8-1.8-2.4-4.2-3 1C4 8.2 6 12 8.6 14.6c1 1 2.2 1.9 3.4 2.6"/><path d="M14.4 19.1c2.3 1 4.2 1 4.8.6l1-3-4.2-2.4-1.3 1.3"/><path d="M3 3l18 18"/>',
+ 'book':'<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5Z"/><path d="M8 7.5h8"/><path d="M8 11.5h6"/>',
  'plus':'<path d="M12 5v14"/><path d="M5 12h14"/>',
  'user-plus':'<path d="M15 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/>',
  'user-circle':'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.7a6 6 0 0 1 10 0"/>',
@@ -7920,10 +7979,91 @@ function dashSelPatient(role,i){
   D.selPatient=i; dashSection(role); window.scrollTo(0,0);
 }
 
+/* ============ A AVENTURA DO PACIENTE ============
+   O que o terapeuta atribui ao fechar a consulta cai aqui, e a Jornada do
+   paciente le desta fila. E o elo entre os dois lados do app. */
+var AQ_KEY='mb.adventure.v1';
+var AQ_POS=[{x:'50%',y:'9%'},{x:'72%',y:'14%'},{x:'88%',y:'33%'},{x:'92%',y:'56%'},
+            {x:'85%',y:'79%'},{x:'65%',y:'90%'},{x:'43%',y:'93%'},{x:'23%',y:'87%'},
+            {x:'9%',y:'68%'},{x:'8%',y:'45%'},{x:'20%',y:'12%'},{x:'34%',y:'5%'}];
+
+function aqRead(){
+  try{ var r=localStorage.getItem(AQ_KEY); if(r) return JSON.parse(r)||[]; }catch(e){}
+  return [];
+}
+function aqSave(a){ try{ localStorage.setItem(AQ_KEY,JSON.stringify(a)); }catch(e){} }
+
+/* sem nada atribuido e sem primeira consulta, a aventura tem um passo so */
+function aqList(){
+  var a=aqRead();
+  if(!a.length) return [{id:'first',kind:'first',label:'Schedule your first meeting',
+    sub:'The only thing open',done:0}];
+  return a;
+}
+function aqAdd(items){
+  var a=aqRead();
+  items.forEach(function(it){
+    if(!a.some(function(x){ return x.id===it.id; })) a.push(it);
+  });
+  aqSave(a);
+}
+function aqTap(id){
+  if(id==='first'){
+    aqAdd([{id:'first',kind:'first',label:'Schedule your first meeting',
+      sub:'Booked',done:1}]);
+    dashSection('patient'); return;
+  }
+  var a=aqRead();
+  a.forEach(function(t){ if(t.id===id) t.done=1; });
+  aqSave(a); dashSection('patient');
+}
+function aqReset(){ aqSave([]); dashSection('patient'); }
+function aqStats(){
+  var a=aqList(), d=a.filter(function(t){ return t.done; }).length;
+  return {n:a.length, done:d, pct:a.length?Math.round(d/a.length*100):0};
+}
+/* as bolhas da aventura, por cima do mapa que ja existe */
+function aqOverlay(){
+  var all=aqList(), h='';
+  /* mais passos do que lugares: os ultimos viram um contador, para nada
+     aterrar por cima de outra bolha */
+  var a=all, extra=0;
+  if(all.length>AQ_POS.length){ a=all.slice(0,AQ_POS.length-1); extra=all.length-a.length; }
+  a.forEach(function(t,i){
+    var pos=AQ_POS[i];
+    var c=t.done?'#2A9D8F':(t.kind==='ref'?'#8FB8E2':(t.kind==='first'?'#E76F51':'#D9A420'));
+    var ic=t.done?'check':(t.kind==='ref'?'utensils':(t.kind==='first'?'calendar':'book'));
+    var can=!t.done;
+    h+='<'+(can?'button':'div')+' class="aqb'+(t.done?' done':' open')+'" '+
+      'style="--x:'+pos.x+';--y:'+pos.y+';--c:'+c+';animation-delay:'+(i*80)+'ms"'+
+      (can?' onclick="aqTap(\''+t.id+'\')"':'')+'>'+
+      '<span class="aqd">'+dIcon(ic)+'</span>'+
+      '<span class="aqc">'+__tr(t.label)+
+        (t.sub?'<i>'+__tr(t.sub)+'</i>':'')+'</span>'+
+      '</'+(can?'button':'div')+'>';
+  });
+  if(extra){
+    var pos2=AQ_POS[AQ_POS.length-1];
+    h+='<button class="aqb open" style="--x:'+pos2.x+';--y:'+pos2.y+';--c:#8FA3A8" '+
+      'onclick="dashNav(\'patient\',\'programas\')">'+
+      '<span class="aqd">+'+extra+'</span>'+
+      '<span class="aqc">'+__tr('More steps')+'</span></button>';
+  }
+  return '<div class="aqlay">'+h+'</div>';
+}
+
 /* ============ CONSULTA: sala, e o assistente de prescricao no fim ============ */
 var MEET=null, MEET_T=null;
 var MEET_NEXT=['In 1 week','In 2 weeks','In 1 month','No follow-up yet'];
 var MEET_REFW=['Before our next visit','Within 2 weeks','No rush'];
+/* Ligacao entre a estante que o paciente ve (CATG) e as trilhas que existem
+   de verdade (PROGRAMS). Hoje so tres categorias tem modulos. As outras
+   catorze ficam visiveis e nao atribuiveis ate alguem escrever o conteudo. */
+var MEET_CATMAP={
+  'Fundamentals':'fundamentos',
+  'Sleep':'circadiano',
+  'Nutrition':'acucar'
+};
 
 function pIdx(role,name){
   var ps=DASH[role].patients;
@@ -7950,7 +8090,11 @@ function meetLeave(){
 function meetPhase(p){
   if(!MEET) return;
   if(p!=='call'&&MEET_T){ clearInterval(MEET_T); MEET_T=null; }
-  MEET.phase=p; dashSection(MEET.role); window.scrollTo(0,0);
+  var wasCall=(MEET.phase==='call'), toCall=(p==='call');
+  MEET.phase=p;
+  /* sair ou entrar na chamada troca a vista toda; entre passos so o corpo */
+  if(wasCall||toCall){ dashSection(MEET.role); window.scrollTo(0,0); }
+  else { meetRepaint(); }
 }
 function meetToggle(k,el){
   if(!MEET) return;
@@ -7975,29 +8119,78 @@ function meetProg(pid){
   if(cur&&cur.length===p.days.length){ delete MEET.picked[pid]; delete MEET.span[pid]; }
   else { MEET.picked[pid]=p.days.map(function(_,i){ return i; });
          if(!MEET.span[pid]) MEET.span[pid]=1; }
-  dashSection(MEET.role);
+  meetRepaint();
 }
-function meetMod(pid,di){
+/* um modulo troca a sua propria classe; so o contador e a bolha precisam de nota */
+function meetMod(pid,di,el){
   if(!MEET) return;
   var a=(MEET.picked[pid]||[]).slice(), k=a.indexOf(di);
   if(k>-1) a.splice(k,1); else a.push(di);
   if(a.length){ MEET.picked[pid]=a; if(!MEET.span[pid]) MEET.span[pid]=1; }
   else { delete MEET.picked[pid]; delete MEET.span[pid]; }
-  dashSection(MEET.role);
+  if(el) el.classList.toggle('on', k<0);
+  meetTouch(pid);
+}
+/* actualiza o cabecalho do grupo, o contador da bolha e o subtitulo */
+function meetTouch(pid){
+  var host=document.getElementById('dwrap-'+MEET.role); if(!host) return;
+  var p=PROGRAMS.filter(function(x){ return x.id===pid; })[0];
+  var sel=MEET.picked[pid]||[], all=p&&sel.length===p.days.length;
+  var hd=host.querySelector('.wzhead span');
+  if(hd&&p) hd.textContent=sel.length
+    ? sel.length+' '+__tr('of')+' '+p.days.length+' '+__tr('selected')
+    : __tr('Nothing selected yet');
+  var allb=host.querySelector('.wzhead .mtall');
+  if(allb) allb.textContent=all?__tr('Clear'):__tr('Select all');
+  var b=host.querySelector('.wzb.open');
+  if(b&&p){
+    b.classList.toggle('some', sel.length>0&&!all);
+    b.classList.toggle('all', !!all);
+    var c=b.querySelector('.wzcount');
+    if(sel.length){
+      if(c) c.textContent=sel.length+'/'+p.days.length;
+      else b.insertAdjacentHTML('afterbegin','<span class="wzcount">'+sel.length+'/'+
+        p.days.length+'</span>');
+    } else if(c) c.remove();
+  }
+  var sub=document.getElementById('mtsub');
+  if(sub){ var n=meetCount(), nm=DASH[MEET.role].patients[MEET.pi].name;
+    sub.textContent=nm+(n?' · '+n+' '+__tr('modules selected'):''); }
 }
 function meetCount(){
   var n=0; for(var k in MEET.picked) n+=MEET.picked[k].length; return n;
 }
 function meetNote(v){ if(MEET) MEET.note=v; }
-function meetOpen(pid){ if(!MEET) return; MEET.open=(MEET.open===pid?null:pid);
-  dashSection(MEET.role); }
-function meetSpan(pid,v){ if(!MEET) return; MEET.span[pid]=v; dashSection(MEET.role); }
-function meetRef(){ if(!MEET) return; MEET.ref.on=MEET.ref.on?0:1; dashSection(MEET.role); }
-function meetRefW(i){ if(!MEET) return; MEET.ref.when=i; dashSection(MEET.role); }
-function meetNext(v){ if(MEET) MEET.next=+v; }
+function meetOpen(pid){ if(!MEET) return; MEET.open=(MEET.open===pid?null:pid); meetRepaint(); }
+/* os botoes de um grupo trocam de estado na hora, sem repintar nada */
+function meetSibs(el,cls){
+  if(!el||!el.parentNode) return;
+  Array.prototype.forEach.call(el.parentNode.children,function(c){ c.classList.remove(cls); });
+  el.classList.add(cls);
+}
+function meetSpan(pid,v,el){ if(!MEET) return; MEET.span[pid]=v; meetSibs(el,'on'); }
+function meetRef(){ if(!MEET) return; MEET.ref.on=MEET.ref.on?0:1; meetRepaint(); }
+function meetRefW(i,el){ if(!MEET) return; MEET.ref.when=i; meetSibs(el,'on'); }
+function meetNext(v,el){ if(MEET){ MEET.next=+v; meetSibs(el,'on'); } }
 function meetSend(){
   if(!MEET) return;
   var n=meetCount(), role=MEET.role, i=MEET.pi, ref=MEET.ref.on;
+
+  /* o que foi atribuido passa a ser proximo passo na Jornada do paciente */
+  var add=[];
+  PROGRAMS.forEach(function(pr){
+    (MEET.picked[pr.id]||[]).forEach(function(di){
+      var sp=MEET.span[pr.id]||1;
+      add.push({id:'m:'+pr.id+':'+di, kind:'mod', label:pr.days[di].t,
+        sub:(sp===1?'Before next visit':sp+' visits'), done:0});
+    });
+  });
+  if(ref) add.push({id:'ref:nutri', kind:'ref', label:'Meet your nutritionist',
+    sub:DASH.nutri.name, done:0});
+  /* a primeira consulta fica marcada como feita, ja aconteceu */
+  add.unshift({id:'first',kind:'first',label:'Schedule your first meeting',sub:'Booked',done:1});
+  aqAdd(add);
+
   MEET=null;
   var msg = n ? (__tr('Demo: sent')+' — '+n+' '+__tr('modules assigned'))
               : __tr('Demo: visit closed with no content assigned');
@@ -8055,109 +8248,21 @@ function meetView(role){
     '</div></div>';
 }
 
-function meetWizard(role,p){
-  var step=MEET.phase, n=meetCount();
-  var steps=[['w1',__tr('Assign content')],['w2',__tr('Plan')],['w3',__tr('Review')]];
-  var si=steps.findIndex(function(x){ return x[0]===step; });
-  var sh=steps.map(function(st,i){
-    return '<div class="mtstep'+(st[0]===step?' on':'')+(si>i?' done':'')+'">'+
-      '<i>'+(si>i?dIcon('check'):(i+1))+'</i><span>'+st[1]+'</span></div>';
+/* ---- o assistente: casca fixa, corpo repintavel ----
+   Antes cada clique chamava dashSection() e repintava a pagina inteira, o que
+   dava a sensacao de recarregar. Agora so o corpo, os passos e o rodape mudam. */
+var MEET_STEPS=[['w1','Assign content'],['w2','Plan'],['w3','Review']];
+
+function meetSteps(){
+  var si=MEET_STEPS.findIndex(function(x){ return x[0]===MEET.phase; });
+  return MEET_STEPS.map(function(st,i){
+    return '<div class="mtstep'+(st[0]===MEET.phase?' on':'')+(si>i?' done':'')+'">'+
+      '<i>'+(si>i?dIcon('check'):(i+1))+'</i><span>'+__tr(st[1])+'</span></div>';
   }).join('<em class="mtsep"></em>');
+}
 
-  var body='';
-  if(step==='w1'){
-    /* as mesmas bolhas que o paciente ve em Conteudo, agora selecionaveis */
-    body='<p class="mtlead">'+__tr('Pick what')+' '+esc(givenName(p.name))+' '+
-      __tr('should work through. Tap a card to open its modules.')+'</p><div class="wzgrid">';
-    PROGRAMS.forEach(function(pr){
-      var sel=MEET.picked[pr.id]||[], all=sel.length===pr.days.length;
-      body+='<button class="wzb'+(sel.length?(all?' all':' some'):'')+
-        (MEET.open===pr.id?' open':'')+'" style="--g1:'+pr.g1+';--g2:'+pr.g2+'" '+
-        'onclick="meetOpen(\''+pr.id+'\')">'+
-        '<svg class="wzart" viewBox="0 0 200 250" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
-          '<g fill="none" stroke="#fff" stroke-width="13" opacity=".13">'+
-          '<circle cx="14" cy="240" r="62"/><circle cx="14" cy="240" r="108"/>'+
-          '<circle cx="14" cy="240" r="154"/></g></svg>'+
-        '<span class="wzic">'+dIcon(pr.icon)+'</span>'+
-        (sel.length?'<span class="wzcount">'+sel.length+'/'+pr.days.length+'</span>':'')+
-        '<span class="wzlab">'+esc(pr.title)+
-          '<em>'+pr.days.length+' '+__tr('modules')+'</em></span>'+
-        '</button>';
-    });
-    body+='</div>';
-
-    var op=PROGRAMS.filter(function(x){ return x.id===MEET.open; })[0];
-    if(op){
-      var sel2=MEET.picked[op.id]||[], all2=sel2.length===op.days.length;
-      var sp=MEET.span[op.id]||1;
-      body+='<div class="wzmod"><div class="wzhead">'+
-        '<div><b>'+esc(op.title)+'</b><span>'+
-          (sel2.length?sel2.length+' '+__tr('of')+' '+op.days.length+' '+__tr('selected')
-                      :__tr('Nothing selected yet'))+'</span></div>'+
-        '<button class="mtall" onclick="meetProg(\''+op.id+'\')">'+
-          (all2?__tr('Clear'):__tr('Select all'))+'</button></div>'+
-        '<div class="wzpills">'+
-        op.days.map(function(d,i){
-          var on=sel2.indexOf(i)>-1;
-          return '<button class="wzpill'+(on?' on':'')+'" onclick="meetMod(\''+op.id+'\','+i+')">'+
-            '<i>'+(on?dIcon('check'):'')+'</i>'+esc(d.t)+'</button>';
-        }).join('')+'</div>'+
-        /* algumas trilhas nao cabem antes da proxima consulta */
-        '<div class="wzspan"><div class="kvl">'+__tr('Time to complete')+'</div>'+
-          '<div class="mtopts">'+[1,2,3].map(function(v){
-            return '<button class="mtopt'+(sp===v?' on':'')+'" onclick="meetSpan(\''+op.id+
-              '\','+v+')">'+(v===1?__tr('Before next visit')
-                            :v+' '+__tr('visits'))+'</button>'; }).join('')+
-          '</div></div>'+
-      '</div>';
-    }
-  } else if(step==='w2'){
-    var r=MEET.ref;
-    body='<div class="wzsec"><div class="kvl">'+__tr('Visit note')+'</div>'+
-      '<textarea class="mtta" placeholder="'+__tr('Anything to record from this visit?')+'" '+
-        'oninput="meetNote(this.value)">'+esc(MEET.note||'')+'</textarea></div>'+
-      '<div class="wzsec"><div class="kvl">'+__tr('Next appointment')+'</div>'+
-      '<div class="mtopts">'+MEET_NEXT.map(function(o,i){
-        return '<button class="mtopt'+(MEET.next===i?' on':'')+'" onclick="meetNext('+i+
-          ');dashSection(\''+role+'\')">'+__tr(o)+'</button>'; }).join('')+'</div></div>'+
-      /* encaminhar para a nutricionista: o elo terapeuta -> nutricionista */
-      '<div class="wzref'+(r.on?' on':'')+'">'+
-        '<button class="wzrefh" onclick="meetRef()">'+
-          '<span class="wzrefbox">'+(r.on?dIcon('check'):'')+'</span>'+
-          '<span class="wzreft"><b>'+__tr('Refer to a nutritionist')+'</b>'+
-            '<span>'+__tr('Require a nutrition visit before our next appointment')+'</span></span>'+
-        '</button>'+
-        (r.on?'<div class="wzrefb">'+
-          '<div class="wzwho"><span class="mtpic" style="--g1:#2A9D8F;--g2:#12615A">'+
-            dIcon('utensils')+'</span>'+
-            '<div><b>'+esc(DASH.nutri.name)+'</b>'+
-            '<span>'+__tr(DASH.nutri.roleLabel)+'</span></div></div>'+
-          '<div class="kvl" style="margin-top:12px">'+__tr('When')+'</div>'+
-          '<div class="mtopts">'+MEET_REFW.map(function(o,i){
-            return '<button class="mtopt'+(r.when===i?' on':'')+'" onclick="meetRefW('+i+
-              ')">'+__tr(o)+'</button>'; }).join('')+'</div>'+
-          '</div>':'')+
-      '</div>';
-  } else {
-    var lines='';
-    PROGRAMS.forEach(function(pr){
-      var sel=MEET.picked[pr.id]; if(!sel||!sel.length) return;
-      var sp=MEET.span[pr.id]||1;
-      lines+='<div class="mtrev"><b>'+esc(pr.title)+'</b><span>'+sel.length+' '+
-        __tr('of')+' '+pr.days.length+' '+__tr('modules')+' · '+
-        (sp===1?__tr('Before next visit'):sp+' '+__tr('visits'))+'</span></div>';
-    });
-    if(!lines) lines='<div class="mtrev mut"><span>'+__tr('No content assigned')+'</span></div>';
-    body='<p class="mtlead">'+__tr('This is what')+' '+esc(givenName(p.name))+' '+
-      __tr('will see in their account.')+'</p>'+lines+
-      (MEET.ref.on?'<div class="mtrev"><b>'+__tr('Nutrition visit')+'</b><span>'+
-        esc(DASH.nutri.name)+' · '+__tr(MEET_REFW[MEET.ref.when])+'</span></div>':'')+
-      (MEET.note?'<div class="mtrev"><b>'+__tr('Visit note')+'</b><span>'+esc(MEET.note)+
-        '</span></div>':'')+
-      '<div class="mtrev"><b>'+__tr('Next appointment')+'</b><span>'+
-        __tr(MEET_NEXT[MEET.next])+'</span></div>';
-  }
-
+function meetNav(role){
+  var step=MEET.phase;
   var back = (step==='w1')
     ? '<button class="dbtn dbtn-line" onclick="meetPhase(\'call\')">'+__tr('Back to call')+'</button>'
     : '<button class="dbtn dbtn-line" onclick="meetPhase(\''+(step==='w3'?'w2':'w1')+'\')">'+
@@ -8167,14 +8272,147 @@ function meetWizard(role,p){
       __tr('Send to patient')+'</button>'
     : '<button class="dbtn dbtn-solid" onclick="meetPhase(\''+(step==='w1'?'w2':'w3')+'\')">'+
       __tr('Continue')+dIcon('chevron-right')+'</button>';
+  return back+fwd;
+}
 
+/* o catalogo que o paciente ve, com a ligacao ao que existe de verdade.
+   Das 17 categorias da estante so estas tres tem modulos hoje; o resto aparece
+   mas nao pode ser atribuido, para nao prometer conteudo que nao existe. */
+function meetProgFor(cat){
+  var map=MEET_CATMAP[cat];
+  if(!map) return null;
+  return PROGRAMS.filter(function(p){ return p.id===map; })[0]||null;
+}
+
+function meetBody(role,p){
+  var step=MEET.phase;
+
+  if(step==='w1'){
+    var out='<p class="mtlead">'+__tr('Pick what')+' '+esc(givenName(p.name))+' '+
+      __tr('should work through. These are the shelves they see under Content.')+'</p>';
+    CATG.forEach(function(rail){
+      out+='<div class="wzrail"><div class="wzrailh"><b>'+__tr(rail[0])+'</b>'+
+        '<span>'+__tr(rail[1])+'</span></div><div class="wzgrid">';
+      rail[2].forEach(function(c){
+        var pr=meetProgFor(c[0]);
+        if(!pr){
+          out+='<div class="wzb empty" style="--g1:'+c[2]+';--g2:'+c[3]+'" '+
+            'title="'+__tr('No modules yet')+'">'+
+            '<span class="wzic">'+dIcon(c[1])+'</span>'+
+            '<span class="wzlab">'+esc(c[0])+'<em>'+__tr('No modules yet')+'</em></span></div>';
+          return;
+        }
+        var sel=MEET.picked[pr.id]||[], all=sel.length===pr.days.length;
+        out+='<button class="wzb'+(sel.length?(all?' all':' some'):'')+
+          (MEET.open===pr.id?' open':'')+'" style="--g1:'+c[2]+';--g2:'+c[3]+'" '+
+          'onclick="meetOpen(\''+pr.id+'\')">'+
+          '<span class="wzic">'+dIcon(c[1])+'</span>'+
+          (sel.length?'<span class="wzcount">'+sel.length+'/'+pr.days.length+'</span>':'')+
+          '<span class="wzlab">'+esc(c[0])+
+            '<em>'+pr.days.length+' '+__tr('modules')+'</em></span></button>';
+      });
+      out+='</div></div>';
+    });
+
+    var op=PROGRAMS.filter(function(x){ return x.id===MEET.open; })[0];
+    if(op){
+      var sel2=MEET.picked[op.id]||[], all2=sel2.length===op.days.length;
+      var sp=MEET.span[op.id]||1;
+      out+='<div class="wzmod"><div class="wzhead">'+
+        '<div><b>'+esc(op.title)+'</b><span>'+
+          (sel2.length?sel2.length+' '+__tr('of')+' '+op.days.length+' '+__tr('selected')
+                      :__tr('Nothing selected yet'))+'</span></div>'+
+        '<button class="mtall" onclick="meetProg(\''+op.id+'\')">'+
+          (all2?__tr('Clear'):__tr('Select all'))+'</button></div>'+
+        '<div class="wzpills">'+
+        op.days.map(function(d,i){
+          var on=sel2.indexOf(i)>-1;
+          return '<button class="wzpill'+(on?' on':'')+'" data-mi="'+i+'" '+
+            'onclick="meetMod(\''+op.id+'\','+i+',this)">'+
+            '<i>'+dIcon('check')+'</i>'+esc(d.t)+'</button>';
+        }).join('')+'</div>'+
+        '<div class="wzspan"><div class="kvl">'+__tr('Time to complete')+'</div>'+
+          '<div class="mtopts">'+[1,2,3].map(function(v){
+            return '<button class="mtopt'+(sp===v?' on':'')+'" onclick="meetSpan(\''+op.id+
+              '\','+v+',this)">'+(v===1?__tr('Before next visit')
+                            :v+' '+__tr('visits'))+'</button>'; }).join('')+
+          '</div></div></div>';
+    }
+    return out;
+  }
+
+  if(step==='w2'){
+    var r=MEET.ref;
+    return '<div class="wzsec"><div class="kvl">'+__tr('Visit note')+'</div>'+
+      '<textarea class="mtta" placeholder="'+__tr('Anything to record from this visit?')+'" '+
+        'oninput="meetNote(this.value)">'+esc(MEET.note||'')+'</textarea></div>'+
+      '<div class="wzsec"><div class="kvl">'+__tr('Next appointment')+'</div>'+
+      '<div class="mtopts">'+MEET_NEXT.map(function(o,i){
+        return '<button class="mtopt'+(MEET.next===i?' on':'')+'" onclick="meetNext('+i+
+          ',this)">'+__tr(o)+'</button>'; }).join('')+'</div></div>'+
+      '<div class="wzref'+(r.on?' on':'')+'">'+
+        '<button class="wzrefh" onclick="meetRef()">'+
+          '<span class="wzrefbox">'+dIcon('check')+'</span>'+
+          '<span class="wzreft"><b>'+__tr('Refer to a nutritionist')+'</b>'+
+            '<span>'+__tr('Require a nutrition visit before our next appointment')+'</span></span>'+
+        '</button>'+
+        (r.on?'<div class="wzrefb">'+
+          '<div class="wzwho"><span class="mtpic" style="--g1:#2A9D8F;--g2:#12615A">'+
+            dIcon('utensils')+'</span><div><b>'+esc(DASH.nutri.name)+'</b>'+
+            '<span>'+__tr(DASH.nutri.roleLabel)+'</span></div></div>'+
+          '<div class="kvl" style="margin-top:12px">'+__tr('When')+'</div>'+
+          '<div class="mtopts">'+MEET_REFW.map(function(o,i){
+            return '<button class="mtopt'+(r.when===i?' on':'')+'" onclick="meetRefW('+i+
+              ',this)">'+__tr(o)+'</button>'; }).join('')+'</div></div>':'')+
+      '</div>';
+  }
+
+  /* w3 */
+  var lines='';
+  PROGRAMS.forEach(function(pr){
+    var sel=MEET.picked[pr.id]; if(!sel||!sel.length) return;
+    var sp=MEET.span[pr.id]||1;
+    lines+='<div class="mtrev"><b>'+esc(pr.title)+'</b><span>'+sel.length+' '+
+      __tr('of')+' '+pr.days.length+' '+__tr('modules')+' · '+
+      (sp===1?__tr('Before next visit'):sp+' '+__tr('visits'))+'</span></div>';
+  });
+  if(!lines) lines='<div class="mtrev mut"><span>'+__tr('No content assigned')+'</span></div>';
+  return '<p class="mtlead">'+__tr('This is what')+' '+esc(givenName(p.name))+' '+
+    __tr('will see in their account.')+'</p>'+lines+
+    (MEET.ref.on?'<div class="mtrev"><b>'+__tr('Nutrition visit')+'</b><span>'+
+      esc(DASH.nutri.name)+' · '+__tr(MEET_REFW[MEET.ref.when])+'</span></div>':'')+
+    (MEET.note?'<div class="mtrev"><b>'+__tr('Visit note')+'</b><span>'+esc(MEET.note)+
+      '</span></div>':'')+
+    '<div class="mtrev"><b>'+__tr('Next appointment')+'</b><span>'+
+      __tr(MEET_NEXT[MEET.next])+'</span></div>';
+}
+
+function meetWizard(role,p){
+  var n=meetCount();
   return '<div class="dsec mtwrap">'+
     '<div class="dhead"><h1>'+__tr('Close the visit')+'</h1>'+
-      '<p>'+esc(p.name)+(n?' · '+n+' '+__tr('modules selected'):'')+'</p></div>'+
-    '<div class="mtwiz"><div class="mtsteps">'+sh+'</div>'+
-      '<div class="mtbody">'+body+'</div>'+
-      '<div class="mtnav">'+back+fwd+'</div>'+
+      '<p id="mtsub">'+esc(p.name)+(n?' · '+n+' '+__tr('modules selected'):'')+'</p></div>'+
+    '<div class="mtwiz"><div class="mtsteps">'+meetSteps()+'</div>'+
+      '<div class="mtbody">'+meetBody(role,p)+'</div>'+
+      '<div class="mtnav">'+meetNav(role)+'</div>'+
     '</div></div>';
+}
+
+/* repinta so o que muda, sem tocar no scroll */
+function meetRepaint(){
+  if(!MEET) return;
+  var role=MEET.role, p=DASH[role].patients[MEET.pi];
+  var host=document.getElementById('dwrap-'+role);
+  var body=host&&host.querySelector('.mtbody');
+  if(!body){ dashSection(role); return; }
+  body.innerHTML=meetBody(role,p);
+  var st=host.querySelector('.mtsteps'); if(st) st.innerHTML=meetSteps();
+  var nav=host.querySelector('.mtnav'); if(nav) nav.innerHTML=meetNav(role);
+  var sub=document.getElementById('mtsub');
+  if(sub){ var n=meetCount();
+    sub.textContent=p.name+(n?' · '+n+' '+__tr('modules selected'):''); }
+  renderIcons(host);
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
 }
 function dashPFilter(role,q){
   q=(q||'').toLowerCase();
@@ -9008,8 +9246,9 @@ function progSection(){
 function certHero(role){
   const nm=givenName(DASH[role].name);
   return '<section class="imhero">'+
-    '<div class="imbg" style="background-image:url(\'art/cta-clinician.jpg\');'+
-      'background-position:72% 38%"></div>'+
+    /* a foto escolhida para Cursos; art/cta-clinician.jpg deixou de ser usada */
+    '<div class="imbg" style="background-image:url(\'art/courses-clinicians.jpg\');'+
+      'background-position:56% 46%"></div>'+
     '<div class="imscrim"></div><div class="imfade"></div>'+
     '<div class="imin"><p class="imkick">'+__tr('Professional training')+'</p>'+
     '<h2>'+__tr('Courses')+'</h2>'+
@@ -10553,7 +10792,7 @@ function pJourney(D){
           '<button onclick="event.stopPropagation();jTrkStep(\'labs\',-1)">−</button>'+
           '<button onclick="event.stopPropagation();jTrkStep(\'labs\',1)">+</button></div>'+
         '<button class="go" style="background:var(--soft)" '+
-          'onclick="event.stopPropagation();jSet(0);jTrkSet(\'wk\',0);jTrkSet(\'labs\',0)">'+
+          'onclick="event.stopPropagation();jSet(0);jTrkSet(\'wk\',0);jTrkSet(\'labs\',0);aqReset()">'+
           __tr('Reset')+'</button>'+
       '</div></div>';
 
@@ -10569,10 +10808,12 @@ function pJourney(D){
       '<div class="jright">'+
         '<span class="jstreak">'+dIcon('flame')+'<b>'+(st.streak||0)+'</b>'+
           '<span>'+__tr('day streak')+'</span></span>'+
+        '<span class="jformed" title="'+__tr('Steps completed')+'">'+
+          __tr('Formed')+' <b>'+aqStats().pct+'%</b></span>'+
         dots+test+
       '</div>'+
     '</div>'+
-    '<div class="jgraph">'+jMapSVG('')+masc+'</div></div>';
+    '<div class="jgraph">'+jMapSVG('')+aqOverlay()+masc+'</div></div>';
 }
 
 /* mantidos para o resto do app */
@@ -13261,6 +13502,12 @@ routeFromHash();
 /* ============ LANGUAGE TOGGLE (EN / PT-BR) ============ */
 (function(){
   const EN2PT={
+    "More steps":"Mais passos",
+    "Formed":"Formado","Steps completed":"Passos concluidos",
+    "The only thing open":"A unica coisa aberta","Booked":"Marcado",
+    "Meet your nutritionist":"Conhecer a nutricionista",
+    "should work through. These are the shelves they see under Content.":"deve percorrer. Estas sao as prateleiras que ele ve em Conteudo.",
+    "No modules yet":"Ainda sem modulos",
     "Plan":"Plano","should work through. Tap a card to open its modules.":"deve percorrer. Toque num cartao para abrir os modulos.",
     "Nothing selected yet":"Nada selecionado ainda","Time to complete":"Prazo",
     "Before next visit":"Antes da proxima consulta","visits":"consultas",
