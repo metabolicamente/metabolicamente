@@ -2479,9 +2479,22 @@ body.dark #doctor .dgc,body.dark #nutri .dgc{border-color:rgba(255,255,255,.08)}
 /* ---- (A) AGENDA ---- */
 .pcal{display:flex;flex-direction:column;flex:1;min-height:0}
 .pcalwk{display:flex;gap:4px;margin-bottom:12px;flex-shrink:0}
-.pcalwk button{flex:1;border:0;background:none;cursor:pointer;border-radius:12px;padding:6px 0 7px;
-  font-family:var(--sans);display:flex;flex-direction:column;align-items:center;gap:5px;
-  transition:background .22s ease}
+.pcalwk button{position:relative;flex:1;border:0;background:none;cursor:pointer;border-radius:12px;
+  padding:6px 0 7px;font-family:var(--sans);display:flex;flex-direction:column;align-items:center;gap:5px;
+  transition:background .34s cubic-bezier(.2,.8,.3,1),transform .34s cubic-bezier(.2,.8,.3,1)}
+.pcalwk button .wd,.pcalwk button .dn{transition:color .34s ease}
+.pcalwk button .dots i{transition:background .34s ease}
+/* a escolha respira em vez de saltar */
+@keyframes pcalPop{0%{transform:scale(.93)}56%{transform:scale(1.05)}100%{transform:scale(1)}}
+@keyframes pcalRing{0%{box-shadow:0 0 0 0 rgba(42,157,143,.5)}
+  100%{box-shadow:0 0 0 13px rgba(42,157,143,0)}}
+.pcalwk button.pulse{animation:pcalPop .48s cubic-bezier(.2,.8,.3,1)}
+.pcalwk button.pulse::after{content:'';position:absolute;inset:0;border-radius:12px;
+  pointer-events:none;animation:pcalRing .62s ease-out}
+@keyframes pcalFade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.pcalbody.swap .pcalgrid{animation:pcalFade .36s cubic-bezier(.2,.8,.3,1)}
+@media(prefers-reduced-motion:reduce){
+  .pcalwk button.pulse,.pcalwk button.pulse::after,.pcalbody.swap .pcalgrid{animation:none}}
 .pcalwk button:hover{background:var(--bg-dim)}
 .pcalwk .wd{font-family:var(--quiet);font-size:9.5px;font-weight:700;letter-spacing:.1em;
   text-transform:uppercase;color:var(--soft)}
@@ -2506,14 +2519,14 @@ body.dark #doctor .dgc,body.dark #nutri .dgc{border-color:rgba(255,255,255,.08)}
 .pcallane{position:absolute;left:52px;right:0;top:0;bottom:0}
 
 .pappt{position:absolute;left:0;right:2px;border-radius:12px;padding:6px 10px;cursor:pointer;
-  overflow:hidden;display:flex;flex-direction:column;justify-content:center;
+  overflow:hidden;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
   border-left:3px solid var(--ac);background:var(--acbg);
   transition:transform .26s cubic-bezier(.2,.8,.3,1),box-shadow .3s ease}
 .pappt:hover{transform:translateX(2px) scale(1.012);box-shadow:0 8px 22px rgba(12,51,63,.13);z-index:3}
 .pappt b{font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--hd);line-height:1.25;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
 /* linha baixa: hora e nome lado a lado, o tipo sai — antes o nome era cortado ao meio */
-.pappt.sm{flex-direction:row;align-items:baseline;gap:7px;padding:4px 9px}
+.pappt.sm{flex-direction:row;align-items:center;gap:7px;padding:4px 9px}
 .pappt.sm .sb{display:none}
 .pappt.sm .tm{flex-shrink:0}
 .pappt.xs{padding:3px 8px}
@@ -2660,6 +2673,162 @@ body.dark .dfab-brain svg{filter:drop-shadow(0 8px 18px rgba(0,0,0,.5))}
 .pchin button:hover{background:var(--t700)}
 /* janela baixa: o painel encolhe em vez de sair do ecra */
 
+
+/* ---- (E) SALA DE CONSULTA + ASSISTENTE DE PRESCRICAO ---- */
+.mtwrap{display:flex;flex-direction:column;gap:clamp(12px,1.3vw,18px)}
+.mtgrid{display:grid;grid-template-columns:minmax(0,1fr) clamp(240px,23vw,320px);
+  gap:clamp(12px,1.2vw,18px);align-items:start}
+@media(max-width:900px){.mtgrid{grid-template-columns:1fr}}
+
+.mtstage{display:flex;flex-direction:column;gap:clamp(10px,1vw,14px);min-width:0}
+.mtvid{position:relative;width:100%;aspect-ratio:16/10;max-height:min(56vh,540px);
+  border-radius:clamp(16px,1.6vw,24px);overflow:hidden;
+  background:linear-gradient(145deg,var(--g1),var(--g2));display:grid;place-items:center;
+  box-shadow:0 18px 48px rgba(12,51,63,.22)}
+.mtvid::after{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 55% at 50% 42%,rgba(255,255,255,.09),transparent 70%)}
+@media(max-width:520px){.mtvid{aspect-ratio:4/3}}
+.mtav{width:clamp(84px,11vw,140px);height:clamp(84px,11vw,140px);border-radius:50%;
+  display:grid;place-items:center;font-family:var(--display);font-weight:700;
+  font-size:clamp(30px,4vw,48px);color:#fff;letter-spacing:-.02em;z-index:2;
+  background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.22);
+  box-shadow:0 12px 34px rgba(0,0,0,.24)}
+.mtname{position:absolute;left:clamp(14px,1.6vw,22px);bottom:clamp(14px,1.6vw,22px);z-index:3}
+.mtname b{display:block;font-family:var(--display);font-size:clamp(15px,1.5vw,19px);
+  font-weight:600;color:#fff;line-height:1.2}
+.mtname span{display:block;font-size:11.5px;color:rgba(255,255,255,.62);margin-top:2px}
+.mtlive{position:absolute;left:clamp(14px,1.6vw,22px);top:clamp(14px,1.6vw,22px);z-index:3;
+  display:flex;align-items:center;gap:6px;background:rgba(7,34,44,.5);border-radius:99px;
+  padding:5px 11px;font-family:var(--quiet);font-size:10px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:#fff;backdrop-filter:blur(6px)}
+.mtlive i{width:6px;height:6px;border-radius:50%;background:var(--coral);
+  animation:mtBlink 1.7s ease-in-out infinite}
+@keyframes mtBlink{0%,100%{opacity:1}50%{opacity:.3}}
+.mttimer{position:absolute;right:clamp(14px,1.6vw,22px);top:clamp(14px,1.6vw,22px);z-index:3;
+  font-family:var(--quiet);font-size:13px;font-weight:700;letter-spacing:.06em;color:#fff;
+  background:rgba(7,34,44,.5);border-radius:99px;padding:5px 12px;backdrop-filter:blur(6px);
+  font-variant-numeric:tabular-nums}
+.mtself{position:absolute;right:clamp(12px,1.4vw,18px);bottom:clamp(12px,1.4vw,18px);z-index:3;
+  width:clamp(74px,9vw,116px);aspect-ratio:4/3;border-radius:12px;overflow:hidden;
+  background:linear-gradient(145deg,#2A9D8F,#12615A);display:grid;place-items:end start;
+  border:1.5px solid rgba(255,255,255,.28);box-shadow:0 8px 22px rgba(0,0,0,.26)}
+.mtself span{font-size:10px;font-weight:600;color:#fff;padding:6px 8px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+@media(prefers-reduced-motion:reduce){.mtlive i{animation:none}}
+
+.mtctl{display:flex;align-items:center;justify-content:center;gap:clamp(8px,1vw,12px);
+  flex-wrap:wrap}
+.mtb{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--card);
+  cursor:pointer;color:var(--hd2);display:grid;place-items:center;font-size:18px;
+  transition:all .24s cubic-bezier(.2,.8,.3,1)}
+.mtb:hover{border-color:var(--t500);color:var(--t500);transform:translateY(-2px)}
+.mtb.off{background:var(--alert-bg);border-color:transparent;color:var(--alert)}
+.mtend{display:flex;align-items:center;gap:8px;border:0;border-radius:99px;cursor:pointer;
+  padding:0 clamp(16px,1.6vw,24px);height:46px;background:var(--coral);color:#fff;
+  font-family:var(--sans);font-size:13.5px;font-weight:600;
+  box-shadow:0 8px 24px rgba(231,111,81,.36);transition:all .24s cubic-bezier(.2,.8,.3,1)}
+.mtend:hover{background:var(--coral-deep);transform:translateY(-2px);
+  box-shadow:0 12px 30px rgba(231,111,81,.44)}
+.mtend .ic{font-size:17px;display:flex}
+@media(max-width:400px){.mtend .lb{display:none}.mtend{padding:0 18px}}
+
+.mtside{display:flex;flex-direction:column;gap:clamp(10px,1vw,14px);min-width:0}
+.mtcard{background:var(--card);border:1px solid rgba(12,51,63,.075);
+  border-radius:clamp(14px,1.4vw,20px);padding:clamp(13px,1.2vw,18px);
+  box-shadow:0 1px 2px rgba(12,51,63,.04),0 10px 30px rgba(12,51,63,.05)}
+body.dark .mtcard{border-color:rgba(255,255,255,.08)}
+.mth{display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:13px;
+  font-weight:700;color:var(--hd);margin-bottom:12px}
+.mth .ic{font-size:16px;color:var(--t500);display:flex}
+.mtfact{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  padding:7px 0;border-bottom:1px solid var(--line)}
+.mtfact:last-child{border-bottom:none;padding-bottom:0}
+.mtfact span{font-size:11.5px;color:var(--soft);flex-shrink:0}
+.mtfact b{font-size:12.5px;font-weight:600;color:var(--hd);text-align:right;min-width:0}
+.mtnotes textarea{width:100%;min-height:clamp(110px,13vw,170px);resize:vertical;border-radius:12px;
+  border:1px solid var(--line);background:var(--bg-dim);padding:11px 12px;
+  font-family:var(--sans);font-size:12.5px;line-height:1.55;color:var(--ink);outline:none}
+.mtnotes textarea:focus{border-color:var(--t500);background:var(--card)}
+
+/* --- assistente --- */
+.mtwiz{max-width:860px;background:var(--card);border:1px solid rgba(12,51,63,.075);
+  border-radius:clamp(16px,1.6vw,24px);padding:clamp(16px,1.6vw,26px);
+  box-shadow:0 1px 2px rgba(12,51,63,.04),0 10px 30px rgba(12,51,63,.055)}
+body.dark .mtwiz{border-color:rgba(255,255,255,.08)}
+.mtsteps{display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  padding-bottom:clamp(14px,1.4vw,20px);margin-bottom:clamp(14px,1.4vw,20px);
+  border-bottom:1px solid var(--line)}
+.mtstep{display:flex;align-items:center;gap:8px;min-width:0}
+.mtstep i{width:24px;height:24px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;
+  font-family:var(--display);font-size:11.5px;font-weight:700;font-style:normal;
+  background:var(--bg-dim);color:var(--soft);transition:all .26s ease}
+.mtstep i .ic{font-size:13px;display:flex}
+.mtstep span{font-size:12.5px;font-weight:600;color:var(--soft);white-space:nowrap}
+.mtstep.on i{background:var(--t900);color:#fff}
+.mtstep.on span{color:var(--hd)}
+.mtstep.done i{background:var(--ok-bg);color:var(--ok)}
+.mtsep{flex:1;min-width:14px;height:1px;background:var(--line)}
+.mtlead{font-family:var(--calm);font-size:14px;line-height:1.6;color:var(--soft);
+  margin-bottom:clamp(12px,1.2vw,18px)}
+
+.mtprogs{display:flex;flex-direction:column;gap:10px}
+.mtprog{border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  transition:border-color .24s ease,box-shadow .24s ease}
+.mtprog.has{border-color:var(--t500);box-shadow:0 6px 20px rgba(42,157,143,.1)}
+.mtprogh{display:flex;align-items:center;gap:11px;padding:12px 13px;background:var(--bg-dim)}
+.mtpic{width:32px;height:32px;border-radius:10px;flex-shrink:0;display:grid;place-items:center;
+  color:#fff;font-size:16px;background:linear-gradient(140deg,var(--g1),var(--g2))}
+.mtpic .ic{display:flex}
+.mtprogt{min-width:0;flex:1}
+.mtprogt b{display:block;font-size:13.5px;font-weight:600;color:var(--hd);line-height:1.3}
+.mtprogt span{display:block;font-size:11.5px;color:var(--soft);margin-top:2px}
+.mtall{flex-shrink:0;border:1px solid var(--line);background:var(--card);border-radius:99px;
+  padding:6px 13px;cursor:pointer;font-family:var(--sans);font-size:11.5px;font-weight:600;
+  color:var(--hd2);transition:all .22s ease}
+.mtall:hover{border-color:var(--t500);color:var(--t500);background:var(--t50)}
+.mtmods{display:flex;flex-direction:column}
+.mtmod{display:flex;align-items:center;gap:10px;padding:10px 13px;border:0;background:none;
+  cursor:pointer;text-align:left;font:inherit;border-top:1px solid var(--line);
+  transition:background .2s ease}
+.mtmod:hover{background:var(--t50)}
+.mtmod i{width:19px;height:19px;border-radius:6px;flex-shrink:0;display:grid;place-items:center;
+  border:1.5px solid var(--line);background:var(--card);color:#fff;font-size:11px;
+  transition:all .2s ease}
+.mtmod i .ic{display:flex}
+.mtmod.on i{background:var(--t500);border-color:var(--t500)}
+.mtmod span{font-size:12.5px;color:var(--hd2);line-height:1.35;min-width:0}
+.mtmod.on span{color:var(--hd);font-weight:500}
+
+.mtta{width:100%;min-height:clamp(120px,14vw,190px);resize:vertical;border-radius:14px;
+  border:1px solid var(--line);background:var(--bg-dim);padding:13px 14px;
+  font-family:var(--sans);font-size:13.5px;line-height:1.6;color:var(--ink);outline:none}
+.mtta:focus{border-color:var(--t500);background:var(--card)}
+.mtnext{margin-top:clamp(14px,1.4vw,20px)}
+.mtopts{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+.mtopt{border:1px solid var(--line);background:none;border-radius:99px;padding:8px 15px;
+  cursor:pointer;font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--hd2);
+  transition:all .22s ease}
+.mtopt:hover{border-color:var(--t500);color:var(--t500)}
+.mtopt.on{background:var(--t900);border-color:var(--t900);color:#fff}
+
+.mtrev{display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+  padding:12px 0;border-bottom:1px solid var(--line)}
+.mtrev:last-of-type{border-bottom:none}
+.mtrev b{font-family:var(--display);font-size:13.5px;font-weight:600;color:var(--hd);flex-shrink:0}
+.mtrev span{font-size:12.5px;color:var(--soft);text-align:right;min-width:0;line-height:1.5}
+.mtrev.mut span{text-align:left}
+.mtnav{display:flex;gap:9px;justify-content:flex-end;flex-wrap:wrap;
+  padding-top:clamp(14px,1.4vw,20px);margin-top:clamp(12px,1.2vw,18px);
+  border-top:1px solid var(--line)}
+@media(max-width:480px){.mtnav{justify-content:stretch}.mtnav .dbtn{flex:1;justify-content:center}}
+
+/* o painel do dia entra sem salto ao trocar de data */
+@keyframes agFade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.agday.swap{animation:agFade .36s cubic-bezier(.2,.8,.3,1)}
+.agcell{transition:border-color .26s ease,background .26s ease,transform .22s ease,
+  box-shadow .26s ease}
+@media(prefers-reduced-motion:reduce){.agday.swap{animation:none}}
+
 /* ---- (D) CALENDARIO DO MES ---- */
 .agwrap{display:flex;flex-direction:column;gap:clamp(14px,1.4vw,20px)}
 .agtop{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
@@ -2718,7 +2887,8 @@ body.dark .agcal{border-color:rgba(255,255,255,.08);
   .agcell{min-height:clamp(48px,11vw,72px);align-items:flex-start;gap:5px}
 }
 
-.agday{background:var(--card);border:1px solid rgba(12,51,63,.075);
+.agday{min-height:clamp(150px,15vw,208px);   /* altura estavel: trocar de dia nao encurta a pagina */
+  background:var(--card);border:1px solid rgba(12,51,63,.075);
   border-radius:clamp(16px,1.5vw,22px);padding:clamp(14px,1.3vw,20px);
   box-shadow:0 1px 2px rgba(12,51,63,.04),0 10px 30px rgba(12,51,63,.055)}
 body.dark .agday{border-color:rgba(255,255,255,.08)}
@@ -6602,6 +6772,7 @@ const ICONS={
  'chevron-right':'<polyline points="9 18 15 12 9 6"/>',
  'coffee':'<path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/>',
  'stethoscope':'<path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 1 0 .3.3"/><path d="M8 15v1a6 6 0 0 0 6 6v0a6 6 0 0 0 6-6v-4"/><circle cx="20" cy="10" r="2"/>',
+ 'phone-off':'<path d="M10.7 13.3a11 11 0 0 1-2-3l1.8-1.8-2.4-4.2-3 1C4 8.2 6 12 8.6 14.6c1 1 2.2 1.9 3.4 2.6"/><path d="M14.4 19.1c2.3 1 4.2 1 4.8.6l1-3-4.2-2.4-1.3 1.3"/><path d="M3 3l18 18"/>',
  'plus':'<path d="M12 5v14"/><path d="M5 12h14"/>',
  'user-plus':'<path d="M15 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M19 8v6"/><path d="M22 11h-6"/>',
  'user-circle':'<circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.7a6 6 0 0 1 10 0"/>',
@@ -7419,7 +7590,9 @@ function dshTestToggle(e){
     });
   },0);
 }
-function dashNav(role,id){ DASH[role].sec=id; DASH[role].selPatient=null; PDETAIL=null; renderDash(role); window.scrollTo(0,0); }
+function dashNav(role,id){ DASH[role].sec=id; DASH[role].selPatient=null; PDETAIL=null;
+  if(MEET&&MEET.role===role){ if(MEET_T){clearInterval(MEET_T);MEET_T=null;} MEET=null; }
+  renderDash(role); window.scrollTo(0,0); }
 function dashMission(role,i){
   const D=DASH[role], m=D.missions[i]; m[1]=m[1]?0:1;
   const w=document.getElementById('dwrap-'+role);
@@ -7591,6 +7764,7 @@ function pfEdit(role){ pfState(DASH[role]).editing=true; dashSection(role); }
 function pfCancel(role){ pfState(DASH[role]).editing=false; dashSection(role); }
 function pfSave(role){ const pf=pfState(DASH[role]); ['name','email','phone','city'].forEach(k=>{ const el=document.getElementById('pf-'+k); if(el) pf[k]=el.value; }); pf.editing=false; dashSection(role); toast('Demo: your profile would be saved'); }
 function dSection(D){
+  if(MEET&&MEET.role==='doctor') return meetView('doctor');
   const s=D.sec, ln=firstName(D.name);
   if(s==='inicio') return proDash('doctor');
   if(s==='pratica') return proHome('doctor');
@@ -7607,7 +7781,7 @@ function dSection(D){
           '<div class="kv">'+kvh+'</div><div class="tri3">'+ynh+'</div>'+
           '<div style="margin-top:16px"><div class="kvl" style="margin-bottom:6px">Daily energy</div>'+
           '<div style="display:flex;align-items:center;gap:12px"><div style="flex:1;height:9px;border-radius:99px;background:var(--bg-dim);overflow:hidden"><div style="width:'+(p.energy*10)+'%;height:100%;background:var(--t500)"></div></div><b style="color:var(--hd);font-size:14px">'+p.energy+'/10</b></div></div>'+
-          '<div class="tacts" style="display:flex;gap:8px;margin-top:20px"><button class="dbtn dbtn-line" onclick="toast(\'Demo: chat would open here\')">'+dIcon('message')+'Chat</button><button class="dbtn dbtn-solid" onclick="toast(\'Demo: the video session would open here\')">'+dIcon('video')+'Video call</button></div>'+
+          '<div class="tacts" style="display:flex;gap:8px;margin-top:20px"><button class="dbtn dbtn-line" onclick="toast(\'Demo: chat would open here\')">'+dIcon('message')+'Chat</button><button class="dbtn dbtn-solid" onclick="meetStart(\'doctor\','+D.selPatient+')">'+dIcon('video')+__tr('Start meeting')+'</button></div>'+
         '</div></div>';
     }
     let list='';
@@ -7625,6 +7799,7 @@ function dSection(D){
   return perfil(D,'doctor');
 }
 function nSection(D){
+  if(MEET&&MEET.role==='nutri') return meetView('nutri');
   const s=D.sec, ln=firstName(D.name);
   if(s==='inicio') return proDash('nutri');
   if(s==='pratica') return proHome('nutri');
@@ -7636,7 +7811,9 @@ function nSection(D){
         '<div class="dcard"><div class="dh2" style="margin:0 0 14px">'+dIcon('utensils')+'Menu &amp; adherence</div>'+
         '<span class="ptag '+(p.adhc==='ok'?'ok':'warn')+'">'+p.adh+'</span>'+
         '<p style="color:var(--soft);font-size:14px;line-height:1.7;margin-top:14px">Generate a personalized menu based on this patient\'s triage, labs, and preferences.</p>'+
-        '<button class="dbtn dbtn-solid" style="margin-top:16px" onclick="toast(\'Demo: the AI menu generator would open here\')">'+dIcon('sparkles')+'Generate menu</button></div></div>';
+        '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">'+
+        '<button class="dbtn dbtn-line" onclick="toast(\'Demo: the AI menu generator would open here\')">'+dIcon('sparkles')+'Generate menu</button>'+
+        '<button class="dbtn dbtn-solid" onclick="meetStart(\'nutri\','+D.selPatient+')">'+dIcon('video')+__tr('Start meeting')+'</button></div></div></div>';
     }
     let list='';
     D.patients.forEach((p,i)=>{ list+='<button class="pcard" onclick="dashSelPatient(\'nutri\','+i+')"><div class="pav">'+p.init+'</div>'+
@@ -7652,7 +7829,214 @@ function nSection(D){
   if(s==='agenda') return agendaMonth('nutri');
   return perfil(D,'nutri');
 }
-function dashSelPatient(role,i){ DASH[role].selPatient=i; dashSection(role); window.scrollTo(0,0); }
+/* escolher um paciente tem de levar tambem a secao de pacientes: com sec='inicio'
+   o detalhe nunca era pintado e o clique parecia nao fazer nada */
+function dashSelPatient(role,i){
+  var D=DASH[role];
+  if(MEET&&MEET.role===role){ if(MEET_T){clearInterval(MEET_T);MEET_T=null;} MEET=null; }
+  if(role!=='patient'&&D.sec!=='pacientes'){
+    D.sec='pacientes'; PDETAIL=null; D.selPatient=i;
+    renderDash(role); window.scrollTo(0,0); return;
+  }
+  D.selPatient=i; dashSection(role); window.scrollTo(0,0);
+}
+
+/* ============ CONSULTA: sala, e o assistente de prescricao no fim ============ */
+var MEET=null, MEET_T=null;
+var MEET_NEXT=['In 1 week','In 2 weeks','In 1 month','No follow-up yet'];
+
+function pIdx(role,name){
+  var ps=DASH[role].patients;
+  for(var i=0;i<ps.length;i++) if(ps[i].name===name) return i;
+  return -1;
+}
+/* "Start" na agenda: abre a sala direto naquele paciente */
+function pMeetFrom(role,name){
+  var i=pIdx(role,name);
+  if(i<0){ toast(__tr('This person is not a patient yet')); return; }
+  meetStart(role,i);
+}
+function meetStart(role,i){
+  MEET={role:role,pi:i,phase:'call',t0:Date.now(),picked:{},note:'',next:0,mic:1,cam:1};
+  DASH[role].selPatient=i;
+  dashSection(role); window.scrollTo(0,0);
+}
+function meetLeave(){
+  if(MEET_T){ clearInterval(MEET_T); MEET_T=null; }
+  var r=MEET?MEET.role:null; MEET=null;
+  if(r) dashSection(r);
+}
+function meetPhase(p){
+  if(!MEET) return;
+  if(p!=='call'&&MEET_T){ clearInterval(MEET_T); MEET_T=null; }
+  MEET.phase=p; dashSection(MEET.role); window.scrollTo(0,0);
+}
+function meetToggle(k,el){
+  if(!MEET) return;
+  MEET[k]=MEET[k]?0:1;
+  if(el) el.classList.toggle('off',!MEET[k]);
+}
+function meetTick(){
+  if(MEET_T){ clearInterval(MEET_T); MEET_T=null; }
+  MEET_T=setInterval(function(){
+    var el=document.getElementById('mttime');
+    if(!el||!MEET||MEET.phase!=='call'){ clearInterval(MEET_T); MEET_T=null; return; }
+    var s2=Math.floor((Date.now()-MEET.t0)/1000);
+    var m=Math.floor(s2/60), ss=s2%60;
+    el.textContent=(m<10?'0':'')+m+':'+(ss<10?'0':'')+ss;
+  },1000);
+}
+/* escolher um programa inteiro, ou modulos soltos */
+function meetProg(pid){
+  if(!MEET) return;
+  var p=PROGRAMS.filter(function(x){ return x.id===pid; })[0]; if(!p) return;
+  var cur=MEET.picked[pid];
+  if(cur&&cur.length===p.days.length){ delete MEET.picked[pid]; }
+  else { MEET.picked[pid]=p.days.map(function(_,i){ return i; }); }
+  dashSection(MEET.role);
+}
+function meetMod(pid,di){
+  if(!MEET) return;
+  var a=MEET.picked[pid]||[], k=a.indexOf(di);
+  if(k>-1) a.splice(k,1); else a.push(di);
+  if(a.length) MEET.picked[pid]=a; else delete MEET.picked[pid];
+  dashSection(MEET.role);
+}
+function meetCount(){
+  var n=0; for(var k in MEET.picked) n+=MEET.picked[k].length; return n;
+}
+function meetNote(v){ if(MEET) MEET.note=v; }
+function meetNext(v){ if(MEET) MEET.next=+v; }
+function meetSend(){
+  if(!MEET) return;
+  var n=meetCount(), role=MEET.role, i=MEET.pi;
+  MEET=null;
+  toast(n? (__tr('Demo: sent')+' — '+n+' '+__tr('modules assigned'))
+         : __tr('Demo: visit closed with no content assigned'));
+  DASH[role].selPatient=i; dashSection(role); window.scrollTo(0,0);
+}
+
+function meetView(role){
+  var D=DASH[role], p=D.patients[MEET.pi];
+  if(MEET.phase!=='call') return meetWizard(role,p);
+
+  var risk=(p.risk==='moderate'||p.adhc==='warn')?'warn':'ok';
+  var facts=[];
+  if(p.sub) facts.push([__tr('Profile'),p.sub]);
+  if(p.energy!=null) facts.push([__tr('Daily energy'),p.energy+'/10']);
+  if(p.adh) facts.push([__tr('Adherence'),p.adh]);
+  if(p.risk) facts.push([__tr('Risk'),__tr(p.risk)]);
+  var fh=facts.map(function(f){
+    return '<div class="mtfact"><span>'+f[0]+'</span><b>'+esc(f[1])+'</b></div>'; }).join('');
+
+  setTimeout(meetTick,0);
+
+  return '<div class="dsec mtwrap">'+
+    '<button class="dback" onclick="meetLeave()">'+dIcon('chevron-left')+__tr('Leave')+'</button>'+
+    '<div class="mtgrid">'+
+      '<div class="mtstage">'+
+        '<div class="mtvid" style="--g1:#114B5F;--g2:#07222C">'+
+          '<div class="mtlive"><i></i>'+__tr('Live')+'</div>'+
+          '<div class="mttimer" id="mttime">00:00</div>'+
+          '<div class="mtav">'+esc(p.init)+'</div>'+
+          '<div class="mtname"><b>'+esc(p.name)+'</b><span>'+esc(p.sub||'')+'</span></div>'+
+          '<div class="mtself"><span>'+esc(givenName(D.name))+'</span></div>'+
+        '</div>'+
+        '<div class="mtctl">'+
+          '<button class="mtb" onclick="meetToggle(\'mic\',this)" aria-label="'+__tr('Microphone')+'">'+
+            dIcon('mic')+'</button>'+
+          '<button class="mtb" onclick="meetToggle(\'cam\',this)" aria-label="'+__tr('Camera')+'">'+
+            dIcon('video')+'</button>'+
+          '<button class="mtb" onclick="toast(\''+__tr('Demo: screen sharing would start here')+
+            '\')" aria-label="'+__tr('Share screen')+'">'+dIcon('clipboard')+'</button>'+
+          '<button class="mtend" onclick="meetPhase(\'w1\')">'+dIcon('phone-off')+
+            '<span class="lb">'+__tr('End meeting')+'</span></button>'+
+        '</div>'+
+      '</div>'+
+      '<aside class="mtside">'+
+        '<div class="mtcard"><div class="mth">'+dIcon('clipboard')+__tr('At a glance')+'</div>'+
+          '<span class="ptag '+risk+'" style="margin-bottom:10px;display:inline-flex">'+
+            (risk==='warn'?__tr('Needs attention'):__tr('On track'))+'</span>'+
+          fh+'</div>'+
+        '<div class="mtcard mtnotes"><div class="mth">'+dIcon('clipboard')+__tr('Session notes')+'</div>'+
+          '<textarea placeholder="'+__tr('Type as you go')+'" '+
+            'oninput="meetNote(this.value)">'+esc(MEET.note||'')+'</textarea></div>'+
+      '</aside>'+
+    '</div></div>';
+}
+
+function meetWizard(role,p){
+  var step=MEET.phase, n=meetCount();
+  var steps=[['w1',__tr('Assign content')],['w2',__tr('Note')],['w3',__tr('Review')]];
+  var sh=steps.map(function(st,i){
+    var done=steps.findIndex(function(x){ return x[0]===step; })>i;
+    return '<div class="mtstep'+(st[0]===step?' on':'')+(done?' done':'')+'">'+
+      '<i>'+(done?dIcon('check'):(i+1))+'</i><span>'+st[1]+'</span></div>';
+  }).join('<em class="mtsep"></em>');
+
+  var body='';
+  if(step==='w1'){
+    body='<p class="mtlead">'+__tr('Pick what')+' '+esc(givenName(p.name))+' '+
+      __tr('should work through before the next visit.')+'</p><div class="mtprogs">';
+    PROGRAMS.forEach(function(pr){
+      var sel=MEET.picked[pr.id]||[], all=sel.length===pr.days.length;
+      body+='<div class="mtprog'+(sel.length?' has':'')+'" style="--g1:'+pr.g1+';--g2:'+pr.g2+'">'+
+        '<div class="mtprogh">'+
+          '<span class="mtpic">'+dIcon(pr.icon)+'</span>'+
+          '<div class="mtprogt"><b>'+esc(pr.title)+'</b>'+
+            '<span>'+pr.days.length+' '+__tr('modules')+
+            (sel.length?' · '+sel.length+' '+__tr('selected'):'')+'</span></div>'+
+          '<button class="mtall" onclick="meetProg(\''+pr.id+'\')">'+
+            (all?__tr('Clear'):__tr('Select all'))+'</button>'+
+        '</div><div class="mtmods">'+
+        pr.days.map(function(d,i){
+          var on=sel.indexOf(i)>-1;
+          return '<button class="mtmod'+(on?' on':'')+'" onclick="meetMod(\''+pr.id+'\','+i+')">'+
+            '<i>'+(on?dIcon('check'):'')+'</i><span>'+esc(d.t)+'</span></button>';
+        }).join('')+
+        '</div></div>';
+    });
+    body+='</div>';
+  } else if(step==='w2'){
+    body='<p class="mtlead">'+__tr('Anything to record from this visit?')+'</p>'+
+      '<textarea class="mtta" placeholder="'+__tr('Visit note')+'" '+
+        'oninput="meetNote(this.value)">'+esc(MEET.note||'')+'</textarea>'+
+      '<div class="mtnext"><div class="kvl">'+__tr('Next appointment')+'</div>'+
+      '<div class="mtopts">'+MEET_NEXT.map(function(o,i){
+        return '<button class="mtopt'+(MEET.next===i?' on':'')+'" onclick="meetNext('+i+
+          ');dashSection(\''+role+'\')">'+__tr(o)+'</button>'; }).join('')+'</div></div>';
+  } else {
+    var lines='';
+    PROGRAMS.forEach(function(pr){
+      var sel=MEET.picked[pr.id]; if(!sel||!sel.length) return;
+      lines+='<div class="mtrev"><b>'+esc(pr.title)+'</b><span>'+sel.length+' '+
+        __tr('of')+' '+pr.days.length+' '+__tr('modules')+'</span></div>';
+    });
+    if(!lines) lines='<div class="mtrev mut"><span>'+__tr('No content assigned')+'</span></div>';
+    body='<p class="mtlead">'+__tr('This is what')+' '+esc(givenName(p.name))+' '+
+      __tr('will see in their account.')+'</p>'+lines+
+      (MEET.note?'<div class="mtrev"><b>'+__tr('Visit note')+'</b><span>'+esc(MEET.note)+'</span></div>':'')+
+      '<div class="mtrev"><b>'+__tr('Next appointment')+'</b><span>'+
+        __tr(MEET_NEXT[MEET.next])+'</span></div>';
+  }
+
+  var back = (step==='w1')
+    ? '<button class="dbtn dbtn-line" onclick="meetPhase(\'call\')">'+__tr('Back to call')+'</button>'
+    : '<button class="dbtn dbtn-line" onclick="meetPhase(\''+(step==='w3'?'w2':'w1')+'\')">'+
+      __tr('Back')+'</button>';
+  var fwd = (step==='w3')
+    ? '<button class="dbtn dbtn-solid" onclick="meetSend()">'+dIcon('check')+__tr('Send to patient')+'</button>'
+    : '<button class="dbtn dbtn-solid" onclick="meetPhase(\''+(step==='w1'?'w2':'w3')+'\')">'+
+      __tr('Continue')+dIcon('chevron-right')+'</button>';
+
+  return '<div class="dsec mtwrap">'+
+    '<div class="dhead"><h1>'+__tr('Close the visit')+'</h1>'+
+      '<p>'+esc(p.name)+(n?' · '+n+' '+__tr('modules selected'):'')+'</p></div>'+
+    '<div class="mtwiz"><div class="mtsteps">'+sh+'</div>'+
+      '<div class="mtbody">'+body+'</div>'+
+      '<div class="mtnav">'+back+fwd+'</div>'+
+    '</div></div>';
+}
 function dashPFilter(role,q){
   q=(q||'').toLowerCase();
   document.querySelectorAll('#plist-'+role+' .pcard').forEach(c=>{ c.style.display=c.textContent.toLowerCase().indexOf(q)>-1?'':'none'; });
@@ -10551,24 +10935,51 @@ function pcalFor(n){
     .sort(function(x,y){ return pcalMin(x[1])-pcalMin(y[1]); });
 }
 
+/* a tira de dias e pintada uma vez; trocar de dia so mexe nas classes e no corpo,
+   para a selecao poder transitar em vez de reaparecer */
 function pcalRender(role,rw){
   var wrap=document.getElementById('pcalWrap-'+role); if(!wrap) return;
   var wk=pcalWeek();
   if(pcalSel[role]===undefined||pcalSel[role]===null) pcalSel[role]=wk[0].n;
-  var sel=pcalSel[role];
 
-  var strip=wk.map(function(d){
-    var dots=''; for(var i=0;i<d.c;i++) dots+='<i></i>';
-    return '<button data-d="'+d.n+'" class="'+(d.n===sel?'on':'')+'" '+
-      'onclick="event.stopPropagation();pcalPick('+d.n+',\''+role+'\')">'+
-      '<span class="wd">'+__tr(d.wd)+'</span><span class="dn">'+d.n+'</span>'+
-      '<span class="dots">'+dots+'</span></button>';
-  }).join('');
+  if(!wrap.querySelector('.pcalwk')){
+    var strip=wk.map(function(d){
+      var dots=''; for(var i=0;i<d.c;i++) dots+='<i></i>';
+      return '<button data-d="'+d.n+'" '+
+        'onclick="event.stopPropagation();pcalPick('+d.n+',\''+role+'\')">'+
+        '<span class="wd">'+__tr(d.wd)+'</span><span class="dn">'+d.n+'</span>'+
+        '<span class="dots">'+dots+'</span></button>';
+    }).join('');
+    wrap.innerHTML='<div class="pcalwk">'+strip+'</div>'+
+      '<div class="pcalbody" id="pcalBody-'+role+'"></div>'+
+      '<div class="pcalfoot">'+
+        '<button onclick="event.stopPropagation();toast(\''+
+          __tr('Demo: a booking form would open here')+'\')">'+
+          dIcon('plus')+'<span class="lb">'+__tr('New appointment')+'</span></button>'+
+        '<button class="solid" onclick="event.stopPropagation();agGo(\''+role+'\',pcalSel[\''+
+          role+'\'])">'+dIcon('calendar')+'<span class="lb">'+__tr('Full schedule')+
+          '</span></button></div>';
+    renderIcons(wrap);
+  }
+  pcalMark(role);
+  pcalPaint(role,rw);
+}
 
-  var list=pcalFor(sel);
+function pcalMark(role){
+  var wrap=document.getElementById('pcalWrap-'+role); if(!wrap) return;
+  Array.prototype.forEach.call(wrap.querySelectorAll('.pcalwk button'),function(b){
+    b.classList.toggle('on', +b.getAttribute('data-d')===pcalSel[role]);
+  });
+}
 
-  /* a janela segue as consultas do dia: sem isto a coluna abria sempre as 08:00
-     e, num ecra baixo, nao sobrava altura para mostrar onde ha consulta */
+/* pinta so o corpo do dia escolhido */
+function pcalPaint(role,rw){
+  var wrap=document.getElementById('pcalWrap-'+role);
+  var b=document.getElementById('pcalBody-'+role);
+  if(!wrap||!b) return;
+  var sel=pcalSel[role], list=pcalFor(sel), wk=pcalWeek();
+
+  /* a janela segue as consultas do dia */
   var H0=PCAL_H0, H1=PCAL_H1;
   if(list.length){
     var hs=list.map(function(a){ return Math.floor(pcalMin(a[1])/60); });
@@ -10584,63 +10995,49 @@ function pcalRender(role,rw){
       (h<10?'0':'')+h+':00</span></div>';
   }
 
-  var blocks='';
-  /* vaos livres de 45 min ou mais viram slot clicavel */
+  var dens=(RW<36)?' xs':(RW<48)?' sm':'', blocks='';
   var busy=list.map(function(a){ return [pcalMin(a[1]),pcalMin(a[1])+60]; });
   var cur=H0*60, gaps=[];
-  busy.forEach(function(b){ if(b[0]-cur>=45) gaps.push([cur,b[0]]); cur=Math.max(cur,b[1]); });
+  busy.forEach(function(x){ if(x[0]-cur>=45) gaps.push([cur,x[0]]); cur=Math.max(cur,x[1]); });
   if(H1*60-cur>=45) gaps.push([cur,H1*60]);
-  var dens=(RW<36)?' xs':(RW<48)?' sm':'';
   gaps.forEach(function(g){
     var t=((g[0]-H0*60)/60)*RW, hg=((g[1]-g[0])/60)*RW-4;
     blocks+='<button class="pfree'+(dens?' sm':'')+'" style="top:'+(t+2)+'px;height:'+hg+'px" '+
-      'onclick="event.stopPropagation();toast(\''+__tr('Demo: a booking form would open here')+'\')">'+
-      '+ '+__tr('Free')+'</button>';
+      'onclick="event.stopPropagation();toast(\''+
+      __tr('Demo: a booking form would open here')+'\')">+ '+__tr('Free')+'</button>';
   });
   list.forEach(function(a){
     var k=PCAL_KIND[a[3]]||PCAL_KIND['Teleconsultation'];
     var t=((pcalMin(a[1])-H0*60)/60)*RW, hg=RW-5;
     var end=pcalMin(a[1])+60, eh=Math.floor(end/60), em=end%60;
-    blocks+='<div class="pappt'+dens+'" style="top:'+(t+2.5)+'px;height:'+hg+'px;--ac:'+k[0]+';--acbg:'+k[1]+'" '+
-      'role="button" tabindex="0" '+
-      'onclick="event.stopPropagation();dashNav(\''+role+'\',\'agenda\')">'+
+    blocks+='<div class="pappt'+dens+'" style="top:'+(t+2.5)+'px;height:'+hg+'px;--ac:'+k[0]+
+      ';--acbg:'+k[1]+'" role="button" tabindex="0" '+
+      'onclick="event.stopPropagation();pOpenAppt(\''+role+'\',\''+esc(a[2]).replace(/'/g,"\\'")+'\')" '+
+      'onkeydown="if(event.key===\'Enter\'){pOpenAppt(\''+role+'\',\''+
+        esc(a[2]).replace(/'/g,"\\'")+'\')}">'+
       '<span class="tm">'+a[1]+' - '+(eh<10?'0':'')+eh+':'+(em<10?'0':'')+em+'</span>'+
       '<b>'+esc(a[2])+'</b><span class="sb">'+__tr(a[3])+'</span></div>';
   });
 
-  /* linha do agora, so no primeiro dia da semana (o "hoje" da demo) */
   var now=new Date(), nm=now.getHours()*60+now.getMinutes(), nowl='';
   if(sel===wk[0].n && nm>H0*60 && nm<H1*60){
     nowl='<div class="pnow" style="top:'+(((nm-H0*60)/60)*RW)+'px"></div>';
   }
 
-  wrap.innerHTML=
-    '<div class="pcalwk">'+strip+'</div>'+
-    '<div class="pcalbody" id="pcalBody-'+role+'"><div class="pcalgrid" style="height:'+
-      (N*RW)+'px">'+rows+
-      '<div class="pcallane">'+blocks+'</div>'+nowl+'</div></div>'+
-    '<div class="pcalfoot">'+
-      '<button onclick="event.stopPropagation();toast(\''+__tr('Demo: a booking form would open here')+'\')">'+
-        dIcon('plus')+'<span class="lb">'+__tr('New appointment')+'</span></button>'+
-      '<button class="solid" onclick="event.stopPropagation();agGo(\''+role+'\','+sel+')">'+
-        dIcon('calendar')+'<span class="lb">'+__tr('Full schedule')+'</span></button></div>';
-  renderIcons(wrap);
+  b.innerHTML='<div class="pcalgrid" style="height:'+(N*RW)+'px">'+rows+
+    '<div class="pcallane">'+blocks+'</div>'+nowl+'</div>';
 
   wrap.classList.toggle('narrow', wrap.clientWidth<250);
 
-  var b=document.getElementById('pcalBody-'+role);
-  if(!b) return;
-
-  /* segunda passagem: agora sabemos a altura real, encolhe a linha para caber */
+  /* segunda passagem: com a altura real, encolhe a linha para caber */
   if(!rw){
     var fit=Math.floor(b.clientHeight/N);
     if(fit<PCAL_ROW){
       var use=Math.max(PCAL_ROW_MIN,Math.min(PCAL_ROW,fit));
-      if(use!==PCAL_ROW){ pcalRender(role,use); return; }
+      if(use!==PCAL_ROW){ pcalPaint(role,use); return; }
     }
   }
 
-  /* encosta num limite de linha, e nunca rola para depois das consultas */
   var nowTop=(nm/60-H0)*RW, want;
   if(list.length){
     var fT=((pcalMin(list[0][1])-H0*60)/60)*RW;
@@ -10650,7 +11047,26 @@ function pcalRender(role,rw){
   var maxS=Math.max(0,b.scrollHeight-b.clientHeight);
   b.scrollTop=Math.min(maxS,Math.max(0,Math.round(want/RW)*RW));
 }
-function pcalPick(n,role){ pcalSel[role]=n; pcalRender(role); }
+
+/* abre o paciente da consulta; se nao for um paciente da lista, cai na lista */
+function pOpenAppt(role,name){
+  var i=pIdx(role,name);
+  if(i>=0){ dashSelPatient(role,i); return; }
+  dashNav(role,'pacientes');
+}
+function pcalPick(n,role){
+  if(pcalSel[role]===n) return;
+  pcalSel[role]=n;
+  pcalMark(role);
+  var wrap=document.getElementById('pcalWrap-'+role);
+  var btn=wrap&&wrap.querySelector('.pcalwk button[data-d="'+n+'"]');
+  if(btn){ btn.classList.remove('pulse'); void btn.offsetWidth; btn.classList.add('pulse');
+    setTimeout(function(){ btn.classList.remove('pulse'); },700); }
+  var b=document.getElementById('pcalBody-'+role);
+  if(b){ b.classList.remove('swap'); void b.offsetWidth; b.classList.add('swap');
+    setTimeout(function(){ b.classList.remove('swap'); },420); }
+  pcalPaint(role);
+}
 
 /* ============ CALENDARIO DO MES (o "Full schedule") ============ */
 var AG={m:null,sel:null};
@@ -10679,13 +11095,61 @@ function agToday(role){
   var d=agFirstEvent();            /* os dados da demo vivem em Marco */
   AG.m=new Date(d.getFullYear(),d.getMonth(),1); AG.sel=agKey(d); dashSection(role);
 }
-function agPick(y,m,d,role){ AG.sel=y+'-'+m+'-'+d; dashSection(role); }
+/* troca so a celula marcada e o painel do dia: um dashSection() aqui repintava
+   a pagina inteira e atirava o scroll para cima a cada clique */
+function agPick(y,m,d,role){
+  var k=y+'-'+m+'-'+d;
+  if(AG.sel===k) return;
+  AG.sel=k;
+  var host=document.getElementById('dwrap-'+role); if(!host){ dashSection(role); return; }
+  Array.prototype.forEach.call(host.querySelectorAll('.agcell'),function(c){
+    c.classList.toggle('on', c.getAttribute('data-k')===k);
+  });
+  var old=host.querySelector('.agday');
+  var html=agDayPanel(role);
+  if(old){
+    if(html){ old.outerHTML=html; } else { old.remove(); }
+  } else if(html){
+    var w=host.querySelector('.agwrap'); if(w) w.insertAdjacentHTML('beforeend',html);
+  }
+  var nw=host.querySelector('.agday');
+  if(nw){ renderIcons(nw); nw.classList.add('swap');
+    setTimeout(function(){ nw.classList.remove('swap'); },420); }
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
+}
 /* vem do widget do painel: abre o mes ja com aquele dia escolhido */
 function agGo(role,dayNum){
   var d=agFirstEvent();
   var t=new Date(d.getFullYear(),d.getMonth(),dayNum||d.getDate());
   AG.m=new Date(t.getFullYear(),t.getMonth(),1); AG.sel=agKey(t);
   dashNav(role,'agenda');
+}
+
+function agDayPanel(role){
+  if(!AG.sel) return '';
+  var p=AG.sel.split('-'), sel=new Date(+p[0],+p[1],+p[2]);
+  var ev=agOn(sel), rows='';
+  ev.forEach(function(a){
+    var kk=PCAL_KIND[a[3]]||PCAL_KIND['Teleconsultation'];
+    var end=pcalMin(a[1])+60, eh=Math.floor(end/60), em=end%60;
+    var nm=esc(a[2]).replace(/'/g,"\\'");
+    rows+='<div class="agrow" style="--ac:'+kk[0]+'" role="button" tabindex="0" '+
+      'onclick="pOpenAppt(\''+role+'\',\''+nm+'\')" '+
+      'onkeydown="if(event.key===\'Enter\'){pOpenAppt(\''+role+'\',\''+nm+'\')}">'+
+      '<div class="agwhen"><b>'+a[1]+'</b><span>'+(eh<10?'0':'')+eh+':'+(em<10?'0':'')+em+'</span></div>'+
+      '<div class="aginfo"><b>'+esc(a[2])+'</b><span>'+__tr(a[3])+'</span></div>'+
+      (a[4]?'<button class="dbtn dbtn-solid agstart" '+
+        'onclick="event.stopPropagation();pMeetFrom(\''+role+'\',\''+nm+'\')">'+dIcon('video')+
+        '<span class="lb">'+__tr('Start')+'</span></button>':'')+'</div>';
+  });
+  if(!rows) rows='<div class="agempty">'+dIcon('calendar')+
+    '<span>'+__tr('Nothing booked this day')+'</span>'+
+    '<button class="dbtn" onclick="toast(\''+__tr('Demo: a booking form would open here')+
+    '\')">'+__tr('New appointment')+'</button></div>';
+  return '<div class="agday"><div class="agdayh">'+
+    '<b>'+__tr(PCAL_WD[sel.getDay()])+', '+__tr(AG_MON[sel.getMonth()])+' '+sel.getDate()+'</b>'+
+    '<span>'+(ev.length?ev.length+' '+(ev.length===1?__tr('appointment'):__tr('appointments'))
+      :__tr('Free day'))+'</span></div>'+rows+'</div>';
 }
 
 function agendaMonth(role){
@@ -10715,8 +11179,8 @@ function agendaMonth(role){
         '<i></i><b>'+a[1]+'</b><em>'+esc(a[2])+'</em></span>';
     });
     if(ev.length>2) chips+='<span class="agmore">+'+(ev.length-2)+'</span>';
-    cells+='<button class="'+cls+'" onclick="agPick('+d.getFullYear()+','+d.getMonth()+','+
-      d.getDate()+',\''+role+'\')">'+
+    cells+='<button class="'+cls+'" data-k="'+k+'" onclick="agPick('+d.getFullYear()+','+
+      d.getMonth()+','+d.getDate()+',\''+role+'\')">'+
       '<span class="agdate">'+d.getDate()+'</span>'+
       '<span class="agev">'+chips+'</span>'+
       '<span class="agdots">'+ev.map(function(){ return '<i></i>'; }).join('')+'</span>'+
@@ -10726,31 +11190,7 @@ function agendaMonth(role){
   var wd=['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(function(w){
     return '<span>'+__tr(w)+'</span>'; }).join('');
 
-  /* painel do dia escolhido */
-  var sel=null;
-  if(AG.sel){ var p=AG.sel.split('-'); sel=new Date(+p[0],+p[1],+p[2]); }
-  var day='';
-  if(sel){
-    var ev2=agOn(sel), rows='';
-    ev2.forEach(function(a){
-      var kk=PCAL_KIND[a[3]]||PCAL_KIND['Teleconsultation'];
-      var end=pcalMin(a[1])+60, eh=Math.floor(end/60), em=end%60;
-      rows+='<div class="agrow" style="--ac:'+kk[0]+'">'+
-        '<div class="agwhen"><b>'+a[1]+'</b><span>'+(eh<10?'0':'')+eh+':'+(em<10?'0':'')+em+'</span></div>'+
-        '<div class="aginfo"><b>'+esc(a[2])+'</b><span>'+__tr(a[3])+'</span></div>'+
-        (a[4]?'<button class="dbtn dbtn-solid agstart" onclick="toast(\''+
-          __tr('Demo: the video session would open here')+'\')">'+dIcon('video')+
-          '<span class="lb">'+__tr('Start')+'</span></button>':'')+'</div>';
-    });
-    if(!rows) rows='<div class="agempty">'+dIcon('calendar')+
-      '<span>'+__tr('Nothing booked this day')+'</span>'+
-      '<button class="dbtn" onclick="toast(\''+__tr('Demo: a booking form would open here')+
-      '\')">'+__tr('New appointment')+'</button></div>';
-    day='<div class="agday"><div class="agdayh">'+
-      '<b>'+__tr(PCAL_WD[sel.getDay()])+', '+__tr(AG_MON[sel.getMonth()])+' '+sel.getDate()+'</b>'+
-      '<span>'+(ev2.length?ev2.length+' '+(ev2.length===1?__tr('appointment'):__tr('appointments'))
-        :__tr('Free day'))+'</span></div>'+rows+'</div>';
-  }
+  var day=agDayPanel(role);
 
   return '<div class="dsec">'+
     head(__tr('Schedule'),__tr('Your upcoming appointments'),'Your practice')+
@@ -12675,6 +13115,25 @@ routeFromHash();
 /* ============ LANGUAGE TOGGLE (EN / PT-BR) ============ */
 (function(){
   const EN2PT={
+    "Start meeting":"Iniciar consulta","Leave":"Sair","Live":"Ao vivo",
+    "At a glance":"Resumo","Session notes":"Notas da consulta","Type as you go":"Escreva enquanto conversa",
+    "End meeting":"Encerrar consulta","Back to call":"Voltar a chamada",
+    "Close the visit":"Fechar a consulta","Assign content":"Atribuir conteudo",
+    "Note":"Nota","Review":"Revisao","Continue":"Continuar","Back":"Voltar",
+    "Send to patient":"Enviar ao paciente","Select all":"Selecionar tudo","Clear":"Limpar",
+    "selected":"selecionados","modules selected":"modulos selecionados",
+    "modules assigned":"modulos atribuidos","No content assigned":"Nenhum conteudo atribuido",
+    "Visit note":"Nota da consulta","Next appointment":"Proxima consulta",
+    "In 1 week":"Em 1 semana","In 2 weeks":"Em 2 semanas","In 1 month":"Em 1 mes",
+    "No follow-up yet":"Sem retorno marcado","Adherence":"Adesao","Profile":"Perfil",
+    "Microphone":"Microfone","Camera":"Camera","Share screen":"Partilhar ecra",
+    "Pick what":"Escolha o que","should work through before the next visit.":"deve percorrer antes da proxima consulta.",
+    "Anything to record from this visit?":"Algo a registar desta consulta?",
+    "This is what":"Isto e o que","will see in their account.":"vera na conta dele.",
+    "This person is not a patient yet":"Esta pessoa ainda nao e paciente",
+    "Demo: sent":"Demo: enviado",
+    "Demo: visit closed with no content assigned":"Demo: consulta fechada sem conteudo atribuido",
+    "Demo: screen sharing would start here":"Demo: a partilha de ecra comecaria aqui",
     "January":"Janeiro","February":"Fevereiro","March":"Marco","April":"Abril",
     "May":"Maio","June":"Junho","July":"Julho","August":"Agosto",
     "September":"Setembro","October":"Outubro","November":"Novembro","December":"Dezembro",
