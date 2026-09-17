@@ -2938,35 +2938,64 @@ body.dark .mtwiz{border-color:rgba(255,255,255,.08)}
 .aqlit{fill:none;stroke:url(#aqgrad);stroke-width:3;stroke-linecap:round;
   transition:stroke-dashoffset .9s cubic-bezier(.2,.8,.3,1)}
 
+/* o palco da jornada: o mapa, as bolhas e o mascote partilham esta caixa */
+.aqstage{position:absolute;inset:0;container-type:size}
 .aqlay{position:absolute;inset:0;z-index:7;pointer-events:none}
+/* O SVG desenha o viewBox 306x216 centrado, com barras (xMidYMid meet).
+   A camada das bolhas copia essa mesma caixa, senao as bolhas espalham-se
+   pelo painel todo e ficam ao lado do fio em vez de pousadas nele. */
+@supports (width:1cqw){
+  .aqlay{inset:auto;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:min(100cqw,calc(100cqh * 306 / 216));
+    height:min(100cqh,calc(100cqw * 216 / 306));
+    container-type:size}
+}
+/* --k encolhe tudo conforme o numero de passos */
 .aqb{position:absolute;left:var(--x);top:var(--y);transform:translate(-50%,-50%);
-  width:clamp(38px,4vw,48px);height:clamp(38px,4vw,48px);
-  border:0;background:none;padding:0;font:inherit;pointer-events:auto;cursor:default;
+  width:calc(var(--k,1) * clamp(36px,3.8vw,48px));
+  height:calc(var(--k,1) * clamp(36px,3.8vw,48px));
+  pointer-events:auto;
   animation:aqPop .5s cubic-bezier(.2,1.1,.4,1) backwards}
-.aqb.open{cursor:pointer}
-.aqb:focus{outline:none}                 /* o anel azul do browser nao entra aqui */
 @keyframes aqPop{from{opacity:0;transform:translate(-50%,-50%) scale(.45)}
   to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
 .aqd{position:absolute;inset:0;border-radius:50%;display:grid;place-items:center;
-  background:#0A1419;border:2px solid var(--c);color:var(--c);
-  font-size:clamp(15px,1.6vw,19px);box-shadow:0 6px 18px rgba(0,0,0,.55);
+  background:#0A1419;border:2px solid var(--c);color:var(--c);padding:0;font:inherit;
+  cursor:pointer;
+  font-size:calc(var(--k,1) * clamp(15px,1.6vw,19px));box-shadow:0 6px 18px rgba(0,0,0,.55);
   transition:transform .28s cubic-bezier(.2,.8,.3,1),background .3s ease,color .3s ease}
 .aqd .ic{display:flex}
-.aqb.open:hover .aqd{transform:scale(1.14)}
-.aqb.open:focus-visible .aqd{outline:2px solid #EEF5F4;outline-offset:3px}
+.aqd:focus{outline:none}                 /* o anel azul do browser nao entra aqui */
+.aqd:focus-visible{outline:2px solid #EEF5F4;outline-offset:3px}
+.aqb:hover .aqd{transform:scale(1.14)}
 .aqb.done .aqd{background:var(--c);color:#07222C}
 .aqb.open .aqd::after{content:'';position:absolute;inset:-5px;border-radius:50%;
   border:2px solid var(--c);opacity:.5;animation:aqRipple 2.4s ease-out infinite}
 @keyframes aqRipple{0%{transform:scale(.86);opacity:.6}100%{transform:scale(1.42);opacity:0}}
+/* marcar como feito e um gesto separado de abrir o passo */
+.aqok{position:absolute;right:calc(var(--k,1) * -5px);top:calc(var(--k,1) * -5px);
+  width:calc(var(--k,1) * 20px);height:calc(var(--k,1) * 20px);
+  border-radius:50%;border:1.5px solid rgba(238,245,244,.3);background:#0E2129;
+  color:#8FD3C8;display:grid;place-items:center;padding:0;cursor:pointer;z-index:4;
+  font-size:calc(var(--k,1) * 11px);opacity:0;transform:scale(.6);
+  transition:opacity .2s ease,transform .2s cubic-bezier(.2,1.1,.4,1)}
+.aqok .ic{display:flex}
+.aqok:hover{border-color:#8FD3C8;background:#8FD3C8;color:#07222C}
+.aqb:hover .aqok,.aqb:focus-within .aqok{opacity:1;transform:scale(1)}
+@media(hover:none){.aqok{opacity:1;transform:scale(1)}}
 /* a etiqueta sai do no: para cima na metade de baixo, para baixo na de cima */
 .aqc{position:absolute;left:50%;transform:translateX(-50%);bottom:calc(100% + 9px);
-  width:max-content;max-width:clamp(96px,10vw,132px);
-  font-size:11.5px;font-weight:600;line-height:1.3;text-align:center;color:#EEF5F4;
+  width:max-content;
+  /* --w vem do render: o vao entre dois passos, na largura do mapa */
+  max-width:calc(var(--w,18) * 1cqw);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  font-size:max(9.5px,calc(var(--k,1) * 11.5px));
+  font-weight:600;line-height:1.3;text-align:center;color:#EEF5F4;
   background:rgba(7,13,16,.82);border-radius:9px;padding:4px 8px;
   -webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
 .aqb.below .aqc{bottom:auto;top:calc(100% + 9px)}
 .aqc i{display:block;font-style:normal;font-size:10px;font-weight:500;
   color:rgba(238,245,244,.6);margin-top:2px}
+.aqlay.tight .aqc i{display:none}        /* com muitos passos, so o titulo */
 .aqb.done .aqc{color:rgba(238,245,244,.58)}
 
 /* o mascote tem um lugar fixo, em cima a esquerda */
@@ -2988,7 +3017,10 @@ body.dark .mtwiz{border-color:rgba(255,255,255,.08)}
   text-transform:uppercase;color:rgba(238,245,244,.66);white-space:nowrap}
 .jformed b{font-family:var(--display);font-size:13px;letter-spacing:-.01em;color:#8FD3C8}
 @media(max-width:700px){
-  .aqc{max-width:clamp(80px,24vw,112px);font-size:10.5px;padding:3px 7px}
+  /* no telefone nao cabe uma etiqueta por passo: fica so a do proximo */
+  .aqc{max-width:min(46vw,190px);font-size:10.5px;padding:3px 7px;display:none;
+    white-space:normal;text-overflow:clip}
+  .aqb.next .aqc{display:block}
   .aqc i{display:none}
   .aqmasc .bub{max-width:160px;padding:7px 11px}
 }
@@ -8052,6 +8084,40 @@ function aqStats(){
   var a=aqList(), d=a.filter(function(t){ return t.done; }).length;
   return {n:a.length, done:d, pct:a.length?Math.round(d/a.length*100):0};
 }
+/* o icone diz que tipo de passo e */
+function aqIcon(t){
+  if(t.kind==='ref') return 'utensils';
+  if(t.kind==='first') return 'calendar';
+  if(t.kind==='chk') return 'clipboard';
+  return 'book';
+}
+/* Tocar num passo ABRE a coisa. Um modulo puxa o programa dentro de
+   Conteudo, um check-in abre o modo de check-in, um encaminhamento abre a
+   equipa, e agendar a primeira consulta abre a agenda. */
+function aqFind(id){
+  var out=null;
+  aqList().forEach(function(t){ if(t.id===id) out=t; });
+  return out;
+}
+function aqOpen(id){
+  var t=aqFind(id); if(!t) return;
+  if(t.kind==='mod'){
+    var pid=String(id).split(':')[1];
+    DASH.patient.sec='programas';
+    openProgram(pid); return;
+  }
+  if(t.kind==='chk'){ dashNav('patient','checkin'); return; }
+  if(t.kind==='ref'){
+    dashNav('patient','equipe');
+    toast(__tr('Demo: book the nutrition visit from here')); return;
+  }
+  if(t.kind==='first'){
+    dashNav('patient','agenda');
+    toast(__tr('Demo: booking would open here')); return;
+  }
+  dashNav('patient','programas');
+}
+
 /* as bolhas da aventura, por cima do mapa que ja existe */
 function aqOverlay(){
   var all=aqList(), h='';
@@ -8059,30 +8125,39 @@ function aqOverlay(){
   /* mais passos do que lugares no fio: os ultimos viram um contador */
   var extra=all.length-ns.length;
   var a=ns.map(function(n){ return n.t; });
+  /* o tamanho segue a quantidade: com muitos passos, discos e etiquetas
+     encolhem em vez de se atropelarem */
+  var k=(a.length<=6)?1:Math.max(0.78, 1-(a.length-6)*0.037);
   a.forEach(function(t,i){
     var n=ns[i];
     /* a etiqueta pousa no no, e cai para baixo na metade de cima do cerebro */
     var pos={x:aqPctX(n.x), y:aqPctY(n.y)};
     var c=AQ_HUE[i%AQ_HUE.length];
-    var ic=t.done?'check':(t.kind==='ref'?'utensils':(t.kind==='first'?'calendar':'book'));
-    var can=!t.done;
-    var below=(i%2===1);   /* alterna acima/abaixo para as etiquetas nao empilharem */
-    h+='<'+(can?'button':'div')+' class="aqb'+(t.done?' done':' open')+
-      (below?' below':'')+'" '+
-      'style="--x:'+pos.x+';--y:'+pos.y+';--c:'+c+';animation-delay:'+(i*80)+'ms"'+
-      (can?' onclick="aqTap(\''+t.id+'\')"':'')+'>'+
-      '<span class="aqd">'+dIcon(ic)+'</span>'+
-      '<span class="aqc">'+__tr(t.label)+
+    /* a fileira de baixo fala para baixo, as de cima falam para cima: cada
+       etiqueta cai numa faixa que nenhuma outra usa */
+    var below=(i>=8);
+    var nxt=(!t.done && a.slice(0,i).every(function(x){ return x.done; }));
+    h+='<div class="aqb'+(t.done?' done':' open')+(below?' below':'')+
+      (nxt?' next':'')+'" '+
+      'style="--x:'+pos.x+';--y:'+pos.y+';--c:'+c+';animation-delay:'+(i*80)+'ms">'+
+      '<button class="aqd" onclick="aqOpen(\''+t.id+'\')" title="'+__tr('Open')+'">'+
+        dIcon(t.done?'check':aqIcon(t))+'</button>'+
+      (t.done?'':'<button class="aqok" onclick="aqTap(\''+t.id+'\')" title="'+
+        __tr('Mark as done')+'">'+dIcon('check')+'</button>')+
+      '<span class="aqc" title="'+__tr(t.label)+'">'+__tr(t.label)+
         (t.sub?'<i>'+__tr(t.sub)+'</i>':'')+'</span>'+
-      '</'+(can?'button':'div')+'>';
+      '</div>';
   });
   if(extra>0){
-    h+='<button class="aqb open" style="--x:94%;--y:92%;--c:#8FA3A8" '+
-      'onclick="dashNav(\'patient\',\'programas\')">'+
-      '<span class="aqd">+'+extra+'</span>'+
-      '<span class="aqc">'+__tr('More steps')+'</span></button>';
+    h+='<div class="aqb open" style="--x:97%;--y:97%;--c:#8FA3A8">'+
+      '<button class="aqd" onclick="dashNav(\'patient\',\'programas\')">+'+extra+'</button>'+
+      '<span class="aqc">'+__tr('More steps')+'</span></div>';
   }
-  return '<div class="aqlay">'+h+'</div>';
+  /* o vao entre dois passos e 76 unidades do viewBox de 306: a etiqueta fica
+     um pouco mais estreita do que isso. Sozinha, pode ser mais larga. */
+  var w=(a.length===1)?34:(76/306*100*0.95);
+  return '<div class="aqlay'+(a.length>=8?' tight':'')+'" style="--k:'+k.toFixed(3)+
+    ';--w:'+w.toFixed(2)+'">'+h+'</div>';
 }
 
 /* ---- O FIO UNICO DA JORNADA ----
@@ -8090,25 +8165,24 @@ function aqOverlay(){
    o que lia como tres jornadas. Agora e uma so linha em serpentina, com os
    passos pousados nela, e a cor percorre a paleta ao longo do fio. */
 var AQ_CX=196, AQ_CY=127;                 /* centro do JBRAIN */
+/* Tres fileiras em serpentina, sempre nos mesmos lugares. O primeiro passo
+   fica na borda de cima a esquerda: e por ali que a jornada entra. */
 var AQ_SLOTS=[
-  {x:96,y:96},{x:152,y:140},{x:208,y:96},{x:264,y:140},{x:312,y:104},
-  {x:268,y:190},{x:212,y:162},{x:156,y:196},{x:100,y:164},{x:172,y:206}
+  {x:96,y:84},{x:172,y:64},{x:248,y:84},{x:324,y:70},
+  {x:324,y:126},{x:248,y:142},{x:172,y:122},{x:96,y:138},
+  {x:96,y:194},{x:172,y:178},{x:248,y:196},{x:324,y:182}
 ];
-/* um passo sozinho fica no meio, nao num canto */
-var AQ_SOLO={x:196,y:104};
 
 function aqScale(){
   var st=aqStats();
   var g=st.n?st.done/st.n:0;
-  return 0.5+0.5*g;                        /* cerebro pequeno no dia um */
+  return 0.42+0.58*g;                      /* no dia um e pequeno e fofo */
 }
 function aqNodes(){
-  var a=aqList(), s2=aqScale(), out=[];
-  var slots=(a.length===1)?[AQ_SOLO]:AQ_SLOTS;
-  a.slice(0,slots.length).forEach(function(t,i){
-    var p=slots[i];
-    out.push({t:t, i:i,
-      x:AQ_CX+(p.x-AQ_CX)*s2, y:AQ_CY+(p.y-AQ_CY)*s2});
+  var a=aqList(), out=[];
+  a.slice(0,AQ_SLOTS.length).forEach(function(t,i){
+    var p=AQ_SLOTS[i];
+    out.push({t:t, i:i, x:p.x, y:p.y});   /* a grelha nao segue a escala do cerebro */
   });
   return out;
 }
@@ -8314,6 +8388,10 @@ function meetSend(){
   });
   if(ref) add.push({id:'ref:nutri', kind:'ref', label:'Meet your nutritionist',
     sub:DASH.nutri.name, done:0});
+  /* cada consulta fechada deixa tambem um check-in na jornada */
+  var nchk=aqRead().filter(function(x){ return x.kind==='chk'; }).length;
+  add.push({id:'chk:'+(nchk+1), kind:'chk', label:'Check in this week',
+    sub:'Takes 2 minutes', done:0});
   /* a primeira consulta fica marcada como feita, ja aconteceu */
   add.unshift({id:'first',kind:'first',label:'Schedule your first meeting',sub:'Booked',done:1});
   aqAdd(add);
@@ -10937,7 +11015,8 @@ function pJourney(D){
         dots+test+
       '</div>'+
     '</div>'+
-    '<div class="jgraph">'+aqMapSVG()+aqOverlay()+masc+'</div></div>';
+    '<div class="jgraph"><div class="aqstage">'+
+      aqMapSVG()+aqOverlay()+masc+'</div></div></div>';
 }
 
 /* mantidos para o resto do app */
@@ -13626,6 +13705,10 @@ routeFromHash();
 /* ============ LANGUAGE TOGGLE (EN / PT-BR) ============ */
 (function(){
   const EN2PT={
+    "Mark as done":"Marcar como feito","Open":"Abrir",
+    "Check in this week":"Faca o check-in esta semana","Takes 2 minutes":"Leva 2 minutos",
+    "Demo: book the nutrition visit from here":"Demo: a consulta de nutricao marca-se aqui",
+    "Demo: booking would open here":"Demo: a marcacao abriria aqui",
     "Start your journey":"Comece a sua jornada",
     "Schedule your first appointment.":"Marque a sua primeira consulta.",
     "step left":"passo restante","steps left":"passos restantes",
