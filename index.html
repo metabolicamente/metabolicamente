@@ -2665,6 +2665,11 @@ body.dark .dfab-brain svg{filter:drop-shadow(0 8px 18px rgba(0,0,0,.5))}
 .pchb::-webkit-scrollbar-thumb{background:var(--line);border-radius:9px}
 .pchbub{background:var(--bg-dim);border-radius:14px 14px 14px 5px;padding:12px 14px;
   font-size:13px;line-height:1.5;color:var(--ink);font-family:var(--calm)}
+.pchbub+.pchbub,.pchme+.pchbub{margin-top:9px}
+.pchbub i{display:block;font-style:normal;font-size:10.5px;color:var(--soft);margin-top:7px}
+.pchme{margin:9px 0 0 auto;max-width:86%;width:fit-content;background:var(--t500);color:#fff;
+  border-radius:14px 14px 5px 14px;padding:10px 13px;font-size:13px;line-height:1.45;
+  font-family:var(--calm)}
 .pchips{display:flex;flex-direction:column;gap:7px;margin-top:13px}
 .pchip{text-align:left;border:1px solid var(--line);background:none;border-radius:12px;
   padding:10px 13px;cursor:pointer;font-family:var(--sans);font-size:12.5px;font-weight:500;
@@ -2847,6 +2852,181 @@ body.dark .mtcard{border-color:rgba(255,255,255,.08)}
 .wzwho{display:flex;align-items:center;gap:11px}
 .wzwho b{display:block;font-size:13px;font-weight:600;color:var(--hd)}
 .wzwho span{display:block;font-size:11.5px;color:var(--soft);margin-top:1px}
+
+
+/* --- configurar o segundo cerebro --- */
+.brsec{margin-bottom:16px}
+.brsec:last-child{margin-bottom:0}
+.brsec>.kvl{margin-bottom:8px;font-family:var(--quiet);font-size:10.5px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.brrow{display:flex;align-items:flex-start;gap:11px;width:100%;padding:11px 13px;
+  border:1px solid var(--line);border-radius:12px;background:var(--card);cursor:pointer;
+  font:inherit;text-align:left;transition:border-color .2s ease,background .2s ease}
+.brrow+.brrow{margin-top:8px}
+.brrow:hover{border-color:var(--t500)}
+.brrow>i{width:19px;height:19px;border-radius:6px;flex-shrink:0;margin-top:1px;display:grid;
+  place-items:center;border:1.5px solid var(--line);background:var(--card);color:transparent;
+  font-size:11px;font-style:normal;transition:all .2s ease}
+.brrow>i .ic{display:flex}
+.brrow.on>i{color:#fff}
+.brrow.on{border-color:var(--t500);background:var(--t50)}
+.brrow.on>i{background:var(--t500);border-color:var(--t500)}
+.brrow div{min-width:0}
+.brrow b{display:block;font-family:var(--calm);font-size:13.5px;font-weight:600;color:var(--hd);
+  line-height:1.4}
+.brrow span{display:block;font-size:11.5px;color:var(--soft);margin-top:2px;line-height:1.4}
+.brtag{display:inline-flex;align-items:center;gap:6px;border-radius:99px;padding:5px 11px;
+  background:var(--t50);color:var(--t500);font-family:var(--quiet);font-size:10px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase}
+.brtag.off{background:var(--bg-dim);color:var(--soft)}
+.braq{display:grid;gap:9px}
+.braq>div{padding:11px 13px;border:1px solid var(--line);border-radius:12px;background:var(--bg-dim)}
+.braq .kvl{font-family:var(--quiet);font-size:10px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--soft);margin-bottom:4px}
+.braq p{margin:0;font-family:var(--calm);font-size:13.5px;line-height:1.55;color:var(--ink)}
+
+/* --- o formulario do segundo cerebro --- */
+.itwrap{display:grid;gap:clamp(12px,1.2vw,18px);max-width:760px}
+.itq{border:1px solid var(--line);border-radius:clamp(14px,1.4vw,18px);background:var(--card);
+  padding:clamp(14px,1.4vw,18px)}
+.itq>label{display:block;font-family:var(--display);font-size:14.5px;font-weight:600;
+  color:var(--hd);line-height:1.35}
+.itq .hint{display:block;font-size:12px;color:var(--soft);margin:4px 0 12px;line-height:1.45}
+.itq textarea{width:100%;min-height:84px;resize:vertical;border:1px solid var(--line);
+  border-radius:12px;background:var(--bg-dim);padding:11px 13px;font:inherit;font-size:13.5px;
+  color:var(--ink);line-height:1.55}
+.itq textarea:focus{outline:none;border-color:var(--t500);background:var(--card)}
+.itfoot{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.itfoot p{flex:1;min-width:200px;font-size:12px;color:var(--soft);line-height:1.5;margin:0}
+
+/* --- a foto no check-in --- */
+.ciph{display:grid;gap:13px}
+.ciphdrop{display:flex;align-items:center;gap:13px;width:100%;padding:16px;cursor:pointer;
+  border:1.5px dashed var(--line);border-radius:14px;background:var(--bg-dim);font:inherit;
+  text-align:left;transition:border-color .22s ease,background .22s ease}
+.ciphdrop:hover{border-color:var(--t500);background:var(--t50)}
+.ciphdrop .ic0{width:38px;height:38px;border-radius:12px;flex-shrink:0;display:grid;
+  place-items:center;background:var(--card);border:1px solid var(--line);color:var(--t500);
+  font-size:17px}
+.ciphdrop b{display:block;font-family:var(--display);font-size:14px;font-weight:600;color:var(--hd)}
+.ciphdrop span{display:block;font-size:12px;color:var(--soft);margin-top:2px;line-height:1.45}
+.ciphdrop input{display:none}
+.ciphgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:10px}
+.ciphi{position:relative;border-radius:13px;overflow:hidden;border:1px solid var(--line)}
+.ciphi img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.ciphx{position:absolute;right:6px;top:6px;width:23px;height:23px;border-radius:50%;border:0;
+  background:rgba(7,34,44,.74);color:#fff;cursor:pointer;display:grid;place-items:center;
+  font-size:11px;padding:0}
+.ciphx:hover{background:#E76F51}
+.ciphx .ic{display:flex}
+.ciphnote{font-size:12px;color:var(--soft);line-height:1.5}
+/* as mesmas fotos, no relatorio do profissional */
+.aiph{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:8px}
+.aiph figure{margin:0;position:relative;border-radius:11px;overflow:hidden;border:1px solid var(--line)}
+.aiph img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.aiph figcaption{position:absolute;left:0;right:0;bottom:0;padding:3px 7px;font-size:9.5px;
+  font-family:var(--quiet);letter-spacing:.04em;background:rgba(7,34,44,.68);color:#fff}
+
+/* --- o relatorio do paciente: linhas de consulta e a accao na gaveta --- */
+.dsec>.airep{margin-bottom:clamp(12px,1.2vw,18px)}
+.aiact{margin-top:15px;display:flex;gap:9px;justify-content:flex-end}
+.aiact .dbtn{flex:1;justify-content:center}
+.aiv{display:flex;align-items:center;gap:11px;width:100%;padding:11px 12px;
+  border:1px solid var(--line);border-radius:12px;background:var(--card);cursor:pointer;
+  font:inherit;text-align:left;transition:border-color .2s ease}
+.aiv+.aiv{margin-top:8px}
+.aiv:hover{border-color:var(--t500)}
+.aiv .d{font-family:var(--quiet);font-size:10.5px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--soft);flex-shrink:0;width:54px}
+.aiv .t{flex:1;min-width:0;font-size:13px;color:var(--ink);overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.aiv .c{color:var(--soft);font-size:13px;display:flex;flex-shrink:0}
+
+/* --- o resumo na area do paciente: recolhido, abre no lugar --- */
+.aicard{border:1px solid var(--line);border-radius:clamp(14px,1.4vw,20px);background:var(--card);
+  overflow:hidden}
+.aitog{display:flex;align-items:center;gap:12px;width:100%;padding:14px;border:0;background:none;
+  cursor:pointer;font:inherit;text-align:left}
+.aitog:hover .tx b{color:var(--t500)}
+.aitog .sp{width:34px;height:34px;border-radius:11px;flex-shrink:0;display:grid;place-items:center;
+  background:linear-gradient(145deg,#2A9D8F,#12615A);color:#fff;font-size:16px}
+.aitog .sp .ic{display:flex}
+.aitog .tx{flex:1;min-width:0}
+.aitog .tx b{display:block;font-family:var(--display);font-size:14px;font-weight:600;color:var(--hd);
+  transition:color .2s ease}
+.aitog .tx span{display:block;font-size:11.5px;color:var(--soft);margin-top:2px}
+.aitog .cv{color:var(--soft);font-size:15px;display:flex;flex-shrink:0;transition:transform .3s ease}
+.aicard.on .aitog .cv{transform:rotate(180deg)}
+.aibody{max-height:0;overflow:hidden;transition:max-height .42s cubic-bezier(.2,.8,.3,1)}
+.aicard.on .aibody{max-height:1800px}
+.aibody .airep{border:0;border-radius:0;border-top:1px solid var(--line);background:none}
+.aibody .airep>header{display:none}      /* o cabecalho ja esta no botao */
+
+/* --- O RESUMO DA CONSULTA (montado pelo assistente) ---
+   Nada aqui e inventado: cada linha sai de um campo que existe (a nota da
+   consulta, a triagem, os marcadores, o que foi atribuido). Sem o campo, a
+   linha nao aparece. */
+.airep{border:1px solid var(--line);border-radius:clamp(14px,1.4vw,18px);overflow:hidden;
+  background:var(--card)}
+.airep>header{display:flex;align-items:center;gap:11px;padding:14px;background:var(--bg-dim);
+  border-bottom:1px solid var(--line)}
+.airep>header .sp{width:31px;height:31px;border-radius:10px;flex-shrink:0;display:grid;
+  place-items:center;background:linear-gradient(145deg,#2A9D8F,#12615A);color:#fff;font-size:15px}
+.airep>header .sp .ic{display:flex}
+.airep>header b{display:block;font-family:var(--display);font-size:13.5px;font-weight:600;
+  color:var(--hd);line-height:1.3}
+.airep>header span{display:block;font-size:11.5px;color:var(--soft);margin-top:2px}
+.aichips{display:flex;flex-wrap:wrap;gap:7px;padding:13px 14px 0}
+.aichip{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);
+  border-radius:99px;padding:5px 11px;font-family:var(--quiet);font-size:10px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--soft)}
+.aichip .ic{display:flex;font-size:12px;color:var(--t500)}
+.aichip b{font-family:var(--display);font-size:12px;letter-spacing:-.01em;color:var(--hd);
+  text-transform:none;font-weight:600}
+.aisec{padding:14px 14px 0}
+.aisec:last-of-type{padding-bottom:15px}
+.aisec .kvl{margin-bottom:7px;font-family:var(--quiet);font-size:10.5px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.aisec p{font-family:var(--calm);font-size:14px;line-height:1.65;color:var(--ink);margin:0}
+.aisec p.mut{color:var(--soft);font-style:italic}
+.aiq{margin:0;padding:11px 14px;border-left:3px solid var(--t500);background:var(--t50);
+  border-radius:0 11px 11px 0;font-family:var(--calm);font-size:14px;line-height:1.6;
+  color:var(--ink)}
+.ailist{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.ailist li{display:flex;gap:10px;font-size:13.5px;line-height:1.5;color:var(--ink)}
+.ailist li i{flex-shrink:0;width:17px;height:17px;border-radius:50%;margin-top:1px;
+  display:grid;place-items:center;background:var(--t50);color:var(--t500);font-size:9px;
+  font-style:normal}
+.ailist li i .ic{display:flex}
+.ailist li em{font-style:normal;color:var(--soft)}
+.aisrc{padding:12px 14px;margin-top:14px;border-top:1px solid var(--line);
+  font-size:11px;line-height:1.55;color:var(--soft)}
+/* a aba no canto do assistente */
+.aidock{margin-left:auto;display:inline-flex;align-items:center;gap:7px;
+  border:1px solid var(--line);background:var(--card);border-radius:99px;padding:7px 13px;
+  cursor:pointer;font:inherit;font-family:var(--quiet);font-size:10px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--soft);
+  transition:border-color .22s ease,color .22s ease}
+.aidock:hover{border-color:var(--t500);color:var(--t500)}
+.aidock .ic{font-size:13px;display:flex;color:var(--t500)}
+/* a gaveta: abre por cima, fecha e desaparece */
+.aiscrim{position:fixed;inset:0;z-index:180;background:rgba(7,34,44,.34);opacity:0;
+  pointer-events:none;transition:opacity .28s ease;
+  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.aiscrim.on{opacity:1;pointer-events:auto}
+.aidrawer{position:fixed;top:0;right:0;bottom:0;z-index:181;width:min(440px,92vw);
+  background:var(--bg);border-left:1px solid var(--line);overflow-y:auto;
+  padding:clamp(14px,1.6vw,22px);box-shadow:-18px 0 50px rgba(12,51,63,.18);
+  transform:translateX(102%);transition:transform .34s cubic-bezier(.2,.8,.3,1)}
+.aidrawer.on{transform:none}
+.aidh{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px}
+.aidh b{font-family:var(--display);font-size:15px;font-weight:600;color:var(--hd)}
+.aidx{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--card);
+  display:grid;place-items:center;cursor:pointer;color:var(--soft);font-size:14px;padding:0;
+  flex-shrink:0}
+.aidx:hover{border-color:var(--t500);color:var(--t500)}
+.aidx .ic{display:flex}
+@media(prefers-reduced-motion:reduce){.aidrawer{transition:none}}
 
 /* --- assistente --- */
 .mtwiz{max-width:860px;background:var(--card);border:1px solid rgba(12,51,63,.075);
@@ -7866,6 +8046,7 @@ function pSection(D){
   if(s==='notificacoes') return pNotifs(D);
   if(s==='programas') return progSection();
   if(s==='checkin') return renderCheckin(D);
+  if(s==='intake') return pIntake(D);
   if(s==='plano'){
     let m='';
     MEALS.forEach(meal=>{ let items=''; meal[2].forEach(it=>items+='<li>'+it+'</li>');
@@ -7893,12 +8074,331 @@ function pSection(D){
   return perfil(D,'patient');
 }
 /* ---- check-in (multi-step) ---- */
+/* ============ O SEGUNDO CEREBRO ======================================
+   O paciente responde a cinco perguntas. O terapeuta le as respostas e
+   configura com elas o agente daquele paciente. Nada e assumido pelo
+   assistente: o que ele pode dizer e o que o terapeuta ligar.
+   ===================================================================== */
+var BR_KEY='mb.brain.v1';
+var BR_TONE=['Straight and brief','Warm and encouraging','Explain the science'];
+var BR_Q=[
+  ['goal','What do you most want to get out of this?','In your own words.'],
+  ['struggle','What is hardest for you right now?','The thing that keeps getting in the way.'],
+  ['routine','What does a normal day look like?','Work, meals, sleep — roughly.'],
+  ['avoid','Anything you would rather not be asked about?','Your assistant will keep off it.']
+];
+function brRead(){
+  try{ var r=localStorage.getItem(BR_KEY); if(r) return JSON.parse(r)||{}; }catch(e){}
+  return {};
+}
+function brSave(b){ try{ localStorage.setItem(BR_KEY,JSON.stringify(b)); }catch(e){} }
+function brIntake(){ return brRead().intake||null; }
+function brCfg(){ return brRead().cfg||null; }
+function brOn(){ var c=brCfg(); return !!(c&&c.on); }
+
+/* o rascunho vive na memoria enquanto o paciente escreve */
+var BR_DRAFT=null;
+function brDraft(){
+  if(!BR_DRAFT) BR_DRAFT=Object.assign({tone:0},brIntake()||{});
+  return BR_DRAFT;
+}
+function brField(k,v){ brDraft()[k]=v; }
+function brTone(i,el){ brDraft().tone=i; meetSibs(el,'on'); }
+function brDone(){
+  var d=brDraft();
+  var filled=BR_Q.filter(function(q){ return (d[q[0]]||'').trim().length>2; }).length;
+  if(filled<2){ toast(__tr('Answer at least the first two questions.')); return; }
+  var b=brRead();
+  b.intake=Object.assign({},d,{when:new Date().toISOString()});
+  brSave(b); BR_DRAFT=null;
+  toast(__tr('Sent to your care team. They will set up your assistant from this.'));
+  dashNav('patient','journey');
+}
+function pIntake(D){
+  var d=brDraft(), had=!!brIntake();
+  var qs='';
+  BR_Q.forEach(function(q){
+    qs+='<div class="itq"><label for="it-'+q[0]+'">'+__tr(q[1])+'</label>'+
+      '<span class="hint">'+__tr(q[2])+'</span>'+
+      '<textarea id="it-'+q[0]+'" oninput="brField(\''+q[0]+'\',this.value)">'+
+        esc(d[q[0]]||'')+'</textarea></div>';
+  });
+  qs+='<div class="itq"><label>'+__tr('How should your assistant talk to you?')+'</label>'+
+    '<span class="hint">'+__tr('You can change this later.')+'</span>'+
+    '<div class="mtopts">'+BR_TONE.map(function(t,i){
+      return '<button class="mtopt'+((d.tone||0)===i?' on':'')+'" onclick="brTone('+i+
+        ',this)">'+__tr(t)+'</button>'; }).join('')+'</div></div>';
+
+  return '<div class="dsec">'+head(__tr('Set up your assistant'),
+      __tr('Five questions. Your therapist uses these to set up the assistant that answers you between visits.'),
+      'Your journey')+
+    '<div class="itwrap">'+qs+
+      '<div class="itfoot"><p>'+
+        __tr('Only your care team sees these answers.')+'</p>'+
+        '<button class="dbtn dbtn-line" onclick="dashNav(\'patient\',\'journey\')">'+
+          __tr('Back to journey')+'</button>'+
+        '<button class="dbtn dbtn-solid" onclick="brDone()">'+dIcon('check')+
+          __tr(had?'Save changes':'Send to my team')+'</button>'+
+      '</div></div></div>';
+}
+
+/* ---- os factos que o assistente pode usar ----
+   Todos saem de algum sitio: a triagem, o plano desta consulta, os marcadores
+   registados, as respostas do proprio paciente. O terapeuta liga o que quiser. */
+function brWords(t){
+  var out=[];
+  String(t).toLowerCase().replace(/[^a-z0-9À-ſ ]/g,' ').split(/\s+/)
+    .forEach(function(w){ if(w.length>4&&out.length<5&&out.indexOf(w)<0) out.push(w); });
+  return out;
+}
+function brFacts(role,i){
+  var p=DASH[role].patients[i], t=p.t||[], it=brIntake(), out=[];
+  var add=function(src,txt,on){ if(txt) out.push({s:src,t:txt,on:on?1:0,k:brWords(txt)}); };
+  if(t[0]) add(__tr('Triage'),__tr('Came in for')+' '+lowFirst(t[0]),1);
+  if(t[2]) add(__tr('Triage'),__tr('Health picture')+': '+t[2],1);
+  var last=visLatest(p.name);
+  if(last){
+    (last.mods||[]).forEach(function(m){
+      add(__tr('Plan'),__tr('Working through')+': '+m.t+' ('+m.prog+')',1); });
+    if(last.next) add(__tr('Plan'),__tr('Next appointment')+': '+__tr(last.next),1);
+    if(last.ref) add(__tr('Plan'),__tr('Nutrition visit')+': '+last.ref.who+' · '+
+      __tr(last.ref.when),1);
+  }
+  if(p.name===DASH.patient.name&&typeof SVMK!=='undefined'){
+    SVMK.forEach(function(m){
+      if(m.st!=='ok') add(__tr('Markers'),__tr('Latest')+' '+__tr(m.t)+': '+
+        m.pts[m.pts.length-1]+' '+m.u,0);
+    });
+  }
+  if(it){
+    if(it.goal) add(__tr('Their words'),__tr('Goal')+': '+it.goal,1);
+    if(it.struggle) add(__tr('Their words'),__tr('Hardest right now')+': '+it.struggle,1);
+    if(it.avoid) add(__tr('Their words'),__tr('Keep off')+': '+it.avoid,1);
+  }
+  return out;
+}
+var BR_SCOPE=[
+  ['plan','The plan you assigned','Modules, appointments, referrals'],
+  ['content','What is inside their programs','The lessons they already have'],
+  ['marks','Their markers and results','Numbers on file, no interpretation'],
+  ['meds','Medication questions','Off by default — this one is yours']
+];
+var BR_ESC=[
+  ['urgent','Anything that sounds urgent','Sends them to you, or to emergency care'],
+  ['meds','Anything about medication','Even if they insist'],
+  ['outside','Anything outside what you ticked','Says so instead of guessing']
+];
+var BRC=null;   /* o rascunho da configuracao, enquanto a gaveta esta aberta */
+
+function brSetup(role,i){
+  var p=DASH[role].patients[i], it=brIntake(), cfg=brCfg();
+  var facts=brFacts(role,i);
+  BRC={role:role, i:i, tone:(cfg?cfg.tone:(it?(it.tone||0):0)),
+    scope:Object.assign({plan:1,content:1,marks:0,meds:0},(cfg&&cfg.scope)||{}),
+    esc:Object.assign({urgent:1,meds:1,outside:1},(cfg&&cfg.esc)||{}),
+    facts:facts.map(function(f){ return Object.assign({},f); })};
+  if(cfg&&cfg.facts){                       /* reabrir mantem o que ja estava ligado */
+    BRC.facts.forEach(function(f){
+      f.on=cfg.facts.some(function(g){ return g.t===f.t; })?1:0; });
+  }
+  aiDrawer(__tr('Set up the assistant'),brSetupBody(p));
+}
+function brSetupBody(p){
+  var row=function(on,fn,b,sp){
+    return '<button class="brrow'+(on?' on':'')+'" onclick="'+fn+'">'+
+      '<i>'+dIcon('check')+'</i><div><b>'+b+'</b>'+(sp?'<span>'+sp+'</span>':'')+
+      '</div></button>';
+  };
+  var sc='', es='', fa='';
+  BR_SCOPE.forEach(function(o){
+    sc+=row(BRC.scope[o[0]],'brcScope(\''+o[0]+'\',this)',__tr(o[1]),__tr(o[2])); });
+  BR_ESC.forEach(function(o){
+    es+=row(BRC.esc[o[0]],'brcEsc(\''+o[0]+'\',this)',__tr(o[1]),__tr(o[2])); });
+  BRC.facts.forEach(function(f,i){
+    fa+=row(f.on,'brcFact('+i+',this)',esc(f.t),f.s); });
+  if(!fa) fa='<p class="mtlead" style="margin:0">'+
+    __tr('Nothing to offer yet — assign content or close a visit first.')+'</p>';
+
+  return '<p class="mtlead">'+__tr('Everything here is already on file for')+' '+
+      esc(givenName(p.name))+'. '+__tr('Tick what the assistant may use between visits.')+'</p>'+
+    '<div class="brsec"><div class="kvl">'+__tr('Tone')+'</div><div class="mtopts">'+
+      BR_TONE.map(function(t,i){
+        return '<button class="mtopt'+(BRC.tone===i?' on':'')+'" onclick="brcTone('+i+
+          ',this)">'+__tr(t)+'</button>'; }).join('')+'</div></div>'+
+    '<div class="brsec"><div class="kvl">'+__tr('What it may answer')+'</div>'+sc+'</div>'+
+    '<div class="brsec"><div class="kvl">'+__tr('Facts it should always use')+'</div>'+fa+'</div>'+
+    '<div class="brsec"><div class="kvl">'+__tr('When to hand it back to you')+'</div>'+es+'</div>'+
+    '<div class="aiact">'+
+      '<button class="dbtn dbtn-line" onclick="aiShut()">'+__tr('Cancel')+'</button>'+
+      '<button class="dbtn dbtn-solid" onclick="brPublish()">'+dIcon('check')+
+        __tr('Turn it on')+'</button></div>';
+}
+function brcTone(i,el){ if(BRC){ BRC.tone=i; meetSibs(el,'on'); } }
+function brcScope(k,el){ if(!BRC) return; BRC.scope[k]=BRC.scope[k]?0:1;
+  el.classList.toggle('on',!!BRC.scope[k]); }
+function brcEsc(k,el){ if(!BRC) return; BRC.esc[k]=BRC.esc[k]?0:1;
+  el.classList.toggle('on',!!BRC.esc[k]); }
+function brcFact(i,el){ if(!BRC||!BRC.facts[i]) return;
+  BRC.facts[i].on=BRC.facts[i].on?0:1;
+  el.classList.toggle('on',!!BRC.facts[i].on); }
+function brPublish(){
+  if(!BRC) return;
+  var D=DASH[BRC.role], b=brRead();
+  b.cfg={on:1, tone:BRC.tone, scope:BRC.scope, esc:BRC.esc,
+    facts:BRC.facts.filter(function(f){ return f.on; })
+      .map(function(f){ return {t:f.t,s:f.s,k:f.k}; }),
+    who:D.name, when:new Date().toISOString()};
+  brSave(b);
+  var role=BRC.role, i=BRC.i; BRC=null;
+  aiShut();
+  toast(__tr('The assistant is on for this patient'));
+  DASH[role].selPatient=i; dashSection(role);
+}
+function brOff(role,i){
+  var b=brRead();
+  if(b.cfg){ b.cfg.on=0; brSave(b); }
+  toast(__tr('The assistant is off for this patient'));
+  DASH[role].selPatient=i; dashSection(role);
+}
+
+/* o cartao na ficha do paciente */
+function brCardHTML(role,i){
+  var p=DASH[role].patients[i], it=brIntake(), cfg=brCfg();
+  var mine=(p.name===DASH.patient.name);
+  var head='<header><span class="sp">'+dIcon('brain')+'</span><div>'+
+    '<b>'+__tr('Their assistant')+'</b><span>'+
+    __tr('Answers this patient between visits, with what you allow')+'</span></div></header>';
+
+  if(!mine){
+    return head+'<div class="aisec"><p class="mut">'+
+      __tr('This patient does not have an app account in the demo yet.')+'</p></div>';
+  }
+  if(!it){
+    return head+'<div class="aisec"><p class="mut">'+
+      __tr('Waiting on')+' '+esc(givenName(p.name))+' '+
+      __tr('to answer the five questions on their journey.')+'</p>'+
+      '<div class="aiact"><button class="dbtn dbtn-line" onclick="toast(\''+
+        __tr('Demo: a reminder would go out')+'\')">'+dIcon('bell')+
+        __tr('Remind them')+'</button></div></div>';
+  }
+  var qa='';
+  BR_Q.forEach(function(q){
+    if(it[q[0]]) qa+='<div><div class="kvl">'+__tr(q[1])+'</div><p>'+esc(it[q[0]])+'</p></div>';
+  });
+  var on=!!(cfg&&cfg.on);
+  return head+
+    '<div class="aichips"><span class="aichip">'+dIcon(on?'check':'clock')+
+      __tr('Status')+' <b>'+__tr(on?'On':'Not set up')+'</b></span>'+
+      '<span class="aichip">'+dIcon('message')+__tr('Tone')+' <b>'+
+        __tr(BR_TONE[(cfg?cfg.tone:it.tone)||0])+'</b></span>'+
+      (on?'<span class="aichip">'+dIcon('clipboard')+__tr('Facts')+' <b>'+
+        (cfg.facts||[]).length+'</b></span>':'')+'</div>'+
+    '<div class="aisec"><div class="kvl">'+__tr('What they told you')+'</div>'+
+      '<div class="braq">'+qa+'</div></div>'+
+    '<div class="aisec">'+
+      '<div class="aiact">'+
+        (on?'<button class="dbtn dbtn-line" onclick="brOff(\''+role+'\','+i+')">'+
+            __tr('Turn off')+'</button>':'')+
+        '<button class="dbtn dbtn-solid" onclick="brSetup(\''+role+'\','+i+')">'+
+          dIcon('sparkles')+__tr(on?'Edit what it may use':'Set up the assistant')+
+        '</button></div></div>'+
+    '<div class="aisrc">'+__tr('The assistant only uses the facts you tick. Anything else it hands back to you.')+'</div>';
+}
+
+/* ---- a resposta do agente, do lado do paciente ---- */
+function brAnswer(q){
+  var cfg=brCfg(); if(!cfg||!cfg.on) return null;
+  var low=String(q).toLowerCase(), hit=null;
+  (cfg.facts||[]).forEach(function(f){
+    if(!hit&&(f.k||[]).some(function(k){ return low.indexOf(k)>=0; })) hit=f;
+  });
+  if(!hit) return null;
+  /* o tom muda a entrada, nunca o facto */
+  var lead=(cfg.tone===0)?'':(__tr('Here is what your plan says')+': ');
+  return {a:esc(lead+hit.t), src:__tr('From your plan, set by')+' '+esc(cfg.who)};
+}
+/* o que o terapeuta desligou deixa de responder, mesmo que a app saiba */
+function brScopeOK(k){
+  var cfg=brCfg();
+  if(!cfg||!cfg.on) return true;
+  return !!(cfg.scope&&cfg.scope[k]);
+}
+function brMiss(){
+  var cfg=brCfg();
+  if(!cfg||!cfg.on) return null;
+  return __tr('That is outside what your therapist switched on for me, so I will not guess. Send it to them and it goes on the agenda for your next visit.');
+}
+
+/* ---- AS FOTOS DO PACIENTE ----
+   A imagem e reduzida aqui no browser antes de ser guardada: o localStorage
+   nao aguenta uma foto de telemovel inteira. */
+var PH_KEY='mb.photos.v1', PH_MAX=8, PH_SIDE=520;
+function phRead(){
+  try{ var r=localStorage.getItem(PH_KEY); if(r) return JSON.parse(r)||[]; }catch(e){}
+  return [];
+}
+function phSave(a){
+  try{ localStorage.setItem(PH_KEY,JSON.stringify(a.slice(0,PH_MAX))); }
+  catch(e){ toast(__tr('Demo: no room left to store more photos')); }
+}
+function phList(){ return phRead(); }
+function phDrop(id){
+  phSave(phRead().filter(function(p){ return p.id!==id; }));
+  ciUpdate('patient');
+}
+function phPick(ev,role){
+  var f=ev&&ev.target&&ev.target.files&&ev.target.files[0];
+  if(!f) return;
+  var rd=new FileReader();
+  rd.onload=function(){
+    var im=new Image();
+    im.onload=function(){
+      var w=im.width, h=im.height, k=Math.min(1,PH_SIDE/Math.max(w,h));
+      var cv=document.createElement('canvas');
+      cv.width=Math.max(1,Math.round(w*k)); cv.height=Math.max(1,Math.round(h*k));
+      cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);
+      var url;
+      try{ url=cv.toDataURL('image/jpeg',0.72); }catch(e){ url=rd.result; }
+      var a=phRead();
+      a.unshift({id:'p'+Date.now(), when:new Date().toISOString(), url:url});
+      phSave(a);
+      ciUpdate(role||'patient');
+    };
+    im.onerror=function(){ toast(__tr('Demo: that file could not be read as an image')); };
+    im.src=rd.result;
+  };
+  rd.readAsDataURL(f);
+}
+/* o campo do passo da foto */
+function ciPhotoField(role){
+  var a=phRead(), g='';
+  a.forEach(function(p){
+    g+='<div class="ciphi"><img src="'+p.url+'" alt="">'+
+      '<button class="ciphx" onclick="phDrop(\''+p.id+'\')" aria-label="'+
+        __tr('Remove')+'">'+dIcon('x')+'</button></div>';
+  });
+  return '<div class="ciph">'+
+    '<label class="ciphdrop"><span class="ic0">'+dIcon('camera')+'</span>'+
+      '<span><b>'+__tr('Take or choose a photo')+'</b>'+
+      '<span>'+__tr('Your care team sees it with this check-in. Optional.')+'</span></span>'+
+      '<input type="file" accept="image/*" capture="environment" id="ci-photo" '+
+        'onchange="phPick(event,\''+role+'\')"></label>'+
+    (g?'<div class="ciphgrid">'+g+'</div>':'')+
+    '<p class="ciphnote">'+
+      (a.length?a.length+' '+__tr(a.length===1?'photo saved on this device':
+        'photos saved on this device')
+              :__tr('Nothing added yet — you can skip this step.'))+'</p>'+
+    '</div>';
+}
+
 const CISTEPS=[
   ['queixa','What is your main concern today?','Describe how you feel...',0],
   ['energia','How is your energy?','',1],
   ['sono','How is your sleep?','',1],
   ['humor','How would you describe your mood?','Sad, anxious, motivated...',0],
-  ['alimentar','How was your eating this week?','A summary of what you ate...',0]
+  ['alimentar','How was your eating this week?','A summary of what you ate...',0],
+  /* 2 = foto. O que pedimos para fotografar ainda nao esta decidido: TBD. */
+  ['foto','Want to add a photo?','',2]
 ];
 function ciState(D){ if(!D.ci) D.ci={step:0,ans:{},done:false}; return D.ci; }
 function ciInner(role){
@@ -7907,12 +8407,14 @@ function ciInner(role){
     '<h2 style="font-size:20px;color:var(--hd);margin-bottom:8px">Check-in recorded</h2>'+
     '<p style="color:var(--soft);font-size:14px;max-width:24em;margin:0 auto 20px">Your team will receive this information for your next appointment.</p>'+
     '<button class="dbtn dbtn-line" onclick="ciReset(\''+role+'\')">New check-in</button></div>';
-  const st=CISTEPS[ci.step], scale=st[3]===1, val=ci.ans[st[0]];
+  const st=CISTEPS[ci.step], scale=st[3]===1, photo=st[3]===2, val=ci.ans[st[0]];
   const pct=Math.round((ci.step+1)/CISTEPS.length*100);
   let field;
-  if(scale){ let b=''; for(let n=1;n<=10;n++) b+='<button class="'+(val===n?'on':'')+'" onclick="ciScale(\''+role+'\','+n+')">'+n+'</button>'; field='<div class="ciscale">'+b+'</div>'; }
+  if(photo) field=ciPhotoField(role);
+  else if(scale){ let b=''; for(let n=1;n<=10;n++) b+='<button class="'+(val===n?'on':'')+'" onclick="ciScale(\''+role+'\','+n+')">'+n+'</button>'; field='<div class="ciscale">'+b+'</div>'; }
   else field='<textarea id="ci-text" placeholder="'+st[2]+'" oninput="ciText(\''+role+'\',this.value)">'+(val||'')+'</textarea>';
-  const canAdv=scale?(val!==undefined):(typeof val==='string'&&val.trim().length>3);
+  /* a foto e opcional: o passo nunca prende ninguem */
+  const canAdv=photo?true:(scale?(val!==undefined):(typeof val==='string'&&val.trim().length>3));
   return '<div class="ciprog"><div class="cit"><span>Step '+(ci.step+1)+' of '+CISTEPS.length+'</span><span>'+pct+'%</span></div><div class="cibar"><i style="width:'+pct+'%"></i></div></div>'+
     '<div class="dcard ciq"><div class="cik">'+dIcon('sparkles')+'Question</div><h2>'+st[1]+'</h2>'+field+'</div>'+
     '<div class="cinav"><button class="dbtn dbtn-line" '+(ci.step===0?'style="visibility:hidden"':'')+' onclick="ciBack(\''+role+'\')">'+dIcon('chevron-left')+'Back</button>'+
@@ -7976,11 +8478,13 @@ function dSection(D){
       let ynh=''; yn.forEach(y=>ynh+='<div class="t3"><div class="l">'+y[0]+'</div><div class="v '+(y[1]?'yes':'no')+'">'+(y[1]?'Yes':'No')+'</div></div>');
       return '<div class="dsec"><button class="dback" onclick="dashNav(\'doctor\',\'pacientes\')">'+dIcon('chevron-left')+'Back</button>'+
         '<div class="dhead"><h1>'+p.name+'</h1><p>'+p.sub+'</p></div>'+
+        '<div class="airep">'+patRepHTML('doctor',D.selPatient)+'</div>'+
+        '<div class="airep">'+brCardHTML('doctor',D.selPatient)+'</div>'+
         '<div class="dcard"><div class="dh2" style="margin:0 0 16px">'+dIcon('clipboard')+'Triage summary</div>'+
           '<div class="kv">'+kvh+'</div><div class="tri3">'+ynh+'</div>'+
           '<div style="margin-top:16px"><div class="kvl" style="margin-bottom:6px">Daily energy</div>'+
           '<div style="display:flex;align-items:center;gap:12px"><div style="flex:1;height:9px;border-radius:99px;background:var(--bg-dim);overflow:hidden"><div style="width:'+(p.energy*10)+'%;height:100%;background:var(--t500)"></div></div><b style="color:var(--hd);font-size:14px">'+p.energy+'/10</b></div></div>'+
-          '<div class="tacts" style="display:flex;gap:8px;margin-top:20px"><button class="dbtn dbtn-line" onclick="toast(\'Demo: chat would open here\')">'+dIcon('message')+'Chat</button><button class="dbtn dbtn-solid" onclick="meetStart(\'doctor\','+D.selPatient+')">'+dIcon('video')+__tr('Start meeting')+'</button></div>'+
+          '<div class="tacts" style="display:flex;gap:8px;margin-top:20px"><button class="dbtn dbtn-line" onclick="toast(\'Demo: chat would open here\')">'+dIcon('message')+'Chat</button><button class="dbtn dbtn-solid" onclick="proStart(\'doctor\','+D.selPatient+')">'+dIcon('video')+__tr('Start meeting')+'</button></div>'+
         '</div></div>';
     }
     let list='';
@@ -8007,12 +8511,14 @@ function nSection(D){
       const p=D.patients[D.selPatient];
       return '<div class="dsec"><button class="dback" onclick="dashNav(\'nutri\',\'pacientes\')">'+dIcon('chevron-left')+'Back</button>'+
         '<div class="dhead"><h1>'+p.name+'</h1><p>'+p.sub+'</p></div>'+
+        '<div class="airep">'+patRepHTML('nutri',D.selPatient)+'</div>'+
+        '<div class="airep">'+brCardHTML('nutri',D.selPatient)+'</div>'+
         '<div class="dcard"><div class="dh2" style="margin:0 0 14px">'+dIcon('utensils')+'Menu &amp; adherence</div>'+
         '<span class="ptag '+(p.adhc==='ok'?'ok':'warn')+'">'+p.adh+'</span>'+
         '<p style="color:var(--soft);font-size:14px;line-height:1.7;margin-top:14px">Generate a personalized menu based on this patient\'s triage, labs, and preferences.</p>'+
         '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:16px">'+
         '<button class="dbtn dbtn-line" onclick="toast(\'Demo: the AI menu generator would open here\')">'+dIcon('sparkles')+'Generate menu</button>'+
-        '<button class="dbtn dbtn-solid" onclick="meetStart(\'nutri\','+D.selPatient+')">'+dIcon('video')+__tr('Start meeting')+'</button></div></div></div>';
+        '<button class="dbtn dbtn-solid" onclick="proStart(\'nutri\','+D.selPatient+')">'+dIcon('video')+__tr('Start meeting')+'</button></div></div></div>';
     }
     let list='';
     D.patients.forEach((p,i)=>{ list+='<button class="pcard" onclick="dashSelPatient(\'nutri\','+i+')"><div class="pav">'+p.init+'</div>'+
@@ -8055,12 +8561,19 @@ function aqRead(){
 }
 function aqSave(a){ try{ localStorage.setItem(AQ_KEY,JSON.stringify(a)); }catch(e){} }
 
-/* sem nada atribuido e sem primeira consulta, a aventura tem um passo so */
+/* A conta abre com dois passos: marcar a primeira consulta e responder ao
+   formulario que da forma ao assistente. O segundo fica feito sozinho quando
+   as respostas chegam - o estado vem do formulario, nao de um clique. */
 function aqList(){
   var a=aqRead();
-  if(!a.length) return [{id:'first',kind:'first',label:'Schedule your first meeting',
-    sub:'The only thing open',done:0}];
-  return a;
+  if(!a.length) a=[
+    {id:'first',kind:'first',label:'Schedule your first meeting',sub:'Where it starts',done:0},
+    {id:'brain',kind:'brain',label:'Set up your assistant',sub:'Five questions',done:0}
+  ];
+  var filled=!!brIntake();
+  return a.map(function(t){
+    return (t.kind==='brain')?Object.assign({},t,{done:filled?1:0}):t;
+  });
 }
 function aqAdd(items){
   var a=aqRead();
@@ -8089,6 +8602,7 @@ function aqIcon(t){
   if(t.kind==='ref') return 'utensils';
   if(t.kind==='first') return 'calendar';
   if(t.kind==='chk') return 'clipboard';
+  if(t.kind==='brain') return 'brain';
   return 'book';
 }
 /* Tocar num passo ABRE a coisa. Um modulo puxa o programa dentro de
@@ -8107,6 +8621,7 @@ function aqOpen(id){
     openProgram(pid); return;
   }
   if(t.kind==='chk'){ dashNav('patient','checkin'); return; }
+  if(t.kind==='brain'){ dashNav('patient','intake'); return; }
   if(t.kind==='ref'){
     dashNav('patient','equipe');
     toast(__tr('Demo: book the nutrition visit from here')); return;
@@ -8275,7 +8790,7 @@ function pIdx(role,name){
 function pMeetFrom(role,name){
   var i=pIdx(role,name);
   if(i<0){ toast(__tr('This person is not a patient yet')); return; }
-  meetStart(role,i);
+  proStart(role,i);
 }
 function meetStart(role,i){
   MEET={role:role,pi:i,phase:'call',t0:Date.now(),picked:{},span:{},open:null,
@@ -8288,6 +8803,276 @@ function meetLeave(){
   var r=MEET?MEET.role:null; MEET=null;
   if(r) dashSection(r);
 }
+/* ---- O RELATORIO DO PACIENTE ----
+   O mesmo principio do resumo da consulta: so entra o que existe. Os numeros
+   da app existem so para o paciente da demo, que e o unico com conta ligada. */
+function patApp(name){
+  if(name!==DASH.patient.name) return null;
+  var a=aqList();
+  var mods=a.filter(function(t){ return t.kind==='mod'; });
+  var chk=a.filter(function(t){ return t.kind==='chk'; });
+  return {n:a.length, done:a.filter(function(t){ return t.done; }).length,
+    mods:mods.length, modsDone:mods.filter(function(t){ return t.done; }).length,
+    chk:chk.length, chkDone:chk.filter(function(t){ return t.done; }).length,
+    pct:aqStats().pct};
+}
+function lowFirst(s2){ return s2?s2.charAt(0).toLowerCase()+s2.slice(1):''; }
+
+/* o texto corrido: uma frase por dado, nada a mais */
+function patStory(p,app,last){
+  var t=p.t||[], fn=givenName(p.name), out=[];
+  if(t[0]) out.push(fn+' '+__tr('came in for')+' '+lowFirst(t[0])+
+    (t[1]?' — '+t[1]:'')+'.');
+  if(t[2]) out.push(__tr('Health picture')+': '+t[2]+'.');
+  if(t[3]) out.push(__tr('Diet so far')+': '+lowFirst(t[3])+'.');
+  var st=[];
+  if(p.energy!=null) st.push(__tr('daily energy')+' '+p.energy+'/10');
+  if(p.risk) st.push(__tr('risk')+' '+__tr(p.risk));
+  if(p.adh) st.push(__tr('adherence')+' '+lowFirst(p.adh));
+  if(st.length) out.push(cap(st.join(', '))+'.');
+  if(app) out.push(__tr('In the app')+': '+app.done+' '+__tr('of')+' '+app.n+' '+
+    __tr('steps done')+(app.chk?', '+app.chkDone+' '+__tr('of')+' '+app.chk+' '+
+    __tr('check-ins sent'):'')+'.');
+  else out.push(__tr('No app activity on this account yet.'));
+  if(last) out.push(__tr('Last visit')+' '+visDate(last.when)+
+    (last.note?': “'+last.note+'”':'.'));
+  return out.join(' ');
+}
+function cap(s2){ return s2?s2.charAt(0).toUpperCase()+s2.slice(1):''; }
+
+function patRepHTML(role,i){
+  var p=DASH[role].patients[i], app=patApp(p.name);
+  var vs=visFor(p.name), last=vs[0]||null;
+
+  var chips=[];
+  if(p.energy!=null) chips.push(['zap',__tr('Daily energy'),p.energy+'/10']);
+  if(p.risk) chips.push(['alert',__tr('Risk'),__tr(p.risk)]);
+  if(p.adh) chips.push(['utensils',__tr('Adherence'),p.adh]);
+  chips.push(['video',__tr('Visits'),String(vs.length)]);
+  if(app) chips.push(['target',__tr('Steps done'),app.done+'/'+app.n]);
+  var ch=chips.map(function(c){
+    return '<span class="aichip">'+dIcon(c[0])+c[1]+' <b>'+esc(c[2])+'</b></span>'; }).join('');
+
+  var body='<div class="aisec"><div class="kvl">'+__tr('Where they stand')+'</div>'+
+    '<p>'+esc(patStory(p,app,last))+'</p></div>';
+
+  /* o que esta aberto na jornada, se a conta estiver ligada */
+  if(app){
+    var li='';
+    aqList().slice(0,6).forEach(function(t){
+      li+='<li><i>'+dIcon(t.done?'check':'clock')+'</i><span>'+esc(__tr(t.label))+
+        ' <em>· '+__tr(t.done?'done':'open')+'</em></span></li>';
+    });
+    body+='<div class="aisec"><div class="kvl">'+__tr('On their journey now')+'</div>'+
+      '<ul class="ailist">'+li+'</ul></div>';
+  }
+
+  /* as fotos que o paciente juntou aos check-ins */
+  if(app){
+    var ph=phList();
+    if(ph.length){
+      var fg='';
+      ph.slice(0,8).forEach(function(x){
+        fg+='<figure><img src="'+x.url+'" alt=""><figcaption>'+visDate(x.when)+
+          '</figcaption></figure>';
+      });
+      body+='<div class="aisec"><div class="kvl">'+__tr('Photos they sent')+'</div>'+
+        '<div class="aiph">'+fg+'</div></div>';
+    }
+  }
+
+  /* as ultimas consultas, cada uma abre o seu resumo */
+  if(vs.length){
+    var rows='';
+    vs.slice(0,4).forEach(function(v){
+      rows+='<button class="aiv" onclick="visOpen(\''+v.id+'\')">'+
+        '<span class="d">'+visDate(v.when)+'</span>'+
+        '<span class="t">'+esc(v.note||__tr('No note was typed during the call.'))+'</span>'+
+        '<span class="c">'+dIcon('chevron-right')+'</span></button>';
+    });
+    body+='<div class="aisec"><div class="kvl">'+__tr('Last visits')+'</div>'+rows+'</div>';
+  }
+
+  return '<header><span class="sp">'+dIcon('sparkles')+'</span><div>'+
+      '<b>'+__tr('Patient report')+'</b>'+
+      '<span>'+esc(p.name)+' · '+__tr('read this before the visit')+'</span>'+
+    '</div></header>'+
+    '<div class="aichips">'+ch+'</div>'+body+
+    '<div class="aisrc">'+__tr('Put together from the triage form, the markers on file and what this patient has done in the app. The assistant does not add anything of its own.')+'</div>';
+}
+function visOpen(id){
+  var v=visRead().filter(function(x){ return x.id===id; })[0];
+  if(!v) return;
+  aiDrawer(__tr('Visit summary'),'<div class="airep">'+aiRepHTML(v,'pro')+'</div>');
+}
+/* Iniciar consulta: da primeira vez, o relatorio aparece a frente. Depois nao
+   volta a interromper - quem ja leu nao precisa de ser avisado outra vez. */
+var REP_SEEN={};
+function proStart(role,i){
+  var p=DASH[role].patients[i];
+  if(!p) return;
+  if(REP_SEEN[p.name]){ meetStart(role,i); return; }
+  REP_SEEN[p.name]=1;
+  aiDrawer(__tr('Before you start'),
+    '<div class="airep">'+patRepHTML(role,i)+'</div>'+
+    '<div class="aiact"><button class="dbtn dbtn-solid" '+
+      'onclick="aiShut();meetStart(\''+role+'\','+i+')">'+dIcon('video')+
+      __tr('Start meeting')+'</button></div>');
+}
+
+/* o resumo do paciente abre e fecha no lugar, sem repintar a pagina */
+var PREP_ON=0;
+function pRepTog(){
+  var c=document.getElementById('pRep'); if(!c) return;
+  PREP_ON=PREP_ON?0:1;
+  c.classList.toggle('on',!!PREP_ON);
+}
+function pRepCard(){
+  var rec=visLatest(DASH.patient.name);
+  if(!rec) return '';
+  var who=(rec.pro&&rec.pro.name)||'';
+  return '<div class="aicard'+(PREP_ON?' on':'')+'" id="pRep">'+
+    '<button class="aitog" onclick="pRepTog()">'+
+      '<span class="sp">'+dIcon('sparkles')+'</span>'+
+      '<span class="tx"><b>'+__tr('Your visit summary')+'</b>'+
+        '<span>'+visDate(rec.when)+(who?' · '+esc(who):'')+' · '+
+          __tr('tap to read')+'</span></span>'+
+      '<span class="cv">'+dIcon('chevron-down')+'</span></button>'+
+    '<div class="aibody"><div class="airep">'+aiRepHTML(rec,'pat')+'</div></div></div>';
+}
+
+/* ============ O RESUMO DA CONSULTA ====================================
+   Guardado uma vez, lido dos dois lados: o profissional le-o ao fechar a
+   consulta, o paciente le o mesmo registo na sua area.
+   ===================================================================== */
+var VIS_KEY='mb.visits.v1';
+function visRead(){
+  try{ var r=localStorage.getItem(VIS_KEY); if(r) return JSON.parse(r)||[]; }catch(e){}
+  return [];
+}
+function visSave(a){ try{ localStorage.setItem(VIS_KEY,JSON.stringify(a.slice(0,12))); }catch(e){} }
+function visAdd(rec){ var a=visRead(); a.unshift(rec); visSave(a); }
+function visFor(name){
+  return visRead().filter(function(v){ return !name||(v.pat&&v.pat.name===name); });
+}
+function visLatest(name){ return visFor(name)[0]||null; }
+function visDate(iso){
+  var d=new Date(iso); if(isNaN(d.getTime())) return '';
+  return (AG_MON[d.getMonth()]||'').slice(0,3)+' '+d.getDate();
+}
+
+/* o registo desta consulta, montado a partir do estado da chamada */
+function meetRec(){
+  var D=DASH[MEET.role], p=D.patients[MEET.pi], mods=[];
+  PROGRAMS.forEach(function(pr){
+    (MEET.picked[pr.id]||[]).forEach(function(di){
+      mods.push({prog:pr.title, t:pr.days[di].t, span:MEET.span[pr.id]||1});
+    });
+  });
+  return {
+    id:'v'+MEET.t0, when:new Date().toISOString(),
+    mins:Math.max(1,Math.round((Date.now()-MEET.t0)/60000)),
+    pro:{name:D.name, role:D.roleLabel||''},
+    pat:{name:p.name, init:p.init||'', sub:p.sub||''},
+    tri:(p.t||[]).slice(), energy:(p.energy==null?null:p.energy),
+    risk:p.risk||'', adh:p.adh||'',
+    note:MEET.note||'', mods:mods,
+    ref:(MEET.ref&&MEET.ref.on)?{who:DASH.nutri.name, when:MEET_REFW[MEET.ref.when]}:null,
+    next:MEET_NEXT[MEET.next]
+  };
+}
+
+/* o mesmo resumo nas duas linguagens: 'pro' fala do paciente, 'pat' fala contigo */
+function aiRepHTML(rec,side){
+  if(!rec) return '';
+  var pat=rec.pat||{}, pro=rec.pro||{}, tri=rec.tri||[], you=(side==='pat');
+  var fn=you?'':givenName(pat.name||'');
+
+  var chips=[['clock',__tr('Length'),rec.mins+' min'],
+             ['calendar',__tr('Visit'),visDate(rec.when)]];
+  if(you){ if(pro.name) chips.push(['user',__tr('With'),pro.name]); }
+  else{
+    if(rec.energy!=null) chips.push(['zap',__tr('Daily energy'),rec.energy+'/10']);
+    if(rec.risk) chips.push(['alert',__tr('Risk'),__tr(rec.risk)]);
+  }
+  var ch=chips.map(function(c){
+    return '<span class="aichip">'+dIcon(c[0])+c[1]+' <b>'+esc(c[2])+'</b></span>'; }).join('');
+
+  var body='';
+  /* 1 - o motivo, como veio da triagem */
+  if(tri[0]){
+    body+='<div class="aisec"><div class="kvl">'+
+      __tr(you?'Why you came':'What brought them in')+'</div><p>'+esc(tri[0])+
+      (tri[1]?' · '+esc(tri[1]):'')+'</p></div>';
+  }
+  /* 2 - como se sente, palavras da triagem */
+  if(tri[4]){
+    body+='<div class="aisec"><div class="kvl">'+
+      __tr(you?'How you described feeling':'How they describe feeling')+
+      '</div><p>'+esc(tri[4])+'</p></div>';
+  }
+  /* 3 - a nota da consulta, tal como foi escrita */
+  body+='<div class="aisec"><div class="kvl">'+__tr('Visit note')+'</div>'+
+    (rec.note
+      ? '<blockquote class="aiq">'+esc(rec.note)+'</blockquote>'
+      : '<p class="mut">'+__tr('No note was typed during the call.')+'</p>')+'</div>';
+  /* 4 - o que fica combinado */
+  var li='';
+  (rec.mods||[]).forEach(function(m){
+    li+='<li><i>'+dIcon('book')+'</i><span>'+esc(m.t)+
+      ' <em>· '+esc(m.prog)+' · '+(m.span===1?__tr('Before next visit')
+        :m.span+' '+__tr('visits'))+'</em></span></li>';
+  });
+  if(rec.ref) li+='<li><i>'+dIcon('utensils')+'</i><span>'+__tr('Nutrition visit')+
+    ' <em>· '+esc(rec.ref.who)+' · '+__tr(rec.ref.when)+'</em></span></li>';
+  if(rec.next) li+='<li><i>'+dIcon('calendar')+'</i><span>'+__tr('Next appointment')+
+    ' <em>· '+__tr(rec.next)+'</em></span></li>';
+  body+='<div class="aisec"><div class="kvl">'+
+    __tr(you?'What you will work on':'Plan from this visit')+'</div>'+
+    (li?'<ul class="ailist">'+li+'</ul>'
+       :'<p class="mut">'+__tr('Nothing assigned yet.')+'</p>')+'</div>';
+
+  return '<header><span class="sp">'+dIcon('sparkles')+'</span><div>'+
+      '<b>'+__tr('Visit summary')+'</b>'+
+      '<span>'+(you?__tr('Written up for you after the visit')
+                   :esc(pat.name||'')+' · '+__tr('read before you close the visit'))+'</span>'+
+    '</div></header>'+
+    '<div class="aichips">'+ch+'</div>'+body+
+    '<div class="aisrc">'+__tr('Put together from this visit’s note, the triage form and what was assigned. The assistant does not add anything of its own.')+'</div>';
+}
+
+/* a gaveta: vive dentro do ecra activo, para herdar o tema */
+function aiKill(){ ['aiScrim','aiDrawer'].forEach(function(id){
+  var e=document.getElementById(id); if(e&&e.parentNode) e.parentNode.removeChild(e); }); }
+function aiShut(){
+  var sc=document.getElementById('aiScrim'), dr=document.getElementById('aiDrawer');
+  if(sc) sc.classList.remove('on');
+  if(dr) dr.classList.remove('on');
+  setTimeout(aiKill,380);
+}
+function aiDrawer(title,html){
+  aiKill();
+  var host=document.getElementById(curScreen())||document.body;
+  host.insertAdjacentHTML('beforeend',
+    '<div class="aiscrim" id="aiScrim" onclick="aiShut()"></div>'+
+    '<aside class="aidrawer" id="aiDrawer" role="dialog" aria-modal="true"></aside>');
+  var dr=document.getElementById('aiDrawer');
+  dr.innerHTML='<div class="aidh"><b>'+title+'</b><button class="aidx" onclick="aiShut()" '+
+    'aria-label="'+__tr('Close')+'">'+dIcon('x')+'</button></div>'+html;
+  renderIcons(dr);
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
+  requestAnimationFrame(function(){
+    var sc=document.getElementById('aiScrim');
+    if(sc) sc.classList.add('on');
+    dr.classList.add('on');
+  });
+}
+/* o resumo recolhido, aberto a partir da aba do assistente */
+function meetRepOpen(){
+  if(!MEET) return;
+  aiDrawer(__tr('Visit summary'),'<div class="airep">'+aiRepHTML(meetRec(),'pro')+'</div>');
+}
+
 function meetPhase(p){
   if(!MEET) return;
   if(p!=='call'&&MEET_T){ clearInterval(MEET_T); MEET_T=null; }
@@ -8377,6 +9162,9 @@ function meetSend(){
   if(!MEET) return;
   var n=meetCount(), role=MEET.role, i=MEET.pi, ref=MEET.ref.on;
 
+  /* o resumo fica guardado: e o mesmo que o paciente vai ler */
+  visAdd(meetRec());
+
   /* o que foi atribuido passa a ser proximo passo na Jornada do paciente */
   var add=[];
   PROGRAMS.forEach(function(pr){
@@ -8393,7 +9181,8 @@ function meetSend(){
   add.push({id:'chk:'+(nchk+1), kind:'chk', label:'Check in this week',
     sub:'Takes 2 minutes', done:0});
   /* a primeira consulta fica marcada como feita, ja aconteceu */
-  add.unshift({id:'first',kind:'first',label:'Schedule your first meeting',sub:'Booked',done:1});
+  add.unshift({id:'first',kind:'first',label:'Schedule your first meeting',sub:'Booked',done:1},
+    {id:'brain',kind:'brain',label:'Set up your assistant',sub:'Five questions',done:0});
   aqAdd(add);
 
   MEET=null;
@@ -8437,7 +9226,7 @@ function meetView(role){
             dIcon('video')+'</button>'+
           '<button class="mtb" onclick="toast(\''+__tr('Demo: screen sharing would start here')+
             '\')" aria-label="'+__tr('Share screen')+'">'+dIcon('clipboard')+'</button>'+
-          '<button class="mtend" onclick="meetPhase(\'w1\')">'+dIcon('phone-off')+
+          '<button class="mtend" onclick="meetPhase(\'w0\')">'+dIcon('phone-off')+
             '<span class="lb">'+__tr('End meeting')+'</span></button>'+
         '</div>'+
       '</div>'+
@@ -8456,26 +9245,28 @@ function meetView(role){
 /* ---- o assistente: casca fixa, corpo repintavel ----
    Antes cada clique chamava dashSection() e repintava a pagina inteira, o que
    dava a sensacao de recarregar. Agora so o corpo, os passos e o rodape mudam. */
-var MEET_STEPS=[['w1','Assign content'],['w2','Plan'],['w3','Review']];
+var MEET_STEPS=[['w0','Visit summary'],['w1','Assign content'],['w2','Plan'],['w3','Review']];
 
 function meetSteps(){
   var si=MEET_STEPS.findIndex(function(x){ return x[0]===MEET.phase; });
   return MEET_STEPS.map(function(st,i){
     return '<div class="mtstep'+(st[0]===MEET.phase?' on':'')+(si>i?' done':'')+'">'+
       '<i>'+(si>i?dIcon('check'):(i+1))+'</i><span>'+__tr(st[1])+'</span></div>';
-  }).join('<em class="mtsep"></em>');
+  }).join('<em class="mtsep"></em>')+
+  /* depois de lido, o resumo recolhe para aqui e volta a abrir quando faz falta */
+  (MEET.phase==='w0'?'':'<button class="aidock" onclick="meetRepOpen()">'+
+    dIcon('sparkles')+__tr('Visit summary')+'</button>');
 }
 
 function meetNav(role){
   var step=MEET.phase;
-  var back = (step==='w1')
-    ? '<button class="dbtn dbtn-line" onclick="meetPhase(\'call\')">'+__tr('Back to call')+'</button>'
-    : '<button class="dbtn dbtn-line" onclick="meetPhase(\''+(step==='w3'?'w2':'w1')+'\')">'+
-      __tr('Back')+'</button>';
+  var PREV={w0:'call',w1:'w0',w2:'w1',w3:'w2'}, NEXT={w0:'w1',w1:'w2',w2:'w3'};
+  var back='<button class="dbtn dbtn-line" onclick="meetPhase(\''+PREV[step]+'\')">'+
+    __tr(step==='w0'?'Back to call':'Back')+'</button>';
   var fwd = (step==='w3')
     ? '<button class="dbtn dbtn-solid" onclick="meetSend()">'+dIcon('check')+
       __tr('Send to patient')+'</button>'
-    : '<button class="dbtn dbtn-solid" onclick="meetPhase(\''+(step==='w1'?'w2':'w3')+'\')">'+
+    : '<button class="dbtn dbtn-solid" onclick="meetPhase(\''+NEXT[step]+'\')">'+
       __tr('Continue')+dIcon('chevron-right')+'</button>';
   return back+fwd;
 }
@@ -8491,6 +9282,13 @@ function meetProgFor(cat){
 
 function meetBody(role,p){
   var step=MEET.phase;
+
+  /* w0: o resumo da consulta, antes de fechar nada */
+  if(step==='w0'){
+    return '<p class="mtlead">'+__tr('The call just ended. Here is what the assistant '+
+      'pulled together — read it, then close the visit.')+'</p>'+
+      '<div class="airep">'+aiRepHTML(meetRec(),'pro')+'</div>';
+  }
 
   if(step==='w1'){
     var out='<p class="mtlead">'+__tr('Pick what')+' '+esc(givenName(p.name))+' '+
@@ -9052,9 +9850,13 @@ function svAsk(q){
   let hit=null;
   SVAI.forEach(function(e){ if(!hit&&e.k.some(function(k){ return low.indexOf(k)>=0; })) hit=e; });
   const box=document.getElementById('svAns'); if(!box) return;
-  const ans=hit?hit.a:__tr('I could not find this in your programs or in your own data. This is a good one to send to your doctor, who can answer it with your history in front of them.');
+  /* o agente do paciente fala primeiro, e so com o que o terapeuta ligou */
+  const br=brAnswer(q);
+  const ans=br?br.a
+    :((hit&&brScopeOK('content'))?hit.a
+      :(brMiss()||__tr('I could not find this in your programs or in your own data. This is a good one to send to your doctor, who can answer it with your history in front of them.')));
   box.innerHTML='<div class="q">'+esc(q)+'</div><p>'+ans+'</p>'+
-    '<div class="ft"><span>'+__tr('General information, not a prescription.')+'</span>'+
+    '<div class="ft"><span>'+(br?br.src:__tr('General information, not a prescription.'))+'</span>'+
     '<button class="svesc" onclick="svAgendaAdd(\''+esc(q).replace(/'/g,"\\'")+'\',\''+
       __tr('From your question to the assistant')+'\')">'+
       __tr('Ask your doctor instead')+'</button></div>';
@@ -11385,9 +12187,11 @@ function pService(D){
   /* --- lateral: assistente, pauta, proximas --- */
   const bot=
     '<div class="svcard svbot">'+
-      '<div class="tp"><span class="sp">'+dIcon('sparkles')+'</span>'+
-        '<span><b>'+__tr('Ask anything')+'</b>'+
-        '<span>'+__tr('General information, never a prescription')+'</span></span></div>'+
+      '<div class="tp"><span class="sp">'+dIcon(brOn()?'brain':'sparkles')+'</span>'+
+        '<span><b>'+__tr(brOn()?'Your assistant':'Ask anything')+'</b>'+
+        '<span>'+(brOn()
+          ? __tr('Set up by')+' '+esc(brCfg().who)+' · '+__tr(BR_TONE[brCfg().tone||0])
+          : __tr('General information, never a prescription'))+'</span></span></div>'+
       '<div class="svfield"><input id="svQ" type="text" onkeydown="svKey(event)" '+
         'placeholder="'+__tr('Your labs, your plan, a symptom')+'">'+
         '<button onclick="svAsk()">'+__tr('Ask')+'</button></div>'+
@@ -11414,7 +12218,7 @@ function pService(D){
     '<div class="svhead"><h1>'+__tr('Your')+' <span class="flowtxt">'+__tr('care')+
       '</span></h1><p>'+__tr('Everything your team and you decided, in one place.')+'</p></div>'+
     '<div class="svwrap">'+
-      '<div class="svmain">'+marks+svTeamHTML()+plan+hist+'</div>'+
+      '<div class="svmain">'+pRepCard()+marks+svTeamHTML()+plan+hist+'</div>'+
       '<aside class="svside">'+book+next+bot+'</aside>'+
     '</div>'+
     '<div class="svmodal" id="svModal" onclick="svMkShut()"></div></div>';
@@ -11952,6 +12756,25 @@ function pchatToggle(role){
     var d=s&&s.querySelector('.dfab-brain .fdot'); if(d) d.style.display='none';
   }
 }
+/* uma pergunta no painel do mascote. Do lado do paciente e o agente que o
+   terapeuta configurou; do lado do profissional continua demo. */
+function pchAsk(role,q){
+  var box=document.querySelector('#pchat-'+role+' .pchb');
+  var inp=document.querySelector('#pchat-'+role+' .pchin input');
+  q=(q||'').toString().trim();
+  if(!q&&inp) q=inp.value.trim();
+  if(!q||!box) return;
+  if(inp) inp.value='';
+  var br=(role==='patient')?brAnswer(q):null;
+  var a=br?br.a
+    :((role==='patient'&&brMiss())||__tr('Demo: the assistant would answer here'));
+  box.insertAdjacentHTML('beforeend',
+    '<div class="pchme">'+esc(q)+'</div>'+
+    '<div class="pchbub">'+a+(br?'<i>'+br.src+'</i>':'')+'</div>');
+  box.scrollTop=box.scrollHeight;
+}
+function pchKey(role,e){ if(e.key==='Enter') pchAsk(role); }
+
 function pchatPanel(role){
   var D=DASH[role]||{}, pro=(role==='doctor'||role==='nutri');
   var line, who='', chips;
@@ -11973,18 +12796,22 @@ function pchatPanel(role){
   return '<div class="pchat" id="pchat-'+role+'">'+
     '<div class="pchh">'+dshMascot()+
       '<div><b>'+__tr('Assistant')+'</b><span class="sb">'+
-        (pro?__tr("Reads your patients' records"):__tr('Here to explain things'))+'</span></div>'+
+        (pro?__tr("Reads your patients' records")
+            :(brOn()?__tr('Set up by')+' '+esc(brCfg().who)
+                    :__tr('Here to explain things')))+'</span></div>'+
       '<button class="x" onclick="pchatToggle(\''+role+'\')" aria-label="'+__tr('Close')+'">'+dIcon('x')+'</button>'+
     '</div>'+
     '<div class="pchb">'+
       '<div class="pchbub">'+(who?esc(who)+' ':'')+line+'</div>'+
       '<div class="pchips">'+chips.map(function(c){
-        return '<button class="pchip" onclick="toast(\''+
-          __tr('Demo: the assistant would answer here')+'\')">'+c+'</button>'; }).join('')+
+        return '<button class="pchip" onclick="pchAsk(\''+role+'\',this.textContent)">'+
+          c+'</button>'; }).join('')+
       '</div></div>'+
-    '<div class="pchin"><input placeholder="'+__tr('Ask about a patient')+'" aria-label="'+
-      __tr('Ask about a patient')+'">'+
-      '<button onclick="toast(\''+__tr('Demo: the assistant would answer here')+'\')" aria-label="'+
+    '<div class="pchin"><input placeholder="'+
+        __tr(pro?'Ask about a patient':'Ask about your plan')+'" aria-label="'+
+        __tr(pro?'Ask about a patient':'Ask about your plan')+'" '+
+        'onkeydown="pchKey(\''+role+'\',event)">'+
+      '<button onclick="pchAsk(\''+role+'\')" aria-label="'+
         __tr('Send')+'">'+dIcon('arrow-right')+'</button></div></div>';
 }
 
@@ -13705,6 +14532,86 @@ routeFromHash();
 /* ============ LANGUAGE TOGGLE (EN / PT-BR) ============ */
 (function(){
   const EN2PT={
+    "Ask about your plan":"Pergunte sobre o seu plano",
+    "Here is what your plan says":"Isto é o que o seu plano diz","Goal":"Objetivo",
+    "Their assistant":"O assistente dele","Answers this patient between visits, with what you allow":"Responde a este paciente entre consultas, com o que você permitir",
+    "This patient does not have an app account in the demo yet.":"Este paciente ainda não tem conta no app nesta demo.",
+    "Waiting on":"À espera de","to answer the five questions on their journey.":"responder às cinco perguntas na jornada dele.",
+    "Remind them":"Lembrar","Demo: a reminder would go out":"Demo: um lembrete seria enviado",
+    "Status":"Estado","On":"Ligado","Not set up":"Não configurado","Tone":"Tom","Facts":"Factos",
+    "What they told you":"O que ele contou","Turn off":"Desligar",
+    "Set up the assistant":"Configurar o assistente","Edit what it may use":"Editar o que pode usar",
+    "The assistant only uses the facts you tick. Anything else it hands back to you.":"O assistente usa só os factos que você marcar. O resto devolve para você.",
+    "Everything here is already on file for":"Tudo isto já está registado sobre",
+    "Tick what the assistant may use between visits.":"Marque o que o assistente pode usar entre consultas.",
+    "What it may answer":"O que pode responder","Facts it should always use":"Factos que deve sempre usar",
+    "When to hand it back to you":"Quando devolver para você",
+    "Nothing to offer yet — assign content or close a visit first.":"Nada a oferecer ainda — atribua conteúdo ou feche uma consulta primeiro.",
+    "Turn it on":"Ligar","Cancel":"Cancelar",
+    "The assistant is on for this patient":"O assistente está ligado para este paciente",
+    "The assistant is off for this patient":"O assistente está desligado para este paciente",
+    "The plan you assigned":"O plano que você atribuiu","Modules, appointments, referrals":"Módulos, consultas, encaminhamentos",
+    "What is inside their programs":"O que está nos programas dele","The lessons they already have":"As aulas que ele já tem",
+    "Their markers and results":"Os marcadores e resultados dele","Numbers on file, no interpretation":"Números registados, sem interpretação",
+    "Medication questions":"Perguntas sobre medicação","Off by default — this one is yours":"Desligado por defeito — esta é sua",
+    "Anything that sounds urgent":"Qualquer coisa que pareça urgente","Sends them to you, or to emergency care":"Manda para você, ou para a emergência",
+    "Anything about medication":"Qualquer coisa sobre medicação","Even if they insist":"Mesmo que ele insista",
+    "Anything outside what you ticked":"Qualquer coisa fora do que você marcou","Says so instead of guessing":"Diz que não sabe em vez de adivinhar",
+    "Your assistant":"O seu assistente","Set up by":"Configurado por",
+    "Triage":"Triagem","Plan":"Plano","Markers":"Marcadores","Their words":"Nas palavras dele",
+    "Came in for":"Procurou ajuda por","Working through":"A trabalhar em","Latest":"Último",
+    "What they want":"O que ele quer","Hardest right now":"O mais difícil agora","Keep off":"Não falar de",
+    "From your plan, set by":"Do seu plano, definido por",
+    "That is outside what your therapist switched on for me, so I will not guess. Send it to them and it goes on the agenda for your next visit.":"Isso está fora do que o seu terapeuta ligou para mim, por isso não vou adivinhar. Envie para ele e fica na pauta da próxima consulta.",
+    "Set up your assistant":"Configure o seu assistente","Five questions":"Cinco perguntas",
+    "Five questions. Your therapist uses these to set up the assistant that answers you between visits.":"Cinco perguntas. O seu terapeuta usa isto para configurar o assistente que responde entre consultas.",
+    "What do you most want to get out of this?":"O que mais quer conseguir com isto?",
+    "In your own words.":"Nas suas palavras.",
+    "What is hardest for you right now?":"O que está mais difícil agora?",
+    "The thing that keeps getting in the way.":"O que continua a atrapalhar.",
+    "What does a normal day look like?":"Como é um dia normal?",
+    "Work, meals, sleep — roughly.":"Trabalho, refeições, sono — por alto.",
+    "Anything you would rather not be asked about?":"Algo que prefere que não lhe perguntem?",
+    "Your assistant will keep off it.":"O assistente fica longe disso.",
+    "How should your assistant talk to you?":"Como o assistente deve falar com você?",
+    "You can change this later.":"Pode mudar depois.",
+    "Straight and brief":"Direto e curto","Warm and encouraging":"Caloroso e encorajador",
+    "Explain the science":"Explique a ciência",
+    "Only your care team sees these answers.":"Só a sua equipa vê estas respostas.",
+    "Back to journey":"Voltar à jornada","Send to my team":"Enviar para a equipa",
+    "Save changes":"Salvar alterações",
+    "Answer at least the first two questions.":"Responda pelo menos às duas primeiras perguntas.",
+    "Sent to your care team. They will set up your assistant from this.":"Enviado para a sua equipa. É com isto que vão configurar o seu assistente.",
+    "Where it starts":"Por onde começa",
+    "Want to add a photo?":"Quer juntar uma foto?","Take or choose a photo":"Tire ou escolha uma foto",
+    "Your care team sees it with this check-in. Optional.":"A sua equipa vê junto com este check-in. Opcional.",
+    "Nothing added yet — you can skip this step.":"Nada adicionado ainda — pode pular este passo.",
+    "photo saved on this device":"foto guardada neste aparelho",
+    "photos saved on this device":"fotos guardadas neste aparelho",
+    "Photos they sent":"Fotos que enviou","Remove":"Remover",
+    "Demo: no room left to store more photos":"Demo: sem espaço para guardar mais fotos",
+    "Demo: that file could not be read as an image":"Demo: não foi possível ler esse ficheiro como imagem",
+    "Patient report":"Relatório do paciente","read this before the visit":"leia antes da consulta",
+    "Where they stand":"Como está","On their journey now":"Na jornada agora","Last visits":"Últimas consultas",
+    "Before you start":"Antes de começar","Visits":"Consultas","Steps done":"Passos feitos",
+    "came in for":"procurou ajuda por","Diet so far":"Alimentação até agora",
+    "daily energy":"energia diária","risk":"risco","adherence":"adesão",
+    "In the app":"No app","steps done":"passos feitos","check-ins sent":"check-ins enviados",
+    "No app activity on this account yet.":"Sem atividade no app nesta conta ainda.",
+    "Last visit":"Última consulta","done":"feito","open":"em aberto",
+    "Put together from the triage form, the markers on file and what this patient has done in the app. The assistant does not add anything of its own.":"Montado a partir do formulário de triagem, dos marcadores registados e do que este paciente fez no app. O assistente não acrescenta nada por conta própria.",
+    "Your visit summary":"O resumo da sua consulta","tap to read":"toque para ler",
+    "Visit summary":"Resumo da consulta","Length":"Duração","Visit":"Consulta",
+    "With":"Com","Why you came":"Por que procurou ajuda","What brought them in":"O que o trouxe aqui",
+    "How you described feeling":"Como disse que se sente","How they describe feeling":"Como diz que se sente",
+    "No note was typed during the call.":"Nenhuma nota foi escrita durante a chamada.",
+    "What you will work on":"O que vai trabalhar","Plan from this visit":"Plano desta consulta",
+    "Nothing assigned yet.":"Nada atribuído ainda.",
+    "Written up for you after the visit":"Escrito para você depois da consulta",
+    "read before you close the visit":"leia antes de fechar a consulta",
+    "Put together from this visit\u2019s note, the triage form and what was assigned. The assistant does not add anything of its own.":"Montado a partir da nota desta consulta, do formulário de triagem e do que foi atribuído. O assistente não acrescenta nada por conta própria.",
+    "The call just ended. Here is what the assistant pulled together — read it, then close the visit.":"A chamada acabou. Isto é o que o assistente reuniu — leia e depois feche a consulta.",
+    "Close":"Fechar",
     "Mark as done":"Marcar como feito","Open":"Abrir",
     "Check in this week":"Faca o check-in esta semana","Takes 2 minutes":"Leva 2 minutos",
     "Demo: book the nutrition visit from here":"Demo: a consulta de nutricao marca-se aqui",
