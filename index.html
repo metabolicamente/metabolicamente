@@ -2997,6 +2997,78 @@ button.aqpet:hover{transform:scale(1.08) rotate(-5deg)}
   filter:drop-shadow(0 0 8px rgba(42,157,143,.6))!important;animation:aiTwinkle 3s ease-in-out infinite}
 @keyframes aiTwinkle{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.12) rotate(12deg)}}
 @media(prefers-reduced-motion:reduce){.airep.aigen>header::after,.airep.aigen>header .sp .ic{animation:none}}
+
+/* --- relatorio: numeros compactos, ficha legivel, dobravel --- */
+.aiminis{display:flex;flex-wrap:wrap;gap:8px;padding:12px 14px 0}
+.aim{display:inline-flex;align-items:center;gap:7px;padding:6px 12px 6px 8px;border-radius:99px;
+  background:var(--card);border:1px solid var(--line);font-size:13px}
+.aim .ic{display:flex;width:22px;height:22px;border-radius:50%;align-items:center;justify-content:center;
+  background:var(--t50);color:var(--t500);font-size:12px}
+.aim b{font-family:var(--display);font-weight:700;color:var(--hd);letter-spacing:-.01em}
+.aim em{font-style:normal;font-size:11.5px;color:var(--soft)}
+.aim.warn .ic{background:rgba(217,164,32,.16);color:#B07D0A}
+.aifacts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+@media(max-width:900px){.aifacts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){.aifacts{grid-template-columns:1fr}}
+.aif{display:flex;gap:10px;align-items:flex-start;padding:10px 12px;border-radius:14px;
+  background:var(--card);border:1px solid var(--line)}
+.aif i{flex-shrink:0;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;
+  font-style:normal;background:var(--t50);color:var(--t500);font-size:14px}
+.aif i .ic{display:flex}
+.aif span{display:block;font-family:var(--quiet);font-size:10px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--soft)}
+.aif b{display:block;font-size:13.5px;font-weight:600;color:var(--hd);line-height:1.35;margin-top:2px}
+.airep>header{cursor:pointer}
+.aifold{display:flex;color:var(--soft);margin-left:6px;transition:transform .3s ease}
+.aifold .ic{display:flex}
+.airep.shut .aifold{transform:rotate(-90deg)}
+.aifoldb{animation:fadeUp .3s ease}
+.airep.shut .aifoldb{display:none}
+.airep.shut .aiminis{padding-bottom:14px}
+.aivis>summary{list-style:none;display:flex;align-items:center;gap:6px;cursor:pointer;margin-bottom:0}
+.aivis>summary::-webkit-details-marker{display:none}
+.aivis>summary b{font-family:var(--display);color:var(--t500);letter-spacing:0}
+.aivis>summary .ic{display:flex;margin-left:auto;transition:transform .3s ease}
+.aivis[open]>summary{margin-bottom:8px}
+.aivis[open]>summary .ic{transform:rotate(180deg)}
+.aivis{padding-bottom:4px}
+/* --- marcar consulta --- */
+.bkwho{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+.bkp{display:flex;flex-direction:column;align-items:center;gap:6px;padding:20px 14px;border-radius:20px;
+  border:1.5px solid rgba(238,245,244,.14);background:rgba(238,245,244,.04);cursor:pointer;font:inherit;
+  color:var(--ink);transition:transform .22s cubic-bezier(.2,1.2,.4,1),border-color .2s ease,background .2s ease}
+.bkp:hover{transform:translateY(-3px);border-color:#8FD3C8}
+.bkp.on{border-color:#8FD3C8;background:rgba(143,211,200,.10)}
+.bkp .av,.bksum .av{position:relative;width:64px;height:64px;border-radius:50%;overflow:hidden;display:grid;
+  place-items:center;background:linear-gradient(145deg,#2A9D8F,#0C333F);color:#fff;
+  font-family:var(--display);font-weight:700;font-size:20px;margin-bottom:4px}
+.bkp .av img,.bksum .av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bkp b{font-family:var(--display);font-size:15px;color:var(--hd)}
+.bkp>span:last-child{font-size:12.5px;color:var(--soft)}
+.bkdays{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.bkd{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 4px;border-radius:16px;
+  border:1.5px solid rgba(238,245,244,.14);background:rgba(238,245,244,.04);cursor:pointer;font:inherit;
+  color:var(--ink);transition:transform .22s cubic-bezier(.2,1.2,.4,1),border-color .2s ease,background .2s ease}
+.bkd:hover{transform:translateY(-3px);border-color:#8FD3C8}
+.bkd span,.bkd em{font-style:normal;font-family:var(--quiet);font-size:10.5px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--soft)}
+.bkd b{font-family:var(--display);font-size:22px;color:var(--hd)}
+.bkd.on{background:#8FD3C8;border-color:#8FD3C8}
+.bkd.on span,.bkd.on em,.bkd.on b{color:#07222C}
+.bktimes .itzchip{font-size:15px;padding:11px 18px}
+.bksum{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:16px;border-radius:18px;
+  background:rgba(238,245,244,.05);border:1px solid rgba(238,245,244,.12)}
+.bksum .av{width:48px;height:48px;font-size:16px;margin:0}
+.bksum b{display:block;font-family:var(--display);font-size:15px;color:var(--hd)}
+.bksum span{display:block;font-size:12.5px;color:var(--soft);margin-top:2px}
+.bksum .when{margin-left:auto;text-align:right}
+@media(max-width:560px){.bkdays{grid-template-columns:repeat(4,1fr)}.bksum .when{margin-left:0;text-align:left}}
+/* --- a teia de pacientes na pagina Meus pacientes --- */
+.pweb{padding:clamp(14px,1.4vw,20px);margin-bottom:clamp(14px,1.4vw,20px)}
+.pweb .pcst{min-height:clamp(340px,42vh,520px);margin:0}
+.pweb .dgh{margin-bottom:6px}
+.plist2{display:grid;gap:8px}
+.plist2 .pcard{padding:10px 14px}
 /* --- o formulario do assistente como um jogo curto --- */
 .itz{display:flex;justify-content:center}
 .itzwrap{width:100%;max-width:640px;margin:0 auto;padding-top:clamp(4px,2vh,26px)}
@@ -3039,10 +3111,10 @@ button.aqpet:hover{transform:scale(1.08) rotate(-5deg)}
   background .2s ease,border-color .2s ease,color .2s ease}
 .itzchip:hover{transform:translateY(-2px);border-color:#8FD3C8}
 .itzchip.on{background:#8FD3C8;border-color:#8FD3C8;color:#07222C}
-#itzIn{width:100%;min-height:92px;resize:none;border:1.5px solid rgba(238,245,244,.14);
+#itzIn{width:100%;min-height:0;max-height:180px;overflow:auto;resize:none;display:block;border:1.5px solid rgba(238,245,244,.14);
   border-radius:16px;background:rgba(0,0,0,.22);padding:14px 16px;font:inherit;
   font-family:var(--calm);font-size:16px;color:var(--hd);line-height:1.5;
-  transition:border-color .2s ease,box-shadow .2s ease}
+  transition:border-color .2s ease,box-shadow .2s ease;height:52px}
 #itzIn::placeholder{color:rgba(238,245,244,.36)}
 #itzIn:focus{outline:none;border-color:#2A9D8F;box-shadow:0 0 0 4px rgba(42,157,143,.18)}
 .itznav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px}
@@ -3493,6 +3565,10 @@ body.dark .mtwiz{border-color:rgba(255,255,255,.08)}
 
 
 /* a Journey na Home: silhueta com luz viva */
+.dsh-fit .dgc.dg-a{overflow:visible}
+@media(max-width:560px){.dpet .bub{display:none}}
+.dpet .bub em{display:block;font-style:normal;font-family:var(--quiet);font-size:9.5px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:#2A9D8F;margin-bottom:1px}
 .dgprev-glow{display:flex;align-items:center;justify-content:center;min-height:0;
   padding:clamp(10px,1.4vw,22px);
   background:radial-gradient(90% 90% at 50% 45%,#10303A 0%,#07141A 78%)}
@@ -8434,7 +8510,7 @@ function dashSection(role){
     (role==='patient'&&D.sec==='programas')||
     ((role==='doctor'||role==='nutri')&&D.sec==='formacao'));
   document.body.classList.toggle('jdark',
-    (role==='patient'&&(D.sec==='journey'||D.sec==='intake'||D.sec==='checkin'))||
+    (role==='patient'&&(D.sec==='journey'||D.sec==='intake'||D.sec==='checkin'||D.sec==='book'))||
     ((role==='doctor'||role==='nutri')&&!!MEET&&MEET.role===role&&MEET.phase!=='call'));
   document.body.classList.toggle('apphallow',
     role==='patient'&&D.sec==='inicio'&&HOMEUI==='hallow');
@@ -8478,6 +8554,7 @@ function pSection(D){
   if(s==='programas') return progSection();
   if(s==='checkin') return renderCheckin(D);
   if(s==='intake') return pIntake(D);
+  if(s==='book') return pBook(D);
   if(s==='plano'){
     let m='';
     MEALS.forEach(meal=>{ let items=''; meal[2].forEach(it=>items+='<li>'+it+'</li>');
@@ -8545,6 +8622,131 @@ function brDone(){
   toast(__tr('Sent to your care team. They will set up your assistant from this.'));
   dashNav('patient','journey');
 }
+/* ---- marcar a primeira consulta: um formulario curto no mesmo molde ----
+   Os horarios sao de demonstracao: ainda nao ha agenda real por tras. */
+var BK={step:0,who:null,day:null,time:null};
+var BK_TIMES=['09:00','10:30','14:00','16:30','18:00'];   // <!-- PLACEHOLDER --> horarios demo
+var BK_KEY='mb.book.v1';
+function bkDays(){
+  var out=[], d=new Date();
+  for(var k=1;k<=7;k++){ var x=new Date(d); x.setDate(d.getDate()+k); out.push(x); }
+  return out;
+}
+function bkLabel(x){
+  var W=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  return {w:W[x.getDay()],d:x.getDate(),m:(AG_MON[x.getMonth()]||'').slice(0,3)};
+}
+function bkSet(k,v){
+  BK[k]=v;
+  if(k==='who'||k==='day'||k==='time'){ BK.step=Math.min(3,BK.step+1); }
+  bkPaint();
+}
+function bkGo(i){ BK.step=Math.max(0,Math.min(4,i)); bkPaint(); }
+function bkPaint(){
+  var st=document.getElementById('bkStage');
+  if(!(st&&itzSwap(st.querySelector('.itzwrap'),pBook(DASH.patient)))) dashSection('patient');
+}
+function bkConfirm(){
+  try{ localStorage.setItem(BK_KEY,JSON.stringify({who:PTEAM[BK.who][1],
+    day:BK.day,time:BK.time,when:new Date().toISOString()})); }catch(e){}
+  aqAdd([{id:'first',kind:'first',label:'Schedule your first meeting',sub:'Booked',done:1}]);
+  var q=aqRead();
+  q.forEach(function(x){ if(x.id==='first'){ x.done=1; x.sub='Booked'; } });
+  aqSave(q);
+  var s2=document.getElementById('bkStage'); if(s2) s2.classList.add('sent');
+  setTimeout(function(){ BK.step=4; bkPaint(); },
+    (window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)?0:700);
+}
+function pBook(D){
+  var N=3, i=BK.step;
+  var bar=''; for(var k=0;k<N;k++) bar+='<span class="itzseg'+(k<i?' done':'')+(k===i?' on':'')+'"><i></i></span>';
+  var SAY=['Who would you like to meet first?','Pick a day that works.','And a time.',
+    'All good? I will lock it in.','Booked! See you there.'];
+  var days=bkDays(), body='';
+  if(i===0){
+    body='<span class="itzk">'+__tr('Step')+' 1 '+__tr('of')+' '+N+'</span>'+
+      '<h2>'+__tr('Who do you want to meet?')+'</h2>'+
+      '<p class="itzh">'+__tr('Your care team. You can see the other one later.')+'</p>'+
+      '<div class="bkwho">'+PTEAM.map(function(p,j){
+        var ph=(j===0?PPHOTO.doctor:PPHOTO.nutri)||'';
+        return '<button class="bkp'+(BK.who===j?' on':'')+'" onclick="bkSet(\'who\','+j+')">'+
+          '<span class="av">'+esc(p[0])+(ph?'<img src="'+ph+'" alt="" onerror="this.remove()">':'')+'</span>'+
+          '<b>'+esc(p[1])+'</b><span>'+__tr(p[2])+'</span></button>';
+      }).join('')+'</div>'+
+      '<div class="itznav"><button class="itzbk" onclick="dashNav(\'patient\',\'journey\')">'+dIcon('arrow-left')+
+        __tr('Journey')+'</button><span></span><span></span></div>';
+  } else if(i===1){
+    body='<span class="itzk">'+__tr('Step')+' 2 '+__tr('of')+' '+N+'</span>'+
+      '<h2>'+__tr('Which day?')+'</h2><p class="itzh">'+__tr('The next seven days.')+'</p>'+
+      '<div class="bkdays">'+days.map(function(x,j){
+        var l=bkLabel(x);
+        return '<button class="bkd'+(BK.day===j?' on':'')+'" onclick="bkSet(\'day\','+j+')">'+
+          '<span>'+__tr(l.w)+'</span><b>'+l.d+'</b><em>'+__tr(l.m)+'</em></button>';
+      }).join('')+'</div>'+
+      '<div class="itznav"><button class="itzbk" onclick="bkGo(0)">'+dIcon('arrow-left')+__tr('Back')+
+        '</button><span></span><span></span></div>';
+  } else if(i===2){
+    body='<span class="itzk">'+__tr('Step')+' 3 '+__tr('of')+' '+N+'</span>'+
+      '<h2>'+__tr('What time?')+'</h2><p class="itzh">'+__tr('Demo times — the real calendar is not connected yet.')+'</p>'+
+      '<div class="itzchips bktimes">'+BK_TIMES.map(function(t){
+        return '<button class="itzchip'+(BK.time===t?' on':'')+'" onclick="bkSet(\'time\',\''+t+'\')">'+t+'</button>';
+      }).join('')+'</div>'+
+      '<div class="itznav"><button class="itzbk" onclick="bkGo(1)">'+dIcon('arrow-left')+__tr('Back')+
+        '</button><span></span><span></span></div>';
+  } else {
+    var p=PTEAM[BK.who||0], l2=bkLabel(days[BK.day||0]);
+    var card='<div class="bksum"><span class="av">'+esc(p[0])+'</span><div><b>'+esc(p[1])+'</b>'+
+      '<span>'+__tr(p[2])+'</span></div><div class="when"><b>'+__tr(l2.w)+' '+l2.d+' '+__tr(l2.m)+'</b>'+
+      '<span>'+(BK.time||'')+' · '+__tr('Video call')+'</span></div></div>';
+    if(i===3){
+      body='<span class="itzk">'+__tr('Almost done')+'</span><h2>'+__tr('Confirm your first meeting')+'</h2>'+
+        '<p class="itzh">'+__tr('You can change it later from Sessions.')+'</p>'+card+
+        '<div class="itznav"><button class="itzbk" onclick="bkGo(2)">'+dIcon('arrow-left')+__tr('Back')+
+          '</button><span></span><button class="itzgo itzsend" onclick="bkConfirm()">'+dIcon('check')+
+          __tr('Book it')+'</button></div>';
+    } else {
+      body='<div class="cic2">'+dIcon('check')+'</div>'+
+        '<h2 style="text-align:center">'+__tr('You are booked')+'</h2>'+
+        '<p class="itzh" style="text-align:center">'+__tr('Your first step on the journey is done.')+'</p>'+card+
+        '<div class="itznav" style="justify-content:center"><button class="itzgo" '+
+          'onclick="dashNav(\'patient\',\'journey\')">'+__tr('Back to journey')+dIcon('arrow-right')+'</button></div>';
+    }
+  }
+  return '<div class="dsec jskin itz" id="bkStage"><div class="itzwrap">'+
+    '<div class="itztop"><button class="itzx" onclick="dashNav(\'patient\',\'journey\')">'+
+      dIcon('arrow-left')+__tr('Journey')+'</button><div class="itzbar">'+bar+'</div></div>'+
+    '<div class="itzhead"><span class="itzm">'+brMascot()+'</span>'+
+      '<div class="itzsay"><b>'+__tr('Schedule your first meeting')+'</b><span>'+__tr(SAY[i])+'</span></div></div>'+
+    '<div class="itzcard">'+body+'</div>'+
+    '<div class="itzburst" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>'+
+  '</div></div>';
+}
+
+/* Troca de passo sem repintar a pagina: a barra so muda de classe (a
+   transicao corre), o balao troca o texto, e so o cartao entra de novo. */
+function itzSwap(host,html){
+  if(!host){ return false; }
+  var tmp=document.createElement('div'); tmp.innerHTML=html;
+  var nb=tmp.querySelector('.itzbar'), ob=host.querySelector('.itzbar');
+  if(nb&&ob&&nb.children.length===ob.children.length){
+    Array.prototype.forEach.call(ob.children,function(el,i){ el.className=nb.children[i].className; });
+  } else if(nb&&ob){ ob.innerHTML=nb.innerHTML; }
+  var ns=tmp.querySelector('.itzsay'), os=host.querySelector('.itzsay');
+  if(ns&&os&&ns.innerHTML!==os.innerHTML){
+    os.innerHTML=ns.innerHTML; os.style.animation='none'; os.getBoundingClientRect(); os.style.animation='';
+  }
+  var nm=tmp.querySelector('.itzm'), om=host.querySelector('.itzm');
+  if(nm&&om&&nm.innerHTML!==om.innerHTML) om.innerHTML=nm.innerHTML;
+  var nc=tmp.querySelector('.itzcard'), oc=host.querySelector('.itzcard');
+  if(nc&&oc){ oc.replaceWith(nc); } else if(nc){ host.appendChild(nc); }
+  renderIcons(host);
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
+  var top=host.getBoundingClientRect().top;
+  if(top<0) window.scrollTo({top:window.scrollY+top-80,behavior:'smooth'});
+  return true;
+}
+function itzGrow(t){ if(!t) return; t.style.height='auto'; t.style.height=t.scrollHeight+'px'; }
+
 /* O formulario virou um jogo curto: uma pergunta de cada vez, uma barra que
    acende, o mascote a acompanhar, e um ecra final para rever antes de enviar. */
 var BRI=0;                                /* em que pergunta estamos */
@@ -8561,11 +8763,12 @@ var BR_TONEIC=['zap','heart','book'];
 function brGo(i){
   var n=BR_Q.length+2;                    /* quatro perguntas + o tom + o visual */
   BRI=Math.max(0,Math.min(n,i));
-  dashSection('patient');
-  setTimeout(function(){
-    var t=document.getElementById('itzIn'); if(t){ t.focus();
-      t.setSelectionRange(t.value.length,t.value.length); }
-  },60);
+  var st=document.getElementById('itzStage');
+  if(!(DASH.patient.sec==='intake'&&st&&itzSwap(st.querySelector('.itzwrap'),pIntake(DASH.patient)))){
+    dashSection('patient');
+  }
+  var t=document.getElementById('itzIn');
+  if(t){ itzGrow(t); t.focus({preventScroll:true}); t.setSelectionRange(t.value.length,t.value.length); }
 }
 function brPick(k,v,el){
   var d=brDraft(), cur=(d[k]||'').split(',').map(function(x){ return x.trim(); })
@@ -8573,7 +8776,7 @@ function brPick(k,v,el){
   var at=cur.indexOf(v);
   if(at>=0) cur.splice(at,1); else cur.push(v);
   d[k]=cur.join(', ');
-  var t=document.getElementById('itzIn'); if(t) t.value=d[k];
+  var t=document.getElementById('itzIn'); if(t){ t.value=d[k]; itzGrow(t); }
   if(el) el.classList.toggle('on',at<0);
   brLbl();
 }
@@ -8627,8 +8830,8 @@ function pIntake(D){
     body='<span class="itzk">'+__tr('Question')+' '+(i+1)+' '+__tr('of')+' '+n+'</span>'+
       '<h2>'+__tr(q[1])+'</h2><p class="itzh">'+__tr(q[2])+'</p>'+
       (picks?'<div class="itzchips">'+picks+'</div>':'')+
-      '<textarea id="itzIn" rows="3" placeholder="'+__tr('Or write it your way…')+'" '+
-        'oninput="brField(\''+q[0]+'\',this.value);brLbl()" onkeydown="brKey(event)">'+
+      '<textarea id="itzIn" rows="1" placeholder="'+__tr('Or write it your way…')+'" '+
+        'oninput="brField(\''+q[0]+'\',this.value);brLbl();itzGrow(this)" onkeydown="brKey(event)">'+
         esc(val)+'</textarea>'+
       '<div class="itznav">'+
         (i>0?'<button class="itzbk" onclick="brGo('+(i-1)+')">'+dIcon('arrow-left')+
@@ -9058,7 +9261,8 @@ function renderCheckin(D){
 }
 // Update only the check-in body so the surrounding section (and its entrance
 // animation) is not rebuilt — prevents the "bounce" on every click.
-function ciUpdate(role){ const el=document.getElementById('ci-inner'); if(!el){ dashSection(role); return; } el.innerHTML=ciInner(role); renderIcons(el); animateBars(el); if(window.__applyLang){ try{__applyLang()}catch(e){} } }
+function ciUpdate(role){ const el=document.getElementById('ci-inner'); if(!el){ dashSection(role); return; }
+  itzSwap(el,ciInner(role)); }
 function ciText(role,v){ const ci=ciState(DASH[role]); ci.ans[CISTEPS[ci.step][0]]=v; const btn=document.getElementById('ci-next'); if(btn){ const ok=v.trim().length>3; btn.disabled=!ok; } }
 function ciScale(role,n){ const ci=ciState(DASH[role]); ci.ans[CISTEPS[ci.step][0]]=n;
   // Highlight the picked number in place (no re-render, no bounce) and enable Next.
@@ -9121,9 +9325,11 @@ function dSection(D){
     D.patients.forEach((p,i)=>{ list+='<button class="pcard" onclick="dashSelPatient(\'doctor\','+i+')"><div class="pav">'+p.init+'</div>'+
       '<div class="pmain"><b>'+p.name+'</b><span>'+p.sub+'</span><div><span class="ptag mut">'+dIcon('zap')+'Energy: '+p.energy+'/10</span><span class="ptag '+(p.risk==='moderate'?'warn':'ok')+'">'+dIcon('alert')+'Risk: '+p.risk+'</span></div></div>'+
       '<span class="pchev">'+dIcon('chevron-right')+'</span></button>'; });
+    setTimeout(function(){ pcstRender('doctor'); },0);
     return '<div class="dsec">'+head(__tr('My patients'),__tr('Triage and follow-up overview'),'Your practice')+
+      patWeb('doctor')+
       '<div class="dsearch">'+dIcon('search')+'<input type="text" placeholder="Search patient..." oninput="dashPFilter(\'doctor\',this.value)"></div>'+
-      '<div id="plist-doctor" style="display:grid;gap:12px">'+list+'</div></div>';
+      '<div id="plist-doctor" class="plist2">'+list+'</div></div>';
   }
   if(s==='agenda') return agendaMonth('doctor');
   if(s==='prontuarios') return '<div class="dsec">'+head(__tr('Records'),__tr('Clinical notes and history'),'Your practice')+
@@ -9153,9 +9359,11 @@ function nSection(D){
     D.patients.forEach((p,i)=>{ list+='<button class="pcard" onclick="dashSelPatient(\'nutri\','+i+')"><div class="pav">'+p.init+'</div>'+
       '<div class="pmain"><b>'+p.name+'</b><span>'+p.sub+'</span><div><span class="ptag '+(p.adhc==='ok'?'ok':'warn')+'">'+p.adh+'</span></div></div>'+
       '<span class="pchev">'+dIcon('chevron-right')+'</span></button>'; });
+    setTimeout(function(){ pcstRender('nutri'); },0);
     return '<div class="dsec">'+head(__tr('My patients'),__tr('Nutrition follow-up'),'Your practice')+
+      patWeb('nutri')+
       '<div class="dsearch">'+dIcon('search')+'<input type="text" placeholder="Search patient..." oninput="dashPFilter(\'nutri\',this.value)"></div>'+
-      '<div id="plist-nutri" style="display:grid;gap:12px">'+list+'</div></div>';
+      '<div id="plist-nutri" class="plist2">'+list+'</div></div>';
   }
   if(s==='cardapios') return '<div class="dsec">'+head(__tr('Menus'),__tr('Templates and delivered plans'),'Your practice')+
     '<div class="dcard"><p style="color:var(--soft);font-size:14px;line-height:1.7">Build reusable menu templates or generate a personalized plan for a patient with AI.</p>'+
@@ -9320,10 +9528,7 @@ function aqOpen(id){
     dashNav('patient','equipe');
     toast(__tr('Demo: book the nutrition visit from here')); return;
   }
-  if(t.kind==='first'){
-    dashNav('patient','agenda');
-    toast(__tr('Demo: booking would open here')); return;
-  }
+  if(t.kind==='first'){ BK={step:0,who:null,day:null,time:null}; dashNav('patient','book'); return; }
   dashNav('patient','programas');
 }
 
@@ -9728,66 +9933,80 @@ function patStory(p,app,last){
 }
 function cap(s2){ return s2?s2.charAt(0).toUpperCase()+s2.slice(1):''; }
 
+var PREP_SHUT={};
+function pRepFold(el){
+  var r=el.closest('.airep'); if(!r) return;
+  r.classList.toggle('shut');
+  var k=r.getAttribute('data-k'); if(k) PREP_SHUT[k]=r.classList.contains('shut');
+}
 function patRepHTML(role,i){
-  var p=DASH[role].patients[i], app=patApp(p.name);
+  var p=DASH[role].patients[i], app=patApp(p.name), t=p.t||[];
   var vs=visFor(p.name), last=vs[0]||null;
 
-  var chips=[];
-  if(p.energy!=null) chips.push(['zap',__tr('Daily energy'),p.energy+'/10']);
-  if(p.risk) chips.push(['alert',__tr('Risk'),__tr(p.risk)]);
-  if(p.adh) chips.push(['utensils',__tr('Adherence'),p.adh]);
-  chips.push(['video',__tr('Visits'),String(vs.length)]);
-  if(app) chips.push(['target',__tr('Steps done'),app.done+'/'+app.n]);
-  var ch=chips.map(function(c){
-    return '<div class="aistat"><i>'+dIcon(c[0])+'</i><b>'+esc(c[2])+'</b>'+
-      '<span>'+c[1]+'</span></div>'; }).join('');
+  /* uma linha de numeros pequenos, cada um com o seu icone */
+  var mini=[];
+  if(p.energy!=null) mini.push(['zap',p.energy+'/10',__tr('Energy'),p.energy<=4?'warn':'']);
+  if(p.risk) mini.push(['alert',cap(__tr(p.risk)),__tr('Risk'),p.risk==='moderate'?'warn':'']);
+  if(p.adh) mini.push(['utensils',p.adh,__tr('Adherence'),p.adhc==='warn'?'warn':'']);
+  mini.push(['video',String(vs.length),__tr(vs.length===1?'Visit':'Visits'),'']);
+  if(app) mini.push(['target',app.done+'/'+app.n,__tr('Steps'),'']);
+  var mh=mini.map(function(m){
+    return '<span class="aim '+m[3]+'" title="'+esc(m[2])+'">'+dIcon(m[0])+'<b>'+esc(m[1])+'</b>'+
+      '<em>'+esc(m[2])+'</em></span>'; }).join('');
 
+  /* onde esta: uma ficha curta em vez de um paragrafo */
+  var rows=[];
+  if(t[0]) rows.push(['message',__tr('Came in for'),cap(t[0])]);
+  if(t[1]) rows.push(['clock',__tr('For how long'),t[1]]);
+  if(t[2]) rows.push(['clipboard',__tr('Health'),t[2]]);
+  if(t[3]) rows.push(['utensils',__tr('Diet tried'),t[3]]);
+  if(t[4]) rows.push(['heart',__tr('Feels'),t[4]]);
+  rows.push(['calendar',__tr('Last visit'),last?visDate(last.when)+(last.note?' · '+last.note:''):__tr('None yet')]);
+  var rh=rows.map(function(r){
+    return '<div class="aif"><i>'+dIcon(r[0])+'</i><div><span>'+r[1]+'</span><b>'+esc(r[2])+'</b></div></div>';
+  }).join('');
   var body='<div class="aisec"><div class="kvl">'+__tr('Where they stand')+'</div>'+
-    '<p class="aibub">'+esc(patStory(p,app,last))+'</p></div>';
+    '<div class="aifacts">'+rh+'</div></div>';
 
-  /* o que esta aberto na jornada, se a conta estiver ligada */
   if(app){
     var li='';
-    aqList().slice(0,8).forEach(function(t){
-      li+='<span class="aipill'+(t.done?' done':'')+'"><i>'+dIcon(t.done?'check':aqIcon(t))+'</i>'+
-        esc(__tr(t.label))+'<em>'+__tr(t.done?'done':'open')+'</em></span>';
+    aqList().slice(0,8).forEach(function(tk){
+      li+='<span class="aipill'+(tk.done?' done':'')+'"><i>'+dIcon(tk.done?'check':aqIcon(tk))+'</i>'+
+        esc(__tr(tk.label))+'<em>'+__tr(tk.done?'done':'open')+'</em></span>';
     });
     body+='<div class="aisec"><div class="kvl">'+__tr('On their journey now')+'</div>'+
       '<div class="aipills">'+li+'</div></div>';
-  }
-
-  /* as fotos que o paciente juntou aos check-ins */
-  if(app){
     var ph=phList();
     if(ph.length){
       var fg='';
       ph.slice(0,8).forEach(function(x){
-        fg+='<figure><img src="'+x.url+'" alt=""><figcaption>'+visDate(x.when)+
-          '</figcaption></figure>';
+        fg+='<figure><img src="'+x.url+'" alt=""><figcaption>'+visDate(x.when)+'</figcaption></figure>';
       });
       body+='<div class="aisec"><div class="kvl">'+__tr('Photos they sent')+'</div>'+
         '<div class="aiph">'+fg+'</div></div>';
     }
   }
-
-  /* as ultimas consultas, cada uma abre o seu resumo */
   if(vs.length){
-    var rows='';
+    var rws='';
     vs.slice(0,4).forEach(function(v){
-      rows+='<button class="aiv" onclick="visOpen(\''+v.id+'\')">'+
+      rws+='<button class="aiv" onclick="visOpen(\''+v.id+'\')">'+
         '<span class="d">'+visDate(v.when)+'</span>'+
         '<span class="t">'+esc(v.note||__tr('No note was typed during the call.'))+'</span>'+
         '<span class="c">'+dIcon('chevron-right')+'</span></button>';
     });
-    body+='<div class="aisec"><div class="kvl">'+__tr('Last visits')+'</div>'+rows+'</div>';
+    body+='<details class="aisec aivis"><summary class="kvl">'+__tr('Last visits')+
+      ' <b>'+vs.length+'</b>'+dIcon('chevron-down')+'</summary>'+rws+'</details>';
   }
 
-  return '<header><span class="sp">'+dIcon('sparkles')+'</span><div>'+
+  return '<header onclick="pRepFold(this)" role="button" tabindex="0">'+
+      '<span class="sp">'+dIcon('sparkles')+'</span><div>'+
       '<b>'+__tr('Patient report')+'</b>'+
       '<span>'+esc(p.name)+' · '+__tr('read this before the visit')+'</span>'+
-    '</div><span class="aibadge">'+dIcon('sparkles')+__tr('AI summary')+'</span></header>'+
-    '<div class="aistats">'+ch+'</div>'+body+
-    '<div class="aisrc">'+__tr('Put together from the triage form, the markers on file and what this patient has done in the app. The assistant does not add anything of its own.')+'</div>';
+    '</div><span class="aibadge">'+dIcon('sparkles')+__tr('AI summary')+'</span>'+
+    '<span class="aifold">'+dIcon('chevron-down')+'</span></header>'+
+    '<div class="aiminis">'+mh+'</div>'+
+    '<div class="aifoldb">'+body+
+    '<div class="aisrc">'+__tr('Put together from the triage form, the markers on file and what this patient has done in the app. The assistant does not add anything of its own.')+'</div></div>';
 }
 function visOpen(id){
   var v=visRead().filter(function(x){ return x.id===id; })[0];
@@ -12139,10 +12358,23 @@ function dshMascHTML(t){
     '<div class="bub"><b>'+__tr(t.t)+'</b><span>'+__tr(t.s)+'</span></div>'+
     dshMascot()+'</div>';
 }
+function dshPetHTML(){
+  var fn=givenName(DASH.patient.name), pet=brPet();
+  var open=aqList().filter(function(x){ return !x.done; }).length;
+  var m=aqIntroOn()
+    ? {b:'Hi, '+fn+'!',s:'Your journey is ready. Come take a look.'}
+    : (open
+      ? {b:'Welcome back, '+fn+'!',s:open+' '+(open===1?'step is':'steps are')+' waiting. You have got this.'}
+      : {b:'Welcome back, '+fn+'!',s:'All caught up. Proud of you.'});
+  return '<div class="dmasc dpet" onclick="event.stopPropagation();dshGo(\'journey\',\'journey\')">'+
+    '<div class="bub">'+(pet&&pet.name?'<em>'+esc(pet.name)+'</em>':'')+
+      '<b>'+esc(__tr(m.b))+'</b><span>'+__tr(m.s)+'</span></div>'+brMascot()+'</div>';
+}
 function dshCardExtra(card,t){
   let out='';
-  /* a Journey ja tem o seu cerebro a brilhar: o mascote nao pousa em cima dela */
-  if(t&&t.card===card&&card!=='journey') out+=dshMascHTML(t);
+  /* na Journey pousa o assistente pessoal do paciente, com uma palavra de incentivo */
+  if(card==='journey') out+=dshPetHTML();
+  else if(t&&t.card===card) out+=dshMascHTML(t);
   if(dshIsNew(card)) out+='<span class="dgnew" aria-hidden="true"></span>';
   return out;
 }
@@ -13557,8 +13789,27 @@ function pcstNodes(role){
   });
   return out;
 }
+/* a mesma constelacao do painel, em grande, no topo de Meus pacientes */
+function patWeb(role){
+  var D=DASH[role];
+  var risky=D.patients.filter(function(p){ return p.risk==='moderate'||p.adhc==='warn'; }).length;
+  return '<div class="dgc dgc-still dgc-glass pweb">'+
+    '<div class="dgh dgh-bare"><span class="dgi">'+dIcon('users')+'</span>'+
+      '<h3>'+__tr('Your patients')+'</h3></div>'+
+    '<div class="pcst" id="pcstField-'+role+'">'+
+      '<canvas class="pcstnet" id="pcstNet-'+role+'"></canvas>'+
+      '<div class="pcstc"><div class="n" id="pcstN-'+role+'">'+D.patients.length+'</div>'+
+        '<div class="lb">'+__tr('In your care')+'</div>'+
+        '<span class="att"><i></i><span id="pcstAtt-'+role+'">'+risky+' '+__tr('need attention')+'</span></span></div>'+
+      '<div class="pcstlg">'+
+        '<span><i style="background:var(--ok)"></i>'+__tr('On track')+'</span>'+
+        '<span><i style="background:var(--watch)"></i>'+__tr('Needs attention')+'</span>'+
+        '<span><i style="background:var(--t100)"></i>'+__tr('New request')+'</span></div>'+
+    '</div></div>';
+}
 function pcstRender(role){
   var host=document.getElementById('pcstField-'+role); if(!host) return;
+  if(host.__par&&!host.isConnected) return;
   /* re-render limpo: sem isto os nos se acumulam a cada volta ao painel */
   Array.prototype.forEach.call(host.querySelectorAll('.pnode'),function(n){ n.remove(); });
   var ns=pcstNodes(role), warn=0, act=DASH[role].patients.length, h='';
@@ -15503,6 +15754,17 @@ routeFromHash();
     "Tell me what is on your mind.":"Conte o que está na sua cabeça.","How much fuel today?":"Quanta energia hoje?","How did you sleep?":"Como você dormiu?",
     "Any word works.":"Qualquer palavra serve.","Optional. Skip if you like.":"Opcional. Pode pular.","Thanks! Your team will see this.":"Obrigado! Sua equipe vai ver isto.",
     "Low":"Baixo","High":"Alto","Call":"Chamada",
+    "Your journey is ready. Come take a look.":"Sua jornada está pronta. Vem dar uma olhada.",
+    "All caught up. Proud of you.":"Tudo em dia. Orgulho de você.",
+    "Who would you like to meet first?":"Com quem você quer falar primeiro?","Pick a day that works.":"Escolha um dia bom.",
+    "And a time.":"E um horário.","All good? I will lock it in.":"Tudo certo? Eu confirmo.","Booked! See you there.":"Marcado! Até lá.",
+    "Who do you want to meet?":"Com quem você quer se consultar?","Your care team. You can see the other one later.":"Sua equipe. Você pode ver o outro depois.",
+    "Which day?":"Qual dia?","The next seven days.":"Os próximos sete dias.","What time?":"Que horas?",
+    "Demo times — the real calendar is not connected yet.":"Horários de demonstração — a agenda real ainda não está ligada.",
+    "Almost done":"Quase lá","Confirm your first meeting":"Confirme sua primeira consulta","You can change it later from Sessions.":"Você pode mudar depois em Sessões.",
+    "Book it":"Marcar","You are booked":"Consulta marcada","Your first step on the journey is done.":"Seu primeiro passo na jornada está feito.",
+    "Video call":"Videochamada","Came in for":"Veio por","For how long":"Há quanto tempo","Health":"Saúde","Diet tried":"Dieta tentada",
+    "Feels":"Como se sente","None yet":"Nenhuma ainda","Steps":"Passos","Energy":"Energia","Visit":"Consulta",
     "Set up the assistant":"Configurar o assistente","Edit what it may use":"Editar o que pode usar",
     "The assistant only uses the facts you tick. Anything else it hands back to you.":"O assistente usa só os factos que você marcar. O resto devolve para você.",
     "Everything here is already on file for":"Tudo isto já está registado sobre",
