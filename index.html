@@ -2885,6 +2885,197 @@ body.dark .mtcard{border-color:rgba(255,255,255,.08)}
   text-transform:uppercase;color:var(--soft);margin-bottom:4px}
 .braq p{margin:0;font-family:var(--calm);font-size:13.5px;line-height:1.55;color:var(--ink)}
 
+
+/* --- o formulario do assistente como um jogo curto --- */
+.itz{display:flex;justify-content:center}
+.itzwrap{width:100%;max-width:640px;margin:0 auto;padding-top:clamp(4px,2vh,26px)}
+.itztop{display:flex;align-items:center;gap:16px;margin-bottom:clamp(20px,3vh,34px)}
+.itzx{display:inline-flex;align-items:center;gap:7px;border:0;background:none;cursor:pointer;
+  color:var(--soft);font-family:var(--quiet);font-size:13px;font-weight:600;padding:6px 0;
+  flex-shrink:0}
+.itzx:hover{color:var(--hd)}
+.itzx .ic,.itzbk .ic,.itzgo .ic,.itzrv .ic,.itztone .ic{display:flex}
+.itzbar{flex:1;display:flex;gap:6px}
+.itzseg{flex:1;height:22px;border:0;background:none;padding:0;cursor:pointer;display:flex;
+  align-items:center}
+.itzseg i{display:block;width:100%;height:6px;border-radius:99px;background:rgba(238,245,244,.12);
+  transition:background .4s ease,box-shadow .4s ease}
+.itzseg.done i{background:linear-gradient(90deg,#D9A420,#2A9D8F)}
+.itzseg.on i{background:linear-gradient(90deg,#2A9D8F,#8FD3C8);
+  box-shadow:0 0 12px rgba(143,211,200,.55)}
+.itzhead{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.itzm svg{width:56px;height:auto;display:block;animation:itzHop .6s cubic-bezier(.2,1.3,.4,1)}
+@keyframes itzHop{0%{transform:translateY(8px) scale(.9)}100%{transform:none}}
+.itzsay{background:#EEF5F4;color:#07222C;border-radius:14px 14px 14px 4px;padding:9px 14px;
+  box-shadow:0 10px 26px rgba(0,0,0,.4);animation:fadeUp .4s ease}
+.itzsay b{display:block;font-family:var(--display);font-size:12px;font-weight:700;
+  letter-spacing:.02em;color:#2A9D8F}
+.itzsay span{display:block;font-size:14px;font-weight:600;margin-top:1px}
+.itzcard{position:relative;border-radius:24px;padding:clamp(20px,2.6vw,32px);
+  background:linear-gradient(160deg,rgba(20,40,48,.92),rgba(12,24,30,.92));
+  border:1px solid rgba(238,245,244,.12);box-shadow:0 24px 60px rgba(0,0,0,.45);
+  animation:itzIn .45s cubic-bezier(.2,.8,.3,1)}
+@keyframes itzIn{from{opacity:0;transform:translateX(26px)}to{opacity:1;transform:none}}
+.itzk{display:inline-block;font-family:var(--quiet);font-size:11px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:#8FD3C8}
+.itzcard h2{font-family:var(--display);font-weight:700;letter-spacing:-.02em;
+  font-size:clamp(22px,2.4vw,30px);line-height:1.15;color:var(--hd);margin:8px 0 6px}
+.itzh{font-family:var(--calm);font-size:14px;color:var(--soft);margin:0 0 18px}
+.itzchips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.itzchip{border:1px solid rgba(238,245,244,.18);background:rgba(238,245,244,.05);
+  color:var(--ink);border-radius:99px;padding:8px 14px;font:inherit;font-size:13px;
+  font-weight:600;cursor:pointer;transition:transform .2s cubic-bezier(.2,1.2,.4,1),
+  background .2s ease,border-color .2s ease,color .2s ease}
+.itzchip:hover{transform:translateY(-2px);border-color:#8FD3C8}
+.itzchip.on{background:#8FD3C8;border-color:#8FD3C8;color:#07222C}
+#itzIn{width:100%;min-height:92px;resize:none;border:1.5px solid rgba(238,245,244,.14);
+  border-radius:16px;background:rgba(0,0,0,.22);padding:14px 16px;font:inherit;
+  font-family:var(--calm);font-size:16px;color:var(--hd);line-height:1.5;
+  transition:border-color .2s ease,box-shadow .2s ease}
+#itzIn::placeholder{color:rgba(238,245,244,.36)}
+#itzIn:focus{outline:none;border-color:#2A9D8F;box-shadow:0 0 0 4px rgba(42,157,143,.18)}
+.itznav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:20px}
+.itzbk{display:inline-flex;align-items:center;gap:7px;border:0;background:none;cursor:pointer;
+  color:var(--soft);font:inherit;font-size:14px;font-weight:600;padding:10px 4px}
+.itzbk:hover{color:var(--hd)}
+.itzenter{font-size:11.5px;color:rgba(238,245,244,.34);font-family:var(--quiet)}
+.itzgo{display:inline-flex;align-items:center;gap:9px;border:0;cursor:pointer;
+  border-radius:99px;padding:12px 22px;background:#EEF5F4;color:#07222C;
+  font-family:var(--display);font-size:14.5px;font-weight:700;
+  transition:transform .22s cubic-bezier(.2,1.2,.4,1),box-shadow .22s ease}
+.itzgo:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 10px 24px rgba(143,211,200,.25)}
+.itzsend{background:linear-gradient(90deg,#8FD3C8,#EEF5F4)}
+.itztones{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.itztone{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;
+  border:1.5px solid rgba(238,245,244,.14);background:rgba(238,245,244,.04);cursor:pointer;
+  border-radius:18px;padding:22px 12px;font:inherit;color:var(--ink);
+  transition:transform .22s cubic-bezier(.2,1.2,.4,1),border-color .2s ease,background .2s ease}
+.itztone:hover{transform:translateY(-3px);border-color:#8FD3C8}
+.itztone .ti{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  font-size:21px;background:rgba(143,211,200,.12);color:#8FD3C8}
+.itztone b{font-family:var(--display);font-size:13.5px;font-weight:600;line-height:1.3;color:var(--hd)}
+.itztone.on{border-color:#8FD3C8;background:rgba(143,211,200,.10)}
+.itztone.on .ti{background:#8FD3C8;color:#07222C}
+.itzrvs{display:grid;gap:8px}
+.itzrv{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center;width:100%;
+  text-align:left;border:1px solid rgba(238,245,244,.12);background:rgba(238,245,244,.04);
+  border-radius:14px;padding:11px 14px;cursor:pointer;font:inherit;transition:border-color .2s ease}
+.itzrv:hover{border-color:#8FD3C8}
+.itzrv .rk{font-family:var(--quiet);font-size:10.5px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--soft)}
+.itzrv .rv{grid-column:1;font-size:14px;color:var(--hd);line-height:1.45}
+.itzrv.empty .rv{color:var(--soft);font-style:italic}
+.itzrv .re{grid-column:2;grid-row:1 / span 2;color:var(--soft);font-size:14px}
+/* enviado: uma pequena explosao de pontos a partir do botao */
+.itzburst{position:relative;height:0;pointer-events:none}
+.itzburst i{position:absolute;right:70px;bottom:40px;width:9px;height:9px;border-radius:50%;
+  opacity:0;background:#D9A420}
+.itzburst i:nth-child(3n+2){background:#2A9D8F}
+.itzburst i:nth-child(3n){background:#E76F51}
+.itz.sent .itzburst i{animation:itzPop .9s cubic-bezier(.2,.8,.3,1) forwards}
+.itz.sent .itzburst i:nth-child(1){--dx:-90px;--dy:-60px}
+.itz.sent .itzburst i:nth-child(2){--dx:-40px;--dy:-100px}
+.itz.sent .itzburst i:nth-child(3){--dx:20px;--dy:-110px}
+.itz.sent .itzburst i:nth-child(4){--dx:70px;--dy:-70px}
+.itz.sent .itzburst i:nth-child(5){--dx:-110px;--dy:-10px}
+.itz.sent .itzburst i:nth-child(6){--dx:90px;--dy:-20px}
+.itz.sent .itzburst i:nth-child(7){--dx:-20px;--dy:-140px}
+.itz.sent .itzburst i:nth-child(8){--dx:50px;--dy:-130px}
+@keyframes itzPop{0%{opacity:1;transform:translate(0,0) scale(.4)}
+  100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(1.2)}}
+.itz.sent .itzcard{animation:itzOut .8s ease .15s forwards}
+@keyframes itzOut{to{opacity:0;transform:translateY(-10px) scale(.98)}}
+@media(max-width:560px){
+  .itztones{grid-template-columns:1fr}
+  .itztone{flex-direction:row;padding:14px;text-align:left}
+  .itzenter{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .itzcard,.itzm svg,.itzsay,.itz.sent .itzburst i,.itz.sent .itzcard{animation:none}
+}
+
+/* --- o relatorio gerado: borda viva, bolhas, selo de IA --- */
+@property --aia{syntax:'<angle>';inherits:false;initial-value:0deg}
+.airep.aigen{position:relative;border:1.5px solid transparent;overflow:visible;
+  background:linear-gradient(var(--card),var(--card)) padding-box,
+    conic-gradient(from var(--aia),#2A9D8F,#8FD3C8,#D9A420,#E76F51,#7FA3DB,#2A9D8F) border-box;
+  animation:aiSpin 8s linear infinite;
+  box-shadow:0 0 0 4px rgba(42,157,143,.05),0 18px 44px -18px rgba(42,157,143,.35)}
+.airep.aigen::before{content:'';position:absolute;inset:-10px;border-radius:inherit;z-index:-1;
+  background:conic-gradient(from var(--aia),rgba(42,157,143,.22),rgba(217,164,32,.16),
+    rgba(231,111,81,.16),rgba(127,163,219,.18),rgba(42,157,143,.22));
+  filter:blur(18px);opacity:.7;animation:aiSpin 8s linear infinite;pointer-events:none}
+@keyframes aiSpin{to{--aia:360deg}}
+.airep.aigen>header{background:linear-gradient(120deg,rgba(42,157,143,.10),rgba(217,164,32,.06) 55%,
+  rgba(231,111,81,.07));border-radius:clamp(13px,1.3vw,17px) clamp(13px,1.3vw,17px) 0 0}
+.airep.aigen>header .sp{background:conic-gradient(from 200deg,#2A9D8F,#8FD3C8,#D9A420,#E76F51,#2A9D8F);
+  box-shadow:0 0 16px rgba(42,157,143,.45)}
+.airep.aigen>header .sp .ic{color:#fff;filter:drop-shadow(0 1px 1px rgba(0,0,0,.25))}
+.aibadge{margin-left:auto;display:inline-flex;align-items:center;gap:6px;flex-shrink:0;
+  border-radius:99px;padding:5px 11px;font-family:var(--quiet);font-size:10.5px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:#12615A;
+  background:linear-gradient(90deg,rgba(143,211,200,.35),rgba(242,193,78,.28),rgba(143,211,200,.35));
+  background-size:200% 100%;animation:aiShine 4s ease-in-out infinite}
+.aibadge .ic{display:flex;font-size:12px;margin:0}
+@keyframes aiShine{0%,100%{background-position:0 0}50%{background-position:100% 0}}
+.airep>header span.aibadge{margin-top:0;display:inline-flex;color:#12615A}
+.aistats{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;
+  padding:14px 14px 0}
+.aistat{display:flex;flex-direction:column;align-items:flex-start;gap:2px;padding:12px 14px;
+  border-radius:18px;background:var(--bg-dim);border:1px solid var(--line)}
+.aistat i{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;margin-bottom:6px;
+  background:var(--card);color:var(--t500);font-size:15px;font-style:normal;
+  box-shadow:0 2px 8px rgba(12,51,63,.08)}
+.aistat i .ic{display:flex;font-size:15px}
+.aistat b{font-family:var(--display);font-size:20px;font-weight:700;letter-spacing:-.02em;
+  color:var(--hd);line-height:1.1;text-transform:capitalize}
+.aistat>span{font-family:var(--quiet);font-size:10px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--soft)}
+.aisec p.aibub{position:relative;padding:13px 16px;border-radius:4px 18px 18px 18px;
+  background:linear-gradient(135deg,var(--t50),rgba(217,164,32,.07));
+  border:1px solid rgba(42,157,143,.16)}
+.aipills{display:flex;flex-wrap:wrap;gap:8px}
+.aipill{display:inline-flex;align-items:center;gap:8px;padding:7px 13px 7px 7px;border-radius:99px;
+  border:1px solid var(--line);background:var(--card);font-size:13px;font-weight:600;color:var(--hd)}
+.aipill i{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-style:normal;
+  font-size:12px;background:var(--bg-dim);color:var(--c-gold,#D9A420)}
+.aipill i .ic{display:flex;font-size:13px}
+.aipill em{font-style:normal;font-family:var(--quiet);font-size:9.5px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--soft);margin-left:2px}
+.aipill.done{background:var(--t50);border-color:rgba(42,157,143,.25)}
+.aipill.done i{background:var(--t500);color:#fff}
+.airep.aigen .aiv{border-radius:16px}
+.airep.aigen .aisrc{border-radius:0 0 clamp(13px,1.3vw,17px) clamp(13px,1.3vw,17px)}
+@media(prefers-reduced-motion:reduce){.airep.aigen,.airep.aigen::before,.aibadge{animation:none}}
+
+/* o cerebro do assistente ao lado do nome */
+.ptitle{display:flex;align-items:center;flex-wrap:wrap;gap:clamp(12px,2vw,26px)}
+.brchip{display:inline-flex;align-items:center;gap:10px;border:0;background:none;padding:0;
+  cursor:pointer;font:inherit;text-align:left}
+.brchip .bm{position:relative;width:52px;flex-shrink:0;display:block;
+  transition:transform .3s cubic-bezier(.2,1.2,.4,1)}
+.brchip .bm svg{width:100%;height:auto;display:block}
+.brchip .bm .dot{position:absolute;right:1px;top:3px;width:11px;height:11px;border-radius:50%;
+  border:2px solid var(--card);background:var(--soft)}
+.brchip.on .bm .dot{background:#2EB67D}
+.brchip.new .bm .dot,.brchip.wait .bm .dot{background:var(--c-gold,#D9A420)}
+.brchip .bc{position:relative;display:block;padding:8px 14px;border-radius:4px 14px 14px 14px;
+  background:var(--card);border:1px solid var(--line);box-shadow:0 8px 22px rgba(12,51,63,.08);
+  transition:border-color .2s ease,box-shadow .2s ease}
+.brchip .bc::before{content:'';position:absolute;left:-6px;top:12px;width:10px;height:10px;
+  background:var(--card);border-left:1px solid var(--line);border-bottom:1px solid var(--line);
+  transform:rotate(45deg)}
+.brchip .bc b{display:block;font-family:var(--quiet);font-size:10px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.brchip .bc>span{display:flex;align-items:center;gap:6px;font-family:var(--display);
+  font-size:14px;font-weight:600;color:var(--hd);margin-top:1px;white-space:nowrap}
+.brchip .bc>span .ic{display:flex;font-size:13px;color:var(--t500);transition:transform .2s ease}
+.brchip:hover .bm{transform:rotate(-6deg) scale(1.06)}
+.brchip:hover .bc{border-color:var(--t500);box-shadow:0 10px 26px rgba(42,157,143,.18)}
+.brchip:hover .bc>span .ic{transform:translateX(3px)}
+.brchip.off{cursor:default}
+.brchip.off .bm{filter:grayscale(1);opacity:.6}
+.airep.brpanel>header{display:none}
 /* --- o formulario do segundo cerebro --- */
 .itwrap{display:grid;gap:clamp(12px,1.2vw,18px);max-width:760px}
 .itq{border:1px solid var(--line);border-radius:clamp(14px,1.4vw,18px);background:var(--card);
@@ -3108,6 +3299,31 @@ body.dark .mtwiz{border-color:rgba(255,255,255,.08)}
 @media(prefers-reduced-motion:reduce){.agday.swap{animation:none}}
 
 
+
+/* a Journey na Home: silhueta com luz viva */
+.dgprev-glow{display:flex;align-items:center;justify-content:center;min-height:0;
+  padding:clamp(10px,1.4vw,22px);
+  background:radial-gradient(90% 90% at 50% 45%,#10303A 0%,#07141A 78%)}
+.dsh-fit .dg-a .dgprev{min-height:0}
+.jglow{display:block;width:100%;height:100%;max-height:100%;overflow:visible;pointer-events:none}
+.jgaura{fill:none;stroke:#8FD3C8;stroke-width:10;opacity:.14;filter:blur(8px);
+  animation:jgBreath 4.8s ease-in-out infinite}
+.jgline{fill:none;stroke:rgba(190,236,229,.7);stroke-width:1.6;stroke-linejoin:round}
+.jggy{fill:none;stroke:rgba(238,245,244,.22);stroke-width:1.4;stroke-linecap:round}
+.jgo{transform-box:fill-box;transform-origin:center;opacity:.95;mix-blend-mode:screen}
+.jgedge{fill:none;stroke:#8FD3C8;stroke-width:14;opacity:.28;filter:blur(6px)}
+.jgsp{fill:#FFFFFF;filter:drop-shadow(0 0 2px #fff);animation:jgTw 3.2s ease-in-out infinite}
+@keyframes jgTw{0%,100%{opacity:.08}50%{opacity:.95}}
+.jgo1{animation:jgA 9s ease-in-out infinite}
+.jgo2{animation:jgB 11s ease-in-out infinite}
+.jgo3{animation:jgA 12s ease-in-out infinite reverse}
+.jgo4{animation:jgB 10s ease-in-out infinite reverse}
+.jgo5{opacity:.75;animation:jgBreath 4.8s ease-in-out infinite}
+@keyframes jgA{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(40px,22px) scale(1.35)}}
+@keyframes jgB{0%,100%{transform:translate(0,0) scale(1.1)}50%{transform:translate(-36px,-18px) scale(.8)}}
+@keyframes jgBreath{0%,100%{opacity:.5}50%{opacity:.95}}
+.dgc:hover .jgline{stroke:#EEF5F4}
+@media(prefers-reduced-motion:reduce){.jgo,.jgaura,.jgsp{animation:none}}
 /* ---- (F) A AVENTURA: UM FIO, UM CEREBRO QUE CRESCE ---- */
 .aqmap{position:absolute;inset:0;width:100%;height:100%}
 .aqshell{stroke-width:1.7;stroke-linejoin:round;
@@ -3116,7 +3332,7 @@ body.dark .mtwiz{border-color:rgba(255,255,255,.08)}
 /* o fio: um so, e a cor percorre a paleta ao longo dele */
 .aqthread{fill:none;stroke:rgba(238,245,244,.16);stroke-width:2.2;stroke-linecap:round}
 .aqlit{fill:none;stroke:url(#aqgrad);stroke-width:3;stroke-linecap:round;
-  transition:stroke-dashoffset .9s cubic-bezier(.2,.8,.3,1)}
+  transition:stroke-dasharray .9s cubic-bezier(.2,.8,.3,1)}
 
 /* o palco da jornada: o mapa, as bolhas e o mascote partilham esta caixa */
 .aqstage{position:absolute;inset:0;container-type:size}
@@ -3197,6 +3413,9 @@ body.dark .mtwiz{border-color:rgba(255,255,255,.08)}
   text-transform:uppercase;color:rgba(238,245,244,.66);white-space:nowrap}
 .jformed b{font-family:var(--display);font-size:13px;letter-spacing:-.01em;color:#8FD3C8}
 @media(max-width:700px){
+  .jhead{flex-wrap:wrap;row-gap:12px}
+  .jright{margin-left:0;width:100%;justify-content:space-between;gap:8px}
+  .jdb{width:40px;height:40px;font-size:17px}
   /* no telefone nao cabe uma etiqueta por passo: fica so a do proximo */
   .aqc{max-width:min(46vw,190px);font-size:10.5px;padding:3px 7px;display:none;
     white-space:normal;text-overflow:clip}
@@ -3446,6 +3665,20 @@ body.dark .dgmr:hover{box-shadow:0 12px 28px rgba(0,0,0,.4)}
   .dgstack{flex-direction:column}
   .dgprev{min-height:200px}
   .dgprev .pg{--s:.42}
+}
+
+/* a Home do paciente em telas estreitas: as bolhas empilham, sem esmagar */
+@media(max-width:1080px){
+  #patient .dsh-fit .dgrid{grid-template-columns:1fr 1fr;grid-template-rows:none;
+    grid-auto-rows:minmax(300px,auto);height:auto}
+  #patient .dsh-fit .dgrid>.dgc{grid-column:auto;grid-row:auto}
+  #patient .dsh-fit .dgrid>.dg-b{grid-row:span 2}
+  #patient .dsh-fit .dgc{overflow:visible}
+}
+@media(max-width:720px){
+  #patient .dsh-fit .dgrid{grid-template-columns:minmax(0,1fr);grid-auto-rows:auto}
+  #patient .dsh-fit .dgrid>.dg-b{grid-row:auto}
+  #patient .dsh-fit .dg-a .dgprev{min-height:220px}
 }
 
 /* =========================================================================
@@ -4174,7 +4407,7 @@ body.jdark #patient .apptop::before{content:"";position:absolute;left:0;right:0;
 .jskin .jfront{opacity:.5}
 .jskin .jgn{opacity:.45}
 .jskin .jgn.far{opacity:.26}
-.jskin .jstreak{background:rgba(233,240,238,.09)}
+.jskin .jstreak{background:none}
 /* o grafo ocupa o que sobra da janela: o cerebro fica no centro da cena */
 .jskin .jgraph{height:calc(100vh - var(--aph) - clamp(150px,15vh,196px));
   max-width:1280px;margin-left:auto;margin-right:auto}
@@ -4188,40 +4421,43 @@ body.jdark #patient .apptop::before{content:"";position:absolute;left:0;right:0;
 .jhead h1 .flowtxt{color:transparent;animation-duration:24s}
 
 /* streak discreto e as bolinhas das tres frentes */
-.jright{margin-left:auto;display:flex;align-items:center;gap:clamp(8px,.9vw,12px)}
-.jstreak{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:99px;
-  background:var(--bg-dim);color:var(--hd)}
-.jstreak .ic{font-size:14px;color:var(--c-gold)}
-.jstreak b{font-family:var(--display);font-size:13.5px;font-weight:700}
+.jright{margin-left:auto;display:flex;align-items:center;gap:clamp(12px,1.3vw,18px)}
+.jstreak{display:inline-flex;align-items:center;gap:7px;padding:0 6px 0 0;background:none;
+  color:var(--hd)}
+.jstreak .ic{display:flex;font-size:19px;color:var(--c-gold)}
+.jstreak b{font-family:var(--display);font-size:18px;font-weight:700;line-height:1}
 .jstreak span{font-family:var(--quiet);font-size:10px;font-weight:600;letter-spacing:.13em;
   text-transform:uppercase;color:var(--soft)}
-.jdot{position:relative}
-.jdb{position:relative;width:34px;height:34px;border-radius:50%;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;font-size:15px;
+.jhdot{position:relative;display:flex}
+.jdb{position:relative;width:46px;height:46px;border-radius:50%;cursor:pointer;padding:0;
+  display:flex;align-items:center;justify-content:center;font-size:19px;
   border:1px solid var(--line);background:var(--card);color:var(--tc,var(--soft));
   transition:transform .3s cubic-bezier(.2,.8,.3,1),border-color .3s ease,box-shadow .3s ease}
 .jdb:hover,.jdb[aria-expanded=true]{transform:translateY(-2px) scale(1.08);
   border-color:var(--tc,var(--t500));box-shadow:0 8px 18px rgba(12,51,63,.12);outline:none}
-.jdb .pip{position:absolute;top:1px;right:1px;width:7px;height:7px;border-radius:50%;
+.jdb .ic{display:flex;line-height:0}
+.jdb .pip{position:absolute;top:3px;right:3px;width:8px;height:8px;border-radius:50%;
   background:var(--tc);border:1.5px solid var(--card)}
-.jpop{position:absolute;top:calc(100% + 10px);right:0;z-index:60;display:none;width:230px;
-  padding:12px;border-radius:14px;background:var(--card);border:1px solid var(--line);
+.jpop{position:absolute;top:calc(100% + 12px);right:0;z-index:60;display:none;width:252px;
+  padding:16px;border-radius:14px;background:var(--card);border:1px solid var(--line);
   box-shadow:0 14px 36px rgba(12,51,63,.16)}
 .jpop.open{display:block;animation:fadeUp .28s ease}
-.jpop .hd{display:flex;align-items:center;gap:9px;margin-bottom:10px}
-.jpop .ic0{width:28px;height:28px;border-radius:50%;flex-shrink:0;font-size:14px;
+.jpop .hd{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.jpop .ic0{width:38px;height:38px;border-radius:50%;flex-shrink:0;font-size:18px;line-height:0;
   display:flex;align-items:center;justify-content:center;
   background:color-mix(in srgb,var(--tc) 15%,transparent);color:var(--tc)}
-.jpop .hd b{display:block;font-family:var(--display);font-size:12.5px;color:var(--hd)}
-.jpop .hd span{display:block;font-size:10.5px;color:var(--soft);margin-top:1px;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:110px}
-.jpop .nm{margin-left:auto;font-family:var(--display);font-size:15px;font-weight:700;
+.jpop .ic0 .ic{display:flex}
+.jpop .hd b{display:block;font-family:var(--display);font-size:14px;color:var(--hd)}
+.jpop .hd>div{min-width:0}
+.jpop .hd>div>span{display:block;font-size:11.5px;color:var(--soft);margin-top:2px;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:130px}
+.jpop .nm{margin-left:auto;font-family:var(--display);font-size:18px;font-weight:700;white-space:nowrap;
   color:var(--tc)}
 .jpop .nm i{font-style:normal;font-size:.68em;color:var(--soft)}
 .jpop .bar{height:5px;border-radius:99px;background:var(--bg-dim);overflow:hidden}
 .jpop .bar i{display:block;height:100%;background:var(--tc);
   transition:width .8s cubic-bezier(.2,.8,.3,1)}
-.jpop .go{display:block;width:100%;margin-top:11px;border:none;cursor:pointer;
+.jpop .go{display:block;width:100%;margin-top:14px;border:none;cursor:pointer;
   border-radius:10px;padding:9px;background:var(--tc);color:#fff;
   font-family:var(--display);font-size:12.5px;font-weight:700;transition:transform .25s ease}
 .jpop .go:hover{transform:translateY(-1px)}
@@ -8004,7 +8240,7 @@ function dashSection(role){
   document.body.classList.toggle('appdark',
     (role==='patient'&&D.sec==='programas')||
     ((role==='doctor'||role==='nutri')&&D.sec==='formacao'));
-  document.body.classList.toggle('jdark', role==='patient'&&D.sec==='journey');
+  document.body.classList.toggle('jdark', role==='patient'&&(D.sec==='journey'||D.sec==='intake'));
   document.body.classList.toggle('apphallow',
     role==='patient'&&D.sec==='inicio'&&HOMEUI==='hallow');
   document.body.classList.toggle('dshfit',
@@ -8114,32 +8350,138 @@ function brDone(){
   toast(__tr('Sent to your care team. They will set up your assistant from this.'));
   dashNav('patient','journey');
 }
+/* O formulario virou um jogo curto: uma pergunta de cada vez, uma barra que
+   acende, o mascote a acompanhar, e um ecra final para rever antes de enviar. */
+var BRI=0;                                /* em que pergunta estamos */
+var BR_PICK={
+  goal:['More energy','A clearer head','Better sleep','A steadier mood'],
+  struggle:['Getting out of bed','Cravings','Focus at work','Sleeping through the night'],
+  routine:['Office hours','Shift work','Late dinners','I skip breakfast'],
+  avoid:['Nothing, ask away','My weight','My family']
+};
+var BR_SAY=['Let us start with the big one.','No wrong answers here.',
+  'Roughly is fine.','I will stay clear of it.','Last one. How should I sound?',
+  'Looks good. Want to send it?'];
+var BR_TONEIC=['zap','heart','book'];
+function brGo(i){
+  var n=BR_Q.length+1;                    /* quatro perguntas + o tom */
+  BRI=Math.max(0,Math.min(n,i));
+  dashSection('patient');
+  setTimeout(function(){
+    var t=document.getElementById('itzIn'); if(t){ t.focus();
+      t.setSelectionRange(t.value.length,t.value.length); }
+  },60);
+}
+function brPick(k,v,el){
+  var d=brDraft(), cur=(d[k]||'').split(',').map(function(x){ return x.trim(); })
+    .filter(Boolean);
+  var at=cur.indexOf(v);
+  if(at>=0) cur.splice(at,1); else cur.push(v);
+  d[k]=cur.join(', ');
+  var t=document.getElementById('itzIn'); if(t) t.value=d[k];
+  if(el) el.classList.toggle('on',at<0);
+  brLbl();
+}
+function brLbl(){
+  var t=document.getElementById('itzIn'), g=document.querySelector('.itznav .itzgo');
+  if(!t||!g||g.classList.contains('itzsend')) return;
+  g.innerHTML=__tr(t.value.trim()?'Next':'Skip')+dIcon('arrow-right');
+  renderIcons(g);
+}
+function brKey(e){
+  if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); brGo(BRI+1); }
+}
+function brToneGo(i){ brDraft().tone=i; brGo(BRI+1); }
+function brSend(){
+  var d=brDraft();
+  var filled=BR_Q.filter(function(q){ return (d[q[0]]||'').trim().length>2; }).length;
+  if(filled<2){ toast(__tr('Answer at least the first two questions.'));
+    brGo(((d.goal||'').trim().length>2)?1:0); return; }
+  var st=document.getElementById('itzStage');
+  if(st) st.classList.add('sent');
+  setTimeout(function(){ BRI=0; brDone(); },RM_Q()?0:900);
+}
+function RM_Q(){ return window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+
 function pIntake(D){
   var d=brDraft(), had=!!brIntake();
-  var qs='';
-  BR_Q.forEach(function(q){
-    qs+='<div class="itq"><label for="it-'+q[0]+'">'+__tr(q[1])+'</label>'+
-      '<span class="hint">'+__tr(q[2])+'</span>'+
-      '<textarea id="it-'+q[0]+'" oninput="brField(\''+q[0]+'\',this.value)">'+
-        esc(d[q[0]]||'')+'</textarea></div>';
-  });
-  qs+='<div class="itq"><label>'+__tr('How should your assistant talk to you?')+'</label>'+
-    '<span class="hint">'+__tr('You can change this later.')+'</span>'+
-    '<div class="mtopts">'+BR_TONE.map(function(t,i){
-      return '<button class="mtopt'+((d.tone||0)===i?' on':'')+'" onclick="brTone('+i+
-        ',this)">'+__tr(t)+'</button>'; }).join('')+'</div></div>';
+  var n=BR_Q.length+1, i=Math.min(BRI,n);
 
-  return '<div class="dsec">'+head(__tr('Set up your assistant'),
-      __tr('Five questions. Your therapist uses these to set up the assistant that answers you between visits.'),
-      'Your journey')+
-    '<div class="itwrap">'+qs+
-      '<div class="itfoot"><p>'+
-        __tr('Only your care team sees these answers.')+'</p>'+
-        '<button class="dbtn dbtn-line" onclick="dashNav(\'patient\',\'journey\')">'+
-          __tr('Back to journey')+'</button>'+
-        '<button class="dbtn dbtn-solid" onclick="brDone()">'+dIcon('check')+
-          __tr(had?'Save changes':'Send to my team')+'</button>'+
-      '</div></div></div>';
+  var bar='';
+  for(var k=0;k<n;k++){
+    bar+='<button class="itzseg'+(k<i?' done':'')+(k===i?' on':'')+'" '+
+      'onclick="brGo('+k+')" aria-label="'+__tr('Question')+' '+(k+1)+'"><i></i></button>';
+  }
+
+  var body='';
+  if(i<BR_Q.length){
+    var q=BR_Q[i], val=d[q[0]]||'';
+    var cur=val.split(',').map(function(x){ return x.trim(); });
+    var picks=(BR_PICK[q[0]]||[]).map(function(p){
+      return '<button class="itzchip'+(cur.indexOf(__tr(p))>=0?' on':'')+'" '+
+        'onclick="brPick(\''+q[0]+'\',\''+__tr(p).replace(/'/g,"\\'")+'\',this)">'+
+        __tr(p)+'</button>';
+    }).join('');
+    body='<span class="itzk">'+__tr('Question')+' '+(i+1)+' '+__tr('of')+' '+n+'</span>'+
+      '<h2>'+__tr(q[1])+'</h2><p class="itzh">'+__tr(q[2])+'</p>'+
+      (picks?'<div class="itzchips">'+picks+'</div>':'')+
+      '<textarea id="itzIn" rows="3" placeholder="'+__tr('Or write it your way…')+'" '+
+        'oninput="brField(\''+q[0]+'\',this.value);brLbl()" onkeydown="brKey(event)">'+
+        esc(val)+'</textarea>'+
+      '<div class="itznav">'+
+        (i>0?'<button class="itzbk" onclick="brGo('+(i-1)+')">'+dIcon('arrow-left')+
+          __tr('Back')+'</button>':'<span></span>')+
+        '<span class="itzenter">'+__tr('Enter to continue')+'</span>'+
+        '<button class="itzgo" onclick="brGo('+(i+1)+')">'+
+          __tr(val.trim()?'Next':'Skip')+dIcon('arrow-right')+'</button></div>';
+  } else if(i===BR_Q.length){
+    var tc=BR_TONE.map(function(t,j){
+      return '<button class="itztone'+((d.tone||0)===j?' on':'')+'" onclick="brToneGo('+j+')">'+
+        '<span class="ti">'+dIcon(BR_TONEIC[j])+'</span><b>'+__tr(t)+'</b></button>';
+    }).join('');
+    body='<span class="itzk">'+__tr('Question')+' '+(i+1)+' '+__tr('of')+' '+n+'</span>'+
+      '<h2>'+__tr('How should your assistant talk to you?')+'</h2>'+
+      '<p class="itzh">'+__tr('You can change this later.')+'</p>'+
+      '<div class="itztones">'+tc+'</div>'+
+      '<div class="itznav"><button class="itzbk" onclick="brGo('+(i-1)+')">'+
+        dIcon('arrow-left')+__tr('Back')+'</button><span></span><span></span></div>';
+  } else {
+    var rv='';
+    BR_Q.forEach(function(q,j){
+      var v=(d[q[0]]||'').trim();
+      rv+='<button class="itzrv'+(v?'':' empty')+'" onclick="brGo('+j+')">'+
+        '<span class="rk">'+__tr(q[1])+'</span>'+
+        '<span class="rv">'+(v?esc(v):__tr('Skipped — tap to answer'))+'</span>'+
+        '<span class="re">'+dIcon('edit')+'</span></button>';
+    });
+    rv+='<button class="itzrv" onclick="brGo('+BR_Q.length+')">'+
+      '<span class="rk">'+__tr('Tone')+'</span>'+
+      '<span class="rv">'+__tr(BR_TONE[d.tone||0])+'</span>'+
+      '<span class="re">'+dIcon('edit')+'</span></button>';
+    body='<span class="itzk">'+__tr('All set')+'</span>'+
+      '<h2>'+__tr('Here is what your team will see')+'</h2>'+
+      '<p class="itzh">'+__tr('Only your care team sees these answers.')+'</p>'+
+      '<div class="itzrvs">'+rv+'</div>'+
+      '<div class="itznav"><button class="itzbk" onclick="brGo('+(i-1)+')">'+
+        dIcon('arrow-left')+__tr('Back')+'</button><span></span>'+
+        '<button class="itzgo itzsend" onclick="brSend()">'+dIcon('check')+
+          __tr(had?'Save changes':'Send to my team')+'</button></div>';
+  }
+
+  return '<div class="dsec jskin itz" id="itzStage">'+
+    '<div class="itzwrap">'+
+      '<div class="itztop">'+
+        '<button class="itzx" onclick="BRI=0;dashNav(\'patient\',\'journey\')">'+
+          dIcon('arrow-left')+__tr('Journey')+'</button>'+
+        '<div class="itzbar">'+bar+'</div>'+
+      '</div>'+
+      '<div class="itzhead"><span class="itzm">'+dshMascot()+'</span>'+
+        '<div class="itzsay"><b>'+__tr('Set up your assistant')+'</b>'+
+          '<span>'+__tr(BR_SAY[i])+'</span></div></div>'+
+      '<div class="itzcard" key="'+i+'">'+body+'</div>'+
+      '<div class="itzburst" aria-hidden="true">'+
+        '<i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>'+
+    '</div></div>';
 }
 
 /* ---- os factos que o assistente pode usar ----
@@ -8258,7 +8600,25 @@ function brOff(role,i){
   var b=brRead();
   if(b.cfg){ b.cfg.on=0; brSave(b); }
   toast(__tr('The assistant is off for this patient'));
+  aiShut();
   DASH[role].selPatient=i; dashSection(role);
+}
+
+/* o cerebro ao lado do nome: diz em que pe esta o assistente e abre-o */
+function brChip(role,i){
+  var p=DASH[role].patients[i], it=brIntake(), on=brOn();
+  var mine=(p.name===DASH.patient.name);
+  var st=!mine?['off','No app account yet']
+    :(!it?['wait','Waiting on their answers']
+      :(on?['on','Edit their assistant']:['new','Set up their assistant']));
+  return '<button class="brchip '+st[0]+'" onclick="brPanel(\''+role+'\','+i+')">'+
+    '<span class="bm">'+dshMascot()+'<i class="dot"></i></span>'+
+    '<span class="bc"><b>'+__tr('Their assistant')+'</b>'+
+      '<span>'+__tr(st[1])+(st[0]==='off'?'':' '+dIcon('arrow-right'))+'</span></span>'+
+  '</button>';
+}
+function brPanel(role,i){
+  aiDrawer(__tr('Their assistant'),'<div class="airep brpanel">'+brCardHTML(role,i)+'</div>');
 }
 
 /* o cartao na ficha do paciente */
@@ -8477,9 +8837,9 @@ function dSection(D){
       const yn=[['Psychiatrist',t[6]],['Therapy',t[7]],['Medication',t[8]]];
       let ynh=''; yn.forEach(y=>ynh+='<div class="t3"><div class="l">'+y[0]+'</div><div class="v '+(y[1]?'yes':'no')+'">'+(y[1]?'Yes':'No')+'</div></div>');
       return '<div class="dsec"><button class="dback" onclick="dashNav(\'doctor\',\'pacientes\')">'+dIcon('chevron-left')+'Back</button>'+
-        '<div class="dhead"><h1>'+p.name+'</h1><p>'+p.sub+'</p></div>'+
-        '<div class="airep">'+patRepHTML('doctor',D.selPatient)+'</div>'+
-        '<div class="airep">'+brCardHTML('doctor',D.selPatient)+'</div>'+
+        '<div class="dhead"><div class="ptitle"><h1>'+p.name+'</h1>'+brChip('doctor',D.selPatient)+
+          '</div><p>'+p.sub+'</p></div>'+
+        '<div class="airep aigen">'+patRepHTML('doctor',D.selPatient)+'</div>'+
         '<div class="dcard"><div class="dh2" style="margin:0 0 16px">'+dIcon('clipboard')+'Triage summary</div>'+
           '<div class="kv">'+kvh+'</div><div class="tri3">'+ynh+'</div>'+
           '<div style="margin-top:16px"><div class="kvl" style="margin-bottom:6px">Daily energy</div>'+
@@ -8510,9 +8870,9 @@ function nSection(D){
     if(D.selPatient!=null){
       const p=D.patients[D.selPatient];
       return '<div class="dsec"><button class="dback" onclick="dashNav(\'nutri\',\'pacientes\')">'+dIcon('chevron-left')+'Back</button>'+
-        '<div class="dhead"><h1>'+p.name+'</h1><p>'+p.sub+'</p></div>'+
-        '<div class="airep">'+patRepHTML('nutri',D.selPatient)+'</div>'+
-        '<div class="airep">'+brCardHTML('nutri',D.selPatient)+'</div>'+
+        '<div class="dhead"><div class="ptitle"><h1>'+p.name+'</h1>'+brChip('nutri',D.selPatient)+
+          '</div><p>'+p.sub+'</p></div>'+
+        '<div class="airep aigen">'+patRepHTML('nutri',D.selPatient)+'</div>'+
         '<div class="dcard"><div class="dh2" style="margin:0 0 14px">'+dIcon('utensils')+'Menu &amp; adherence</div>'+
         '<span class="ptag '+(p.adhc==='ok'?'ok':'warn')+'">'+p.adh+'</span>'+
         '<p style="color:var(--soft);font-size:14px;line-height:1.7;margin-top:14px">Generate a personalized menu based on this patient\'s triage, labs, and preferences.</p>'+
@@ -8577,6 +8937,9 @@ function aqList(){
 }
 function aqAdd(items){
   var a=aqRead();
+  /* a lista vazia significa os dois passos de abertura: nao os perder */
+  if(!a.length) a=aqList().map(function(t){ return {id:t.id,kind:t.kind,label:t.label,
+    sub:t.sub,done:t.kind==='brain'?0:t.done}; });
   items.forEach(function(it){
     if(!a.some(function(x){ return x.id===it.id; })) a.push(it);
   });
@@ -8584,15 +8947,39 @@ function aqAdd(items){
 }
 function aqTap(id){
   if(id==='first'){
-    aqAdd([{id:'first',kind:'first',label:'Schedule your first meeting',
-      sub:'Booked',done:1}]);
+    aqAdd([{id:'first',kind:'first',label:'Schedule your first meeting',sub:'Booked',done:1}]);
+    var q=aqRead();
+    q.forEach(function(x){ if(x.id==='first'){ x.done=1; x.sub='Booked'; } });
+    aqSave(q);
     dashSection('patient'); return;
   }
   var a=aqRead();
   a.forEach(function(t){ if(t.id===id) t.done=1; });
   aqSave(a); dashSection('patient');
 }
-function aqReset(){ aqSave([]); dashSection('patient'); }
+function aqReset(){
+  aqSave([]);
+  /* o teste recomeca do zero: o formulario do assistente tambem volta a abrir */
+  try{ localStorage.removeItem(BR_KEY); }catch(e){}
+  BR_DRAFT=null; BRI=0;
+  dashSection('patient');
+}
+/* teste: junta ou tira um passo, para ver o cerebro crescer */
+function aqTestStep(dir){
+  var a=aqRead();
+  if(!a.length) a=aqList().map(function(t){ return Object.assign({},t); });
+  if(dir>0){
+    var have={}; a.forEach(function(t){ have[t.id]=1; });
+    var nx=jNodes().filter(function(nd){ return !have['m:'+nd.pid+':'+nd.pi]; })[0];
+    if(!nx) return;
+    a.push({id:'m:'+nx.pid+':'+nx.pi, kind:'mod', label:nx.t, sub:'Test step', done:0});
+  } else {
+    for(var i=a.length-1;i>=0;i--){
+      if(a[i].kind!=='first'&&a[i].kind!=='brain'){ a.splice(i,1); break; }
+    }
+  }
+  aqSave(a); dashSection('patient');
+}
 function aqStats(){
   var a=aqList(), d=a.filter(function(t){ return t.done; }).length;
   return {n:a.length, done:d, pct:a.length?Math.round(d/a.length*100):0};
@@ -8650,11 +9037,13 @@ function aqOverlay(){
     var c=AQ_HUE[i%AQ_HUE.length];
     /* a fileira de baixo fala para baixo, as de cima falam para cima: cada
        etiqueta cai numa faixa que nenhuma outra usa */
-    var below=(i>=8);
+    var below=(n.rows>1&&n.row===n.rows-1);
     var nxt=(!t.done && a.slice(0,i).every(function(x){ return x.done; }));
     h+='<div class="aqb'+(t.done?' done':' open')+(below?' below':'')+
       (nxt?' next':'')+'" '+
-      'style="--x:'+pos.x+';--y:'+pos.y+';--c:'+c+';animation-delay:'+(i*80)+'ms">'+
+      'style="--x:'+pos.x+';--y:'+pos.y+';--c:'+c+
+        ';--w:'+Math.min(40,(n.gap/306*100*0.94)).toFixed(2)+
+        ';animation-delay:'+Math.round(i*Math.min(80,640/a.length))+'ms">'+
       '<button class="aqd" onclick="aqOpen(\''+t.id+'\')" title="'+__tr('Open')+'">'+
         dIcon(t.done?'check':aqIcon(t))+'</button>'+
       (t.done?'':'<button class="aqok" onclick="aqTap(\''+t.id+'\')" title="'+
@@ -8670,9 +9059,52 @@ function aqOverlay(){
   }
   /* o vao entre dois passos e 76 unidades do viewBox de 306: a etiqueta fica
      um pouco mais estreita do que isso. Sozinha, pode ser mais larga. */
-  var w=(a.length===1)?34:(76/306*100*0.95);
+  var w=18;
   return '<div class="aqlay'+(a.length>=8?' tight':'')+'" style="--k:'+k.toFixed(3)+
     ';--w:'+w.toFixed(2)+'">'+h+'</div>';
+}
+
+/* A miniatura da Journey na Home: so a silhueta do cerebro, com luz viva
+   dentro. Nao desenha passos - convida a entrar. O viewBox abraca o
+   contorno, por isso cabe em qualquer tamanho de cartao. */
+function jGlowSVG(){
+  var id='jg'+Math.random().toString(36).slice(2,7);
+  /* faiscas fixas (sem aleatorio, para o desenho ser sempre o mesmo) */
+  var sparks='';
+  for(var q=0;q<26;q++){
+    var rr=Math.sqrt((q+0.5)/26);
+    var sx=196+Math.cos(q*2.39996)*rr*104, sy=127+Math.sin(q*2.39996)*rr*66,
+        sr=1.1+((q*7)%3)*0.45;
+    sparks+='<circle class="jgsp" cx="'+sx.toFixed(1)+'" cy="'+sy.toFixed(1)+'" r="'+sr.toFixed(1)+'" '+
+      'style="animation-delay:-'+((q*0.37)%3.2).toFixed(2)+'s"/>';
+  }
+  var orb=function(cx,cy,r,c,k){
+    return '<circle class="jgo jgo'+k+'" cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="'+c+'"/>';
+  };
+  return '<svg class="jglow" viewBox="44 20 304 212" preserveAspectRatio="xMidYMid meet" '+
+    'role="img" aria-label="'+__tr('Your journey')+'">'+
+    '<defs>'+
+      '<clipPath id="'+id+'c"><path d="'+JBRAIN+'"/></clipPath>'+
+      '<filter id="'+id+'b" x="-50%" y="-50%" width="200%" height="200%">'+
+        '<feGaussianBlur stdDeviation="16"/></filter>'+
+      '<radialGradient id="'+id+'r" cx="50%" cy="48%" r="60%">'+
+        '<stop offset="0%" stop-color="#1B4A55"/><stop offset="100%" stop-color="#0B1E25"/>'+
+      '</radialGradient>'+
+    '</defs>'+
+    '<path class="jgaura" d="'+JBRAIN+'"/>'+
+    '<g clip-path="url(#'+id+'c)">'+
+      '<path d="'+JBRAIN+'" fill="url(#'+id+'r)"/>'+
+      '<g filter="url(#'+id+'b)">'+
+        orb(140,96,30,'#3FC1B0',1)+orb(246,90,26,'#F2C14E',2)+
+        orb(252,166,30,'#F08A6C',3)+orb(132,170,26,'#7FA3DB',4)+
+        orb(196,128,46,'#CFF3EC',5)+
+      '</g>'+
+      '<path class="jgedge" d="'+JBRAIN+'"/>'+
+      JGYRI.map(function(d){ return '<path class="jggy" d="'+d+'"/>'; }).join('')+
+      sparks+
+    '</g>'+
+    '<path class="jgline" d="'+JBRAIN+'"/>'+
+  '</svg>';
 }
 
 /* ---- O FIO UNICO DA JORNADA ----
@@ -8688,16 +9120,44 @@ var AQ_SLOTS=[
   {x:96,y:194},{x:172,y:178},{x:248,y:196},{x:324,y:182}
 ];
 
+/* O cerebro abraca as bolhas: com dois passos e pequeno e fica justo a
+   volta deles; cada passo novo faz crescer o cerebro, e todas as bolhas
+   ficam sempre DENTRO do contorno. A escala vem da quantidade de passos,
+   a firmeza do contorno vem do que ja foi feito. */
+var AQ_A=125, AQ_B=64;                    /* a area util dentro do JBRAIN, escala 1 */
+function aqRows(n){
+  var r=(n<=2)?1:(n<=4?2:3);
+  var out=[], left=n;
+  for(var i=0;i<r;i++){ var c=Math.ceil(left/(r-i)); out.push(c); left-=c; }
+  return out;
+}
 function aqScale(){
-  var st=aqStats();
-  var g=st.n?st.done/st.n:0;
-  return 0.42+0.58*g;                      /* no dia um e pequeno e fofo */
+  var n=Math.min(aqList().length,AQ_SLOTS.length);
+  var rows=aqRows(Math.max(1,n));
+  var wide=Math.max.apply(null,rows);
+  /* cada bolha precisa de ~50 unidades de largura para a sua etiqueta */
+  var s=Math.max(0.5, wide*58/(2*AQ_A*0.95), 0.5+0.14*(rows.length-1));
+  s+=0.012*n;
+  return Math.min(1,s);
 }
 function aqNodes(){
-  var a=aqList(), out=[];
-  a.slice(0,AQ_SLOTS.length).forEach(function(t,i){
-    var p=AQ_SLOTS[i];
-    out.push({t:t, i:i, x:p.x, y:p.y});   /* a grelha nao segue a escala do cerebro */
+  var a=aqList().slice(0,AQ_SLOTS.length), out=[];
+  var n=a.length; if(!n) return out;
+  var s=aqScale(), rows=aqRows(n);
+  var vk=rows.length===3?0.8:0.62;
+  var k=0;
+  rows.forEach(function(cnt,r){
+    var v=(rows.length===1)?0:(-1+2*r/(rows.length-1));
+    var hw=AQ_A*Math.sqrt(Math.max(0.3,1-Math.pow(v*vk,2)*0.55));
+    var ys=AQ_CY+6*s+v*vk*AQ_B*s;
+    var gap=2*hw*0.95*s/cnt;                /* largura de cada bolha nesta fileira */
+    for(var c=0;c<cnt;c++){
+      var cc=(r%2)?(cnt-1-c):c;             /* serpentina: a fileira seguinte volta */
+      var u=(cnt===1)?0:(-1+(2*cc+1)/cnt);
+      out.push({t:a[k], i:k, x:AQ_CX+u*hw*0.95*s, y:ys,
+        row:r, rows:rows.length, gap:gap});
+      k++;
+    }
   });
   return out;
 }
@@ -8742,7 +9202,7 @@ function aqMapSVG(){
       '</radialGradient>'+
     '</defs>'+
     '<ellipse cx="198" cy="128" rx="170" ry="128" fill="url(#aqhalo)"/>'+
-    '<g transform="translate('+AQ_CX+' '+AQ_CY+') scale('+s2.toFixed(3)+') '+
+    '<g transform="translate('+AQ_CX+' '+(AQ_CY+6*s2).toFixed(1)+') scale('+s2.toFixed(3)+') '+
       'translate(-'+AQ_CX+' -'+AQ_CY+')">'+
       '<path class="aqshell" d="'+JBRAIN+'" style="fill:rgba(238,245,244,'+
         (0.035+0.075*g).toFixed(3)+');stroke:rgba(238,245,244,'+
@@ -8751,7 +9211,7 @@ function aqMapSVG(){
     '</g>'+
     (thread?'<path class="aqthread" d="'+thread+'" pathLength="100"/>'+
       '<path class="aqlit" d="'+thread+'" pathLength="100" '+
-        'style="stroke-dasharray:100;stroke-dashoffset:'+(100-walked)+'"/>':'')+
+        'style="stroke-dasharray:'+walked+' 200;opacity:'+(walked?1:0)+'"/>':'')+
   '</svg>';
 }
 
@@ -8851,20 +9311,21 @@ function patRepHTML(role,i){
   chips.push(['video',__tr('Visits'),String(vs.length)]);
   if(app) chips.push(['target',__tr('Steps done'),app.done+'/'+app.n]);
   var ch=chips.map(function(c){
-    return '<span class="aichip">'+dIcon(c[0])+c[1]+' <b>'+esc(c[2])+'</b></span>'; }).join('');
+    return '<div class="aistat"><i>'+dIcon(c[0])+'</i><b>'+esc(c[2])+'</b>'+
+      '<span>'+c[1]+'</span></div>'; }).join('');
 
   var body='<div class="aisec"><div class="kvl">'+__tr('Where they stand')+'</div>'+
-    '<p>'+esc(patStory(p,app,last))+'</p></div>';
+    '<p class="aibub">'+esc(patStory(p,app,last))+'</p></div>';
 
   /* o que esta aberto na jornada, se a conta estiver ligada */
   if(app){
     var li='';
-    aqList().slice(0,6).forEach(function(t){
-      li+='<li><i>'+dIcon(t.done?'check':'clock')+'</i><span>'+esc(__tr(t.label))+
-        ' <em>· '+__tr(t.done?'done':'open')+'</em></span></li>';
+    aqList().slice(0,8).forEach(function(t){
+      li+='<span class="aipill'+(t.done?' done':'')+'"><i>'+dIcon(t.done?'check':aqIcon(t))+'</i>'+
+        esc(__tr(t.label))+'<em>'+__tr(t.done?'done':'open')+'</em></span>';
     });
     body+='<div class="aisec"><div class="kvl">'+__tr('On their journey now')+'</div>'+
-      '<ul class="ailist">'+li+'</ul></div>';
+      '<div class="aipills">'+li+'</div></div>';
   }
 
   /* as fotos que o paciente juntou aos check-ins */
@@ -8896,8 +9357,8 @@ function patRepHTML(role,i){
   return '<header><span class="sp">'+dIcon('sparkles')+'</span><div>'+
       '<b>'+__tr('Patient report')+'</b>'+
       '<span>'+esc(p.name)+' · '+__tr('read this before the visit')+'</span>'+
-    '</div></header>'+
-    '<div class="aichips">'+ch+'</div>'+body+
+    '</div><span class="aibadge">'+dIcon('sparkles')+__tr('AI summary')+'</span></header>'+
+    '<div class="aistats">'+ch+'</div>'+body+
     '<div class="aisrc">'+__tr('Put together from the triage form, the markers on file and what this patient has done in the app. The assistant does not add anything of its own.')+'</div>';
 }
 function visOpen(id){
@@ -8914,7 +9375,7 @@ function proStart(role,i){
   if(REP_SEEN[p.name]){ meetStart(role,i); return; }
   REP_SEEN[p.name]=1;
   aiDrawer(__tr('Before you start'),
-    '<div class="airep">'+patRepHTML(role,i)+'</div>'+
+    '<div class="airep aigen">'+patRepHTML(role,i)+'</div>'+
     '<div class="aiact"><button class="dbtn dbtn-solid" '+
       'onclick="aiShut();meetStart(\''+role+'\','+i+')">'+dIcon('video')+
       __tr('Start meeting')+'</button></div>');
@@ -11168,6 +11629,8 @@ function dshFit(){
   const pb=main?parseFloat(getComputedStyle(main).paddingBottom)||0:0;
   const ps=sec?parseFloat(getComputedStyle(sec).paddingBottom)||0:0;
   const h=window.innerHeight-top-pb-ps-8;
+  /* telas estreitas: a grade empilha e a pagina rola */
+  if(window.innerWidth<=1080&&g.closest('#patient')){ g.style.height='auto'; return; }
   g.style.height=Math.max(420,h)+'px';
 }
 window.addEventListener('resize',function(){ dshFit(); });
@@ -11212,7 +11675,8 @@ function dshMascHTML(t){
 }
 function dshCardExtra(card,t){
   let out='';
-  if(t&&t.card===card) out+=dshMascHTML(t);
+  /* a Journey ja tem o seu cerebro a brilhar: o mascote nao pousa em cima dela */
+  if(t&&t.card===card&&card!=='journey') out+=dshMascHTML(t);
   if(dshIsNew(card)) out+='<span class="dgnew" aria-hidden="true"></span>';
   return out;
 }
@@ -11253,7 +11717,7 @@ function pHomeD(D){
       dshCardExtra('journey',today)+
       '<div class="dgh dgh-bare"><span class="dgi dgi-jn">'+dIcon('sword')+'</span>'+
         '<h3>'+__tr('Your Journey')+'</h3></div>'+
-      '<div class="dgprev dgprev-map">'+jMapSVG('p')+'</div>'+
+      '<div class="dgprev dgprev-glow">'+jGlowSVG()+'</div>'+
     '</div>';
 
 
@@ -11342,7 +11806,7 @@ function pHomeD(D){
         '<span class="m">'+(dparts[0]||'')+'</span></span>'+
         '<span><b>'+ap[2]+'</b><span>'+ap[1]+' · '+ap[3]+'</span></span></div></div>';
 
-  setTimeout(function(){ dshFit(); dgWheel(); jAfter('p',true); },0);
+  setTimeout(function(){ dshFit(); dgWheel(); },0);
 
   return '<div class="dsec dsh dsh-fit">'+hi+
     '<div class="dgrid">'+
@@ -11768,7 +12232,7 @@ function pJourney(D){
   const dots=T.map(function(t){
     const pc=t.total?Math.round(t.done/t.total*100):0;
     const act=(t.k==='content'&&t.pid)?"openProgram('"+t.pid+"')":"dashNav('patient','"+t.go+"')";
-    return '<div class="jdot" style="--tc:'+t.c+'">'+
+    return '<div class="jhdot" style="--tc:'+t.c+'">'+
       '<button class="jdb" aria-expanded="false" onclick="jPop(event,\''+t.k+'\')" '+
         'aria-label="'+__tr(t.name)+'">'+dIcon(t.icon)+
         (t.done<t.total?'<span class="pip"></span>':'')+'</button>'+
@@ -11783,12 +12247,15 @@ function pJourney(D){
 
   /* o teste tambem virou bolinha */
   const test=
-    '<div class="jdot" style="--tc:var(--soft)">'+
+    '<div class="jhdot" style="--tc:var(--soft)">'+
       '<button class="jdb" aria-expanded="false" onclick="jPop(event,\'test\')" '+
         'aria-label="'+__tr('Test the growth')+'">'+dIcon('target')+'</button>'+
       '<div class="jpop" id="jpop-test">'+
         '<div class="hd"><div><b>'+__tr('Test the growth')+'</b>'+
           '<span>'+__tr('Move each front')+'</span></div></div>'+
+        '<div class="tst"><span style="color:#EEF5F4">'+__tr('Steps')+'</span>'+
+          '<button onclick="event.stopPropagation();aqTestStep(-1)">−</button>'+
+          '<button onclick="event.stopPropagation();aqTestStep(1)">+</button></div>'+
         '<div class="tst"><span style="color:#D9A420">'+__tr('Check-ins')+'</span>'+
           '<button onclick="event.stopPropagation();jTrkStep(\'wk\',-1)">−</button>'+
           '<button onclick="event.stopPropagation();jTrkStep(\'wk\',1)">+</button></div>'+
@@ -11812,8 +12279,6 @@ function pJourney(D){
       '<div class="jright">'+
         '<span class="jstreak">'+dIcon('flame')+'<b>'+(st.streak||0)+'</b>'+
           '<span>'+__tr('day streak')+'</span></span>'+
-        '<span class="jformed" title="'+__tr('Steps completed')+'">'+
-          __tr('Formed')+' <b>'+aqStats().pct+'%</b></span>'+
         dots+test+
       '</div>'+
     '</div>'+
@@ -14540,6 +15005,21 @@ routeFromHash();
     "Remind them":"Lembrar","Demo: a reminder would go out":"Demo: um lembrete seria enviado",
     "Status":"Estado","On":"Ligado","Not set up":"Não configurado","Tone":"Tom","Facts":"Factos",
     "What they told you":"O que ele contou","Turn off":"Desligar",
+    "More energy":"Mais energia","A clearer head":"Uma cabeça mais clara",
+    "Better sleep":"Dormir melhor","A steadier mood":"Um humor mais estável",
+    "Getting out of bed":"Sair da cama","Cravings":"Vontade de comer","Focus at work":"Foco no trabalho",
+    "Sleeping through the night":"Dormir a noite toda","Office hours":"Horário de escritório",
+    "Shift work":"Trabalho em turnos","Late dinners":"Jantar tarde","I skip breakfast":"Pulo o café da manhã",
+    "Nothing, ask away":"Nada, pode perguntar","My weight":"Meu peso","My family":"Minha família",
+    "Let us start with the big one.":"Vamos começar pela grande.","No wrong answers here.":"Aqui não há resposta errada.",
+    "Roughly is fine.":"Mais ou menos já serve.","I will stay clear of it.":"Vou ficar longe disso.",
+    "Last one. How should I sound?":"Última. Como devo falar?","Looks good. Want to send it?":"Ficou bom. Quer enviar?",
+    "Or write it your way…":"Ou escreva do seu jeito…","Enter to continue":"Enter para continuar",
+    "Skip":"Pular","All set":"Tudo pronto","Here is what your team will see":"Isto é o que sua equipe vai ver",
+    "Skipped — tap to answer":"Pulada — toque para responder","Steps":"Passos",
+    "AI summary":"Resumo por IA","No app account yet":"Ainda sem conta no app",
+    "Waiting on their answers":"Aguardando as respostas","Edit their assistant":"Editar o assistente",
+    "Set up their assistant":"Configurar o assistente dele",
     "Set up the assistant":"Configurar o assistente","Edit what it may use":"Editar o que pode usar",
     "The assistant only uses the facts you tick. Anything else it hands back to you.":"O assistente usa só os factos que você marcar. O resto devolve para você.",
     "Everything here is already on file for":"Tudo isto já está registado sobre",
