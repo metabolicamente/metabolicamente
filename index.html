@@ -3343,7 +3343,7 @@ body.jdark{transition:background .3s ease}
   text-align:center;margin:0 0 clamp(16px,2.4vh,28px);line-height:1.3}
 .cihint{font-size:13.5px;color:var(--soft);text-align:center;max-width:26em;margin:18px auto 0;line-height:1.5}
 /* 0: o disco */
-.ciopen{text-align:center;padding-top:clamp(4px,3vh,26px)}
+.ciopen{text-align:center;padding-top:0}
 .ciopen h1{font-family:var(--display);font-weight:700;letter-spacing:-.02em;color:var(--hd);
   font-size:clamp(24px,3.4vw,38px);line-height:1.15;margin:0 0 clamp(18px,4vh,40px)}
 .citime{position:relative;background:linear-gradient(90deg,#E7C24C,#E8927C 42%,#8FD3C8 78%,#4FB3A0);
@@ -3390,9 +3390,14 @@ body.jdark{transition:background .3s ease}
   -webkit-mask-image:linear-gradient(180deg,transparent,#000 26%,#000 74%,transparent);
   mask-image:linear-gradient(180deg,transparent,#000 26%,#000 74%,transparent)}
 .cicloudwrap{padding-bottom:86px}
-.ciwrap.cloud{display:flex;flex-direction:column;justify-content:center;
-  min-height:calc(100vh - var(--aph,64px) - 120px)}
-.ciwrap.cloud .citop{position:absolute;top:0;left:0;z-index:6}
+.ciwrap.open,.ciwrap.quads,.ciwrap.cloud,.ciwrap.body{position:relative;box-sizing:border-box;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-height:calc(100dvh - var(--aph,68px) - clamp(58px,8vh,78px));
+  padding-top:clamp(10px,2.2vh,22px)}
+.ciwrap.open>.citop,.ciwrap.quads>.citop,.ciwrap.cloud>.citop,.ciwrap.body>.citop{
+  position:absolute;top:0;left:0;margin:0;z-index:6}
+.ciwrap.open .ciopen,.ciwrap.quads .ciquads,.ciwrap.quads .cilead,
+.ciwrap.cloud .cimapwrap,.ciwrap.body .cilead,.ciwrap.body .cibodywrap{width:100%}
 .cicloud::-webkit-scrollbar{display:none}
 .cibub{aspect-ratio:1;border-radius:50%;border:0;cursor:pointer;font:inherit;scroll-snap-align:center;
   font-family:var(--display);font-weight:600;font-size:clamp(11px,1.4vw,15px);color:#0D1B22;
@@ -3405,9 +3410,16 @@ body.jdark{transition:background .3s ease}
 .cibub.mid{opacity:1;transform:scale(1.3);border-radius:46% 46% 50% 50%/34% 34% 66% 66%;
   box-shadow:0 18px 44px rgba(0,0,0,.42);z-index:3;font-size:clamp(13px,1.6vw,17px)}
 .cibub.sel{outline:3px solid #EEF5F4;outline-offset:3px}
-.cicap{position:absolute;left:0;right:0;bottom:18px;text-align:center;pointer-events:none}
-.cicap b{display:block;font-family:var(--display);font-size:20px;color:var(--hd)}
-.cicap span{display:block;font-size:13px;color:var(--soft);margin-top:2px}
+.cicap{display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;font:inherit;
+  color:var(--ink);border:1px solid rgba(238,245,244,.16);background:rgba(238,245,244,.05);
+  border-radius:24px;padding:12px 26px;cursor:pointer;min-width:min(330px,86%);
+  transition:border-color .2s ease,background .2s ease,transform .2s ease}
+.cicap:hover{border-color:#8FD3C8;background:rgba(143,211,200,.12);transform:translateY(-1px)}
+.cicap b{display:block;font-family:var(--display);font-size:clamp(18px,2.2vw,22px);color:var(--hd)}
+.cicap span{display:block;font-size:13px;color:var(--soft);line-height:1.45;max-width:32em}
+.cicap i{font-style:normal;font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  color:#8FD3C8;font-weight:700}
+.cimap .cibub:hover{opacity:1}
 /* 3: o detalhe */
 .cifeel{position:relative;text-align:center;padding-top:6px}
 .cifeel .blob{display:block;width:clamp(104px,14vw,158px);height:auto;margin:0 auto 14px;
@@ -3472,8 +3484,9 @@ body.jdark{transition:background .3s ease}
 }
 
 /* --- mapa das emocoes --- */
-.cimapwrap{position:relative;padding:26px 0 92px}
-.cimap{position:relative;height:min(58vh,480px);overflow:hidden;cursor:grab;touch-action:none;
+.cimapwrap{position:relative;width:100%;display:flex;flex-direction:column;align-items:center;
+  gap:clamp(12px,2.2vh,22px);padding:0}
+.cimap{position:relative;width:min(94vw,960px);height:min(54vh,460px);overflow:hidden;cursor:grab;touch-action:none;
   -webkit-mask-image:radial-gradient(70% 62% at 50% 50%,#000 42%,rgba(0,0,0,.35) 78%,transparent);
   mask-image:radial-gradient(70% 62% at 50% 50%,#000 42%,rgba(0,0,0,.35) 78%,transparent)}
 .cimap:active{cursor:grabbing}
@@ -9769,6 +9782,14 @@ function ciWord(w){
   var c=ciState(DASH.patient);
   c.word=w; ciGo(3);
 }
+function ciBub(el){
+  if(CIMAP&&CIMAP.moved>6) return;      /* veio de um arrasto, nao de um toque */
+  ciWord(el.dataset.w);
+}
+function ciPickMid(){
+  var b=document.querySelector('#ciMap .cibub.mid');
+  if(b) ciWord(b.dataset.w);
+}
 /* ---- O MAPA DAS EMOCOES ----
    Um so campo com as 48 palavras nos seus quadrantes: o rato (ou o dedo)
    passeia pelo campo, a palavra que fica no centro toma forma, e ve-se
@@ -9785,8 +9806,9 @@ function ciCells(){
   return out;
 }
 function ciQuadCentre(q){
-  var c=({red:[1.5,1],yellow:[5.5,1],blue:[1.5,4],green:[5.5,4]})[q]||[3.5,2.5];
-  return {x:(c[0]+0.5)*(CI_CELL+CI_GAP),y:(c[1]+0.5)*(CI_CELL+CI_GAP)};
+  /* aponta ao centro de uma bolha, nao ao espaco entre duas */
+  var c=({red:[1,1],yellow:[5,1],blue:[1,4],green:[5,4]})[q]||[3,2];
+  return {x:c[0]*(CI_CELL+CI_GAP)+CI_CELL/2,y:c[1]*(CI_CELL+CI_GAP)+CI_CELL/2};
 }
 var CIMAP=null;
 function ciMapInit(q){
@@ -9795,10 +9817,11 @@ function ciMapInit(q){
   box.__on=1;
   var W=CI_COLS*(CI_CELL+CI_GAP), H=CI_ROWS*(CI_CELL+CI_GAP);
   var c=ciQuadCentre(q);
-  var st={x:c.x,y:c.y,tx:c.x,ty:c.y,drag:0,px:0,py:0,raf:0,vx:0,vy:0};
+  var st={x:c.x,y:c.y,tx:c.x,ty:c.y,drag:0,px:0,py:0,raf:0,vx:0,vy:0,moved:0};
   CIMAP=st;
   var clamp=function(v,lo,hi){ return v<lo?lo:(v>hi?hi:v); };
   var apply=function(){
+    if(!box.isConnected){ CIMAP=null; return; }   /* o ecra mudou: para aqui */
     var r=box.getBoundingClientRect();
     /* o ponteiro fora do centro puxa o campo: quanto mais longe, mais depressa */
     if(!st.drag&&(st.vx||st.vy)){ st.tx+=st.vx*10; st.ty+=st.vy*10; }
@@ -9816,12 +9839,13 @@ function ciMapInit(q){
       el.classList.remove('mid');
       if(d<bd){ bd=d; best=el; }
     });
-    if(best&&bd<90){
+    if(best){                       /* ha sempre uma palavra no meio para escolher */
       best.classList.add('mid');
       if(box.__w!==best.dataset.w){
         box.__w=best.dataset.w;
         var cap=document.getElementById('ciCap');
-        if(cap) cap.innerHTML='<b>'+esc(__tr(best.dataset.w))+'</b><span>'+esc(__tr(best.dataset.d))+'</span>';
+        if(cap) cap.innerHTML='<b>'+esc(__tr(best.dataset.w))+'</b><span>'+esc(__tr(best.dataset.d))+
+          '</span><i>'+esc(__tr('Tap to choose'))+'</i>';
       }
     }
     st.raf=requestAnimationFrame(apply);
@@ -9831,18 +9855,29 @@ function ciMapInit(q){
     var r=box.getBoundingClientRect();
     var nx=(e.clientX-r.left)/r.width-0.5, ny=(e.clientY-r.top)/r.height-0.5;
     if(st.drag){
-      st.tx-=(e.clientX-st.px); st.ty-=(e.clientY-st.py);
+      var dx=e.clientX-st.px, dy=e.clientY-st.py;
+      st.moved+=Math.hypot(dx,dy);
+      st.tx-=dx; st.ty-=dy;
       st.px=e.clientX; st.py=e.clientY; return;
     }
     if(e.pointerType==='touch'){ st.vx=st.vy=0; return; }
     var dz=function(v){ return Math.abs(v)<0.12?0:(v-Math.sign(v)*0.12)/0.38; };
     st.vx=dz(nx); st.vy=dz(ny);
   },{passive:true});
-  box.addEventListener('pointerdown',function(e){ st.drag=1; st.px=e.clientX; st.py=e.clientY;
-    box.setPointerCapture&&box.setPointerCapture(e.pointerId); });
-  ['pointerup','pointercancel'].forEach(function(ev){
-    box.addEventListener(ev,function(){ st.drag=0; });
+  /* nada de setPointerCapture: apanhar o ponteiro aqui matava o clique nas bolhas */
+  box.addEventListener('pointerdown',function(e){
+    st.drag=1; st.moved=0; st.vx=st.vy=0;      /* o campo para: o que esta debaixo do dedo fica la */
+    st.px=e.clientX; st.py=e.clientY;
   });
+  box.addEventListener('pointerup',function(e){
+    var tap=st.drag&&st.moved<6; st.drag=0; st.vx=st.vy=0;
+    if(!tap) return;
+    if(e.target&&e.target.closest&&e.target.closest('.cibub')) return;  /* o onclick trata */
+    var r=box.getBoundingClientRect();
+    var d=Math.hypot(e.clientX-(r.left+r.width/2),e.clientY-(r.top+r.height/2));
+    if(d<110&&box.__w) ciWord(box.__w);           /* tocou no centro: fica a do meio */
+  });
+  box.addEventListener('pointercancel',function(){ st.drag=0; });
   box.addEventListener('pointerleave',function(){ st.drag=0; st.vx=st.vy=0; });
   box.addEventListener('wheel',function(e){
     e.preventDefault(); st.tx+=e.deltaX; st.ty+=e.deltaY;
@@ -10139,16 +10174,15 @@ function ciInner(role){
     const cells=ciCells().map(function(e){
       return '<button class="cibub q-'+e.q+(c.word===e.w?' sel':'')+'" data-w="'+esc(e.w)+'" '+
         'data-d="'+esc(e.d)+'" style="--cx:'+(e.c*(CI_CELL+CI_GAP))+'px;--cy:'+
-        (e.r*(CI_CELL+CI_GAP))+'px" onclick="ciWord(\''+e.w.replace(/'/g,"\\'")+'\')">'+
-        __tr(e.w)+'</button>';
+        (e.r*(CI_CELL+CI_GAP))+'px" onclick="ciBub(this)">'+__tr(e.w)+'</button>';
     }).join('');
     return wrap('<div class="citop">'+back(1)+'</div>'+
       '<div class="cimapwrap">'+
         '<div class="cimap" id="ciMap"><div class="cifield" id="ciField">'+cells+'</div>'+
           '<span class="cirst"></span></div>'+
-        '<div class="cicap" id="ciCap"><b>'+__tr('Move around')+'</b><span>'+
+        '<button class="cicap" id="ciCap" onclick="ciPickMid()"><b>'+__tr('Move around')+'</b><span>'+
           __tr('The word in the middle takes shape. Drag or move the mouse to wander; tap to pick.')+
-        '</span></div>'+
+        '</span></button>'+
       '</div>','cloud');
   }
 
@@ -17576,7 +17610,7 @@ routeFromHash();
     "Calm":"Calmo","Content":"Satisfeito","Grateful":"Grato","Relaxed":"Relaxado","Safe":"Seguro","Rested":"Descansado",
     "Peaceful":"Em paz","Balanced":"Equilibrado","Comfortable":"Confortável","Thankful":"Agradecido","Mellow":"Tranquilo","Serene":"Sereno",
     "Continue watching":"Continuar assistindo","Start here":"Comece aqui",
-    "Move around":"Passeie","Drag to turn the body":"Arraste para girar o corpo",
+    "Move around":"Passeie","Tap to choose":"Toque para escolher","Drag to turn the body":"Arraste para girar o corpo",
     "The word in the middle takes shape. Drag or move the mouse to wander; tap to pick.":"A palavra do meio ganha forma. Arraste ou mova o mouse para passear; toque para escolher.",
     "Intensity":"Intensidade","Very unpleasant":"Muito desagradável","Very pleasant":"Muito agradável",
     "very high intensity":"intensidade muito alta","very low intensity":"intensidade muito baixa",
