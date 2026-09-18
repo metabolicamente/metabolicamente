@@ -3346,18 +3346,20 @@ body.jdark{transition:background .3s ease}
 .ciopen{text-align:center;padding-top:clamp(4px,3vh,26px)}
 .ciopen h1{font-family:var(--display);font-weight:700;letter-spacing:-.02em;color:var(--hd);
   font-size:clamp(24px,3.4vw,38px);line-height:1.15;margin:0 0 clamp(18px,4vh,40px)}
-.citime{background:linear-gradient(90deg,#E7C24C,#D96B54 45%,#7A5C8E 75%,#4FB3A0);
-  -webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic}
+.citime{position:relative;background:linear-gradient(90deg,#E7C24C,#E8927C 42%,#8FD3C8 78%,#4FB3A0);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  filter:drop-shadow(0 0 16px rgba(143,211,200,.35))}
 .cidisc{position:relative;width:min(58vw,300px);aspect-ratio:1;margin:0 auto;display:grid;
   place-items:center;border:0;background:none;cursor:pointer;padding:0}
-.cidisc svg{position:absolute;inset:0;width:100%;height:100%;animation:ciSpin 26s linear infinite}
+.cidisc>svg{position:absolute;inset:0;width:100%;height:100%;animation:ciSpin 26s linear infinite}
 .cidisc .ring{fill:none;stroke:url(#cidg);stroke-width:13;stroke-linecap:round;
   stroke-dasharray:82 18;opacity:.92}
 @keyframes ciSpin{to{transform:rotate(360deg)}}
-.cidisc .plus{width:clamp(56px,9vw,74px);height:clamp(56px,9vw,74px);border-radius:50%;background:#EEF5F4;
-  color:#07222C;display:grid;place-items:center;font-size:clamp(24px,3.4vw,30px);
+.cidisc .plus{width:clamp(46px,5.4vw,58px);height:clamp(46px,5.4vw,58px);border-radius:50%;background:#EEF5F4;
+  color:#07222C;display:grid;place-items:center;
   box-shadow:0 12px 34px rgba(0,0,0,.45);transition:transform .25s cubic-bezier(.2,1.2,.4,1)}
 .cidisc .plus .ic{display:flex}
+.cidisc .plus .ic svg{width:22px;height:22px;stroke-width:2.4}
 .cidisc:hover .plus{transform:scale(1.08)}
 .cidisc .lb{position:absolute;bottom:26%;font-family:var(--display);font-size:clamp(15px,1.8vw,19px);
   font-weight:600;color:var(--hd)}
@@ -3390,7 +3392,7 @@ body.jdark{transition:background .3s ease}
 .cicloudwrap{padding-bottom:86px}
 .ciwrap.cloud{display:flex;flex-direction:column;justify-content:center;
   min-height:calc(100vh - var(--aph,64px) - 120px)}
-.ciwrap.cloud .citop{position:absolute;z-index:6}
+.ciwrap.cloud .citop{position:absolute;top:0;left:0;z-index:6}
 .cicloud::-webkit-scrollbar{display:none}
 .cibub{aspect-ratio:1;border-radius:50%;border:0;cursor:pointer;font:inherit;scroll-snap-align:center;
   font-family:var(--display);font-weight:600;font-size:clamp(11px,1.4vw,15px);color:#0D1B22;
@@ -3415,7 +3417,7 @@ body.jdark{transition:background .3s ease}
 .cifeel.q-blue{color:#7E9BD8}.cifeel.q-green{color:#6CC7AC}
 @keyframes ciFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 .cifeel h1{font-family:var(--display);font-weight:600;font-size:clamp(20px,2.6vw,28px);color:var(--hd);
-  margin:0;line-height:1.2;font-style:italic}
+  margin:0;line-height:1.2}
 .cifeel h1 b{display:block;font-weight:700;margin-top:2px}
 .cifeel.q-red h1 b{color:#EE9A84}.cifeel.q-yellow h1 b{color:#F3D579}
 .cifeel.q-blue h1 b{color:#9FB7E6}.cifeel.q-green h1 b{color:#9BE7D1}
@@ -3436,7 +3438,12 @@ body.jdark{transition:background .3s ease}
 .cifoot{position:sticky;bottom:10px;margin-top:22px;display:flex;justify-content:center}
 .cidone{width:min(100%,420px);justify-content:center;font-size:16px;padding:15px 22px}
 /* 4: o corpo */
-.cibodywrap{display:grid;gap:18px;justify-items:center}
+.cibodywrap{display:grid;gap:22px;justify-items:center;align-items:center}
+@media(min-width:900px){
+  .ciwrap.body .cibodywrap{grid-template-columns:minmax(0,360px) minmax(0,1fr);text-align:left}
+  .ciwrap.body .cibpanel{justify-items:start}
+  .ciwrap.body .cipadbox{justify-items:start}
+}
 .cibody{width:min(70vw,300px);height:auto;display:block;filter:drop-shadow(0 0 22px rgba(143,211,200,.10))}
 .cibp{cursor:pointer;transition:opacity .2s ease}
 .cibp:hover{opacity:.75}
@@ -3462,6 +3469,53 @@ body.jdark{transition:background .3s ease}
 }
 @media(prefers-reduced-motion:reduce){
   .cidisc svg,.cifeel .blob,.ciwrap{animation:none}
+}
+
+/* --- mapa das emocoes --- */
+.cimapwrap{position:relative;padding:26px 0 92px}
+.cimap{position:relative;height:min(58vh,480px);overflow:hidden;cursor:grab;touch-action:none;
+  -webkit-mask-image:radial-gradient(70% 62% at 50% 50%,#000 42%,rgba(0,0,0,.35) 78%,transparent);
+  mask-image:radial-gradient(70% 62% at 50% 50%,#000 42%,rgba(0,0,0,.35) 78%,transparent)}
+.cimap:active{cursor:grabbing}
+.cifield{position:absolute;left:0;top:0;width:1072px;height:804px;will-change:transform}
+.cimap .cibub{position:absolute;left:var(--cx);top:var(--cy);width:118px;height:118px;border-radius:50%;
+  border:0;cursor:pointer;font:inherit;font-family:var(--display);font-weight:600;
+  font-size:calc(12px + var(--near,0) * 4px);color:#0D1B22;padding:8px;
+  opacity:calc(.34 + var(--near,0) * .66);
+  transform:scale(calc(.86 + var(--near,0) * .2));
+  transition:border-radius .3s ease}
+.cimap .cibub.q-red{background:radial-gradient(120% 120% at 30% 20%,#EE9A84,#D2624B)}
+.cimap .cibub.q-yellow{background:radial-gradient(120% 120% at 30% 20%,#F6DE92,#E3B640)}
+.cimap .cibub.q-blue{background:radial-gradient(120% 120% at 30% 20%,#9FB7E6,#6889BC)}
+.cimap .cibub.q-green{background:radial-gradient(120% 120% at 30% 20%,#9BE7D1,#4FB39C)}
+.cimap .cibub.mid{opacity:1;transform:scale(1.34);z-index:4;
+  border-radius:46% 46% 50% 50%/34% 34% 66% 66%;box-shadow:0 20px 48px rgba(0,0,0,.45)}
+.cirst{position:absolute;left:50%;top:50%;width:150px;height:150px;margin:-75px 0 0 -75px;
+  border-radius:50%;border:1px dashed rgba(238,245,244,.16);pointer-events:none}
+/* --- corpo em 3D --- */
+.ci3wrap{position:relative;width:100%;display:flex;flex-direction:column;align-items:center;gap:8px}
+.ci3{width:min(82vw,330px);height:min(46vh,390px);display:block;touch-action:none;cursor:grab}
+.ci3hint{display:inline-flex;align-items:center;gap:7px;font-size:12px;color:var(--soft);
+  font-family:var(--quiet);letter-spacing:.04em}
+.ci3hint .ic{display:flex;font-size:13px}
+/* --- a grelha de intensidade, maior --- */
+.cipadbox{display:grid;grid-template-columns:auto 1fr;gap:8px 10px;align-items:center;
+  justify-items:center}
+.cipadbox .ax{font-family:var(--quiet);font-size:10px;font-weight:700;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--soft)}
+.cipadbox .ay{writing-mode:vertical-rl;transform:rotate(180deg)}
+.cipadbox .ax2{grid-column:2;display:flex;justify-content:space-between;width:268px;
+  max-width:78vw;padding:0 2px}
+.cipadbox .ax2 i{font-style:normal}
+.cipad{display:grid;grid-template-columns:repeat(5,44px);gap:10px;justify-content:center}
+.cipad i{width:44px;height:44px;border-radius:50%;background:rgba(238,245,244,.10);cursor:pointer;
+  transition:background .2s ease,transform .2s cubic-bezier(.2,1.2,.4,1)}
+.cipad i:hover{background:rgba(238,245,244,.24)}
+.cipad i.on{background:#E8927C;transform:scale(1.14);box-shadow:0 0 18px rgba(232,146,124,.55)}
+.cipadcap{font-family:var(--display);font-size:16px;color:#E8927C}
+@media(max-width:560px){
+  .cimap{height:min(52vh,420px)}
+  .ci3{width:min(84vw,300px)}
 }
 /* --- o formulario do assistente como um jogo curto --- */
 .itz{display:flex;justify-content:center}
@@ -9703,7 +9757,7 @@ function ciGo(st){
   var c=ciState(DASH.patient);
   c.stage=st;
   ciUpdate('patient');
-  if(st===2) setTimeout(ciCloudWatch,60);
+  if(st===2) setTimeout(function(){ ciMapInit(ciState(DASH.patient).q); },40);
   if(st===3) setTimeout(function(){ var t=document.getElementById('ciJ'); if(t) itzGrow(t); },40);
 }
 function ciQuadPick(q){
@@ -9715,28 +9769,85 @@ function ciWord(w){
   var c=ciState(DASH.patient);
   c.word=w; ciGo(3);
 }
-/* a bolha no centro do campo ganha a forma de escudo, como no app de referencia */
-function ciCloudWatch(){
-  var box=document.getElementById('ciCloud'); if(!box||box.__w) return;
-  box.__w=1;
-  /* o preenchimento em cima e em baixo poe a primeira e a ultima fila no centro */
-  var pad=Math.max(0,box.clientHeight/2-62);
-  box.style.paddingTop=pad+'px'; box.style.paddingBottom=pad+'px';
-  var mark=function(){
-    var r=box.getBoundingClientRect(), cy=r.top+r.height/2, best=null, bd=1e9;
-    box.querySelectorAll('.cibub').forEach(function(el){
-      var b=el.getBoundingClientRect(), d=Math.abs(b.top+b.height/2-cy);
+/* ---- O MAPA DAS EMOCOES ----
+   Um so campo com as 48 palavras nos seus quadrantes: o rato (ou o dedo)
+   passeia pelo campo, a palavra que fica no centro toma forma, e ve-se
+   sempre o que ha nas zonas vizinhas. */
+var CI_COLS=8, CI_ROWS=6, CI_CELL=118, CI_GAP=16;
+function ciCells(){
+  var out=[];
+  var put=function(q,c0,r0){
+    (CI_EMO[q]||[]).forEach(function(e,i){
+      out.push({q:q,w:e[0],d:e[1],c:c0+(i%4),r:r0+Math.floor(i/4)});
+    });
+  };
+  put('red',0,0); put('yellow',4,0); put('blue',0,3); put('green',4,3);
+  return out;
+}
+function ciQuadCentre(q){
+  var c=({red:[1.5,1],yellow:[5.5,1],blue:[1.5,4],green:[5.5,4]})[q]||[3.5,2.5];
+  return {x:(c[0]+0.5)*(CI_CELL+CI_GAP),y:(c[1]+0.5)*(CI_CELL+CI_GAP)};
+}
+var CIMAP=null;
+function ciMapInit(q){
+  var box=document.getElementById('ciMap'), field=document.getElementById('ciField');
+  if(!box||!field||box.__on) return;
+  box.__on=1;
+  var W=CI_COLS*(CI_CELL+CI_GAP), H=CI_ROWS*(CI_CELL+CI_GAP);
+  var c=ciQuadCentre(q);
+  var st={x:c.x,y:c.y,tx:c.x,ty:c.y,drag:0,px:0,py:0,raf:0,vx:0,vy:0};
+  CIMAP=st;
+  var clamp=function(v,lo,hi){ return v<lo?lo:(v>hi?hi:v); };
+  var apply=function(){
+    var r=box.getBoundingClientRect();
+    /* o ponteiro fora do centro puxa o campo: quanto mais longe, mais depressa */
+    if(!st.drag&&(st.vx||st.vy)){ st.tx+=st.vx*10; st.ty+=st.vy*10; }
+    st.tx=clamp(st.tx,r.width*0.18,W-r.width*0.18);
+    st.ty=clamp(st.ty,r.height*0.18,H-r.height*0.18);
+    st.x+=(st.tx-st.x)*0.16; st.y+=(st.ty-st.y)*0.16;
+    field.style.transform='translate('+(r.width/2-st.x).toFixed(1)+'px,'+
+      (r.height/2-st.y).toFixed(1)+'px)';
+    /* a palavra mais perto do centro toma forma */
+    var cx=r.left+r.width/2, cy=r.top+r.height/2, best=null, bd=1e9;
+    field.querySelectorAll('.cibub').forEach(function(el){
+      var b2=el.getBoundingClientRect(), d=Math.hypot(b2.left+b2.width/2-cx,b2.top+b2.height/2-cy);
+      var near=Math.max(0,1-d/380);
+      el.style.setProperty('--near',near.toFixed(3));
       el.classList.remove('mid');
       if(d<bd){ bd=d; best=el; }
     });
-    if(best&&bd<r.height*0.30){
+    if(best&&bd<90){
       best.classList.add('mid');
-      var cap=document.getElementById('ciCap');
-      if(cap) cap.innerHTML='<b>'+esc(best.dataset.w)+'</b><span>'+esc(best.dataset.d)+'</span>';
+      if(box.__w!==best.dataset.w){
+        box.__w=best.dataset.w;
+        var cap=document.getElementById('ciCap');
+        if(cap) cap.innerHTML='<b>'+esc(__tr(best.dataset.w))+'</b><span>'+esc(__tr(best.dataset.d))+'</span>';
+      }
     }
+    st.raf=requestAnimationFrame(apply);
   };
-  box.addEventListener('scroll',function(){ window.requestAnimationFrame(mark); },{passive:true});
-  mark();
+  /* o rato conduz: quanto mais longe do centro, mais depressa se anda */
+  box.addEventListener('pointermove',function(e){
+    var r=box.getBoundingClientRect();
+    var nx=(e.clientX-r.left)/r.width-0.5, ny=(e.clientY-r.top)/r.height-0.5;
+    if(st.drag){
+      st.tx-=(e.clientX-st.px); st.ty-=(e.clientY-st.py);
+      st.px=e.clientX; st.py=e.clientY; return;
+    }
+    if(e.pointerType==='touch'){ st.vx=st.vy=0; return; }
+    var dz=function(v){ return Math.abs(v)<0.12?0:(v-Math.sign(v)*0.12)/0.38; };
+    st.vx=dz(nx); st.vy=dz(ny);
+  },{passive:true});
+  box.addEventListener('pointerdown',function(e){ st.drag=1; st.px=e.clientX; st.py=e.clientY;
+    box.setPointerCapture&&box.setPointerCapture(e.pointerId); });
+  ['pointerup','pointercancel'].forEach(function(ev){
+    box.addEventListener(ev,function(){ st.drag=0; });
+  });
+  box.addEventListener('pointerleave',function(){ st.drag=0; st.vx=st.vy=0; });
+  box.addEventListener('wheel',function(e){
+    e.preventDefault(); st.tx+=e.deltaX; st.ty+=e.deltaY;
+  },{passive:false});
+  apply();
 }
 function ciTog(k,v,el){
   var c=ciState(DASH.patient), a=c[k], i=a.indexOf(v);
@@ -9750,7 +9861,11 @@ var CIB=null;
 function ciBodyOpen(){ CIB={r:null,pl:0,it:0,words:[]}; ciGo(4); }
 function ciBodyPick(r){
   if(!CIB) CIB={r:null,pl:0,it:0,words:[]};
-  CIB.r=r; ciUpdate('patient');
+  var had=CIB.r; CIB.r=r;
+  if(had) { if(CI3.paint) CI3.paint();
+    var h=document.querySelector('.ciwrap.body .cilead');
+    if(h) h.textContent=__tr('My')+' '+__tr(ciRgName(r)).toLowerCase()+' '+__tr('feels');
+  } else ciUpdate('patient');     /* a primeira escolha abre o painel */
 }
 function ciPad(x,y){
   if(!CIB) return;
@@ -9763,8 +9878,10 @@ function ciPad(x,y){
 }
 function ciPadLabel(){
   if(!CIB) return '';
-  var p=CIB.pl<0?'Unpleasant':(CIB.pl>0?'Pleasant':'Neutral');
-  var i=CIB.it>0?'high intensity':(CIB.it<0?'low intensity':'medium intensity');
+  var p=CIB.pl<-1?'Very unpleasant':(CIB.pl<0?'Unpleasant':(CIB.pl>1?'Very pleasant':
+    (CIB.pl>0?'Pleasant':'Neutral')));
+  var i=CIB.it>1?'very high intensity':(CIB.it>0?'high intensity':
+    (CIB.it<-1?'very low intensity':(CIB.it<0?'low intensity':'medium intensity')));
   return __tr(p)+' & '+__tr(i);
 }
 function ciSens(w,el){
@@ -9776,27 +9893,181 @@ function ciSens(w,el){
 function ciBodySave(){
   var c=ciState(DASH.patient);
   if(!CIB||!CIB.r){ toast(__tr('Tap a part of the body first.')); return; }
-  var lab=(CI_BODY_R.filter(function(x){ return x[0]===CIB.r; })[0]||[,''])[1];
-  c.body.push({r:CIB.r,label:lab,pl:CIB.pl,it:CIB.it,words:CIB.words.slice(),cap:ciPadLabel()});
+  c.body.push({r:CIB.r,label:ciRgName(CIB.r),pl:CIB.pl,it:CIB.it,words:CIB.words.slice(),
+    cap:ciPadLabel()});
   CIB=null; ciGo(3);
 }
 function ciBodyDrop(i){
   var c=ciState(DASH.patient); c.body.splice(i,1); ciUpdate('patient');
 }
-function ciBodySVG(sel,onclick){
-  var dots='<defs><pattern id="cidot" width="7" height="7" patternUnits="userSpaceOnUse">'+
-    '<circle cx="2" cy="2" r="1.1" fill="rgba(238,245,244,.55)"/></pattern>'+
-    '<pattern id="cidoth" width="6" height="6" patternUnits="userSpaceOnUse">'+
-    '<circle cx="2" cy="2" r="1.4" fill="#E8927C"/></pattern></defs>';
-  var body=CI_BODY_R.map(function(r){
-    var on=(sel===r[0]);
-    return '<path class="cibp'+(on?' on':'')+'" d="'+r[2]+'" '+
-      'fill="url(#'+(on?'cidoth':'cidot')+')" '+
-      (onclick?'onclick="ciBodyPick(\''+r[0]+'\')" ':'')+
-      '><title>'+__tr(r[1])+'</title></path>';
-  }).join('');
-  return '<svg class="cibody" viewBox="0 0 200 310" role="img" aria-label="'+__tr('Body map')+'">'+
-    dots+body+'</svg>';
+/* =====================================================================
+   O CORPO EM 3D — uma nuvem de pontos que se pode rodar com o rato.
+   Cada ponto pertence a uma regiao; o clique escolhe a regiao do ponto
+   mais proximo, por isso a escolha e precisa mesmo em zonas pequenas.
+   ===================================================================== */
+var CI_RG=[
+  ['head','Head'],['face','Face'],['neck','Neck'],['chest','Chest'],['belly','Stomach'],
+  ['back','Upper back'],['hips','Hips'],
+  ['shoulder-l','Left shoulder'],['shoulder-r','Right shoulder'],
+  ['upperarm-l','Left upper arm'],['upperarm-r','Right upper arm'],
+  ['forearm-l','Left forearm'],['forearm-r','Right forearm'],
+  ['hand-l','Left hand'],['hand-r','Right hand'],
+  ['thigh-l','Left thigh'],['thigh-r','Right thigh'],
+  ['calf-l','Left calf'],['calf-r','Right calf'],
+  ['foot-l','Left foot'],['foot-r','Right foot']
+];
+function ciRgName(k){
+  var f=CI_RG.filter(function(x){ return x[0]===k; })[0];
+  return f?f[1]:k;
+}
+var CI_PTS=null;
+function ciBodyPoints(){
+  if(CI_PTS) return CI_PTS;
+  var P=[], rnd=function(){ return Math.random()*2-1; };
+  /* esfera achatada: x,y,z com raios proprios */
+  var blob=function(n,cx,cy,cz,rx,ry,rz,reg,front){
+    for(var i=0;i<n;i++){
+      var u=Math.random()*Math.PI*2, v=Math.acos(2*Math.random()-1);
+      var x=Math.sin(v)*Math.cos(u), y=Math.cos(v), z=Math.sin(v)*Math.sin(u);
+      if(front===1&&z<0.1) continue;
+      if(front===-1&&z>-0.1) continue;
+      P.push({x:cx+x*rx,y:cy+y*ry,z:cz+z*rz,r:reg});
+    }
+  };
+  /* capsula entre dois pontos */
+  var limb=function(n,x0,y0,z0,x1,y1,z1,r0,r1,reg){
+    for(var i=0;i<n;i++){
+      var t=Math.random(), a2=Math.random()*Math.PI*2;
+      var rr=r0+(r1-r0)*t;
+      var cx=x0+(x1-x0)*t, cy=y0+(y1-y0)*t, cz=z0+(z1-z0)*t;
+      P.push({x:cx+Math.cos(a2)*rr,y:cy+rnd()*rr*0.12,z:cz+Math.sin(a2)*rr,r:reg});
+    }
+  };
+  blob(240,0,0.86,0,0.105,0.125,0.105,'head',-1);
+  blob(190,0,0.84,0,0.105,0.125,0.105,'face',1);
+  limb(70,0,0.73,0,0,0.68,0,0.055,0.06,'neck');
+  blob(300,0,0.52,0,0.16,0.13,0.08,'chest',1);
+  blob(200,0,0.52,0,0.16,0.13,0.08,'back',-1);
+  blob(230,0,0.34,0,0.14,0.1,0.075,'belly');
+  blob(200,0,0.18,0,0.15,0.085,0.08,'hips');
+  blob(90,-0.19,0.63,0,0.075,0.06,0.07,'shoulder-r');
+  blob(90,0.19,0.63,0,0.075,0.06,0.07,'shoulder-l');
+  limb(150,-0.21,0.60,0,-0.28,0.36,0,0.055,0.045,'upperarm-r');
+  limb(150,0.21,0.60,0,0.28,0.36,0,0.055,0.045,'upperarm-l');
+  limb(140,-0.28,0.34,0,-0.32,0.12,0,0.045,0.035,'forearm-r');
+  limb(140,0.28,0.34,0,0.32,0.12,0,0.045,0.035,'forearm-l');
+  blob(90,-0.33,0.05,0,0.05,0.06,0.03,'hand-r');
+  blob(90,0.33,0.05,0,0.05,0.06,0.03,'hand-l');
+  limb(190,-0.08,0.12,0,-0.10,-0.22,0,0.065,0.05,'thigh-r');
+  limb(190,0.08,0.12,0,0.10,-0.22,0,0.065,0.05,'thigh-l');
+  limb(170,-0.11,-0.24,0,-0.12,-0.58,0,0.05,0.04,'calf-r');
+  limb(170,0.11,-0.24,0,0.12,-0.58,0,0.05,0.04,'calf-l');
+  blob(80,-0.12,-0.63,0.05,0.045,0.03,0.09,'foot-r');
+  blob(80,0.12,-0.63,0.05,0.045,0.03,0.09,'foot-l');
+  CI_PTS=P;
+  return P;
+}
+var CI3={yaw:0.35,pitch:-0.05,drag:0,px:0,py:0,raf:0,hit:null};
+function ciBody3D(){
+  return '<div class="ci3wrap">'+
+    '<canvas id="ci3" class="ci3" width="640" height="900" role="img" '+
+      'aria-label="'+__tr('Body map')+'"></canvas>'+
+    '<span class="ci3hint">'+dIcon('compass')+__tr('Drag to turn the body')+'</span>'+
+  '</div>';
+}
+function ciBodyMount(){
+  var cv=document.getElementById('ci3'); if(!cv||cv.__on) return;
+  cv.__on=1;
+  var ctx=cv.getContext('2d'), pts=ciBodyPoints();
+  var DPR=Math.min(2,window.devicePixelRatio||1);
+  var fit=function(){
+    var r=cv.getBoundingClientRect();
+    cv.width=Math.round(r.width*DPR); cv.height=Math.round(r.height*DPR);
+  };
+  fit();
+  var proj=function(p){
+    var cy=Math.cos(CI3.yaw), sy=Math.sin(CI3.yaw);
+    var x=p.x*cy+p.z*sy, z=-p.x*sy+p.z*cy;
+    var cp=Math.cos(CI3.pitch), sp=Math.sin(CI3.pitch);
+    var y=p.y*cp-z*sp, z2=p.y*sp+z*cp;
+    var s=1/(1.9-z2*0.35);
+    var w=cv.width, h=cv.height, k=Math.min(w*1.15,h*0.78);
+    return {sx:w/2+x*k*s*1.5,sy:h/2-y*k*s*1.0,z:z2,s:s};
+  };
+  var draw=function(){
+    var w=cv.width, h=cv.height;
+    ctx.clearRect(0,0,w,h);
+    var out=pts.map(function(p){ var q=proj(p); q.r=p.r; return q; });
+    out.sort(function(a,b){ return a.z-b.z; });
+    out.forEach(function(q){
+      var on=(CIB&&CIB.r===q.r), hot=(CI3.hit===q.r&&!on);
+      var d=(q.z+1)/2;
+      var rad=(on?2.9:2.2)*q.s*DPR*0.95;
+      ctx.beginPath(); ctx.arc(q.sx,q.sy,rad,0,6.2832);
+      ctx.fillStyle=on?'rgba(232,146,124,'+(0.55+0.45*d).toFixed(2)+')'
+        :(hot?'rgba(143,211,200,'+(0.35+0.45*d).toFixed(2)+')'
+             :'rgba(226,240,238,'+(0.16+0.42*d).toFixed(2)+')');
+      ctx.fill();
+    });
+    CI3.raf=0;
+  };
+  var paint=function(){ if(!CI3.raf) CI3.raf=requestAnimationFrame(draw); };
+  CI3.paint=paint;
+  var pick=function(ev){
+    var r=cv.getBoundingClientRect();
+    var mx=(ev.clientX-r.left)*(cv.width/r.width), my=(ev.clientY-r.top)*(cv.height/r.height);
+    var best=null, bd=1e9;
+    pts.forEach(function(p){
+      var q=proj(p);
+      if(q.z<-0.25) return;                       /* so o que esta virado para nos */
+      var d=Math.hypot(q.sx-mx,q.sy-my);
+      if(d<bd){ bd=d; best=p.r; }
+    });
+    return (bd<26*DPR)?best:null;
+  };
+  cv.addEventListener('pointerdown',function(e){
+    CI3.drag=1; CI3.moved=0; CI3.px=e.clientX; CI3.py=e.clientY;
+    cv.setPointerCapture&&cv.setPointerCapture(e.pointerId);
+  });
+  cv.addEventListener('pointermove',function(e){
+    if(CI3.drag){
+      var dx=e.clientX-CI3.px, dy=e.clientY-CI3.py;
+      if(Math.abs(dx)+Math.abs(dy)>3) CI3.moved=1;
+      CI3.yaw+=dx*0.012;
+      CI3.pitch=Math.max(-0.5,Math.min(0.5,CI3.pitch+dy*0.006));
+      CI3.px=e.clientX; CI3.py=e.clientY; paint(); return;
+    }
+    var h=pick(e); if(h!==CI3.hit){ CI3.hit=h; cv.style.cursor=h?'pointer':'grab'; paint(); }
+  });
+  ['pointerup','pointercancel','pointerleave'].forEach(function(ev){
+    cv.addEventListener(ev,function(){ CI3.drag=0; });
+  });
+  cv.addEventListener('click',function(e){
+    if(CI3.moved) return;
+    var h=pick(e); if(h) ciBodyPick(h);
+  });
+  window.addEventListener('resize',function(){ if(document.getElementById('ci3')===cv){ fit(); paint(); } });
+  paint();
+}
+/* a miniatura no cartao: silhueta simples com a regiao marcada */
+var CI_MINI={head:[100,26,26],face:[100,30,22],neck:[100,66,12],chest:[100,96,34],
+  back:[100,96,34],belly:[100,132,30],hips:[100,166,30],
+  'shoulder-l':[62,84,16],'shoulder-r':[138,84,16],'upperarm-l':[54,112,14],'upperarm-r':[146,112,14],
+  'forearm-l':[46,150,13],'forearm-r':[154,150,13],'hand-l':[42,182,12],'hand-r':[158,182,12],
+  'thigh-l':[84,206,18],'thigh-r':[116,206,18],'calf-l':[84,252,15],'calf-r':[116,252,15],
+  'foot-l':[84,290,12],'foot-r':[116,290,12]};
+function ciBodySVG(sel){
+  var m=CI_MINI[sel];
+  return '<svg class="cibody" viewBox="0 0 200 310" aria-hidden="true">'+
+    '<g fill="rgba(238,245,244,.28)">'+
+      '<circle cx="100" cy="30" r="24"/><rect x="92" y="54" width="16" height="14" rx="6"/>'+
+      '<rect x="64" y="68" width="72" height="96" rx="26"/>'+
+      '<rect x="66" y="158" width="68" height="48" rx="20"/>'+
+      '<rect x="40" y="80" width="20" height="96" rx="10"/><rect x="140" y="80" width="20" height="96" rx="10"/>'+
+      '<rect x="74" y="200" width="22" height="100" rx="11"/><rect x="104" y="200" width="22" height="100" rx="11"/>'+
+    '</g>'+
+    (m?'<circle cx="'+m[0]+'" cy="'+m[1]+'" r="'+m[2]+'" fill="#E8927C" opacity=".85"/>':'')+
+  '</svg>';
 }
 
 function ciInner(role){
@@ -9863,36 +10134,42 @@ function ciInner(role){
       '<div class="ciquads">'+q+'</div>','quads');
   }
 
-  /* ---- 2: as palavras, a do centro toma forma ---- */
+  /* ---- 2: o mapa das palavras ---- */
   if(c.stage===2){
-    const list=CI_EMO[c.q]||CI_EMO.green;
-    const bub=list.map(function(e,i){
-      return '<button class="cibub'+(c.word===e[0]?' sel':'')+'" data-w="'+esc(e[0])+'" data-d="'+
-        esc(e[1])+'" style="--i:'+i+'" onclick="ciWord(\''+e[0].replace(/'/g,"\\'")+'\')">'+
-        __tr(e[0])+'</button>';
+    const cells=ciCells().map(function(e){
+      return '<button class="cibub q-'+e.q+(c.word===e.w?' sel':'')+'" data-w="'+esc(e.w)+'" '+
+        'data-d="'+esc(e.d)+'" style="--cx:'+(e.c*(CI_CELL+CI_GAP))+'px;--cy:'+
+        (e.r*(CI_CELL+CI_GAP))+'px" onclick="ciWord(\''+e.w.replace(/'/g,"\\'")+'\')">'+
+        __tr(e.w)+'</button>';
     }).join('');
     return wrap('<div class="citop">'+back(1)+'</div>'+
-      '<div class="cicloudwrap q-'+c.q+'">'+
-        '<div class="cicloud" id="ciCloud">'+bub+'</div>'+
-        '<div class="cicap" id="ciCap"><b>'+__tr('Scroll')+'</b><span>'+
-          __tr('The word in the middle takes shape. Tap it to pick it.')+'</span></div>'+
+      '<div class="cimapwrap">'+
+        '<div class="cimap" id="ciMap"><div class="cifield" id="ciField">'+cells+'</div>'+
+          '<span class="cirst"></span></div>'+
+        '<div class="cicap" id="ciCap"><b>'+__tr('Move around')+'</b><span>'+
+          __tr('The word in the middle takes shape. Drag or move the mouse to wander; tap to pick.')+
+        '</span></div>'+
       '</div>','cloud');
   }
 
-  /* ---- 4: o mapa do corpo ---- */
+  /* ---- 4: o corpo em 3D ---- */
   if(c.stage===4){
     const sel=CIB&&CIB.r;
-    const lab=sel?(CI_BODY_R.filter(function(x){ return x[0]===sel; })[0][1]):'';
     let pad='';
-    for(let y=1;y>=-1;y--) for(let x=-1;x<=1;x++)
+    for(let y=2;y>=-2;y--){ for(let x=-2;x<=2;x++)
       pad+='<i data-x="'+x+'" data-y="'+y+'" class="'+((CIB&&CIB.pl===x&&CIB.it===y)?'on':'')+'" '+
-        'onclick="ciPad('+x+','+y+')"></i>';
+        'onclick="ciPad('+x+','+y+')"></i>'; }
+    setTimeout(ciBodyMount,30);
     return wrap('<div class="citop">'+back(3,'Back')+'</div>'+
-      '<p class="cilead">'+(sel?__tr('My')+' '+__tr(lab).toLowerCase()+' '+__tr('feels')
+      '<p class="cilead">'+(sel?__tr('My')+' '+__tr(ciRgName(sel)).toLowerCase()+' '+__tr('feels')
         :__tr('Where do you notice a physical sensation?'))+'</p>'+
-      '<div class="cibodywrap">'+ciBodySVG(sel,1)+
+      '<div class="cibodywrap">'+ciBody3D()+
         (sel?'<div class="cibpanel">'+
-          '<div class="cipad" id="ciPad">'+pad+'</div>'+
+          '<div class="cipadbox">'+
+            '<span class="ax ay">'+__tr('Intensity')+'</span>'+
+            '<div class="cipad" id="ciPad">'+pad+'</div>'+
+            '<span class="ax ax2"><i>'+__tr('Unpleasant')+'</i><i>'+__tr('Pleasant')+'</i></span>'+
+          '</div>'+
           '<div class="cipadcap" id="ciPadCap">'+ciPadLabel()+'</div>'+
           '<div class="itzchips">'+CI_SENS.map(function(w){
             return '<button class="itzchip'+((CIB&&CIB.words.indexOf(w)>=0)?' on':'')+'" '+
@@ -17299,6 +17576,15 @@ routeFromHash();
     "Calm":"Calmo","Content":"Satisfeito","Grateful":"Grato","Relaxed":"Relaxado","Safe":"Seguro","Rested":"Descansado",
     "Peaceful":"Em paz","Balanced":"Equilibrado","Comfortable":"Confortável","Thankful":"Agradecido","Mellow":"Tranquilo","Serene":"Sereno",
     "Continue watching":"Continuar assistindo","Start here":"Comece aqui",
+    "Move around":"Passeie","Drag to turn the body":"Arraste para girar o corpo",
+    "The word in the middle takes shape. Drag or move the mouse to wander; tap to pick.":"A palavra do meio ganha forma. Arraste ou mova o mouse para passear; toque para escolher.",
+    "Intensity":"Intensidade","Very unpleasant":"Muito desagradável","Very pleasant":"Muito agradável",
+    "very high intensity":"intensidade muito alta","very low intensity":"intensidade muito baixa",
+    "Face":"Rosto","Upper back":"Costas","Left shoulder":"Ombro esquerdo","Right shoulder":"Ombro direito",
+    "Left upper arm":"Braço esquerdo","Right upper arm":"Braço direito","Left forearm":"Antebraço esquerdo",
+    "Right forearm":"Antebraço direito","Left hand":"Mão esquerda","Right hand":"Mão direita",
+    "Left thigh":"Coxa esquerda","Right thigh":"Coxa direita","Left calf":"Panturrilha esquerda",
+    "Right calf":"Panturrilha direita","Left foot":"Pé esquerdo","Right foot":"Pé direito",
     "Set up the assistant":"Configurar o assistente","Edit what it may use":"Editar o que pode usar",
     "The assistant only uses the facts you tick. Anything else it hands back to you.":"O assistente usa só os factos que você marcar. O resto devolve para você.",
     "Everything here is already on file for":"Tudo isto já está registado sobre",
