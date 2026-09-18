@@ -3069,6 +3069,228 @@ button.aqpet:hover{transform:scale(1.08) rotate(-5deg)}
 .pweb .dgh{margin-bottom:6px}
 .plist2{display:grid;gap:8px}
 .plist2 .pcard{padding:10px 14px}
+
+/* --- check-in: mood meter --- */
+.cigrid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;max-width:420px;margin:0 auto}
+.cig{aspect-ratio:1;border-radius:14px;border:1.5px solid transparent;cursor:pointer;padding:0;
+  transition:transform .18s cubic-bezier(.2,1.2,.4,1),box-shadow .2s ease,opacity .2s ease;
+  opacity:calc(.55 + var(--i) * .11)}
+.cig.q-yellow{background:#E7C24C}.cig.q-red{background:#D96B54}
+.cig.q-blue{background:#5B7DB1}.cig.q-green{background:#4FB3A0}
+.cig:hover{transform:scale(1.08)}
+.cig.on{transform:scale(1.14);opacity:1;border-color:#EEF5F4;box-shadow:0 0 0 4px rgba(238,245,244,.18)}
+.ciax{display:flex;justify-content:space-between;max-width:420px;margin:8px auto 0;
+  font-family:var(--quiet);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--soft)}
+.ciqn{margin:14px auto 0;text-align:center;font-family:var(--display);font-weight:600;font-size:14px;
+  border-radius:99px;padding:7px 14px;width:max-content}
+.ciqn.q-yellow{background:rgba(231,194,76,.2);color:#E7C24C}
+.ciqn.q-red{background:rgba(217,107,84,.2);color:#E8927C}
+.ciqn.q-blue{background:rgba(91,125,177,.22);color:#9DB6DD}
+.ciqn.q-green{background:rgba(79,179,160,.2);color:#8FD3C8}
+.ciw.q-yellow .itzchip.on{background:#E7C24C;border-color:#E7C24C;color:#2A2100}
+.ciw.q-red .itzchip.on{background:#D96B54;border-color:#D96B54;color:#2A0D06}
+.ciw.q-blue .itzchip.on{background:#5B7DB1;border-color:#5B7DB1;color:#061026}
+.cirec{margin-top:6px;padding:14px 16px;border-radius:16px;text-align:left;
+  background:rgba(238,245,244,.05);border:1px solid rgba(238,245,244,.12)}
+.cirec b{display:block;font-family:var(--display);font-size:14px;color:var(--hd)}
+.cirec span{display:block;font-size:13px;color:var(--soft);margin-top:4px;line-height:1.5}
+/* --- modo dia ruim --- */
+.badwrap{max-width:760px;margin:0 auto}
+.badhead{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:clamp(16px,2vw,26px)}
+.badhead .bm{width:72px;flex-shrink:0}
+.badhead .bm svg{width:100%;height:auto;display:block}
+.badhead .k{font-family:var(--quiet);font-size:10.5px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--t500)}
+.badhead h1{font-family:var(--display);font-size:clamp(22px,2.4vw,30px);font-weight:700;color:var(--hd);
+  letter-spacing:-.02em;margin:2px 0 4px}
+.badhead p{font-size:14px;color:var(--soft);margin:0}
+.badhead .dbtn{margin-left:auto}
+.badgrid{display:grid;gap:12px}
+.badstep{display:flex;align-items:center;gap:12px;width:100%;text-align:left;font:inherit;cursor:pointer;
+  border:1px solid var(--line);background:var(--bg-dim);border-radius:16px;padding:14px}
+.badstep .ic{display:flex;font-size:18px;color:var(--t500)}
+.badstep b{font-family:var(--display);font-size:15px;color:var(--hd)}
+.badstep span{font-size:12.5px;color:var(--soft);margin-left:auto}
+.badlt blockquote{margin:0;font-family:var(--calm);font-size:16px;line-height:1.6;color:var(--ink)}
+.badlt cite{display:block;font-style:normal;font-size:12px;color:var(--soft);margin-top:8px}
+.badacts{display:flex;gap:8px;flex-wrap:wrap}
+.badacts .dbtn{flex:1;justify-content:center;min-width:170px}
+body.badday .dfab{display:none}
+
+/* --- refeicao --- */
+.mlshot{margin-bottom:14px}
+.itz .mlshot{background:rgba(0,0,0,.22);border-color:rgba(238,245,244,.18)}
+.mlpic{border-radius:16px;overflow:hidden;margin-bottom:14px;max-height:220px}
+.mlpic img{width:100%;height:100%;object-fit:cover;display:block;max-height:220px}
+.itzchip.carb{border-style:dashed}
+.mlv{margin-top:16px;padding:14px 16px;border-radius:16px;border:1px solid}
+.mlv b{display:block;font-family:var(--display);font-size:15px}
+.mlv span{display:block;font-size:13px;margin-top:4px;line-height:1.5;color:var(--soft)}
+.mlv.ok{background:rgba(42,157,143,.12);border-color:rgba(143,211,200,.4)}
+.mlv.ok b{color:#8FD3C8}
+.mlv.off{background:rgba(217,164,32,.12);border-color:rgba(217,164,32,.42)}
+.mlv.off b{color:#E7C24C}
+.mlnote{margin:16px 0 0;font-size:11.5px;color:var(--soft);line-height:1.5}
+.mlhist{margin-top:18px}
+.mlrow{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:14px;margin-top:8px;
+  background:rgba(238,245,244,.04);border:1px solid rgba(238,245,244,.10)}
+.mlrow img{width:44px;height:44px;border-radius:10px;object-fit:cover;flex-shrink:0}
+.mlrow i{width:44px;height:44px;border-radius:10px;display:grid;place-items:center;font-style:normal;
+  background:rgba(238,245,244,.06);color:var(--soft)}
+.mlrow i .ic{display:flex}
+.mlrow div{flex:1;min-width:0}
+.mlrow b{display:block;font-family:var(--display);font-size:13.5px;color:var(--hd)}
+.mlrow.off b{color:#E7C24C}
+.mlrow.ok b{color:#8FD3C8}
+.mlrow span{display:block;font-size:11.5px;color:var(--soft);margin-top:2px;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.mlrow>button{border:0;background:none;color:var(--soft);cursor:pointer;display:flex;padding:4px}
+/* --- ligacoes --- */
+.cnrow{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.cnrow:last-child{border-bottom:0}
+.cnrow .ic0{width:42px;height:42px;border-radius:13px;flex-shrink:0;display:grid;place-items:center;
+  background:var(--bg-dim);color:var(--t500);font-size:19px}
+.cnrow .ic0 .ic{display:flex}
+.cnrow div{flex:1;min-width:0}
+.cnrow b{display:block;font-family:var(--display);font-size:14.5px;color:var(--hd)}
+.cnrow>div>span{display:block;font-size:12.5px;color:var(--soft);margin-top:2px}
+.cnrow em{display:block;font-style:normal;font-size:11.5px;color:var(--t500);margin-top:4px;font-weight:600}
+.cnrow.on .ic0{background:var(--t50)}
+.cnnote{display:flex;gap:12px;align-items:flex-start}
+.cnnote .ic{color:var(--soft);font-size:17px;display:flex;margin-top:2px}
+.cnnote p{margin:0;font-size:13px;color:var(--soft);line-height:1.6}
+.cnnote2{margin:14px 0 0;font-size:12px;color:var(--soft);line-height:1.55}
+/* --- companheiro --- */
+.bdhead{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.bdhead .av,.shf .av{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(145deg,#E76F51,#A83F22);color:#fff;font-family:var(--display);
+  font-weight:700;font-size:18px;flex-shrink:0}
+.bdhead b{display:block;font-family:var(--display);font-size:16px;color:var(--hd)}
+.bdhead span{display:block;font-size:12.5px;color:var(--soft);margin-top:2px}
+.bdhead .dbtn{margin-left:auto}
+.dcard .itzchip,.badgrid .itzchip{border-color:var(--line);background:var(--bg-dim);color:var(--hd)}
+.dcard .itzchip:hover{border-color:var(--t500)}
+.dcard .itzchip.on,.badgrid .itzchip.on{background:var(--t50);border-color:var(--t500);color:var(--t500)}
+.bdgifts{display:flex;gap:10px;flex-wrap:wrap}
+.bdg{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 16px;border-radius:16px;
+  border:1px solid var(--line);background:var(--bg-dim);cursor:pointer;font:inherit;color:var(--hd);
+  transition:transform .2s cubic-bezier(.2,1.2,.4,1),border-color .2s ease}
+.bdg:hover{transform:translateY(-3px);border-color:var(--t500)}
+.bdg .ic{font-size:22px;color:var(--t500);display:flex}
+.bdg span{font-size:12px;color:var(--soft)}
+.bdth{display:grid;gap:8px}
+.bdm{max-width:80%;padding:10px 14px;border-radius:16px;background:var(--bg-dim);border:1px solid var(--line)}
+.bdm.out{margin-left:auto;background:var(--t900);border-color:var(--t900)}
+.bdm.out p,.bdm.out .t{color:#fff}
+.bdm p{margin:0;font-size:13.5px;color:var(--ink);line-height:1.45}
+.bdm .t{display:block;font-size:10.5px;color:var(--soft);margin-top:4px}
+.bdm .g{display:inline-flex;margin-right:8px;color:var(--c-gold)}
+/* --- partilha --- */
+.shlist{display:grid;gap:10px}
+.shf{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px;border-radius:16px;
+  background:var(--bg-dim);border:1px solid var(--line)}
+.shf b{display:block;font-family:var(--display);font-size:14px;color:var(--hd)}
+.shf>div:nth-child(2){flex:1;min-width:120px}
+.shf>div:nth-child(2) span{font-size:12px;color:var(--soft)}
+.shf .mtopts{flex-wrap:wrap}
+.shx{border:0;background:none;color:var(--soft);cursor:pointer;display:flex;padding:6px}
+.shx:hover{color:var(--coral)}
+.shadd{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.shadd input{flex:1;min-width:150px;border:1px solid var(--line);border-radius:12px;padding:11px 13px;
+  font:inherit;font-size:14px;background:var(--card);color:var(--ink)}
+.shadd input:focus{outline:none;border-color:var(--t500)}
+
+/* --- relatorio: novos blocos --- */
+.aibad{display:flex;gap:12px;align-items:flex-start;padding:12px 14px;border-radius:16px;
+  background:rgba(231,111,81,.10);border:1px solid rgba(231,111,81,.35)}
+.aibad .ic{display:flex;font-size:18px;color:#E76F51;margin-top:2px}
+.aibad b{display:block;font-family:var(--display);font-size:14px;color:var(--hd)}
+.aibad span{display:block;font-size:12.5px;color:var(--soft);margin-top:2px;line-height:1.5}
+.aicic{display:flex;gap:11px;align-items:flex-start;padding:10px 0}
+.aicic+.aicic{border-top:1px solid var(--line)}
+.aicic i{width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.aicic.q-yellow i{background:#E7C24C}.aicic.q-red i{background:#D96B54}
+.aicic.q-blue i{background:#5B7DB1}.aicic.q-green i{background:#4FB3A0}
+.aicic b{display:block;font-size:13.5px;font-weight:600;color:var(--hd)}
+.aicic span{display:block;font-size:12px;color:var(--soft);margin-top:2px;line-height:1.5}
+.aimeals{display:grid;gap:8px}
+.aimeals .mlrow{background:var(--card);border-color:var(--line)}
+.aimeals .mlrow b{color:var(--hd)}
+.aimeals .mlrow.off b{color:#B07D0A}
+.aimeals .mlrow.ok b{color:var(--t500)}
+.aihid{display:flex;align-items:center;gap:8px;margin:0;font-size:12px;color:var(--soft)}
+.aihid .ic{display:flex;font-size:13px}
+/* --- dinheiro --- */
+.mnprev{display:flex;gap:12px;align-items:flex-start;background:rgba(217,164,32,.08);
+  border-color:rgba(217,164,32,.35)}
+.mnprev .ic{display:flex;color:#B07D0A;font-size:18px;margin-top:2px}
+.mnprev p{margin:0;font-size:13px;color:var(--ink);line-height:1.6}
+.mngrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.mnf span,.mnt span{display:block;font-family:var(--quiet);font-size:10.5px;font-weight:700;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--soft);margin-bottom:6px}
+.mnf input{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 13px;font:inherit;
+  font-size:16px;background:var(--card);color:var(--ink)}
+.mnf input:focus{outline:none;border-color:var(--t500)}
+.mnt{padding:11px 13px;border-radius:12px;background:var(--bg-dim);border:1px solid var(--line)}
+.mnt b{font-family:var(--display);font-size:20px;font-weight:700;color:var(--hd);letter-spacing:-.02em}
+.mnrow{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);
+  flex-wrap:wrap}
+.mnrow:last-of-type{border-bottom:0}
+.mnrow .d{font-family:var(--quiet);font-size:11px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--soft);width:58px}
+.mnrow .n{flex:1;min-width:120px;font-size:14px;color:var(--hd)}
+.mnrow .v{font-family:var(--display);font-weight:700;color:var(--hd)}
+.mnb{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);
+  border-radius:99px;padding:6px 12px;font:inherit;font-size:12px;font-weight:600;color:var(--soft);
+  cursor:pointer}
+.mnb .ic{display:flex;font-size:12px}
+.mnb.on{border-color:var(--t500);color:var(--t500);background:var(--t50)}
+/* --- supervisao --- */
+.suptier{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.suptier .ic0{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:20px;
+  background:var(--t50);color:var(--t500)}
+.suptier .ic0 .ic{display:flex}
+.suptier.senior .ic0{background:rgba(217,164,32,.14);color:#B07D0A}
+.suptier b{display:block;font-family:var(--display);font-size:16px;color:var(--hd)}
+.suptier span{display:block;font-size:12.5px;color:var(--soft);margin-top:2px}
+.supsw{margin-left:auto}
+.suppct{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+.suppct b{font-family:var(--display);font-size:28px;font-weight:700;color:var(--t500);letter-spacing:-.02em}
+.suppct span{font-size:13px;color:var(--soft)}
+.supm{display:flex;align-items:center;gap:12px;padding:10px 0}
+.supm+.supm{border-top:1px solid var(--line)}
+.supm .ic0{width:34px;height:34px;border-radius:11px;display:grid;place-items:center;flex-shrink:0;
+  background:var(--bg-dim);color:var(--soft);font-size:15px}
+.supm .ic0 .ic{display:flex}
+.supm.on .ic0{background:var(--t50);color:var(--t500)}
+.supm div{flex:1;min-width:0}
+.supm b{display:block;font-size:13.5px;font-weight:600;color:var(--hd);margin-bottom:5px}
+.supm .bar{height:5px;border-radius:99px;background:var(--bg-dim);overflow:hidden}
+.supm .bar i{display:block;height:100%;background:var(--t500);transition:width .6s ease}
+.supm .n{font-family:var(--display);font-weight:700;font-size:13px;color:var(--soft)}
+.supm.on .n{color:var(--t500)}
+.suptxt{background:var(--card)!important;border:1px solid var(--line)!important;color:var(--ink)!important;font-size:15px}
+.suptxt:focus{border-color:var(--t500);box-shadow:none}
+.supq{padding:13px 14px;border-radius:16px;background:var(--bg-dim);border:1px solid var(--line)}
+.supq+.supq{margin-top:10px}
+.supq .hd{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
+.supq .hd b{font-family:var(--display);font-size:13.5px;color:var(--hd)}
+.supq .hd span{font-size:11px;color:var(--soft);margin-left:auto}
+.supq p{margin:0;font-size:14px;color:var(--ink);line-height:1.5}
+.supq .ans{margin-top:10px;padding-top:10px;border-top:1px solid var(--line)}
+.supq .ans>span{display:block;font-family:var(--quiet);font-size:10.5px;font-weight:700;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--t500);margin-bottom:4px}
+.supq .ans.wait{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--soft)}
+.supq .ans.wait .ic{display:flex}
+.supq .ansbox{margin-top:10px;display:grid;gap:8px;justify-items:start}
+.supq .ansbox .itzta{background:var(--card)!important;border:1px solid var(--line)!important;color:var(--ink)!important;font-size:14px}
+.supjr{display:flex;align-items:center;gap:12px}
+.supjr .av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;
+  background:linear-gradient(145deg,#2A9D8F,#0C333F);color:#fff;font-family:var(--display);font-weight:700}
+.supjr b{display:block;font-family:var(--display);font-size:14px;color:var(--hd)}
+.supjr span{display:block;font-size:12px;color:var(--soft)}
+.supjr .ptag{margin-left:auto}
 /* --- o formulario do assistente como um jogo curto --- */
 .itz{display:flex;justify-content:center}
 .itzwrap{width:100%;max-width:640px;margin:0 auto;padding-top:clamp(4px,2vh,26px)}
@@ -8137,13 +8359,13 @@ const DASH={
   patient:{
     name:'Igor Zillner', roleLabel:'Patient', sec:'inicio',
     photo:'https://randomuser.me/api/portraits/men/32.jpg', // <!-- PLACEHOLDER --> foto do usuario
-    nav:[['inicio','Home','home'],['programas','Programs','sparkles'],['checkin','Check-in','clipboard'],['plano','Plan','utensils'],['exames','Exams','clipboard'],['agenda','Schedule','calendar'],['equipe','My team','users'],['perfil','Profile','user-circle']],
+    nav:[['inicio','Home','home'],['programas','Programs','sparkles'],['checkin','Check-in','clipboard'],['meals','Meal check','camera'],['partner','Companion','heart'],['connect','Connections','activity'],['sharing','Sharing','lock'],['plano','Plan','utensils'],['exames','Exams','clipboard'],['agenda','Schedule','calendar'],['equipe','My team','users'],['perfil','Profile','user-circle']],
     notif:[['New message','Dr. Juan Pablo Roig replied to your chat','5 min ago',1],['Teleconsultation tomorrow','Reminder: Mar 18 at 10:00','2h ago',1],['Meal plan updated','Dra. Camila sent new recipes','yesterday',0]],
     missions:[['Drink 2L of water',1],['30-min walk in the sun',1],['Log your mood before bed',0],['No ultra-processed food today',0]]
   },
   doctor:{
     name:'Dr. Juan Pablo Roig', roleLabel:'Therapist · Psychiatrist', specIdx:0, open:true, sec:'inicio', selPatient:null,
-    nav:[['inicio','Home','home'],['pratica','Practice','trending-down'],['pacientes','Patients','users'],['agenda','Schedule','calendar'],['prontuarios','Records','clipboard'],['formacao','Courses','award'],['perfil','Profile','user-circle']],
+    nav:[['inicio','Home','home'],['pratica','Practice','trending-down'],['pacientes','Patients','users'],['agenda','Schedule','calendar'],['supervisao','Supervision','shield'],['financas','Money','chart'],['prontuarios','Records','clipboard'],['formacao','Courses','award'],['perfil','Profile','user-circle']],
     notif:[['New message','Igor Zillner sent a message in chat','10 min ago',1],['New triage','Carlos Mendes completed triage','1h ago',1],['Exam result','Maria Oliveira attached new labs','3h ago',1]],
     patients:[
       {init:'IZ',name:'Igor Zillner',sub:'34 yrs · Type 2 diabetes, anxiety',energy:4,risk:'low',t:['Trouble concentrating and persistent fatigue','6 months to 2 years','Type 2 diabetes, mild hypertension','Tried low-carb for 3 months','Tired but hopeful','Morning',1,0,1]},
@@ -8153,7 +8375,7 @@ const DASH={
   },
   nutri:{
     name:'Dr. Henrique Autran', roleLabel:'Dietitian', sec:'inicio', selPatient:null,
-    nav:[['inicio','Home','home'],['pratica','Practice','trending-down'],['pacientes','Patients','users'],['cardapios','Menus','utensils'],['agenda','Schedule','calendar'],['formacao','Courses','award'],['perfil','Profile','user-circle']],
+    nav:[['inicio','Home','home'],['pratica','Practice','trending-down'],['pacientes','Patients','users'],['cardapios','Menus','utensils'],['agenda','Schedule','calendar'],['supervisao','Supervision','shield'],['financas','Money','chart'],['formacao','Courses','award'],['perfil','Profile','user-circle']],
     notif:[['New patient','Igor Zillner was assigned to you','20 min ago',1],['Menu accepted','Maria Oliveira followed the plan 6 days','2h ago',0]],
     patients:[
       {init:'IZ',name:'Igor Zillner',sub:'Keto 3:1 · week 9',adh:'On track',adhc:'ok'},
@@ -8510,7 +8732,8 @@ function dashSection(role){
     (role==='patient'&&D.sec==='programas')||
     ((role==='doctor'||role==='nutri')&&D.sec==='formacao'));
   document.body.classList.toggle('jdark',
-    (role==='patient'&&(D.sec==='journey'||D.sec==='intake'||D.sec==='checkin'||D.sec==='book'))||
+    (role==='patient'&&(D.sec==='journey'||D.sec==='intake'||D.sec==='checkin'||D.sec==='book'||
+    D.sec==='letter'||D.sec==='meals'))||
     ((role==='doctor'||role==='nutri')&&!!MEET&&MEET.role===role&&MEET.phase!=='call'));
   document.body.classList.toggle('apphallow',
     role==='patient'&&D.sec==='inicio'&&HOMEUI==='hallow');
@@ -8545,6 +8768,8 @@ function head(t,s,k){
 
 function pSection(D){
   const s=D.sec, fn=D.name.split(' ')[0];
+  /* num dia ruim a casa encolhe para o essencial */
+  if(s==='inicio'&&badIsOn()) return pBad(D);
   if(s==='inicio') return HOMEUI==='dash'?pHomeD(D)
                                           :(HOMEUI==='hallow'?pHomeH(D):pHome(D));
   if(s==='journey') return pJourney(D);
@@ -8555,6 +8780,11 @@ function pSection(D){
   if(s==='checkin') return renderCheckin(D);
   if(s==='intake') return pIntake(D);
   if(s==='book') return pBook(D);
+  if(s==='letter') return pLetter(D);
+  if(s==='meals') return pMeals(D);
+  if(s==='connect') return pConnect(D);
+  if(s==='partner') return pPartner(D);
+  if(s==='sharing') return pSharing(D);
   if(s==='plano'){
     let m='';
     MEALS.forEach(meal=>{ let items=''; meal[2].forEach(it=>items+='<li>'+it+'</li>');
@@ -9148,6 +9378,10 @@ function brMiss(){
 /* ---- AS FOTOS DO PACIENTE ----
    A imagem e reduzida aqui no browser antes de ser guardada: o localStorage
    nao aguenta uma foto de telemovel inteira. */
+/* dois ajudantes para o localStorage, usados por tudo o que veio depois */
+function mbGet(k,d){ try{ var r=localStorage.getItem(k); if(r) return JSON.parse(r); }catch(e){} return d; }
+function mbSet(k,v){ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+
 var PH_KEY='mb.photos.v1', PH_MAX=8, PH_SIDE=520;
 function phRead(){
   try{ var r=localStorage.getItem(PH_KEY); if(r) return JSON.parse(r)||[]; }catch(e){}
@@ -9162,7 +9396,8 @@ function phDrop(id){
   phSave(phRead().filter(function(p){ return p.id!==id; }));
   ciUpdate('patient');
 }
-function phPick(ev,role){
+/* uma so rotina para qualquer foto: encolhe no browser e devolve o data-url */
+function imgPick(ev,cb){
   var f=ev&&ev.target&&ev.target.files&&ev.target.files[0];
   if(!f) return;
   var rd=new FileReader();
@@ -9175,15 +9410,20 @@ function phPick(ev,role){
       cv.getContext('2d').drawImage(im,0,0,cv.width,cv.height);
       var url;
       try{ url=cv.toDataURL('image/jpeg',0.72); }catch(e){ url=rd.result; }
-      var a=phRead();
-      a.unshift({id:'p'+Date.now(), when:new Date().toISOString(), url:url});
-      phSave(a);
-      ciUpdate(role||'patient');
+      cb(url);
     };
     im.onerror=function(){ toast(__tr('Demo: that file could not be read as an image')); };
     im.src=rd.result;
   };
   rd.readAsDataURL(f);
+}
+function phPick(ev,role){
+  imgPick(ev,function(url){
+    var a=phRead();
+    a.unshift({id:'p'+Date.now(), when:new Date().toISOString(), url:url});
+    phSave(a);
+    ciUpdate(role||'patient');
+  });
 }
 /* o campo do passo da foto */
 function ciPhotoField(role){
@@ -9207,71 +9447,820 @@ function ciPhotoField(role){
     '</div>';
 }
 
-const CISTEPS=[
-  ['queixa','What is your main concern today?','Describe how you feel...',0],
-  ['energia','How is your energy?','',1],
-  ['sono','How is your sleep?','',1],
-  ['humor','How would you describe your mood?','Sad, anxious, motivated...',0],
-  ['alimentar','How was your eating this week?','A summary of what you ate...',0],
-  /* 2 = foto. O que pedimos para fotografar ainda nao esta decidido: TBD. */
-  ['foto','Want to add a photo?','',2]
-];
-function ciState(D){ if(!D.ci) D.ci={step:0,ans:{},done:false}; return D.ci; }
-var CI_SAY=['Tell me what is on your mind.','How much fuel today?','How did you sleep?',
-  'Any word works.','Roughly is fine.','Optional. Skip if you like.'];
+/* =====================================================================
+   CHECK-IN — no formato do How We Feel (mood meter do RULER/Yale):
+   duas perguntas antes das palavras (quanto agrado, quanta energia),
+   depois as palavras do quadrante, sensacoes do corpo, com quem/onde,
+   o porque e a foto. Cada check-in fica guardado para ver o padrao.
+   ===================================================================== */
+var CI_KEY='mb.ci.v2';
+function ciLog(){ return mbGet(CI_KEY,[]); }
+function ciLogAdd(r){ var a=ciLog(); a.unshift(r); mbSet(CI_KEY,a.slice(0,60)); }
+var CI_WORDS={
+  yellow:['Excited','Energized','Joyful','Hopeful','Proud','Playful','Motivated','Alive','Inspired','Confident','Cheerful','Amazed'],
+  red   :['Anxious','Irritated','Frustrated','Overwhelmed','Restless','Angry','Worried','Tense','Pressured','Scared','Embarrassed','Jealous'],
+  blue  :['Tired','Sad','Lonely','Drained','Discouraged','Numb','Bored','Down','Guilty','Heavy','Apathetic','Withdrawn'],
+  green :['Calm','Content','Grateful','Relaxed','Safe','Rested','Focused','Peaceful','Balanced','Comfortable','Steady','Thankful']
+};
+var CI_BODY=['Tight chest','Racing heart','Heavy limbs','Headache','Clenched jaw','Stomach knot',
+  'Restless legs','Shallow breath','Warm','Light and loose','Nothing in particular'];
+var CI_WHO=['Alone','Family','Partner','Friends','Colleagues'];
+var CI_WHERE=['Home','Work','Outside','Commuting','Training'];
+var CISTEPS=[['mood'],['words'],['body'],['ctx'],['why'],['foto']];
+function ciState(D){ if(!D.ci) D.ci={step:0,ans:{words:[],body:[],who:[],where:[]},done:false}; 
+  if(!D.ci.ans.words) D.ci.ans.words=[]; if(!D.ci.ans.body) D.ci.ans.body=[];
+  if(!D.ci.ans.who) D.ci.ans.who=[]; if(!D.ci.ans.where) D.ci.ans.where=[];
+  return D.ci; }
+function ciQuad(pl,en){
+  if(pl==null||en==null) return 'green';
+  return (en>=0) ? (pl>=0?'yellow':'red') : (pl>=0?'green':'blue');
+}
+var CI_QNAME={yellow:'High energy, pleasant',red:'High energy, unpleasant',
+  blue:'Low energy, unpleasant',green:'Low energy, pleasant'};
+function ciMood(role,pl,en){
+  var ci=ciState(DASH[role]);
+  if(ci.ans.pl!==pl||ci.ans.en!==en) ci.ans.words=[];
+  ci.ans.pl=pl; ci.ans.en=en; ciUpdate(role);
+}
+function ciPick(role,k,v){
+  var ci=ciState(DASH[role]), a=ci.ans[k]||[];
+  var i=a.indexOf(v);
+  if(i>=0) a.splice(i,1);
+  else { if(k==='words'&&a.length>=2) a.shift(); a.push(v); }
+  ci.ans[k]=a; ciUpdate(role);
+}
+function ciDayKind(ans){
+  if(ans.pl==null) return 'mid';
+  if(ans.pl>=1) return 'good';
+  if(ans.pl<=-1&&ans.en<=0) return 'hard';
+  return 'mid';
+}
+function ciSay(ci){
+  var st=CISTEPS[ci.step][0];
+  return {mood:'Where are you right now?',words:'Which words fit best?',
+    body:'What does your body say?',ctx:'Who are you with, and where?',
+    why:'What is driving it?',foto:'Optional. Skip if you like.'}[st];
+}
 function ciInner(role){
-  const ci=ciState(DASH[role]);
+  const ci=ciState(DASH[role]), A=ci.ans;
   const N=CISTEPS.length;
   let bar='';
   for(let k=0;k<N;k++) bar+='<span class="itzseg'+((ci.done||k<ci.step)?' done':'')+(!ci.done&&k===ci.step?' on':'')+'"><i></i></span>';
   const top='<div class="itztop"><button class="itzx" onclick="dashNav(\''+role+'\',\'journey\')">'+
     dIcon('arrow-left')+__tr('Journey')+'</button><div class="itzbar">'+bar+'</div></div>';
   const say=(t)=>'<div class="itzhead"><span class="itzm">'+(role==='patient'?brMascot():dshMascot())+'</span>'+
-    '<div class="itzsay"><b>'+__tr('Weekly check-in')+'</b><span>'+__tr(t)+'</span></div></div>';
-  if(ci.done) return top+say('Thanks! Your team will see this.')+
-    '<div class="itzcard cidone2"><div class="cic2">'+dIcon('check')+'</div>'+
-    '<h2>'+__tr('Check-in recorded')+'</h2>'+
-    '<p class="itzh">'+__tr('Your team will receive this information for your next appointment.')+'</p>'+
-    '<div class="itznav" style="justify-content:center;gap:10px">'+
-      '<button class="itzbk" onclick="ciReset(\''+role+'\')">'+__tr('New check-in')+'</button>'+
-      '<button class="itzgo" onclick="dashNav(\''+role+'\',\'journey\')">'+__tr('Back to journey')+dIcon('arrow-right')+'</button>'+
-    '</div></div>';
-  const st=CISTEPS[ci.step], scale=st[3]===1, photo=st[3]===2, val=ci.ans[st[0]];
-  let field;
-  if(photo) field=ciPhotoField(role);
-  else if(scale){
-    let b='';
-    for(let n=1;n<=10;n++) b+='<button class="'+(val===n?'on':'')+'" style="--h:'+(n*11)+'" onclick="ciScale(\''+role+'\','+n+')">'+n+'</button>';
-    field='<div class="ciscale ciscale2">'+b+'</div><div class="cilh"><span>'+__tr('Low')+'</span><span>'+__tr('High')+'</span></div>';
+    '<div class="itzsay"><b>'+__tr('Check-in')+'</b><span>'+__tr(t)+'</span></div></div>';
+
+  if(ci.done){
+    const kind=ciDayKind(A);
+    let extra='';
+    if(kind==='good') extra='<button class="itzgo" onclick="ltStart()">'+dIcon('heart')+
+      __tr('Write a letter for a hard day')+'</button>';
+    else if(kind==='hard') extra='<button class="itzgo" onclick="badOn(1)">'+dIcon('moon')+
+      __tr('Turn on Bad day mode')+'</button>';
+    return top+say(kind==='good'?'Good to hear. Want to bottle it?':'Thanks for telling me.')+
+      '<div class="itzcard cidone2"><div class="cic2">'+dIcon('check')+'</div>'+
+      '<h2>'+__tr('Check-in recorded')+'</h2>'+
+      '<p class="itzh">'+__tr('Your team sees what you chose to share.')+'</p>'+
+      ciRecap(A)+
+      '<div class="itznav" style="justify-content:center;gap:10px;flex-wrap:wrap">'+
+        '<button class="itzbk" onclick="ciReset(\''+role+'\')">'+__tr('New check-in')+'</button>'+
+        extra+
+        '<button class="itzgo" onclick="dashNav(\''+role+'\',\'journey\')">'+__tr('Back to journey')+
+          dIcon('arrow-right')+'</button></div></div>';
   }
-  else field='<textarea id="ci-text" class="itzta" placeholder="'+__tr(st[2])+'" oninput="ciText(\''+role+'\',this.value)" '+
-    'onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();var b=document.getElementById(\'ci-next\');if(b&&!b.disabled)b.click()}">'+esc(val||'')+'</textarea>';
-  const canAdv=photo?true:(scale?(val!==undefined):(typeof val==='string'&&val.trim().length>3));
-  return top+say(CI_SAY[ci.step]||'')+
-    '<div class="itzcard ciq2" key="'+ci.step+'"><span class="itzk">'+__tr('Question')+' '+(ci.step+1)+' '+__tr('of')+' '+N+'</span>'+
-    '<h2>'+__tr(st[1])+'</h2>'+field+
+
+  const st=CISTEPS[ci.step][0];
+  let field='', title='', hint='', canAdv=false;
+
+  if(st==='mood'){
+    title=__tr('How are you feeling?');
+    hint=__tr('Left to right: how pleasant. Bottom to top: how much energy.');
+    let g='';
+    for(let e=2;e>=-2;e--){
+      for(let p=-2;p<=2;p++){
+        const q=ciQuad(p,e), on=(A.pl===p&&A.en===e);
+        g+='<button class="cig q-'+q+(on?' on':'')+'" style="--i:'+(Math.abs(p)+Math.abs(e))+'" '+
+          'onclick="ciMood(\''+role+'\','+p+','+e+')" aria-label="'+__tr(CI_QNAME[q])+'"></button>';
+      }
+    }
+    field='<div class="cigrid">'+g+'</div>'+
+      '<div class="ciax"><span>'+__tr('Unpleasant')+'</span><span>'+__tr('Pleasant')+'</span></div>'+
+      (A.pl!=null?'<div class="ciqn q-'+ciQuad(A.pl,A.en)+'">'+__tr(CI_QNAME[ciQuad(A.pl,A.en)])+'</div>':'');
+    canAdv=(A.pl!=null);
+  }
+  else if(st==='words'){
+    const q=ciQuad(A.pl,A.en);
+    title=__tr('Which words fit?');
+    hint=__tr('Pick up to two.');
+    field='<div class="itzchips ciw q-'+q+'">'+CI_WORDS[q].map(function(w){
+      return '<button class="itzchip'+(A.words.indexOf(w)>=0?' on':'')+'" '+
+        'onclick="ciPick(\''+role+'\',\'words\',\''+w+'\')">'+__tr(w)+'</button>';
+    }).join('')+'</div>';
+    canAdv=A.words.length>0;
+  }
+  else if(st==='body'){
+    title=__tr('Where do you feel it?');
+    hint=__tr('Body sensations, if any.');
+    field='<div class="itzchips">'+CI_BODY.map(function(w){
+      return '<button class="itzchip'+(A.body.indexOf(w)>=0?' on':'')+'" '+
+        'onclick="ciPick(\''+role+'\',\'body\',\''+w+'\')">'+__tr(w)+'</button>';
+    }).join('')+'</div>';
+    canAdv=true;
+  }
+  else if(st==='ctx'){
+    title=__tr('Who and where?');
+    hint=__tr('This is what shows the pattern later.');
+    field='<span class="itzl">'+__tr('With')+'</span><div class="itzchips">'+CI_WHO.map(function(w){
+        return '<button class="itzchip'+(A.who.indexOf(w)>=0?' on':'')+'" '+
+          'onclick="ciPick(\''+role+'\',\'who\',\''+w+'\')">'+__tr(w)+'</button>'; }).join('')+'</div>'+
+      '<span class="itzl" style="margin-top:16px">'+__tr('Where')+'</span><div class="itzchips">'+
+      CI_WHERE.map(function(w){
+        return '<button class="itzchip'+(A.where.indexOf(w)>=0?' on':'')+'" '+
+          'onclick="ciPick(\''+role+'\',\'where\',\''+w+'\')">'+__tr(w)+'</button>'; }).join('')+'</div>';
+    canAdv=true;
+  }
+  else if(st==='why'){
+    title=__tr('What is driving it?');
+    hint=__tr('One line is enough.');
+    field='<textarea id="ci-text" class="itzta" rows="1" placeholder="'+__tr('In your own words…')+'" '+
+      'oninput="ciText(\''+role+'\',this.value);itzGrow(this)" '+
+      'onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();var b=document.getElementById(\'ci-next\');if(b&&!b.disabled)b.click()}">'+
+      esc(A.why||'')+'</textarea>';
+    canAdv=true;
+  }
+  else {
+    title=__tr('Want to add a photo?');
+    hint=__tr('Optional.');
+    field=ciPhotoField(role);
+    canAdv=true;
+  }
+
+  return top+say(ciSay(ci))+
+    '<div class="itzcard ciq2" key="'+ci.step+'"><span class="itzk">'+__tr('Step')+' '+(ci.step+1)+' '+
+      __tr('of')+' '+N+'</span>'+
+    '<h2>'+title+'</h2><p class="itzh">'+hint+'</p>'+field+
     '<div class="itznav">'+
-      (ci.step===0?'<span></span>':'<button class="itzbk" onclick="ciBack(\''+role+'\')">'+dIcon('arrow-left')+__tr('Back')+'</button>')+
+      (ci.step===0?'<span></span>':'<button class="itzbk" onclick="ciBack(\''+role+'\')">'+
+        dIcon('arrow-left')+__tr('Back')+'</button>')+
+      '<span></span>'+
       '<button class="itzgo" id="ci-next" '+(canAdv?'':'disabled')+' onclick="ciNext(\''+role+'\')">'+
         __tr(ci.step===N-1?'Finish':'Next')+dIcon('arrow-right')+'</button></div></div>';
+}
+function ciRecap(A){
+  var q=ciQuad(A.pl,A.en);
+  var line=[];
+  if(A.words.length) line.push(A.words.map(function(w){ return __tr(w); }).join(', '));
+  if(A.body.length) line.push(A.body.map(function(w){ return __tr(w); }).join(', '));
+  var ctx=(A.who||[]).concat(A.where||[]);
+  if(ctx.length) line.push(ctx.map(function(w){ return __tr(w); }).join(', '));
+  if(A.why) line.push('“'+esc(A.why)+'”');
+  return '<div class="cirec q-'+q+'"><b>'+__tr(CI_QNAME[q])+'</b>'+
+    (line.length?'<span>'+line.join(' · ')+'</span>':'')+'</div>';
 }
 function renderCheckin(D){
   const role=(D===DASH.doctor)?'doctor':(D===DASH.nutri?'nutri':'patient');
   return '<div class="dsec jskin itz"><div class="itzwrap" id="ci-inner">'+ciInner(role)+'</div></div>';
 }
-// Update only the check-in body so the surrounding section (and its entrance
-// animation) is not rebuilt — prevents the "bounce" on every click.
 function ciUpdate(role){ const el=document.getElementById('ci-inner'); if(!el){ dashSection(role); return; }
   itzSwap(el,ciInner(role)); }
-function ciText(role,v){ const ci=ciState(DASH[role]); ci.ans[CISTEPS[ci.step][0]]=v; const btn=document.getElementById('ci-next'); if(btn){ const ok=v.trim().length>3; btn.disabled=!ok; } }
-function ciScale(role,n){ const ci=ciState(DASH[role]); ci.ans[CISTEPS[ci.step][0]]=n;
-  // Highlight the picked number in place (no re-render, no bounce) and enable Next.
-  const sc=document.querySelector('#dwrap-'+role+' .ciscale'); if(sc){ sc.querySelectorAll('button').forEach((b,i)=>b.classList.toggle('on',i+1===n)); }
-  const nx=document.getElementById('ci-next'); if(nx){ nx.disabled=false; } }
-function ciNext(role){ const ci=ciState(DASH[role]); if(ci.step<CISTEPS.length-1) ci.step++; else ci.done=true; ciUpdate(role);
-  setTimeout(function(){ const t=document.getElementById('ci-text'); if(t) t.focus(); },60); }
+function ciText(role,v){ ciState(DASH[role]).ans.why=v; }
+function ciNext(role){ const ci=ciState(DASH[role]);
+  if(ci.step<CISTEPS.length-1){ ci.step++; ciUpdate(role);
+    setTimeout(function(){ const t=document.getElementById('ci-text'); if(t){ itzGrow(t); t.focus({preventScroll:true}); } },60);
+    return; }
+  ci.done=true;
+  var A=ci.ans;
+  ciLogAdd({when:new Date().toISOString(),pl:A.pl,en:A.en,q:ciQuad(A.pl,A.en),
+    words:A.words.slice(),body:A.body.slice(),who:(A.who||[]).slice(),where:(A.where||[]).slice(),
+    why:A.why||''});
+  /* o check-in tambem marca o passo da jornada, se houver um aberto */
+  var open=aqRead().filter(function(t){ return t.kind==='chk'&&!t.done; })[0];
+  if(open){ var q=aqRead(); q.forEach(function(t){ if(t.id===open.id) t.done=1; }); aqSave(q); }
+  ciUpdate(role);
+}
 function ciBack(role){ const ci=ciState(DASH[role]); if(ci.step>0){ ci.step--; ciUpdate(role); } }
-function ciReset(role){ DASH[role].ci={step:0,ans:{},done:false}; ciUpdate(role); }
+function ciReset(role){ DASH[role].ci={step:0,ans:{words:[],body:[],who:[],where:[]},done:false}; ciUpdate(role); }
+
+/* ---- a carta de um dia bom, lida num dia ruim ---- */
+var LT_KEY='mb.letters.v1';
+var LT_HELP=['Slept enough','Walked outside','Ate real food','Talked to someone',
+  'Moved my body','Took the medication','Said no to something','Sunlight in the morning'];
+var LT={step:0,why:[],msg:''};
+function ltList(){ return mbGet(LT_KEY,[]); }
+function ltStart(){ LT={step:0,why:[],msg:''}; dashNav('patient','letter'); }
+function ltPick(v){
+  var i=LT.why.indexOf(v);
+  if(i>=0) LT.why.splice(i,1); else LT.why.push(v);
+  ltPaint();
+}
+function ltGo(i){ LT.step=Math.max(0,Math.min(2,i)); ltPaint();
+  setTimeout(function(){ var t=document.getElementById('ltMsg'); if(t){ itzGrow(t); t.focus({preventScroll:true}); } },60); }
+function ltPaint(){
+  var st=document.getElementById('ltStage');
+  if(!(st&&itzSwap(st.querySelector('.itzwrap'),pLetter(DASH.patient)))) dashSection('patient');
+}
+function ltSave(){
+  var t=document.getElementById('ltMsg');
+  if(t) LT.msg=t.value;
+  if(!LT.msg.trim()){ toast(__tr('Write a line or two first.')); return; }
+  var a=ltList();
+  a.unshift({when:new Date().toISOString(),why:LT.why.slice(),msg:LT.msg.trim()});
+  mbSet(LT_KEY,a.slice(0,20));
+  LT.step=2; ltPaint();
+}
+function pLetter(D){
+  var i=LT.step, bar='';
+  for(var k=0;k<2;k++) bar+='<span class="itzseg'+(k<i?' done':'')+(k===i?' on':'')+'"><i></i></span>';
+  var SAY=['What made today work?','Now write to yourself, for a harder day.','Kept. I will bring it back when you need it.'];
+  var body;
+  if(i===0){
+    body='<span class="itzk">'+__tr('Good day')+'</span><h2>'+__tr('Why was today good?')+'</h2>'+
+      '<p class="itzh">'+__tr('Pick what helped. This is what you will read back later.')+'</p>'+
+      '<div class="itzchips">'+LT_HELP.map(function(w){
+        return '<button class="itzchip'+(LT.why.indexOf(w)>=0?' on':'')+'" onclick="ltPick(\''+w+'\')">'+
+          __tr(w)+'</button>'; }).join('')+'</div>'+
+      '<div class="itznav"><button class="itzbk" onclick="dashNav(\'patient\',\'journey\')">'+
+        dIcon('arrow-left')+__tr('Journey')+'</button><span></span>'+
+        '<button class="itzgo" onclick="ltGo(1)">'+__tr('Next')+dIcon('arrow-right')+'</button></div>';
+  } else if(i===1){
+    body='<span class="itzk">'+__tr('Your letter')+'</span><h2>'+__tr('A note for a hard day')+'</h2>'+
+      '<p class="itzh">'+__tr('Write it to yourself. You will get it back in Bad day mode.')+'</p>'+
+      '<textarea id="ltMsg" class="itzta" rows="3" placeholder="'+
+        __tr('Today I felt like myself because…')+'">'+esc(LT.msg||'')+'</textarea>'+
+      '<div class="itznav"><button class="itzbk" onclick="ltGo(0)">'+dIcon('arrow-left')+__tr('Back')+
+        '</button><span></span><button class="itzgo itzsend" onclick="ltSave()">'+dIcon('check')+
+        __tr('Keep it')+'</button></div>';
+  } else {
+    body='<div class="cic2">'+dIcon('heart')+'</div>'+
+      '<h2 style="text-align:center">'+__tr('Your letter is kept')+'</h2>'+
+      '<p class="itzh" style="text-align:center">'+
+        __tr('It comes back on a hard day, with what helped you today.')+'</p>'+
+      '<div class="itznav" style="justify-content:center"><button class="itzgo" '+
+        'onclick="dashNav(\'patient\',\'journey\')">'+__tr('Back to journey')+dIcon('arrow-right')+'</button></div>';
+  }
+  return '<div class="dsec jskin itz" id="ltStage"><div class="itzwrap">'+
+    '<div class="itztop"><button class="itzx" onclick="dashNav(\'patient\',\'journey\')">'+
+      dIcon('arrow-left')+__tr('Journey')+'</button><div class="itzbar">'+bar+'</div></div>'+
+    '<div class="itzhead"><span class="itzm">'+brMascot()+'</span>'+
+      '<div class="itzsay"><b>'+__tr('Letter to yourself')+'</b><span>'+__tr(SAY[i])+'</span></div></div>'+
+    '<div class="itzcard">'+body+'</div></div></div>';
+}
+
+/* ---- modo dia ruim: tudo encolhe, e a equipa fica a saber ---- */
+var BAD_KEY='mb.bad.v1';
+function badState(){ return mbGet(BAD_KEY,{on:0,when:'',note:''}); }
+function badIsOn(){ return !!badState().on; }
+function badOn(v,quiet){
+  var b=badState();
+  b.on=v?1:0; b.when=new Date().toISOString();
+  mbSet(BAD_KEY,b);
+  document.body.classList.toggle('badday',!!v);
+  if(v&&!quiet) toast(__tr('Bad day mode on. Your care team has been told.'));
+  if(!v&&!quiet) toast(__tr('Welcome back. Your dashboard is full again.'));
+  dashNav('patient','inicio');
+}
+function badTellPartner(){
+  bdAdd('out',__tr('I am having a hard day today.'),'hard');
+  toast(__tr('Sent to your companion'));
+  dashSection('patient');
+}
+/* o que costuma ajudar, tirado das cartas dos dias bons */
+function badHelps(){
+  var out=[];
+  ltList().forEach(function(l){ (l.why||[]).forEach(function(w){ if(out.indexOf(w)<0) out.push(w); }); });
+  return out.slice(0,6);
+}
+function pBad(D){
+  var fn=givenName(D.name), L=ltList()[0]||null, helps=badHelps();
+  var nx=aqList().filter(function(t){ return !t.done; })[0]||null;
+  return '<div class="dsec badwrap">'+
+    '<div class="badhead"><span class="bm">'+brMascot()+'</span>'+
+      '<div><span class="k">'+__tr('Bad day mode')+'</span>'+
+      '<h1>'+__tr('Just today, we keep it small')+'</h1>'+
+      '<p>'+__tr('Your team knows. Nothing else is due.')+'</p></div>'+
+      '<button class="dbtn dbtn-line" onclick="badOn(0)">'+dIcon('sun')+__tr('I am ok, go back')+'</button>'+
+    '</div>'+
+    '<div class="badgrid">'+
+      '<div class="dcard badone">'+
+        '<div class="kvl">'+__tr('One thing, if you want')+'</div>'+
+        (nx?'<button class="badstep" onclick="aqOpen(\''+nx.id+'\')">'+dIcon(aqIcon(nx))+
+            '<b>'+esc(__tr(nx.label))+'</b><span>'+__tr(nx.sub||'')+'</span></button>'
+           :'<p class="mut">'+__tr('Nothing open. Rest is the step.')+'</p>')+
+      '</div>'+
+      '<div class="dcard badlt">'+
+        '<div class="kvl">'+__tr('From you, on a good day')+'</div>'+
+        (L?'<blockquote>'+esc(L.msg)+'</blockquote><cite>'+visDate(L.when)+'</cite>'
+          :'<p class="mut">'+__tr('No letter yet. On your next good day the app will ask you to write one.')+'</p>')+
+      '</div>'+
+      '<div class="dcard badhelp">'+
+        '<div class="kvl">'+__tr('What helped you before')+'</div>'+
+        (helps.length?'<div class="itzchips">'+helps.map(function(w){
+            return '<span class="itzchip on">'+__tr(w)+'</span>'; }).join('')+'</div>'
+          :'<p class="mut">'+__tr('It fills in from your good-day letters.')+'</p>')+
+      '</div>'+
+      '<div class="dcard badacts">'+
+        '<button class="dbtn dbtn-line" onclick="badTellPartner()">'+dIcon('heart')+
+          __tr('Tell my companion')+'</button>'+
+        '<button class="dbtn dbtn-line" onclick="dashNav(\'patient\',\'equipe\')">'+dIcon('message')+
+          __tr('Message my team')+'</button>'+
+        '<button class="dbtn dbtn-solid" onclick="dashNav(\'patient\',\'checkin\')">'+dIcon('clipboard')+
+          __tr('Quick check-in')+'</button>'+
+      '</div>'+
+    '</div></div>';
+}
+
+/* =====================================================================
+   FOTO DA REFEICAO — a checagem contra o plano
+   No demo QUEM classifica o prato e o proprio paciente (as etiquetas);
+   a regra e que compara com a dieta. Nenhum modelo de visao esta ligado
+   ainda, e o cartao diz isso. Quando estiver, e esta mesma regra que
+   recebe as etiquetas do modelo.
+   ===================================================================== */
+var ML_KEY='mb.meals.v1';
+var ML_DIET='Low-carb';              // <!-- PLACEHOLDER --> vem do plano do paciente
+var ML_TAGS=[
+  ['Protein',0],['Vegetables',0],['Leafy greens',0],['Healthy fat',0],['Eggs',0],['Nuts',0],
+  ['Rice, bread or pasta',1],['Potato',1],['Fruit',1],['Sugar or dessert',1],['Sugary drink',1],['Fried food',1]
+];
+var ML={tags:[],photo:'',step:0};
+function mlList(){ return mbGet(ML_KEY,[]); }
+function mlTag(v){
+  var i=ML.tags.indexOf(v);
+  if(i>=0) ML.tags.splice(i,1); else ML.tags.push(v);
+  mlPaint();
+}
+function mlPhoto(ev){ imgPick(ev,function(url){ ML.photo=url; ML.step=1; mlPaint(); }); }
+function mlOff(tags){
+  var off=[];
+  ML_TAGS.forEach(function(t){ if(t[1]&&tags.indexOf(t[0])>=0) off.push(t[0]); });
+  return off;
+}
+function mlVerdict(tags){
+  var off=mlOff(tags);
+  var good=tags.filter(function(x){ return off.indexOf(x)<0; });
+  if(!tags.length) return {k:'none',t:'Nothing tagged yet',s:''};
+  if(!off.length) return {k:'ok',t:'This fits your '+ML_DIET+' plan',
+    s:'On the plate: '+good.join(', ')+'.'};
+  return {k:'off',t:off.length===1?'One thing is off plan':off.length+' things are off plan',
+    s:off.join(', ')+' — these are the carbs your '+ML_DIET+' plan keeps low.'+
+      (good.length?' The rest ('+good.join(', ')+') is fine.':'')};
+}
+function mlSave(){
+  var v=mlVerdict(ML.tags);
+  if(v.k==='none'){ toast(__tr('Tag what is on the plate first.')); return; }
+  var a=mlList();
+  a.unshift({id:'ml'+Date.now(),when:new Date().toISOString(),tags:ML.tags.slice(),
+    k:v.k,t:v.t,s:v.s,photo:ML.photo||''});
+  mbSet(ML_KEY,a.slice(0,12));
+  /* cada refeicao verificada deixa um passo feito na jornada */
+  aqAdd([{id:'meal:'+a[0].id,kind:'meal',label:'Meal checked',
+    sub:(v.k==='ok'?'On plan':'Off plan'),done:1}]);
+  var q=aqRead(); q.forEach(function(t){ if(t.id==='meal:'+a[0].id) t.done=1; }); aqSave(q);
+  ML={tags:[],photo:'',step:2}; mlPaint();
+}
+function mlDrop(id){ mbSet(ML_KEY,mlList().filter(function(m){ return m.id!==id; })); mlPaint(); }
+function mlPaint(){
+  var st=document.getElementById('mlStage');
+  if(!(st&&itzSwap(st.querySelector('.itzwrap'),pMeals(DASH.patient)))) dashSection('patient');
+}
+function mlAgain(){ ML={tags:[],photo:'',step:0}; mlPaint(); }
+function pMeals(D){
+  var v=mlVerdict(ML.tags), list=mlList(), i=ML.step;
+  var bar=''; for(var k=0;k<2;k++) bar+='<span class="itzseg'+(k<i?' done':'')+(k===i?' on':'')+'"><i></i></span>';
+  var body;
+  if(i===2){
+    var lastm=list[0];
+    body='<div class="cic2">'+dIcon('check')+'</div>'+
+      '<h2 style="text-align:center">'+__tr('Saved to your journey')+'</h2>'+
+      '<p class="itzh" style="text-align:center">'+__tr('Your nutritionist sees it with the verdict.')+'</p>'+
+      (lastm?'<div class="mlv '+lastm.k+'"><b>'+__tr(lastm.t)+'</b><span>'+esc(lastm.s)+'</span></div>':'')+
+      '<div class="itznav" style="justify-content:center;gap:10px">'+
+        '<button class="itzbk" onclick="mlAgain()">'+__tr('Check another meal')+'</button>'+
+        '<button class="itzgo" onclick="dashNav(\'patient\',\'journey\')">'+__tr('Back to journey')+
+          dIcon('arrow-right')+'</button></div>';
+  } else if(i===0){
+    body='<span class="itzk">'+__tr('Step')+' 1 '+__tr('of')+' 2</span>'+
+      '<h2>'+__tr('Photograph your plate')+'</h2>'+
+      '<p class="itzh">'+__tr('Take a picture before you eat.')+'</p>'+
+      '<label class="ciphdrop mlshot"><span class="ic0">'+dIcon('camera')+'</span>'+
+        '<span><b>'+__tr('Take or choose a photo')+'</b>'+
+        '<span>'+__tr('It stays on this device in the demo.')+'</span></span>'+
+        '<input type="file" accept="image/*" capture="environment" onchange="mlPhoto(event)"></label>'+
+      '<div class="itznav"><button class="itzbk" onclick="dashNav(\'patient\',\'journey\')">'+
+        dIcon('arrow-left')+__tr('Journey')+'</button><span></span>'+
+        '<button class="itzgo" onclick="ML.step=1;mlPaint()">'+__tr('Skip the photo')+
+          dIcon('arrow-right')+'</button></div>';
+  } else {
+    body='<span class="itzk">'+__tr('Step')+' 2 '+__tr('of')+' 2</span>'+
+      '<h2>'+__tr('What is on the plate?')+'</h2>'+
+      '<p class="itzh">'+__tr('Tag it and the plan check runs right away.')+'</p>'+
+      (ML.photo?'<div class="mlpic"><img src="'+ML.photo+'" alt=""></div>':'')+
+      '<div class="itzchips">'+ML_TAGS.map(function(t){
+        return '<button class="itzchip'+(ML.tags.indexOf(t[0])>=0?' on':'')+(t[1]?' carb':'')+'" '+
+          'onclick="mlTag(\''+t[0]+'\')">'+__tr(t[0])+'</button>'; }).join('')+'</div>'+
+      (ML.tags.length?'<div class="mlv '+v.k+'"><b>'+__tr(v.t)+'</b><span>'+esc(v.s)+'</span></div>':'')+
+      '<div class="itznav"><button class="itzbk" onclick="ML.step=0;mlPaint()">'+dIcon('arrow-left')+
+        __tr('Back')+'</button><span></span>'+
+        '<button class="itzgo itzsend" onclick="mlSave()">'+dIcon('check')+__tr('Send to my team')+
+        '</button></div>';
+  }
+  var hist='';
+  list.slice(0,4).forEach(function(m){
+    hist+='<div class="mlrow '+m.k+'">'+(m.photo?'<img src="'+m.photo+'" alt="">':'<i>'+dIcon('utensils')+'</i>')+
+      '<div><b>'+__tr(m.t)+'</b><span>'+visDate(m.when)+' · '+esc((m.tags||[]).join(', '))+'</span></div>'+
+      '<button onclick="mlDrop(\''+m.id+'\')" aria-label="'+__tr('Remove')+'">'+dIcon('x')+'</button></div>';
+  });
+  return '<div class="dsec jskin itz" id="mlStage"><div class="itzwrap">'+
+    '<div class="itztop"><button class="itzx" onclick="dashNav(\'patient\',\'journey\')">'+
+      dIcon('arrow-left')+__tr('Journey')+'</button><div class="itzbar">'+bar+'</div></div>'+
+    '<div class="itzhead"><span class="itzm">'+brMascot()+'</span>'+
+      '<div class="itzsay"><b>'+__tr('Meal check')+'</b><span>'+
+        __tr(i===0?'Show me the plate.':(i===1?'Tell me what is on it.':'Nice. That is logged.'))+
+      '</span></div></div>'+
+    '<div class="itzcard">'+body+
+      '<p class="mlnote">'+__tr('Demo: you tag the plate and a rule checks it against your plan. Photo analysis by a model is not wired yet.')+'</p>'+
+    '</div>'+
+    (hist?'<div class="mlhist"><div class="itzl">'+__tr('Last meals')+'</div>'+hist+'</div>':'')+
+  '</div></div>';
+}
+
+/* =====================================================================
+   FONTES DE DADOS — o que o paciente pode ligar
+   Nada e inventado: ligar aqui so marca a fonte como ligada; os dados
+   reais chegam quando as APIs estiverem ligadas de verdade.
+   ===================================================================== */
+var CN_KEY='mb.conn.v1';
+var CN_SRC=[
+  ['apple','Apple Watch · Health','activity','Steps, heart rate, sleep, workouts'],
+  ['oura','Oura Ring','moon','Sleep stages, readiness, temperature'],
+  ['whoop','Whoop','zap','Strain, recovery, HRV'],
+  ['garmin','Garmin','compass','Workouts, steps, sleep'],
+  ['cgm','Continuous glucose monitor','droplet','Glucose through the day'],
+  ['labs','Lab results','clipboard','Blood panels from your lab'],
+  ['scale','Smart scale','chart','Weight and body composition']
+];
+function cnState(){ return mbGet(CN_KEY,{}); }
+function cnOn(k){ return !!cnState()[k]; }
+function cnList(){ return CN_SRC.filter(function(x){ return cnOn(x[0]); }).map(function(x){ return x[1]; }); }
+function cnTog(k){
+  var c=cnState(); c[k]=c[k]?0:1; mbSet(CN_KEY,c);
+  toast(__tr(c[k]?'Connected in the demo — no data flows yet':'Disconnected'));
+  dashSection('patient');
+}
+function pConnect(D){
+  var rows='';
+  CN_SRC.forEach(function(x){
+    var on=cnOn(x[0]);
+    rows+='<div class="cnrow'+(on?' on':'')+'"><span class="ic0">'+dIcon(x[2])+'</span>'+
+      '<div><b>'+__tr(x[1])+'</b><span>'+__tr(x[3])+'</span>'+
+        (on?'<em>'+__tr('Connected · waiting for the first sync')+'</em>':'')+'</div>'+
+      '<button class="dbtn '+(on?'dbtn-line':'dbtn-solid')+'" onclick="cnTog(\''+x[0]+'\')">'+
+        __tr(on?'Disconnect':'Connect')+'</button></div>';
+  });
+  return '<div class="dsec">'+head(__tr('Connections'),
+      __tr('Bring in what you already measure. Your team sees only what you share.'),'Your data')+
+    '<div class="dcard">'+rows+'</div>'+
+    '<div class="dcard cnnote">'+dIcon('lock')+'<p>'+
+      __tr('Demo: connecting marks the source as on. No account is linked and no data is read yet — TBD which APIs we use.')+
+      '</p></div>'+
+    '<div class="dcard"><div class="dh2" style="margin:0 0 10px">'+dIcon('shield')+
+      __tr('Who sees this')+'</div><p style="color:var(--soft);font-size:14px;line-height:1.6">'+
+      __tr('Sharing is set per data type on the Sharing page.')+'</p>'+
+      '<button class="dbtn dbtn-line" style="margin-top:12px" onclick="dashNav(\'patient\',\'sharing\')">'+
+        dIcon('lock')+__tr('Open sharing')+'</button></div></div>';
+}
+
+/* =====================================================================
+   COMPANHEIRO DE JORNADA — outra pessoa no mesmo caminho, anonima
+   ===================================================================== */
+var BD_KEY='mb.buddy.v1';
+// <!-- PLACEHOLDER --> o par e ficticio no demo; o emparelhamento real e TBD
+var BD_ALIAS='Maple', BD_SINCE='week 3';
+var BD_NOTES=['Thinking of you today.','You showed up. That counts.',
+  'One step is enough today.','Proud of you for the check-in.','Rooting for you.'];
+var BD_GIFTS=[['sun','A bit of sun'],['leaf','A small plant'],['coffee','A warm drink'],
+  ['star','A gold star'],['heart','A heart']];
+function bdRead(){
+  return mbGet(BD_KEY,{msgs:[
+    // <!-- PLACEHOLDER --> duas mensagens de demonstracao
+    {w:'in',t:'Hard morning here, but I walked anyway.',k:'',when:'yesterday'},
+    {w:'in',t:'Thanks for the star — it helped.',k:'',when:'2 days ago'}
+  ]});
+}
+function bdAdd(w,t,k){
+  var d=bdRead();
+  d.msgs.unshift({w:w,t:t,k:k||'',when:__tr('just now')});
+  mbSet(BD_KEY,d);
+}
+function bdSend(t){ bdAdd('out',t,''); toast(__tr('Sent to your companion')); dashSection('patient'); }
+function bdGift(k,label){ bdAdd('out',__tr(label),k); toast(__tr('Gift sent')); dashSection('patient'); }
+function pPartner(D){
+  var d=bdRead(), th='';
+  d.msgs.slice(0,10).forEach(function(m){
+    th+='<div class="bdm '+m.w+'">'+(m.k?'<span class="g">'+dIcon(m.k)+'</span>':'')+
+      '<p>'+esc(m.t)+'</p><span class="t">'+esc(m.when)+'</span></div>';
+  });
+  return '<div class="dsec">'+head(__tr('Your companion'),
+      __tr('Someone else on the same path. First names stay hidden.'),'Together')+
+    '<div class="dcard bdhead">'+
+      '<span class="av">'+esc(BD_ALIAS[0])+'</span>'+
+      '<div><b>'+esc(BD_ALIAS)+'</b><span>'+__tr('Anonymous companion · with you since')+' '+
+        __tr(BD_SINCE)+'</span></div>'+
+      '<button class="dbtn dbtn-line" onclick="badTellPartner()">'+dIcon('heart')+
+        __tr('Tell them it is a hard day')+'</button></div>'+
+    '<div class="dcard"><div class="kvl">'+__tr('Send some encouragement')+'</div>'+
+      '<div class="itzchips bdnotes">'+BD_NOTES.map(function(t){
+        return '<button class="itzchip" onclick="bdSend(\''+t.replace(/'/g,"\\'")+'\')">'+__tr(t)+'</button>';
+      }).join('')+'</div>'+
+      '<div class="kvl" style="margin-top:18px">'+__tr('Or send a little something')+'</div>'+
+      '<div class="bdgifts">'+BD_GIFTS.map(function(g){
+        return '<button class="bdg" onclick="bdGift(\''+g[0]+'\',\''+g[1]+'\')">'+dIcon(g[0])+
+          '<span>'+__tr(g[1])+'</span></button>'; }).join('')+'</div></div>'+
+    '<div class="dcard"><div class="kvl">'+__tr('Between you two')+'</div>'+
+      '<div class="bdth">'+th+'</div>'+
+      '<p class="cnnote2">'+__tr('Demo: your companion is fictional and the two messages above are samples. Real pairing is TBD.')+'</p>'+
+    '</div></div>';
+}
+
+/* =====================================================================
+   PARTILHA — o paciente decide o que a equipa ve e quem segue a jornada
+   ===================================================================== */
+var SH_KEY='mb.share.v1';
+var SH_ITEMS=[
+  ['checkins','Check-ins and emotions','What you pick on the mood meter',1],
+  ['meals','Meal checks','Photos and the plan verdict',1],
+  ['journey','Journey steps','What you finished and what is open',1],
+  ['photos','Photos','Anything you attach to a check-in',1],
+  ['marks','Markers and labs','Numbers on file',1],
+  ['connect','Connected devices','Sleep, heart rate, glucose',1],
+  ['letters','Letters to yourself','Private by default',0]
+];
+var SH_LEVELS=[['journey','Journey only'],['plus','Journey and check-ins'],['all','Everything but letters']];
+function shState(){
+  var d=mbGet(SH_KEY,null);
+  if(d) return d;
+  var care={}; SH_ITEMS.forEach(function(x){ care[x[0]]=x[3]; });
+  return {care:care,followers:[]};
+}
+function shOn(k){ var d=shState(); return !!d.care[k]; }
+function shTog(k){ var d=shState(); d.care[k]=d.care[k]?0:1; mbSet(SH_KEY,d); dashSection('patient'); }
+function shAdd(){
+  var n=document.getElementById('shName'), r=document.getElementById('shRel');
+  if(!n||!n.value.trim()){ toast(__tr('Add a name first.')); return; }
+  var d=shState();
+  d.followers.push({id:'f'+Date.now(),name:n.value.trim(),rel:(r&&r.value)||'',lv:'journey'});
+  mbSet(SH_KEY,d); dashSection('patient');
+}
+function shLevel(id,lv){
+  var d=shState();
+  d.followers.forEach(function(f){ if(f.id===id) f.lv=lv; });
+  mbSet(SH_KEY,d); dashSection('patient');
+}
+function shDrop(id){
+  var d=shState(); d.followers=d.followers.filter(function(f){ return f.id!==id; });
+  mbSet(SH_KEY,d); dashSection('patient');
+}
+function pSharing(D){
+  var d=shState(), rows='';
+  SH_ITEMS.forEach(function(x){
+    var on=!!d.care[x[0]];
+    rows+='<div class="pftog"><div class="pl"><b>'+__tr(x[1])+'</b><span>'+__tr(x[2])+'</span></div>'+
+      '<div class="sw'+(on?' on':'')+'" onclick="shTog(\''+x[0]+'\')"></div></div>';
+  });
+  var fl='';
+  d.followers.forEach(function(f){
+    fl+='<div class="shf"><span class="av">'+esc(f.name[0]||'?')+'</span>'+
+      '<div><b>'+esc(f.name)+'</b><span>'+esc(f.rel||__tr('Follower'))+'</span></div>'+
+      '<div class="mtopts">'+SH_LEVELS.map(function(l){
+        return '<button class="mtopt'+(f.lv===l[0]?' on':'')+'" onclick="shLevel(\''+f.id+'\',\''+l[0]+'\')">'+
+          __tr(l[1])+'</button>'; }).join('')+'</div>'+
+      '<button class="shx" onclick="shDrop(\''+f.id+'\')" aria-label="'+__tr('Remove')+'">'+dIcon('x')+
+      '</button></div>';
+  });
+  if(!fl) fl='<p style="color:var(--soft);font-size:14px;margin:0">'+
+    __tr('Nobody is following yet. Add a parent, a partner or a friend.')+'</p>';
+  return '<div class="dsec">'+head(__tr('Sharing'),
+      __tr('You decide what your care team reads and who can follow along.'),'Your data')+
+    '<div class="dcard"><div class="dh2" style="margin:0 0 12px">'+dIcon('stethoscope')+
+      __tr('What your care team sees')+'</div>'+rows+
+      '<p class="cnnote2">'+__tr('Anything switched off is hidden from the patient report and marked as hidden.')+'</p></div>'+
+    '<div class="dcard"><div class="dh2" style="margin:0 0 12px">'+dIcon('users')+
+      __tr('People following your journey')+'</div>'+
+      '<div class="shlist">'+fl+'</div>'+
+      '<div class="shadd"><input id="shName" placeholder="'+__tr('Name')+'">'+
+        '<input id="shRel" placeholder="'+__tr('Mother, partner, friend…')+'">'+
+        '<button class="dbtn dbtn-solid" onclick="shAdd()">'+dIcon('user-plus')+__tr('Add')+'</button></div>'+
+      '<p class="cnnote2">'+__tr('Followers never see your letters, and you can change or remove them at any time.')+'</p>'+
+    '</div></div>';
+}
+
+/* =====================================================================
+   DINHEIRO E PAPELADA (pre-visualizacao)
+   Os numeros saem das consultas fechadas e do valor que o profissional
+   escreve aqui. Nao ha integracao contabil nenhuma — e um esboco.
+   ===================================================================== */
+var MN_KEY='mb.money.v1';
+function mnState(){ return mbGet(MN_KEY,{rate:'',tax:'',inv:{}}); }
+function mnSet(k,v){ var d=mnState(); d[k]=v; mbSet(MN_KEY,d); mnPaint(); }
+function mnField(k,v){ var d=mnState(); d[k]=v; mbSet(MN_KEY,d); mnTotals(); }
+function mnInv(id){ var d=mnState(); d.inv[id]=d.inv[id]?0:1; mbSet(MN_KEY,d); mnPaint(); }
+function mnPaint(){ dashSection(APROLE||'doctor'); }
+function mnRows(role){
+  return visRead().map(function(v){
+    return {id:v.id,when:v.when,who:(v.pat&&v.pat.name)||'',mins:v.mins||0};
+  });
+}
+function mnNum(x){ var n=parseFloat(String(x).replace(',','.')); return isNaN(n)?0:n; }
+function mnTotals(){
+  var d=mnState(), rows=mnRows(), rate=mnNum(d.rate), tax=mnNum(d.tax);
+  var gross=rows.length*rate, set=gross*tax/100;
+  var el=function(id,v){ var e=document.getElementById(id); if(e) e.textContent=v; };
+  el('mnGross',rate?('R$ '+gross.toFixed(2)):'TBD');
+  el('mnTax',(rate&&tax)?('R$ '+set.toFixed(2)):'TBD');
+  el('mnNet',(rate)?('R$ '+(gross-set).toFixed(2)):'TBD');
+}
+function mnCsv(){
+  var d=mnState(), rows=mnRows(), rate=mnNum(d.rate);
+  var out='date,patient,minutes,amount,invoiced\n';
+  rows.forEach(function(r){
+    out+=[visDate(r.when),'"'+r.who+'"',r.mins,rate?rate.toFixed(2):'',d.inv[r.id]?'yes':'no'].join(',')+'\n';
+  });
+  try{
+    var a=document.createElement('a');
+    a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(out);
+    a.download='metabolicamente-sessions.csv'; a.click();
+    toast(__tr('CSV downloaded'));
+  }catch(e){ toast(__tr('Demo: the export could not run here')); }
+}
+function proMoney(role){
+  var d=mnState(), rows=mnRows(), rate=mnNum(d.rate), tax=mnNum(d.tax);
+  var gross=rows.length*rate, set=gross*tax/100;
+  var rh='';
+  rows.slice(0,10).forEach(function(r){
+    rh+='<div class="mnrow"><span class="d">'+visDate(r.when)+'</span>'+
+      '<span class="n">'+esc(r.who)+'</span>'+
+      '<span class="v">'+(rate?'R$ '+rate.toFixed(2):'—')+'</span>'+
+      '<button class="mnb'+(d.inv[r.id]?' on':'')+'" onclick="mnInv(\''+r.id+'\')">'+
+        dIcon(d.inv[r.id]?'check':'plus')+__tr(d.inv[r.id]?'Invoiced':'Mark invoiced')+'</button></div>';
+  });
+  if(!rh) rh='<p style="color:var(--soft);font-size:14px;margin:0">'+
+    __tr('Closed visits show up here. Finish a visit to see one.')+'</p>';
+  return '<div class="dsec">'+head(__tr('Money and paperwork'),
+      __tr('A preview: your closed visits, what they add up to, and what to set aside.'),'Your practice')+
+    '<div class="dcard mnprev">'+dIcon('alert')+'<p>'+
+      __tr('Preview only. Numbers come from your closed visits and the rate you type — no bank, invoicing or tax service is connected. TBD which one we use in Brazil and Peru.')+'</p></div>'+
+    '<div class="dcard"><div class="mngrid">'+
+      '<label class="mnf"><span>'+__tr('Your rate per session')+'</span>'+
+        '<input id="mnRate" inputmode="decimal" value="'+esc(d.rate||'')+'" placeholder="TBD" '+
+          'oninput="mnField(\'rate\',this.value)"></label>'+
+      '<label class="mnf"><span>'+__tr('Set aside for tax (%)')+'</span>'+
+        '<input id="mnTax" inputmode="decimal" value="'+esc(d.tax||'')+'" placeholder="TBD" '+
+          'oninput="mnField(\'tax\',this.value)"></label>'+
+      '<div class="mnt"><span>'+__tr('Closed visits')+'</span><b>'+rows.length+'</b></div>'+
+      '<div class="mnt"><span>'+__tr('Gross')+'</span><b id="mnGross">'+(rate?'R$ '+gross.toFixed(2):'TBD')+'</b></div>'+
+      '<div class="mnt"><span>'+__tr('Set aside')+'</span><b id="mnTax2">'+((rate&&tax)?'R$ '+set.toFixed(2):'TBD')+'</b></div>'+
+      '<div class="mnt"><span>'+__tr('Left for you')+'</span><b id="mnNet">'+(rate?'R$ '+(gross-set).toFixed(2):'TBD')+'</b></div>'+
+    '</div></div>'+
+    '<div class="dcard"><div class="dh2" style="margin:0 0 12px">'+dIcon('clipboard')+
+      __tr('Sessions to invoice')+'</div>'+rh+
+      '<div class="tacts" style="display:flex;gap:8px;margin-top:16px;flex-wrap:wrap">'+
+        '<button class="dbtn dbtn-line" onclick="mnCsv()">'+dIcon('save')+__tr('Export CSV')+'</button>'+
+        '<button class="dbtn dbtn-line" onclick="toast(\''+__tr('Demo: the invoice would be issued here')+
+          '\')">'+dIcon('mail')+__tr('Issue invoice')+'</button>'+
+        '<button class="dbtn dbtn-line" onclick="toast(\''+__tr('Demo: the accountant export is TBD')+
+          '\')">'+dIcon('user')+__tr('Send to my accountant')+'</button></div></div></div>';
+}
+
+/* =====================================================================
+   SUPERVISAO — junior e senior
+   O junior nunca fica sozinho: pergunta a um senior e tem a sua propria
+   jornada. O senior responde e acompanha. Os marcos saem do que ja
+   existe na app (consultas fechadas, conteudo atribuido, aulas vistas).
+   ===================================================================== */
+var SUP_KEY='mb.pro.v1';
+// <!-- PLACEHOLDER --> o senior de plantao no demo
+var SUP_SENIOR='Dr. Juan Pablo Roig';
+function supState(){ return mbGet(SUP_KEY,{tier:'junior',qs:[]}); }
+function supTier(){ return supState().tier; }
+function supSwitch(){
+  var d=supState(); d.tier=(d.tier==='junior')?'senior':'junior'; mbSet(SUP_KEY,d);
+  dashSection(APROLE||'doctor');
+}
+function supLessons(){
+  try{ return Object.keys(JSON.parse(localStorage.getItem('mb.lessons')||'{}')).length; }catch(e){ return 0; }
+}
+function supMiles(){
+  var d=supState(), vis=visRead().length;
+  var mods=0;
+  visRead().forEach(function(v){ mods+=(v.mods||[]).length; });
+  return [
+    {k:'visits',t:'Close 5 visits',n:vis,of:5,ic:'video'},
+    {k:'mods',t:'Assign content 3 times',n:mods,of:3,ic:'sparkles'},
+    {k:'ask',t:'Ask a senior once',n:d.qs.length,of:1,ic:'message'},
+    {k:'courses',t:'Finish 2 course lessons',n:supLessons(),of:2,ic:'award'}
+  ];
+}
+function supAsk(role){
+  var el=document.getElementById('supQ');
+  if(!el||!el.value.trim()){ toast(__tr('Write your question first.')); return; }
+  var d=supState();
+  d.qs.unshift({id:'q'+Date.now(),q:el.value.trim(),who:DASH[role].name,to:SUP_SENIOR,
+    when:new Date().toISOString(),a:''});
+  mbSet(SUP_KEY,d);
+  toast(__tr('Sent to your supervisor'));
+  dashSection(role);
+}
+function supAnswer(id,role){
+  var el=document.getElementById('supA-'+id);
+  if(!el||!el.value.trim()){ toast(__tr('Write an answer first.')); return; }
+  var d=supState();
+  d.qs.forEach(function(q){ if(q.id===id){ q.a=el.value.trim(); q.aWhen=new Date().toISOString(); } });
+  mbSet(SUP_KEY,d);
+  toast(__tr('Answer sent'));
+  dashSection(role);
+}
+function supPromote(role){
+  var d=supState(); d.tier='senior'; mbSet(SUP_KEY,d);
+  toast(__tr('Senior status unlocked'));
+  dashSection(role);
+}
+function proSup(role){
+  var d=supState(), miles=supMiles(), done=miles.filter(function(m){ return m.n>=m.of; }).length;
+  var pct=Math.round(done/miles.length*100);
+  var sw='<button class="dbtn dbtn-line supsw" onclick="supSwitch()">'+dIcon('settings')+
+    __tr('Demo: view as')+' '+__tr(d.tier==='junior'?'senior':'junior')+'</button>';
+
+  if(d.tier==='senior'){
+    var inbox='';
+    d.qs.forEach(function(q){
+      inbox+='<div class="supq'+(q.a?' done':'')+'"><div class="hd"><b>'+esc(q.who)+'</b>'+
+        '<span>'+visDate(q.when)+'</span></div><p>'+esc(q.q)+'</p>'+
+        (q.a?'<div class="ans"><span>'+__tr('You answered')+'</span><p>'+esc(q.a)+'</p></div>'
+            :'<div class="ansbox"><textarea id="supA-'+q.id+'" class="itzta" rows="2" placeholder="'+
+              __tr('Answer your junior…')+'"></textarea>'+
+              '<button class="dbtn dbtn-solid" onclick="supAnswer(\''+q.id+'\',\''+role+'\')">'+
+              dIcon('send')+__tr('Send answer')+'</button></div>')+'</div>';
+    });
+    if(!inbox) inbox='<p style="color:var(--soft);font-size:14px;margin:0">'+
+      __tr('No questions waiting. Your juniors are fine.')+'</p>';
+    return '<div class="dsec">'+head(__tr('Supervision'),
+        __tr('You are senior. Juniors reach you here.'),'Your practice')+
+      '<div class="dcard suptier senior"><span class="ic0">'+dIcon('shield')+'</span>'+
+        '<div><b>'+__tr('Senior professional')+'</b>'+
+        '<span>'+__tr('You supervise and sign off on junior work.')+'</span></div>'+sw+'</div>'+
+      '<div class="dcard"><div class="dh2" style="margin:0 0 12px">'+dIcon('message')+
+        __tr('Questions from juniors')+'</div>'+inbox+'</div>'+
+      '<div class="dcard"><div class="dh2" style="margin:0 0 12px">'+dIcon('users')+
+        __tr('Your juniors')+'</div>'+
+        '<div class="supjr"><span class="av">MA</span><div><b>Dra. Marina Alves</b>'+
+          '<span>'+__tr('In certification')+' · '+done+'/'+miles.length+' '+__tr('milestones')+
+          '</span></div><span class="ptag ok">'+__tr('On track')+'</span></div>'+
+        '<p class="cnnote2">'+__tr('Demo: one junior, taken from the certification account.')+'</p></div></div>';
+  }
+
+  var mh='';
+  miles.forEach(function(m){
+    var ok=m.n>=m.of;
+    mh+='<div class="supm'+(ok?' on':'')+'"><span class="ic0">'+dIcon(ok?'check':m.ic)+'</span>'+
+      '<div><b>'+__tr(m.t)+'</b><div class="bar"><i style="width:'+
+        Math.min(100,Math.round(m.n/m.of*100))+'%"></i></div></div>'+
+      '<span class="n">'+Math.min(m.n,m.of)+'/'+m.of+'</span></div>';
+  });
+  var mine='';
+  d.qs.forEach(function(q){
+    mine+='<div class="supq'+(q.a?' done':'')+'"><div class="hd"><b>'+__tr('To')+' '+esc(q.to)+'</b>'+
+      '<span>'+visDate(q.when)+'</span></div><p>'+esc(q.q)+'</p>'+
+      (q.a?'<div class="ans"><span>'+esc(q.to)+'</span><p>'+esc(q.a)+'</p></div>'
+          :'<div class="ans wait">'+dIcon('clock')+__tr('Waiting for an answer')+'</div>')+'</div>';
+  });
+  if(!mine) mine='<p style="color:var(--soft);font-size:14px;margin:0">'+
+    __tr('Nothing asked yet. Nobody expects you to know everything.')+'</p>';
+
+  return '<div class="dsec">'+head(__tr('Supervision'),
+      __tr('You are never alone with a case. Ask, learn, level up.'),'Your practice')+
+    '<div class="dcard suptier"><span class="ic0">'+dIcon('award')+'</span>'+
+      '<div><b>'+__tr('Junior professional')+'</b>'+
+      '<span>'+__tr('Supervised by')+' '+esc(SUP_SENIOR)+'</span></div>'+sw+'</div>'+
+    '<div class="dcard"><div class="dh2" style="margin:0 0 4px">'+dIcon('sword')+
+      __tr('Your journey to senior')+'</div>'+
+      '<div class="suppct"><b>'+pct+'%</b><span>'+done+' '+__tr('of')+' '+miles.length+' '+
+        __tr('milestones done')+'</span></div>'+mh+
+      (done===miles.length
+        ? '<button class="dbtn dbtn-solid" style="margin-top:14px" onclick="supPromote(\''+role+'\')">'+
+          dIcon('star')+__tr('Request senior status')+'</button>'
+        : '<p class="cnnote2">'+__tr('Milestones count real work in the app: visits you close, content you assign, questions you ask, lessons you finish.')+'</p>')+
+    '</div>'+
+    '<div class="dcard"><div class="dh2" style="margin:0 0 12px">'+dIcon('message')+
+      __tr('Ask your supervisor')+'</div>'+
+      '<textarea id="supQ" class="itzta suptxt" rows="2" placeholder="'+
+        __tr('A case, a dose, a doubt…')+'"></textarea>'+
+      '<button class="dbtn dbtn-solid" style="margin-top:10px" onclick="supAsk(\''+role+'\')">'+
+        dIcon('send')+__tr('Send to')+' '+esc(SUP_SENIOR)+'</button></div>'+
+    '<div class="dcard"><div class="dh2" style="margin:0 0 12px">'+dIcon('clipboard')+
+      __tr('Your questions')+'</div>'+mine+'</div></div>';
+}
+
 /* ---- profile (full) ---- */
 function pfState(D){ if(!D.pf) D.pf={name:D.name,email:'usuario@metabolicamente.com',phone:'',city:'',notifEmail:true,notifPush:true}; return D.pf; }
 function perfil(D,role){
@@ -9331,6 +10320,8 @@ function dSection(D){
       '<div class="dsearch">'+dIcon('search')+'<input type="text" placeholder="Search patient..." oninput="dashPFilter(\'doctor\',this.value)"></div>'+
       '<div id="plist-doctor" class="plist2">'+list+'</div></div>';
   }
+  if(s==='supervisao') return proSup('doctor');
+  if(s==='financas') return proMoney('doctor');
   if(s==='agenda') return agendaMonth('doctor');
   if(s==='prontuarios') return '<div class="dsec">'+head(__tr('Records'),__tr('Clinical notes and history'),'Your practice')+
     '<div class="dcard"><p style="color:var(--soft);font-size:14px;line-height:1.7">Select a patient to view and add clinical notes, past sessions, and shared documents.</p>'+
@@ -9365,6 +10356,8 @@ function nSection(D){
       '<div class="dsearch">'+dIcon('search')+'<input type="text" placeholder="Search patient..." oninput="dashPFilter(\'nutri\',this.value)"></div>'+
       '<div id="plist-nutri" class="plist2">'+list+'</div></div>';
   }
+  if(s==='supervisao') return proSup('nutri');
+  if(s==='financas') return proMoney('nutri');
   if(s==='cardapios') return '<div class="dsec">'+head(__tr('Menus'),__tr('Templates and delivered plans'),'Your practice')+
     '<div class="dcard"><p style="color:var(--soft);font-size:14px;line-height:1.7">Build reusable menu templates or generate a personalized plan for a patient with AI.</p>'+
     '<button class="dbtn dbtn-solid" style="margin-top:16px" onclick="toast(\'Demo: the AI menu generator would open here\')">'+dIcon('sparkles')+'New menu</button></div></div>';
@@ -9536,6 +10529,12 @@ function aqOpen(id){
 function aqOverlay(){
   var all=aqList(), h='';
   var ns=aqNodes();
+  /* dia ruim: fica so o passo seguinte, o resto espera */
+  if(badIsOn()){
+    var nxt=ns.filter(function(n){ return !n.t.done; })[0];
+    ns=nxt?[Object.assign({},nxt,{x:AQ_CX,y:AQ_CY+6,row:0,rows:1,gap:90})]:[];
+    all=nxt?[nxt.t]:[];
+  }
   /* mais passos do que lugares no fio: os ultimos viram um contador */
   var extra=all.length-ns.length;
   var a=ns.map(function(n){ return n.t; });
@@ -9944,12 +10943,20 @@ function patRepHTML(role,i){
   var vs=visFor(p.name), last=vs[0]||null;
 
   /* uma linha de numeros pequenos, cada um com o seu icone */
+  var mine=(p.name===DASH.patient.name);
+  var sh=function(k){ return !mine||shOn(k); };    /* o paciente decide o que sai daqui */
   var mini=[];
   if(p.energy!=null) mini.push(['zap',p.energy+'/10',__tr('Energy'),p.energy<=4?'warn':'']);
   if(p.risk) mini.push(['alert',cap(__tr(p.risk)),__tr('Risk'),p.risk==='moderate'?'warn':'']);
   if(p.adh) mini.push(['utensils',p.adh,__tr('Adherence'),p.adhc==='warn'?'warn':'']);
   mini.push(['video',String(vs.length),__tr(vs.length===1?'Visit':'Visits'),'']);
-  if(app) mini.push(['target',app.done+'/'+app.n,__tr('Steps'),'']);
+  if(app&&sh('journey')) mini.push(['target',app.done+'/'+app.n,__tr('Steps'),'']);
+  if(mine&&sh('meals')){
+    var ms=mlList();
+    if(ms.length) mini.push(['utensils',
+      ms.filter(function(m){ return m.k==='ok'; }).length+'/'+ms.length,__tr('Meals on plan'),
+      ms.some(function(m){ return m.k==='off'; })?'warn':'']);
+  }
   var mh=mini.map(function(m){
     return '<span class="aim '+m[3]+'" title="'+esc(m[2])+'">'+dIcon(m[0])+'<b>'+esc(m[1])+'</b>'+
       '<em>'+esc(m[2])+'</em></span>'; }).join('');
@@ -9965,10 +10972,46 @@ function patRepHTML(role,i){
   var rh=rows.map(function(r){
     return '<div class="aif"><i>'+dIcon(r[0])+'</i><div><span>'+r[1]+'</span><b>'+esc(r[2])+'</b></div></div>';
   }).join('');
-  var body='<div class="aisec"><div class="kvl">'+__tr('Where they stand')+'</div>'+
+  var body='';
+  /* o sinal mais urgente fica em cima */
+  if(mine&&badIsOn()) body+='<div class="aisec"><div class="aibad">'+dIcon('moon')+
+    '<div><b>'+__tr('Bad day mode is on')+'</b><span>'+
+    __tr('They turned it on today. The app is showing them one step and their own letter.')+'</span></div></div></div>';
+  body+='<div class="aisec"><div class="kvl">'+__tr('Where they stand')+'</div>'+
     '<div class="aifacts">'+rh+'</div></div>';
 
-  if(app){
+  /* como se tem sentido: os ultimos check-ins, com as palavras que escolheu */
+  if(mine&&sh('checkins')){
+    var cl=ciLog().slice(0,3), ch2='';
+    cl.forEach(function(c){
+      ch2+='<div class="aicic q-'+c.q+'"><i></i><div><b>'+
+        ((c.words||[]).map(function(w){ return __tr(w); }).join(', ')||__tr(CI_QNAME[c.q]))+'</b>'+
+        '<span>'+visDate(c.when)+
+        ((c.body||[]).length?' · '+(c.body||[]).map(function(w){ return __tr(w); }).join(', '):'')+
+        (c.why?' · “'+esc(c.why)+'”':'')+'</span></div></div>';
+    });
+    if(ch2) body+='<div class="aisec"><div class="kvl">'+__tr('How they have felt')+'</div>'+ch2+'</div>';
+  }
+  /* pratos verificados contra o plano */
+  if(mine&&sh('meals')){
+    var ml=mlList().slice(0,3), mh2='';
+    ml.forEach(function(m){
+      mh2+='<div class="mlrow '+m.k+'">'+(m.photo?'<img src="'+m.photo+'" alt="">':'<i>'+dIcon('utensils')+'</i>')+
+        '<div><b>'+__tr(m.t)+'</b><span>'+visDate(m.when)+' · '+esc((m.tags||[]).join(', '))+'</span></div></div>';
+    });
+    if(mh2) body+='<div class="aisec"><div class="kvl">'+__tr('Meals they checked')+'</div>'+
+      '<div class="aimeals">'+mh2+'</div></div>';
+  }
+  /* aparelhos e exames ligados */
+  if(mine&&sh('connect')){
+    var cs=cnList();
+    if(cs.length) body+='<div class="aisec"><div class="kvl">'+__tr('Connected sources')+'</div>'+
+      '<div class="aipills">'+cs.map(function(c){
+        return '<span class="aipill"><i>'+dIcon('activity')+'</i>'+__tr(c)+
+          '<em>'+__tr('no data yet')+'</em></span>'; }).join('')+'</div></div>';
+  }
+
+  if(app&&sh('journey')){
     var li='';
     aqList().slice(0,8).forEach(function(tk){
       li+='<span class="aipill'+(tk.done?' done':'')+'"><i>'+dIcon(tk.done?'check':aqIcon(tk))+'</i>'+
@@ -9976,7 +11019,7 @@ function patRepHTML(role,i){
     });
     body+='<div class="aisec"><div class="kvl">'+__tr('On their journey now')+'</div>'+
       '<div class="aipills">'+li+'</div></div>';
-    var ph=phList();
+    var ph=sh('photos')?phList():[];
     if(ph.length){
       var fg='';
       ph.slice(0,8).forEach(function(x){
@@ -9996,6 +11039,14 @@ function patRepHTML(role,i){
     });
     body+='<details class="aisec aivis"><summary class="kvl">'+__tr('Last visits')+
       ' <b>'+vs.length+'</b>'+dIcon('chevron-down')+'</summary>'+rws+'</details>';
+  }
+
+  /* o que o paciente escondeu aparece como escondido, nunca em silencio */
+  if(mine){
+    var hid=SH_ITEMS.filter(function(x){ return !shOn(x[0]); })
+      .map(function(x){ return __tr(x[1]); });
+    if(hid.length) body+='<div class="aisec"><p class="aihid">'+dIcon('lock')+' '+
+      __tr('Hidden by the patient')+': '+hid.join(', ')+'</p></div>';
   }
 
   return '<header onclick="pRepFold(this)" role="button" tabindex="0">'+
@@ -12396,6 +13447,8 @@ function pHomeD(D){
       '<div><h1>'+__tr(hhGreet())+', '+
         '<span class="flowtxt">'+givenName(D.name)+'</span></h1></div>'+
       '<div class="hhact dshsp">'+
+        '<button class="hhib" onclick="badOn(1)" aria-label="'+__tr('Bad day mode')+'" '+
+          'title="'+__tr('Bad day mode')+'">'+dIcon('moon')+'</button>'+
         dshTestBtn(today)+
         '<button class="hhib" onclick="dashBell(\'patient\',event)" aria-label="'+
           __tr('Notifications')+'">'+dIcon('bell')+
@@ -15765,6 +16818,49 @@ routeFromHash();
     "Book it":"Marcar","You are booked":"Consulta marcada","Your first step on the journey is done.":"Seu primeiro passo na jornada está feito.",
     "Video call":"Videochamada","Came in for":"Veio por","For how long":"Há quanto tempo","Health":"Saúde","Diet tried":"Dieta tentada",
     "Feels":"Como se sente","None yet":"Nenhuma ainda","Steps":"Passos","Energy":"Energia","Visit":"Consulta",
+    "How are you feeling?":"Como você está?","Left to right: how pleasant. Bottom to top: how much energy.":"Da esquerda para a direita: quão agradável. De baixo para cima: quanta energia.",
+    "Which words fit?":"Quais palavras combinam?","Pick up to two.":"Escolha até duas.","Where do you feel it?":"Onde você sente?",
+    "Body sensations, if any.":"Sensações do corpo, se houver.","Who and where?":"Com quem e onde?","This is what shows the pattern later.":"É isto que mostra o padrão depois.",
+    "What is driving it?":"O que está causando isso?","One line is enough.":"Uma linha basta.","In your own words…":"Com suas palavras…",
+    "With":"Com","Where":"Onde","Check-in":"Check-in","Where are you right now?":"Onde você está agora?","Which words fit best?":"Quais palavras combinam mais?",
+    "What does your body say?":"O que o corpo diz?","Who are you with, and where?":"Com quem você está, e onde?",
+    "High energy, pleasant":"Muita energia, agradável","High energy, unpleasant":"Muita energia, desagradável",
+    "Low energy, unpleasant":"Pouca energia, desagradável","Low energy, pleasant":"Pouca energia, agradável",
+    "Unpleasant":"Desagradável","Pleasant":"Agradável","Your team sees what you chose to share.":"Sua equipe vê o que você escolheu compartilhar.",
+    "Write a letter for a hard day":"Escrever uma carta para um dia ruim","Turn on Bad day mode":"Ligar o modo dia ruim",
+    "Good to hear. Want to bottle it?":"Que bom. Quer guardar isso?","Thanks for telling me.":"Obrigado por contar.",
+    "Why was today good?":"Por que hoje foi bom?","Pick what helped. This is what you will read back later.":"Escolha o que ajudou. É isto que você vai reler depois.",
+    "A note for a hard day":"Um bilhete para um dia ruim","Write it to yourself. You will get it back in Bad day mode.":"Escreva para você. Volta no modo dia ruim.",
+    "Today I felt like myself because…":"Hoje eu me senti eu porque…","Keep it":"Guardar","Your letter is kept":"Sua carta está guardada",
+    "It comes back on a hard day, with what helped you today.":"Ela volta num dia difícil, com o que ajudou hoje.",
+    "Letter to yourself":"Carta para você","Good day":"Dia bom","Your letter":"Sua carta",
+    "Slept enough":"Dormi o suficiente","Walked outside":"Caminhei na rua","Ate real food":"Comi comida de verdade",
+    "Talked to someone":"Falei com alguém","Moved my body":"Mexi o corpo","Took the medication":"Tomei o remédio",
+    "Said no to something":"Disse não a algo","Sunlight in the morning":"Sol de manhã",
+    "Bad day mode":"Modo dia ruim","Just today, we keep it small":"Só hoje, a gente diminui tudo",
+    "Your team knows. Nothing else is due.":"Sua equipe sabe. Nada mais é cobrado hoje.","I am ok, go back":"Estou bem, voltar",
+    "One thing, if you want":"Uma coisa, se quiser","From you, on a good day":"De você, num dia bom",
+    "What helped you before":"O que já te ajudou","Tell my companion":"Contar ao meu companheiro","Message my team":"Falar com a equipe",
+    "Quick check-in":"Check-in rápido","Bad day mode on. Your care team has been told.":"Modo dia ruim ligado. Sua equipe foi avisada.",
+    "Welcome back. Your dashboard is full again.":"Bem-vindo de volta. Seu painel voltou ao normal.",
+    "Meal check":"Checagem da refeição","Photograph your plate":"Fotografe seu prato","Take a picture before you eat.":"Tire a foto antes de comer.",
+    "What is on the plate?":"O que tem no prato?","Tag it and the plan check runs right away.":"Marque e a checagem do plano roda na hora.",
+    "Skip the photo":"Pular a foto","Protein":"Proteína","Vegetables":"Legumes","Leafy greens":"Folhas verdes","Healthy fat":"Gordura boa",
+    "Eggs":"Ovos","Nuts":"Castanhas","Rice, bread or pasta":"Arroz, pão ou massa","Potato":"Batata","Fruit":"Fruta",
+    "Sugar or dessert":"Açúcar ou sobremesa","Sugary drink":"Bebida açucarada","Fried food":"Fritura",
+    "Saved to your journey":"Salvo na sua jornada","Your nutritionist sees it with the verdict.":"Seu nutricionista vê com o resultado.",
+    "Check another meal":"Checar outra refeição","Last meals":"Últimas refeições","Meals on plan":"Refeições no plano",
+    "Meals they checked":"Refeições que ele checou","Connections":"Conexões","Connected sources":"Fontes conectadas",
+    "Connect":"Conectar","Disconnect":"Desconectar","Your companion":"Seu companheiro","Sharing":"Compartilhamento",
+    "What your care team sees":"O que sua equipe vê","People following your journey":"Quem acompanha sua jornada",
+    "How they have felt":"Como ele tem se sentido","Bad day mode is on":"O modo dia ruim está ligado",
+    "Hidden by the patient":"Escondido pelo paciente","Supervision":"Supervisão","Junior professional":"Profissional júnior",
+    "Senior professional":"Profissional sênior","Your journey to senior":"Sua jornada até sênior","Ask your supervisor":"Pergunte ao seu supervisor",
+    "Your questions":"Suas perguntas","Questions from juniors":"Perguntas dos júniores","Your juniors":"Seus júniores",
+    "Money and paperwork":"Dinheiro e papelada","Your rate per session":"Seu valor por sessão","Set aside for tax (%)":"Separar para imposto (%)",
+    "Closed visits":"Consultas fechadas","Gross":"Bruto","Set aside":"Separado","Left for you":"Fica para você",
+    "Sessions to invoice":"Sessões a faturar","Export CSV":"Exportar CSV","Issue invoice":"Emitir nota","Mark invoiced":"Marcar faturada",
+    "Invoiced":"Faturada","Send to my accountant":"Enviar ao contador",
     "Set up the assistant":"Configurar o assistente","Edit what it may use":"Editar o que pode usar",
     "The assistant only uses the facts you tick. Anything else it hands back to you.":"O assistente usa só os factos que você marcar. O resto devolve para você.",
     "Everything here is already on file for":"Tudo isto já está registado sobre",
