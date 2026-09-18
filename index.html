@@ -3291,6 +3291,178 @@ body.badday .dfab{display:none}
 .supjr b{display:block;font-family:var(--display);font-size:14px;color:var(--hd)}
 .supjr span{display:block;font-size:12px;color:var(--soft)}
 .supjr .ptag{margin-left:auto}
+
+/* retratos desenhados: preenchem qualquer disco, nitidos em qualquer tamanho */
+.toonav{position:absolute;inset:0;width:100%;height:100%;display:block;border-radius:inherit}
+.pava .toonav,.dgav .toonav,.bkp .av .toonav,.bksum .av .toonav,.hhav .toonav,
+.svav .toonav,.pav .toonav,.supjr .av .toonav{border-radius:50%}
+.dgreact{display:none}
+.svtm .fc .toonav,.svpf .hd .av .toonav{border-radius:inherit}
+.svtm .fc .rx{display:none}
+
+/* Learn more: o modulo a meio, com anel de progresso, e duas estantes */
+.dgnow{position:relative;display:flex;align-items:center;gap:12px;padding:14px;border-radius:18px;
+  background:linear-gradient(135deg,var(--g1),var(--g2));color:#fff;overflow:hidden}
+.dgnow::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(90% 120% at 85% -10%,rgba(255,255,255,.28),transparent 60%)}
+.dgnow .ic0{width:40px;height:40px;border-radius:13px;flex-shrink:0;display:grid;place-items:center;
+  background:rgba(255,255,255,.18);font-size:19px}
+.dgnow .ic0 .ic{display:flex}
+.dgnow div{flex:1;min-width:0}
+.dgnow .k{display:block;font-family:var(--quiet);font-size:9.5px;font-weight:700;letter-spacing:.12em;
+  text-transform:uppercase;opacity:.8}
+.dgnow b{display:block;font-family:var(--display);font-size:14.5px;font-weight:600;line-height:1.25;
+  margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.dgnow .u{display:block;font-size:11.5px;opacity:.78;margin-top:2px;overflow:hidden;
+  text-overflow:ellipsis;white-space:nowrap}
+.dgring{width:46px;height:46px;flex-shrink:0;transform:rotate(-90deg)}
+.dgring .trk{fill:none;stroke:rgba(255,255,255,.28);stroke-width:6}
+.dgring .val{fill:none;stroke:#fff;stroke-width:6;stroke-linecap:round;
+  transition:stroke-dashoffset .9s cubic-bezier(.2,.8,.3,1)}
+.dgnow .pc{position:absolute;right:26px;font-family:var(--display);font-size:11.5px;font-weight:700}
+.dgshelf{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;flex:1;min-height:0}
+.dgsh{position:relative;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;padding:12px;
+  border-radius:16px;background:linear-gradient(140deg,var(--g1),var(--g2));color:#fff;overflow:hidden;
+  min-height:70px}
+.dgsh::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(80% 90% at 80% 0,rgba(255,255,255,.25),transparent 62%)}
+.dgsh .ic{font-size:20px;display:flex;opacity:.9}
+.dgsh b{font-family:var(--display);font-size:13px;font-weight:600}
+
+/* a passagem entre a Journey e os formularios: fade curto, sem salto */
+.dwrap.dswap>.dsec{animation:dSwapIn .42s cubic-bezier(.2,.8,.3,1)}
+@keyframes dSwapIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+body.jdark{transition:background .3s ease}
+@media(prefers-reduced-motion:reduce){.dwrap.dswap>.dsec{animation:none}}
+
+/* ================= CHECK-IN ================= */
+.cisec .itzwrap{max-width:720px}
+.ciwrap{animation:dSwapIn .34s cubic-bezier(.2,.8,.3,1)}
+.citop{display:flex;align-items:center;gap:14px;margin-bottom:clamp(14px,2vh,26px)}
+.cilead{font-family:var(--display);font-size:clamp(18px,2.2vw,24px);font-weight:600;color:var(--hd);
+  text-align:center;margin:0 0 clamp(16px,2.4vh,28px);line-height:1.3}
+.cihint{font-size:13.5px;color:var(--soft);text-align:center;max-width:26em;margin:18px auto 0;line-height:1.5}
+/* 0: o disco */
+.ciopen{text-align:center;padding-top:clamp(4px,3vh,26px)}
+.ciopen h1{font-family:var(--display);font-weight:700;letter-spacing:-.02em;color:var(--hd);
+  font-size:clamp(24px,3.4vw,38px);line-height:1.15;margin:0 0 clamp(18px,4vh,40px)}
+.citime{background:linear-gradient(90deg,#E7C24C,#D96B54 45%,#7A5C8E 75%,#4FB3A0);
+  -webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic}
+.cidisc{position:relative;width:min(58vw,300px);aspect-ratio:1;margin:0 auto;display:grid;
+  place-items:center;border:0;background:none;cursor:pointer;padding:0}
+.cidisc svg{position:absolute;inset:0;width:100%;height:100%;animation:ciSpin 26s linear infinite}
+.cidisc .ring{fill:none;stroke:url(#cidg);stroke-width:13;stroke-linecap:round;
+  stroke-dasharray:82 18;opacity:.92}
+@keyframes ciSpin{to{transform:rotate(360deg)}}
+.cidisc .plus{width:clamp(56px,9vw,74px);height:clamp(56px,9vw,74px);border-radius:50%;background:#EEF5F4;
+  color:#07222C;display:grid;place-items:center;font-size:clamp(24px,3.4vw,30px);
+  box-shadow:0 12px 34px rgba(0,0,0,.45);transition:transform .25s cubic-bezier(.2,1.2,.4,1)}
+.cidisc .plus .ic{display:flex}
+.cidisc:hover .plus{transform:scale(1.08)}
+.cidisc .lb{position:absolute;bottom:26%;font-family:var(--display);font-size:clamp(15px,1.8vw,19px);
+  font-weight:600;color:var(--hd)}
+.ciopalt{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:clamp(16px,3vh,30px)}
+.ciopalt button{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(238,245,244,.16);
+  background:rgba(238,245,244,.05);color:var(--ink);border-radius:99px;padding:9px 15px;cursor:pointer;
+  font:inherit;font-size:13px;font-weight:600}
+.ciopalt button:hover{border-color:#8FD3C8;color:var(--hd)}
+.ciopalt .ic{display:flex;font-size:14px;color:#8FD3C8}
+/* 1: os quadrantes */
+.ciquads{display:grid;grid-template-columns:1fr 1fr;gap:clamp(10px,2vw,22px);max-width:560px;margin:0 auto}
+.ciq{aspect-ratio:1;border-radius:50%;border:0;cursor:pointer;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:2px;padding:10px;color:#161616;
+  font-family:var(--display);transition:transform .25s cubic-bezier(.2,1.2,.4,1),box-shadow .25s ease}
+.ciq b{font-size:clamp(14px,1.9vw,19px);font-weight:700}
+.ciq span{font-size:clamp(13px,1.7vw,18px);font-weight:600;opacity:.85}
+.ciq:hover{transform:scale(1.04)}
+.ciq.on{box-shadow:0 0 0 4px #EEF5F4}
+.ciq.q-red{background:radial-gradient(120% 120% at 30% 20%,#E9836A,#C9503A)}
+.ciq.q-yellow{background:radial-gradient(120% 120% at 30% 20%,#F3D579,#E0AE33)}
+.ciq.q-blue{background:radial-gradient(120% 120% at 30% 20%,#8FA9E0,#5B7DB1)}
+.ciq.q-green{background:radial-gradient(120% 120% at 30% 20%,#8FE0C8,#46A98F)}
+/* 2: o campo de palavras */
+.cicloudwrap{position:relative}
+.cicloud{height:min(52vh,420px);box-sizing:border-box;overflow-y:auto;overflow-x:hidden;display:grid;
+  grid-template-columns:repeat(3,minmax(0,124px));justify-content:center;gap:18px;
+  padding:calc(50cqh - 62px) 6px;container-type:size;scroll-snap-type:y proximity;
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 26%,#000 74%,transparent);
+  mask-image:linear-gradient(180deg,transparent,#000 26%,#000 74%,transparent)}
+.cicloudwrap{padding-bottom:86px}
+.ciwrap.cloud{display:flex;flex-direction:column;justify-content:center;
+  min-height:calc(100vh - var(--aph,64px) - 120px)}
+.ciwrap.cloud .citop{position:absolute;z-index:6}
+.cicloud::-webkit-scrollbar{display:none}
+.cibub{aspect-ratio:1;border-radius:50%;border:0;cursor:pointer;font:inherit;scroll-snap-align:center;
+  font-family:var(--display);font-weight:600;font-size:clamp(11px,1.4vw,15px);color:#0D1B22;
+  padding:6px;transition:transform .3s cubic-bezier(.2,.8,.3,1),border-radius .35s ease,opacity .3s ease;
+  opacity:.72}
+.q-red .cibub{background:radial-gradient(120% 120% at 30% 20%,#EE9A84,#D2624B)}
+.q-yellow .cibub{background:radial-gradient(120% 120% at 30% 20%,#F6DE92,#E3B640)}
+.q-blue .cibub{background:radial-gradient(120% 120% at 30% 20%,#9FB7E6,#6889BC)}
+.q-green .cibub{background:radial-gradient(120% 120% at 30% 20%,#9BE7D1,#4FB39C)}
+.cibub.mid{opacity:1;transform:scale(1.3);border-radius:46% 46% 50% 50%/34% 34% 66% 66%;
+  box-shadow:0 18px 44px rgba(0,0,0,.42);z-index:3;font-size:clamp(13px,1.6vw,17px)}
+.cibub.sel{outline:3px solid #EEF5F4;outline-offset:3px}
+.cicap{position:absolute;left:0;right:0;bottom:18px;text-align:center;pointer-events:none}
+.cicap b{display:block;font-family:var(--display);font-size:20px;color:var(--hd)}
+.cicap span{display:block;font-size:13px;color:var(--soft);margin-top:2px}
+/* 3: o detalhe */
+.cifeel{position:relative;text-align:center;padding-top:6px}
+.cifeel .blob{display:block;width:clamp(104px,14vw,158px);height:auto;margin:0 auto 14px;
+  animation:ciFloat 7s ease-in-out infinite}
+.cifeel .blob path{fill:currentColor}
+.cifeel.q-red{color:#DD7D64}.cifeel.q-yellow{color:#E8C25A}
+.cifeel.q-blue{color:#7E9BD8}.cifeel.q-green{color:#6CC7AC}
+@keyframes ciFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.cifeel h1{font-family:var(--display);font-weight:600;font-size:clamp(20px,2.6vw,28px);color:var(--hd);
+  margin:0;line-height:1.2;font-style:italic}
+.cifeel h1 b{display:block;font-weight:700;margin-top:2px}
+.cifeel.q-red h1 b{color:#EE9A84}.cifeel.q-yellow h1 b{color:#F3D579}
+.cifeel.q-blue h1 b{color:#9FB7E6}.cifeel.q-green h1 b{color:#9BE7D1}
+.ciadd{display:inline-flex;align-items:center;gap:7px;margin-top:12px;border:1px solid rgba(238,245,244,.18);
+  background:rgba(238,245,244,.05);color:var(--ink);border-radius:99px;padding:7px 14px;cursor:pointer;
+  font:inherit;font-size:12.5px;font-weight:600}
+.ciadd .ic{display:flex}
+.cidetail{margin-top:clamp(18px,3vh,30px);display:grid;gap:4px}
+.cidetail .itzl{margin-top:16px}
+.cidetail .itzta{margin-bottom:4px}
+.cibodybtn{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;
+  border:1px solid rgba(238,245,244,.14);background:rgba(0,0,0,.22);border-radius:18px;padding:16px 18px;
+  cursor:pointer;font:inherit;color:var(--soft);font-size:15px;margin-top:4px}
+.cibodybtn:hover{border-color:#8FD3C8;color:var(--hd)}
+.cibodybtn i{width:36px;height:36px;border-radius:50%;border:1px solid rgba(238,245,244,.24);
+  display:grid;place-items:center;font-style:normal;color:var(--hd)}
+.cibodybtn i .ic{display:flex}
+.cifoot{position:sticky;bottom:10px;margin-top:22px;display:flex;justify-content:center}
+.cidone{width:min(100%,420px);justify-content:center;font-size:16px;padding:15px 22px}
+/* 4: o corpo */
+.cibodywrap{display:grid;gap:18px;justify-items:center}
+.cibody{width:min(70vw,300px);height:auto;display:block;filter:drop-shadow(0 0 22px rgba(143,211,200,.10))}
+.cibp{cursor:pointer;transition:opacity .2s ease}
+.cibp:hover{opacity:.75}
+.cibp.on{filter:drop-shadow(0 0 12px rgba(232,146,124,.5))}
+.cibpanel{width:100%;max-width:420px;display:grid;gap:12px;justify-items:center}
+.cipad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:132px}
+.cipad i{width:34px;height:34px;border-radius:50%;background:rgba(238,245,244,.10);cursor:pointer;
+  transition:background .2s ease,transform .2s ease}
+.cipad i:hover{background:rgba(238,245,244,.2)}
+.cipad i.on{background:#E8927C;transform:scale(1.1)}
+.cipadcap{font-family:var(--display);font-size:14px;color:#E8927C}
+.cibcard{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;
+  background:rgba(238,245,244,.05);border:1px solid rgba(238,245,244,.12);margin-top:8px}
+.cibcard .mini{width:38px;flex-shrink:0}
+.cibcard .mini .cibody{width:100%}
+.cibcard div{flex:1;min-width:0}
+.cibcard b{display:block;font-family:var(--display);font-size:13.5px;color:var(--hd)}
+.cibcard span{display:block;font-size:12px;color:#E8927C;margin-top:2px}
+.cibcard button{border:0;background:none;color:var(--soft);cursor:pointer;display:flex;padding:4px}
+@media(max-width:560px){
+  .ciquads{gap:10px}
+  .cicloud{grid-template-columns:repeat(2,minmax(0,116px));height:min(46vh,380px)}
+}
+@media(prefers-reduced-motion:reduce){
+  .cidisc svg,.cifeel .blob,.ciwrap{animation:none}
+}
 /* --- o formulario do assistente como um jogo curto --- */
 .itz{display:flex;justify-content:center}
 .itzwrap{width:100%;max-width:640px;margin:0 auto;padding-top:clamp(4px,2vh,26px)}
@@ -8739,7 +8911,12 @@ function dashSection(role){
     role==='patient'&&D.sec==='inicio'&&HOMEUI==='hallow');
   document.body.classList.toggle('dshfit',
     D.sec==='inicio'&&((role==='patient'&&HOMEUI==='dash')||role==='doctor'||role==='nutri'));
+  /* a troca de pagina entra suave: sem o flash branco entre a Journey e os formularios */
+  var prevDark=w.__dark, nowDark=document.body.classList.contains('jdark');
   w.innerHTML=appBack+html;
+  w.__dark=nowDark;
+  if(prevDark!==undefined&&prevDark!==nowDark) w.classList.add('dswap');
+  else w.classList.remove('dswap');
   renderIcons(w);
   drawEvo(role);
   animateBars(w);
@@ -8884,8 +9061,10 @@ function bkConfirm(){
   q.forEach(function(x){ if(x.id==='first'){ x.done=1; x.sub='Booked'; } });
   aqSave(q);
   var s2=document.getElementById('bkStage'); if(s2) s2.classList.add('sent');
-  setTimeout(function(){ BK.step=4; bkPaint(); },
-    (window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)?0:700);
+  setTimeout(function(){
+    var st=document.getElementById('bkStage'); if(st) st.classList.remove('sent');
+    BK.step=4; bkPaint();
+  },(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)?0:700);
 }
 function pBook(D){
   var N=3, i=BK.step;
@@ -8898,9 +9077,8 @@ function pBook(D){
       '<h2>'+__tr('Who do you want to meet?')+'</h2>'+
       '<p class="itzh">'+__tr('Your care team. You can see the other one later.')+'</p>'+
       '<div class="bkwho">'+PTEAM.map(function(p,j){
-        var ph=(j===0?PPHOTO.doctor:PPHOTO.nutri)||'';
         return '<button class="bkp'+(BK.who===j?' on':'')+'" onclick="bkSet(\'who\','+j+')">'+
-          '<span class="av">'+esc(p[0])+(ph?'<img src="'+ph+'" alt="" onerror="this.remove()">':'')+'</span>'+
+          '<span class="av">'+esc(p[0])+toonSVG(p[1])+'</span>'+
           '<b>'+esc(p[1])+'</b><span>'+__tr(p[2])+'</span></button>';
       }).join('')+'</div>'+
       '<div class="itznav"><button class="itzbk" onclick="dashNav(\'patient\',\'journey\')">'+dIcon('arrow-left')+
@@ -9276,10 +9454,8 @@ function brOff(role,i){
 function patHead(role,i){
   var p=DASH[role].patients[i], mine=(p.name===DASH.patient.name);
   /* so a conta demo tem foto; os outros ficam com as iniciais */
-  var ph=mine?(DASH.patient.photo||''):'';
   return '<div class="dhead phead">'+
-    '<span class="pava">'+esc(p.init||'')+
-      (ph?'<img src="'+esc(ph)+'" alt="" onerror="this.remove()">':'')+'</span>'+
+    '<span class="pava">'+esc(p.init||'')+toonSVG(p.name)+'</span>'+
     '<div class="pmid"><div class="ptitle"><h1>'+esc(p.name)+'</h1>'+brChip(role,i)+'</div>'+
       '<p>'+esc(p.sub||'')+'</p></div>'+
     '<div class="pacts">'+
@@ -9394,7 +9570,8 @@ function phSave(a){
 function phList(){ return phRead(); }
 function phDrop(id){
   phSave(phRead().filter(function(p){ return p.id!==id; }));
-  ciUpdate('patient');
+  var w=document.querySelector('.ciphwrap');
+  if(w){ w.innerHTML=ciPhotoField('patient'); renderIcons(w); } else ciUpdate('patient');
 }
 /* uma so rotina para qualquer foto: encolhe no browser e devolve o data-url */
 function imgPick(ev,cb){
@@ -9422,7 +9599,9 @@ function phPick(ev,role){
     var a=phRead();
     a.unshift({id:'p'+Date.now(), when:new Date().toISOString(), url:url});
     phSave(a);
-    ciUpdate(role||'patient');
+    var w=document.querySelector('.ciphwrap');
+    if(w){ w.innerHTML=ciPhotoField(role||'patient'); renderIcons(w); }
+    else ciUpdate(role||'patient');
   });
 }
 /* o campo do passo da foto */
@@ -9456,191 +9635,352 @@ function ciPhotoField(role){
 var CI_KEY='mb.ci.v2';
 function ciLog(){ return mbGet(CI_KEY,[]); }
 function ciLogAdd(r){ var a=ciLog(); a.unshift(r); mbSet(CI_KEY,a.slice(0,60)); }
-var CI_WORDS={
-  yellow:['Excited','Energized','Joyful','Hopeful','Proud','Playful','Motivated','Alive','Inspired','Confident','Cheerful','Amazed'],
-  red   :['Anxious','Irritated','Frustrated','Overwhelmed','Restless','Angry','Worried','Tense','Pressured','Scared','Embarrassed','Jealous'],
-  blue  :['Tired','Sad','Lonely','Drained','Discouraged','Numb','Bored','Down','Guilty','Heavy','Apathetic','Withdrawn'],
-  green :['Calm','Content','Grateful','Relaxed','Safe','Rested','Focused','Peaceful','Balanced','Comfortable','Steady','Thankful']
+
+/* As palavras por quadrante, com uma linha de significado (como no How We
+   Feel, que e o modelo que o Felipe pediu). */
+var CI_EMO={
+  yellow:[['Excited','Eager for what is next'],['Joyful','Full and light at once'],
+    ['Energized','Ready to move'],['Proud','Pleased with what you did'],
+    ['Hopeful','Expecting something good'],['Playful','Up for fun'],
+    ['Motivated','Pulled towards a goal'],['Inspired','Full of ideas'],
+    ['Confident','Sure of yourself'],['Amazed','Caught by surprise, in a good way'],
+    ['Cheerful','Light and warm'],['Alive','Fully here']],
+  red:[['Anxious','On edge about what may happen'],['Irritated','Small things are grating'],
+    ['Frustrated','Blocked from what you want'],['Overwhelmed','Too much at once'],
+    ['Angry','Something crossed a line'],['Worried','Turning a problem over'],
+    ['Tense','Braced, holding on'],['Restless','Cannot settle'],
+    ['Pressured','More is expected than you have'],['Scared','Something feels unsafe'],
+    ['Embarrassed','Exposed in front of others'],['Jealous','Someone has what you want']],
+  blue:[['Sad','Feeling unhappy about something'],['Tired','Out of fuel'],
+    ['Lonely','Missing people'],['Drained','Emptied out'],
+    ['Discouraged','Losing faith in the effort'],['Down','Low, without a clear reason'],
+    ['Bored','Nothing pulls you'],['Numb','Feeling little at all'],
+    ['Guilty','Wishing you had acted differently'],['Heavy','Weighed down'],
+    ['Apathetic','Nothing matters much right now'],['Withdrawn','Pulling away from people']],
+  green:[['Calm','Settled and quiet'],['Content','Enough, as it is'],
+    ['Grateful','Thankful for something'],['Relaxed','Nothing is tight'],
+    ['Safe','Nothing to guard against'],['Rested','Refilled'],
+    ['Peaceful','At ease'],['Balanced','Steady in the middle'],
+    ['Comfortable','Easy in your own skin'],['Thankful','Grateful to someone'],
+    ['Mellow','Soft and unhurried'],['Serene','Still and clear']]
 };
-var CI_BODY=['Tight chest','Racing heart','Heavy limbs','Headache','Clenched jaw','Stomach knot',
-  'Restless legs','Shallow breath','Warm','Light and loose','Nothing in particular'];
-var CI_WHO=['Alone','Family','Partner','Friends','Colleagues'];
-var CI_WHERE=['Home','Work','Outside','Commuting','Training'];
-var CISTEPS=[['mood'],['words'],['body'],['ctx'],['why'],['foto']];
-function ciState(D){ if(!D.ci) D.ci={step:0,ans:{words:[],body:[],who:[],where:[]},done:false}; 
-  if(!D.ci.ans.words) D.ci.ans.words=[]; if(!D.ci.ans.body) D.ci.ans.body=[];
-  if(!D.ci.ans.who) D.ci.ans.who=[]; if(!D.ci.ans.where) D.ci.ans.where=[];
-  return D.ci; }
-function ciQuad(pl,en){
-  if(pl==null||en==null) return 'green';
-  return (en>=0) ? (pl>=0?'yellow':'red') : (pl>=0?'green':'blue');
-}
+var CI_QUADS=[['red','High energy','Unpleasant'],['yellow','High energy','Pleasant'],
+  ['blue','Low energy','Unpleasant'],['green','Low energy','Pleasant']];
 var CI_QNAME={yellow:'High energy, pleasant',red:'High energy, unpleasant',
   blue:'Low energy, unpleasant',green:'Low energy, pleasant'};
-function ciMood(role,pl,en){
-  var ci=ciState(DASH[role]);
-  if(ci.ans.pl!==pl||ci.ans.en!==en) ci.ans.words=[];
-  ci.ans.pl=pl; ci.ans.en=en; ciUpdate(role);
-}
-function ciPick(role,k,v){
-  var ci=ciState(DASH[role]), a=ci.ans[k]||[];
-  var i=a.indexOf(v);
-  if(i>=0) a.splice(i,1);
-  else { if(k==='words'&&a.length>=2) a.shift(); a.push(v); }
-  ci.ans[k]=a; ciUpdate(role);
-}
-function ciDayKind(ans){
-  if(ans.pl==null) return 'mid';
-  if(ans.pl>=1) return 'good';
-  if(ans.pl<=-1&&ans.en<=0) return 'hard';
-  return 'mid';
-}
-function ciSay(ci){
-  var st=CISTEPS[ci.step][0];
-  return {mood:'Where are you right now?',words:'Which words fit best?',
-    body:'What does your body say?',ctx:'Who are you with, and where?',
-    why:'What is driving it?',foto:'Optional. Skip if you like.'}[st];
-}
-function ciInner(role){
-  const ci=ciState(DASH[role]), A=ci.ans;
-  const N=CISTEPS.length;
-  let bar='';
-  for(let k=0;k<N;k++) bar+='<span class="itzseg'+((ci.done||k<ci.step)?' done':'')+(!ci.done&&k===ci.step?' on':'')+'"><i></i></span>';
-  const top='<div class="itztop"><button class="itzx" onclick="dashNav(\''+role+'\',\'journey\')">'+
-    dIcon('arrow-left')+__tr('Journey')+'</button><div class="itzbar">'+bar+'</div></div>';
-  const say=(t)=>'<div class="itzhead"><span class="itzm">'+(role==='patient'?brMascot():dshMascot())+'</span>'+
-    '<div class="itzsay"><b>'+__tr('Check-in')+'</b><span>'+__tr(t)+'</span></div></div>';
+var CI_DOING=['Fitness','Driving','Resting','Hobbies','Hanging out','Eating','Working','Caring for someone'];
+var CI_WHO=['By myself','Family','Partner','Friends','Co-workers','Pets'];
+var CI_WHERE=['Home','Work','Outside','Commuting','School','Training'];
+/* o corpo: regioes desenhadas uma vez, usadas no mapa e no resumo */
+var CI_BODY_R=[
+  ['head','Head','M100 14c15 0 26 13 26 30s-11 32-26 32-26-15-26-32 11-30 26-30Z'],
+  ['neck','Neck','M89 74h22v14c0 4-22 4-22 0Z'],
+  ['chest','Chest','M100 88c16 0 28 3 36 8 4 3 6 9 6 16v22c0 6-4 9-10 9H68c-6 0-10-3-10-9v-22c0-7 2-13 6-16 8-5 20-8 36-8Z'],
+  ['stomach','Stomach','M66 146h68v30c0 6-4 9-10 9H76c-6 0-10-3-10-9Z'],
+  ['arm-l','Left arm','M56 98c-8 2-12 8-12 16l-4 48c-1 7 2 11 8 12s10-2 11-9l9-46Z'],
+  ['arm-r','Right arm','M144 98c8 2 12 8 12 16l4 48c1 7-2 11-8 12s-10-2-11-9l-9-46Z'],
+  ['hands','Hands','M36 176c7-1 12 3 12 10s-4 12-11 12-11-4-11-11 3-10 10-11ZM164 176c-7-1-12 3-12 10s4 12 11 12 11-4 11-11-3-10-10-11Z'],
+  ['hips','Hips','M70 186h60v22c0 8-6 12-14 12H84c-8 0-14-4-14-12Z'],
+  ['leg-l','Left leg','M76 222h22l-2 58c-1 8-5 12-11 12s-10-4-11-12Z'],
+  ['leg-r','Right leg','M124 222h-22l2 58c1 8 5 12 11 12s10-4 11-12Z'],
+  ['feet','Feet','M72 294h22c2 8-2 12-11 12s-13-4-11-12ZM128 294h-22c-2 8 2 12 11 12s13-4 11-12Z']
+];
+var CI_SENS=['Tight','Warm','Heavy','Light','Sore','Tingling','Trembling','Fluttery','Numb','Pressure'];
 
-  if(ci.done){
-    const kind=ciDayKind(A);
+function ciState(D){
+  if(!D.ci) D.ci={stage:0,q:null,word:null,journal:'',doing:[],who:[],where:[],body:[],done:false};
+  var c=D.ci;
+  ['doing','who','where','body'].forEach(function(k){ if(!c[k]) c[k]=[]; });
+  return c;
+}
+function ciQuadOf(){ var c=ciState(DASH.patient); return c.q||'green'; }
+function ciPartOfDay(){
+  var h=new Date().getHours();
+  return h<12?'this morning':(h<18?'this afternoon':'this evening');
+}
+/* ---- passos, sem repintar a pagina ---- */
+function ciGo(st){
+  var c=ciState(DASH.patient);
+  c.stage=st;
+  ciUpdate('patient');
+  if(st===2) setTimeout(ciCloudWatch,60);
+  if(st===3) setTimeout(function(){ var t=document.getElementById('ciJ'); if(t) itzGrow(t); },40);
+}
+function ciQuadPick(q){
+  var c=ciState(DASH.patient);
+  if(c.q!==q) c.word=null;
+  c.q=q; ciGo(2);
+}
+function ciWord(w){
+  var c=ciState(DASH.patient);
+  c.word=w; ciGo(3);
+}
+/* a bolha no centro do campo ganha a forma de escudo, como no app de referencia */
+function ciCloudWatch(){
+  var box=document.getElementById('ciCloud'); if(!box||box.__w) return;
+  box.__w=1;
+  /* o preenchimento em cima e em baixo poe a primeira e a ultima fila no centro */
+  var pad=Math.max(0,box.clientHeight/2-62);
+  box.style.paddingTop=pad+'px'; box.style.paddingBottom=pad+'px';
+  var mark=function(){
+    var r=box.getBoundingClientRect(), cy=r.top+r.height/2, best=null, bd=1e9;
+    box.querySelectorAll('.cibub').forEach(function(el){
+      var b=el.getBoundingClientRect(), d=Math.abs(b.top+b.height/2-cy);
+      el.classList.remove('mid');
+      if(d<bd){ bd=d; best=el; }
+    });
+    if(best&&bd<r.height*0.30){
+      best.classList.add('mid');
+      var cap=document.getElementById('ciCap');
+      if(cap) cap.innerHTML='<b>'+esc(best.dataset.w)+'</b><span>'+esc(best.dataset.d)+'</span>';
+    }
+  };
+  box.addEventListener('scroll',function(){ window.requestAnimationFrame(mark); },{passive:true});
+  mark();
+}
+function ciTog(k,v,el){
+  var c=ciState(DASH.patient), a=c[k], i=a.indexOf(v);
+  if(i>=0) a.splice(i,1); else a.push(v);
+  if(el) el.classList.toggle('on',i<0);     /* sem repintar: so a pilula muda */
+}
+function ciJournal(v){ ciState(DASH.patient).journal=v; }
+
+/* ---- o mapa do corpo ---- */
+var CIB=null;
+function ciBodyOpen(){ CIB={r:null,pl:0,it:0,words:[]}; ciGo(4); }
+function ciBodyPick(r){
+  if(!CIB) CIB={r:null,pl:0,it:0,words:[]};
+  CIB.r=r; ciUpdate('patient');
+}
+function ciPad(x,y){
+  if(!CIB) return;
+  CIB.pl=x; CIB.it=y;
+  var cap=document.getElementById('ciPadCap');
+  if(cap) cap.textContent=ciPadLabel();
+  var host=document.getElementById('ciPad');
+  if(host) host.querySelectorAll('i').forEach(function(d){
+    d.classList.toggle('on', +d.dataset.x===x && +d.dataset.y===y); });
+}
+function ciPadLabel(){
+  if(!CIB) return '';
+  var p=CIB.pl<0?'Unpleasant':(CIB.pl>0?'Pleasant':'Neutral');
+  var i=CIB.it>0?'high intensity':(CIB.it<0?'low intensity':'medium intensity');
+  return __tr(p)+' & '+__tr(i);
+}
+function ciSens(w,el){
+  if(!CIB) return;
+  var i=CIB.words.indexOf(w);
+  if(i>=0) CIB.words.splice(i,1); else CIB.words.push(w);
+  if(el) el.classList.toggle('on',i<0);
+}
+function ciBodySave(){
+  var c=ciState(DASH.patient);
+  if(!CIB||!CIB.r){ toast(__tr('Tap a part of the body first.')); return; }
+  var lab=(CI_BODY_R.filter(function(x){ return x[0]===CIB.r; })[0]||[,''])[1];
+  c.body.push({r:CIB.r,label:lab,pl:CIB.pl,it:CIB.it,words:CIB.words.slice(),cap:ciPadLabel()});
+  CIB=null; ciGo(3);
+}
+function ciBodyDrop(i){
+  var c=ciState(DASH.patient); c.body.splice(i,1); ciUpdate('patient');
+}
+function ciBodySVG(sel,onclick){
+  var dots='<defs><pattern id="cidot" width="7" height="7" patternUnits="userSpaceOnUse">'+
+    '<circle cx="2" cy="2" r="1.1" fill="rgba(238,245,244,.55)"/></pattern>'+
+    '<pattern id="cidoth" width="6" height="6" patternUnits="userSpaceOnUse">'+
+    '<circle cx="2" cy="2" r="1.4" fill="#E8927C"/></pattern></defs>';
+  var body=CI_BODY_R.map(function(r){
+    var on=(sel===r[0]);
+    return '<path class="cibp'+(on?' on':'')+'" d="'+r[2]+'" '+
+      'fill="url(#'+(on?'cidoth':'cidot')+')" '+
+      (onclick?'onclick="ciBodyPick(\''+r[0]+'\')" ':'')+
+      '><title>'+__tr(r[1])+'</title></path>';
+  }).join('');
+  return '<svg class="cibody" viewBox="0 0 200 310" role="img" aria-label="'+__tr('Body map')+'">'+
+    dots+body+'</svg>';
+}
+
+function ciInner(role){
+  const D=DASH[role], c=ciState(D);
+  const back=function(to,label){
+    return '<button class="itzx" onclick="'+(to==null?'dashNav(\''+role+'\',\'journey\')':'ciGo('+to+')')+'">'+
+      dIcon('arrow-left')+__tr(label||'Journey')+'</button>';
+  };
+  const wrap=function(inner,cls){
+    return '<div class="ciwrap '+(cls||'')+'">'+inner+'</div>';
+  };
+
+  /* ---- fim ---- */
+  if(c.done){
+    const kind=(c.q==='yellow'||c.q==='green')?'good':((c.q==='blue')?'hard':'mid');
     let extra='';
     if(kind==='good') extra='<button class="itzgo" onclick="ltStart()">'+dIcon('heart')+
       __tr('Write a letter for a hard day')+'</button>';
     else if(kind==='hard') extra='<button class="itzgo" onclick="badOn(1)">'+dIcon('moon')+
       __tr('Turn on Bad day mode')+'</button>';
-    return top+say(kind==='good'?'Good to hear. Want to bottle it?':'Thanks for telling me.')+
+    return wrap('<div class="citop">'+back(null)+'</div>'+
       '<div class="itzcard cidone2"><div class="cic2">'+dIcon('check')+'</div>'+
       '<h2>'+__tr('Check-in recorded')+'</h2>'+
       '<p class="itzh">'+__tr('Your team sees what you chose to share.')+'</p>'+
-      ciRecap(A)+
+      ciRecap(c)+
       '<div class="itznav" style="justify-content:center;gap:10px;flex-wrap:wrap">'+
-        '<button class="itzbk" onclick="ciReset(\''+role+'\')">'+__tr('New check-in')+'</button>'+
-        extra+
+        '<button class="itzbk" onclick="ciReset(\''+role+'\')">'+__tr('New check-in')+'</button>'+extra+
         '<button class="itzgo" onclick="dashNav(\''+role+'\',\'journey\')">'+__tr('Back to journey')+
-          dIcon('arrow-right')+'</button></div></div>';
+          dIcon('arrow-right')+'</button></div></div>');
   }
 
-  const st=CISTEPS[ci.step][0];
-  let field='', title='', hint='', canAdv=false;
-
-  if(st==='mood'){
-    title=__tr('How are you feeling?');
-    hint=__tr('Left to right: how pleasant. Bottom to top: how much energy.');
-    let g='';
-    for(let e=2;e>=-2;e--){
-      for(let p=-2;p<=2;p++){
-        const q=ciQuad(p,e), on=(A.pl===p&&A.en===e);
-        g+='<button class="cig q-'+q+(on?' on':'')+'" style="--i:'+(Math.abs(p)+Math.abs(e))+'" '+
-          'onclick="ciMood(\''+role+'\','+p+','+e+')" aria-label="'+__tr(CI_QNAME[q])+'"></button>';
-      }
-    }
-    field='<div class="cigrid">'+g+'</div>'+
-      '<div class="ciax"><span>'+__tr('Unpleasant')+'</span><span>'+__tr('Pleasant')+'</span></div>'+
-      (A.pl!=null?'<div class="ciqn q-'+ciQuad(A.pl,A.en)+'">'+__tr(CI_QNAME[ciQuad(A.pl,A.en)])+'</div>':'');
-    canAdv=(A.pl!=null);
+  /* ---- 0: o disco que roda, com o + ---- */
+  if(c.stage===0){
+    return wrap('<div class="citop">'+back(null)+'</div>'+
+      '<div class="ciopen">'+
+        '<h1>'+__tr('How are you feeling')+' <span class="citime">'+__tr(ciPartOfDay())+'</span>?</h1>'+
+        '<button class="cidisc" onclick="ciGo(1)" aria-label="'+__tr('Check in')+'">'+
+          '<svg viewBox="0 0 200 200" aria-hidden="true">'+
+            '<defs><linearGradient id="cidg" x1="0" y1="0" x2="1" y2="1">'+
+              '<stop offset="0%" stop-color="#E7C24C"/><stop offset="35%" stop-color="#D96B54"/>'+
+              '<stop offset="70%" stop-color="#5B7DB1"/><stop offset="100%" stop-color="#4FB3A0"/>'+
+            '</linearGradient></defs>'+
+            '<circle class="ring" cx="100" cy="100" r="82" pathLength="100"/>'+
+          '</svg>'+
+          '<span class="plus">'+dIcon('plus')+'</span>'+
+          '<span class="lb">'+__tr('Check in')+'</span>'+
+        '</button>'+
+        '<div class="ciopalt">'+
+          '<button onclick="dashNav(\''+role+'\',\'meals\')">'+dIcon('camera')+__tr('Check a meal instead')+'</button>'+
+          (ciLog().length?'<button onclick="dashNav(\''+role+'\',\'journey\')">'+dIcon('chart')+
+            ciLog().length+' '+__tr('check-ins so far')+'</button>':'')+
+        '</div>'+
+      '</div>','open');
   }
-  else if(st==='words'){
-    const q=ciQuad(A.pl,A.en);
-    title=__tr('Which words fit?');
-    hint=__tr('Pick up to two.');
-    field='<div class="itzchips ciw q-'+q+'">'+CI_WORDS[q].map(function(w){
-      return '<button class="itzchip'+(A.words.indexOf(w)>=0?' on':'')+'" '+
-        'onclick="ciPick(\''+role+'\',\'words\',\''+w+'\')">'+__tr(w)+'</button>';
+
+  /* ---- 1: os quatro quadrantes ---- */
+  if(c.stage===1){
+    const q=CI_QUADS.map(function(x){
+      return '<button class="ciq q-'+x[0]+(c.q===x[0]?' on':'')+'" onclick="ciQuadPick(\''+x[0]+'\')">'+
+        '<b>'+__tr(x[1])+'</b><span>'+__tr(x[2])+'</span></button>';
+    }).join('');
+    return wrap('<div class="citop">'+back(0)+'</div>'+
+      '<p class="cilead">'+__tr('Tap the colour that best describes how you feel right now')+'</p>'+
+      '<div class="ciquads">'+q+'</div>','quads');
+  }
+
+  /* ---- 2: as palavras, a do centro toma forma ---- */
+  if(c.stage===2){
+    const list=CI_EMO[c.q]||CI_EMO.green;
+    const bub=list.map(function(e,i){
+      return '<button class="cibub'+(c.word===e[0]?' sel':'')+'" data-w="'+esc(e[0])+'" data-d="'+
+        esc(e[1])+'" style="--i:'+i+'" onclick="ciWord(\''+e[0].replace(/'/g,"\\'")+'\')">'+
+        __tr(e[0])+'</button>';
+    }).join('');
+    return wrap('<div class="citop">'+back(1)+'</div>'+
+      '<div class="cicloudwrap q-'+c.q+'">'+
+        '<div class="cicloud" id="ciCloud">'+bub+'</div>'+
+        '<div class="cicap" id="ciCap"><b>'+__tr('Scroll')+'</b><span>'+
+          __tr('The word in the middle takes shape. Tap it to pick it.')+'</span></div>'+
+      '</div>','cloud');
+  }
+
+  /* ---- 4: o mapa do corpo ---- */
+  if(c.stage===4){
+    const sel=CIB&&CIB.r;
+    const lab=sel?(CI_BODY_R.filter(function(x){ return x[0]===sel; })[0][1]):'';
+    let pad='';
+    for(let y=1;y>=-1;y--) for(let x=-1;x<=1;x++)
+      pad+='<i data-x="'+x+'" data-y="'+y+'" class="'+((CIB&&CIB.pl===x&&CIB.it===y)?'on':'')+'" '+
+        'onclick="ciPad('+x+','+y+')"></i>';
+    return wrap('<div class="citop">'+back(3,'Back')+'</div>'+
+      '<p class="cilead">'+(sel?__tr('My')+' '+__tr(lab).toLowerCase()+' '+__tr('feels')
+        :__tr('Where do you notice a physical sensation?'))+'</p>'+
+      '<div class="cibodywrap">'+ciBodySVG(sel,1)+
+        (sel?'<div class="cibpanel">'+
+          '<div class="cipad" id="ciPad">'+pad+'</div>'+
+          '<div class="cipadcap" id="ciPadCap">'+ciPadLabel()+'</div>'+
+          '<div class="itzchips">'+CI_SENS.map(function(w){
+            return '<button class="itzchip'+((CIB&&CIB.words.indexOf(w)>=0)?' on':'')+'" '+
+              'onclick="ciSens(\''+w+'\',this)">'+__tr(w)+'</button>'; }).join('')+'</div>'+
+          '<button class="itzgo" onclick="ciBodySave()">'+__tr('Add it')+dIcon('arrow-right')+'</button>'+
+        '</div>'
+        :'<p class="cihint">'+__tr('It could be tension, warmth, tightness, pressure, tingling or something else entirely.')+'</p>')+
+      '</div>','body');
+  }
+
+  /* ---- 3: o detalhe, com o jornal e as etiquetas ---- */
+  const chips=function(k,list){
+    return '<div class="itzchips">'+list.map(function(v){
+      return '<button class="itzchip'+(c[k].indexOf(v)>=0?' on':'')+'" '+
+        'onclick="ciTog(\''+k+'\',\''+v.replace(/'/g,"\\'")+'\',this)">'+__tr(v)+'</button>';
     }).join('')+'</div>';
-    canAdv=A.words.length>0;
-  }
-  else if(st==='body'){
-    title=__tr('Where do you feel it?');
-    hint=__tr('Body sensations, if any.');
-    field='<div class="itzchips">'+CI_BODY.map(function(w){
-      return '<button class="itzchip'+(A.body.indexOf(w)>=0?' on':'')+'" '+
-        'onclick="ciPick(\''+role+'\',\'body\',\''+w+'\')">'+__tr(w)+'</button>';
-    }).join('')+'</div>';
-    canAdv=true;
-  }
-  else if(st==='ctx'){
-    title=__tr('Who and where?');
-    hint=__tr('This is what shows the pattern later.');
-    field='<span class="itzl">'+__tr('With')+'</span><div class="itzchips">'+CI_WHO.map(function(w){
-        return '<button class="itzchip'+(A.who.indexOf(w)>=0?' on':'')+'" '+
-          'onclick="ciPick(\''+role+'\',\'who\',\''+w+'\')">'+__tr(w)+'</button>'; }).join('')+'</div>'+
-      '<span class="itzl" style="margin-top:16px">'+__tr('Where')+'</span><div class="itzchips">'+
-      CI_WHERE.map(function(w){
-        return '<button class="itzchip'+(A.where.indexOf(w)>=0?' on':'')+'" '+
-          'onclick="ciPick(\''+role+'\',\'where\',\''+w+'\')">'+__tr(w)+'</button>'; }).join('')+'</div>';
-    canAdv=true;
-  }
-  else if(st==='why'){
-    title=__tr('What is driving it?');
-    hint=__tr('One line is enough.');
-    field='<textarea id="ci-text" class="itzta" rows="1" placeholder="'+__tr('In your own words…')+'" '+
-      'oninput="ciText(\''+role+'\',this.value);itzGrow(this)" '+
-      'onkeydown="if(event.key===\'Enter\'&&!event.shiftKey){event.preventDefault();var b=document.getElementById(\'ci-next\');if(b&&!b.disabled)b.click()}">'+
-      esc(A.why||'')+'</textarea>';
-    canAdv=true;
-  }
-  else {
-    title=__tr('Want to add a photo?');
-    hint=__tr('Optional.');
-    field=ciPhotoField(role);
-    canAdv=true;
-  }
-
-  return top+say(ciSay(ci))+
-    '<div class="itzcard ciq2" key="'+ci.step+'"><span class="itzk">'+__tr('Step')+' '+(ci.step+1)+' '+
-      __tr('of')+' '+N+'</span>'+
-    '<h2>'+title+'</h2><p class="itzh">'+hint+'</p>'+field+
-    '<div class="itznav">'+
-      (ci.step===0?'<span></span>':'<button class="itzbk" onclick="ciBack(\''+role+'\')">'+
-        dIcon('arrow-left')+__tr('Back')+'</button>')+
-      '<span></span>'+
-      '<button class="itzgo" id="ci-next" '+(canAdv?'':'disabled')+' onclick="ciNext(\''+role+'\')">'+
-        __tr(ci.step===N-1?'Finish':'Next')+dIcon('arrow-right')+'</button></div></div>';
+  };
+  let bodyCards='';
+  c.body.forEach(function(b,i){
+    bodyCards+='<div class="cibcard"><span class="mini">'+ciBodySVG(b.r,0)+'</span>'+
+      '<div><b>'+__tr('My')+' '+__tr(b.label).toLowerCase()+' '+__tr('feels')+'</b>'+
+      '<span>'+esc(b.cap)+(b.words.length?' · '+b.words.map(function(w){ return __tr(w); }).join(', '):'')+
+      '</span></div><button onclick="ciBodyDrop('+i+')" aria-label="'+__tr('Remove')+'">'+dIcon('x')+
+      '</button></div>';
+  });
+  return wrap('<div class="citop">'+back(2,'Back')+'</div>'+
+    '<div class="cifeel q-'+c.q+'">'+
+      '<svg class="blob" viewBox="0 0 200 200" aria-hidden="true">'+
+        '<path d="M16 26 C16 16 24 8 34 8 H166 C176 8 184 16 184 26 V104 C184 158 146 192 100 192 '+
+        'C54 192 16 158 16 104 Z"/></svg>'+
+      '<h1>'+__tr('I am feeling')+'<b>'+__tr(c.word||'')+'</b></h1>'+
+      '<button class="ciadd" onclick="ciGo(2)">'+dIcon('plus')+__tr('Change the word')+'</button>'+
+    '</div>'+
+    '<div class="cidetail">'+
+      '<textarea id="ciJ" class="itzta" rows="1" placeholder="'+__tr('Add a journal entry')+'" '+
+        'oninput="ciJournal(this.value);itzGrow(this)">'+esc(c.journal||'')+'</textarea>'+
+      '<span class="itzl">'+__tr('What are you doing?')+'</span>'+chips('doing',CI_DOING)+
+      '<span class="itzl">'+__tr('Who are you with?')+'</span>'+chips('who',CI_WHO)+
+      '<span class="itzl">'+__tr('Where are you?')+'</span>'+chips('where',CI_WHERE)+
+      '<span class="itzl">'+__tr('Body')+'</span>'+
+      bodyCards+
+      '<button class="cibodybtn" onclick="ciBodyOpen()">'+
+        '<span>'+__tr('Add physical sensations')+'</span><i>'+dIcon('user')+'</i></button>'+
+      '<div class="ciphwrap">'+ciPhotoField(role)+'</div>'+
+    '</div>'+
+    '<div class="cifoot"><button class="itzgo cidone" onclick="ciFinish(\''+role+'\')">'+
+      __tr('Complete check-in')+'</button></div>','detail');
 }
-function ciRecap(A){
-  var q=ciQuad(A.pl,A.en);
+function ciRecap(c){
   var line=[];
-  if(A.words.length) line.push(A.words.map(function(w){ return __tr(w); }).join(', '));
-  if(A.body.length) line.push(A.body.map(function(w){ return __tr(w); }).join(', '));
-  var ctx=(A.who||[]).concat(A.where||[]);
+  if(c.word) line.push(__tr(c.word));
+  if(c.body.length) line.push(c.body.map(function(b){ return __tr(b.label); }).join(', '));
+  var ctx=(c.doing||[]).concat(c.who||[],c.where||[]);
   if(ctx.length) line.push(ctx.map(function(w){ return __tr(w); }).join(', '));
-  if(A.why) line.push('“'+esc(A.why)+'”');
-  return '<div class="cirec q-'+q+'"><b>'+__tr(CI_QNAME[q])+'</b>'+
+  if(c.journal) line.push('“'+esc(c.journal)+'”');
+  return '<div class="cirec q-'+(c.q||'green')+'"><b>'+__tr(CI_QNAME[c.q||'green'])+'</b>'+
     (line.length?'<span>'+line.join(' · ')+'</span>':'')+'</div>';
 }
 function renderCheckin(D){
   const role=(D===DASH.doctor)?'doctor':(D===DASH.nutri?'nutri':'patient');
-  return '<div class="dsec jskin itz"><div class="itzwrap" id="ci-inner">'+ciInner(role)+'</div></div>';
+  return '<div class="dsec jskin itz cisec"><div class="itzwrap" id="ci-inner">'+ciInner(role)+'</div></div>';
 }
-function ciUpdate(role){ const el=document.getElementById('ci-inner'); if(!el){ dashSection(role); return; }
-  itzSwap(el,ciInner(role)); }
-function ciText(role,v){ ciState(DASH[role]).ans.why=v; }
-function ciNext(role){ const ci=ciState(DASH[role]);
-  if(ci.step<CISTEPS.length-1){ ci.step++; ciUpdate(role);
-    setTimeout(function(){ const t=document.getElementById('ci-text'); if(t){ itzGrow(t); t.focus({preventScroll:true}); } },60);
-    return; }
-  ci.done=true;
-  var A=ci.ans;
-  ciLogAdd({when:new Date().toISOString(),pl:A.pl,en:A.en,q:ciQuad(A.pl,A.en),
-    words:A.words.slice(),body:A.body.slice(),who:(A.who||[]).slice(),where:(A.where||[]).slice(),
-    why:A.why||''});
-  /* o check-in tambem marca o passo da jornada, se houver um aberto */
+/* a troca de passo so repinta o miolo, nunca a pagina */
+function ciUpdate(role){
+  const el=document.getElementById('ci-inner');
+  if(!el){ dashSection(role); return; }
+  const tmp=document.createElement('div');
+  tmp.innerHTML=ciInner(role);
+  const nw=tmp.querySelector('.ciwrap'), ow=el.querySelector('.ciwrap');
+  if(nw&&ow) ow.replaceWith(nw); else el.innerHTML=tmp.innerHTML;
+  renderIcons(el);
+  if(window.__applyLang){ try{__applyLang()}catch(e){} }
+}
+function ciFinish(role){
+  const c=ciState(DASH[role]);
+  if(!c.word){ toast(__tr('Pick how you feel first.')); ciGo(1); return; }
+  c.done=true;
+  ciLogAdd({when:new Date().toISOString(),q:c.q,words:[c.word],
+    body:c.body.map(function(b){ return b.label+(b.words.length?' ('+b.words.join(', ')+')':''); }),
+    who:(c.who||[]).slice(),where:(c.where||[]).slice(),doing:(c.doing||[]).slice(),
+    why:c.journal||''});
   var open=aqRead().filter(function(t){ return t.kind==='chk'&&!t.done; })[0];
   if(open){ var q=aqRead(); q.forEach(function(t){ if(t.id===open.id) t.done=1; }); aqSave(q); }
   ciUpdate(role);
 }
-function ciBack(role){ const ci=ciState(DASH[role]); if(ci.step>0){ ci.step--; ciUpdate(role); } }
-function ciReset(role){ DASH[role].ci={step:0,ans:{words:[],body:[],who:[],where:[]},done:false}; ciUpdate(role); }
+function ciReset(role){ DASH[role].ci=null; ciState(DASH[role]); ciUpdate(role); }
+/* compatibilidade com o resto da app */
+function ciDayKind(c){ return (c&&(c.q==='yellow'||c.q==='green'))?'good':((c&&c.q==='blue')?'hard':'mid'); }
 
 /* ---- a carta de um dia bom, lida num dia ruim ---- */
 var LT_KEY='mb.letters.v1';
@@ -13063,7 +13403,7 @@ function pHome(D){
   /* ---------- GENERAL: so o sino e so o avatar ---------- */
   const ini=esc(D.name).split(' ').slice(0,2).map(function(x){return x[0];}).join('').toUpperCase();
   // D.photo aceita a foto real do usuario; sem ela, ficam as iniciais no circulo
-  const av=D.photo?'<img src="'+esc(D.photo)+'" alt="">':ini;
+  const av=ini+toonSVG(D.name);
   const general=
    '<button class="bdot" onclick="dashNav(\'patient\',\'notificacoes\')" aria-label="'+
      __tr('Notifications')+(unread?' ('+unread+')':'')+'">'+dIcon('bell')+
@@ -13341,15 +13681,13 @@ function dgGo(i){
 function dgPro(who,name,role,m){
   const ini=name.replace(/^(Dr|Dra)\.?\s*/,'').split(' ').slice(0,2)
     .map(function(x){return x[0];}).join('').toUpperCase();
-  const ph=PPHOTO[who]||'';
+
   return '<div class="dgib dgib-pro" role="button" tabindex="0" '+
     'onclick="event.stopPropagation();dashNav(\'patient\',\'equipe\')" '+
     'onkeydown="if(event.key===\'Enter\'){event.stopPropagation();dashNav(\'patient\',\'equipe\')}" '+
     'aria-label="'+__tr('Open chat with')+' '+esc(name)+'">'+
     '<span class="dgib-when">'+m.when+'</span>'+
-    '<div class="dgpro"><span class="dgav">'+ini+
-      (ph?'<img src="'+ph+'" alt="" loading="lazy" onerror="this.remove()">':'')+
-      '<span class="dgreact">'+m.react+'</span></span>'+
+    '<div class="dgpro"><span class="dgav">'+ini+toonSVG(name)+'</span>'+
       '<span><b>'+esc(name)+'</b><span class="rl">'+__tr(role)+'</span></span></div>'+
     '<div class="dgmsg">'+__tr(m.txt)+'</div>'+
     '</div>';
@@ -13437,7 +13775,7 @@ function pHomeD(D){
   const tot=cur.days.length, dn=pDone(cur.id), pct=pPct(cur.id);
   const unread=D.notif.filter(function(n){return n[3];}).length;
   const ini=esc(D.name).split(' ').slice(0,2).map(function(x){return x[0];}).join('').toUpperCase();
-  const av=D.photo?'<img src="'+esc(D.photo)+'" alt="">':ini;
+  const av=ini+toonSVG(D.name);
   const ap=PAGENDA[0];
   const today=dshDay();
 
@@ -13447,6 +13785,8 @@ function pHomeD(D){
       '<div><h1>'+__tr(hhGreet())+', '+
         '<span class="flowtxt">'+givenName(D.name)+'</span></h1></div>'+
       '<div class="hhact dshsp">'+
+        '<button class="hhib" onclick="dashNav(\'patient\',\'meals\')" aria-label="'+
+          __tr('Meal check')+'" title="'+__tr('Meal check')+'">'+dIcon('camera')+'</button>'+
         '<button class="hhib" onclick="badOn(1)" aria-label="'+__tr('Bad day mode')+'" '+
           'title="'+__tr('Bad day mode')+'">'+dIcon('moon')+'</button>'+
         dshTestBtn(today)+
@@ -13488,12 +13828,26 @@ function pHomeD(D){
       '</div></div>';
 
   /* --- content: dois destaques com imagem --- */
-  // <!-- PLACEHOLDER --> as mesmas fotos de banco das categorias da pagina Content
-  const CONTPH=['photo-1559523161-0fc0d8b38a7a','photo-1642689690565-bf0afb7eb41e'];
-  const cont=CONTPH.map(function(id){
-    return '<div class="dgph" style="background-image:url(\'https://images.unsplash.com/'+
-      id+'?fm=jpg&q=72&w=900&auto=format&fit=crop\')"></div>';
-  }).join('');
+  /* o que esta a meio, e duas estantes — desenhado, sem fotos de banco */
+  const cnx=pNext(cur.id);
+  const ring=function(p){
+    const R=26, C=(2*Math.PI*R).toFixed(1);
+    return '<svg class="dgring" viewBox="0 0 64 64" aria-hidden="true">'+
+      '<circle cx="32" cy="32" r="'+R+'" class="trk"/>'+
+      '<circle cx="32" cy="32" r="'+R+'" class="val" stroke-dasharray="'+C+'" '+
+      'stroke-dashoffset="'+(C*(1-p/100)).toFixed(1)+'"/></svg>';
+  };
+  const shelf=[].concat(CATG[0][2][1],CATG[1][2][0]);
+  const cont=
+    '<div class="dgnow" style="--g1:'+cur.g1+';--g2:'+cur.g2+'">'+
+      '<span class="ic0">'+dIcon(cur.icon||'sparkles')+'</span>'+
+      '<div><span class="k">'+__tr(pct>0?'Continue watching':'Start here')+'</span>'+
+        '<b>'+esc(cnx?cnx.t:cur.title)+'</b>'+
+        '<span class="u">'+esc(cur.title)+' · '+dn+'/'+tot+'</span></div>'+
+      ring(pct)+'<span class="pc">'+pct+'%</span></div>'+
+    '<div class="dgshelf">'+[CATG[0][2][1],CATG[1][2][0]].map(function(c){
+      return '<span class="dgsh" style="--g1:'+c[2]+';--g2:'+c[3]+'">'+dIcon(c[1])+
+        '<b>'+__tr(c[0])+'</b></span>'; }).join('')+'</div>';
   const content=
     '<div class="dgc dgc-still dgc-glass dg-d'+dshCls('content',today)+'" role="button" tabindex="0" '+
       'onclick="dshGo(\'programas\',\'content\')" '+
@@ -13600,7 +13954,7 @@ function pHomeH(D){
   const tot=cur.days.length, dn=pDone(cur.id), pct=pPct(cur.id), nx=pNext(cur.id);
   const unread=D.notif.filter(function(n){return n[3];}).length;
   const ini=esc(D.name).split(' ').slice(0,2).map(function(x){return x[0];}).join('').toUpperCase();
-  const av=D.photo?'<img src="'+esc(D.photo)+'" alt="">':ini;
+  const av=ini+toonSVG(D.name);
   const doneTotal=PROGRAMS.reduce(function(a,p){ return a+pDone(p.id); },0);
   const dayTotal=PROGRAMS.reduce(function(a,p){ return a+p.days.length; },0);
   const bad=PEXAMS.filter(function(e){return e[3]==='bad';}).length;
@@ -14264,9 +14618,7 @@ function svTeamHTML(){
     t+='<button class="svtm" style="--dc:'+pr.c+';--dur:'+DR[i][0]+';--del:'+DR[i][1]+
       ';--dx:'+DR[i][2]+';--dy:'+DR[i][3]+'" onclick="svProOpen(\''+pr.k+'\')" '+
       'aria-label="'+esc(pr.name)+'">'+
-      '<span class="fc">'+
-        '<img src="'+pr.photo+'" alt="" loading="lazy" onerror="this.remove()">'+
-        (m&&m.react?'<span class="rx">'+m.react+'</span>':'')+
+      '<span class="fc">'+toonSVG(pr.name)+
         '<span class="plate"><b>'+esc(pr.name)+'</b>'+
         '<span>'+__tr(pr.role)+'</span></span>'+
       '</span></button>';
@@ -14290,8 +14642,7 @@ function svProOpen(k){
   let cv='';
   pr.cv.forEach(function(r){ cv+='<div><b>'+r[0]+'</b><span>'+__tr(r[1])+'</span></div>'; });
   box.innerHTML='<div class="svmbox svpf" onclick="event.stopPropagation()">'+
-    '<div class="hd"><span class="av">'+
-      '<img src="'+pr.photo+'" alt="" onerror="this.remove()"></span>'+
+    '<div class="hd"><span class="av">'+toonSVG(pr.name)+'</span>'+
       '<span><h3>'+esc(pr.name)+'</h3>'+
         '<span class="rl">'+__tr(pr.role)+'</span>'+
         '<span class="crm">'+esc(pr.crm)+' · '+__tr('with you since')+' '+
@@ -14490,12 +14841,68 @@ function dproToday(){
           [tag,'11:30','Maria Oliveira','Follow-up'],
           [tag,'15:00','Carlos Mendes','Evaluation']];
 }
+/* =====================================================================
+   RETRATOS DESENHADOS — nada de fotos de banco na app.
+   O mesmo traco do About us, agora gerado a partir do nome: a mesma
+   pessoa fica sempre com o mesmo rosto.
+   ===================================================================== */
+var TOON_SKIN=[['#E8BE95','#D6A87E'],['#C98B62','#B87A52'],['#8D5A3B','#7C4C31'],
+  ['#F0D3B4','#DDBE9C'],['#6B4327','#59371F']];
+var TOON_HAIR=['#22181A','#3A2320','#5A3A22','#8A6A4A','#2B2B33','#7A5C8E'];
+var TOON_BG=['#DFF0EC','#F7E3DA','#E7EFF9','#FAEFDC','#EAE4F2','#E4F1E8'];
+var TOON_WEAR=['#2A9D8F','#5B7DB1','#E76F51','#7A5C8E','#D9A420','#114B5F'];
+var TOON_STYLE=['short','bob','curly','bald','bun'];
+function toonHash(str){
+  var h=0, s2=String(str||'');
+  for(var i=0;i<s2.length;i++){ h=(h*31+s2.charCodeAt(i))>>>0; }
+  return h;
+}
+function toonOpts(name){
+  var h=toonHash(name), pick=function(arr,sh){ return arr[((h>>>sh)%arr.length)]; };
+  var sk=pick(TOON_SKIN,0);
+  return {skin:sk[0],skin2:sk[1],hair:pick(TOON_HAIR,3),
+    bg:pick(TOON_BG,6),wear:pick(TOON_WEAR,9),style:pick(TOON_STYLE,12),
+    beard:(((h>>>15)%3)===0),glasses:(((h>>>17)%3)===0),coat:'#FFFFFF'};
+}
+/* o desenho: cabeca, cabelo, ombros. Sem fotos, sem emojis por cima. */
+function toonSVG(name,opt){
+  var a=Object.assign(toonOpts(name),opt||{});
+  var F='#0C333F';
+  var crown='', back='';
+  if(a.style==='short') crown='<path d="M64 88c0-28 16-42 36-42s36 14 36 42c0-16-12-22-36-22S64 72 64 88Z" fill="'+a.hair+'"/>';
+  if(a.style==='bob'){
+    back='<path d="M58 96c0-34 18-52 42-52s42 18 42 52c0 20-6 32-12 36 2-26-6-44-30-44s-32 18-30 44c-6-4-12-16-12-36Z" fill="'+a.hair+'"/>';
+    crown='<path d="M64 86c0-26 16-40 36-40s36 14 36 40c0-14-12-20-36-20S64 72 64 86Z" fill="'+a.hair+'"/>';
+  }
+  if(a.style==='curly') crown='<g fill="'+a.hair+'"><circle cx="76" cy="62" r="15"/><circle cx="100" cy="54" r="17"/>'+
+    '<circle cx="124" cy="62" r="15"/><circle cx="66" cy="80" r="12"/><circle cx="134" cy="80" r="12"/></g>';
+  if(a.style==='bun') crown='<circle cx="100" cy="40" r="12" fill="'+a.hair+'"/>'+
+    '<path d="M64 88c0-28 16-42 36-42s36 14 36 42c0-16-12-22-36-22S64 72 64 88Z" fill="'+a.hair+'"/>';
+  var beard=a.beard?'<path d="M68 92c0 30 14 44 32 44s32-14 32-44c0 18-14 24-32 24s-32-6-32-24Z" fill="'+a.hair+'" opacity=".92"/>':'';
+  var glasses=a.glasses
+    ? '<g fill="none" stroke="'+F+'" stroke-width="3.4"><rect x="72" y="82" width="26" height="22" rx="8"/>'+
+      '<rect x="102" y="82" width="26" height="22" rx="8"/><path d="M98 91h4"/>'+
+      '<path d="M72 89l-8 3"/><path d="M128 89l8 3"/></g>'
+    : '';
+  return '<svg class="toonav" viewBox="0 0 200 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+
+    '<rect width="200" height="200" fill="'+a.bg+'"/>'+back+
+    '<rect x="86" y="112" width="28" height="36" rx="13" fill="'+a.skin2+'"/>'+
+    '<path d="M72 128 L100 180 L128 128Z" fill="'+a.wear+'"/>'+
+    '<path d="M14 200 C14 158 48 139 74 130 L100 178 L126 130 C152 139 186 158 186 200Z" fill="'+a.coat+'"/>'+
+    '<g fill="none" stroke="rgba(12,51,63,.13)" stroke-width="2.4" stroke-linecap="round">'+
+    '<path d="M74 130 L100 178"/><path d="M126 130 L100 178"/></g>'+
+    '<circle cx="65" cy="96" r="8.5" fill="'+a.skin+'"/><circle cx="135" cy="96" r="8.5" fill="'+a.skin+'"/>'+
+    crown+
+    '<ellipse cx="100" cy="92" rx="34" ry="38" fill="'+a.skin+'"/>'+beard+
+    '<g fill="'+F+'"><ellipse cx="87" cy="93" rx="3.4" ry="4.2"/><ellipse cx="113" cy="93" rx="3.4" ry="4.2"/></g>'+
+    '<g fill="none" stroke="'+F+'" stroke-width="2.6" stroke-linecap="round">'+
+    '<path d="M80 81 Q87 77 94 81"/><path d="M106 81 Q113 77 120 81"/>'+
+    '<path d="M90 108 Q100 116 110 108"/></g>'+glasses+'</svg>';
+}
 function dproAv(name){
   const ini=String(name).replace(/^(Dr|Dra)\.?\s*/,'').split(' ').slice(0,2)
     .map(function(x){return x[0];}).join('').toUpperCase();
-  const ph=DPPH[name]||'';
-  return '<span class="dgav">'+ini+
-    (ph?'<img src="'+ph+'" alt="" loading="lazy" onerror="this.remove()">':'')+'</span>';
+  return '<span class="dgav">'+ini+toonSVG(name)+'</span>';
 }
 
 /* ============ AGENDA, CONSTELACAO E MASCOTE DO PAINEL (Sep 15) ============ */
@@ -15056,7 +15463,7 @@ function proDash(role){
   const ini=esc(D.name).replace(/^(Dr|Dra)\.?\s*/,'').split(' ').slice(0,2)
     .map(function(x){return x[0];}).join('').toUpperCase();
   const ph=DPHOTO[role]||'';
-  const av=ini+(ph?'<img src="'+ph+'" alt="" onerror="this.remove()">':'');
+  const av=ini+toonSVG(D.name);
   const today=dproToday();
   const open=DINBOX.filter(function(x){return x.open;}).length;
   const risky=D.patients.filter(function(p){ return p.risk==='moderate'||p.adhc==='warn'; }).length;
@@ -16861,6 +17268,37 @@ routeFromHash();
     "Closed visits":"Consultas fechadas","Gross":"Bruto","Set aside":"Separado","Left for you":"Fica para você",
     "Sessions to invoice":"Sessões a faturar","Export CSV":"Exportar CSV","Issue invoice":"Emitir nota","Mark invoiced":"Marcar faturada",
     "Invoiced":"Faturada","Send to my accountant":"Enviar ao contador",
+    "Check in":"Fazer check-in","How are you feeling":"Como você está","this morning":"esta manhã",
+    "this afternoon":"esta tarde","this evening":"esta noite","Check a meal instead":"Checar uma refeição",
+    "check-ins so far":"check-ins até agora","Tap the colour that best describes how you feel right now":"Toque na cor que melhor descreve como você está agora",
+    "High energy":"Muita energia","Low energy":"Pouca energia","Scroll":"Role",
+    "The word in the middle takes shape. Tap it to pick it.":"A palavra do meio ganha forma. Toque para escolher.",
+    "I am feeling":"Eu estou","Change the word":"Trocar a palavra","Add a journal entry":"Escrever no diário",
+    "What are you doing?":"O que você está fazendo?","Who are you with?":"Com quem você está?","Where are you?":"Onde você está?",
+    "Body":"Corpo","Add physical sensations":"Adicionar sensações do corpo","Complete check-in":"Concluir check-in",
+    "Where do you notice a physical sensation?":"Onde você sente algo no corpo?",
+    "It could be tension, warmth, tightness, pressure, tingling or something else entirely.":"Pode ser tensão, calor, aperto, pressão, formigamento ou outra coisa.",
+    "My":"Meu","feels":"está","Add it":"Adicionar","Body map":"Mapa do corpo","Pick how you feel first.":"Escolha antes como você está.",
+    "Tap a part of the body first.":"Toque primeiro numa parte do corpo.","Neutral":"Neutro","high intensity":"intensidade alta",
+    "medium intensity":"intensidade média","low intensity":"intensidade baixa",
+    "Head":"Cabeça","Neck":"Pescoço","Chest":"Peito","Stomach":"Estômago","Left arm":"Braço esquerdo","Right arm":"Braço direito",
+    "Hands":"Mãos","Hips":"Quadril","Left leg":"Perna esquerda","Right leg":"Perna direita","Feet":"Pés",
+    "Tight":"Apertado","Warm":"Quente","Heavy":"Pesado","Light":"Leve","Sore":"Dolorido","Tingling":"Formigando",
+    "Trembling":"Tremendo","Fluttery":"Vibrando","Numb":"Dormente","Pressure":"Pressão",
+    "Fitness":"Treino","Driving":"Dirigindo","Resting":"Descansando","Hobbies":"Hobbies","Hanging out":"Com gente",
+    "Eating":"Comendo","Working":"Trabalhando","Caring for someone":"Cuidando de alguém",
+    "By myself":"Sozinho","Family":"Família","Partner":"Parceiro","Friends":"Amigos","Co-workers":"Colegas","Pets":"Pets",
+    "Home":"Casa","Work":"Trabalho","Outside":"Rua","Commuting":"No trajeto","School":"Escola","Training":"Treino",
+    "Excited":"Animado","Joyful":"Alegre","Energized":"Com energia","Proud":"Orgulhoso","Hopeful":"Esperançoso",
+    "Playful":"Brincalhão","Motivated":"Motivado","Inspired":"Inspirado","Confident":"Confiante","Amazed":"Impressionado",
+    "Cheerful":"Contente","Alive":"Vivo","Anxious":"Ansioso","Irritated":"Irritado","Frustrated":"Frustrado",
+    "Overwhelmed":"Sobrecarregado","Angry":"Com raiva","Worried":"Preocupado","Tense":"Tenso","Restless":"Inquieto",
+    "Pressured":"Pressionado","Scared":"Com medo","Embarrassed":"Envergonhado","Jealous":"Com ciúme",
+    "Sad":"Triste","Tired":"Cansado","Lonely":"Sozinho","Drained":"Esgotado","Discouraged":"Desanimado","Down":"Para baixo",
+    "Bored":"Entediado","Guilty":"Culpado","Apathetic":"Apático","Withdrawn":"Retraído",
+    "Calm":"Calmo","Content":"Satisfeito","Grateful":"Grato","Relaxed":"Relaxado","Safe":"Seguro","Rested":"Descansado",
+    "Peaceful":"Em paz","Balanced":"Equilibrado","Comfortable":"Confortável","Thankful":"Agradecido","Mellow":"Tranquilo","Serene":"Sereno",
+    "Continue watching":"Continuar assistindo","Start here":"Comece aqui",
     "Set up the assistant":"Configurar o assistente","Edit what it may use":"Editar o que pode usar",
     "The assistant only uses the facts you tick. Anything else it hands back to you.":"O assistente usa só os factos que você marcar. O resto devolve para você.",
     "Everything here is already on file for":"Tudo isto já está registado sobre",
