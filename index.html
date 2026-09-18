@@ -2087,6 +2087,22 @@ body.apphallow .dfab{box-shadow:0 10px 30px rgba(0,0,0,.5)}
    compara ou leva a uma acao. Nada de bloco decorativo.
    ========================================================================= */
 .dsh{max-width:1240px;margin:0 auto;padding-bottom:clamp(28px,3.4vw,48px)}
+/* ---- o fundo do painel deixa de ser folha em branco: papel quadriculado,
+   tres focos de cor da marca e o anel aberto grande ao canto ---- */
+body:not(.jdark):not(.appdark):not(.apphallow) #patient .dsh{position:relative}
+body:not(.jdark):not(.appdark):not(.apphallow) #patient .dsh::before{content:"";position:fixed;
+  inset:0;z-index:0;pointer-events:none;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230C333F' stroke-opacity='.075' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M18.6 7.9A8 8 0 1 0 20 12.4'/%3E%3C/svg%3E")
+      right -5vw bottom -9vh / clamp(280px,44vw,520px) clamp(280px,44vw,520px) no-repeat,
+    radial-gradient(62% 50% at 12% 6%,rgba(42,157,143,.11),transparent 62%),
+    radial-gradient(54% 46% at 90% 12%,rgba(91,125,177,.10),transparent 66%),
+    radial-gradient(72% 58% at 58% 106%,rgba(231,111,81,.08),transparent 68%),
+    repeating-linear-gradient(0deg,rgba(12,51,63,.05) 0 1px,transparent 1px 38px),
+    repeating-linear-gradient(90deg,rgba(12,51,63,.05) 0 1px,transparent 1px 38px);
+  -webkit-mask-image:radial-gradient(118% 96% at 50% 38%,#000 34%,rgba(0,0,0,.4) 80%,transparent);
+  mask-image:radial-gradient(118% 96% at 50% 38%,#000 34%,rgba(0,0,0,.4) 80%,transparent)}
+body:not(.jdark):not(.appdark):not(.apphallow) #patient .dsh>*{position:relative;z-index:1}
 .dshhi{display:flex;align-items:center;gap:16px;margin-bottom:clamp(12px,1.5vw,18px)}
 .dshhi h1 .flowtxt{color:transparent;animation-duration:24s}
 .dshhi h1{font-family:var(--display);font-weight:700;letter-spacing:-.02em;
@@ -3328,6 +3344,13 @@ body.badday .dfab{display:none}
   background:radial-gradient(80% 90% at 80% 0,rgba(255,255,255,.25),transparent 62%)}
 .dgsh .ic{font-size:20px;display:flex;opacity:.9}
 .dgsh b{font-family:var(--display);font-size:13px;font-weight:600}
+/* a mesma linguagem do Content: arte de fundo + a marca ao canto */
+.dgnow>*,.dgsh>*{position:relative;z-index:2}
+.dgnow::before,.dgsh::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:right -32% center/auto 250% no-repeat url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' fill='none' stroke='%23fff' stroke-linecap='round'%3E%3Cpath d='M87.9 26.4A46 46 0 1 0 96 52.3' stroke-width='8' stroke-opacity='.11'/%3E%3Cpath d='M76.4 33.6A32 32 0 1 0 82 51.6' stroke-width='7' stroke-opacity='.095'/%3E%3Cpath d='M64.8 40.8A18 18 0 1 0 68 50.9' stroke-width='6' stroke-opacity='.08'/%3E%3C/svg%3E")}
+.dgsh::before{background-position:right -52% bottom -42%;background-size:auto 215%}
+.dgbm{position:absolute;top:9px;right:10px;width:15px;height:15px;z-index:3;color:#fff;opacity:.62}
+.dgbm svg{width:100%;height:100%;stroke-width:2.2}
 
 /* a passagem entre a Journey e os formularios: fade curto, sem salto */
 .dwrap.dswap>.dsec{animation:dSwapIn .42s cubic-bezier(.2,.8,.3,1)}
@@ -9782,8 +9805,8 @@ function ciWord(w){
   var c=ciState(DASH.patient);
   c.word=w; ciGo(3);
 }
-function ciBub(el){
-  if(CIMAP&&CIMAP.moved>6) return;      /* veio de um arrasto, nao de um toque */
+function ciBub(el,e){
+  if(e&&e.detail) return;               /* o rato ja foi tratado no pointerup */
   ciWord(el.dataset.w);
 }
 function ciPickMid(){
@@ -9866,16 +9889,23 @@ function ciMapInit(q){
   },{passive:true});
   /* nada de setPointerCapture: apanhar o ponteiro aqui matava o clique nas bolhas */
   box.addEventListener('pointerdown',function(e){
-    st.drag=1; st.moved=0; st.vx=st.vy=0;      /* o campo para: o que esta debaixo do dedo fica la */
+    st.drag=1; st.moved=0; st.vx=st.vy=0;
+    st.tx=st.x; st.ty=st.y;                    /* gela ja: nada foge debaixo do dedo */
     st.px=e.clientX; st.py=e.clientY;
+    var t=document.elementFromPoint(e.clientX,e.clientY);
+    st.hit=(t&&t.closest)?t.closest('.cibub'):null;
   });
   box.addEventListener('pointerup',function(e){
     var tap=st.drag&&st.moved<6; st.drag=0; st.vx=st.vy=0;
     if(!tap) return;
-    if(e.target&&e.target.closest&&e.target.closest('.cibub')) return;  /* o onclick trata */
-    var r=box.getBoundingClientRect();
-    var d=Math.hypot(e.clientX-(r.left+r.width/2),e.clientY-(r.top+r.height/2));
-    if(d<110&&box.__w) ciWord(box.__w);           /* tocou no centro: fica a do meio */
+    /* nao confiamos no alvo do clique: apanha-se a palavra mais perto do toque */
+    var best=null, bd=1e9;
+    field.querySelectorAll('.cibub').forEach(function(el){
+      var r2=el.getBoundingClientRect();
+      var d2=Math.hypot(e.clientX-(r2.left+r2.width/2),e.clientY-(r2.top+r2.height/2));
+      if(d2<bd){ bd=d2; best=el; }
+    });
+    if(best&&bd<96) ciWord(best.dataset.w);
   });
   box.addEventListener('pointercancel',function(){ st.drag=0; });
   box.addEventListener('pointerleave',function(){ st.drag=0; st.vx=st.vy=0; });
@@ -10174,7 +10204,7 @@ function ciInner(role){
     const cells=ciCells().map(function(e){
       return '<button class="cibub q-'+e.q+(c.word===e.w?' sel':'')+'" data-w="'+esc(e.w)+'" '+
         'data-d="'+esc(e.d)+'" style="--cx:'+(e.c*(CI_CELL+CI_GAP))+'px;--cy:'+
-        (e.r*(CI_CELL+CI_GAP))+'px" onclick="ciBub(this)">'+__tr(e.w)+'</button>';
+        (e.r*(CI_CELL+CI_GAP))+'px" onclick="ciBub(this,event)">'+__tr(e.w)+'</button>';
     }).join('');
     return wrap('<div class="citop">'+back(1)+'</div>'+
       '<div class="cimapwrap">'+
@@ -14149,6 +14179,9 @@ function pHomeD(D){
       'stroke-dashoffset="'+(C*(1-p/100)).toFixed(1)+'"/></svg>';
   };
   const shelf=[].concat(CATG[0][2][1],CATG[1][2][0]);
+  /* o anel aberto da marca, o mesmo que o Content poe nos tiles */
+  const mark='<span class="dgbm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" '+
+    'stroke-linecap="round" aria-hidden="true"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>';
   const cont=
     '<div class="dgnow" style="--g1:'+cur.g1+';--g2:'+cur.g2+'">'+
       '<span class="ic0">'+dIcon(cur.icon||'sparkles')+'</span>'+
@@ -14157,8 +14190,8 @@ function pHomeD(D){
         '<span class="u">'+esc(cur.title)+' · '+dn+'/'+tot+'</span></div>'+
       ring(pct)+'<span class="pc">'+pct+'%</span></div>'+
     '<div class="dgshelf">'+[CATG[0][2][1],CATG[1][2][0]].map(function(c){
-      return '<span class="dgsh" style="--g1:'+c[2]+';--g2:'+c[3]+'">'+dIcon(c[1])+
-        '<b>'+__tr(c[0])+'</b></span>'; }).join('')+'</div>';
+      return '<span class="dgsh" style="--g1:'+c[2]+';--g2:'+c[3]+'">'+mark+
+        dIcon(c[1])+'<b>'+__tr(c[0])+'</b></span>'; }).join('')+'</div>';
   const content=
     '<div class="dgc dgc-still dgc-glass dg-d'+dshCls('content',today)+'" role="button" tabindex="0" '+
       'onclick="dshGo(\'programas\',\'content\')" '+
