@@ -1659,6 +1659,19 @@ body.dark .hf-wash{opacity:.20;filter:blur(130px)}
 .apburger .apx{opacity:0;transform:rotate(-90deg) scale(.8)}
 .apburger.open .apbar{opacity:0;transform:rotate(90deg) scale(.8)}
 .apburger.open .apx{opacity:1;transform:none}
+/* troca rapida de painel: paciente / psiquiatra / nutricionista */
+.aprole{display:flex;align-items:center;gap:2px;padding:3px;border-radius:99px;margin-left:12px;
+  background:rgba(238,245,244,.07);border:1px solid rgba(238,245,244,.14);flex-shrink:0}
+.aprole button{display:inline-flex;align-items:center;gap:6px;border:0;background:none;cursor:pointer;
+  font:inherit;font-size:12px;font-weight:600;color:rgba(238,245,244,.62);padding:6px 11px;
+  border-radius:99px;white-space:nowrap;transition:background .2s ease,color .2s ease}
+.aprole button:hover{color:#F2ECE0}
+.aprole button.on{background:rgba(238,245,244,.16);color:#F2ECE0}
+.aprole .ic{display:flex;font-size:14px}
+@media(max-width:1240px){.aprole button b{display:none}.aprole button{padding:6px 9px}}
+@media(max-width:700px){.aprole{display:none}}
+.apmenu .aprolelb{display:block;font-family:var(--quiet);font-size:9px;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--soft);padding:9px 14px 3px}
 .apmenu{position:absolute;top:calc(var(--aph) - 6px);right:18px;min-width:214px;background:var(--card);
   color:var(--ink);border:1px solid var(--line);border-radius:14px;
   box-shadow:0 20px 50px rgba(0,0,0,.25);overflow:hidden;display:none;z-index:60;padding:6px}
@@ -3475,7 +3488,8 @@ body.jdark{transition:background .3s ease}
 /* 4: o corpo */
 .cibodywrap{display:grid;gap:22px;justify-items:center;align-items:center}
 @media(min-width:900px){
-  .ciwrap.body .cibodywrap{grid-template-columns:minmax(0,360px) minmax(0,1fr);text-align:left}
+  .ciwrap.body .cibodywrap{grid-template-columns:minmax(0,318px) minmax(0,376px);
+    justify-content:center;gap:26px;text-align:left}
   .ciwrap.body .cibpanel{justify-items:start}
   .ciwrap.body .cipadbox{justify-items:start}
 }
@@ -3484,12 +3498,6 @@ body.jdark{transition:background .3s ease}
 .cibp:hover{opacity:.75}
 .cibp.on{filter:drop-shadow(0 0 12px rgba(232,146,124,.5))}
 .cibpanel{width:100%;max-width:420px;display:grid;gap:12px;justify-items:center}
-.cipad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;width:132px}
-.cipad i{width:34px;height:34px;border-radius:50%;background:rgba(238,245,244,.10);cursor:pointer;
-  transition:background .2s ease,transform .2s ease}
-.cipad i:hover{background:rgba(238,245,244,.2)}
-.cipad i.on{background:#E8927C;transform:scale(1.1)}
-.cipadcap{font-family:var(--display);font-size:14px;color:#E8927C}
 .cibcard{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:16px;
   background:rgba(238,245,244,.05);border:1px solid rgba(238,245,244,.12);margin-top:8px}
 .cibcard .mini{width:38px;flex-shrink:0}
@@ -3535,20 +3543,22 @@ body.jdark{transition:background .3s ease}
   font-family:var(--quiet);letter-spacing:.04em}
 .ci3hint .ic{display:flex;font-size:13px}
 /* --- a grelha de intensidade, maior --- */
-.cipadbox{display:grid;grid-template-columns:auto 1fr;gap:8px 10px;align-items:center;
-  justify-items:center}
-.cipadbox .ax{font-family:var(--quiet);font-size:10px;font-weight:700;letter-spacing:.1em;
-  text-transform:uppercase;color:var(--soft)}
-.cipadbox .ay{writing-mode:vertical-rl;transform:rotate(180deg)}
-.cipadbox .ax2{grid-column:2;display:flex;justify-content:space-between;width:268px;
-  max-width:78vw;padding:0 2px}
+.cipadbox{--dot:clamp(34px,7vw,46px);--dgap:clamp(7px,1.3vw,11px);
+  display:flex;align-items:stretch;gap:11px;width:max-content;max-width:100%}
+.cipadbox .ax{font-family:var(--quiet);font-size:10px;font-weight:700;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--soft);white-space:nowrap}
+.cipadbox .ay{writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;
+  justify-content:center;padding-bottom:20px}
+.cipadcol{display:flex;flex-direction:column;align-items:stretch;gap:8px;min-width:0}
+.cipad{display:grid;grid-template-columns:repeat(5,var(--dot));gap:var(--dgap);justify-content:start}
+.cipadbox .ax2{display:flex;justify-content:space-between;align-items:center;align-self:stretch}
 .cipadbox .ax2 i{font-style:normal}
-.cipad{display:grid;grid-template-columns:repeat(5,44px);gap:10px;justify-content:center}
-.cipad i{width:44px;height:44px;border-radius:50%;background:rgba(238,245,244,.10);cursor:pointer;
-  transition:background .2s ease,transform .2s cubic-bezier(.2,1.2,.4,1)}
+.cipad i{width:var(--dot);height:var(--dot);border-radius:50%;background:rgba(238,245,244,.10);
+  cursor:pointer;transition:background .2s ease,transform .2s cubic-bezier(.2,1.2,.4,1)}
 .cipad i:hover{background:rgba(238,245,244,.24)}
-.cipad i.on{background:#E8927C;transform:scale(1.14);box-shadow:0 0 18px rgba(232,146,124,.55)}
-.cipadcap{font-family:var(--display);font-size:16px;color:#E8927C}
+.cipad i.on{background:#E8927C;transform:scale(1.12);box-shadow:0 0 18px rgba(232,146,124,.55)}
+.cipadcap{font-family:var(--display);font-size:16px;color:#E8927C;text-align:center}
+@media(min-width:900px){.ciwrap.body .cipadcap{text-align:left}}
 @media(max-width:560px){
   .cimap{height:min(52vh,420px)}
   .ci3{width:min(84vw,300px)}
@@ -8759,10 +8769,24 @@ function renderDash(role){
         inner:'<span class="apavc">'+ini+'</span>'});
       return apBtn({on:D.sec===s[0],act:"dashNav('"+role+"','"+s[0]+"')",lab:__tr(s[1]),inner:dIcon(s[2])});
     }).join('')+'</nav>';
+  const ROLES=[['patient','Patient','user'],['doctor','Psychiatrist','stethoscope'],
+    ['nutri','Nutritionist','apple']];
+  const aprole=
+    '<div class="aprole" role="group" aria-label="'+__tr('Switch panel')+'">'+
+      ROLES.map(function(x){
+        return '<button class="'+(role===x[0]?'on':'')+'" onclick="go(\''+x[0]+'\')" '+
+          'aria-label="'+__tr(x[1])+'">'+dIcon(x[2])+'<b>'+__tr(x[1])+'</b></button>';
+      }).join('')+
+    '</div>';
   const apmenu=
     '<button class="apburger" id="apBurger-'+role+'" onclick="appMenu(\''+role+'\',event)" aria-label="'+__tr('Menu')+'">'+
       '<span class="ic apbar" data-icon="menu"></span><span class="ic apx" data-icon="x"></span></button>'+
     '<div class="apmenu" id="apMenu-'+role+'">'+
+      '<span class="aprolelb">'+__tr('Switch panel')+'</span>'+
+      ROLES.map(function(x){
+        return '<button onclick="apMenuSet(false);go(\''+x[0]+'\')">'+dIcon(x[2])+__tr(x[1])+
+          (role===x[0]?'<span class="tbd">'+__tr('Now')+'</span>':'')+'</button>';
+      }).join('')+
       '<button onclick="apMenuSet(false);toast(\''+__tr('Settings — to be developed')+'\')">'+
         dIcon('settings')+__tr('Settings')+
         '<span class="tbd">'+__tr('TBD')+'</span></button>'+
@@ -8771,6 +8795,7 @@ function renderDash(role){
   el.innerHTML=
     '<div class="dtop'+(app?' apptop':'')+'">'+
       '<a class="logo'+(app?' logo-only':'')+'" onclick="dashNav(\''+role+'\',\'inicio\')" style="cursor:pointer"><span class="logo-mark"><svg viewBox="0 0 24 24"><path d="M18.6 7.9A8 8 0 1 0 20 12.4"/></svg></span>'+(app?'':'Metabolicamente')+'</a>'+
+      (app?aprole:'')+
       (app?apnav:'')+
       '<div class="dsp"></div>'+
       (app?apmenu
@@ -9985,54 +10010,141 @@ function ciRgName(k){
   var f=CI_RG.filter(function(x){ return x[0]===k; })[0];
   return f?f[1]:k;
 }
-var CI_PTS=null;
-function ciBodyPoints(){
-  if(CI_PTS) return CI_PTS;
-  var P=[], rnd=function(){ return Math.random()*2-1; };
-  /* esfera achatada: x,y,z com raios proprios */
-  var blob=function(n,cx,cy,cz,rx,ry,rz,reg,front){
-    for(var i=0;i<n;i++){
-      var u=Math.random()*Math.PI*2, v=Math.acos(2*Math.random()-1);
-      var x=Math.sin(v)*Math.cos(u), y=Math.cos(v), z=Math.sin(v)*Math.sin(u);
-      if(front===1&&z<0.1) continue;
-      if(front===-1&&z>-0.1) continue;
-      P.push({x:cx+x*rx,y:cy+y*ry,z:cz+z*rz,r:reg});
+var CI_MESH=null;
+/* ---------------------------------------------------------------
+   O corpo e uma malha de verdade: cada parte nasce de aneis
+   (um torno para o tronco e a cabeca, um tubo para os membros),
+   os aneis costuram-se em triangulos e cada triangulo guarda a
+   regiao a que pertence. Assim ha sombreado, silhueta limpa e o
+   clique acerta na area exacta.
+   --------------------------------------------------------------- */
+function ciBodyMesh(){
+  if(CI_MESH) return CI_MESH;
+  var V=[], F=[];
+  var pv=function(x,y,z){ V.push(x,y,z); return V.length/3-1; };
+  var nrm=function(a){ var l=Math.hypot(a[0],a[1],a[2])||1; return [a[0]/l,a[1]/l,a[2]/l]; };
+  var crs=function(a,b){ return [a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]]; };
+  /* poe um triangulo com a normal virada para fora (ref da o lado de dentro) */
+  var face=function(i0,i1,i2,reg,ref){
+    var ax=[V[i1*3]-V[i0*3],V[i1*3+1]-V[i0*3+1],V[i1*3+2]-V[i0*3+2]];
+    var bx=[V[i2*3]-V[i0*3],V[i2*3+1]-V[i0*3+1],V[i2*3+2]-V[i0*3+2]];
+    var n=crs(ax,bx);
+    var mx=(V[i0*3]+V[i1*3]+V[i2*3])/3,
+        my=(V[i0*3+1]+V[i1*3+1]+V[i2*3+1])/3,
+        mz=(V[i0*3+2]+V[i1*3+2]+V[i2*3+2])/3;
+    var c=ref(mx,my,mz);
+    if(n[0]*(mx-c[0])+n[1]*(my-c[1])+n[2]*(mz-c[2])<0){ var t=i1; i1=i2; i2=t; }
+    F.push([i0,i1,i2,(typeof reg==='function')?reg(mx,my,mz):reg]);
+  };
+  var stitch=function(rings,seg,reg,ref){
+    for(var k=1;k<rings.length;k++){
+      var a=rings[k-1], b=rings[k];
+      for(var i=0;i<seg;i++){
+        var j=(i+1)%seg;
+        face(a[i],a[j],b[j],reg,ref);
+        face(a[i],b[j],b[i],reg,ref);
+      }
     }
   };
-  /* capsula entre dois pontos */
-  var limb=function(n,x0,y0,z0,x1,y1,z1,r0,r1,reg){
-    for(var i=0;i<n;i++){
-      var t=Math.random(), a2=Math.random()*Math.PI*2;
-      var rr=r0+(r1-r0)*t;
-      var cx=x0+(x1-x0)*t, cy=y0+(y1-y0)*t, cz=z0+(z1-z0)*t;
-      P.push({x:cx+Math.cos(a2)*rr,y:cy+rnd()*rr*0.12,z:cz+Math.sin(a2)*rr,r:reg});
+  /* torno: aneis elipticos horizontais. prof = [[y,rx,rz],...] */
+  var lathe=function(prof,reg,seg,x0,z0){
+    var rings=prof.map(function(q){
+      var idx=[];
+      for(var i=0;i<seg;i++){
+        var a=i/seg*Math.PI*2;
+        idx.push(pv(x0+Math.cos(a)*q[1], q[0], z0+Math.sin(a)*q[2]));
+      }
+      return idx;
+    });
+    stitch(rings,seg,reg,function(x,y,z){ return [x0,y,z0]; });
+  };
+  /* tubo entre dois pontos, com tampas */
+  var limb=function(p0,p1,r0,r1,reg,seg,steps){
+    var d=[p1[0]-p0[0],p1[1]-p0[1],p1[2]-p0[2]];
+    var L=Math.hypot(d[0],d[1],d[2]), ax=nrm(d);
+    var u=crs(ax,[0,0,1]);
+    if(Math.hypot(u[0],u[1],u[2])<0.2) u=crs(ax,[1,0,0]);
+    u=nrm(u); var v=nrm(crs(ax,u));
+    var rings=[];
+    for(var sN=0;sN<=steps;sN++){
+      var t=sN/steps, r=r0+(r1-r0)*t;
+      var c=[p0[0]+ax[0]*L*t,p0[1]+ax[1]*L*t,p0[2]+ax[2]*L*t];
+      var idx=[];
+      for(var i=0;i<seg;i++){
+        var a=i/seg*Math.PI*2, ca=Math.cos(a)*r, sa=Math.sin(a)*r;
+        idx.push(pv(c[0]+u[0]*ca+v[0]*sa, c[1]+u[1]*ca+v[1]*sa, c[2]+u[2]*ca+v[2]*sa));
+      }
+      rings.push(idx);
+    }
+    var ref=function(x,y,z){
+      var t=(x-p0[0])*ax[0]+(y-p0[1])*ax[1]+(z-p0[2])*ax[2];
+      t=Math.max(0,Math.min(L,t));
+      return [p0[0]+ax[0]*t,p0[1]+ax[1]*t,p0[2]+ax[2]*t];
+    };
+    stitch(rings,seg,reg,ref);
+    /* tampas: o lado de dentro e um pouco para dentro do eixo */
+    var inA=[p0[0]+ax[0]*L*0.2,p0[1]+ax[1]*L*0.2,p0[2]+ax[2]*L*0.2];
+    var inB=[p1[0]-ax[0]*L*0.2,p1[1]-ax[1]*L*0.2,p1[2]-ax[2]*L*0.2];
+    var cA=pv(p0[0],p0[1],p0[2]), cB=pv(p1[0],p1[1],p1[2]);
+    for(var i=0;i<seg;i++){
+      var j=(i+1)%seg;
+      face(rings[0][i],rings[0][j],cA,reg,function(){ return inA; });
+      face(rings[steps][i],rings[steps][j],cB,reg,function(){ return inB; });
     }
   };
-  blob(240,0,0.86,0,0.105,0.125,0.105,'head',-1);
-  blob(190,0,0.84,0,0.105,0.125,0.105,'face',1);
-  limb(70,0,0.73,0,0,0.68,0,0.055,0.06,'neck');
-  blob(320,0,0.52,0,0.16,0.13,0.115,'chest',1);
-  blob(260,0,0.52,0,0.16,0.13,0.115,'back',-1);
-  blob(240,0,0.34,0,0.14,0.1,0.10,'belly');
-  blob(210,0,0.18,0,0.15,0.085,0.105,'hips');
-  blob(90,-0.19,0.63,0,0.075,0.06,0.07,'shoulder-r');
-  blob(90,0.19,0.63,0,0.075,0.06,0.07,'shoulder-l');
-  limb(150,-0.21,0.60,0,-0.28,0.36,0,0.055,0.045,'upperarm-r');
-  limb(150,0.21,0.60,0,0.28,0.36,0,0.055,0.045,'upperarm-l');
-  limb(140,-0.28,0.34,0,-0.32,0.12,0,0.045,0.035,'forearm-r');
-  limb(140,0.28,0.34,0,0.32,0.12,0,0.045,0.035,'forearm-l');
-  blob(90,-0.33,0.05,0,0.05,0.06,0.03,'hand-r');
-  blob(90,0.33,0.05,0,0.05,0.06,0.03,'hand-l');
-  limb(190,-0.08,0.12,0,-0.10,-0.22,0,0.065,0.05,'thigh-r');
-  limb(190,0.08,0.12,0,0.10,-0.22,0,0.065,0.05,'thigh-l');
-  limb(170,-0.11,-0.24,0,-0.12,-0.58,0,0.05,0.04,'calf-r');
-  limb(170,0.11,-0.24,0,0.12,-0.58,0,0.05,0.04,'calf-l');
-  blob(80,-0.12,-0.63,0.05,0.045,0.03,0.09,'foot-r');
-  blob(80,0.12,-0.63,0.05,0.045,0.03,0.09,'foot-l');
-  CI_PTS=P;
-  return P;
+  /* --- cabeca: a frente e a cara, o resto e a cabeca --- */
+  var hp=[];
+  for(var i=0;i<=9;i++){
+    var t=-1+2*i/9, q=Math.sqrt(Math.max(0,1-t*t));
+    hp.push([0.858+t*0.132, 0.006+0.101*q, 0.006+0.108*q]);
+  }
+  lathe(hp,function(x,y,z){ return (z>0.02&&y<0.931)?'face':'head'; },18,0,0.004);
+  /* --- pescoco --- */
+  limb([0,0.628,0],[0,0.752,0.004],0.056,0.048,'neck',14,2);
+  /* --- tronco: peito e costas em cima, barriga no meio, ancas em baixo --- */
+  lathe([
+    [0.108,0.146,0.096],[0.168,0.156,0.103],[0.238,0.152,0.099],
+    [0.308,0.140,0.092],[0.378,0.137,0.090],[0.448,0.148,0.096],
+    [0.518,0.164,0.102],[0.585,0.174,0.101],[0.642,0.158,0.090]
+  ],function(x,y,z){
+    if(y>=0.448) return z>0?'chest':'back';
+    if(y>=0.238) return 'belly';
+    return 'hips';
+  },22,0,0);
+  /* --- ombros, bracos e pernas --- */
+  [[-1,'-r'],[1,'-l']].forEach(function(a){
+    var sg=a[0], sx=a[1], i2, t2, q2;
+    var sp=[];
+    for(i2=0;i2<=6;i2++){ t2=-1+2*i2/6; q2=Math.sqrt(Math.max(0,1-t2*t2));
+      sp.push([0.616+t2*0.076, 0.006+0.078*q2, 0.006+0.080*q2]); }
+    lathe(sp,'shoulder'+sx,12,sg*0.183,0);
+    limb([sg*0.196,0.600,0],[sg*0.281,0.352,0.006],0.057,0.045,'upperarm'+sx,14,2);
+    limb([sg*0.281,0.352,0.006],[sg*0.316,0.116,0.012],0.045,0.035,'forearm'+sx,14,2);
+    var hd=[];
+    for(i2=0;i2<=5;i2++){ t2=-1+2*i2/5; q2=Math.sqrt(Math.max(0,1-t2*t2));
+      hd.push([0.055+t2*0.064, 0.006+0.039*q2, 0.006+0.023*q2]); }
+    lathe(hd,'hand'+sx,10,sg*0.322,0.014);
+    limb([sg*0.074,0.126,0],[sg*0.104,-0.202,0],0.071,0.052,'thigh'+sx,14,2);
+    limb([sg*0.104,-0.202,0],[sg*0.117,-0.548,0.004],0.052,0.039,'calf'+sx,14,2);
+    limb([sg*0.117,-0.548,-0.006],[sg*0.117,-0.612,0.092],0.046,0.030,'foot'+sx,12,2);
+  });
+  /* normais por vertice: o sombreado deixa de ser facetado */
+  var VN=new Float32Array(V.length);
+  F.forEach(function(f){
+    var a=f[0],b=f[1],c=f[2];
+    var ux=V[b*3]-V[a*3], uy=V[b*3+1]-V[a*3+1], uz=V[b*3+2]-V[a*3+2];
+    var vx=V[c*3]-V[a*3], vy=V[c*3+1]-V[a*3+1], vz=V[c*3+2]-V[a*3+2];
+    var nx=uy*vz-uz*vy, ny=uz*vx-ux*vz, nz=ux*vy-uy*vx;
+    [a,b,c].forEach(function(k){ VN[k*3]+=nx; VN[k*3+1]+=ny; VN[k*3+2]+=nz; });
+  });
+  for(var vi=0;vi<VN.length;vi+=3){
+    var l=Math.hypot(VN[vi],VN[vi+1],VN[vi+2])||1;
+    VN[vi]/=l; VN[vi+1]/=l; VN[vi+2]/=l;
+  }
+  CI_MESH={V:new Float32Array(V),F:F,VN:VN};
+  return CI_MESH;
 }
-var CI3={yaw:0.35,pitch:-0.05,drag:0,px:0,py:0,raf:0,hit:null};
+var CI3={yaw:0.42,pitch:-0.06,drag:0,px:0,py:0,raf:0,hit:null};
 function ciBody3D(){
   return '<div class="ci3wrap">'+
     '<canvas id="ci3" class="ci3" width="640" height="900" role="img" '+
@@ -10043,52 +10155,96 @@ function ciBody3D(){
 function ciBodyMount(){
   var cv=document.getElementById('ci3'); if(!cv||cv.__on) return;
   cv.__on=1;
-  var ctx=cv.getContext('2d'), pts=ciBodyPoints();
+  var ctx=cv.getContext('2d'), M=ciBodyMesh(), V=M.V, F=M.F, VN=M.VN;
   var DPR=Math.min(2,window.devicePixelRatio||1);
+  var N=V.length/3;
+  var SX=new Float32Array(N), SY=new Float32Array(N);
+  var RX=new Float32Array(N), RY=new Float32Array(N), RZ=new Float32Array(N);
+  var NX=new Float32Array(N), NY=new Float32Array(N), NZ=new Float32Array(N);
+  var vis=[];
   var fit=function(){
     var r=cv.getBoundingClientRect();
     cv.width=Math.round(r.width*DPR); cv.height=Math.round(r.height*DPR);
   };
   fit();
-  var proj=function(p){
-    var cy=Math.cos(CI3.yaw), sy=Math.sin(CI3.yaw);
-    var x=p.x*cy+p.z*sy, z=-p.x*sy+p.z*cy;
-    var cp=Math.cos(CI3.pitch), sp=Math.sin(CI3.pitch);
-    var y=p.y*cp-z*sp, z2=p.y*sp+z*cp;
-    var s=1/(1.9-z2*0.35);
-    var w=cv.width, h=cv.height, k=Math.min(w*1.15,h*0.78);
-    return {sx:w/2+x*k*s*1.5,sy:h/2-y*k*s*1.0,z:z2,s:s};
-  };
+  var LT=[-0.40,0.58,0.71];
   var draw=function(){
-    var w=cv.width, h=cv.height;
+    var w=cv.width,h=cv.height,i;
     ctx.clearRect(0,0,w,h);
-    var out=pts.map(function(p){ var q=proj(p); q.r=p.r; return q; });
-    out.sort(function(a,b){ return a.z-b.z; });
-    out.forEach(function(q){
-      var on=(CIB&&CIB.r===q.r), hot=(CI3.hit===q.r&&!on);
-      var d=(q.z+1)/2;
-      var rad=(on?2.9:2.2)*q.s*DPR*0.95;
-      ctx.beginPath(); ctx.arc(q.sx,q.sy,rad,0,6.2832);
-      ctx.fillStyle=on?'rgba(232,146,124,'+(0.55+0.45*d).toFixed(2)+')'
-        :(hot?'rgba(143,211,200,'+(0.35+0.45*d).toFixed(2)+')'
-             :'rgba(226,240,238,'+(0.16+0.42*d).toFixed(2)+')');
-      ctx.fill();
-    });
+    var cy=Math.cos(CI3.yaw), sy=Math.sin(CI3.yaw);
+    var cp=Math.cos(CI3.pitch), sp=Math.sin(CI3.pitch);
+    var k=Math.min(h*1.03,w*2.30);
+    for(i=0;i<N;i++){
+      var px=V[i*3],py=V[i*3+1],pz=V[i*3+2];
+      var x=px*cy+pz*sy, z=-px*sy+pz*cy;
+      var y=py*cp-z*sp, z2=py*sp+z*cp;
+      var sc=1/(1.95-z2*0.30);
+      RX[i]=x; RY[i]=y; RZ[i]=z2;
+      SX[i]=w/2+x*k*sc; SY[i]=h/2-(y-0.185)*k*sc;
+      var ax2=VN[i*3], ay2=VN[i*3+1], az2=VN[i*3+2];
+      var nx2=ax2*cy+az2*sy, nz3=-ax2*sy+az2*cy;
+      NX[i]=nx2; NY[i]=ay2*cp-nz3*sp; NZ[i]=ay2*sp+nz3*cp;
+    }
+    /* sombra no chao, para o corpo nao flutuar */
+    var sh=1/(1.95);
+    ctx.save();
+    ctx.beginPath();
+    ctx.ellipse(w/2,h/2+(0.185+0.63)*k*sh,k*0.20,k*0.035,0,0,6.2832);
+    ctx.fillStyle='rgba(0,0,0,.34)'; ctx.filter='blur('+(6*DPR)+'px)';
+    ctx.fill(); ctx.restore();
+    vis.length=0;
+    for(i=0;i<F.length;i++){
+      var f=F[i], a=f[0], b=f[1], c=f[2];
+      var ux=RX[b]-RX[a], uy=RY[b]-RY[a], uz=RZ[b]-RZ[a];
+      var vx=RX[c]-RX[a], vy=RY[c]-RY[a], vz=RZ[c]-RZ[a];
+      var nz=ux*vy-uy*vx;
+      if(nz<=0) continue;                       /* costas do triangulo: fora */
+      var sx2=(NX[a]+NX[b]+NX[c])/3, sy2=(NY[a]+NY[b]+NY[c])/3, sz2=(NZ[a]+NZ[b]+NZ[c])/3;
+      var L=Math.hypot(sx2,sy2,sz2)||1;
+      vis.push([i,(RZ[a]+RZ[b]+RZ[c])/3,sx2/L,sy2/L,sz2/L]);
+    }
+    vis.sort(function(P,Q){ return P[1]-Q[1]; });
+    ctx.lineJoin='round';
+    ctx.lineWidth=Math.max(1,0.9*DPR);
+    for(i=0;i<vis.length;i++){
+      var o=vis[i], fc=F[o[0]], reg=fc[3];
+      var on=(CIB&&CIB.r===reg), hot=(!on&&CI3.hit===reg);
+      var lam=o[2]*LT[0]+o[3]*LT[1]+o[4]*LT[2];
+      if(lam<0) lam=0;
+      var rim=Math.pow(1-o[4],3.4);
+      var base=on?[240,152,126]:(hot?[140,214,202]:[176,203,206]);
+      var amb=on?0.34:(hot?0.32:0.17);
+      var m=amb+(1-amb)*Math.pow(lam,0.72);
+      var rr=Math.min(255,Math.round(base[0]*m+rim*96));
+      var gg=Math.min(255,Math.round(base[1]*m+rim*108));
+      var bb=Math.min(255,Math.round(base[2]*m+rim*114));
+      var col='rgb('+rr+','+gg+','+bb+')';
+      ctx.fillStyle=col; ctx.strokeStyle=col;
+      ctx.beginPath();
+      ctx.moveTo(SX[fc[0]],SY[fc[0]]);
+      ctx.lineTo(SX[fc[1]],SY[fc[1]]);
+      ctx.lineTo(SX[fc[2]],SY[fc[2]]);
+      ctx.closePath(); ctx.fill(); ctx.stroke();
+    }
     CI3.raf=0;
   };
   var paint=function(){ if(!CI3.raf) CI3.raf=requestAnimationFrame(draw); };
   CI3.paint=paint;
+  /* o clique acerta no triangulo que esta mesmo a frente */
   var pick=function(ev){
     var r=cv.getBoundingClientRect();
     var mx=(ev.clientX-r.left)*(cv.width/r.width), my=(ev.clientY-r.top)*(cv.height/r.height);
-    var best=null, bd=1e9;
-    pts.forEach(function(p){
-      var q=proj(p);
-      if(q.z<-0.25) return;                       /* so o que esta virado para nos */
-      var d=Math.hypot(q.sx-mx,q.sy-my);
-      if(d<bd){ bd=d; best=p.r; }
-    });
-    return (bd<26*DPR)?best:null;
+    for(var i=vis.length-1;i>=0;i--){
+      var f=F[vis[i][0]];
+      var ax=SX[f[0]],ay=SY[f[0]],bx=SX[f[1]],by=SY[f[1]],cx2=SX[f[2]],cy2=SY[f[2]];
+      var d=(by-cy2)*(ax-cx2)+(cx2-bx)*(ay-cy2);
+      if(!d) continue;
+      var l1=((by-cy2)*(mx-cx2)+(cx2-bx)*(my-cy2))/d;
+      var l2=((cy2-ay)*(mx-cx2)+(ax-cx2)*(my-cy2))/d;
+      var l3=1-l1-l2;
+      if(l1>=0&&l2>=0&&l3>=0) return f[3];
+    }
+    return null;
   };
   cv.addEventListener('pointerdown',function(e){
     CI3.drag=1; CI3.moved=0; CI3.px=e.clientX; CI3.py=e.clientY;
@@ -10098,18 +10254,18 @@ function ciBodyMount(){
     if(CI3.drag){
       var dx=e.clientX-CI3.px, dy=e.clientY-CI3.py;
       if(Math.abs(dx)+Math.abs(dy)>3) CI3.moved=1;
-      CI3.yaw+=dx*0.012;
-      CI3.pitch=Math.max(-0.5,Math.min(0.5,CI3.pitch+dy*0.006));
+      CI3.yaw+=dx*0.011;
+      CI3.pitch=Math.max(-0.45,Math.min(0.45,CI3.pitch+dy*0.006));
       CI3.px=e.clientX; CI3.py=e.clientY; paint(); return;
     }
-    var h=pick(e); if(h!==CI3.hit){ CI3.hit=h; cv.style.cursor=h?'pointer':'grab'; paint(); }
+    var hh=pick(e); if(hh!==CI3.hit){ CI3.hit=hh; cv.style.cursor=hh?'pointer':'grab'; paint(); }
   });
   ['pointerup','pointercancel','pointerleave'].forEach(function(ev){
     cv.addEventListener(ev,function(){ CI3.drag=0; });
   });
   cv.addEventListener('click',function(e){
     if(CI3.moved) return;
-    var h=pick(e); if(h) ciBodyPick(h);
+    var hh=pick(e); if(hh) ciBodyPick(hh);
   });
   window.addEventListener('resize',function(){ if(document.getElementById('ci3')===cv){ fit(); paint(); } });
   paint();
@@ -10231,8 +10387,10 @@ function ciInner(role){
         (sel?'<div class="cibpanel">'+
           '<div class="cipadbox">'+
             '<span class="ax ay">'+__tr('Intensity')+'</span>'+
-            '<div class="cipad" id="ciPad">'+pad+'</div>'+
-            '<span class="ax ax2"><i>'+__tr('Unpleasant')+'</i><i>'+__tr('Pleasant')+'</i></span>'+
+            '<div class="cipadcol">'+
+              '<div class="cipad" id="ciPad">'+pad+'</div>'+
+              '<span class="ax ax2"><i>'+__tr('Unpleasant')+'</i><i>'+__tr('Pleasant')+'</i></span>'+
+            '</div>'+
           '</div>'+
           '<div class="cipadcap" id="ciPadCap">'+ciPadLabel()+'</div>'+
           '<div class="itzchips">'+CI_SENS.map(function(w){
@@ -17643,7 +17801,7 @@ routeFromHash();
     "Calm":"Calmo","Content":"Satisfeito","Grateful":"Grato","Relaxed":"Relaxado","Safe":"Seguro","Rested":"Descansado",
     "Peaceful":"Em paz","Balanced":"Equilibrado","Comfortable":"Confortável","Thankful":"Agradecido","Mellow":"Tranquilo","Serene":"Sereno",
     "Continue watching":"Continuar assistindo","Start here":"Comece aqui",
-    "Move around":"Passeie","Tap to choose":"Toque para escolher","Drag to turn the body":"Arraste para girar o corpo",
+    "Move around":"Passeie","Tap to choose":"Toque para escolher","Switch panel":"Mudar de painel","Psychiatrist":"Psiquiatra","Nutritionist":"Nutricionista","Now":"Agora","Drag to turn the body":"Arraste para girar o corpo",
     "The word in the middle takes shape. Drag or move the mouse to wander; tap to pick.":"A palavra do meio ganha forma. Arraste ou mova o mouse para passear; toque para escolher.",
     "Intensity":"Intensidade","Very unpleasant":"Muito desagradável","Very pleasant":"Muito agradável",
     "very high intensity":"intensidade muito alta","very low intensity":"intensidade muito baixa",
